@@ -10,26 +10,36 @@ session_start();
 		//something was posted
 		$user_name = $_POST['user_name'];
 		$password = $_POST['password'];
-
-		if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
-		{
+		$confirm_password=$_POST['confirm_password'];
 		
-			//save to database
-			$user_id = random_num(20);
-			$query = "insert into users (user_id,user_name,password) values ('$user_id','$user_name','$password')";
+		//check if password and confirm_password are equal and if not, display error message
+		if ($password==$confirm_password){
+		
+			if(!empty($user_name) && !empty($password) && !is_numeric($user_name)){
+			
+				//save to database
+				$user_id = random_num(20);
+				$query = "insert into users (user_id,user_name,password) values ('$user_id','$user_name','$password')";
 
-			if (!mysqli_query($con, $query))
-			{
-				die('Error: ' . mysqli_error($con));
+				if (!mysqli_query($con, $query)){
+					// this error opens on a blank new white page, need to use AJAX or something else to make it appear on the same page.
+					die('Error: ' . mysqli_error($con));
+				}
+				
+				
+				sleep(2);
+				header("Location: login.php");
+				die;
 			}
-			
-			
-			sleep(2);
-			header("Location: login.php");
-			die;
-		}else
-		{
-			echo "Please fill in all the details!";
+			else{
+				// this error opens on a blank new white page, need to use AJAX or something else to make it appear on the same page.
+				die('All the Details must be filled' . mysqli_error($con));
+			}
+
+		}
+		else{
+			// this error opens on a blank new white page, need to use AJAX or something else to make it appear on the same page.
+			die('Passwords do not match' . mysqli_error($con));
 		}
 	}
 ?>
@@ -73,7 +83,7 @@ HTML PART
 		margin: auto;
 		width: 300px;
 		padding: 20px;
-		margin-top: 200px;
+		margin-top: 150px;
 		align-content: center;
 		align-items: center;
 		text-align: center;
@@ -107,6 +117,8 @@ HTML PART
 			<input id="text" type="text" name="user_name" placeholder="HighnessAlexDaOne"><br><br>
 			<span  class="userandpass">PASSWORD</span>
 			<input id="text" type="password" name="password" placeholder="Karm@beatsDogm@"><br><br>
+			<span  class="userandpass">CONFIRM PASSWORD</span>
+			<input id="text" type="password" name="confirm_password" placeholder="Karm@beatsDogm@"><br><br>
 
 			<input id="button" style="margin-top:15px; margin-bottom:20px" type="submit" value="Sign Up"><br><br>
 

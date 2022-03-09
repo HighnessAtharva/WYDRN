@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+	include("connection.php");
+	include("functions.php");
+
+	$user_data = check_login($con);
+      
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,15 +33,23 @@
 </head>
 
 <body>
-    <!--Rightmost Text (Logout)-->
-    <div style="position: absolute; top: 0.5em; right: 1em; padding:10px;">
-        <a href="logout.php">Logout</a>
+
+    <!--LOGOUT-->
+    <div style="background-color: black; font-size:20px; position: absolute; top: 0.5em; right: 1em; padding:5px;">
+        <a style="color:white" href="logout.php">Logout</a>
     </div>
 
-    <!--Welcome Text to the Right-->
-    <div style="position:absolute; top: 0.6em; right:5em; padding:10px;">
-        Welcome to WYDRN
+    <!--PROFILE-->
+    <div style="  background-color: black; font-size:20px; position: absolute; top: 0.5em; right: 5em; padding:5px;">
+        <a style="color:white" href="profile.php?user_name=<?php echo $user_data['user_name']?>">Profile</a> 
     </div>
+
+    <!--WELCOME TO WRYDRN-->
+    <div style="font-size:20px; position:absolute; color:white; top: 0.5em; right:10em; padding:5px;">
+        <b>Welcome to WRYDN</b>
+    </div>
+
+    
 
     <form class="ms-5 mt-5" method="POST" action="profile.php" name="userinput">
         <div class="col-md-6">

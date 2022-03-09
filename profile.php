@@ -5,7 +5,15 @@ session_start();
 	include("functions.php");
 
 	$user_data = check_login($con);
+    if (isset($_GET['user_name'])){
+        $username=$_GET['user_name'];
+        
+    }else{
+        $username=$user_data['user_name'];
 
+    }
+
+    
 ?>
 
 <html>
@@ -21,7 +29,7 @@ session_start();
 
 <!--Top Left Button (Add Data to Profile)-->
 <div style="position:fixed; top: 1em;left: 1em; padding:10px;">
-    <a href="WYDRN.html">Add to WYDRN</a>
+    <a href="welcome.php">Add to WYDRN</a>
 </div>
 
 <div class="shadow overflow">
@@ -32,7 +40,7 @@ session_start();
         <div class="image"><img src="https://a4-images.myspacecdn.com/images03/2/85a286a4bbe84b56a6d57b1e5bd03ef4/300x300.jpg" alt=""/></div>
 
         <div name="" style="margin-bottom: 20px; border-bottom: 3px solid #f9dd94;">
-            <span style=" font-family:Baskerville,Times,'Times New Roman',serif; font-size:25px; color:#000000;font-variant:small-caps; text-align:center;font-weight:bold;"><?php echo $user_data['user_name']; ?></span>
+            <span style=" font-family:Baskerville,Times,'Times New Roman',serif; font-size:25px; color:#000000;font-variant:small-caps; text-align:center;font-weight:bold;"><?php echo $username?></span>
         </div>
 
       

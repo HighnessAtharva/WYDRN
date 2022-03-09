@@ -10,7 +10,15 @@ div{
 
 	include("connection.php");
     $user_data = check_login($con);
-    $username=$user_data['user_name'];
+    //$username=$user_data['user_name'];
+
+    if (isset($_GET['user_name'])){
+        $username=$_GET['user_name'];
+        
+    }else{
+        $username=$user_data['user_name'];
+
+    }
 
     //global variables initializing to ''
     $videogame='';
