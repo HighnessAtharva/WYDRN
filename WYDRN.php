@@ -27,8 +27,8 @@ div{
     //video game validation
     if ((!empty($_POST['Videogame'])) &&  (!empty($_POST['Platform']))){
         global $videogame, $platform;
-        $videogame=$_POST['Videogame'];
-        $platform=$_POST['Platform']; 
+        $videogame=$_POST['Videogame']; $videogame = ucwords($videogame);
+        $platform=$_POST['Platform'];  $platform = ucwords($platform);
 
         if ((!empty($videogame)) && (!empty($platform)))
             $playing="<div> &#127918 Playing <b>".$videogame."</b> on ".$platform."</div>";
@@ -37,8 +37,8 @@ div{
     //music validation
     if ((!empty($_POST['Album'])) &&  (!empty($_POST['Artist']))){
         global $album, $artist; 
-        $album=$_POST['Album'];
-        $artist=$_POST['Artist'];
+        $album=$_POST['Album']; $album = ucwords($album);
+        $artist=$_POST['Artist']; $artist = ucwords($artist);
 
         if ((!empty($album)) && (!empty($artist)))
             $listening="<div> &#127911 Listening to <b>".$album."</b> by <b>".$artist."</b></div>";
@@ -48,8 +48,8 @@ div{
     if ((!empty($_POST['Book'])) &&  (!empty($_POST['Author']))){
         global $book, $author;  
         $book=$_POST['Book'];
-        $book=trim($book,".");
-        $author=$_POST['Author'];
+        $book=trim($book,"."); $book = ucwords($book);
+        $author=$_POST['Author']; $author = ucwords($author);
 
         if ((!empty($book)) && (!empty($author)))
             $reading="<div> &#128213 Reading <b>".$book."</b> by <b>".$author."</b></div>";
@@ -58,7 +58,7 @@ div{
     //movie validation
     if ((!empty($_POST['Movie'])) &&  (!empty($_POST['MovieRelease']))){
         global $movie, $movierelease; 
-        $movie=$_POST['Movie'];
+        $movie=$_POST['Movie']; $movie = ucwords($movie);
         $movierelease=$_POST['MovieRelease'];
 
         if ((!empty($movie)) && (!empty($movierelease)))
@@ -68,8 +68,8 @@ div{
     //tv validation
     if ((!empty($_POST['TV'])) &&  (!empty($_POST['StreamPlatform']))){
         global $TV, $streamplatform; 
-        $TV=$_POST['TV'];
-        $streamplatform=$_POST['StreamPlatform'];
+        $TV=$_POST['TV'];   $TV = ucwords($TV);
+        $streamplatform=$_POST['StreamPlatform']; $streamplatform = ucwords($streamplatform);
         if ((!empty($TV)) && (!empty($streamplatform)))
             $binging="<div> &#128250 Binging <b>".$TV."</b> on ".$streamplatform."</div>";
     }
@@ -83,13 +83,60 @@ div{
         $result=mysqli_query($con,$sql);
 
         // Check if insert statement was successful and display the relevant message    
+        //uncomment the echo statements when debugging
         if($result){
-            echo "The record has been inserted successfully successfully!<br>";
+            //echo "The record has been inserted successfully successfully!<br>";
         }
         else{
-            echo "Record not inserted. ERROR -> ". mysqli_error($con);
+            //echo "Record not inserted. ERROR -> ". mysqli_error($con);
         }
     }   
+
+    //select the data corresponding to the user (tail 1)
+    $sql="SELECT * FROM `data` WHERE `username` = '$username' ORDER BY `datetime` DESC LIMIT 1";
+    if ($result=mysqli_query($con, $sql)){
+
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            //uncomment when debugging 
+            //print_r($row);
+
+            //set the data
+            $videogame=$row['videogame']; 
+            $platform=$row['platform']; 
+
+            $album=$row['album']; 
+            $artist=$row['artist']; 
+            
+            $book=$row['book'];
+            $author=$row['author']; 
+            
+            $movie=$row['movie']; 
+            $movierelease=$row['year']; 
+            
+            $TV=$row['tv']; 
+            $streamplatform=$row['streaming'];
+
+            //display the data
+            if ((!empty($videogame)) && (!empty($platform)))
+            $playing="<div> &#127918 Playing <b>".$videogame."</b> on ".$platform."</div>";
+
+            if ((!empty($album)) && (!empty($artist)))
+            $listening="<div> &#127911 Listening to <b>".$album."</b> by <b>".$artist."</b></div>";
+
+            if ((!empty($book)) && (!empty($author)))
+            $reading="<div> &#128213 Reading <b>".$book."</b> by <b>".$author."</b></div>";
+
+            if ((!empty($movie)) && (!empty($movierelease)))
+            $watching="<div> &#128253 Watching <b>".$movie."</b> (".$movierelease.")"."</div>";
+
+            if ((!empty($TV)) && (!empty($streamplatform)))
+            $binging="<div> &#128250 Binging <b>".$TV."</b> on ".$streamplatform."</div>";
+            }
+        }
+    }
+
+
 
    //this is stuff used to display the text on the browser. This will be eventually replaced by SQL queries. 
     if (!empty($playing)) echo $playing."<BR>";
