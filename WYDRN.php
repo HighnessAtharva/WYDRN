@@ -27,51 +27,37 @@ div{
     //video game validation
     if ((!empty($_POST['Videogame'])) &&  (!empty($_POST['Platform']))){
         global $videogame, $platform;
-        $videogame=$_POST['Videogame']; $videogame = ucwords($videogame);
-        $platform=$_POST['Platform'];  $platform = ucwords($platform);
-
-        if ((!empty($videogame)) && (!empty($platform)))
-            $playing="<div> &#127918 Playing <b>".$videogame."</b> on ".$platform."</div>";
+        $videogame=mysqli_real_escape_string($con, $_POST['Videogame']);            $videogame = strtoupper($videogame);
+        $platform=mysqli_real_escape_string($con, $_POST['Platform']);              $platform = strtoupper($platform);
     }
 
     //music validation
     if ((!empty($_POST['Album'])) &&  (!empty($_POST['Artist']))){
         global $album, $artist; 
-        $album=$_POST['Album']; $album = ucwords($album);
-        $artist=$_POST['Artist']; $artist = ucwords($artist);
-
-        if ((!empty($album)) && (!empty($artist)))
-            $listening="<div> &#127911 Listening to <b>".$album."</b> by <b>".$artist."</b></div>";
+        $album=mysqli_real_escape_string($con, $_POST['Album']);                    $album = strtoupper($album);
+        $artist=mysqli_real_escape_string($con, $_POST['Artist']);                  $artist = strtoupper($artist);
     }
 
     //book validation
     if ((!empty($_POST['Book'])) &&  (!empty($_POST['Author']))){
         global $book, $author;  
-        $book=$_POST['Book'];
-        $book=trim($book,"."); $book = ucwords($book);
-        $author=$_POST['Author']; $author = ucwords($author);
-
-        if ((!empty($book)) && (!empty($author)))
-            $reading="<div> &#128213 Reading <b>".$book."</b> by <b>".$author."</b></div>";
+        $book=mysqli_real_escape_string($con, $_POST['Book']); 
+        $book=trim($book,".");                                                      $book = strtoupper($book);
+        $author=mysqli_real_escape_string($con, $_POST['Author']);                  $author = strtoupper($author);
     }
 
     //movie validation
     if ((!empty($_POST['Movie'])) &&  (!empty($_POST['MovieRelease']))){
         global $movie, $movierelease; 
-        $movie=$_POST['Movie']; $movie = ucwords($movie);
-        $movierelease=$_POST['MovieRelease'];
-
-        if ((!empty($movie)) && (!empty($movierelease)))
-            $watching="<div> &#128253 Watching <b>".$movie."</b> (".$movierelease.")"."</div>";
+        $movie=mysqli_real_escape_string($con, $_POST['Movie']);                    $movie = strtoupper($movie);
+        $movierelease=mysqli_real_escape_string($con, $_POST['MovieRelease']);
     }
 
     //tv validation
     if ((!empty($_POST['TV'])) &&  (!empty($_POST['StreamPlatform']))){
         global $TV, $streamplatform; 
-        $TV=$_POST['TV'];   $TV = ucwords($TV);
-        $streamplatform=$_POST['StreamPlatform']; $streamplatform = ucwords($streamplatform);
-        if ((!empty($TV)) && (!empty($streamplatform)))
-            $binging="<div> &#128250 Binging <b>".$TV."</b> on ".$streamplatform."</div>";
+        $TV=mysqli_real_escape_string($con,$_POST['TV']);                           $TV = strtoupper($TV);
+        $streamplatform=mysqli_real_escape_string($con,$_POST['StreamPlatform']);   $streamplatform = strtoupper($streamplatform); 
     }
 
     // insert the fields into the database if at least one of the above fields is filled.
@@ -148,6 +134,4 @@ div{
     if ((empty($playing))&& (empty($listening))&& (empty($reading))&& (empty($watching))&& (empty($binging)))
         echo "<div> &#128542 Nothing to see here.</div>";
 
-
-    
     ?>
