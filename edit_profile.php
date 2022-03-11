@@ -27,8 +27,8 @@ Hello <?php echo $username?>, you can change your PFP and Background Image here.
 <?php
 // CODE TO CHANG THE PROFILE PICTURE AND BACKGROUND IMAGE
  if (isset($_POST['save_profile'])) {
-    $PFPName = $_FILES["PFP"]["name"]; //profile picture
-    $BGName=$_FILES["BgImage"]["name"]; //background image
+    $PFPName= date("his")." - ".$_FILES["PFP"]["name"]; //profile picture
+    $BGName= $_FILES["BgImage"]["name"]; //background image
     // For image upload
     $target_dir = "images/users/";
     $target_file = $target_dir . basename($PFPName);
