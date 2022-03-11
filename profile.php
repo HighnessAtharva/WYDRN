@@ -9,17 +9,29 @@ session_start();
         $username=$_GET['user_name'];
         
     }else{
-        $username=$user_data['user_name'];
+        $username=$user_data['user_name'];   
 
     }
 
-    
+    // TESTING THIS SECTION
+    $sql="SELECT profile_pic, background_pic FROM users WHERE user_name='$username'";
+                if($query=mysqli_query($con,$sql)){
+                    if(mysqli_num_rows($query) ==1){
+                        $row=mysqli_fetch_array($query);
+                        $profile_pic=$row['profile_pic'];
+                        $background_pic=$row['background_pic'];
+                    }
+                }
+    // TESTING THIS SECTION
 ?>
 
 <html>
 <head><title>Profile</title> 
 <link href="profile.css" rel="stylesheet"></head>
 <body>
+
+
+
 
 
 <!--Top Right Button (Logout)-->
@@ -33,11 +45,15 @@ session_start();
 </div>
 
 <div class="shadow overflow">
-    <div id="header"></div>
+    <!--Background Image-->    
+    <div id="header" style="background:<?php echo $background_pic?>;"></div>
 
         <div id="profile">
-
-        <div class="image"><img src="https://a4-images.myspacecdn.com/images03/2/85a286a4bbe84b56a6d57b1e5bd03ef4/300x300.jpg" alt=""/></div>
+            
+        <!--Profile Image-->
+        <div class="image"><img src="<?php echo $profile_pic?>" alt="Profile Picture"/>
+        
+        </div>
 
         <div name="" style="margin-bottom: 20px; border-bottom: 3px solid #f9dd94;">
             <span style=" font-family:Baskerville,Times,'Times New Roman',serif; font-size:25px; color:#000000;font-variant:small-caps; text-align:center;font-weight:bold;"><?php echo $username?></span>

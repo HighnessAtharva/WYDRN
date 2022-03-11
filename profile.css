@@ -9,7 +9,7 @@ html {
 body {
     min-height: 100vh;
     min-width: 100vw;
-    background: linear-gradient(to right bottom, rgba(0, 0, 255, 0.5), rgba(0, 128, 0, 0.5)), url(http://i.imgur.com/woUbg3p.jpg);
+    /* background: linear-gradient(to right bottom, rgba(0, 0, 255, 0.5), rgba(0, 128, 0, 0.5)); */
     background-size: cover;
     background-position: center center;
     display: flex;
@@ -40,7 +40,6 @@ a:visited {
     max-width: 450px;
     min-width: 300px;
     height: 150px;
-    background: url(http://i.imgur.com/woUbg3p.jpg);
     background-size: cover;
     background-position: center center;
     transition: all 0.08s linear;

@@ -27,6 +27,14 @@ session_start();
         h3 {
             color: rgba(255, 255, 255, 0.904);
         }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            margin-top:100px;
+            }
+
     </style>
 
 
@@ -49,10 +57,10 @@ session_start();
         <b>Welcome to WRYDN</b>
     </div>
 
-    
-
-    <form class="ms-5 mt-5" method="POST" action="profile.php" name="userinput">
-        <div class="col-md-6">
+ <!-- LEFT COLUMN-->
+<div class="column">
+    <form class="ms-5" method="POST" action="profile.php" name="userinput">
+        <div style="margin-right: 100px;">
             <!--Video Games-->
             <h3 class="mb-3">Video Game</h3>
             <div class="mb-3 ms-3" name="videogame">
@@ -83,12 +91,38 @@ session_start();
                 What TV series you watching RN hon? <input type="text" class="form-control" name="TV" placeholder="Peaky Blinders"><br> Where is it streaming/broadcasting? <input type="text" class="form-control" name="StreamPlatform" placeholder="BBC"><br>
             </div>
         </div>
-
-        <hr>
-        <div class="text-center mb-lg-3">
-            <button type="submit" class="btn btn-outline-primary btn-light btn-lg">Submit</button>
-        </div>
         <form>
+      
+          <!--The div below puts the submit button below the first column at center-->
+        
+        <div class="text-center mb-lg-3">
+            <button type="submit" class="btn btn-outline-primary btn-light btn-lg" style="margin-left:-100px">Submit</button>
+        </div>
+
+        </div>           
+        <!--END OF LEFT COLUMN-->
+
+
+
+
+
+        <!--RIGHT COLUMN-->
+        <div class="column" >
+            <div style="background:black; color:white;margin-right:30px; padding:20px;">
+                <ul>    
+                    <li>WYDRN is a website that allows you to instataneously add your current video games, music, books, movies, and TV  to your profile.  </li>
+                    <li>You can then view your profile and see what you have added. </li>
+                    <li> You can also search for other users and see their profiles.  </li>
+                </ul> 
+            </div>
+        </div>
+        <!--END OF RIGHT COLUMN-->
+            
+        
+      
+        
+        
+            
 </body>
 
 </html>
