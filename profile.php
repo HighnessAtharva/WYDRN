@@ -28,25 +28,21 @@ session_start();
 <html>
 <head><title>Profile</title> 
 <link href="profile.css" rel="stylesheet"></head>
-<body>
-
-
-
-
+<body style="">
 
 <!--Top Right Button (Logout)-->
-<div style="position: fixed; top: 1em; right: 1em; padding:10px;">
-    <a href="logout.php">Logout</a>
+<div style="position: fixed; top: 1em; right: 1em; padding:10px; background-color: white;">
+    <a href="logout.php" style="color:black;">Logout</a>
 </div>
 
 <!--Top Left Button (Add Data to Profile)-->
-<div style="position:fixed; top: 1em;left: 1em; padding:10px;">
-    <a href="welcome.php">Add to WYDRN</a>
+<div style="position:fixed; top: 1em;left: 1em; padding:10px; background-color: white;  ">
+    <a href="welcome.php" style="color:black; ">Add to WYDRN</a>
 </div>
 
 <div class="shadow overflow">
     <!--Background Image-->    
-    <div id="header" style="background:<?php echo $background_pic?>;"></div>
+    <div id="header" style="background-image:url(<?php echo $background_pic?>)" alt="Background Image"></div>
 
         <div id="profile">
             
