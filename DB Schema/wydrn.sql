@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2022 at 06:51 AM
+-- Generation Time: Mar 16, 2022 at 01:21 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -40,26 +40,26 @@ CREATE TABLE `data` (
   `tv` varchar(150) DEFAULT NULL,
   `streaming` varchar(100) DEFAULT NULL,
   `datetime` datetime NOT NULL DEFAULT current_timestamp(),
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `followers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`followers`)),
+  `following` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`following`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `data`
 --
 
-INSERT INTO `data` (`username`, `videogame`, `platform`, `album`, `artist`, `book`, `author`, `movie`, `year`, `tv`, `streaming`, `datetime`, `date`) VALUES
-('susujpeg', 'Serious Sam 4', 'Playstation 5', '', '', 'Royal Assassin', 'Robin Hobb', '13 Going on 30', '1978', '', '', '2022-03-08 16:44:04', '2022-03-08'),
-('HighnessAtharva', 'Elden Ring', 'PC', 'Cavalcade', 'Black Midi', 'Royal Assassin', 'Robin Hobb', 'The Batman', '2022', 'Peaky Blinders', 'Netflix', '2022-03-09 10:56:03', '2022-03-09'),
-('HighnessAtharva', 'Elden Ring', 'PC', '', '', '', '', '', '', 'Cheeky Suckers', 'Netflix', '2022-03-09 10:59:35', '2022-03-09'),
-('HighnessAtharva', 'Elden Ring', 'XBOX', 'Cavalcade', 'Black Midi', 'Royal Assassin', 'Robin Hobb', 'The Batman ', '2022', 'Peaky Blinders', 'Netflix', '2022-03-09 11:02:27', '2022-03-09'),
-('HighnessAtharva', 'Elden Ring', 'PC', 'Cavalcade', 'Black Midi', 'Royal Assassin', 'Robin Hobb', 'The Batman ', '2022', 'Game of Thrones', 'HBO', '2022-03-09 11:04:49', '2022-03-09'),
-('susujpeg', 'Elden Ring', 'PC', '', '', '', '', '', '', '', '', '2022-03-09 11:11:39', '2022-03-09'),
-('HighnessAtharva', '', '', 'Cavalcade', 'Black Midi', '', '', '', '', '', '', '2022-03-09 11:12:20', '2022-03-09'),
-('HighnessAtharva', '', '', '', '', '', '', '', '', 'Peaky Blinders', 'HBO', '2022-03-09 11:12:28', '2022-03-09'),
-('susujpeg', '', '', '', '', '', '', 'Black Swan', '2009', '', '', '2022-03-09 11:13:06', '2022-03-09'),
-('admin', '', '', '', '', 'Royal Assassin', 'Robin Hobb', '', '', 'Game of Thrones', 'HBO', '2022-03-09 11:13:39', '2022-03-09'),
-('admin', '', '', 'whole lotta red', 'playboi carti', '', '', '', '', '', '', '2022-03-09 11:14:53', '2022-03-09'),
-('admin', 'Elden Ring', 'PC', 'Cavalcade', 'Black Midi', 'Idk Bro', 'Robin Hovv', 'Batmanesnasd And The Titans', '2069', 'WestWorld', 'HBO', '2022-03-09 11:20:30', '2022-03-09');
+INSERT INTO `data` (`username`, `videogame`, `platform`, `album`, `artist`, `book`, `author`, `movie`, `year`, `tv`, `streaming`, `datetime`, `date`, `followers`, `following`) VALUES
+('admin', '', '', '', '', '', '', 'REVENGE OF THE NERDS', '1988', 'WATCHMEN', 'HBO ', '2022-03-09 16:48:11', '2022-03-09', NULL, NULL),
+('HighnessAtharva', '', '', '', '', '', '', 'THE BATMAN ', '2069', 'MERLIN\'S SQUAD', 'ARTHUR', '2022-03-09 16:52:46', '2022-03-09', NULL, NULL),
+('HighnessAtharva', '', '', 'CAVALCADE', 'BLACK MIDI', '', '', 'THE BATMAN ', '2022', 'WESTWORLD', 'NETLFIXA + AJSJD', '2022-03-09 16:52:59', '2022-03-09', NULL, NULL),
+('susujpeg', '', '', 'HOLLYWOOD BLEEDING', 'POST MALONE', '', '', '', '', '', '', '2022-03-09 17:11:17', '2022-03-09', NULL, NULL),
+('susujpeg', 'CRYSIS 3', 'NINTENDO SWITCH', 'HOLLYWOOD BLEEDING', 'POST MALONE', '', '', '', '', '', '', '2022-03-09 17:23:47', '2022-03-09', NULL, NULL),
+('susujpeg', 'ELDEN RING', 'PC', '', '', '', '', '', '', '', '', '2022-03-09 17:37:20', '2022-03-09', NULL, NULL),
+('HighnessAtharva', 'SERIOUS SAM 4', 'PC', '', '', '', '', '', '', '', '', '2022-03-09 17:39:06', '2022-03-09', NULL, NULL),
+('susujpeg', '', '', '', '', 'ROYAL ASSASSIN', 'ROBIN HOBB', 'THE BATMAN ', '2022', 'GAME OF THRONES', 'HBO', '2022-03-11 15:24:11', '2022-03-11', NULL, NULL),
+('HighnessAtharva', 'ELDEN RING', 'XBOX ONE', '', '', '', '', '', '', '', '', '2022-03-12 10:49:17', '2022-03-12', NULL, NULL),
+('HighnessAtharva', '', '', '', '', 'ROYAL ASSASSIN', 'ROBIN HOBB', '', '', 'GAME OF THRONES', 'HBO', '2022-03-12 10:49:33', '2022-03-12', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -72,18 +72,20 @@ CREATE TABLE `users` (
   `user_id` bigint(20) NOT NULL,
   `user_name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `profile_pic` varchar(255) DEFAULT 'images/website/defaultPFP.png',
+  `background_pic` varchar(255) DEFAULT 'images/website/defaultBackground.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_id`, `user_name`, `password`, `date`) VALUES
-(1, 2810727, 'HighnessAtharva', 'ATHARVASHAH', '2022-03-07 18:40:03'),
-(20, 1432011569896302, 'Robin', 'sherwood', '2022-03-07 19:49:17'),
-(22, 85009, 'susujpeg', 'mafia69k', '2022-03-08 11:13:04'),
-(23, 4784850399629, 'admin', 'admin', '2022-03-09 05:43:24');
+INSERT INTO `users` (`id`, `user_id`, `user_name`, `password`, `date`, `profile_pic`, `background_pic`) VALUES
+(1, 2810727, 'HighnessAtharva', 'narnia123', '2022-03-11 09:23:45', 'images/users/EmbeddedCover.jpg', 'images/website/defaultBackground.jpg\r\n'),
+(22, 85009, 'susujpeg', 'mafia69k', '2022-03-11 10:18:05', 'images/users/111730 - login.png', 'images/users/IMG-20220228-WA0005.jpg'),
+(27, 46034167346586, 'testacc', 'testytaster', '2022-03-11 08:40:25', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg'),
+(31, 9223372036854775807, 'iii', 'jjj', '2022-03-11 09:34:34', 'images/users/EmbeddedCover.jpg', 'images/users/doom-eternal-soundtrack-ost.jpg');
 
 --
 -- Indexes for dumped tables
@@ -113,7 +115,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
