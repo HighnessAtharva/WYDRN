@@ -81,7 +81,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `user_name`, `password`, `date`, `profile_pic`, `background_pic`) VALUES
-(1, 2810727, 'HighnessAtharva', 'narnia123', '2022-03-16 16:17:37', 'images/users/051737 - new logo.jpeg', 'images/users/check.JPG'),
+(1, 2810727, 'HighnessAtharva', '75455564', '2022-03-16 16:17:37', 'images/users/051737 - new logo.jpeg', 'images/users/check.JPG'),
 (27, 46034167346586, 'testacc', 'testytaster', '2022-03-11 08:40:25', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg'),
 (31, 9223372036854775807, 'iii', 'jjj', '2022-03-11 09:34:34', 'images/users/EmbeddedCover.jpg', 'images/users/doom-eternal-soundtrack-ost.jpg'),
 (32, 2930418, 'ppp', 'oily', '2022-03-16 16:18:01', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg');
