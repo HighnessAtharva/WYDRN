@@ -13,7 +13,7 @@ session_start();
 
     }
 
-    // TESTING THIS SECTION
+
     $sql="SELECT profile_pic, background_pic FROM users WHERE user_name='$username'";
                 if($query=mysqli_query($con,$sql)){
                     if(mysqli_num_rows($query) ==1){
@@ -21,8 +21,11 @@ session_start();
                         $profile_pic=$row['profile_pic'];
                         $background_pic=$row['background_pic'];
                     }
+                    else{
+                        die('That user does not exist' . mysqli_error($con));
+                    }
                 }
-    // TESTING THIS SECTION
+ 
 ?>
 
 <html>

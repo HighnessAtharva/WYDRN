@@ -41,6 +41,8 @@ session_start();
 </head>
 
 <body>
+ 
+<!-- START OF HEADER-->
 
     <!--LOGOUT-->
     <div style="background-color: black; font-size:20px; position: absolute; top: 0.5em; right: 1em; padding:5px;">
@@ -52,12 +54,21 @@ session_start();
         <a style="color:white" href="profile.php?user_name=<?php echo $user_data['user_name']?>">Profile</a> 
     </div>
 
+    <!--Delete Account-->
+    <div style="background-color: black; font-size:20px; position: absolute; top: 0.5em; right: 9em; padding:5px;" >
+        <a href="delete_user.php" style="color:white;">Delete</a>
+    </div>
+    
     <!--WELCOME TO WRYDRN-->
-    <div style="font-size:20px; position:absolute; color:white; top: 0.5em; right:10em; padding:5px;">
+    <div style="font-size:20px; position:absolute; color:white; top: 0.5em; right:14em; padding:5px;">
         <b>Welcome to WRYDN</b>
     </div>
 
- <!-- LEFT COLUMN-->
+<!-- END OF HEADER-->
+    
+
+<!--START OF MAIN  BODY-->
+<!-- LEFT COLUMN-->
 <div class="column">
     <form class="ms-5" method="POST" action="profile.php" name="userinput">
         <div style="margin-right: 100px;">
@@ -102,10 +113,6 @@ session_start();
         </div>           
         <!--END OF LEFT COLUMN-->
 
-
-
-
-
         <!--RIGHT COLUMN-->
         <div class="column" >
             <div style="background:black; color:white;margin-right:30px; padding:20px;">
@@ -118,11 +125,6 @@ session_start();
         </div>
         <!--END OF RIGHT COLUMN-->
             
-        
-      
-        
-        
-            
+<!--END OF MAIN BODY-->             
 </body>
-
 </html>
