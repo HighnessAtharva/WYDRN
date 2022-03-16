@@ -1,4 +1,11 @@
 <?php
+
+/*
+
+DESCRIPTION: THIS PAGE ALLOWS USER TO CHANGE THEIR PROFILE PHOTO, PROFILE BACKGROUND AND PASSWORD. MORE EDIT         ACTIVTY CAN BE ADDED LATER.
+
+*/
+
 session_start();
 
 include("connection.php");

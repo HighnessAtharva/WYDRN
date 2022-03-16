@@ -1,8 +1,14 @@
 <?php 
 session_start();
 
-	include("connection.php");
-	include("functions.php");
+/*
+
+DESCRIPTION: SIMILAR TO LOGIN PAGE, THIS PAGE DISPLAYS THE SIGNUP PAGE WITH THE ACCOMODATION TO CHECK IF PASSWORDS MATCH. IF USERNAME IS ALREADY TAKEN, ECHOS AN ERROR REGARDING DUPLICATE VALUE. REDIRECTS TO LOGIN PAGE AFTER SUCCESSFUL SIGNUP.
+
+*/
+
+include("connection.php");
+include("functions.php");
 
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")

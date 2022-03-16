@@ -1,4 +1,11 @@
 <?php
+
+/*
+
+DESCRIPTION: CHECKS IF A USER HAS LOGGED IN AND IF SO, DELETES THE USER DATA FROM THE DATABASE.
+
+*/
+
 session_start();
 include("connection.php");
 include("functions.php");

@@ -1,5 +1,7 @@
 <?php
-// Handle all the Followers and Following Section here. 
-//Followers and Following have be in JSON Format.
+/*
 
+DESCRIPTION: HANDLE ALL THE FOLLOWERS AND THE FOLLOWING SECTION HERE. BOTH ARE SUPPOSED TO BE IN JSON FORMAT. 
+
+*/
 ?>

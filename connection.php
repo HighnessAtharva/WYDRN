@@ -1,5 +1,12 @@
 <?php
 
+/*
+
+DESCRIPTION: MYSQL CONNECTIVITY WITH PHP IS DEFINED AND CONNECTED HERE
+
+*/
+
+
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
