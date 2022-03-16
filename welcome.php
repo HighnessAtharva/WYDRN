@@ -45,22 +45,28 @@ session_start();
 <!-- START OF HEADER-->
 
     <!--LOGOUT-->
-    <div style="background-color: black; font-size:20px; position: absolute; top: 0.5em; right: 1em; padding:5px;">
+    <div style="font-size:20px; position: absolute; top: 0.5em; right: 1em; padding:5px;">
         <a style="color:white" href="logout.php">Logout</a>
     </div>
 
     <!--PROFILE-->
-    <div style="  background-color: black; font-size:20px; position: absolute; top: 0.5em; right: 5em; padding:5px;">
+    <div style="font-size:20px; position: absolute; top: 0.5em; right: 5em; padding:5px;">
         <a style="color:white" href="profile.php?user_name=<?php echo $user_data['user_name']?>">Profile</a> 
     </div>
 
     <!--Delete Account-->
-    <div style="background-color: black; font-size:20px; position: absolute; top: 0.5em; right: 9em; padding:5px;" >
+    <div style="font-size:20px; position: absolute; top: 0.5em; right: 9em; padding:5px;" >
         <a href="delete_user.php" style="color:white;">Delete</a>
     </div>
+
+     <!--Edit Profile-->
+    <div style="font-size:20px; position: absolute; top: 0.5em; right: 13.5em; padding:5px;" >
+        <a href="edit_profile.php" style="color:white;">Edit Profile</a>
+    </div>
+    
     
     <!--WELCOME TO WRYDRN-->
-    <div style="font-size:20px; position:absolute; color:white; top: 0.5em; right:14em; padding:5px;">
+    <div style="font-size:20px; position:absolute; color:white; top: 0.5em; right:20em; padding:5px;">
         <b>Welcome to WRYDN</b>
     </div>
 

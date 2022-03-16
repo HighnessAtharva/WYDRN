@@ -34,14 +34,14 @@ session_start();
 <body style="">
 
 <!--Top Right Button (Logout)-->
-<div style="position: fixed; top: 1em; right: 1em; padding:10px; background-color: white;">
-    <a href="logout.php" style="color:black;">Logout</a>
-</div>
+
+<input type="button" value="Logout" onclick="location.href='logout.php'" style="color:black; position: fixed; top: 1em; right: 1em; padding:10px; background-color: white; cursor:pointer;">
+
 
 <!--Top Left Button (Add Data to Profile)-->
-<div style="position:fixed; top: 1em;left: 1em; padding:10px; background-color: white;  ">
-    <a href="welcome.php" style="color:black; ">Add to WYDRN</a>
-</div>
+<input type="button" value="Add to WYDRN" onclick="location.href='welcome.php'" style="color:black; position: fixed; top: 1em; left: 1em; padding:10px; background-color: white; cursor:pointer;">
+   
+
 
 <div class="shadow overflow">
     <!--Background Image-->    
@@ -64,6 +64,9 @@ session_start();
         <div name="activity" style="margin-right:30px; word-wrap: break-word;">
             <?php include( "WYDRN.php");?>
         </div>
+
+
+
 
     </div>  <!-- This DIV is the end of the bottom half of the card. White Section-->
 </div> <!-- This DIV is the end of the entire card-->

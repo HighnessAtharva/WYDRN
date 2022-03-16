@@ -5,6 +5,7 @@ session_start();
 	include("connection.php");
 	include("functions.php");
 
+	
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
@@ -41,6 +42,8 @@ session_start();
 		{
 			echo "wrong username or password!";
 		}
+
+		
 	}
 
 ?>
@@ -53,6 +56,13 @@ HTML PART
 <!DOCTYPE html>
 <html>
 <head>
+
+
+<?php
+
+?>
+
+
 	<title>Login</title>
 </head>
 <body>
