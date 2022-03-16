@@ -80,7 +80,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `user_name`, `password`, `date`) VALUES
-(1, 2810727, 'HighnessAtharva', 'narnia123', '2022-03-07 18:40:03'),
+(1, 2810727, 'HighnessAtharva', 'ATHARVASHAH', '2022-03-07 18:40:03'),
 (20, 1432011569896302, 'Robin', 'sherwood', '2022-03-07 19:49:17'),
 (22, 85009, 'susujpeg', 'mafia69k', '2022-03-08 11:13:04'),
 (23, 4784850399629, 'admin', 'admin', '2022-03-09 05:43:24');
