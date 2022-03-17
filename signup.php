@@ -20,7 +20,9 @@ include("functions.php");
 		
 		//check if password and confirm_password are equal and if not, display error message
 		if ($password==$confirm_password){
-		
+			if (!ctype_alnum($user_name)){
+				die('Username must not contain special characters' . mysqli_error($con));
+			}
 			if(!empty($user_name) && !empty($password) && ctype_alnum($user_name)){
 				$hashed_pass=password_hash($password, PASSWORD_DEFAULT);
 				//save to database
