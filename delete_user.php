@@ -16,10 +16,6 @@ $username=$user_data['user_name'];
 $sql="DELETE FROM `users` WHERE `user_name` = '$username'";
 if ($result=mysqli_query($con, $sql)){
     echo "Deleted the User";
-    /*
-    header("Location: login.php");
-    die;
-    */
 }
 else{
     die('Unable to delete the account in Users Table' . mysqli_error($con));

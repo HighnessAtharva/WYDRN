@@ -36,6 +36,7 @@ Hello <?php echo $username?>, you can change your PFP and Background Image here.
  if (isset($_POST['save_profile'])) {
     $PFPName= date("his")." - ".$_FILES["PFP"]["name"]; //profile picture
     $BGName= $_FILES["BgImage"]["name"]; //background image
+    
     // For image upload
     $target_dir = "images/users/";
     $target_file = $target_dir . basename($PFPName);
@@ -97,10 +98,6 @@ Hello <?php echo $username?>, you can change your PFP and Background Image here.
         $error = "There was an erro uploading the file";
         $msg = "alert-danger";
       }
-
-
-
-
 
     }
   }

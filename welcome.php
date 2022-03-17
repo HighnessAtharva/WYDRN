@@ -39,14 +39,11 @@ session_start();
             padding: 10px;
             margin-top:100px;
             }
-
     </style>
-
-
 </head>
 
-<body>
- 
+
+<body> 
 <!-- START OF HEADER-->
 
     <!--LOGOUT-->
@@ -86,19 +83,29 @@ session_start();
             <!--Video Games-->
             <h3 class="mb-3">Video Game</h3>
             <div class="mb-3 ms-3" name="videogame">
-                Watchu playing son? <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring"><br> Platform <input type="text" class="form-control" name="Platform" placeholder="PC"><br>
+                Watchu playing son? 
+                <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring"><br> 
+                Platform 
+                <input type="text" class="form-control" name="Platform" placeholder="PC"><br>
             </div>
 
             <!--Music-->
             <h3 class="mb-3">Music</h3>
             <div class="mb-3 ms-3" name="album">
-                What Album you spinnin'? <input type="text" class="form-control" name="Album" placeholder="Cavalcade"><br> Who's the Artist? <input type="text" class="form-control" name="Artist" placeholder="Black Midi"><br>
+                What Album you spinnin'? 
+                <input type="text" class="form-control" name="Album" placeholder="Cavalcade"><br> 
+                Who's the Artist? 
+                <input type="text" class="form-control" name="Artist" placeholder="Black Midi"><br>
             </div>
 
             <!--Books-->
             <h3 class="mb-3">Books</h3>
             <div class="mb-3 ms-3" name="book">
-                What is an intellectual like yourself Reading? <input type="text" name="Book" class="form-control" placeholder="Royal Assassin"><br> Drop the name of the Author bro <input type="text" class="form-control" name="Author" placeholder="Robin Hobb"><br>
+                What is an intellectual like yourself Reading? 
+                <input type="text" name="Book" class="form-control" placeholder="Royal Assassin"><br> 
+                
+                Drop the name of the Author bro 
+                <input type="text" class="form-control" name="Author" placeholder="Robin Hobb"><br>
             </div>
 
             <!--Movies-->

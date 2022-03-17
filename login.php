@@ -5,6 +5,7 @@
 DESCRIPTION:
 - THE HTML PART SHOWS THE LOGIN FORM WITH THE USERNAME AND PASSWORD FIELDS
 - THE PHP PART GRABS THE INPUT FROM THE FORM, VALIDATES IT AND CHECKS IF THE USERNAME AND PASSWORD MATCHES WITH THE DATABASE.
+- VERIFIES AND DECRYTPS THE HASH PASSWORD AND LOGS IN THE USER
 - IF THE USERNAME AND PASSWORD MATCHES, THE USER IS REDIRECTED TO THE PROFILE PAGE.
 
 */
@@ -14,29 +15,26 @@ session_start();
 	include("connection.php");
 	include("functions.php");
 
-	
-
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//something was posted
 		$user_name = $_POST['user_name'];
 		$password = $_POST['password'];
-
-		if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
+	
+		if(!empty($user_name) && !empty($password) && ctype_alnum($user_name))
 		{
 
 			//read from database
 			$query = "select * from users where user_name = '$user_name' limit 1";
 			$result = mysqli_query($con, $query);
-
 			if($result)
 			{
 				if($result && mysqli_num_rows($result) > 0)
 				{
 
 					$user_data = mysqli_fetch_assoc($result);
-					
-					if($user_data['password'] === $password)
+					$hashed_pass=$user_data['password'];
+					if(password_verify($password, $hashed_pass))
 					{
 
 						$_SESSION['user_id'] = $user_data['user_id'];
@@ -65,13 +63,6 @@ HTML PART
 <!DOCTYPE html>
 <html>
 <head>
-
-
-<?php
-
-?>
-
-
 	<title>Login</title>
 </head>
 <body>
@@ -88,7 +79,6 @@ HTML PART
 	}
 
 	#button{
-
 		padding: 10px;
 		width: 100px;
 		color: white;
@@ -97,8 +87,6 @@ HTML PART
 	}
 
 	#box{
-
-		
 		margin: auto;
 		width: 300px;
 		padding: 20px;
@@ -137,8 +125,8 @@ HTML PART
 			<span class="userandpass">USERNAME</span>
 			<input id="text" type="text" name="user_name" placeholder="HighnessAlexDaOne"><br><br>
 			<span  class="userandpass">PASSWORD</span>
+			
 			<input id="text" type="password" name="password" placeholder="Karm@beatsDogm@"><br><br>
-
 			<input id="button" style="margin-top:15px; margin-bottom:40px" type="submit" value="Login"><br>
 
 			<a href="signup.php" style="color:white;">Click to Signup</a><br><br>

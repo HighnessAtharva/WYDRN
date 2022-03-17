@@ -4,7 +4,7 @@ session_start();
 /*
 
 DESCRIPTION: SIMILAR TO LOGIN PAGE, THIS PAGE DISPLAYS THE SIGNUP PAGE WITH THE ACCOMODATION TO CHECK IF PASSWORDS MATCH. IF USERNAME IS ALREADY TAKEN, ECHOS AN ERROR REGARDING DUPLICATE VALUE. REDIRECTS TO LOGIN PAGE AFTER SUCCESSFUL SIGNUP.
-
+- HASHES THE PASSWORD AND INSERTS TO DATABASE. 
 */
 
 include("connection.php");
@@ -21,11 +21,11 @@ include("functions.php");
 		//check if password and confirm_password are equal and if not, display error message
 		if ($password==$confirm_password){
 		
-			if(!empty($user_name) && !empty($password) && !is_numeric($user_name)){
-			
+			if(!empty($user_name) && !empty($password) && ctype_alnum($user_name)){
+				$hashed_pass=password_hash($password, PASSWORD_DEFAULT);
 				//save to database
 				$user_id = random_num(20);
-				$query = "insert into users (user_id,user_name,password) values ('$user_id','$user_name','$password')";
+				$query = "insert into users (user_id,user_name,password) values ('$user_id','$user_name','$hashed_pass')";
 
 				if (!mysqli_query($con, $query)){
 					// this error opens on a blank new white page, need to use AJAX or something else to make it appear on the same page.

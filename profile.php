@@ -43,7 +43,6 @@ session_start();
 <body style="">
 
 <!--Top Right Button (Logout)-->
-
 <input type="button" value="Logout" onclick="location.href='logout.php'" style="color:black; position: fixed; top: 1em; right: 1em; padding:10px; background-color: white; cursor:pointer;">
 
 
@@ -58,17 +57,17 @@ session_start();
 
         <div id="profile">
             
-        <!--Profile Image-->
-        <div class="image"><img src="<?php echo $profile_pic?>" alt="Profile Picture"/>
-        
-        </div>
+            <!--Profile Image-->
+            <div class="image">
+                <img src="<?php echo $profile_pic?>" alt="Profile Picture"/>
+            </div>
 
-        <div name="" style="margin-bottom: 20px; border-bottom: 3px solid #f9dd94;">
-            <span style=" font-family:Baskerville,Times,'Times New Roman',serif; font-size:25px; color:#000000;font-variant:small-caps; text-align:center;font-weight:bold;"><?php echo $username?></span>
-        </div>
+            <!--Username on Profile-->
+            <div name="" style="margin-bottom: 20px; border-bottom: 3px solid #f9dd94;">
+                <span style=" font-family:Baskerville,Times,'Times New Roman',serif; font-size:25px; color:#000000;font-variant:small-caps; text-align:center;font-weight:bold;"><?php echo $username?></span>
+            </div>
 
       
-
         <!--Videogame, Album, Book, Movie and TV will be below here. -->
         <div name="activity" style="margin-right:30px; word-wrap: break-word;">
             <?php include( "WYDRN.php");?>
