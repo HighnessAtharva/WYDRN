@@ -13,6 +13,11 @@ session_start();
       
 ?>
 
+
+<!--
+    HTML PART
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 

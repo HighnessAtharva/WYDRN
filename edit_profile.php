@@ -15,7 +15,18 @@ $user_data = check_login($con);
 $username=$user_data['user_name'];
 ?>
 
+<!--
+    HTML PART
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Profile</title>
+  <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+</head>
+<body>
 Hello <?php echo $username?>, you can change your PFP and Background Image here.
 <div>
     <form action="" method="POST" name="ImageUploads" enctype="multipart/form-data">
@@ -30,6 +41,14 @@ Hello <?php echo $username?>, you can change your PFP and Background Image here.
         <input type="submit" value="Save" name="save_profile">
     </form>
 </div>
+</body>
+</html>
+
+
+<!--
+    
+    PHP PART
+-->
 
 <?php
 // CODE TO CHANG THE PROFILE PICTURE AND BACKGROUND IMAGE

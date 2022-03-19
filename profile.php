@@ -37,11 +37,21 @@ session_start();
  
 ?>
 
+
+
+<!--
+    HTML PART
+-->
+
+<!DOCTYPE html>
 <html>
 <head><title>Profile</title> 
-<link href="css/profile.css" rel="stylesheet"></head>
-<body style="">
+<!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="css/profile.css" rel="stylesheet">
+</head>
 
+<body>
 <!--Top Right Button (Logout)-->
 <input type="button" value="Logout" onclick="location.href='logout.php'" style="color:black; position: fixed; top: 1em; right: 1em; padding:10px; background-color: white; cursor:pointer;">
 
