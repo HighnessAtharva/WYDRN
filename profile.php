@@ -39,7 +39,7 @@ session_start();
 
 <html>
 <head><title>Profile</title> 
-<link href="profile.css" rel="stylesheet"></head>
+<link href="css/profile.css" rel="stylesheet"></head>
 <body style="">
 
 <!--Top Right Button (Logout)-->

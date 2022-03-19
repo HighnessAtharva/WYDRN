@@ -9,7 +9,8 @@ DESCRIPTION: SIMILAR TO LOGIN PAGE, THIS PAGE DISPLAYS THE SIGNUP PAGE WITH THE 
 
 include("connection.php");
 include("functions.php");
-
+//$signup_success = false;
+//$email_success= false;
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
@@ -39,25 +40,20 @@ include("functions.php");
 				//insert into DB
 				$query = "insert into users (user_id,user_name, email, password) values ('$user_id','$user_name','$email','$hashed_pass')";
 
+				$signup_success=1;
+
 				if (!mysqli_query($con, $query)){					
 					die('Error: ' . mysqli_error($con));
 				}
 				
 				//send a verification email and redirect to login page.  
 				if(mailer_verify_email($email)){
-				echo (
-					"<div class='alert alert-success'>
-					<strong>Welcome to WYDRN!</strong> Verification Mail Sent!
-					</div>"
-					);
+					echo "Email sent!";
 				}
 				else{
 					die('Could not send Email' . mysqli_error($con));
 				}
 
-				
-				
-				
 				header("Location: login.php");
 				die;
 			}
@@ -83,65 +79,14 @@ HTML PART
 <head>
 	<title>Signup</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
- 	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	 <link rel="stylesheet" href="css/signup.css">
 </head>
-<body>
-
-	<style type="text/css">
-	
-	#text{
-
-		height: 25px;
-		border-radius: 5px;
-		padding: 4px;
-		border: solid thin #aaa;
-		width: 100%;
-	}
-
-	#button{
-
-		padding: 10px;
-		width: 100px;
-		color: white;
-		background-color: blue;
-		border: none;
-	}
-
-	#box{
-
-		background-color: grey;
-		margin: auto;
-		width: 300px;
-		padding: 20px;
-		margin-top: 100px;
-		align-content: center;
-		align-items: center;
-		text-align: center;
-	}
-
-	.inputboxes{
-		color: white;  
-		font-family: Baskerville,Times,'Times New Roman',serif; 
-		padding-bottom:10px; 
-		float:left;
-	}
-
-	.WYDRN{ font-family: Baskerville,Times,'Times New Roman',serif;
-    font-size: 30px;
-    color: #FFFFFF;
-    font-variant: small-caps;
-    text-align: center;
-    font-weight: bold; 
-	margin-bottom:30px;
-	text-decoration: underline;
-  text-decoration-color: blue;
-}
-
-</style>
 <body style="background-image: url(images/website/signup.jpg); background-size: cover;">
 	<div id="box"  style="background: rgba(0,0,0,0.5);">
 		
 		<form method="post">
+
 			<div class="WYDRN">Sign Up</div>
 			
 			<span class="inputboxes" id="username">USERNAME</span>
@@ -159,6 +104,8 @@ HTML PART
 			<input id="button" style="margin-top:15px; margin-bottom:20px" type="submit" value="Sign Up"><br><br>
 
 			<a href="login.php" style="color:white;">Click to Login</a><br><br>
+
+			<div class="alert alert-success">Signup Successful</div>
 		</form>
 	</div>
 </body>

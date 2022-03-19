@@ -57,10 +57,7 @@ session_start();
 		{
 			echo "wrong username or password!";
 		}
-
-		
 	}
-
 ?>
 
 <!--
@@ -72,58 +69,8 @@ HTML PART
 <html>
 <head>
 	<title>Login</title>
+	<link rel="stylesheet" href="css/login.css">
 </head>
-<body>
-
-	<style type="text/css">
-	
-	#text{
-	
-		height: 25px;
-		border-radius: 5px;
-		padding: 4px;
-		border: solid thin #aaa;
-		width: 100%;
-	}
-
-	#button{
-		padding: 10px;
-		width: 100px;
-		color: white;
-		background-color: blue;
-		border: none;
-	}
-
-	#box{
-		margin: auto;
-		width: 300px;
-		padding: 20px;
-		margin-top: 200px;
-		align-content: center;
-		align-items: center;
-		text-align: center;
-
-	}
-
-	.userandpass{
-		color: white;  
-		font-family: Baskerville,Times,'Times New Roman',serif; 
-		padding-bottom:10px; 
-		float:left;
-	}
-
-	.WYDRN{ font-family: Baskerville,Times,'Times New Roman',serif;
-    font-size: 30px;
-    color: #FFFFFF;
-    font-variant: small-caps;
-    text-align: center;
-    font-weight: bold; 
-	margin-bottom:30px;
-	text-decoration: underline;
-  	text-decoration-color: blue;
-}
-</style>
-
 <body style="background-image: url(images/website/login.png); background-size: cover;">
 
 	<div id="box" style="background: rgba(0,0,0,0.5);">

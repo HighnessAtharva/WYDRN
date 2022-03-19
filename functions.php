@@ -61,8 +61,8 @@ $body = "Click the link below to verify your Account and get access to all the f
 $headers = "From: WYDRNAPP@gmail.com";
 
 	if (mail($to_email, $subject, $body, $headers)) {
-		echo "Email successfully sent to $to_email...";
+		return 1;
 	}else{
-		echo "Email sending failed...";
+		return 0;
 	}
 }
