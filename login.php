@@ -21,10 +21,7 @@ session_start();
 		$user_name = $_POST['user_name'];
 		$password = $_POST['password'];
 	
-		if(!empty($user_name) && !empty($password) && ctype_alnum($user_name))
-		{
-
-			//read from database
+	
 			$query = "select * from users where user_name = '$user_name' limit 1";
 			$result = mysqli_query($con, $query);
 			if($result)
@@ -36,16 +33,7 @@ session_start();
 					$hashed_pass=$user_data['password'];
 					if(password_verify($password, $hashed_pass))
 					{
-
 						$_SESSION['user_id'] = $user_data['user_id'];
-						
-						echo (
-							"<div class='alert alert-success'>
-							<strong>Welcome to WYDRN!</strong> Login Successful!
-							</div>"
-							);
-						
-						
 						header("Location: profile.php");
 						die;
 					}
@@ -53,10 +41,7 @@ session_start();
 			}
 			
 			echo "wrong username or password!";
-		}else
-		{
-			echo "wrong username or password!";
-		}
+		
 	}
 ?>
 
@@ -78,18 +63,43 @@ HTML PART
 
 	<div id="box" style="background: rgba(0,0,0,0.5);">
 		
-		<form method="post">
+		<form method="post" action="login.php" onsubmit="return Validation()">
 			<div class="WYDRN">WYDRN</div>
-			<span class="userandpass">USERNAME</span>
-			<input id="text" type="text" name="user_name" placeholder="HighnessAlexDaOne" required><br><br>
-			<span  class="userandpass">PASSWORD</span>
+
+			<span class="userandpass" >USERNAME</span>
+			<input class="text" id="username" type="text" name="user_name" placeholder="HighnessAlexDaOne" required><br><br>
 			
-			<input id="text" type="password" name="password" placeholder="Karm@beatsDogm@" required><br><br>
+			<span  class="userandpass">PASSWORD</span>
+			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" required><br><br>
+
 			<input id="button" style="margin-top:15px; margin-bottom:40px" type="submit" value="Login"><br>
 
 			<a href="signup.php" style="color:white;">Click to Signup</a><br><br>
 		</form>
 	</div>
+<!--Best place to place JS Script is just before the body tag ends-->
+<script>
+		function Validation(){
+			var name = document.getElementById("username").value;
+			var password = document.getElementById("pass").value;
+		
+			const isAlphaNumeric = str => /^[a-z0-9]+$/gi.test(str);
+
+			if(name.length < 3 || name.length > 20){
+				alert("Username must be between 3 and 20 characters");
+				return false;
+			}
+			else if(!isAlphaNumeric(name)){
+				alert("Username must not contain special characters");
+				return false;
+			}
 	
+			else if(password.length < 8 || password.length > 20){
+				alert("Password must be between 8 and 20 characters");
+				return false;
+			}
+			return true;
+		}	
+	</script>
 </body>
 </html>

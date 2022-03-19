@@ -24,6 +24,7 @@ include("functions.php");
 		// generate a random userid
 		$user_id = random_num(20);
 				
+		
 		//insert into DB
 		$query = "insert into users (user_id,user_name, email, password) values ('$user_id','$user_name','$email','$hashed_pass')";
 
@@ -85,6 +86,7 @@ HTML PART
 		</form>	
 	</div>
 
+	<!--Best place to place JS Script is just before the body tag ends-->
 	<script>
 		function Validation(){
 			var name = document.getElementById("name").value;
