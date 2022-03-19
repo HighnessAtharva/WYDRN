@@ -62,7 +62,7 @@ $headers = "From: WYDRNAPP@gmail.com";
 
 	if (mail($to_email, $subject, $body, $headers)) {
 		echo "Email successfully sent to $to_email...";
-	} else {
+	}else{
 		echo "Email sending failed...";
 	}
 }

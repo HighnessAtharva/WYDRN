@@ -16,6 +16,9 @@ include("functions.php");
 		//something was posted
 		$user_name = mysqli_real_escape_string($con, $_POST['user_name']);
 		$email=mysqli_real_escape_string($con, $_POST['email']);
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+			die('That is not an E-mail Address bruh. Please do not troll.' . mysqli_error($con));
+		}
 		$password = mysqli_real_escape_string($con, $_POST['password']);
 		$confirm_password=mysqli_real_escape_string($con, $_POST['confirm_password']);
 		
@@ -40,11 +43,22 @@ include("functions.php");
 					die('Error: ' . mysqli_error($con));
 				}
 				
-				//send a verification email then sleep for 2 seconds and redirect to login page.  
-				mailer_verify_email($email);
-				sleep(2);
-				header("Location: login.php");
+				//send a verification email and redirect to login page.  
+				if(mailer_verify_email($email)){
+				echo (
+					"<div class='alert alert-success'>
+					<strong>Welcome to WYDRN!</strong> Verification Mail Sent!
+					</div>"
+					);
+				}
+				else{
+					die('Could not send Email' . mysqli_error($con));
+				}
+
 				
+				
+				
+				header("Location: login.php");
 				die;
 			}
 			else{
@@ -68,6 +82,8 @@ HTML PART
 <html>
 <head>
 	<title>Signup</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -129,16 +145,16 @@ HTML PART
 			<div class="WYDRN">Sign Up</div>
 			
 			<span class="inputboxes" id="username">USERNAME</span>
-			<input id="text" type="text" name="user_name" placeholder="HighnessAlexDaOne"><br><br>
+			<input id="text" type="text" name="user_name" placeholder="HighnessAlexDaOne" required><br><br>
 			
 			<span  class="inputboxes">E-MAIL ADDRESS</span>
-			<input id="text" type="email" name="email" placeholder="AlexDaOne@gmail.com"><br><br>
+			<input id="text" type="email" name="email" placeholder="AlexDaOne@gmail.com" required><br><br>
 
 			<span  class="inputboxes">PASSWORD</span>
-			<input id="text" type="password" name="password" placeholder="Karm@beatsDogm@"><br><br>
+			<input id="text" type="password" name="password" placeholder="Karm@beatsDogm@" required><br><br>
 			
 			<span  class="inputboxes">CONFIRM PASSWORD</span>
-			<input id="text" type="password" name="confirm_password" placeholder="Karm@beatsDogm@"><br><br>
+			<input id="text" type="password" name="confirm_password" placeholder="Karm@beatsDogm@" required><br><br>
 
 			<input id="button" style="margin-top:15px; margin-bottom:20px" type="submit" value="Sign Up"><br><br>
 

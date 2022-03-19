@@ -38,6 +38,14 @@ session_start();
 					{
 
 						$_SESSION['user_id'] = $user_data['user_id'];
+						
+						echo (
+							"<div class='alert alert-success'>
+							<strong>Welcome to WYDRN!</strong> Login Successful!
+							</div>"
+							);
+						
+						
 						header("Location: profile.php");
 						die;
 					}
@@ -112,9 +120,9 @@ HTML PART
     font-weight: bold; 
 	margin-bottom:30px;
 	text-decoration: underline;
-  text-decoration-color: blue;
+  	text-decoration-color: blue;
 }
-	</style>
+</style>
 
 <body style="background-image: url(images/website/login.png); background-size: cover;">
 
@@ -123,10 +131,10 @@ HTML PART
 		<form method="post">
 			<div class="WYDRN">WYDRN</div>
 			<span class="userandpass">USERNAME</span>
-			<input id="text" type="text" name="user_name" placeholder="HighnessAlexDaOne"><br><br>
+			<input id="text" type="text" name="user_name" placeholder="HighnessAlexDaOne" required><br><br>
 			<span  class="userandpass">PASSWORD</span>
 			
-			<input id="text" type="password" name="password" placeholder="Karm@beatsDogm@"><br><br>
+			<input id="text" type="password" name="password" placeholder="Karm@beatsDogm@" required><br><br>
 			<input id="button" style="margin-top:15px; margin-bottom:40px" type="submit" value="Login"><br>
 
 			<a href="signup.php" style="color:white;">Click to Signup</a><br><br>
