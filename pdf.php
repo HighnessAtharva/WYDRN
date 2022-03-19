@@ -18,8 +18,7 @@ $username=$user_data['user_name'];
 
 
 
-class PDF extends PDF_MySQL_Table
-{
+class PDF extends PDF_MySQL_Table{
 function Header()
 {
     // Title

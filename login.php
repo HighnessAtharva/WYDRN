@@ -114,9 +114,9 @@ HTML PART
 	text-decoration: underline;
   text-decoration-color: blue;
 }
-
 	</style>
-	<body style="background-image: url(images/website/login.png); background-size: cover;">
+
+<body style="background-image: url(images/website/login.png); background-size: cover;">
 
 	<div id="box" style="background: rgba(0,0,0,0.5);">
 		

@@ -8,19 +8,19 @@ DESCRIPTION:
 
 */
 
+
+/*
+Checks if a user is logged in and is valid. If yes, redirects to the login page. 
+*/ 
 function check_login($con)
 {
-
 	if(isset($_SESSION['user_id']))
 	{
-
 		$id = $_SESSION['user_id'];
 		$query = "select * from users where user_id = '$id' limit 1";
 
 		$result = mysqli_query($con,$query);
-		if($result && mysqli_num_rows($result) > 0)
-		{
-
+		if($result && mysqli_num_rows($result) > 0){
 			$user_data = mysqli_fetch_assoc($result);
 			return $user_data;
 		}
@@ -32,22 +32,37 @@ function check_login($con)
 
 }
 
+/*
+Generates a random 5 to 20 digit number that is to be used to generate dynamic userIDs
+*/ 
 function random_num($length)
 {
-
 	$text = "";
-	if($length < 5)
-	{
+	if($length < 5){
 		$length = 5;
 	}
 
 	$len = rand(4,$length);
 
-	for ($i=0; $i < $len; $i++) { 
-		# code...
-
+	for ($i=0; $i < $len; $i++){ 
 		$text .= rand(0,9);
 	}
 
 	return $text;
+}
+
+/*
+Sends an Email requesting verification of the account to the recipient.
+*/ 
+function mailer_verify_email($recipient){
+$to_email = $recipient;
+$subject = "WYDRN - Verify Your Email";
+$body = "Click the link below to verify your Account and get access to all the features. ";
+$headers = "From: WYDRNAPP@gmail.com";
+
+	if (mail($to_email, $subject, $body, $headers)) {
+		echo "Email successfully sent to $to_email...";
+	} else {
+		echo "Email sending failed...";
+	}
 }
