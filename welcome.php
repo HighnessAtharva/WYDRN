@@ -10,7 +10,7 @@ session_start();
 	include("functions.php");
 
 	$user_data = check_login($con);
-      
+    
 ?>
 
 
@@ -130,8 +130,12 @@ session_start();
           <!--The div below puts the submit button below the first column at center-->
         
         <div class="text-center mb-lg-3">
-            <button type="submit" class="btn btn-outline-primary btn-light btn-lg" style="margin-left:-100px">Submit</button>
+            <button type="submit" class="btn btn-outline-primary btn-light btn-lg" name="submit" value="btn1" style="margin-left:-100px">Submit</button>
+            
+            <button type="submit" class="btn btn-outline-primary btn-light btn-lg" style="margin-left:10px" name="clear" value="btn2">
+            Clear</button>
         </div>
+
 
         </div>           
         <!--END OF LEFT COLUMN-->

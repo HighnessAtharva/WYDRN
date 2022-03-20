@@ -34,6 +34,14 @@ session_start();
                         die('That user does not exist' . mysqli_error($con));
                     }
                 }
+    
+    
+   
+    if(isset($_POST['clear'])){
+        $username_coded=$user_data['user_name'];  //this is the user who is logged in
+        $sql="INSERT INTO `data`(`username`, `videogame`, `platform`, `album`, `artist`, `book`, `author`, `movie`, `year`, `tv`, `streaming`) VALUES ('$username_coded', '', '', '', '', '', '', '', '', '', '')";
+        $result=mysqli_query($con,$sql);
+    }
  
 ?>
 
@@ -49,6 +57,7 @@ session_start();
 <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="css/profile.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
