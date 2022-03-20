@@ -2,7 +2,6 @@
 session_start();
 
 /*
-
 DESCRIPTION: SIMILAR TO LOGIN PAGE, THIS PAGE DISPLAYS THE SIGNUP PAGE WITH THE ACCOMODATION TO CHECK IF PASSWORDS MATCH. IF USERNAME IS ALREADY TAKEN, ECHOS AN ERROR REGARDING DUPLICATE VALUE. REDIRECTS TO LOGIN PAGE AFTER SUCCESSFUL SIGNUP.
 - HASHES THE PASSWORD AND INSERTS TO DATABASE. 
 */
@@ -28,19 +27,27 @@ include("functions.php");
 		//insert into DB
 		$query = "insert into users (user_id,user_name, email, password) values ('$user_id','$user_name','$email','$hashed_pass')";
 
+		// if the username is already taken, display bootstrap error. If not, insert into DB, send an email and redirect to login page. Also display and error if the email is not sent.
 		if (!mysqli_query($con, $query)){					
-			die('Error: ' . mysqli_error($con));
-		}
-				
-		//send a verification email and redirect to login page.  
-		if(mailer_verify_email($email)){
-			echo "Email sent!";
-		}else{
-			die('Could not send Email' . mysqli_error($con));
-		}
+			$invalid_signup="<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
+							top: 50px; left: 570px;' role='alert'>
+  						    	That username is already taken!
+							</div></center>";
+			echo $invalid_signup;
 
-		header("Location: login.php");
-		die;		
+		}else{
+			if(mailer_verify_email($email)){
+				echo "Email sent!";
+			}else{
+				$email_error="<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
+							top: 50px; left: 570px;' role='alert'>
+  						    Could not send the email!
+							</div></center>";
+				echo $email_error;
+			}	
+			header("Location: login.php");
+			die;			
+		}
 	}
 ?>
 
@@ -60,7 +67,7 @@ HTML PART
 </head>
 
 <body style="background-image: url(images/website/signup.jpg); background-size: cover;">
-	<div id="box"  style="background: rgba(0,0,0,0.5);">
+	<div id="box" style="background: rgba(0, 0, 0, 0.5);  width: 400px; margin-top: 120px;">
 		
 
 		<form method="post" action="signup.php" onsubmit ="return Validation();">
@@ -79,9 +86,9 @@ HTML PART
 			<span  class="inputboxes">CONFIRM PASSWORD</span>
 			<input class="text" id="confirmpass" type="password" name="confirm_password" placeholder="Karm@beatsDogm@" required><br><br>
 
-			<input id="button" style="margin-top:15px; margin-bottom:20px" type="submit" value="Sign Up"><br><br>
+			<input id="button" style="" type="submit" value="Sign Up"><br><br>
 
-			<a href="login.php" style="color:white;">Click to Login</a><br><br>
+			<a href="login.php" style="color:white;">Login</a>
 			
 		</form>	
 	</div>
@@ -117,8 +124,7 @@ HTML PART
 				alert("Passwords do not match");
 				return false;
 			}
-
-			return true;
+		return true;
 		}	
 	</script>
 </body>

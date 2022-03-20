@@ -40,8 +40,11 @@ session_start();
 				}
 			}
 			
-			echo "wrong username or password!";
-		
+			$invalid_login="<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
+							top: 100px; left: 570px;' role='alert'>
+  						    	Username or Password does not match. Retry!
+						    </div></center>";
+			echo $invalid_login;
 	}
 ?>
 
@@ -63,7 +66,7 @@ HTML PART
 
 	<div id="box" style="background: rgba(0,0,0,0.5);">
 		
-		<form method="post" action="login.php" onsubmit="return Validation()">
+		<form method="post" action="login.php" onsubmit="return Validation();">
 			<div class="WYDRN">WYDRN</div>
 
 			<span class="userandpass" >USERNAME</span>
