@@ -68,14 +68,15 @@ HTML PART
 </head>
 
 <body style="background-image: url(images/website/signup.jpg); background-size: cover;">
-	<div id="box" style="background: rgba(0, 0, 0, 0.5);  width: 400px; margin-top: 120px;">
+	<div id="box" style="background: rgba(0, 0, 0, 0.5);  width: 400px;
+        margin-top: 120px; margin-left:560px">
 		
 
 		<form method="post" action="signup.php" onsubmit ="return Validation();">
 
 			<div class="WYDRN">Sign Up</div>
 			
-			<span class="inputboxes" id="username">USERNAME</span>
+			<span class="inputboxes" id="username" autofocus="true">USERNAME</span>
 			<input class="text" id="name" type="text" name="user_name" placeholder="HighnessAlexDaOne" required><br><br>
 			
 			<span  class="inputboxes">E-MAIL ADDRESS</span>

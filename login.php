@@ -71,7 +71,7 @@ HTML PART
 
 			<!--Username-->
 			<span class="userandpass" >USERNAME</span>
-			<input class="text" id="username" type="text" name="user_name" placeholder="HighnessAlexDaOne" required><br><br>
+			<input class="text" id="username" type="text" name="user_name" placeholder="HighnessAlexDaOne" autofocus="true" required><br><br>
 			
 			<!--Password-->
 			<span  class="userandpass">PASSWORD</span>

@@ -89,7 +89,7 @@ session_start();
             <h3 class="mb-3">Video Game</h3>
             <div class="mb-3 ms-3" name="videogame">
                 Watchu playing son? 
-                <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring"><br> 
+                <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring" autofocus="true"><br> 
                 Platform 
                 <input type="text" class="form-control" name="Platform" placeholder="PC"><br>
             </div>

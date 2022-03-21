@@ -15,13 +15,9 @@
     }
     
     #box {
-        position: absolute;
         background-color: grey;
         margin: auto;
         padding: 20px;
-        align-content: center;
-        align-items: center;
-        text-align: center;
         background: rgba(0, 0, 0, 0.5);
     }
     
