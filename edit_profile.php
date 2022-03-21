@@ -41,6 +41,9 @@ Hello <?php echo $username?>, you can change your PFP and Background Image here.
         <input type="submit" value="Save" name="save_profile">
     </form>
 </div>
+<!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
+<?php include("footer.php");?>  
+<!--END OF MAIN BODY-->  
 </body>
 </html>
 

@@ -98,5 +98,8 @@ session_start();
     </div>  <!-- This DIV is the end of the bottom half of the card. White Section-->
 </div> <!-- This DIV is the end of the entire card-->
 
+<!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
+<?php include("footer.php");?>  
+<!--END OF MAIN BODY-->  
 </body>
 </html

@@ -151,7 +151,9 @@ session_start();
             </div>
         </div>
         <!--END OF RIGHT COLUMN-->
-            
+        
+<!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
+<?php include("footer.php");?>  
 <!--END OF MAIN BODY-->             
 </body>
 </html>

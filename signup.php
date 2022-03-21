@@ -95,6 +95,10 @@ HTML PART
 		</form>	
 	</div>
 
+	<!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
+<?php include("footer.php");?>  
+<!--END OF MAIN BODY-->  
+
 	<!--Best place to place JS Script is just before the body tag ends-->
 	<script>
 		function Validation(){
