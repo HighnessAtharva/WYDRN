@@ -63,24 +63,34 @@ HTML PART
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 </head>
-<body style="background-image: url(images/website/login.png); background-size: cover;">
+<body style="background-image: url(images/website/login.png); background-size: cover;" onload="getcookiedata()">>
 
 	<div id="box" style="background: rgba(0,0,0,0.5);">
-		
 		<form method="post" action="login.php" onsubmit="return Validation();">
 			<div class="WYDRN">WYDRN</div>
 
+			<!--Username-->
 			<span class="userandpass" >USERNAME</span>
 			<input class="text" id="username" type="text" name="user_name" placeholder="HighnessAlexDaOne" required><br><br>
 			
+			<!--Password-->
 			<span  class="userandpass">PASSWORD</span>
-			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" required><br><br>
+			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" required><br>
+			
+			<!--Remember Me Checkbox-->
+			<input type="checkbox" name="rememberme" style="margin-left:-130px; margin-top:20px;" onclick="setcookie()">
+			<span style="color:#cccccc;">Remember Me</span><br>
 
-			<input id="button" style="margin-top:15px; margin-bottom:40px" type="submit" value="Login"><br>
+			<!--Login Button-->
+			<input id="button" style="margin-top:15px; margin-bottom:20px;" type="submit" value="Login"><br>
 
+			<!--Signup Button-->
 			<a href="signup.php" style="color:white;">Click to Signup</a><br><br>
 		</form>
 	</div>
+
+
+
 <!--Best place to place JS Script is just before the body tag ends-->
 <script>
 		function Validation(){
@@ -104,6 +114,49 @@ HTML PART
 			}
 			return true;
 		}	
+
+
+		function setcookie(){
+			//"username" & "pass" is the ID of the two input fields
+            var u =document.getElementById('username').value;
+            var p =document.getElementById('pass').value;
+
+			//"USERNAME" & "PSWD" are the cookie key names
+            document.cookie="USERNAME="+u+";path=http://localhost/WYDRN/";
+            document.cookie="PSWD="+p+";path=http://localhost/WYDRN/";
+           }
+
+
+        function getcookiedata(){
+
+            console.log(document.cookie);
+			//"USERNAME" & "PSWD" are the cookie key names
+            var user=getCookie('USERNAME');
+            var pswd=getCookie('PSWD');
+
+			//"username" & "pass" is the ID of the two input fields
+            document.getElementById('username').value=user;
+            document.getElementById('pass').value=pswd;
+
+           }
+
+		function getCookie(cname) {
+			var name = cname + "=";
+			var decodedCookie = decodeURIComponent(document.cookie);
+			var ca = decodedCookie.split(';');
+			for(var i = 0; i <ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+			}
+			return "";
+       }
+
+
 	</script>
 </body>
 </html>
