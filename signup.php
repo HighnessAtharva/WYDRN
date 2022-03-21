@@ -77,7 +77,7 @@ HTML PART
 			<div class="WYDRN">Sign Up</div>
 			
 			<span class="inputboxes" id="username" autofocus="true">USERNAME</span>
-			<input class="text" id="name" type="text" name="user_name" placeholder="HighnessAlexDaOne" required><br><br>
+			<input class="text" id="name" type="text" name="user_name" placeholder="HighnessAlexDaOne" autofocus="true" required><br><br>
 			
 			<span  class="inputboxes">E-MAIL ADDRESS</span>
 			<input class="text" id="email" type="email" name="email" placeholder="AlexDaOne@gmail.com" required><br><br>
