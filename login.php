@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
 
@@ -8,48 +8,43 @@ DESCRIPTION:
 - VERIFIES AND DECRYTPS THE HASH PASSWORD AND LOGS IN THE USER
 - IF THE USERNAME AND PASSWORD MATCHES, THE USER IS REDIRECTED TO THE PROFILE PAGE.
 
-*/
+ */
 
 session_start();
 
-	include("connection.php");
-	include("functions.php");
+include "connection.php";
+include "functions.php";
 
-	if($_SERVER['REQUEST_METHOD'] == "POST")
-	{
-		//something was posted
-		$user_name = $_POST['user_name'];
-		$password = $_POST['password'];
-	
-	
-			$query = "select * from users where user_name = '$user_name' limit 1";
-			$result = mysqli_query($con, $query);
-			if($result)
-			{
-				if($result && mysqli_num_rows($result) > 0)
-				{
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    //something was posted
+    $user_name = $_POST['user_name'];
+    $password = $_POST['password'];
 
-					$user_data = mysqli_fetch_assoc($result);
-					$hashed_pass=$user_data['password'];
-					if(password_verify($password, $hashed_pass))
-					{
-						$_SESSION['user_id'] = $user_data['user_id'];
-						header("Location: profile.php");
-						die;
-					}
-				}
-			}
-			
-			$invalid_login="<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
-							top: 100px; left: 570px;' role='alert'>
-  						    	Username or Password does not match. Retry!
-						    </div></center>";
-			echo $invalid_login;
-	}
+    $query = "select * from users where user_name = '$user_name' limit 1";
+    $result = mysqli_query($con, $query);
+    if ($result) {
+        if ($result && mysqli_num_rows($result) > 0) {
+
+            $user_data = mysqli_fetch_assoc($result);
+            $hashed_pass = $user_data['password'];
+            if (password_verify($password, $hashed_pass)) {
+                $_SESSION['user_id'] = $user_data['user_id'];
+                header("Location: profile.php");
+                die;
+            }
+        }
+    }
+
+    $invalid_login = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
+					top: 100px; left: 570px;' role='alert'>
+			    	Username or Password does not match. Retry!
+				    </div></center>";
+    echo $invalid_login;
+}
 ?>
 
 <!--
-	
+
 HTML PART
 
 -->
@@ -61,7 +56,7 @@ HTML PART
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/login.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+
 </head>
 <body style="background-image: url(images/website/login.png); background-size: cover;" onload="getcookiedata()">>
 
@@ -72,25 +67,25 @@ HTML PART
 			<!--Username-->
 			<span class="userandpass" >USERNAME</span>
 			<input class="text" id="username" type="text" name="user_name" placeholder="HighnessAlexDaOne" autofocus="true" required><br><br>
-			
+
 			<!--Password-->
 			<span  class="userandpass">PASSWORD</span>
 			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" required><br>
-			
+
 			<!--Remember Me Checkbox-->
-			<input type="checkbox" name="rememberme" style="margin-left:-130px; margin-top:20px;" onclick="setcookie()">
+			<input type="checkbox" name="rememberme" style="margin-top:20px;margin-left:65px;" onclick="setcookie()">
 			<span style="color:#cccccc;">Remember Me</span><br>
 
 			<!--Login Button-->
-			<input id="button" style="margin-top:15px; margin-bottom:20px;" type="submit" value="Login"><br>
+			<input id="button" style="margin-top:15px; margin-bottom:20px; margin-left:80px;" type="submit" value="Login"><br>
 
 			<!--Signup Button-->
-			<a href="signup.php" style="color:white;">Click to Signup</a><br><br>
+			<a href="signup.php" style="color:white; margin-left:75px;">Click to Signup</a><br><br>
 		</form>
 	</div>
 
 <!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
-<?php include("footer.php");?>
+<?php include "footer.php";?>
 
 
 <!--Best place to place JS Script is just before the body tag ends-->
@@ -98,7 +93,7 @@ HTML PART
 		function Validation(){
 			var name = document.getElementById("username").value;
 			var password = document.getElementById("pass").value;
-		
+
 			const isAlphaNumeric = str => /^[a-z0-9]+$/gi.test(str);
 
 			if(name.length < 3 || name.length > 20){
@@ -109,13 +104,13 @@ HTML PART
 				alert("Username must not contain special characters");
 				return false;
 			}
-	
+
 			else if(password.length < 8 || password.length > 20){
 				alert("Password must be between 8 and 20 characters");
 				return false;
 			}
 			return true;
-		}	
+		}
 
 
 		function setcookie(){

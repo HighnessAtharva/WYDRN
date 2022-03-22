@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 07:29 AM
+-- Generation Time: Mar 22, 2022 at 04:50 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -40,20 +40,20 @@ CREATE TABLE `data` (
   `tv` varchar(150) DEFAULT NULL,
   `streaming` varchar(100) DEFAULT NULL,
   `datetime` datetime NOT NULL DEFAULT current_timestamp(),
-  `date` date NOT NULL DEFAULT current_timestamp(),
-  `followers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`followers`)),
-  `following` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`following`))
+  `date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `data`
+-- Table structure for table `social`
 --
 
-INSERT INTO `data` (`username`, `videogame`, `platform`, `album`, `artist`, `book`, `author`, `movie`, `year`, `tv`, `streaming`, `datetime`, `date`, `followers`, `following`) VALUES
-('ppp', '', '', 'CAVALCADE', 'POST MALONE', '', '', 'JUSTICE LEAGUE SNYDERCUT', '1978', '', '', '2022-03-16 21:52:44', '2022-03-16', NULL, NULL),
-('peterj', 'DOOM ETERNAL ', 'XBOX ONE', 'CAVALCADE', 'AURORA', 'ATOMIC HABITS', 'SUCKERDAD', '', '', '', '', '2022-03-17 13:14:48', '2022-03-17', NULL, NULL),
-('anay', '', '', '', '', '', '', 'ROBIN HOOD', '1996', '', '', '2022-03-17 13:30:41', '2022-03-17', NULL, NULL),
-('anay', '', '', '', '', '', '', 'ROBIN HOOD', '1996', '', '', '2022-03-17 13:31:05', '2022-03-17', NULL, NULL);
+CREATE TABLE `social` (
+  `follower_username` varchar(255) NOT NULL,
+  `followed_username` varchar(255) NOT NULL,
+  `followed_time` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -79,20 +79,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `user_name`, `email`, `password`, `date`, `profile_pic`, `background_pic`, `active`, `verified`) VALUES
-(47, 963757156647576, 'daisy', 'peachykeen@xmail.com', '$2y$10$TArrGdZ.PiJAZzjIEIS8Oew9N0jCZLPzxemic1RjopSLkMMMVfueK', '2022-03-19 13:14:56', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
-(48, 824601031735498, 'peachy', 'unknowingforsakendamned@gmail.com', '$2y$10$SjI3sLet3F5t4UmoXo9hUuGNATrS1lZttsWlzL1HXX7WKiFXWdxey', '2022-03-19 13:16:55', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
-(49, 451812121769, 'darned', 'westerospatriot@gmail.com', '$2y$10$QZYVQJFiPKqOJs64refL1OQ8yRDy/zUt7Km4Dbpyskf1ylJd50iyG', '2022-03-19 13:17:23', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
-(51, 6425251511357111395, 'peter', 'drinknnnnnnnnsoda@gmail.com', '$2y$10$og7ixOVsHFi.a36XtfWOwuVTOszQ4/zEupkmnhBr35YCYuHW8kAEa', '2022-03-19 13:24:17', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
-(52, 5325550982297021, 'j', 'lmnopqrstuvwxyz@gmail.com', '$2y$10$Q5h.11jvR.AlUANU7PjKqu88jLEI6yKIgNZ7CRjeRBzfdKNnsNaia', '2022-03-19 13:25:44', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
-(58, 265546918462, 'sd', 'dffirestarters@gmail.com', '$2y$10$GWs.UYHK464a0RlDKWQnT.NJAn8VIAX98JuhYUt33Hz.HN5tuqXsq', '2022-03-19 14:06:55', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
-(59, 876083870, 'e', 'esadasdasdeee@gmail.com', '$2y$10$c.3ezXYAT2Y5hriSpRxLnO1f6MSZamonV7hJFx4LXFgLsU9pq5Oh6', '2022-03-19 14:07:34', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
 (61, 9223372036854775807, 'rt', 'rt@james.com', '$2y$10$IA5Z9y0A0lnJ6QnhrqBT1.TCNGHQkwPOmtXywHpf/Ecsl5ncesSLC', '2022-03-19 14:09:00', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
 (62, 100333, 'pppppppppppp', 'pppppppp@gmail.com', '$2y$10$rYdZUmCkuoAX3399dqiFAesbg.ycr2CjCqenKCmZcoQ5SOkNe5Y92', '2022-03-19 14:49:34', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
 (66, 86554043705, 'jamesjoyce', 'wydrnwebapp@gmail.com', '$2y$10$e9jU7bIvrgVLFWBOdNXLrubWwSKwbNz/fmI9inelUN5ChWW47Ujuq', '2022-03-19 14:59:20', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
 (67, 192511, 'wydrnbae', 'wydrnapp@gmail.com', '$2y$10$sZow5C2lbfA5fgovkj21LueQUhc379J76g4NQGSPcBfdbxGzfgLvC', '2022-03-19 15:00:28', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
-(68, 8609, 'HighnessAtharva', 'HighnessAtharva@gmail.com', '$2y$10$zWiYcatFNhsOBfcy/H3XOeRdsadJSd7Unmsh.pMDrOvbV7Sfq32hW', '2022-03-19 15:17:40', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
 (71, 862114561492, 'susujpeg', 'darlingjamiesooo@gmail.com', '$2y$10$v/ZcsYOjV7xaJKJNViD4wOyyY4ntPCPcBPRswBOAUh5y7aZbBZPYS', '2022-03-19 15:29:00', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
-(79, 781612283921868, 'doometernal', 'slayerdoomer@gmail.com', '$2y$10$cw2tfGeFx1JlusQ6IKhsXOIOswJ3A10WIpv/QIYonQIhAXVz4ioSu', '2022-03-20 06:14:40', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0);
+(101, 6736313620926600, 'jamesons', 'doometesdasdasdasdrnal@gmail.com', '$2y$10$ASb66zM7NMlXzXmTxQLucuE2mnsU4/m5exCOZJs2prfaGLh4ihVBm', '2022-03-21 14:59:15', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
+(102, 2922328499458072, 'idkbro', 'ihonestlydontknow@yahoo.com', '$2y$10$uQdQeVQvQlwozb8d9ywot.2LO7dcjhrzTvCvTlQnOYQg8kl6pOkb.', '2022-03-22 15:49:58', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -123,7 +116,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

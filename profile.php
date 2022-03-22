@@ -1,50 +1,42 @@
-<?php 
+<?php
 
 /*
 
-DESCRIPTION: THE MAIN PROFILE PAGE OF  THE USER. THE MOST IMPORTANT PAGE TO THIS PROJECT. 
+DESCRIPTION: THE MAIN PROFILE PAGE OF  THE USER. THE MOST IMPORTANT PAGE TO THIS PROJECT.
 - CHECKS IF USER HAS LOGGED IN AND GRABS THE USERNAME FROM THE DATABASE. IF THE USERNAME IS MENTIONED IN THE URL ADDRESS, THE USERNAME IS GRABBED USING A "GET" REQUEST AND THE USER DATA CORRESPONDING TO THE USERNAME IS GRABBED FROM THE DATABASE. (MAY BE THE SAME USER OR MAY BE A PUBLIC PROFILE URL OF ANOTHER USER)
 - THIS FILE INCLUDES THE DEPENDENCY - WYDRN.PHP
 
-*/
+ */
 
 session_start();
 
-	include("connection.php");
-	include("functions.php");
+include "connection.php";
+include "functions.php";
 
-	$user_data = check_login($con);
-    if (isset($_GET['user_name'])){
-        $username=$_GET['user_name'];
-        
-    }else{
-        $username=$user_data['user_name'];   
+$user_data = check_login($con);
+if (isset($_GET['user_name'])) {
+    $username = $_GET['user_name'];
+} else {
+    $username = $user_data['user_name'];
+}
 
+$sql = "SELECT profile_pic, background_pic FROM users WHERE user_name='$username'";
+if ($query = mysqli_query($con, $sql)) {
+    if (mysqli_num_rows($query) == 1) {
+        $row = mysqli_fetch_array($query);
+        $profile_pic = $row['profile_pic'];
+        $background_pic = $row['background_pic'];
+    } else {
+        die('That user does not exist' . mysqli_error($con));
     }
+}
 
-
-    $sql="SELECT profile_pic, background_pic FROM users WHERE user_name='$username'";
-                if($query=mysqli_query($con,$sql)){
-                    if(mysqli_num_rows($query) ==1){
-                        $row=mysqli_fetch_array($query);
-                        $profile_pic=$row['profile_pic'];
-                        $background_pic=$row['background_pic'];
-                    }
-                    else{
-                        die('That user does not exist' . mysqli_error($con));
-                    }
-                }
-    
-    
-   
-    if(isset($_POST['clear'])){
-        $username_coded=$user_data['user_name'];  //this is the user who is logged in
-        $sql="INSERT INTO `data`(`username`, `videogame`, `platform`, `album`, `artist`, `book`, `author`, `movie`, `year`, `tv`, `streaming`) VALUES ('$username_coded', '', '', '', '', '', '', '', '', '', '')";
-        $result=mysqli_query($con,$sql);
-    }
- 
+if (isset($_POST['clear'])) {
+    $username_coded = $user_data['user_name']; //this is the user who is logged in
+    $sql = "INSERT INTO `data`(`username`, `videogame`, `platform`, `album`, `artist`, `book`, `author`, `movie`, `year`, `tv`, `streaming`) VALUES ('$username_coded', '', '', '', '', '', '', '', '', '', '')";
+    $result = mysqli_query($con, $sql);
+}
 ?>
-
 
 
 <!--
@@ -53,7 +45,7 @@ session_start();
 
 <!DOCTYPE html>
 <html>
-<head><title>Profile</title> 
+<head><title>Profile</title>
 <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="css/profile.css" rel="stylesheet">
@@ -67,39 +59,45 @@ session_start();
 
 <!--Top Left Button (Add Data to Profile)-->
 <input type="button" value="Add to WYDRN" onclick="location.href='welcome.php'" style="color:black; position: fixed; top: 1em; left: 1em; padding:10px; background-color: white; cursor:pointer;">
-   
-
 
 <div class="shadow overflow">
-    <!--Background Image-->    
-    <div id="header" style="background-image:url(<?php echo $background_pic?>)" alt="Background Image"></div>
+    <!--Background Image-->
+    <div id="header" style="background-image:url(<?php echo $background_pic ?>)" alt="Background Image"></div>
 
         <div id="profile">
-            
+
             <!--Profile Image-->
             <div class="image">
-                <img src="<?php echo $profile_pic?>" alt="Profile Picture"/>
+                <img src="<?php echo $profile_pic ?>" alt="Profile Picture"/>
             </div>
 
             <!--Username on Profile-->
             <div name="" style="margin-bottom: 20px; border-bottom: 3px solid #f9dd94;">
-                <span style=" font-family:Baskerville,Times,'Times New Roman',serif; font-size:25px; color:#000000;font-variant:small-caps; text-align:center;font-weight:bold;"><?php echo $username?></span>
+                <span style="font-family: 'Baskerville', 'Times', 'Times New Roman', 'serif'; font-size: 25px; color: #000000; font-variant: small-caps; text-align: center; font-weight: bold;"><?php echo $username ?></span>
+
+            <!--Displays a Follow Button only if User is visiting another users page-->
+            <?php
+            if (isset($_GET['user_name'])) {
+            $username = $_GET['user_name'];
+
+            $follow_button="<input type='button' class='follow-button' value='Follow'>";
+            echo $follow_button;
+            }
+            ?>
+
+
             </div>
 
-      
         <!--Videogame, Album, Book, Movie and TV will be below here. -->
         <div name="activity" style="margin-right:30px; word-wrap: break-word;">
-            <?php include( "WYDRN.php");?>
+            <?php include "WYDRN.php";?>
         </div>
-
-
-
 
     </div>  <!-- This DIV is the end of the bottom half of the card. White Section-->
 </div> <!-- This DIV is the end of the entire card-->
 
 <!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
-<?php include("footer.php");?>  
-<!--END OF MAIN BODY-->  
+<?php include "footer.php";?>
+<!--END OF MAIN BODY-->
 </body>
 </html

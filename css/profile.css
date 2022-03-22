@@ -64,6 +64,27 @@ a:visited {
     font-family: 'Open Sans', sans-serif;
 }
 
+.follow-button {
+    color: #3399FF;
+    font-family: "Helvetica";
+    font-size: 10pt;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #3399FF;
+    border-radius: 3px;
+    width: 85px;
+    height: 30px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    cursor: hand;
+}
+
+.follow-button:hover {
+    background-color: rgb(30, 255, 0);
+    color: white;
+}
+
 #profile .image {
     position: absolute;
     border: 3px solid white;
