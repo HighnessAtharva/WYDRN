@@ -79,11 +79,18 @@ if (isset($_POST['clear'])) {
             <?php
             if (isset($_GET['user_name'])) {
             $username = $_GET['user_name'];
-
-            $follow_button="<input type='button' class='follow-button' value='Follow'>";
-            echo $follow_button;
-            }
-            ?>
+            
+            }    
+            ?> 
+            <a style="color:black" href="follow.php?user_name=<?php 
+            if (isset($_GET['user_name'])) {
+                $username = $_GET['user_name'];
+                echo $_GET['user_name'];
+                }?>">Follow</a>
+            
+            
+        
+            
 
 
             </div>

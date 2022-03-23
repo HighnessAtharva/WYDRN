@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-/*
+/*----------------------------------------------------------------------------------------------------------------------------
 DESCRIPTION: SIMILAR TO LOGIN PAGE, THIS PAGE DISPLAYS THE SIGNUP PAGE WITH THE ACCOMODATION TO CHECK IF PASSWORDS MATCH. IF USERNAME IS ALREADY TAKEN, ECHOS AN ERROR REGARDING DUPLICATE VALUE. REDIRECTS TO LOGIN PAGE AFTER SUCCESSFUL SIGNUP.
 - HASHES THE PASSWORD AND INSERTS TO DATABASE.
- */
+ --------------------------------------------------------------------------------------------------------------------------*/
 
 include "connection.php";
 include "functions.php";
@@ -49,11 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 ?>
 
-<!--
-
-HTML PART
-
--->
+<!-------------------------------------------------------------------------------------
+									HTML PART
+------------------------------------------------------------------------------------->
 
 <!DOCTYPE html>
 <html>
@@ -93,43 +91,45 @@ HTML PART
 		</form>
 	</div>
 
-	<!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
+<!-------------------------------------------------------------------------------------
+	STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE
+------------------------------------------------------------------------------------->
 <?php include "footer.php";?>
-<!--END OF MAIN BODY-->
 
-	<!--Best place to place JS Script is just before the body tag ends-->
-	<script>
-		function Validation(){
-			var name = document.getElementById("name").value;
-			var password = document.getElementById("pass").value;
-			var confirmpassword = document.getElementById("confirmpass").value;
-			var email = document.getElementById("email").value;
 
-			var re = /\S+@\S+\.\S+/;
-			const isAlphaNumeric = str => /^[a-z0-9]+$/gi.test(str);
-
-			if(name.length < 3 || name.length > 20){
-				alert("Username must be between 3 and 20 characters");
-				return false;
-			}
-			else if(!isAlphaNumeric(name)){
-				alert("Username must not contain special characters");
-				return false;
-			}
-			else if(!re.test(email)){
-				alert("Please enter a valid email address");
-				return false;
-			}
-			else if(password.length < 8 || password.length > 20){
-				alert("Password must be between 8 and 20 characters");
-				return false;
-			}
-			else if(password != confirmpassword){
-				alert("Passwords do not match");
-				return false;
-			}
-		return true;
+<!-------------------------------------------------------------------------------------
+	JAVASCRIPT VALIDATION
+------------------------------------------------------------------------------------->
+<script>
+	function Validation(){
+		var name = document.getElementById("name").value;
+		var password = document.getElementById("pass").value;
+		var confirmpassword = document.getElementById("confirmpass").value;
+		var email = document.getElementById("email").value;
+		var re = /\S+@\S+\.\S+/;
+		const isAlphaNumeric = str => /^[a-z0-9]+$/gi.test(str);
+		if(name.length < 3 || name.length > 20){
+			alert("Username must be between 3 and 20 characters");
+			return false;
 		}
-	</script>
+		else if(!isAlphaNumeric(name)){
+			alert("Username must not contain special characters");
+			return false;
+		}
+		else if(!re.test(email)){
+			alert("Please enter a valid email address");
+			return false;
+		}
+		else if(password.length < 8 || password.length > 20){
+			alert("Password must be between 8 and 20 characters");
+			return false;
+		}
+		else if(password != confirmpassword){
+			alert("Passwords do not match");
+			return false;
+		}
+	return true;
+	}
+</script>
 </body>
 </html>

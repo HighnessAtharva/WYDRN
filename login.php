@@ -1,14 +1,12 @@
 <?php
 
-/*
-
+/*-----------------------------------------------------------------------------------
 DESCRIPTION:
 - THE HTML PART SHOWS THE LOGIN FORM WITH THE USERNAME AND PASSWORD FIELDS
 - THE PHP PART GRABS THE INPUT FROM THE FORM, VALIDATES IT AND CHECKS IF THE USERNAME AND PASSWORD MATCHES WITH THE DATABASE.
 - VERIFIES AND DECRYTPS THE HASH PASSWORD AND LOGS IN THE USER
 - IF THE USERNAME AND PASSWORD MATCHES, THE USER IS REDIRECTED TO THE PROFILE PAGE.
-
- */
+-----------------------------------------------------------------------------------*/
 
 session_start();
 
@@ -16,7 +14,7 @@ include "connection.php";
 include "functions.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    //something was posted
+    //something was
     $user_name = $_POST['user_name'];
     $password = $_POST['password'];
 
@@ -43,52 +41,66 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 ?>
 
-<!--
-
-HTML PART
-
--->
+<!-----------------------------------------------------------------------------------
+										HTML PART
+------------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Login</title>
-	<!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
+	<!-------------------------------------------------------------------------------------
+	ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.
+	------------------------------------------------------------------------------------->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/login.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
+
 <body style="background-image: url(images/website/login.png); background-size: cover;" onload="getcookiedata()">>
 
 	<div id="box" style="background: rgba(0,0,0,0.5); margin-top: 150px;">
 		<form method="post" action="login.php" onsubmit="return Validation();">
 			<div class="WYDRN">WYDRN</div>
 
-			<!--Username-->
+			<!----------------
+			USERNAME
+			------------------>
 			<span class="userandpass" >USERNAME</span>
 			<input class="text" id="username" type="text" name="user_name" placeholder="HighnessAlexDaOne" autofocus="true" required><br><br>
 
-			<!--Password-->
+			<!-------------
+			PASSWORD
+			-------------->
 			<span  class="userandpass">PASSWORD</span>
 			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" required><br>
 
-			<!--Remember Me Checkbox-->
+			<!--------------
+			REMEMBER ME CHECKBOX
+			----------------->
 			<input type="checkbox" name="rememberme" style="margin-top:20px;margin-left:65px;" onclick="setcookie()">
 			<span style="color:#cccccc;">Remember Me</span><br>
 
-			<!--Login Button-->
+			<!----------------
+			LOGIN BUTTON
+			------------------>
 			<input id="button" style="margin-top:15px; margin-bottom:20px; margin-left:80px;" type="submit" value="Login"><br>
 
-			<!--Signup Button-->
+			<!---------------
+			SIGNUP BUTTON
+			----------------->
 			<a href="signup.php" style="color:white; margin-left:75px;">Click to Signup</a><br><br>
 		</form>
 	</div>
 
-<!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
+<!-------------------------------------------------------------------------------------
+STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE
+------------------------------------------------------------------------------------->
 <?php include "footer.php";?>
 
 
-<!--Best place to place JS Script is just before the body tag ends-->
+<!-------------------------------------------------------------------------------------
+JAVASCRIPT
+------------------------------------------------------------------------------------->
 <script>
 		function Validation(){
 			var name = document.getElementById("username").value;
@@ -134,26 +146,23 @@ HTML PART
 			//"username" & "pass" is the ID of the two input fields
             document.getElementById('username').value=user;
             document.getElementById('pass').value=pswd;
-
-           }
+        }
 
 		function getCookie(cname) {
 			var name = cname + "=";
 			var decodedCookie = decodeURIComponent(document.cookie);
 			var ca = decodedCookie.split(';');
-			for(var i = 0; i <ca.length; i++) {
-			var c = ca[i];
-			while (c.charAt(0) == ' ') {
-				c = c.substring(1);
-			}
-			if (c.indexOf(name) == 0) {
-				return c.substring(name.length, c.length);
-			}
+			for(var i = 0; i <ca.length; i++){
+				var c = ca[i];
+				while (c.charAt(0) == ' '){
+					c = c.substring(1);
+					}
+				if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+					}
 			}
 			return "";
-       }
-
-
+        }
 	</script>
 </body>
 </html>
