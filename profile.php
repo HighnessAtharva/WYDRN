@@ -77,8 +77,7 @@ if (isset($_POST['clear'])) {
 
             <!--Displays a Follow Button only if User is visiting another users page-->
             
-            <a style="color:black" href="follow.php?user_name=
-            <?php 
+            <a style="color:black" href="follow.php?user_name=<?php 
             if (isset($_GET['user_name'])){ 
                 if ($_GET['user_name'] != $user_data['user_name']){
                     echo $_GET['user_name'];
@@ -87,11 +86,20 @@ if (isset($_POST['clear'])) {
             ?>" 
             
             <?php 
+
+            if (!isset($_GET['user_name'])){ 
+                    echo 'hidden';
+            }
+
             if (isset($_GET['user_name'])){ 
                 if ($_GET['user_name'] == $user_data['user_name']){
                     echo 'hidden';
                 }
             }
+            
+            if (!isset($_POST)) {
+                    echo 'hidden';
+                }
             ?>>Follow</a>
             
             

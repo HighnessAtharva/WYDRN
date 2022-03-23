@@ -23,29 +23,21 @@ if($to_follow!=$follower){
                top: 50px; left: 570px;' role='alert'>
                Unable to follow!
                </div></center>";
+               echo $invalid_follow; 
             }else{
             $success="<center><div class='alert alert-success w-25 text-center' style='position: absolute;
-            top: 50px; left: 570px;' role='alert'> Added as a follower</div></center>";
-            echo $follower . " will start following ". $to_follow;
+            top: 50px; left: 570px;' role='alert'><b>". $follower . "</b> is now following <b>". $to_follow."</b></div></center>";
+            
             echo $success; 
+            //header("Location: profile.php"); 
             }
          }
-}else{
-   echo "Cannot follow yourself dummy";
-   die;
-}
-   
-   // Displays list of people logged-in user is following
-   echo $follower. " is now following";
-   $sql2 = "SELECT `followed_username` from `social`  where follower_username='$follower';";    
-   $result = mysqli_query($con, $sql2);
-   if(mysqli_num_rows($result) > 0){
-      while($row = mysqli_fetch_assoc($result)){
-         print_r($row['followed_username']);
-         echo "<br>";
-         }
-      }
    }
+      else{
+      echo "Cannot follow yourself dummy";
+      die; 
+      }
+}
        
 
 ?>
@@ -62,6 +54,25 @@ if($to_follow!=$follower){
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <body>
-   
+   <div>
+   <ul class="list-group" style="margin-top:250px;">
+         <?php
+         $user_data = check_login($con);
+         $follower=$user_data['user_name']; // the person who is logged in
+                     
+         // Displays the complete list of people logged-in user is following
+         echo "List of people ". $follower." is following";
+         echo "<br>";
+         $sql2 = "SELECT `followed_username` from `social`  where follower_username='$follower';";    
+         $result = mysqli_query($con, $sql2);
+         if(mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_assoc($result)){
+               echo "<li class='list-group-item'>".$row['followed_username']."</li>";
+               }
+            }
+         
+         ?>
+   </ul>
+   </div>
 </body>
 </html>
