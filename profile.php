@@ -48,7 +48,7 @@ if (isset($_POST['clear'])) {
 <head><title>Profile</title>
 <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="css/profile.css" rel="stylesheet">
+    <link href="CSS/profile.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -76,17 +76,23 @@ if (isset($_POST['clear'])) {
                 <span style="font-family: 'Baskerville', 'Times', 'Times New Roman', 'serif'; font-size: 25px; color: #000000; font-variant: small-caps; text-align: center; font-weight: bold;"><?php echo $username ?></span>
 
             <!--Displays a Follow Button only if User is visiting another users page-->
-            <?php
-            if (isset($_GET['user_name'])) {
-            $username = $_GET['user_name'];
             
-            }    
-            ?> 
-            <a style="color:black" href="follow.php?user_name=<?php 
-            if (isset($_GET['user_name'])) {
-                $username = $_GET['user_name'];
-                echo $_GET['user_name'];
-                }?>">Follow</a>
+            <a style="color:black" href="follow.php?user_name=
+            <?php 
+            if (isset($_GET['user_name'])){ 
+                if ($_GET['user_name'] != $user_data['user_name']){
+                    echo $_GET['user_name'];
+                }
+            }
+            ?>" 
+            
+            <?php 
+            if (isset($_GET['user_name'])){ 
+                if ($_GET['user_name'] == $user_data['user_name']){
+                    echo 'hidden';
+                }
+            }
+            ?>>Follow</a>
             
             
         
