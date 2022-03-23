@@ -28,9 +28,7 @@ if($to_follow!=$follower){
                $sql_delete = "DELETE FROM `social` WHERE `follower_username` = '$follower' AND `followed_username` = '$to_follow'";   
                if (mysqli_query($con, $sql_delete)) {
                   $unfollow = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
-                  top: 50px; left: 570px;' role='alert'>
-                  Unfollowed!
-                  </div></center>";
+                  top: 50px; left: 570px;' role='alert'><b>". $follower . "</b> unfollowed <b>". $to_follow."</b></div></center>";
                   echo $unfollow; 
                }
 
@@ -67,26 +65,60 @@ if($to_follow!=$follower){
    <div>
       <a href="profile.php">Return</a>
    </div>
-   
-   <div>
-   <ul class="list-group" style="margin-top:250px;">
+
+<div class="container">
+   <div class="row">
+
+   <!--THIS IS THE DIV OF THE FOLLOWING SECTION-->  
+   <div class="col-sm">
+   <ul class="list-group ms-5 p-3" style="margin-top:250px; width: 400px;">
          <?php
          $user_data = check_login($con);
          $follower=$user_data['user_name']; // the person who is logged in
                      
          // Displays the complete list of people logged-in user is following
-         echo "List of people ". $follower." is following";
+         echo "<b>". $follower." - Following </b>";
          echo "<br>";
-         $sql2 = "SELECT `followed_username` from `social`  where follower_username='$follower';";    
+         $sql2 = "SELECT `followed_username` from `social`  where `follower_username`='$follower';";    
          $result = mysqli_query($con, $sql2);
          if(mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_assoc($result)){
-               echo "<li class='list-group-item'>".$row['followed_username']."</li>";
+               // this echo statement displays the list of followers with their own links. 
+               echo "<li class='list-group-item-info rounded-pill p-1 m-1'><a href=profile.php?user_name=".$row['followed_username'].">".$row['followed_username']."</a></li>";
                }
-            }
-         
+            }  
          ?>
    </ul>
    </div>
+   <!--DIV END FOLLOWING SECTION-->  
+
+
+   <!--THIS IS THE DIV OF THE FOLLOWERS SECTION-->  
+   <div class="col-sm">
+   <ul class="list-group ms-5 p-3" style="margin-top:250px; width: 400px;">
+         <?php
+         $user_data = check_login($con);
+         $follower=$user_data['user_name']; // the person who is logged in
+                     
+         // Displays the complete list of people logged-in user is following
+         echo "<b>". $follower." - Followers</b>";
+         echo "<br>";
+         $sql2 = "SELECT `follower_username` from `social`  where followed_username='$follower';";    
+         $result = mysqli_query($con, $sql2);
+         if(mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_assoc($result)){
+               // this echo statement displays the list of followers with their own links. 
+               echo "<li class='list-group-item-info rounded-pill p-1 m-1'>
+               <a href=profile.php?user_name=".$row['follower_username'].">".$row['follower_username']."</a>
+               </li>";
+               }
+            }  
+         ?>
+   </ul>
+   </div>
+   <!--DIV END FOLLOWERS SECTION-->  
+
+         </div>
+         </div>
 </body>
 </html>

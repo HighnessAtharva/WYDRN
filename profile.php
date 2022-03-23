@@ -82,7 +82,7 @@ if (isset($_POST['clear'])) {
             - If the user is visiting his own profile, the anchor tag is not displayed.
             - If the user is visiting another users profile, the anchor tag is displayed.
             - If the user is not following another user, the anchor tag is displayed with the text "Follow"
-            - If the user is already following another user, the anchor tag is displayed with the text "Following"
+            - If the user is already following another user, the anchor tag is displayed with the text "Unfollow"
             --------------------------------------------------------------------------------------->
 
             <a style="color:black" href="follow.php?user_name=<?php 
