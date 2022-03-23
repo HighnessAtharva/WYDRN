@@ -71,7 +71,7 @@ protected $PDFVersion;         // PDF version number
 *                               Public methods                                 *
 *******************************************************************************/
 
-function __construct($orientation='P', $unit='mm', $size='A4')
+function __construct($orientation='L', $unit='mm', $size='A3')
 {
 	// Some checks
 	$this->_dochecks();

@@ -41,16 +41,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 ?>
 
-<!-----------------------------------------------------------------------------------
-										HTML PART
-------------------------------------------------------------------------------------->
+<!-----------------------------------------------------------------------------------------------------------------------
+													HTML PART
+------------------------------------------------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Login</title>
-	<!-------------------------------------------------------------------------------------
-	ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.
-	------------------------------------------------------------------------------------->
+	<!------------------
+	BOOTSTRAP CDN
+	-------------------->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/login.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,26 +105,31 @@ JAVASCRIPT
 		function Validation(){
 			var name = document.getElementById("username").value;
 			var password = document.getElementById("pass").value;
-
 			const isAlphaNumeric = str => /^[a-z0-9]+$/gi.test(str);
-
+			
+			// CHECK IF USERNAME IS LONG ENOUGH
 			if(name.length < 3 || name.length > 20){
 				alert("Username must be between 3 and 20 characters");
 				return false;
 			}
+
+			// CHECK IF USERNAME IS ALPHANUMERIC
 			else if(!isAlphaNumeric(name)){
 				alert("Username must not contain special characters");
 				return false;
 			}
 
-			else if(password.length < 8 || password.length > 20){
-				alert("Password must be between 8 and 20 characters");
+			// CHECK FOR PASSWORD SECURITY LENGTH
+			else if(password.length < 8 || password.length > 30){
+				alert("Password must be between 8 and 30 characters");
 				return false;
 			}
-			return true;
+
+		// RETURN VALID AFTER ALL CHECKS PASS
+		return true;
 		}
 
-
+		
 		function setcookie(){
 			//"username" & "pass" is the ID of the two input fields
             var u =document.getElementById('username').value;
@@ -137,7 +142,6 @@ JAVASCRIPT
 
 
         function getcookiedata(){
-
             console.log(document.cookie);
 			//"USERNAME" & "PSWD" are the cookie key names
             var user=getCookie('USERNAME');

@@ -20,10 +20,11 @@ $username=$user_data['user_name'];
 
 class PDF extends PDF_MySQL_Table{
 function Header()
-{
+{   
+    global $username;
     // Title
-    $this->SetFont('Arial','',18);
-    $this->Cell(0,6,'Data Export',0,1,'C');
+    $this->SetFont('Arial','',15);
+    $this->Cell(0,6,'Data Export --'.$username.'-- '.date("Y-m-d"),0,1,'C');
     $this->Ln(10);
     // Ensure table header is printed
     parent::Header();
