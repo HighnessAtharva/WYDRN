@@ -21,9 +21,19 @@ if($to_follow!=$follower){
             if (!mysqli_query($con, $sql)) {
                $invalid_follow = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
                top: 50px; left: 570px;' role='alert'>
-               Unable to follow!
+               Already following that user!
                </div></center>";
                echo $invalid_follow; 
+               // if a user is trying to follow an already followed person, make the user unfollow the person..
+               $sql_delete = "DELETE FROM `social` WHERE `follower_username` = '$follower' AND `followed_username` = '$to_follow'";   
+               if (mysqli_query($con, $sql_delete)) {
+                  $unfollow = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
+                  top: 50px; left: 570px;' role='alert'>
+                  Unfollowed!
+                  </div></center>";
+                  echo $unfollow; 
+               }
+
             }else{
             $success="<center><div class='alert alert-success w-25 text-center' style='position: absolute;
             top: 50px; left: 570px;' role='alert'><b>". $follower . "</b> is now following <b>". $to_follow."</b></div></center>";
@@ -54,6 +64,10 @@ if($to_follow!=$follower){
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <body>
+   <div>
+      <a href="profile.php">Return</a>
+   </div>
+   
    <div>
    <ul class="list-group" style="margin-top:250px;">
          <?php

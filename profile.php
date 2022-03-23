@@ -77,6 +77,14 @@ if (isset($_POST['clear'])) {
 
             <!--Displays a Follow Button only if User is visiting another users page-->
             
+            <!------------------------------------------------------------------------------------
+            HERE COMPLEX LOGIC IS USED FOR THE ANCHOR TAG
+            - If the user is visiting his own profile, the anchor tag is not displayed.
+            - If the user is visiting another users profile, the anchor tag is displayed.
+            - If the user is not following another user, the anchor tag is displayed with the text "Follow"
+            - If the user is already following another user, the anchor tag is displayed with the text "Following"
+            --------------------------------------------------------------------------------------->
+
             <a style="color:black" href="follow.php?user_name=<?php 
             if (isset($_GET['user_name'])){ 
                 if ($_GET['user_name'] != $user_data['user_name']){
@@ -86,7 +94,6 @@ if (isset($_POST['clear'])) {
             ?>" 
             
             <?php 
-
             if (!isset($_GET['user_name'])){ 
                     echo 'hidden';
             }
@@ -100,7 +107,22 @@ if (isset($_POST['clear'])) {
             if (!isset($_POST)) {
                     echo 'hidden';
                 }
-            ?>>Follow</a>
+            ?>>
+        <!--THE CONTENT OF THE A TAG GOES HERE [FOLLOW/UNFOLLOW] DEPENDING ON WHETHER A USER IS ALREADY FOLLOWING A PERSON OR NOT.-->
+            <?php
+            $user_data = check_login($con);
+            $username = $user_data['user_name'];
+            $sql = "SELECT `followed_username` FROM `social` WHERE `follower_username`='$username' and `followed_username`='$_GET[user_name]'";
+            if ($query = mysqli_query($con, $sql)) {
+                $result=mysqli_num_rows($query);
+                if ($result == 0) {
+                    echo "Follow";
+                } else {
+                  echo "Unfollow";
+                }
+            }
+            ?>
+        </a>
             
             
         
@@ -121,4 +143,4 @@ if (isset($_POST['clear'])) {
 <?php include "footer.php";?>
 <!--END OF MAIN BODY-->
 </body>
-</html
+</html>
