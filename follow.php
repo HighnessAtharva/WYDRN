@@ -79,7 +79,7 @@ if($to_follow!=$follower){
          // Displays the complete list of people logged-in user is following
          echo "<b>". $follower." - Following </b>";
          echo "<br>";
-         $sql2 = "SELECT `followed_username` from `social`  where `follower_username`='$follower';";    
+        $sql2 = "SELECT `followed_username` from `social`  where `follower_username`='$follower';";    
          $result = mysqli_query($con, $sql2);
          if(mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_assoc($result)){

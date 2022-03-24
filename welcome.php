@@ -49,35 +49,7 @@ $user_data = check_login($con);
 
 
 <body>
-<!-- START OF HEADER-->
-
-    <!--LOGOUT-->
-    <div style="font-size:20px; position: absolute; top: 0.5em; right: 1em; padding:5px;">
-        <a style="color:white" href="logout.php">Logout</a>
-    </div>
-
-    <!--PROFILE-->
-    <div style="font-size:20px; position: absolute; top: 0.5em; right: 5em; padding:5px;">
-        <a style="color:white" href="profile.php?user_name=<?php echo $user_data['user_name'] ?>">Profile</a>
-    </div>
-
-    <!--Delete Account-->
-    <div style="font-size:20px; position: absolute; top: 0.5em; right: 9em; padding:5px;" >
-        <a href="delete_user.php" style="color:white;">Delete</a>
-    </div>
-
-     <!--Edit Profile-->
-    <div style="font-size:20px; position: absolute; top: 0.5em; right: 13.5em; padding:5px;" >
-        <a href="edit_profile.php" style="color:white;">Edit Profile</a>
-    </div>
-
-
-    <!--WELCOME TO WRYDRN-->
-    <div style="font-size:20px; position:absolute; color:white; top: 0.5em; right:20em; padding:5px;">
-        <b>Welcome to WRYDN</b>
-    </div>
-
-<!-- END OF HEADER-->
+<?php include "header.php"; ?>
 
 
 <!--START OF MAIN  BODY-->
@@ -131,11 +103,12 @@ $user_data = check_login($con);
 
         <div class="text-center mb-lg-3">
             <button type="submit" class="btn btn-outline-primary btn-light btn-lg" name="submit" value="btn1" style="margin-left:-100px">Submit</button>
-
+    <!-- CLEAR BUTTON
             <button type="submit" class="btn btn-outline-primary btn-light btn-lg" style="margin-left:10px" name="clear" value="btn2">
             Clear</button>
+       -->
         </div>
-
+        
 
         </div>
         <!--END OF LEFT COLUMN-->

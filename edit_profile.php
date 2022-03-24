@@ -10,7 +10,7 @@ session_start();
 
 include "connection.php";
 include "functions.php";
-
+include "header2.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 ?>
@@ -56,7 +56,7 @@ Hello <?php echo $username ?>, you can change your PFP and Background Image here
 <?php
 // CODE TO CHANG THE PROFILE PICTURE AND BACKGROUND IMAGE
 if (isset($_POST['save_profile'])) {
-    $PFPName = date("his") . " - " . $_FILES["PFP"]["name"]; //profile picture
+    $PFPName = date("his").$_FILES["PFP"]["name"]; //profile picture
     $BGName = $_FILES["BgImage"]["name"]; //background image
 
     // For image upload
