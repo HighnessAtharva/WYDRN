@@ -74,7 +74,7 @@ Sends an Email with Reset Password Link.
 function send_reset_link($recipient, $link){
 $to_email = $recipient;
 $subject = "WYDRN - Reset Password";
-$body = "<a href='".$link."'>Click here to Reset Your Account Password". "</a>";
+$body = $link;
 $headers = "From: WYDRNAPP@gmail.com";
 
 	if (mail($to_email, $subject, $body, $headers)) {
