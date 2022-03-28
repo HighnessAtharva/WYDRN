@@ -84,3 +84,18 @@ $headers = "From: WYDRNAPP@gmail.com";
 	}
 }
 
+/*
+Returns whether a user account is verified or not (1 - Verified  ||  0 -  Not Verified)
+*/ 
+function check_verified_status($username){
+include("connection.php");
+$sql = "SELECT verified FROM users WHERE user_name='$username'";
+	if ($query = mysqli_query($con, $sql)) {
+		if (mysqli_num_rows($query) == 1) {
+			$row = mysqli_fetch_array($query);
+			return $row['verified'];  
+		} else {
+			die('That user does not exist' . mysqli_error($con));
+		}
+	}
+}

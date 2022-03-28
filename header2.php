@@ -1,4 +1,4 @@
-<!-- HEADER2 is the alternative header to be used in the rest of the pages where the Clicking on Profile does not redirecct with GET Request-->
+<!-- HEADER2 is the alternative header to be used in the rest of the pages where the Clicking on Profile does not redirect with GET Request-->
 
 <!-- START OF HEADER-->
 
