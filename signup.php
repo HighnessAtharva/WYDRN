@@ -39,18 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     } 
 	
 	/*-----------------------------------------------------------------------------------------------------------------
-		 AFTER SUCCESSFUL SIGNUP, SEND AN EMAIL AND REDIRECT TO LOGIN PAGE; DISPLAY AND ERROR IF THE EMAIL IS NOT SENT.
+		 AFTER SUCCESSFUL SIGNUP, REDIRECT TO LOGIN PAGE;
    	-------------------------------------------------------------------------------------------------------------*/
 	else {
-        if (mailer_verify_email($email)) {
-            echo "Email sent!";
-        } else {
-            $email_error = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
-							top: 50px; left: 570px;' role='alert'>
-  						    Could not send the email!
-							</div></center>";
-            echo $email_error;
-        }
+       
         header("Location: login.php");
         die;
     } // END OF ELSE

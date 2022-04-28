@@ -29,7 +29,40 @@ $username = $user_data['user_name'];
 <body>
 Hello <?php echo $username ?>, you can change your PFP and Background Image here.
 <div>
-    <form action="" method="POST" name="ImageUploads" enctype="multipart/form-data">
+    <div>
+        <?php
+            if(check_active_status($username)==1){
+                echo "<br>User Status: Active<br>";
+            }
+            else{
+                echo "<br>User Status: Offline<br>";
+            }
+
+            if(check_verified_status($username)==1){
+                echo "<br>User is Verified<br>";
+            }    
+            else{
+                echo "<br>User is not Verified.";
+                
+                $current_user=check_login($con);
+                $user_name = $current_user['user_name'];
+                $hashed_verify=md5($user_name);
+                echo "<a href='verify.php' style='color:black; padding:5px; background-color: white; cursor:pointer;'> Verify Now</a></span>";
+                
+                // if (mailer_verify_email($email)) {
+                //     echo "Email sent!";
+                // } else {
+                //     $email_error = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
+                //                     top: 50px; left: 570px;' role='alert'>
+                //                       Could not send the email!
+                //                     </div></center>";
+                //     echo $email_error;
+                // }
+
+            }
+        ?>
+    </div>    
+<form action="" method="POST" name="ImageUploads" enctype="multipart/form-data">
 
         <br><br><br>
         Select Profile Photo to Upload: <input type="file" name="PFP" accept=".png, .jpg, .jpeg, image/png, image/jpg, image/jpeg, .gif">

@@ -18,7 +18,10 @@ if (isset($_GET['user_name'])) {
     $username = $_GET['user_name'];
 } else {
     $username = $user_data['user_name'];
+    set_active($username);
 }
+
+
 
 $sql = "SELECT profile_pic, background_pic FROM users WHERE user_name='$username'";
 if ($query = mysqli_query($con, $sql)) {
@@ -130,7 +133,7 @@ if (isset($_POST['clear'])) {
 
 
             </div>
-
+        
         <!--Videogame, Album, Book, Movie and TV will be below here. -->
         <div name="activity" style="margin-right:30px; word-wrap: break-word;">
             <?php include "WYDRN.php";?>
@@ -140,7 +143,8 @@ if (isset($_POST['clear'])) {
 </div> <!-- This DIV is the end of the entire card-->
 
 <!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
-<?php include "footer.php";?>
+<?php include "footer.php";
+?>
 <!--END OF MAIN BODY-->
 </body>
 </html>

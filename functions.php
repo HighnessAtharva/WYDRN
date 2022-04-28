@@ -10,7 +10,7 @@ DESCRIPTION:
 
 
 /*
-Checks if a user is logged in and is valid. If yes, redirects to the login page. 
+Checks if a user is logged in and is valid. If yes, redirects to the login page. Important to start the session in order to perform the check_login function. Use session_start(); in pages that you wish to use this function.
 */ 
 function check_login($con)
 {
@@ -27,8 +27,8 @@ function check_login($con)
 	}
 
 	//redirect to login
-	header("Location: login.php");
-	die;
+	//header("Location: login.php");
+	//die;
 
 }
 
@@ -55,9 +55,13 @@ function random_num($length)
 Sends an Email requesting verification of the account to the recipient.
 */ 
 function mailer_verify_email($recipient){
+include("connection.php");
 $to_email = $recipient;
 $subject = "WYDRN - Verify Your Email";
-$body = "Click the link below to verify your Account and get access to all the features. ";
+$user_data = check_login($con);
+$username = $user_data['user_name'];
+$hashed_verify=md5($username);
+$body = "Click the link below to verify your Account and get access to all the features. localhost/WYDRN/verify.php?link=$hashed_verify";
 $headers = "From: WYDRNAPP@gmail.com";
 
 	if (mail($to_email, $subject, $body, $headers)) {
@@ -97,5 +101,65 @@ $sql = "SELECT verified FROM users WHERE user_name='$username'";
 		} else {
 			die('That user does not exist' . mysqli_error($con));
 		}
+	}
+}
+
+
+/*
+Sets a user account is verified or not (1 - Verified  ||  0 -  Not Verified)
+*/
+function set_verified($username){
+	include("connection.php");
+	$sql = "UPDATE users SET verified=1 WHERE user_name='$username'";
+	if (mysqli_query($con, $sql)){
+		return 1;
+	}
+	else{
+		echo "User does not exist";
+		return 0;
+	}
+}
+
+/*
+Sets a user account is verified or not (1 - Verified  ||  0 -  Not Verified)
+*/
+function check_active_status($username){
+include("connection.php");
+$sql = "SELECT active FROM users WHERE user_name='$username'";
+	if ($query = mysqli_query($con, $sql)) {
+		if (mysqli_num_rows($query) == 1) {
+			$row = mysqli_fetch_array($query);
+			return $row['active'];  
+		} else {
+			die('That user does not exist' . mysqli_error($con));
+		}
+	}
+}
+
+
+/*
+Sets a user account status as active (Returns 1 - Verified  ||  0 -  Not Verified)
+*/
+function set_active($username){
+	include("connection.php");
+	$sql = "UPDATE users SET active=1 WHERE user_name='$username'";
+	if (mysqli_query($con, $sql)){
+		return 1;
+	}
+	else{
+		echo "User does not exist";
+		return 0;
+	}
+}
+
+function set_inactive($username){
+	include("connection.php");
+	$sql = "UPDATE users SET active=0 WHERE user_name='$username'";
+	if (mysqli_query($con, $sql)){
+		return 1;
+	}
+	else{
+		echo "User does not exist";
+		return 0;
 	}
 }
