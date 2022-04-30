@@ -8,6 +8,10 @@ DESCRIPTION: LOGS OUT THE USER. REDIRCTS TO THE LOGIN PAGE AND CLEARS THE SESSIO
 include("functions.php");
 include("connection.php");
 session_start();
+if(empty($_SESSION))
+{
+  header("Location: login.php");
+}
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 

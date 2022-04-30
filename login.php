@@ -80,6 +80,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<input type="checkbox" name="rememberme" style="margin-top:20px;margin-left:65px;" onclick="setcookie()">
 			<span style="color:#cccccc;">Remember Me</span><br>
 
+			<!--------------
+			Forgot Password 
+			----------------->
+			<a name="forgotpass" style="margin-top:20px;margin-left:65px;" href="send_reset_link.php">
+			<span style="color:#cccccc;">Forgot Password</span><br>
+
 			<!----------------
 			LOGIN BUTTON
 			------------------>
@@ -88,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<!---------------
 			SIGNUP BUTTON
 			----------------->
-			<a href="signup.php" style="color:white; margin-left:75px;">Click to Signup</a><br><br>
+			<a href="signup.php" style="color:white; margin-left:108px;">Signup</a><br><br>
 		</form>
 	</div>
 

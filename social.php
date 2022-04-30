@@ -4,7 +4,6 @@
 DESCRIPTION: THIS WILL BE THE SOCIAL FEED. 
 
 */
-session_start();
 error_reporting(E_ERROR | E_PARSE);
 include "connection.php";
 include "functions.php";
@@ -44,6 +43,7 @@ if ($query = mysqli_query($con, $sql)) {
         //    echo "You are all caught up!";
         }else{
              //container of each post on the page
+            
             echo "<div class='post'>";
 
             echo("<img src=". $profile_pic. " class='profile-pic' alt='Profile Picture'/>");

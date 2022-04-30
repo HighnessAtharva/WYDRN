@@ -9,7 +9,10 @@ DESCRIPTION: THE MAIN PROFILE PAGE OF  THE USER. THE MOST IMPORTANT PAGE TO THIS
  */
 
 session_start();
-
+if(empty($_SESSION))
+{
+  header("Location: login.php");
+}
 include "connection.php";
 include "functions.php";
 
@@ -135,7 +138,8 @@ if (isset($_POST['clear'])) {
             </div>
         
         <!--Videogame, Album, Book, Movie and TV will be below here. -->
-        <div name="activity" style="margin-right:30px; word-wrap: break-word;">
+        <div name="activity" style="margin-right:30px; word-wrap: break-word; max-height: 200px;
+  overflow: auto; ">
             <?php include "WYDRN.php";?>
         </div>
 

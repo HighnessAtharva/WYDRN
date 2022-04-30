@@ -1,9 +1,9 @@
 <!-- HEADER2 is the alternative header to be used in the rest of the pages where the Clicking on Profile does not redirect with GET Request-->
 
 <!-- START OF HEADER-->
-
-    <!--LOGOUT-->
-    <div style="font-size:20px; position: absolute; top: 0.5em; right: 1em; padding:5px;">
+<div>
+  <!--LOGOUT-->
+  <div style="font-size:20px; position: absolute; top: 0.5em; right: 1em; padding:5px;">
         <a style="color:black;" href="logout.php">Logout</a>
     </div>
 
@@ -18,14 +18,24 @@
     </div>
 
      <!--Edit Profile-->
-    <div style="font-size:20px; position: absolute; top: 0.5em; right: 13.5em; padding:5px;" >
+    <div style="font-size:20px; position: absolute; top: 0.5em; right: 12.5em; padding:5px;" >
         <a href="edit_profile.php" style="color:black;">Edit Profile</a>
     </div>
 
-
-    <!--WELCOME TO WRYDRN-->
-    <div style="font-size:20px; position:absolute; color:black; top: 0.5em; right:20em; padding:5px;">
-        <b>Welcome to WRYDN</b>
+     <!--Export Data-->
+     <div style="font-size:20px; position: absolute; top: 0.5em; right: 18em; padding:5px;" >
+        <a href="pdf.php" style="color:black;">Export</a>
     </div>
 
+    
+     <!--Social-->
+     <div style="font-size:20px; position: absolute; top: 0.5em; right: 22em; padding:5px;" >
+        <a href="feed.php" style="color:black;">Feed</a>
+    </div>
+
+    <!--WELCOME TO WRYDRN-->
+    <div style="font-size:20px; position:absolute; color:black; top: 0.5em; left:2.3em; padding:5px;">
+        <h4>WRYDN</h4>
+    </div>
+</div>
 <!-- END OF HEADER-->

@@ -7,7 +7,10 @@ DESCRIPTION: THIS PAGE ALLOWS USER TO CHANGE THEIR PROFILE PHOTO, PROFILE BACKGR
  */
 
 session_start();
-
+if(empty($_SESSION))
+{
+  header("Location: login.php");
+}
 include "connection.php";
 include "functions.php";
 include "header2.php";

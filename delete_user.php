@@ -5,6 +5,10 @@ DESCRIPTION: CHECKS IF A USER HAS LOGGED IN AND IF SO, DELETES THE USER DATA FRO
 ------------------------------------------------------------------------------------------------*/
 
 session_start();
+if(empty($_SESSION))
+{
+  header("Location: login.php");
+}
 include "connection.php";
 include "functions.php";
 $user_data = check_login($con);
