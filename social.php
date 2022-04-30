@@ -43,36 +43,41 @@ if ($query = mysqli_query($con, $sql)) {
         // if (empty($videogame) && empty($album) && empty($book) && empty($movie) && empty($tv) ){
         //    echo "You are all caught up!";
         }else{
-            echo("<img src=". $profile_pic. " style='width: 50px; height: 50px; border-radius: 50%;' alt='Profile Picture'/>");
-            
-            echo("<a href='profile.php?user_name=". $person."'>".$person."</a><br>");
+             //container of each post on the page
+            echo "<div class='post'>";
+
+            echo("<img src=". $profile_pic. " class='profile-pic' alt='Profile Picture'/>");
+            echo("<a class='username' href='profile.php?user_name=". $person."'>".$person."</a><br>");
 
         if ((!empty($videogame)) && (!empty($platform))){
-            $playing="<div> &#127918 Playing <b>".$videogame."</b> on ".$platform."</div>";
+            $playing="<div class='activity'> &#127918 Playing <b>".$videogame."</b> on ".$platform."</div>";
             echo $playing;
         }
         
         if ((!empty($album)) && (!empty($artist))){
-            $listening="<div> &#127911 Listening to <b>".$album."</b> by <b>".$artist."</b></div>";
+            $listening="<div class='activity'> &#127911 Listening to <b>".$album."</b> by <b>".$artist."</b></div>";
             echo $listening;
         }
         if ((!empty($book)) && (!empty($author))){
-        $reading="<div> &#128213 Reading <b>".$book."</b> by <b>".$author."</b></div>";
+        $reading="<div class='activity'> &#128213 Reading <b>".$book."</b> by <b>".$author."</b></div>";
         echo $reading;
         }
         
         if ((!empty($movie)) && (!empty($year))){
-            $watching="<div> &#128253 Watching <b>".$movie."</b> (".$year.")"."</div>";
+            $watching="<div class='activity'> &#128253 Watching <b>".$movie."</b> (".$year.")"."</div>";
             echo $watching;
         }
         
         if ((!empty($tv)) && (!empty($streaming))){
-        $binging="<div> &#128250 Binging <b>".$tv."</b> on ".$streaming."</div>";
+        $binging="<div class='activity'> &#128250 Binging <b>".$tv."</b> on ".$streaming."</div>";
             echo $binging;
-         }
-        echo($datetime."<br>"); 
-        echo "<br><br>";
-            
+        }
+        $datetime=printable_date($datetime);
+        echo ("<div class='datetime'>".$datetime."</div>"); 
+        
+        echo "<br>";
+        
+        echo "</div>"; //container of each post on the page
     } //else ends
 }   
 }

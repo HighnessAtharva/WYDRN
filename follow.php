@@ -83,8 +83,23 @@ if($to_follow!=$follower){
          $result = mysqli_query($con, $sql2);
          if(mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_assoc($result)){
-               // this echo statement displays the list of followers with their own links. 
-               echo "<li class='list-group-item-info rounded-pill p-1 m-1'><a href=profile.php?user_name=".$row['followed_username'].">".$row['followed_username']."</a></li>";
+               if(check_active_status($row['followed_username'])==1){
+                  // this echo statement displays the list of followers with their own links.
+                  echo "<li class='list-group-item-info rounded-pill p-1 m-1'>
+                  <a href=profile.php?user_name=".$row['followed_username'].">".$row['followed_username']."</a>
+                  <span class='badge badge-success text-success'>Online</span>
+                  </li>";
+                  
+               }
+               
+               if(check_active_status($row['followed_username'])==0){
+                  // this echo statement displays the list of followers with their own links.
+                  echo "<li class='list-group-item-info rounded-pill p-1 m-1'>
+                  <a href=profile.php?user_name=".$row['followed_username'].">".$row['followed_username']."</a>
+                  <span class='badge badge-success text-danger'>Offline</span>
+                  </li> ";
+                  
+               }
                }
             }  
          ?>
@@ -107,11 +122,24 @@ if($to_follow!=$follower){
          $result = mysqli_query($con, $sql2);
          if(mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_assoc($result)){
-               // this echo statement displays the list of followers with their own links. 
-               echo "<li class='list-group-item-info rounded-pill p-1 m-1'>
-               <a href=profile.php?user_name=".$row['follower_username'].">".$row['follower_username']."</a>
-               </li>";
+               if(check_active_status($row['follower_username'])==1){
+                  // this echo statement displays the list of followers with their own links.
+                  echo "<li class='list-group-item-info rounded-pill p-1 m-1'>
+                  <a href=profile.php?user_name=".$row['follower_username'].">".$row['follower_username']."</a>
+                  <span class='badge badge-success text-success'>Online</span>
+                  </li>";
+                  
                }
+               
+               if(check_active_status($row['follower_username'])==0){
+                  // this echo statement displays the list of followers with their own links.
+                  echo "<li class='list-group-item-info rounded-pill p-1 m-1'>
+                  <a href=profile.php?user_name=".$row['follower_username'].">".$row['follower_username']."</a>
+                  <span class='badge badge-success text-danger'>Offline</span>
+                  </li> ";
+                  
+               } 
+            }
             }  
          ?>
    </ul>

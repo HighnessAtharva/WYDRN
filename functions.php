@@ -163,3 +163,26 @@ function set_inactive($username){
 		return 0;
 	}
 }
+
+function printable_date($datetime){
+	$datetime=explode(" ", $datetime);
+
+	$date=$datetime[0];
+	$date=explode("-", $date);
+	$year=$date[0];
+	$month=$date[1];
+	$day=$date[2];
+
+	$time=$datetime[1];
+	$time=explode(":", $time);
+	$hours=$time[0];
+	$mins=$time[1];
+	$meridian='';
+	if ($hours>=12)
+		$meridian='PM';
+	else{
+		$meridian='AM';
+	}
+	$new_datetime = $day ."-". $month ."-" .$year. " | " .$hours. ":" .$mins." ".$meridian;
+	return $new_datetime; 
+}

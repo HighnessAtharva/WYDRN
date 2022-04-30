@@ -27,7 +27,9 @@ $username = $user_data['user_name'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-Hello <?php echo $username ?>, you can change your PFP and Background Image here.
+<!--MAIN DIV-->
+<div style="margin-top:50px; margin-left:25px;">
+<div>Hello <?php echo ucfirst($username) ?>, you can change your PFP and Background Image here.</div>
 <div>
     <div>
         <?php
@@ -39,41 +41,30 @@ Hello <?php echo $username ?>, you can change your PFP and Background Image here
             }
 
             if(check_verified_status($username)==1){
-                echo "<br>User is Verified<br>";
+                echo "User is Verified<br>";
             }    
             else{
-                echo "<br>User is not Verified.";
+                echo "User is not Verified.";
                 
                 $current_user=check_login($con);
                 $user_name = $current_user['user_name'];
                 $hashed_verify=md5($user_name);
-                echo "<a href='verify.php' style='color:black; padding:5px; background-color: white; cursor:pointer;'> Verify Now</a></span>";
-                
-                // if (mailer_verify_email($email)) {
-                //     echo "Email sent!";
-                // } else {
-                //     $email_error = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
-                //                     top: 50px; left: 570px;' role='alert'>
-                //                       Could not send the email!
-                //                     </div></center>";
-                //     echo $email_error;
-                // }
-
+                echo "<a href='verify.php' style='padding:5px; background-color: white; cursor:pointer;'>Verify Now</a></span>";
             }
+            echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$username</a><br>";
         ?>
     </div>    
 <form action="" method="POST" name="ImageUploads" enctype="multipart/form-data">
-
-        <br><br><br>
+        <br><br>
         Select Profile Photo to Upload: <input type="file" name="PFP" accept=".png, .jpg, .jpeg, image/png, image/jpg, image/jpeg, .gif">
-
-        <br><br><br>
+        <br><br>
         Select Background Photo to Upload: <input type="file" name="BgImage" accept=".png, .jpg, .jpeg, image/png, image/jpg, image/jpeg, .gif">
 
         <br><br><br>
         <input type="submit" value="Save" name="save_profile">
     </form>
 </div>
+        </div>
 <!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
 <?php include "footer.php";?>
 <!--END OF MAIN BODY-->
@@ -128,14 +119,11 @@ if (isset($_POST['save_profile'])) {
             $sql = "UPDATE users SET `profile_pic` = '$target_file' WHERE user_name='$username'";
             if (mysqli_query($con, $sql)) {
                 $msg = "Image uploaded and saved in the Database";
-                $msg_class = "alert-success";
             } else {
                 $msg = "There was an error in the database";
-                $msg_class = "alert-danger";
             }
         } else {
-            $error = "There was an erro uploading the file";
-            $msg = "alert-danger";
+            $error = "There was an erro uploading the file"; 
         }
 
         //inserting Background into DB
@@ -152,6 +140,19 @@ if (isset($_POST['save_profile'])) {
             $error = "There was an erro uploading the file";
             $msg = "alert-danger";
         }
+    }
+    if (!empty($error)) {
+        $messed = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
+               top: 450px; left: 570px;' role='alert'>
+               Could not update the details!
+               </div></center>";
+        echo $messed;
+    }else{
+        $updated = "<center><div class='alert alert-success w-25 text-center' style='position: absolute;
+        top: 450px; left: 570px;' role='alert'>
+       Details updated successfully!
+        </div></center>";
+ echo $updated;
     }
 }
 ?>
