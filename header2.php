@@ -35,7 +35,7 @@
 
     <!--WELCOME TO WRYDRN-->
     <div style="font-size:20px; position:absolute; color:black; top: 0.5em; left:2.3em; padding:5px;">
-        <h4>WRYDN</h4>
+        <h3>WRYDN</h3>
     </div>
 </div>
 <!-- END OF HEADER-->

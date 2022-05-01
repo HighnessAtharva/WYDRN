@@ -29,13 +29,11 @@ $user_data = check_login($con);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
         body {
-            background: rgb(27, 0, 36);
-            background: linear-gradient(40deg, rgba(27, 0, 36, 1) 0%, rgba(45, 14, 68, 1) 50%, rgba(117, 0, 129, 1) 100%);
-            color: rgba(255, 255, 255, 0.904)
+            background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
         }
 
         h3 {
-            color: rgba(255, 255, 255, 0.904);
+            color: black;
         }
 
         .column {
