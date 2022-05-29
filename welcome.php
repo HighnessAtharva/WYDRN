@@ -56,22 +56,31 @@ $user_data = check_login($con);
 <div class="column">
     <form class="ms-5" method="POST" action="profile.php" name="userinput">
         <div style="margin-right: 100px;">
-            <!--Video Games-->
+            
+        <!--Video Games-->
             <h3 class="mb-3">Video Game</h3>
             <div class="mb-3 ms-3" name="videogame">
                 Watchu playing son?
-                <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring" autofocus="true"><br>
+                <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring" autofocus="true" id="game-search-box" onkeyup="findgame()" onclick="findgame()"><br>
+                
                 Platform
                 <input type="text" class="form-control" name="Platform" placeholder="PC"><br>
+                
+                <div class="search-list" id="search-list-games">
+                    <!--VIDEOGAME SUGGESTIONS WILL APPEAR HERE-->
+                </div>
             </div>
 
             <!--Music-->
             <h3 class="mb-3">Music</h3>
             <div class="mb-3 ms-3" name="album">
                 What Album you spinnin'?
-                <input type="text" class="form-control" name="Album" placeholder="Cavalcade"><br>
+                <input type="text" class="form-control" name="Album" placeholder="Cavalcade" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()"><br>
                 Who's the Artist?
-                <input type="text" class="form-control" name="Artist" placeholder="Black Midi"><br>
+                <input type="text" class="form-control" name="Artist" placeholder="Black Midi" id="music-artist"><br>
+                <div class="search-list" id="search-list-music">
+                    <!--ALBUM SUGGESTIONS WILL APPEAR HERE-->
+                </div>
             </div>
 
             <!--Books-->
@@ -87,10 +96,16 @@ $user_data = check_login($con);
             <!--Movies-->
             <h3 class="mb-3">Movies</h3>
             <div class="mb-3 ms-3" name="movie">
-                What movie we watchin' today matey? <input type="text" class="form-control" name="Movie" placeholder="The Batman" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()">
-                <br> Release Year <input type="text" class="form-control" name="MovieRelease" placeholder="2022" id="movie-year"><br>
-                <div class="search-list" id="search-list">
+                What movie we watchin' today matey? 
+                <input type="text" class="form-control" name="Movie" placeholder="The Batman" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()"><br>
+                
+                Release Year
+                <input type="text" class="form-control" name="MovieRelease" placeholder="2022" id="movie-year"><br>
+                
+                <div class="search-list" id="search-list-movies">
+                     <!--MOVIE SUGGESTIONS WILL APPEAR HERE-->
                 </div>
+
             </div>
 
             <!--TV-->
@@ -130,6 +145,9 @@ $user_data = check_login($con);
 <!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
 <?php include "footer.php";?>
 <!--END OF MAIN BODY-->
+<script src="SearchBoxAPIs/Videogame/script.js"></script> 
+<script src="SearchBoxAPIs/Music/script.js"></script>
 <script src="SearchBoxAPIs/Movie/script.js"></script>
+
 </body>
 </html>

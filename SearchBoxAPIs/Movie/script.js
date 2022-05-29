@@ -1,15 +1,20 @@
-let movieSearchBox = document.getElementById('movie-search-box');
-let movieYearBox = document.getElementById('movie-year');
-let searchList = document.getElementById('search-list');
+/*
+
+MOVIES 
+
+*/
+const movieSearchBox = document.getElementById('movie-search-box');
+const movieYearBox = document.getElementById('movie-year');
+const searchListMovies = document.getElementById('search-list-movies');
 
 // load movies from API based on search term typed in input box
 function findMovies() {
     let searchTerm = (movieSearchBox.value).trim();
     if (searchTerm.length > 0) {
-        searchList.classList.remove('hide-search-list');
+        searchListMovies.classList.remove('hide-search-list');
         loadMovies(searchTerm);
     } else {
-        searchList.classList.add('hide-search-list');
+        searchListMovies.classList.add('hide-search-list');
     }
 }
 
@@ -25,7 +30,7 @@ async function loadMovies(searchTerm) {
 
 // display the list of movies returned from API below the search bar
 function displayMovieList(movies) {
-    searchList.innerHTML = "";
+    searchListMovies.innerHTML = "";
     for (let idx = 0; idx <= 3; idx++) {
         let movieListItem = document.createElement('div');
         movieListItem.dataset.id = movies[idx]['id']; // setting movie id in  data-id
@@ -42,17 +47,17 @@ function displayMovieList(movies) {
             <h3>${movies[idx]['original_title']}</h3>
             <p>${movies[idx]['release_date']}</p>
         </div>`;
-        searchList.appendChild(movieListItem);
+        searchListMovies.appendChild(movieListItem);
     }
     loadMovieDetails();
 }
 
 function loadMovieDetails() {
-    const searchListMovies = searchList.querySelectorAll('.search-list-item');
-    searchListMovies.forEach(movie => {
+    const movielist = searchListMovies.querySelectorAll('.search-list-item');
+    movielist.forEach(movie => {
         movie.addEventListener('click', async() => {
             // console.log(movie.dataset.id);
-            searchList.classList.add('hide-search-list');
+            searchListMovies.classList.add('hide-search-list');
             movieSearchBox.value = "";
 
             const result = await fetch(`https://api.themoviedb.org/3/movie/${movie.dataset.id}?api_key=e446bc89015229cf337e16b0849d506c&language=en-US`);
@@ -60,6 +65,9 @@ function loadMovieDetails() {
             console.log(movieDetails['original_title'], movieDetails['release_date']);
             movieSearchBox.value = movieDetails['original_title'];
             movieYearBox.value = movieDetails['release_date'];
+            movieSearchBox.setAttribute("readonly", "readonly");
+            movieYearBox.setAttribute("readonly", "readonly");
+
         });
     });
 }
@@ -67,6 +75,6 @@ function loadMovieDetails() {
 
 window.addEventListener('click', (event) => {
     if (event.target.className != "form-control") {
-        searchList.classList.add('hide-search-list');
+        searchListMovies.classList.add('hide-search-list');
     }
 });
