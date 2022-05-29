@@ -43,6 +43,7 @@ $user_data = check_login($con);
             margin-top:100px;
             }
     </style>
+    <link rel="stylesheet" href="SearchBoxAPIs/Movie/main.css">
 </head>
 
 
@@ -86,7 +87,10 @@ $user_data = check_login($con);
             <!--Movies-->
             <h3 class="mb-3">Movies</h3>
             <div class="mb-3 ms-3" name="movie">
-                What movie we watchin' today matey? <input type="text" class="form-control" name="Movie" placeholder="The Batman"><br> Release Year <input type="text" class="form-control" name="MovieRelease" placeholder="2022"><br>
+                What movie we watchin' today matey? <input type="text" class="form-control" name="Movie" placeholder="The Batman" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()">
+                <br> Release Year <input type="text" class="form-control" name="MovieRelease" placeholder="2022" id="movie-year"><br>
+                <div class="search-list" id="search-list">
+                </div>
             </div>
 
             <!--TV-->
@@ -126,5 +130,6 @@ $user_data = check_login($con);
 <!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
 <?php include "footer.php";?>
 <!--END OF MAIN BODY-->
+<script src="SearchBoxAPIs/Movie/script.js"></script>
 </body>
 </html>
