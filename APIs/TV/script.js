@@ -26,6 +26,7 @@ function findTV() {
 
 function displayTVList(tvseries) {
     searchList.innerHTML = "";
+    //NOTE: TRY TO REDUCE THE LENGTH OF THE LOOP. USE AT MOST 3 TO REDUCE API CALLS.
     for (let idx = 0; idx < tvseries.length; idx++) {
         let TVListItem = document.createElement('div');
         TVListItem.dataset.id = tvseries[idx]['id']; // setting movie id in  data-id

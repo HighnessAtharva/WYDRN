@@ -32,6 +32,7 @@ function findAlbum() {
 
 function displayAlbumList(albums) {
     searchList.innerHTML = "";
+    //NOTE: TRY TO REDUCE THE LENGTH OF THE LOOP. USE AT MOST 3 TO REDUCE API CALLS.
     for (let idx = 0; idx < albums.length; idx++) {
         let albumListItem = document.createElement('div');
         //albumListItem.dataset.id = albums[idx]['id']; // setting movie id in  data-id
