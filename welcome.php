@@ -56,28 +56,17 @@ $user_data = check_login($con);
 <div class="column">
     <form class="ms-5" method="POST" action="profile.php" name="userinput">
         <div style="margin-right: 100px;">
-            
-        <!--Video Games-->
-            <h3 class="mb-3">Video Game</h3>
-            <div class="mb-3 ms-3" name="videogame">
-                Watchu playing son?
-                <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring" autofocus="true" id="game-search-box" onkeyup="findgame()" onclick="findgame()"><br>
-                
-                Platform
-                <input type="text" class="form-control" name="Platform" placeholder="PC"><br>
-                
-                <div class="search-list" id="search-list-games">
-                    <!--VIDEOGAME SUGGESTIONS WILL APPEAR HERE-->
-                </div>
-            </div>
 
             <!--Music-->
             <h3 class="mb-3">Music</h3>
             <div class="mb-3 ms-3" name="album">
+                
                 What Album you spinnin'?
                 <input type="text" class="form-control" name="Album" placeholder="Cavalcade" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()"><br>
+                
                 Who's the Artist?
                 <input type="text" class="form-control" name="Artist" placeholder="Black Midi" id="music-artist"><br>
+                
                 <div class="search-list" id="search-list-music">
                     <!--ALBUM SUGGESTIONS WILL APPEAR HERE-->
                 </div>
@@ -86,11 +75,16 @@ $user_data = check_login($con);
             <!--Books-->
             <h3 class="mb-3">Books</h3>
             <div class="mb-3 ms-3" name="book">
-                What is an intellectual like yourself Reading?
-                <input type="text" name="Book" class="form-control" placeholder="Royal Assassin"><br>
-
+                
+            What is an intellectual like yourself Reading?
+                <input type="text" name="Book" class="form-control" placeholder="Royal Assassin" id="book-search-box" onkeyup="findBook()" onclick="findBook()"><br>
+                
                 Drop the name of the Author bro
-                <input type="text" class="form-control" name="Author" placeholder="Robin Hobb"><br>
+                <input type="text" class="form-control" name="Author" placeholder="Robin Hobb"  id="book-author"><br>
+                
+                <div class="search-list" id="search-list-book">
+                    <!--BOOK SUGGESTIONS WILL APPEAR HERE-->
+                </div>
             </div>
 
             <!--Movies-->
@@ -111,9 +105,33 @@ $user_data = check_login($con);
             <!--TV-->
             <h3 class="mb-3">TV/Streaming</h3>
             <div class="mb-3 ms-3" name="TV">
-                What TV series you watching RN hon? <input type="text" class="form-control" name="TV" placeholder="Peaky Blinders"><br> Where is it streaming/broadcasting? <input type="text" class="form-control" name="StreamPlatform" placeholder="BBC"><br>
+                What TV series you watching RN hon? <input type="text" class="form-control" name="TV" placeholder="Peaky Blinders" id="tv-search-box" onkeyup="findTV()" onclick="findTV()"><br> 
+                
+                Where is it streaming/broadcasting? 
+                <input type="text" class="form-control" name="StreamPlatform" placeholder="BBC"><br>
+
+                <div class="search-list" id="search-list-tv">
+                     <!--MOVIE SUGGESTIONS WILL APPEAR HERE-->
+                </div>
+
+           
             </div>
         </div>
+
+              <!--Video Games-->
+              <h3 class="mb-3">Video Game</h3>
+            <div class="mb-3 ms-3" name="videogame">
+                Watchu playing son?
+                <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring" autofocus="true" id="game-search-box" onkeyup="findgame()" onclick="findgame()"><br>
+                
+                Platform
+                <input type="text" class="form-control" name="Platform" placeholder="PC"><br>
+                
+                <div class="search-list" id="search-list-games">
+                    <!--VIDEOGAME SUGGESTIONS WILL APPEAR HERE-->
+                </div>
+            </div>
+
         <form>
 
           <!--The div below puts the submit button below the first column at center-->
@@ -142,12 +160,16 @@ $user_data = check_login($con);
         </div>
         <!--END OF RIGHT COLUMN-->
 
+
+
 <!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
 <?php include "footer.php";?>
 <!--END OF MAIN BODY-->
 <script src="SearchBoxAPIs/Videogame/script.js"></script> 
 <script src="SearchBoxAPIs/Music/script.js"></script>
 <script src="SearchBoxAPIs/Movie/script.js"></script>
+<script src="SearchBoxAPIs/Book/script.js"></script>
+<script src="SearchBoxAPIs/TV/script.js"></script>
 
 </body>
 </html>
