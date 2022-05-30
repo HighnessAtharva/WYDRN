@@ -1,7 +1,17 @@
+/*********************************
+
+API DETAILS FOR BOOK SEARCH
+
+API USED: GoogleBooks API (https://developers.google.com/books/docs/v1/using)
+Application name: WYDRN
+API key: N/A (None Required to Access Publicly Avaiable Data)
+
+*********************************/
+
+
 const BooksearchBox = document.getElementById('book-search-box');
 const BookAuthor = document.getElementById('book-author');
 const searchListBooks = document.getElementById('search-list-book');
-
 
 // load movies from API
 async function loadBooks(searchTerm) {
@@ -9,6 +19,7 @@ async function loadBooks(searchTerm) {
     const res = await fetch(`${URL}`);
     const data = await res.json();
     var results = data['items']
+        // console.log(results);
     if (data) displayBookList(results);
 }
 
@@ -27,6 +38,7 @@ function displayBookList(Books) {
     for (let idx = 0; idx < Books.length; idx++) {
         let BookListItem = document.createElement('div');
         BookListItem.dataset.id = Books[idx]['id'];
+        // console(BookListItem.dataset.id);
         BookListItem.classList.add('search-list-item');
 
         BookListItem.innerHTML = `     
@@ -47,6 +59,7 @@ function loadBookDetails() {
             BooksearchBox.value = "";
             const result = await fetch(`https://www.googleapis.com/books/v1/volumes/${Book.dataset.id}`);
             const BookDetails = await result.json();
+            // console.log(BookDetails['volumeInfo']);
             BooksearchBox.value = BookDetails['volumeInfo']['title'];
             BookAuthor.value = BookDetails['volumeInfo']['authors'];
             BooksearchBox.setAttribute("readonly", "readonly");

@@ -1,14 +1,18 @@
-// Application name: WYDRN
-// API key: 6a4eb1d0536cfe3583784a65332ee179
-// Shared-secret: c953036f143092a6f452413b1a13d8ea
-// Registered to: HighnessAtharva
+/*********************************
+
+API DETAILS FOR ALBUM SEARCH
+
+API USED: LastFM (https://www.last.fm/api)
+Application name: WYDRN
+API key: 6a4eb1d0536cfe3583784a65332ee179
+Shared-secret: c953036f143092a6f452413b1a13d8ea
+Registered to: HighnessAtharva
+
+*********************************/
 
 const albumSearchBox = document.getElementById('music-search-box');
 const albumArtist = document.getElementById('music-artist');
 const searchListAlbums = document.getElementById('search-list-music');
-
-
-//https://api.discogs.com/database/search?q=Heart&format=album&key=GbtsdCNjHakVzCoxtiCA&secret=tOdlsCemqLtJdEIJxIxOGsLRmyeJlbSQ
 
 function findAlbum() {
     let searchTerm = (albumSearchBox.value).trim();
@@ -26,7 +30,7 @@ async function loadAlbums(searchTerm) {
     const res = await fetch(`${URL}`);
     const data = await res.json();
     var results = data['results']['albummatches']['album'];
-
+    // console.log(results);
     if (data) displayAlbumList(results);
 }
 
@@ -34,10 +38,9 @@ async function loadAlbums(searchTerm) {
 
 function displayAlbumList(albums) {
     searchListAlbums.innerHTML = "";
-    //NOTE: TRY TO REDUCE THE LENGTH OF THE LOOP. USE AT MOST 3 TO REDUCE API CALLS.
     for (let idx = 0; idx < albums.length; idx++) {
         let albumListItem = document.createElement('div');
-        //albumListItem.dataset.id = albums[idx]['id']; // setting movie id in  data-id
+        //albumListItem.dataset.id = albums[idx]['id'];
         albumListItem.dataset.name = albums[idx]['name'];
         albumListItem.dataset.artist = albums[idx]['artist'];
         albumListItem.classList.add('search-list-item');
@@ -62,10 +65,10 @@ function loadalbumDetails() {
     const albumlist = searchListAlbums.querySelectorAll('.search-list-item');
     albumlist.forEach(album => {
         album.addEventListener('click', async() => {
-            // console.log(album.dataset.id);
+            // console.log(album.dataset.artist);
+            // console.log(album.dataset.name);
             searchListAlbums.classList.add('hide-search-list');
             albumSearchBox.value = "";
-            //https: //ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=6a4eb1d0536cfe3583784a65332ee179&artist=${album.dataset.artist}&album=${album.dataset.name}&format=json
             const result = await fetch(`https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=6a4eb1d0536cfe3583784a65332ee179&artist=${album.dataset.artist}&album=${album.dataset.name}&format=json`);
             const albumDetails = await result.json();
             albumSearchBox.value = albumDetails['album']['name'];

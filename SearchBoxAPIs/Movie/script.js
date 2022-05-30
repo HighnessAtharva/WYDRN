@@ -1,8 +1,13 @@
-/*
+/*******************************
+API DETAILS FOR MOVIE SEARCH
 
-MOVIES 
+API USED: TMDB [Television and Movie Database] API (https://developers.themoviedb.org/3/getting-started/introduction)
+Application name: Movie-Web-App
+API key: e446bc89015229cf337e16b0849d506c
+Registered to: HighnessAtharva
 
-*/
+********************************/
+
 const movieSearchBox = document.getElementById('movie-search-box');
 const movieYearBox = document.getElementById('movie-year');
 const searchListMovies = document.getElementById('search-list-movies');
@@ -24,7 +29,7 @@ async function loadMovies(searchTerm) {
     const res = await fetch(`${URL}`);
     const data = await res.json();
     var results = data['results']
-    console.log(results);
+        // console.log(results);
     if (data) displayMovieList(results);
 }
 
@@ -62,7 +67,8 @@ function loadMovieDetails() {
 
             const result = await fetch(`https://api.themoviedb.org/3/movie/${movie.dataset.id}?api_key=e446bc89015229cf337e16b0849d506c&language=en-US`);
             const movieDetails = await result.json();
-            console.log(movieDetails['original_title'], movieDetails['release_date']);
+            // console.log(movieDetails);
+            //console.log(movieDetails['original_title'], movieDetails['release_date']);
             movieSearchBox.value = movieDetails['original_title'];
             movieYearBox.value = movieDetails['release_date'];
             movieSearchBox.setAttribute("readonly", "readonly");

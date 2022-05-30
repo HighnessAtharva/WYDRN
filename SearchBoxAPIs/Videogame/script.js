@@ -1,8 +1,13 @@
-/*
+/*******************************
+API DETAILS FOR VIDEOGAME SEARCH
 
-VIDEOGAMES 
+API USED: RAWG API (https://rawg.io/apidocs)
+Application name: WYDRN
+API key: fe197746ce494b4791441d9a9161c1be
+Registered to: HighnessAtharva
+Rate Limit: 20000 requests per month. Renews on 12th of every month
 
-*/
+********************************/
 const gameSearchBox = document.getElementById('game-search-box');
 const searchListGames = document.getElementById('search-list-games');
 
@@ -22,10 +27,9 @@ async function loadgame(searchTerm) {
     const res = await fetch(`${URL}`);
     const data = await res.json();
     var results = data['results'];
-
+    // console.log(results);
     if (data) displaygameList(results);
 }
-
 
 
 function displaygameList(game) {
@@ -55,12 +59,11 @@ function loadgameDetails() {
     const gamelist = searchListGames.querySelectorAll('.search-list-item');
     gamelist.forEach(game => {
         game.addEventListener('click', async() => {
-
             searchListGames.classList.add('hide-search-list');
             gameSearchBox.value = "";
-
             const result = await fetch(`https://api.rawg.io/api/games/${game.dataset.id}?key=fe197746ce494b4791441d9a9161c1be`);
             const gameDetails = await result.json();
+            // console.log(gameDetails);
             gameSearchBox.value = gameDetails['name_original'];
             gameSearchBox.setAttribute("readonly", "readonly");
 
