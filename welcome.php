@@ -57,7 +57,9 @@ $user_data = check_login($con);
     <form class="ms-5" method="POST" action="profile.php" name="userinput">
         <div style="margin-right: 100px;">
 
-            <!--Music-->
+            <!----------------
+                Music
+            ---------------->
             <h3 class="mb-3">Music</h3>
             <div class="mb-3 ms-3" name="album">
                 
@@ -72,11 +74,13 @@ $user_data = check_login($con);
                 </div>
             </div>
 
-            <!--Books-->
+            <!----------------
+                Books
+            ---------------->
             <h3 class="mb-3">Books</h3>
             <div class="mb-3 ms-3" name="book">
                 
-            What is an intellectual like yourself Reading?
+                What is an intellectual like yourself Reading?
                 <input type="text" name="Book" class="form-control" placeholder="Royal Assassin" id="book-search-box" onkeyup="findBook()" onclick="findBook()"><br>
                 
                 Drop the name of the Author bro
@@ -87,9 +91,12 @@ $user_data = check_login($con);
                 </div>
             </div>
 
-            <!--Movies-->
+            <!----------------
+                Movies
+            ---------------->
             <h3 class="mb-3">Movies</h3>
             <div class="mb-3 ms-3" name="movie">
+                
                 What movie we watchin' today matey? 
                 <input type="text" class="form-control" name="Movie" placeholder="The Batman" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()"><br>
                 
@@ -102,13 +109,29 @@ $user_data = check_login($con);
 
             </div>
 
-            <!--TV-->
+            <!----------------
+                  TV
+            ---------------->
             <h3 class="mb-3">TV/Streaming</h3>
             <div class="mb-3 ms-3" name="TV">
-                What TV series you watching RN hon? <input type="text" class="form-control" name="TV" placeholder="Peaky Blinders" id="tv-search-box" onkeyup="findTV()" onclick="findTV()"><br> 
+                
+                What TV series you watching RN hon? 
+                <input type="text" class="form-control" name="TV" placeholder="Peaky Blinders" id="tv-search-box" onkeyup="findTV()" onclick="findTV()"><br> 
                 
                 Where is it streaming/broadcasting? 
-                <input type="text" class="form-control" name="StreamPlatform" placeholder="BBC"><br>
+                <select class="form-control" name="StreamPlatform"><br>
+                        <option value="" selected disabled hidden>Choose</option>
+                        <option value="Netflix">Netflix</option>
+                        <option value="Hulu">Hulu</option>
+                        <option value="Amazon Prime">Amazon Prime</option>
+                        <option value="HBOMax">HBO Max</option>
+                        <option value="Disney+">Disney+</option>
+                        <option value="TencentVideo">Tencent Video</option>
+                        <option value="YouTube">YouTube Premium</option>
+                        <option value="Peacock">Peacock</option>
+                        <option value="Paramount+">Paramount+</option>
+                        <option value="Discovery+">Discovery+</option>
+                </select>
 
                 <div class="search-list" id="search-list-tv">
                      <!--MOVIE SUGGESTIONS WILL APPEAR HERE-->
@@ -118,14 +141,24 @@ $user_data = check_login($con);
             </div>
         </div>
 
-              <!--Video Games-->
-              <h3 class="mb-3">Video Game</h3>
+            <!----------------
+                Video Games
+            ------------------>
+            <h3 class="mb-3">Video Game</h3>
             <div class="mb-3 ms-3" name="videogame">
+                
                 Watchu playing son?
                 <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring" autofocus="true" id="game-search-box" onkeyup="findgame()" onclick="findgame()"><br>
                 
                 Platform
-                <input type="text" class="form-control" name="Platform" placeholder="PC"><br>
+                <select class="form-control" name="Platform">
+                    <option value="" selected disabled hidden>Choose</option>
+                    <option value="PC">PC</option>
+                    <option value="Xbox">Xbox</option>
+                    <option value="Playstation">Playstation</option>
+                    <option value="Nintendo">Nintendo Switch</option>
+                    <option value="Wii">Wii</option>
+                </select>
                 
                 <div class="search-list" id="search-list-games">
                     <!--VIDEOGAME SUGGESTIONS WILL APPEAR HERE-->
