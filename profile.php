@@ -9,12 +9,12 @@ DESCRIPTION: THE MAIN PROFILE PAGE OF  THE USER. THE MOST IMPORTANT PAGE TO THIS
  */
 
 session_start();
-if(empty($_SESSION))
-{
-  header("Location: login.php");
+if (empty($_SESSION)) {
+    header("Location: login.php");
 }
 include "connection.php";
 include "functions.php";
+include "footer.php";
 
 $user_data = check_login($con);
 if (isset($_GET['user_name'])) {
@@ -23,8 +23,6 @@ if (isset($_GET['user_name'])) {
     $username = $user_data['user_name'];
     set_active($username);
 }
-
-
 
 $sql = "SELECT profile_pic, background_pic FROM users WHERE user_name='$username'";
 if ($query = mysqli_query($con, $sql)) {
@@ -35,6 +33,22 @@ if ($query = mysqli_query($con, $sql)) {
     } else {
         die('That user does not exist' . mysqli_error($con));
     }
+}
+
+$sql = "SELECT COUNT(follower_username) FROM `social` where `followed_username`='$username'";
+if ($query = mysqli_query($con, $sql)) {
+    $row = mysqli_fetch_array($query);
+    $total_followers = $row[0];
+} else {
+    echo mysqli_error($con);
+}
+
+$sql = "SELECT COUNT(followed_username) FROM `social` where `follower_username`='$username'";
+if ($query = mysqli_query($con, $sql)) {
+    $row = mysqli_fetch_array($query);
+    $total_following = $row[0];
+} else {
+    echo mysqli_error($con);
 }
 
 if (isset($_POST['clear'])) {
@@ -82,7 +96,7 @@ if (isset($_POST['clear'])) {
                 <span style="font-family: 'Baskerville', 'Times', 'Times New Roman', 'serif'; font-size: 25px; color: #000000; font-variant: small-caps; text-align: center; font-weight: bold;"><?php echo $username ?></span>
 
             <!--Displays a Follow Button only if User is visiting another users page-->
-            
+
             <!------------------------------------------------------------------------------------
             HERE COMPLEX LOGIC IS USED FOR THE ANCHOR TAG
             - If the user is visiting his own profile, the anchor tag is not displayed.
@@ -91,64 +105,66 @@ if (isset($_POST['clear'])) {
             - If the user is already following another user, the anchor tag is displayed with the text "Unfollow"
             --------------------------------------------------------------------------------------->
 
-            <a style="color:black" href="follow.php?user_name=<?php 
-            if (isset($_GET['user_name'])){ 
-                if ($_GET['user_name'] != $user_data['user_name']){
-                    echo $_GET['user_name'];
-                }
-            }
-            ?>" 
-            
-            <?php 
-            if (!isset($_GET['user_name'])){ 
-                    echo 'hidden';
-            }
+            <a style="color:black" href="follow.php?user_name=<?php
+if (isset($_GET['user_name'])) {
+    if ($_GET['user_name'] != $user_data['user_name']) {
+        echo $_GET['user_name'];
+    }
+}
+?>"
 
-            if (isset($_GET['user_name'])){ 
-                if ($_GET['user_name'] == $user_data['user_name']){
-                    echo 'hidden';
-                }
-            }
-            
-            if (!isset($_POST)) {
-                    echo 'hidden';
-                }
-            ?>>
+            <?php
+if (!isset($_GET['user_name'])) {
+    echo 'hidden';
+}
+
+if (isset($_GET['user_name'])) {
+    if ($_GET['user_name'] == $user_data['user_name']) {
+        echo 'hidden';
+    }
+}
+
+if (!isset($_POST)) {
+    echo 'hidden';
+}
+?>>
         <!--THE CONTENT OF THE A TAG GOES HERE [FOLLOW/UNFOLLOW] DEPENDING ON WHETHER A USER IS ALREADY FOLLOWING A PERSON OR NOT.-->
             <?php
-            $user_data = check_login($con);
-            $username = $user_data['user_name'];
-            $sql = "SELECT `followed_username` FROM `social` WHERE `follower_username`='$username' and `followed_username`='$_GET[user_name]'";
-            if ($query = mysqli_query($con, $sql)) {
-                $result=mysqli_num_rows($query);
-                if ($result == 0) {
-                    echo "Follow";
-                } else {
-                  echo "Unfollow";
-                }
-            }
-            ?>
-        </a>
-            
-            
-        
-            
+$user_data = check_login($con);
+$username = $user_data['user_name'];
+$sql = "SELECT `followed_username` FROM `social` WHERE `follower_username`='$username' and `followed_username`='$_GET[user_name]'";
+if ($query = mysqli_query($con, $sql)) {
+    $result = mysqli_num_rows($query);
+    if ($result == 0) {
+        echo "Follow";
+    } else {
+        echo "Unfollow";
+    }
+}
+?></a>
 
-
-            </div>
-        
-        <!--Videogame, Album, Book, Movie and TV will be below here. -->
-        <div name="activity" style="margin-right:30px; word-wrap: break-word; max-height: 200px;
-  overflow: auto; ">
-            <?php include "WYDRN.php";?>
+        <!--This div is for displaying following and followers count-->
+         <div style="display:flex;">
+            <!--FOLLOWING-->
+            <div><p style="background-color: skyblue; padding: 2px;">Following</p><?php echo $total_following; ?></div>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <!--FOLLOWERS-->
+            <div><p style="background-color: skyblue; padding: 2px;">Followers</p> <?php echo $total_followers; ?></div>
         </div>
 
+</div>
+
+        <!--Videogame, Album, Book, Movie and TV will be below here. -->
+        <div name="activity" style="margin-right:30px; word-wrap: break-word; max-height: 200px; overflow: auto; ">
+            <?php include "WYDRN.php";?>
+        </div>
     </div>  <!-- This DIV is the end of the bottom half of the card. White Section-->
 </div> <!-- This DIV is the end of the entire card-->
 
-<!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
-<?php include "footer.php";
-?>
 <!--END OF MAIN BODY-->
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 </body>
 </html>

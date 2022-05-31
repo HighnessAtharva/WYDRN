@@ -8,6 +8,7 @@ Registered to: HighnessAtharva
 
 ********************************/
 
+const TDMBApiKey = "e446bc89015229cf337e16b0849d506c";
 const movieSearchBox = document.getElementById('movie-search-box');
 const movieYearBox = document.getElementById('movie-year');
 const searchListMovies = document.getElementById('search-list-movies');
@@ -25,7 +26,7 @@ function findMovies() {
 
 // load movies from API and call the displayMovieList function
 async function loadMovies(searchTerm) {
-    const URL = `https://api.themoviedb.org/3/search/movie?api_key=e446bc89015229cf337e16b0849d506c&language=en-US&query=${searchTerm}&page=1&include_adult=true`;
+    const URL = `https://api.themoviedb.org/3/search/movie?api_key=${TDMBApiKey}&language=en-US&query=${searchTerm}&page=1&include_adult=true`;
     const res = await fetch(`${URL}`);
     const data = await res.json();
     var results = data['results']
@@ -65,7 +66,7 @@ function loadMovieDetails() {
             searchListMovies.classList.add('hide-search-list');
             movieSearchBox.value = "";
 
-            const result = await fetch(`https://api.themoviedb.org/3/movie/${movie.dataset.id}?api_key=e446bc89015229cf337e16b0849d506c&language=en-US`);
+            const result = await fetch(`https://api.themoviedb.org/3/movie/${movie.dataset.id}?api_key=${TDMBApiKey}&language=en-US`);
             const movieDetails = await result.json();
             // console.log(movieDetails);
             //console.log(movieDetails['original_title'], movieDetails['release_date']);

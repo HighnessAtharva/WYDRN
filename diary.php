@@ -1,29 +1,49 @@
-
-
-
 <?php
 error_reporting(E_ERROR | E_PARSE);
 session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
-//include "header2.php";
+include "header2.php";
 include "connection.php";
 include "functions.php";
+include "footer.php";
 //getting the username from the session
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 ?>
 
-
-
+<!--HTML PART -->
 <html>
     <head><title>DIARY</title></head>
+    <link rel="stylesheet" href="css/diary.css">
 <body>
+    <br><br><br>
 <h1> Diary Entries For <?php echo $username; ?></h1>
 
+<!--To Allow Users to Filter Date Wise -->
+<form method="post" name="dateselect" action="diary_date.php">
+Filter By Date: <input type="date" name="userdate" id="userdate">
+<input type="submit" value="submit">
+</form>
+
+
+<!--PHP PART -->
 <?php
-$sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`datetime` from `data` WHERE `username`= '$username' ORDER BY `datetime` DESC;";
+
+$per_page_record = 5; // Number of entries to show in a page.
+// Look for a GET variable page if not found default is 1.
+if (isset($_GET["page"])) {
+    $page = $_GET["page"];
+} else {
+    $page = 1;
+}
+
+$start_from = ($page - 1) * $per_page_record;
+
+//In MYSQL - LIMIT offset, count; 
+$sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`datetime` from `data` WHERE `username`= '$username' ORDER BY `datetime` DESC LIMIT $start_from, $per_page_record;";
+
 if ($query = mysqli_query($con, $sql)) {
     if (mysqli_num_rows($query) > 0) {
         for ($i = 0; $i <= mysqli_num_rows($query); $i++) {
@@ -49,7 +69,7 @@ if ($query = mysqli_query($con, $sql)) {
             /* FORMATTING AND DISPLAYING BEGINS HERE */
 
             echo "<div class='post'>"; //div start
-            echo ("<table border='1' style='width:80%'>"); //table start
+            echo ("<table id='diarytable'"); //table start
 
             //date and time
             if (!empty($datetime)) {
@@ -107,4 +127,66 @@ if ($query = mysqli_query($con, $sql)) {
 }
 ?>
 
+<!--USING GRID CONTAINER TO SHOW PAGINATION ROW AND MANUAL INPUT BOX ADJACENT/NEXT TO EACH OTHER -->
+<div class="grid-container">
+
+    <!--PAGINATION ROW -->
+    <div class="grid-child pagination">
+        <?php
+        $query = "SELECT count(*) from `data` WHERE `username`= '$username'";
+        $rs_result = mysqli_query($con, $query);
+        $row = mysqli_fetch_row($rs_result);
+        $total_records = $row[0];
+
+        echo "</br>";
+        // CALCULATING THE NUMBER OF PAGES
+        $total_pages = ceil($total_records / $per_page_record);
+        $pageLink = "";
+
+        // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
+        if ($page >= 2) {
+            echo "<a href='diary.php?page=" . ($page - 1) . "'>  Prev </a>";
+        }
+
+        // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
+        for ($i = 1; $i <= $total_pages; $i++) {
+            if ($i == $page) {
+                $pageLink .= "<a class = 'active' href='diary.php?page="
+                    . $i . "'>" . $i . " </a>";
+            } else {
+                $pageLink .= "<a href='diary.php?page=" . $i . "'>" . $i . " </a>";
+            }
+        }
+        echo $pageLink;
+
+        // SHOW NEXT BUTTON IF NOT ON LAST PAGE
+        if ($page < $total_pages) {
+            echo "<a href='diary.php?page=" . ($page + 1) . "'>  Next </a>";
+        }
+        ?>
+    </div>
+    <!--END OF PAGINATION ROW -->
+
+
+    <!--MANUAL PAGINATION INPUT BOX-->
+    <div class="inline grid-child">
+    <input id="page" type="number" min="1" max="<?php echo $total_pages ?>"
+    placeholder="<?php echo $page . "/" . $total_pages; ?>" required>
+    <button onClick="go2Page();">Go</button>
+    </div>
+    <!--END OF MANUAL PAGINATION INPUT BOX-->
+
+<!--END OF GRID CONTAINER-->
+<div>
+
+ <script>
+    //FUNCTION TO GO TO SPECIFIED PAGE - INVOKED ONLY BY MANUAL PAGINATION INPUT BOX
+    function go2Page()
+    {
+        var page = document.getElementById("page").value;
+        //a check to ensure that the user enters a valid page number
+        page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));
+        window.location.href = 'diary.php?page='+page;
+    }
+  </script>
 </body></html>

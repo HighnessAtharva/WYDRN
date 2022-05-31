@@ -28,10 +28,16 @@
     </div>
 
     
-     <!--Social-->
+     <!--Feed-->
      <div style="font-size:20px; position: absolute; top: 0.5em; right: 22em; padding:5px;" >
         <a href="feed.php" style="color:black;">Feed</a>
     </div>
+
+    <!--Feed-->
+    <div style="font-size:20px; position: absolute; top: 0.5em; right: 25em; padding:5px;" >
+        <a href="diary.php" style="color:black;">Diary</a>
+    </div>
+
 
     <!--WELCOME TO WRYDRN-->
     <div style="font-size:20px; position:absolute; color:black; top: 0.5em; left:2.3em; padding:5px;">

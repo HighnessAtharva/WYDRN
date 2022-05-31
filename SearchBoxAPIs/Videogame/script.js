@@ -8,6 +8,8 @@ Registered to: HighnessAtharva
 Rate Limit: 20000 requests per month. Renews on 12th of every month
 
 ********************************/
+
+const RAWGApiKey = "fe197746ce494b4791441d9a9161c1be";
 const gameSearchBox = document.getElementById('game-search-box');
 const searchListGames = document.getElementById('search-list-games');
 
@@ -23,7 +25,7 @@ function findgame() {
 
 // load movies from API
 async function loadgame(searchTerm) {
-    const URL = `https://api.rawg.io/api/games?search=${searchTerm}&key=fe197746ce494b4791441d9a9161c1be`;
+    const URL = `https://api.rawg.io/api/games?search=${searchTerm}&key=${RAWGApiKey}`;
     const res = await fetch(`${URL}`);
     const data = await res.json();
     var results = data['results'];
@@ -61,7 +63,7 @@ function loadgameDetails() {
         game.addEventListener('click', async() => {
             searchListGames.classList.add('hide-search-list');
             gameSearchBox.value = "";
-            const result = await fetch(`https://api.rawg.io/api/games/${game.dataset.id}?key=fe197746ce494b4791441d9a9161c1be`);
+            const result = await fetch(`https://api.rawg.io/api/games/${game.dataset.id}?key=${RAWGApiKey}`);
             const gameDetails = await result.json();
             // console.log(gameDetails);
             gameSearchBox.value = gameDetails['name_original'];

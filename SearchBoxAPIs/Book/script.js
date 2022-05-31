@@ -8,7 +8,6 @@ API key: N/A (None Required to Access Publicly Avaiable Data)
 
 *********************************/
 
-
 const BooksearchBox = document.getElementById('book-search-box');
 const BookAuthor = document.getElementById('book-author');
 const searchListBooks = document.getElementById('search-list-book');
