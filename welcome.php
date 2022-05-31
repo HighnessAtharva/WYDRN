@@ -42,7 +42,11 @@ $user_data = check_login($con);
             margin-top:100px;
             }
     </style>
+    <link rel="stylesheet" href="SearchBoxAPIs/Book/main.css">
     <link rel="stylesheet" href="SearchBoxAPIs/Movie/main.css">
+    <link rel="stylesheet" href="SearchBoxAPIs/Music/main.css">
+    <link rel="stylesheet" href="SearchBoxAPIs/TV/main.css">
+    <link rel="stylesheet" href="SearchBoxAPIs/Videogame/main.css">
 </head>
 
 
@@ -199,9 +203,10 @@ $user_data = check_login($con);
 <!--END OF MAIN BODY-->
 <script src="SearchBoxAPIs/Videogame/script.js"></script> 
 <script src="SearchBoxAPIs/Music/script.js"></script>
+<script src="SearchBoxAPIs/TV/script.js"></script>
 <script src="SearchBoxAPIs/Movie/script.js"></script>
 <script src="SearchBoxAPIs/Book/script.js"></script>
-<script src="SearchBoxAPIs/TV/script.js"></script>
+
 
 </body>
 </html>

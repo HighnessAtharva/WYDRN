@@ -33,7 +33,7 @@
         <a href="feed.php" style="color:black;">Feed</a>
     </div>
 
-    <!--Feed-->
+    <!--Diary-->
     <div style="font-size:20px; position: absolute; top: 0.5em; right: 25em; padding:5px;" >
         <a href="diary.php" style="color:black;">Diary</a>
     </div>
@@ -41,7 +41,7 @@
 
     <!--WELCOME TO WRYDRN-->
     <div style="font-size:20px; position:absolute; color:black; top: 0.5em; left:2.3em; padding:5px;">
-    <h4>WRYDN</h4>
+    <a href="welcome.php" style="color:black; background-color:white; padding: 10px;">WDYRN</a>
     </div>
 
 <!-- END OF HEADER-->

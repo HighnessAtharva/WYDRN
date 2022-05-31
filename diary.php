@@ -18,7 +18,7 @@ $username = $user_data['user_name'];
     <head><title>DIARY</title></head>
     <link rel="stylesheet" href="css/diary.css">
 <body>
-    <br><br><br>
+<br>
 <h1> Diary Entries For <?php echo $username; ?></h1>
 
 <!--To Allow Users to Filter Date Wise -->

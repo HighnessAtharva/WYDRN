@@ -4,9 +4,10 @@ session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
-//include "header2.php";
+
 include "connection.php";
 include "functions.php";
+include "header2.php";
 //getting the username from the session
 $user_data = check_login($con);
 $username = $user_data['user_name'];
@@ -24,16 +25,12 @@ if(isset($_POST['userdate'])){
     <head><title>DIARY</title></head>
     <link rel="stylesheet" href="css/diary.css">
 <body>
+<br>
 <h1> Diary Entries For <?php echo $username;?> on <?php echo $date_selected;?> </h1>
-
-
-
 
 <!--PHP PART -->
 <?php
- 
-$sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date` from `data` WHERE `username`= '$username' AND `date`= '$date_selected' ORDER BY `date` DESC;";
-
+ $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date` from `data` WHERE `username`= '$username' AND `date`= '$date_selected' ORDER BY `date` DESC;";
 
 if ($query = mysqli_query($con, $sql)) {
     if (mysqli_num_rows($query) > 0) {

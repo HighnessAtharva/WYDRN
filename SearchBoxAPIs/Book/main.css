@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 :root {
-    --md-dark-color: #1d1d1d;
-    --dark-color: #171717;
-    --light-dark-color: #292929;
-    --yellow-color: #d4aa11;
+    --md-dark-color: #dbdbdb;
+    --dark-color: #fffcfc;
+    --light-dark-color: #818181;
+    --yellow-color: #ddb110;
 }
 
 * {
@@ -28,7 +28,7 @@ img {
 
 .wrapper {
     min-height: 100vh;
-    background-color: var(--dark-color);
+    background-color: white;
 }
 
 .wrapper .container {
@@ -38,7 +38,7 @@ img {
 }
 
 .search-container {
-    background-color: var(--md-dark-color);
+    background-color: white;
     height: 180px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -53,7 +53,7 @@ img {
 
 .logo {
     padding: 1rem 0;
-    border-bottom: 1px solid var(--light-dark-color);
+    border-bottom: 1px solid white;
 }
 
 .logo p {
@@ -100,7 +100,7 @@ img {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     outline: none;
-    color: var(--light-dark-color);
+    color: white;
     width: 350px;
 }
 
@@ -114,9 +114,9 @@ img {
 }
 
 .search-list .search-list-item {
-    background-color: var(--light-dark-color);
+    background-color: white;
     padding: 0.5rem;
-    border-bottom: 1px solid var(--dark-color);
+    border-bottom: 1px solid white;
     width: calc(350px - 8px);
     color: #fff;
     cursor: pointer;
@@ -126,7 +126,7 @@ img {
 }
 
 .search-list .search-list-item:Hover {
-    background-color: #1f1f1f;
+    background-color: white;
 }
 
 .search-list-item {
@@ -163,8 +163,9 @@ img {
 }
 
 .search-list::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px white;
+    box-shadow: inset 0 0 6px white;
+    ;
 }
 
 .search-list::-webkit-scrollbar-thumb {
@@ -244,7 +245,7 @@ img {
 }
 
 .movie-info .genre {
-    background-color: var(--light-dark-color);
+    background-color: white;
     display: inline-block;
     padding: 0.5rem;
     border-radius: 3px;

@@ -12,6 +12,14 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         padding: 0;
     }
     
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+        text-decoration: none;
+        color: black;
+    }
+    
     body {
         min-height: 100vh;
         min-width: 100vw;
@@ -49,12 +57,13 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         background-size: cover;
         background-position: center center;
         transition: all 0.08s linear;
+        z-index: -1;
+        position: relative;
     }
     
     #profile {
         width: 50vw;
         max-width: 450px;
-        min-width: 300px;
         height: 300px;
         background: white;
         position: relative;
@@ -62,6 +71,17 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         padding-top: 40px;
         padding-left: 25px;
         font-family: 'Open Sans', sans-serif;
+        overflow: auto;
+        z-index: 55;
+    }
+    
+    #activity {
+        margin-right: 30px;
+        word-wrap: break-word;
+        max-height: 900px;
+        max-width: 500px;
+        overflow: auto;
+        z-index: 56;
     }
     
     .follow-button {
@@ -125,6 +145,57 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         position: relative;
         top: 3px;
         font-size: 1rem;
+    }
+    
+    #logout {
+        color: black;
+        position: fixed;
+        top: 1em;
+        right: 1em;
+        padding: 10px;
+        background-color: white;
+        cursor: pointer;
+    }
+    
+    #add-data {
+        color: black;
+        position: fixed;
+        top: 1em;
+        left: 1em;
+        padding: 10px;
+        background-color: white;
+        cursor: pointer;
+    }
+    
+    #user-font {
+        font-family: 'Baskerville', 'Times', 'Times New Roman', 'serif';
+        font-size: 25px;
+        color: #000000;
+        font-variant: small-caps;
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    #following {
+        background-color: pink;
+        padding: 2px;
+        margin-bottom: 0px;
+    }
+    
+    #following-count {
+        padding-left: 30px;
+        background-color: pink;
+    }
+    
+    #follower {
+        background-color: skyblue;
+        padding: 2px;
+        margin-bottom: 0px;
+    }
+    
+    #follower-count {
+        padding-left: 30px;
+        background-color: skyblue;
     }
     
     .shadow {

@@ -50,6 +50,8 @@ DELETES SELECTIVE RECORDS WHERE OTHER PEOPLE FOLLOWED THE USER. ----------------
 $sql4 = "DELETE FROM `social` WHERE `followed_username` = '$username'";
 if ($result = mysqli_query($con, $sql4)) {
     echo "Removed all the records where other people were following the user.";
+    sleep(10);
+    echo "ACCOUNT IS DELETE. REDIRECTING TO LOGIN PAGE.";
     header("Location: login.php");
     die;
 } else {

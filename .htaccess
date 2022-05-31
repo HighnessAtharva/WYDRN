@@ -1,0 +1,5 @@
+ErrorDocument 400 "400 Error"
+ErrorDocument 401 "401 Error"
+ErrorDocument 403 "Access to that page for you is forbidden"
+ErrorDocument 404 "That pages does not exist 404 error"
+ErrorDocument 500 "Internal Server Error."

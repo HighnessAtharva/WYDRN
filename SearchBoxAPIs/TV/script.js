@@ -8,19 +8,9 @@ Registered to: HighnessAtharva
 
 ********************************/
 
-const TDMBApiKey = "e446bc89015229cf337e16b0849d506c";
+const TDMBApiKey2 = "e446bc89015229cf337e16b0849d506c";
 const tvSearchBox = document.getElementById('tv-search-box');
 const searchListTV = document.getElementById('search-list-tv');
-
-// load movies from API
-async function loadTV(searchTerm) {
-    const URL = `https://api.themoviedb.org/3/search/tv?api_key=${TDMBApiKey}&language=en-US&page=1&query=${searchTerm}&include_adult=true`;
-    const res = await fetch(`${URL}`);
-    const data = await res.json();
-    var results = data['results']
-        // console.log(results);
-    if (data) displayTVList(results);
-}
 
 function findTV() {
     let searchTerm = (tvSearchBox.value).trim();
@@ -31,6 +21,18 @@ function findTV() {
         searchListTV.classList.add('hide-search-list');
     }
 }
+
+// load movies from API
+async function loadTV(searchTerm) {
+    const URL = `https://api.themoviedb.org/3/search/tv?api_key=${TDMBApiKey2}&language=en-US&page=1&query=${searchTerm}&include_adult=true`;
+    const res = await fetch(`${URL}`);
+    const data = await res.json();
+    var results = data['results']
+        // console.log(results);
+    if (data) displayTVList(results);
+}
+
+
 
 function displayTVList(tvseries) {
     searchListTV.innerHTML = "";
@@ -62,7 +64,7 @@ function loadtvDetails() {
             // console.log(tv.dataset.id);
             searchListTV.classList.add('hide-search-list');
             tvSearchBox.value = "";
-            const result = await fetch(`https://api.themoviedb.org/3/tv/${tv.dataset.id}?api_key=${TDMBApiKey}&language=en-US`);
+            const result = await fetch(`https://api.themoviedb.org/3/tv/${tv.dataset.id}?api_key=${TDMBApiKey2}&language=en-US`);
             const tvDetails = await result.json();
             // console.log(tvDetails);
             tvSearchBox.value = tvDetails['original_name'];
