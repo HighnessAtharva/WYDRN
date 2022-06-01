@@ -3,9 +3,11 @@
 session_start();
 include("../connection.php");
 include("../functions.php");
+include("../footer.php");
+include("header.php");
 $user_data = check_login($con);
 $username=$user_data['user_name'];
- 
+echo ("<br><br>");
 if (isset($_POST['submit']))
 {
  
@@ -48,19 +50,18 @@ if (isset($_POST['submit']))
             $year=$getData[7];
             $tv=$getData[8];
             $streaming=$getData[9];
-            $datetime=$getData[10];
-            $date=$getData[11];
-         
-
-          
+            $datetime=date($getData[10]);
+            $date=date($getData[11]);
+                
+            if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($TV))) 
+            {
                 // If user already exists in the database with the same email
-                $query = "INSERT INTO data (`username`, `videogame`, `platform`, `album`, `artist`, `book` ,`author` ,`movie`,`year`,`tv`,`streaming`,`datetime`,`date`) VALUES ('$username','$videogame' ,'$platform' ,'$album' ,'$artist' ,'$book' ,'$author' ,'$movie' ,'$year' ,'$tv' ,'$streaming' ,'$datetime' ,'$date')";
+                $query = "INSERT INTO data (`username`, `videogame`, `platform`, `album`, `artist`, `book` ,`author` ,`movie`,`year`,`tv`,`streaming`, `datetime`, `date`) VALUES ('$username','$videogame' ,'$platform' ,'$album' ,'$artist' ,'$book' ,'$author' ,'$movie' ,'$year' ,'$tv' ,'$streaming', '$datetime', '$date')";
  
                 
-                if ($result=mysqli_query($con, $query))
+                if (mysqli_query($con, $query))
                 {
                    echo "Data insert success!";
-                   echo "Total Inserted Rows: " . mysqli_num_rows($result);
                 }
                 else
                 {
@@ -68,7 +69,11 @@ if (isset($_POST['submit']))
                     echo "Insert failed! Please check CSV format.";
                     echo "<br>";
                 }
+            }else{
+                echo "Please check CSV file format.";
             }
+        }
+        
  
             // Close opened CSV file
             fclose($csvFile);

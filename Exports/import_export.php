@@ -8,6 +8,8 @@ DESCRIPTION:
     3) EXPORT DATA TO PDF -> pdf.php
 
 */
+include("../footer.php");
+include("header.php");
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +21,7 @@ DESCRIPTION:
     <title>Export Options</title>
 </head>
 <body>
-
+<br><br>
 <input type="button" value="Export to PDF" onclick="location.href='pdf.php'">
 <input type="button" value="Export to CSV" onclick="location.href='csv_export.php'">
 <input type="button" value="Import from CSV" onclick="location.href='csv_import.php'">

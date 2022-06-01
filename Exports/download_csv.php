@@ -6,8 +6,10 @@ DESCRIPTION:
 
 */
 session_start();
-require("../connection.php");
-require("../functions.php");
+include("../connection.php");
+include("../functions.php");
+include("../footer.php");
+include("header.php");
 $user_data = check_login($con);
 $username=$user_data['user_name'];
 

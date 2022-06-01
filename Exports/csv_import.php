@@ -6,7 +6,8 @@ DESCRIPTION:
 - FORMAT MUST STRICTLY BE THE SAME AS THE ONE EXPORTED. (CSV HEADERS)
 
 */
-
+include("../footer.php");
+include("header.php");
 ?>
 
 <!doctype html>
@@ -38,7 +39,7 @@ DESCRIPTION:
 </head>
  
 <body>
- 
+ <br><br>
   <div class="container">
     <form action="upload_csv.php" method="post" enctype="multipart/form-data">
       <div class="input-group">

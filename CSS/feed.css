@@ -1,13 +1,23 @@
+#loader {
+    display: block;
+    margin: auto;
+}
+
 .activity {
     margin-top: 10px;
     padding: 10px;
     margin-left: 20px;
-    color: white;
+    color: rgb(0, 0, 0);
+}
+
+.container {
+    margin-top: 100px;
+    margin-left: 500px;
 }
 
 .datetime {
     margin-left: 60px;
-    color: white;
+    color: rgb(26, 26, 26);
 }
 
 .profile-pic {
@@ -19,15 +29,17 @@
 .username {
     margin-left: 10px;
     color: blue;
+    font-size: larger;
+    margin-bottom: -10px;
 }
 
 .post {
     margin-left: 10px;
     margin-top: 50px;
-    color: white;
-    background-color: black;
+    color: rgb(21, 21, 21);
+    background-color: rgb(244, 244, 244);
     padding: 10px;
-    border: 1px solid white;
+    border: 1px solid rgb(0, 0, 0);
     width: 500px;
     border-radius: 10px;
 }

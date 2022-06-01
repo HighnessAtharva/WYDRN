@@ -10,8 +10,11 @@ BUTTON AT THE TOP TO ALLOW DOWNLOAD OF CSV
 
 
 session_start();
-require("../connection.php");
-require("../functions.php");
+include("../connection.php");
+include("../functions.php");
+include("../footer.php");
+include("header.php");
+
 $user_data = check_login($con);
 $username=$user_data['user_name'];
 
@@ -38,20 +41,36 @@ if (mysqli_num_rows($result) > 0) {
             <th scope="col">Date</th>
         </tr>
     ';
+
     while ($row = mysqli_fetch_assoc($result)) {
+        
+    $videogame=$row['videogame'];
+    $platform=$row['platform'];
+    $album=$row['album'];
+    $artist=$row['artist'];
+    $book=$row['book'];
+    $author=$row['author'];
+    $movie=$row['movie'];
+    $year=$row['year'];
+    $tv=$row['tv'];
+    $streaming=$row['streaming'];
+    $datetime=$row['datetime'];
+    $date=$row['date'];
+
+
         $data .= '<tr>
-            <td>' . $row['videogame'] . '</td>
-            <td>' . $row['platform'] . '</td>
-            <td>' . $row['album'] . '</td>
-            <td>' . $row['artist'] . '</td>
-            <td>' . $row['book'] . '</td>
-            <td>' . $row['author'] . '</td>
-            <td>' . $row['movie'] . '</td>
-            <td>' . $row['year'] . '</td>
-            <td>' . $row['tv'] . '</td>
-            <td>' . $row['streaming'] . '</td>
-            <td>' . $row['datetime'] . '</td>
-            <td>' . $row['date'] . '</td>
+            <td>' . $videogame . '</td>
+            <td>' . $platform . '</td>
+            <td>' . $album . '</td>
+            <td>' . $artist . '</td>
+            <td>' . $book . '</td>
+            <td>' . $author . '</td>
+            <td>' . $movie . '</td>
+            <td>' . $year . '</td>
+            <td>' . $tv . '</td>
+            <td>' . $streaming . '</td>
+            <td>' . $datetime . '</td>
+            <td>' . $date . '</td>
           
         </tr>';
       
@@ -70,13 +89,14 @@ if (mysqli_num_rows($result) > 0) {
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
 </head>
 <body>
+    <br><br>
 <div class="container">
     <!--  Header  -->
     <center>
     <div class="row">
         <div class="col-md-12">
-            
-            <h2>Export Data for user <?php echo $username;?></h2>
+            <br><br>
+            <h2>Export Data Requested by <u><?php echo $username;?></u></h2>
             <input type="button" value="Download CSV" onclick="location.href='download_csv.php'">
         </div>
     </div>
