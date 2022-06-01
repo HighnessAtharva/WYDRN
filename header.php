@@ -22,9 +22,9 @@
         <a href="edit_profile.php" style="color:black;">Edit Profile</a>
     </div>
 
-     <!--Export Data-->
+     <!--Import/Export Data-->
      <div style="font-size:20px; position: absolute; top: 0.5em; right: 18em; padding:5px;" >
-        <a href="pdf.php" style="color:black;">Export</a>
+        <a href="Exports/import_export.php" style="color:black;">Export</a>
     </div>
 
     

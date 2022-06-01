@@ -9,8 +9,8 @@ DESCRIPTION:
 */
 
 require('FPDF/mysql_table.php');
-include ('connection.php');
-include("functions.php");
+include ('../connection.php');
+include("../functions.php");
 
 session_start();	
 if(empty($_SESSION))
