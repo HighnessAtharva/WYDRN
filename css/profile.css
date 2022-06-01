@@ -62,26 +62,26 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
     }
     
     #profile {
-        width: 50vw;
+        /* width: 50vw;
         max-width: 450px;
-        height: 300px;
+        min-width: 300px; */
+        width: clamp(300px, 50vw, 450px);
+        min-height: 300px;
         background: white;
         position: relative;
         box-sizing: border-box;
         padding-top: 40px;
         padding-left: 25px;
         font-family: 'Open Sans', sans-serif;
-        overflow: auto;
-        z-index: 55;
     }
     
     #activity {
         margin-right: 30px;
         word-wrap: break-word;
+        min-height: auto;
         max-height: 900px;
         max-width: 500px;
         overflow: auto;
-        z-index: 56;
     }
     
     .follow-button {
@@ -119,6 +119,7 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         width: inherit;
         height: inherit;
         border-radius: 8px;
+        overflow: auto;
     }
     
     #profile .name {
