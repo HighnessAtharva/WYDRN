@@ -1,59 +1,64 @@
 <?php
 include "header2.php";
-include "connection.php";
-include "functions.php";
+include "footer.php";
 session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
-
-if (isset($_GET['search'])) {
-    
-    ECHO "<div class='search-results'>";
-    
-    $searchname = $_GET['search'];
-    $sql = "SELECT profile_pic FROM users WHERE user_name='$searchname'";
-    if ($query = mysqli_query($con, $sql)) {
-        if (mysqli_num_rows($query) == 1) {
-            $row = mysqli_fetch_array($query);
-            $profile_pic = $row['profile_pic'];
-            
-            //profile pic of the search result
-            echo "<img src='$profile_pic' class='profilepic' alt='profile_pic'>";
-
-            // username of the searched result
-            echo "<div class='centered'><a href=profile.php?user_name=".$searchname. ">".$searchname."</a></div><br>";
-        } else {
-            ECHO "<div class='centered2'>That user does not exist.</div>";
-            
-    }
-}
-
-    ECHO "</div>";
-}
-
 ?>
 
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Users</title>
-    <link href="css/search_users.css" rel="stylesheet" type="text/css">
+   <title>Live Search using AJAX</title>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 </head>
-<body>
-<form action="" method="get">
-<div class="searchBox">
-<input class="searchInput" type="text" name="search" placeholder="Search">
-<button type="submit" class="searchButton" href="search_users.php">
-    <i class="material-icons"></i>
-</button>
-</div>
-</form>
 
+
+<body>
+<center>
+<br><br>
+<!-- Search box. -->
+   <input type="text" id="search" placeholder="Search for users" autocomplete="off"/>
+
+   <!-- Suggestions will be displayed in below div. -->
+   <div id="display">
+
+
+   </div>
+</center>
+
+
+<script>
+    //function fill()
+    function fill(Value) {
+    $('#search').val(Value);
+    $('#display').hide();
+    }
+
+    //Jquery for AJAX
+    $(document).ready(function() {
+    $("#search").keyup(function() {
+        var name = $('#search').val();
+        if (name == "") {
+            $("#display").html("");
+        }
+
+        else {
+
+            $.ajax({
+                type: "POST",
+                url: "ajax_search_users.php",
+                data: {
+                    search: name
+                },
+                success: function(html) {
+                    $("#display").html(html).show();
+                }
+            });
+        }
+    });
+    });
+</script>
 </body>
 </html>
-<?php include "footer.php";?>

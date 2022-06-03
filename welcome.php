@@ -67,7 +67,7 @@ $user_data = check_login($con);
             <div class="mb-3 ms-3" name="album">
                 
                 What Album you spinnin'?
-                <input type="text" class="form-control" name="Album" placeholder="Cavalcade" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()"><br>
+                <input type="text" class="form-control" name="Album" autofocus="true" placeholder="Cavalcade" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()"><br>
                 
                 Who's the Artist?
                 <input type="text" class="form-control" name="Artist" placeholder="Black Midi" id="music-artist"><br>
@@ -151,7 +151,7 @@ $user_data = check_login($con);
             <div class="mb-3 ms-3" name="videogame">
                 
                 Watchu playing son?
-                <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring" autofocus="true" id="game-search-box" onkeyup="findgame()" onclick="findgame()"><br>
+                <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring" id="game-search-box" onkeyup="findgame()" onclick="findgame()"><br>
                 
                 Platform
                 <select class="form-control" name="Platform">

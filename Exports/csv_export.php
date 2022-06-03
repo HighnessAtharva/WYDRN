@@ -25,7 +25,7 @@ if (!$result = mysqli_query($con, $query)) {
 }
 
 if (mysqli_num_rows($result) > 0) {
-    $data = '<table class="table table-bordered table-dark">
+    $data = '<table>
         <tr>
             <th scope="col">Videogame</th>
             <th scope="col">Platform</th>
@@ -87,6 +87,15 @@ if (mysqli_num_rows($result) > 0) {
     <title>Export Data for user <?php echo $username;?></title>
     <!-- Bootstrap CSS File  -->
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+    <style>
+        table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  background-color: skyblue;
+}
+    </style>
 </head>
 <body>
     <br><br>
@@ -111,5 +120,7 @@ if (mysqli_num_rows($result) > 0) {
     <div class="form-group">
    
 </div>
+
+
 </body>
 </html>
