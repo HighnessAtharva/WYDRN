@@ -48,7 +48,7 @@ if (empty($_SESSION)) {
 
             $.ajax({
                 type: "POST",
-                url: "ajax_search_users.php",
+                url: "search_users_ajax.php",
                 data: {
                     search: name
                 },
