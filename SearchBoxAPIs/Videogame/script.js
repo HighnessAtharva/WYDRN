@@ -44,13 +44,17 @@ function displaygameList(game) {
             gamePoster = game[idx]['background_image'];
         else
             gamePoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+        let name = game[idx]['name']
+        let year = game[idx]['released'];
+        year = year.split("-");
+        year = year[0];
         gameListItem.innerHTML = `
         <div class = "search-item-thumbnail">
             <img src = "${gamePoster}">
         </div>
         <div class = "search-item-info">
-            <h3>${game[idx]['name']}</h3>
-            <p>${game[idx]['released']}</p>
+            <h3>${name}</h3>
+            <p>${year}</p>
         </div>`;
         searchListGames.appendChild(gameListItem);
     }

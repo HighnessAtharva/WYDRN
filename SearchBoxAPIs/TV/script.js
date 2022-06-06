@@ -36,7 +36,7 @@ async function loadTV(searchTerm) {
 
 function displayTVList(tvseries) {
     searchListTV.innerHTML = "";
-    for (let idx = 0; idx < tvseries.length; idx++) {
+    for (let idx = 0; idx < 5; idx++) {
         let TVListItem = document.createElement('div');
         TVListItem.dataset.id = tvseries[idx]['id'];
         TVListItem.classList.add('search-list-item');
@@ -44,13 +44,18 @@ function displayTVList(tvseries) {
             tvPoster = tvseries[idx]['poster_path'];
         else
             tvPoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+
+        let name = tvseries[idx]['original_name'];
+        let year = tvseries[idx]['first_air_date'];
+        year = year.split("-");
+        year = year[0];
         TVListItem.innerHTML = `
         <div class = "search-item-thumbnail">
             <img src = "https://image.tmdb.org/t/p/w185/${tvPoster}">
         </div>
         <div class = "search-item-info">
-            <h3>${tvseries[idx]['original_name']}</h3>
-            <p>${tvseries[idx]['first_air_date']}</p>
+            <h3>${name}</h3>
+            <p>${year}</p>
         </div>`;
         searchListTV.appendChild(TVListItem);
     }

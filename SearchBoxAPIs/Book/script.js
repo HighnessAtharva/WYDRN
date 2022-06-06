@@ -34,7 +34,7 @@ function findBook() {
 
 function displayBookList(Books) {
     searchListBooks.innerHTML = "";
-    for (let idx = 0; idx < Books.length; idx++) {
+    for (let idx = 0; idx < 5; idx++) {
         let BookListItem = document.createElement('div');
         BookListItem.dataset.id = Books[idx]['id'];
         // console(BookListItem.dataset.id);

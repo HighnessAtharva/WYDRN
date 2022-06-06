@@ -45,13 +45,19 @@ function displayMovieList(movies) {
             moviePoster = movies[idx]['poster_path'];
         else
             moviePoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+
+        let name = movies[idx]['original_title'];
+        let year = movies[idx]['release_date'];
+        year = year.split("-");
+        year = year[0];
         movieListItem.innerHTML = `
         <div class = "search-item-thumbnail">
             <img src = "https://image.tmdb.org/t/p/w185/${moviePoster}">
         </div>
         <div class = "search-item-info">
-            <h3>${movies[idx]['original_title']}</h3>
-            <p>${movies[idx]['release_date']}</p>
+            <h3>${name}</h3>
+
+            <p>${year}</p>
         </div>`;
         searchListMovies.appendChild(movieListItem);
     }
