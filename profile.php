@@ -161,12 +161,21 @@ if ($query = mysqli_query($con, $sql)) {
             &nbsp&nbsp&nbsp&nbsp
 
             <!--GET MUTUAL-->
-            <div><p id="follower">
-                <a 
-                href="mutual_view.php?user_name=<?php echo ($_GET['user_name'])?>" 
-                style="color:black"
-                <?php if($_GET['user_name'] == $user_data['user_name']) echo ("hidden"); ?>
-                >Mutual View</a></p> 
+            <div><p id="mutual-view">
+            <?php 
+            if(isset($_GET['user_name'])){    
+            echo("<a href='mutual_view.php?user_name=".$_GET['user_name']."' style='color:black'");
+            
+            if($_GET['user_name'] == $user_data['user_name'])
+                echo ("hidden");
+            
+                
+            echo(">Mutual View</a>");
+            
+            
+                }
+            ?>
+                </p> 
             
             </div>
         </div>
