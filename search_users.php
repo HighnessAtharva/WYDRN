@@ -1,4 +1,10 @@
 <?php
+/*
+
+DESCRIPTION: SEARCH PAGE FOR THE USERS. USERS CAN SEARCH FOR USERS BY USERNAME.  
+
+*/
+
 include "header2.php";
 include "footer.php";
 session_start();

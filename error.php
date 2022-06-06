@@ -1,4 +1,9 @@
 <?php
+/*
+
+DESCRIPTION: TO DISPLAY CUSTOM ERROR PAGES FOR EACH ERROR.  
+
+*/
 
 $status = $_SERVER['REDIRECT_STATUS'];
 $codes = array(

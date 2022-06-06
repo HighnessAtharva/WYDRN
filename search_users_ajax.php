@@ -1,4 +1,11 @@
 <?php
+
+/*
+
+DESCRIPTION: USED TO DISPLAY DATA FROM THE DATABASE ASYNCHRONOUSLY ON THE SEARCH_USERS.PHP PAGE.  
+
+*/
+
 //Including Database configuration file
 include "connection.php";
 include "functions.php";
