@@ -49,6 +49,22 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         left: 20px;
     }
     
+    .get-mutual {
+        color: #3399FF;
+        font-family: "Helvetica";
+        font-size: 10pt;
+        background-color: #ffffff;
+        border: 1px solid;
+        border-color: #3399FF;
+        border-radius: 3px;
+        width: 85px;
+        height: 30px;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        cursor: hand;
+    }
+    
     #header {
         width: 50vw;
         max-width: 450px;

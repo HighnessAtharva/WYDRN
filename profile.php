@@ -113,7 +113,7 @@ if (isset($_GET['user_name'])) {
 }
 ?>"
 
-            <?php
+<?php
 if (!isset($_GET['user_name'])) {
     echo 'hidden';
 }
@@ -156,6 +156,18 @@ if ($query = mysqli_query($con, $sql)) {
             <!--FOLLOWERS-->
             <div><p id="follower"><a href="follow.php" style="color:black">Followers</a></p> 
             <p id="follower-count"><?php echo $total_followers; ?></p>
+            </div>
+
+            &nbsp&nbsp&nbsp&nbsp
+
+            <!--GET MUTUAL-->
+            <div><p id="follower">
+                <a 
+                href="mutual_view.php?user_name=<?php echo ($_GET['user_name'])?>" 
+                style="color:black"
+                <?php if($_GET['user_name'] == $user_data['user_name']) echo ("hidden"); ?>
+                >Mutual View</a></p> 
+            
             </div>
         </div>
 
