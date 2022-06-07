@@ -147,14 +147,26 @@ if ($query = mysqli_query($con, $sql)) {
          <div style="display:flex;">
             
          <!--FOLLOWING-->
-            <div><p id="following"><a href="follow.php" style="color:black">Following</a></p>
+            <div><p id="following"><a href="following.php?user_name=<?php 
+            if(isset($_GET['user_name'])){
+                echo $_GET['user_name'];
+            }else{
+                echo $username;
+            }?>" style="color:black">Following</a></p>
             <p id="following-count"><?php echo $total_following; ?></p>
             </div>
             
             &nbsp&nbsp&nbsp&nbsp
             
             <!--FOLLOWERS-->
-            <div><p id="follower"><a href="follow.php" style="color:black">Followers</a></p> 
+            <div><p id="follower"><a href="followers.php?user_name=<?php 
+                if(isset($_GET['user_name'])){
+                    echo $_GET['user_name'];
+                }else{
+                    echo $username;
+                }
+            ?>"  
+            style="color:black">Followers</a></p> 
             <p id="follower-count"><?php echo $total_followers; ?></p>
             </div>
 
