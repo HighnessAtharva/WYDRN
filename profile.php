@@ -51,11 +51,7 @@ if ($query = mysqli_query($con, $sql)) {
     echo mysqli_error($con);
 }
 
-if (isset($_POST['clear'])) {
-    $username_coded = $user_data['user_name']; //this is the user who is logged in
-    $sql = "INSERT INTO `data`(`username`, `videogame`, `platform`, `album`, `artist`, `book`, `author`, `movie`, `year`, `tv`, `streaming`) VALUES ('$username_coded', '', '', '', '', '', '', '', '', '', '')";
-    $result = mysqli_query($con, $sql);
-}
+
 ?>
 
 
@@ -200,6 +196,11 @@ if ($query = mysqli_query($con, $sql)) {
         </div>
     </div>  <!-- This DIV is the end of the bottom half of the card. White Section-->
 </div> <!-- This DIV is the end of the entire card-->
+
+
+<div>
+    <input type="button" value="Clear" onclick="location.href='clear.php'">
+</div>
 
 <!--END OF MAIN BODY-->
 </body>

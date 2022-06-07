@@ -38,7 +38,7 @@ Filter By Date: <input type="date" name="userdate" id="userdate">
 <!--PHP PART -->
 <?php
 
-$per_page_record = 5; // Number of entries to show in a page.
+$per_page_record = 10; // Number of entries to show in a page.
 // Look for a GET variable page if not found default is 1.
 if (isset($_GET["page"])) {
     $page = $_GET["page"];
@@ -78,8 +78,8 @@ if ($query = mysqli_query($con, $sql)) {
             echo "<div class='post'>"; //div start
             echo ("<table id='diarytable'"); //table start
 
-            //date and time
-            if (!empty($datetime)) {
+            //date and time. Check other fields because datetime will be added even in blank records added during clearing done by the user. 
+            if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($TV))) {
                 $datetime = printable_date($datetime);
                 echo ("<tr><td>");
                 echo ("<div class='datetime'><h2>" . $datetime . "</h2></div>");

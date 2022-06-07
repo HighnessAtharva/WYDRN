@@ -57,7 +57,8 @@ if (mysqli_num_rows($result) > 0) {
     $datetime=$row['datetime'];
     $date=$row['date'];
 
-
+    // this if conditional is added to ensure that blank records are not displayed
+    if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($TV))) {
         $data .= '<tr>
             <td>' . $videogame . '</td>
             <td>' . $platform . '</td>
@@ -73,11 +74,12 @@ if (mysqli_num_rows($result) > 0) {
             <td>' . $date . '</td>
           
         </tr>';
-      
+        } // end of if conditional
     }
+
     $data .= '</table>';
     $data .= '<br><hr>';
-}
+} // end of while loop
 
 ?>
 <!doctype html>

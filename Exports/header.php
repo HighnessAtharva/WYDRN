@@ -38,6 +38,12 @@
         <a href="../diary.php" style="color:black;">Diary</a>
     </div>
 
+     <!--Search Users-->
+     <div style="right: 29em; font-size:20px; position: absolute; top: 0.5em; padding:5px; ">
+        <a href="../search_users.php" style="color:black;">Search Users</a>
+    </div>
+
+
     <!--WELCOME TO WRYDRN-->
     <div style="font-size:20px; position:absolute; color:black; top: 0.5em; left:0.2em; padding:5px;">
         <a href="../welcome.php" style="color:black;">WDYRN</a>

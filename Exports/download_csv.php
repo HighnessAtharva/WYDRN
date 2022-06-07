@@ -8,8 +8,8 @@ DESCRIPTION:
 session_start();
 include("../connection.php");
 include("../functions.php");
-include("../footer.php");
-include("header.php");
+
+
 $user_data = check_login($con);
 $username=$user_data['user_name'];
 
@@ -32,6 +32,7 @@ $output = fopen('php://output', 'w');
 fputcsv($output, array('Videogame', 'Platform', 'Album', 'Artist', 'Book', 'Author', 'Movie', 'Year', 'TV', 'Streaming', 'Datetime', 'Date'));
 
 if (count($data) > 0) {
+
     foreach ($data as $row) {
         fputcsv($output, $row);
     }

@@ -18,6 +18,7 @@
    <!--THIS IS THE DIV OF THE FOLLOWING SECTION-->  
    <div class="col-sm">
    <ul class="list-group ms-5 p-3" style="margin-top:250px; width: 400px;">
+         
          <?php
          
          $follower=$_GET['user_name']; // the person who is logged in

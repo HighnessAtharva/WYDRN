@@ -1,4 +1,5 @@
 <!-- HEADER2 is the alternative header to be used in the rest of the pages where the Clicking on Profile does not redirect with GET Request-->
+
 <link href=css/header.css rel=stylesheet type=text/css>
 <!-- START OF HEADER-->
 <div>
@@ -37,6 +38,12 @@
      <div style="right: 25em;" class="header">
         <a href="diary.php" >Diary</a>
     </div>
+
+    <!--Search Users-->
+    <div style="right: 29em;" class="header">
+        <a href="search_users.php">Search Users</a>
+    </div>
+
 
     <!--WELCOME TO WRYDRN-->
     <div style="left:0.2em;" class="header">

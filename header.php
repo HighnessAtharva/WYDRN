@@ -39,6 +39,11 @@
         <a href="diary.php">Diary</a>
     </div>
 
+    <!--Search Users-->
+    <div style="right: 29em;" class="header">
+        <a href="search_users.php">Search Users</a>
+    </div>
+
 
     <!--WELCOME TO WRYDRN-->
     <div style="left:2.3em;" class="header">
