@@ -38,3 +38,9 @@ SELECT * FROM `data` where username = 'susujpeg';
 ----------------------------------------------------------------------------------------
 -- to get all the blank insert records in the database which are a result of clear button on profile.php
 SELECT * FROM `data` where videogame = '' AND platform ='' AND album='' and artist='' and book='' and author='' and movie='' and year='' and tv='' and streaming='';
+
+
+----------------------------------------------------------------------------------------
+-- to delete all the blank records from the database except the most recent blank record. (Make a trigger out of this)
+DELETE FROM data
+WHERE videogame = '' AND platform ='' AND album='' and artist='' and book='' and author='' and movie='' and year='' and tv='' and streaming='' AND datetime<> (SELECT max(datetime) from data where videogame = '' AND platform ='' AND album='' and artist='' and book='' and author='' and movie='' and year='' and tv='' and streaming='');
