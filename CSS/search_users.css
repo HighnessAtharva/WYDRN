@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+body {
+    background-image: linear-gradient(to right, #cb2d3e, #ef473a);
+}
+
+.searchBox {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.searchBox:hover>.searchInput {
+    width: 240px;
+    padding: 0 6px;
+}
+
+.searchBox:hover>.searchButton {
+    background: white;
+    color: #2f3640;
+}
+
+.searchButton {
+    color: white;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.searchInput {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+}
+
+.search-results {
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    display: flex;
+    justify-content: center;
+    border: 5px solid #1b75f4;
+    background-color: white;
+    border-radius: 15px;
+    width: 40%;
+    height: 50%;
+}
+
+.centered {
+    position: absolute;
+    z-index: 15;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Baskerville', 'Times', 'Times New Roman', 'serif';
+    font-size: 25px;
+    color: #000000;
+    font-variant: small-caps;
+    text-align: center;
+    font-weight: bold;
+}
+
+.centered2 {
+    position: absolute;
+    z-index: 15;
+    top: 50%;
+    left: 40%;
+}
+
+.profilepic {
+    margin-top: 50px;
+    height: 100px;
+    width: 100px;
+}
+
+@media screen and (max-width: 620px) {
+    .searchBox:hover>.searchInput {
+        width: 150px;
+        padding: 0 6px;
+    }
+}
