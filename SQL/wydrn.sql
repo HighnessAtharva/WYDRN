@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2022 at 06:55 AM
+-- Generation Time: Jun 08, 2022 at 01:50 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -106,13 +106,12 @@ INSERT INTO `data` (`username`, `videogame`, `platform`, `album`, `artist`, `boo
 ('susujpeg', 'ZORBIT\'S ORBITS', 'NINTENDO', 'ALL MY DEMONS GREETING ME AS A FRIEND (DELUXE)', 'PINK FLOYD', 'MIGRAINE JOURNAL', 'ROGUE PLUS PUBLISHING', '劇場版 NARUTO -ナルト- 疾風伝 ASDA', '2017', 'THE SUITE LIFE ON DECK', 'YOUTUBE', '2022-06-07 16:01:14', '2022-06-07'),
 ('susujpeg', 'ZORBIT\'S ORBITS', 'NINTENDO', 'ALL MY DEMONS GREETING ME AS A FRIEND (DELUXE)', 'PINK FLOYD', 'MIGRAINE JOURNAL', 'ROGUE PLUS PUBLISHING', '劇場版 NARUTO -ナルト- 疾風伝 ASDA', '2017', 'THE SUITE LIFE ON DECK', 'YOUTUBE', '2022-06-07 16:01:31', '2022-06-07'),
 ('susujpeg', 'ZORBIT\'S ORBITS', 'NINTENDO', 'ALL MY DEMONS GREETING ME AS A FRIEND (DELUXE)', 'PINK FLOYD', 'MIGRAINE JOURNAL', 'ROGUE PLUS PUBLISHING', '劇場版 NARUTO -ナルト- 疾風伝 ASDA', '2017', 'THE SUITE LIFE ON DECK', 'YOUTUBE', '2022-06-07 16:03:21', '2022-06-07'),
-('HighnessAtharva', '', '', '', '', '', '', '', '', '', '', '2022-06-07 21:08:58', '2022-06-07'),
-('HighnessAtharva', '', '', '', '', '', '', '', '', '', '', '2022-06-07 21:09:00', '2022-06-07'),
 ('HighnessAtharva', '', '', '', '', 'MIGRAINE JOURNAL', 'ROGUE PLUS PUBLISHING', '', '', '', '', '2022-06-07 21:22:44', '2022-06-07'),
 ('HighnessAtharva', '', '', '', '', 'MIGRAINE JOURNAL', 'ROGUE PLUS PUBLISHING', '', '', '', '', '2022-06-07 21:22:48', '2022-06-07'),
-('HighnessAtharva', '', '', '', '', '', '', '', '', '', '', '2022-06-07 21:22:50', '2022-06-07'),
-('HighnessAtharva', '', '', '', '', '', '', '', '', '', '', '2022-06-07 21:22:51', '2022-06-07'),
-('HighnessAtharva', '', '', '', '', '', '', '', '', '', '', '2022-06-07 21:22:52', '2022-06-07');
+('HighnessAtharva', 'FALL GUYS: ULTIMATE KNOCKOUT', 'PLAYSTATION', 'THE DARK SIDE OF THE MOON [REMASTERED] (REMASTERED VERSION)', 'PINK FLOYD', 'DEATH BRINGER (SKULDUGGERY PLEASANT, BOOK 6)', 'DEREK LANDY', 'MAD MAX: FURY ROAD', '2015', 'SUIT UP', 'AMAZON PRIME', '2022-06-08 10:29:19', '2022-06-08'),
+('HighnessAtharva', 'SERIOUS SAM 4', 'XBOX ONE', '', '', '', '', '', '', '', '', '2022-06-08 10:29:32', '2022-06-08'),
+('HighnessAtharva', 'MINECRAFT', 'WII', '', '', '', '', '', '', '', '', '2022-06-08 17:12:50', '2022-06-08'),
+('HighnessAtharva', '', '', '', '', '', '', '', '', '', '', '2022-06-08 17:19:45', '2022-06-08');
 
 -- --------------------------------------------------------
 
@@ -134,7 +133,8 @@ INSERT INTO `social` (`follower_username`, `followed_username`, `followed_time`)
 ('susujpeg', 'rt', '2022-03-24 11:41:58'),
 ('susujpeg', 'highnessatharva', '2022-05-26 18:05:58'),
 ('HighnessAtharva', 'rt', '2022-06-07 15:53:36'),
-('HighnessAtharva', 'susujpeg', '2022-06-08 10:18:54');
+('HighnessAtharva', 'susujpeg', '2022-06-08 10:18:54'),
+('HighnessAtharva', 'jamesjoyce', '2022-06-08 16:19:10');
 
 -- --------------------------------------------------------
 
@@ -165,8 +165,8 @@ INSERT INTO `users` (`id`, `user_id`, `user_name`, `email`, `password`, `date`, 
 (66, 86554043705, 'jamesjoyce', 'wydrnwebapp@gmail.com', '$2y$10$e9jU7bIvrgVLFWBOdNXLrubWwSKwbNz/fmI9inelUN5ChWW47Ujuq', '2022-03-19 14:59:20', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
 (67, 192511, 'wydrnbae', 'wydrnapp@gmail.com', '$2y$10$sZow5C2lbfA5fgovkj21LueQUhc379J76g4NQGSPcBfdbxGzfgLvC', '2022-03-19 15:00:28', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
 (71, 862114561492, 'susujpeg', 'darlingjamiesooo@gmail.com', '$2y$10$v/ZcsYOjV7xaJKJNViD4wOyyY4ntPCPcBPRswBOAUh5y7aZbBZPYS', '2022-06-07 15:07:06', 'images/users/110321yeeeee.JPG', 'images/website/defaultBackground.jpg', 0, 0),
-(114, 32726220398725619, 'HighnessAtharva', 'HighnessAtharva@gmail.com', '$2y$10$XUB0HTMRHAZtQk.I7QD4nOhmei2r1FOEbXpVBosXsFzYG1vs71k0e', '2022-06-08 04:48:18', 'images/users/051028Depositphotos_all-passives-2.jpg', 'images/users/wp3192582-the-disastrous-life-of-saiki-k-wallpapers.png', 1, 1),
-(115, 48086836447270, 'westerospatriot', 'westerospatriot@gmail.com', '$2y$10$aaYbh11qjZXDZAp6toi84eg8kh.2zYQpvb9YktiuBDZLELcUYF.C6', '2022-04-28 15:51:46', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 1);
+(114, 32726220398725619, 'HighnessAtharva', 'HighnessAtharva@gmail.com', '$2y$10$XUB0HTMRHAZtQk.I7QD4nOhmei2r1FOEbXpVBosXsFzYG1vs71k0e', '2022-06-08 10:47:34', 'images/users/051028Depositphotos_all-passives-2.jpg', 'images/users/wp3192582-the-disastrous-life-of-saiki-k-wallpapers.png', 1, 1),
+(117, 207808057, 'westerospatriot', 'westerospatriot@gmail.com', '$2y$10$nANrrN5Mkhf8ialK1X7edOltt4aQTvIUoK1cE0y06RpBykX7owZoS', '2022-06-08 10:40:40', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -204,7 +204,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
