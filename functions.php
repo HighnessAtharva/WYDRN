@@ -54,20 +54,37 @@ function random_num($length)
 /*
 Sends an Email requesting verification of the account to the recipient.
 */ 
-function mailer_verify_email($recipient){
-include("connection.php");
-$to_email = $recipient;
-$subject = "WYDRN - Verify Your Email";
-$user_data = check_login($con);
-$username = $user_data['user_name'];
-$hashed_verify=md5($username);
-$body = "Click the link below to verify your Account and get access to all the features. localhost/WYDRN/verify.php?link=$hashed_verify";
-$headers = "From: WYDRNAPP@gmail.com";
 
-	if (mail($to_email, $subject, $body, $headers)) {
-		return 1;
-	}else{
+function mailer_verify_email($recipient){
+	include("connection.php");
+	require "PHPMailer/Exception.php";
+	require "PHPMailer/PHPMailer.php";
+	require "PHPMailer/SMTP.php";
+	$user_data = check_login($con);
+	$username = $user_data['user_name'];
+	$hashed_verify=md5($username);
+
+	$mail = new PHPMailer\PHPMailer\PHPMailer(); // create a new object
+	$mail->IsSMTP(); // enable SMTP
+	$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+	$mail->SMTPAuth = true; // authentication enabled
+	$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+	$mail->Host = "smtp.gmail.com";
+	$mail->Port = 465; // or 587
+	$mail->IsHTML(true);
+	$mail->Username = "wydrnapp@gmail.com";
+	$mail->Password = "apfyljgxwbgwutlq"; //Google Account -> Security -> App Passwords
+	$mail->SetFrom("wydrnapp@gmail.com");
+	$mail->Subject = "WYDRN - Verify Your Email";
+	$mail->Body = "Click the link below to verify your Account and get access to all the features. localhost/WYDRN/verify.php?link=$hashed_verify";
+	$mail->AddAddress($recipient);
+
+	if(!$mail->Send()) {
+		echo "Mailer Error: " . $mail->ErrorInfo;
 		return 0;
+	} else {
+		echo "Message has been sent";
+		return 1;
 	}
 }
 
@@ -76,17 +93,35 @@ $headers = "From: WYDRNAPP@gmail.com";
 Sends an Email with Reset Password Link.
 */ 
 function send_reset_link($recipient, $link){
-$to_email = $recipient;
-$subject = "WYDRN - Reset Password";
-$body = $link;
-$headers = "From: WYDRNAPP@gmail.com";
 
-	if (mail($to_email, $subject, $body, $headers)) {
-		return 1;
-	}else{
+	require "PHPMailer/Exception.php";
+	require "PHPMailer/PHPMailer.php";
+	require "PHPMailer/SMTP.php";
+
+	$mail = new PHPMailer\PHPMailer\PHPMailer(); // create a new object
+	$mail->IsSMTP(); // enable SMTP
+	$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+	$mail->SMTPAuth = true; // authentication enabled
+	$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+	$mail->Host = "smtp.gmail.com";
+	$mail->Port = 465; // or 587
+	$mail->IsHTML(true);
+	$mail->Username = "wydrnapp@gmail.com";
+	$mail->Password = "apfyljgxwbgwutlq"; //Google Account -> Security -> App Passwords
+	$mail->SetFrom("wydrnapp@gmail.com");
+	$mail->Subject = "WYDRN - Reset Password";
+	$mail->Body = $link;
+	$mail->AddAddress($recipient);
+
+	if(!$mail->Send()) {
+		echo "Mailer Error: " . $mail->ErrorInfo;
 		return 0;
+	} else {
+		echo "Message has been sent";
+		return 1;
 	}
 }
+
 
 /*
 Returns whether a user account is verified or not (1 - Verified  ||  0 -  Not Verified)
