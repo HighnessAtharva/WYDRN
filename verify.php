@@ -2,7 +2,7 @@
 include "connection.php";
 include "functions.php";
 include "footer.php";
-include "header.php";
+include "header2.php";
 
 session_start();
 $user_data = check_login($con);
