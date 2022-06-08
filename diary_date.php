@@ -36,7 +36,7 @@ if(isset($_POST['userdate'])){
 
 <!--PHP PART -->
 <?php
- $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date` from `data` WHERE `username`= '$username' AND `date`= '$date_selected' ORDER BY `date` DESC;";
+ $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' AND `date`= '$date_selected' ORDER BY `date` DESC;";
 
 if ($query = mysqli_query($con, $sql)) {
     if (mysqli_num_rows($query) > 0) {
@@ -59,6 +59,7 @@ if ($query = mysqli_query($con, $sql)) {
             $streaming = $row[$i]['streaming'];
 
             $date = $row[$i]['date'];
+            $datetime = $row[$i]['datetime'];
 
             /* FORMATTING AND DISPLAYING BEGINS HERE */
 
@@ -67,9 +68,9 @@ if ($query = mysqli_query($con, $sql)) {
 
             //date and time
             if (!empty($date)) {
-                $date = printable_date($date);
+                $datetime = printable_date($datetime);
                 echo ("<tr><td>");
-                echo ("<div class='datetime'><h2>" . $date . "</h2></div>");
+                echo ("<div class='datetime'><h2>" . $datetime . "</h2></div>");
                 echo ("</td></tr>");
 
                 //videogame
