@@ -43,9 +43,9 @@ DESCRIPTION: USERS CAN ARRIVE HERE BY CLICKING ON THE MUTUAL VIEW BUTTON ON THE 
         </div>   
         
         <?php
-            $sql = "SELECT videogame FROM data WHERE username='$me'
+            $sql = "SELECT videogame FROM data WHERE username='$me'  AND videogame != ''
             INTERSECT
-            SELECT videogame FROM data WHERE username='$otheruser'";
+            SELECT videogame FROM data WHERE username='$otheruser'  AND videogame != ''" ;
             if ($query = mysqli_query($con, $sql)) {
                 if (mysqli_num_rows($query) > 0) {
                     while ($row = mysqli_fetch_assoc($query)){
@@ -68,9 +68,9 @@ DESCRIPTION: USERS CAN ARRIVE HERE BY CLICKING ON THE MUTUAL VIEW BUTTON ON THE 
         </div>   
         
         <?php
-            $sql = "SELECT album, artist FROM data WHERE username='$me'
+            $sql = "SELECT album, artist FROM data WHERE username='$me' AND album!='' AND artist!=''
             INTERSECT
-            SELECT album, artist FROM data WHERE username='$otheruser'";
+            SELECT album, artist FROM data WHERE username='$otheruser' AND album!='' AND artist!=''";
             if ($query = mysqli_query($con, $sql)) {
                 if (mysqli_num_rows($query) > 0) {
                     while ($row = mysqli_fetch_assoc($query)){
@@ -92,9 +92,9 @@ DESCRIPTION: USERS CAN ARRIVE HERE BY CLICKING ON THE MUTUAL VIEW BUTTON ON THE 
         </div>   
         
         <?php
-            $sql = "SELECT book, author FROM data WHERE username='$me'
+            $sql = "SELECT book, author FROM data WHERE username='$me'  AND book!='' AND author!='' 
             INTERSECT
-            SELECT book, author FROM data WHERE username='$otheruser'";
+            SELECT book, author FROM data WHERE username='$otheruser'  AND book!='' AND author!=''";
             if ($query = mysqli_query($con, $sql)) {
                 if (mysqli_num_rows($query) > 0) {
                     while ($row = mysqli_fetch_assoc($query)){
@@ -116,9 +116,9 @@ DESCRIPTION: USERS CAN ARRIVE HERE BY CLICKING ON THE MUTUAL VIEW BUTTON ON THE 
         </div>   
         
         <?php
-            $sql = "SELECT movie, year FROM data WHERE username='$me'
+            $sql = "SELECT movie, year FROM data WHERE username='$me' AND movie!='' AND year!=''
             INTERSECT
-            SELECT movie, year FROM data WHERE username='$otheruser'";
+            SELECT movie, year FROM data WHERE username='$otheruser' AND movie!='' AND year!=''";
             if ($query = mysqli_query($con, $sql)) {
                 if (mysqli_num_rows($query) > 0) {
                     while ($row = mysqli_fetch_assoc($query)){
@@ -140,9 +140,9 @@ DESCRIPTION: USERS CAN ARRIVE HERE BY CLICKING ON THE MUTUAL VIEW BUTTON ON THE 
         </div>   
         
         <?php
-            $sql = "SELECT tv FROM data WHERE username='$me'
+            $sql = "SELECT tv FROM data WHERE username='$me' AND tv != ''
             INTERSECT
-            SELECT tv FROM data WHERE username='$otheruser'";
+            SELECT tv FROM data WHERE username='$otheruser' AND tv != ''";
             if ($query = mysqli_query($con, $sql)) {
                 if (mysqli_num_rows($query) > 0) {
                     while ($row = mysqli_fetch_assoc($query)){

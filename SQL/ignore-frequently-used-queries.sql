@@ -1,27 +1,32 @@
 -- To Get Mutual Videogame list (irrespective of platform) between two users
-SELECT videogame FROM data WHERE username='HighnessAtharva'
+SELECT videogame FROM data WHERE username='HighnessAtharva' AND videogame != ''
 INTERSECT
-SELECT videogame FROM data WHERE username='jamesons'; --substitute logged in user and other username
-
+SELECT videogame FROM data WHERE username='susujpeg' AND videogame != ''; 
 -- To Get Mutual Album, Artist list between two users. 
-SELECT album, artist FROM data WHERE username='HighnessAtharva'
+SELECT album, artist FROM data WHERE username='HighnessAtharva' AND album!='' AND artist!='' 
 INTERSECT
-SELECT album, artist FROM data WHERE username='susujpeg';
+SELECT album, artist FROM data WHERE username='susujpeg' AND album!='' AND artist!='';
 
 -- To Get Mutual Book, Author list between two users.
-SELECT book, author FROM data WHERE username='HighnessAtharva'
+SELECT book, author FROM data WHERE username='HighnessAtharva'  AND book!='' AND author!='' 
 INTERSECT
-SELECT book, author FROM data WHERE username='susujpeg';
+SELECT book, author FROM data WHERE username='susujpeg' AND book!='' AND author!='';
 
 -- To Get Mutual Movie, Year list between two users.
-SELECT movie, year FROM data WHERE username='HighnessAtharva'
+SELECT movie, year FROM data WHERE username='HighnessAtharva' AND movie!='' AND year!=''
 INTERSECT
-SELECT movie, year FROM data WHERE username='susujpeg';
+SELECT movie, year FROM data WHERE username='susujpeg' AND movie!='' AND year!='';
 
 -- To Get Mutual TV Show list (irrespective of streaming platform) between two users.
-SELECT tv FROM data WHERE username='HighnessAtharva'
+SELECT tv FROM data WHERE username='HighnessAtharva' AND tv != ''
 INTERSECT
-SELECT tv FROM data WHERE username='jamesons';
+SELECT tv FROM data WHERE username='susujpeg' AND tv != '';
+
+----------------------------------------------------------------------------------------
+-- to get total count of mutual videogames (logged in user)
+SELECT COUNT(*) FROM(SELECT videogame FROM data WHERE username='HighnessAtharva' AND videogame != ''
+INTERSECT
+SELECT videogame FROM data WHERE username='susujpeg' AND videogame != '') I;
 
 
 ----------------------------------------------------------------------------------------
