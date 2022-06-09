@@ -34,20 +34,37 @@ if (isset($_GET['user_name'])) {
 }?>
 
     <!--HEADING-->
-    <center><h1>Mutual View for <?php echo ($me . " & " . $otheruser) ?></h1></center>
-
+    <center><h1>Mutual View for <?php echo ($me . " & " . $otheruser) ?></h1>
+    
+    <div class="flex spaceEvenly" id="counter">
+        <div id="mydiv">
+            Total Mutual Media<br><?php echo (get_mutual_media_count($me, $otheruser)[5]); ?>
+        </div>
+       
+        <div id="mydiv">
+            VideoGame<br><?php echo (get_mutual_media_count($me, $otheruser)[0]); ?>
+        </div>
+       
+        <div id="mydiv">
+            Albums<br><?php echo (get_mutual_media_count($me, $otheruser)[1]); ?>
+        </div>
+       
+        <div id="mydiv">
+            Books<br><?php echo (get_mutual_media_count($me, $otheruser)[2]); ?>
+        </div>
+       
+        <div id="mydiv">
+            Movies<br><?php echo (get_mutual_media_count($me, $otheruser)[3]); ?>
+        </div>
+        
+        <div id="mydiv">
+            TV<br><?php echo (get_mutual_media_count($me, $otheruser)[4]); ?>
+        </div id="mydiv">
     <div>
-        <div>Total Mutual Media<br><?php echo (get_mutual_media_count($me, $otheruser)[5]); ?></div>
-        <div>VideoGame<br><?php echo (get_mutual_media_count($me, $otheruser)[0]); ?></div>
-        <div>Albums<br><?php echo (get_mutual_media_count($me, $otheruser)[1]); ?></div>
-        <div>Books<br><?php echo (get_mutual_media_count($me, $otheruser)[2]); ?></div>
-        <div>Movies<br><?php echo (get_mutual_media_count($me, $otheruser)[3]); ?></div>
-        <div>TV<br><?php echo (get_mutual_media_count($me, $otheruser)[4]); ?></div>
-    <div>
-
-
+    
+    </center>
     <!--VIDEO GAMES-->
-    <div class="container">
+    <div>
         <div>
             <h2>Video Games</h2>
         </div>

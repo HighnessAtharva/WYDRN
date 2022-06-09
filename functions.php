@@ -306,22 +306,7 @@ function get_mutual_media_count($user1, $user2){
 	$total_mutual_count=$mutual_videogame_count+$mutual_album_count+$mutual_book_count+$mutual_movie_count+$mutual_tvshow_count;
 	
 	// push videogame count
-	array_push($array, $mutual_videogame_count);
-
-	// push album count
-	array_push($array, $mutual_album_count);
-
-	// push book count
-	array_push($array, $mutual_book_count);
-
-	// push movie count
-	array_push($array, $mutual_movie_count);
-
-	// push tvshow count
-	array_push($array, $mutual_tvshow_count);
-
-	// push total mutual count
-	array_push($array, $total_mutual_count);
+	array_push($array, $mutual_videogame_count, $mutual_album_count,$mutual_book_count,$mutual_movie_count, $mutual_tvshow_count, $total_mutual_count);
 
 	/*$array will look like 
 	[0]=>videogame count, 

@@ -199,7 +199,17 @@ if ($query = mysqli_query($con, $sql)) {
 
 
 <div>
-    <input type="button" value="Clear" onclick="location.href='clear.php'">
+    <!-- Hide this if a GET request is made but username is not matching to logged in person-->
+    <input type="button" value="Clear" onclick="location.href='clear.php'" 
+    <?php 
+            if(isset($_GET['user_name'])){
+                if($_GET['user_name'] != $user_data['user_name']){
+                    echo "hidden";
+                }
+              }
+    ?>
+    >  
+    <!--input button end
 </div>
 
 <!--END OF MAIN BODY-->
