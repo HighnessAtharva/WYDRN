@@ -81,27 +81,26 @@ if (isset($_POST['submit'])) {
                 $streaming = "";
             }
             
-            // $query = "INSERT INTO data (`username`, `videogame`, `platform`, `album`, `artist`, `book` ,`author` ,`movie`,`year`,`tv`,`streaming`, `datetime`, `date`) VALUES ('" . $username . "', '" . $videogame . "', '" . $platform . "', '" . $album . "', '" . $artist . "', '" . $book . "','" . $author . "','" . $movie . "','" . $year . "','" . $tv . "','" . $streaming . "','" . $datetime . "', '" . $date . "')";
-
-            echo($videogame.$platform.$album.$artist.$book.$author.$movie.$year.$tv.$streaming.$datetime.$date);
             if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($tv))) {
                 // If user already exists in the database with the same email
-                $query = "INSERT INTO data (`username`, `videogame`, `platform`, `album`, `artist`, `book` ,`author` ,`movie`,`year`,`tv`,`streaming`) VALUES ('" . $username . "', '" . $videogame . "', '" . $platform . "', '" . $album . "', '" . $artist . "', '" . $book . "','" . $author . "','" . $movie . "','" . $year . "','" . $tv . "','" . $streaming . "')";
+                $query = "INSERT INTO `data` (`username`, `videogame`, `platform`, `album`, `artist`, `book` ,`author` ,`movie`,`year`,`tv`,`streaming`) VALUES ('$username', '$videogame', '$platform', '$album', '$artist', '$book', '$author', '$movie', '$year', '$tv', '$streaming')";
 
                 if (mysqli_query($con, $query)) {
-                    echo "Data insert success!";
+                    echo "Data insert success!<br>";
+                    sleep(1);
                 } else {
-                 
-                    echo "Insert failed! Please check CSV format.";
-                    echo "<br>";
+                    echo "Insert failed! Please check CSV format.<br>";
                 }
             }
         }
-
-
+        $counter=0;
+        $counter+=mysqli_affected_rows($con);
+        echo("<br>");
+        echo($counter);
+        fclose($csvFile);
     } else {
         echo "Please select valid file";
     }
-    fclose($csvFile);
+   
 
 }
