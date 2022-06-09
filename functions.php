@@ -227,3 +227,109 @@ function printable_date($datetime){
 	$new_datetime = $day ."-". $month ."-" .$year. " | " .$hours. ":" .$mins." ".$meridian;
 	return $new_datetime; 
 }
+
+/*
+Get total mutual media count between two users
+*/
+function get_mutual_media_count($user1, $user2){
+	include("connection.php");
+	$array=array();
+	
+	// mutual video game count
+	$sql = "SELECT count(*) FROM(SELECT videogame FROM data WHERE username='$user1' AND videogame != '' 
+	INTERSECT
+	SELECT videogame FROM data WHERE username='$user2' AND videogame != '') I";
+	if ($query = mysqli_query($con, $sql)) {
+		if (mysqli_num_rows($query) >0) {
+			$row = mysqli_fetch_array($query);
+			$mutual_videogame_count= $row[0];  
+		} else {
+			die('Could not get the records' . mysqli_error($con));
+		}
+	}
+
+	// mutual album count
+	$sql = "SELECT COUNT(*) FROM(SELECT album, artist FROM data WHERE username='$user1' AND album!='' AND artist!='' 
+	INTERSECT
+	SELECT album, artist FROM data WHERE username='$user2' AND album!='' AND artist!='') I";
+	if ($query = mysqli_query($con, $sql)) {
+		if (mysqli_num_rows($query) >0) {
+			$row = mysqli_fetch_array($query);
+			$mutual_album_count= $row[0];  
+		} else {
+			die('Could not get the records' . mysqli_error($con));
+		}
+	}
+
+	// mutual book count
+	$sql = "SELECT COUNT(*) FROM(SELECT book, author FROM data WHERE username='$user1'  AND book!='' AND author!='' 
+	INTERSECT
+	SELECT book, author FROM data WHERE username='$user2' AND book!='' AND author!='') I";
+	if ($query = mysqli_query($con, $sql)) {
+		if (mysqli_num_rows($query) >0) {
+			$row = mysqli_fetch_array($query);
+			$mutual_book_count= $row[0];  
+		} else {
+			die('Could not get the records' . mysqli_error($con));
+		}
+	}
+
+	// mutual movie count
+	$sql = "SELECT COUNT(*) FROM(SELECT movie, year FROM data WHERE username='$user1' AND movie!='' AND year!=''
+	INTERSECT
+	SELECT movie, year FROM data WHERE username='$user2' AND movie!='' AND year!='') I";
+	if ($query = mysqli_query($con, $sql)) {
+		if (mysqli_num_rows($query) >0) {
+			$row = mysqli_fetch_array($query);
+			$mutual_movie_count= $row[0];  
+		} else {
+			die('Could not get the records' . mysqli_error($con));
+		}
+	}
+	
+
+
+	// mutual tv show count
+	$sql = "SELECT count(*) FROM(SELECT tv FROM data WHERE username='$user1' AND tv != '' 
+	INTERSECT
+	SELECT tv FROM data WHERE username='$user2' AND tv != '') I";
+	if ($query = mysqli_query($con, $sql)) {
+		if (mysqli_num_rows($query) >0) {
+			$row = mysqli_fetch_array($query);
+			$mutual_tvshow_count= $row[0];  
+		} else {
+			die('Could not get the records' . mysqli_error($con));
+		}
+	}
+
+
+	$total_mutual_count=$mutual_videogame_count+$mutual_album_count+$mutual_book_count+$mutual_movie_count+$mutual_tvshow_count;
+	
+	// push videogame count
+	array_push($array, $mutual_videogame_count);
+
+	// push album count
+	array_push($array, $mutual_album_count);
+
+	// push book count
+	array_push($array, $mutual_book_count);
+
+	// push movie count
+	array_push($array, $mutual_movie_count);
+
+	// push tvshow count
+	array_push($array, $mutual_tvshow_count);
+
+	// push total mutual count
+	array_push($array, $total_mutual_count);
+
+	/*$array will look like 
+	[0]=>videogame count, 
+	[1]=>album count, 
+	[2]=>book count, 
+	[3]=>movie count, 
+	[4]=>tvshow count, 
+	[5]=>total mutual count
+	*/
+	return $array;
+}
