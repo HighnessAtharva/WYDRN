@@ -182,10 +182,22 @@ if ($query = mysqli_query($con, $sql)) {
             
             
                 }
-            ?>
-                </p> 
+            ?></p>
+
+                
+                <div><!-- Count of mutual view-->
+                    <?php
+                        if (isset($_GET['user_name'])) {
+                            $otheruser = $_GET['user_name'];
+                            $me = $user_data['user_name'];  
+                            if ($otheruser != $me) {
+                                echo (get_mutual_media_count($me, $otheruser)[5]);
+                            }          
+                        }
+                    ?>            
+                </div>
             
-            </div>
+            </div><!-- END OF MUTUAL DIV-->
         </div>
 
 </div>
@@ -209,8 +221,10 @@ if ($query = mysqli_query($con, $sql)) {
               }
     ?>
     >  
-    <!--input button end
+    <!--input button end-->
 </div>
+
+
 
 <!--END OF MAIN BODY-->
 </body>
