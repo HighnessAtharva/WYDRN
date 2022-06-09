@@ -12,6 +12,14 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         padding: 0;
     }
     
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+        text-decoration: none;
+        color: black;
+    }
+    
     body {
         min-height: 100vh;
         min-width: 100vw;
@@ -41,6 +49,22 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         left: 20px;
     }
     
+    .get-mutual {
+        color: #3399FF;
+        font-family: "Helvetica";
+        font-size: 10pt;
+        background-color: #ffffff;
+        border: 1px solid;
+        border-color: #3399FF;
+        border-radius: 3px;
+        width: 85px;
+        height: 30px;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        cursor: hand;
+    }
+    
     #header {
         width: 50vw;
         max-width: 450px;
@@ -49,19 +73,31 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         background-size: cover;
         background-position: center center;
         transition: all 0.08s linear;
+        z-index: -1;
+        position: relative;
     }
     
     #profile {
-        width: 50vw;
+        /* width: 50vw;
         max-width: 450px;
-        min-width: 300px;
-        height: 300px;
+        min-width: 300px; */
+        width: clamp(300px, 50vw, 450px);
+        min-height: 300px;
         background: white;
         position: relative;
         box-sizing: border-box;
         padding-top: 40px;
         padding-left: 25px;
         font-family: 'Open Sans', sans-serif;
+    }
+    
+    #activity {
+        margin-right: 30px;
+        word-wrap: break-word;
+        min-height: auto;
+        max-height: 900px;
+        max-width: 500px;
+        overflow: auto;
     }
     
     .follow-button {
@@ -99,6 +135,7 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         width: inherit;
         height: inherit;
         border-radius: 8px;
+        overflow: auto;
     }
     
     #profile .name {
@@ -125,6 +162,57 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         position: relative;
         top: 3px;
         font-size: 1rem;
+    }
+    
+    #logout {
+        color: black;
+        position: fixed;
+        top: 1em;
+        right: 1em;
+        padding: 10px;
+        background-color: white;
+        cursor: pointer;
+    }
+    
+    #add-data {
+        color: black;
+        position: fixed;
+        top: 1em;
+        left: 1em;
+        padding: 10px;
+        background-color: white;
+        cursor: pointer;
+    }
+    
+    #user-font {
+        font-family: 'Baskerville', 'Times', 'Times New Roman', 'serif';
+        font-size: 25px;
+        color: #000000;
+        font-variant: small-caps;
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    #following {
+        background-color: pink;
+        padding: 2px;
+        margin-bottom: 0px;
+    }
+    
+    #following-count {
+        padding-left: 30px;
+        background-color: pink;
+    }
+    
+    #follower {
+        background-color: skyblue;
+        padding: 2px;
+        margin-bottom: 0px;
+    }
+    
+    #follower-count {
+        padding-left: 30px;
+        background-color: skyblue;
     }
     
     .shadow {
