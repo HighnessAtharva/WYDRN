@@ -156,7 +156,7 @@ function set_verified($username){
 }
 
 /*
-Sets a user account is verified or not (1 - Verified  ||  0 -  Not Verified)
+Checks whether a user is active or not (1 - Active  ||  0 -  Inactive)
 */
 function check_active_status($username){
 include("connection.php");
@@ -173,7 +173,7 @@ $sql = "SELECT active FROM users WHERE user_name='$username'";
 
 
 /*
-Sets a user account status as active (Returns 1 - Verified  ||  0 -  Not Verified)
+Sets a user account status as active (Returns 1 - Set Active Successfully  ||  0 -  Error in Setting Active)
 */
 function set_active($username){
 	include("connection.php");
@@ -187,6 +187,9 @@ function set_active($username){
 	}
 }
 
+/*
+Sets a user account status as inactive (Returns 1 - Set inactive Successfully  ||  0 -  Error in Setting inactive)
+*/
 function set_inactive($username){
 	include("connection.php");
 	$sql = "UPDATE users SET active=0 WHERE user_name='$username'";
@@ -199,6 +202,9 @@ function set_inactive($username){
 	}
 }
 
+/*
+Used to pass the datetime and return a printable and user-friendly datetime format D:M:Y H:M:AM/PM
+*/
 function printable_date($datetime){
 	$datetime=explode(" ", $datetime);
 
