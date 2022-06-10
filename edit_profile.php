@@ -25,7 +25,7 @@ $username = $user_data['user_name'];
 <head>
   <title>Edit Profile</title>
   <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
-	
+
     <link href="css/header.css" type="stylesheet/css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -90,80 +90,90 @@ echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$u
 <?php
 // CODE TO CHANG THE PROFILE PICTURE AND BACKGROUND IMAGE
 if (isset($_POST['save_profile'])) {
-    $PFPName = date("his") . $_FILES["PFP"]["name"]; //profile picture
-    $BGName = $_FILES["BgImage"]["name"]; //background image
-
-    // For image upload
     $target_dir = "images/users/";
-    $target_file = $target_dir . basename($PFPName);
-    $target_file2 = $target_dir . basename($BGName);
 
-    // VALIDATION
-    // validate image size. Size is calculated in Bytes
+    /*****************
+    FOR PROFILE PICTURE 
+    ******************/
+    $PFPName = date("his") . $_FILES["PFP"]["name"]; //profile picture
+    $target_file = $target_dir . basename($PFPName);
+
     if ($_FILES['PFP']['size'] > 1024000) {
         $msg = "Image size should not be greated than 1MBs";
         $msg_class = "alert-danger";
     }
 
-    if ($_FILES['BgImage']['size'] > 1024000) {
-        $msg = "Image size should not be greated than 1MBs";
-        $msg_class = "alert-danger";
-    }
-
-    // check if file exists
     if (file_exists($target_file)) {
         $msg = "File already exists";
         $msg_class = "alert-danger";
     }
 
-    if (file_exists($target_file2)) {
-        $msg = "File already exists";
-        $msg_class = "alert-danger";
+    //inserting PFP into DB
+    if (move_uploaded_file($_FILES["PFP"]["tmp_name"], $target_file)) {
+        $sql = "UPDATE users SET `profile_pic` = '$target_file' WHERE user_name='$username'";
+        if (mysqli_query($con, $sql)) {
+            $msg = "Image uploaded and saved in the Database";
+        } else {
+            $msg = "There was an error in the database";
+        }
+    } else {
+        $errorPFP = "There was an erro uploading the file";
     }
 
-    // Upload image only if no errors
-    if (empty($error)) {
-
-        //inserting PFP into DB
-        if (move_uploaded_file($_FILES["PFP"]["tmp_name"], $target_file)) {
-            $sql = "UPDATE users SET `profile_pic` = '$target_file' WHERE user_name='$username'";
-            if (mysqli_query($con, $sql)) {
-                $msg = "Image uploaded and saved in the Database";
-            } else {
-                $msg = "There was an error in the database";
-            }
-        } else {
-            $error = "There was an erro uploading the file";
-        }
-
-        //inserting Background into DB
-        if (move_uploaded_file($_FILES["BgImage"]["tmp_name"], $target_file2)) {
-            $sql = "UPDATE users SET `background_pic` = '$target_file2' WHERE user_name='$username'";
-            if (mysqli_query($con, $sql)) {
-                $msg = "Image uploaded and saved in the Database";
-                $msg_class = "alert-success";
-            } else {
-                $msg = "There was an error in the database";
-                $msg_class = "alert-danger";
-            }
-        } else {
-            $error = "There was an erro uploading the file";
-            $msg = "alert-danger";
-        }
-    }
-    if (!empty($error)) {
+    if (!empty($errorPFP)) {
         $messed = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
                top: 450px; left: 570px;' role='alert'>
-               Could not update the details!
+               Could not update the Profile Pic
                </div></center>";
         echo $messed;
     } else {
         $updated = "<center><div class='alert alert-success w-25 text-center' style='position: absolute;
         top: 450px; left: 570px;' role='alert'>
-       Details updated successfully!
+        Profile Pic Updated Successfully!
         </div></center>";
         echo $updated;
     }
+    /*****************
+    FOR BACKGROUND IMAGE 
+    ******************/
+    $BGName = $_FILES["BgImage"]["name"]; //background image
+    $target_file2 = $target_dir . basename($BGName);
+
+    if ($_FILES['BgImage']['size'] > 1024000) {
+        $msg = "Image size should not be greated than 1MBs";
+    }
+
+    if (file_exists($target_file2)) {
+        $msg = "File already exists";
+    }
+
+    //inserting Background into DB
+    if (move_uploaded_file($_FILES["BgImage"]["tmp_name"], $target_file2)) {
+        $sql = "UPDATE users SET `background_pic` = '$target_file2' WHERE user_name='$username'";
+        if (mysqli_query($con, $sql)) {
+            $msg = "Image uploaded and saved in the Database";
+            $msg_class = "alert-success";
+        } else {
+            $msg = "There was an error in the database";
+        }
+    } else {
+        $errorBG = "There was an erro uploading the file";
+    }
+
+    if (!empty($errorBG)) {
+        $messed = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute; top: 490px; left: 570px;' role='alert'>
+        Could not update the background image!
+        </div></center>";
+        echo $messed;
+    } else {
+        $updated = "<center><div class='alert alert-success w-25 text-center' style='position: absolute; top: 490px; left: 570px;' role='alert'>
+        Background image updated successfully!
+        </div></center>";
+        echo $updated;
+    }
+  
+
+
 }
 ?>
 
