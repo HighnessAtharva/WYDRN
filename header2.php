@@ -47,7 +47,7 @@
 
     <!--WELCOME TO WRYDRN-->
     <div style="left:0.2em;" class="header">
-        <a href="welcome.php" >WDYRN</a>
+        <a href="welcome.php" class="wydrn-logo">WDYRN</a>
     </div>
 </div>
 <!-- END OF HEADER-->

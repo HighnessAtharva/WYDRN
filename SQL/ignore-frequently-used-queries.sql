@@ -83,4 +83,4 @@ SELECT * FROM `data` where videogame = '' AND platform ='' AND album='' and arti
 /*****************************/
 -- to delete all the blank records from the database except the most recent blank record. (Make a trigger out of this)
 DELETE FROM data
-WHERE videogame = '' AND platform ='' AND album='' and artist='' and book='' and author='' and movie='' and year='' and tv='' and streaming='' AND datetime<> (SELECT max(datetime) from data where videogame = '' AND platform ='' AND album='' and artist='' and book='' and author='' and movie='' and year='' and tv='' and streaming='');
+WHERE username = 'HighnessAtharva' AND videogame = '' AND platform ='' AND album='' and artist='' and book='' and author='' and movie='' and year='' and tv='' and streaming='' AND datetime<> (SELECT max(datetime) from data where videogame = '' AND platform ='' AND album='' and artist='' and book='' and author='' and movie='' and year='' and tv='' and streaming='');

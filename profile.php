@@ -15,6 +15,7 @@ if (empty($_SESSION)) {
 include "connection.php";
 include "functions.php";
 include "footer.php";
+include "header2.php";
 
 $user_data = check_login($con);
 if (isset($_GET['user_name'])) {
@@ -51,6 +52,24 @@ if ($query = mysqli_query($con, $sql)) {
     echo mysqli_error($con);
 }
 
+//profile.php?user_name=xyz
+$sql = "SELECT COUNT(*) FROM `data` WHERE `username`='$username'";
+if ($query = mysqli_query($con, $sql)) {
+$row = mysqli_fetch_array($query);
+$total_count_get= $row[0];
+}else{
+    echo mysqli_error($con);
+}
+
+//profile.php
+$sql = "SELECT COUNT(*) FROM `data` WHERE `username`='$user_data[user_name]'";
+if ($query = mysqli_query($con, $sql)) {
+$row = mysqli_fetch_array($query);
+$total_count_post= $row[0];
+}else{
+    echo mysqli_error($con);
+}
+
 
 ?>
 
@@ -69,12 +88,7 @@ if ($query = mysqli_query($con, $sql)) {
 </head>
 
 <body>
-<!--Top Right Button (Logout)-->
-<input type="button" value="Logout" onclick="location.href='logout.php'" id="logout">
 
-
-<!--Top Left Button (Add Data to Profile)-->
-<input type="button" value="Add to WYDRN" onclick="location.href='welcome.php'" id="add-data" >
 
 <div class="shadow overflow" style="position:relative;">
     <!--Background Image-->
@@ -86,11 +100,24 @@ if ($query = mysqli_query($con, $sql)) {
             <div class="image">
                 <img src="<?php echo $profile_pic ?>" alt="Profile Picture">
             </div>
-
             <!--Username on Profile-->
-            <div style="margin-bottom: 20px; border-bottom: 3px solid #f9dd94;">
-                <span id="user-font"><?php echo $username ?></span>
+            <span id="user-font"><?php echo $username ?></span>
+            <span>
+                <!-- Hide this if a GET request is made but username is not matching to logged in person-->
+    <input type="button" value="Clear" onclick="location.href='clear.php'" 
+    <?php 
+            if(isset($_GET['user_name'])){
+                if($_GET['user_name'] != $user_data['user_name']){
+                    echo "hidden";
+                }
+              }
+    ?>
+    >  
+    <!--input button end-->
+            </span>
 
+            
+            
             <!--Displays a Follow Button only if User is visiting another users page-->
 
             <!------------------------------------------------------------------------------------
@@ -139,92 +166,98 @@ if ($query = mysqli_query($con, $sql)) {
 }
 ?></a>
 
-        <!--This div is for displaying following and followers count-->
-         <div style="display:flex;">
-            
-         <!--FOLLOWING-->
-            <div><p id="following"><a href="following.php?user_name=<?php 
-            if(isset($_GET['user_name'])){
-                echo $_GET['user_name'];
-            }else{
-                echo $username;
-            }?>" style="color:black">Following</a></p>
-            <p id="following-count"><?php echo $total_following; ?></p>
-            </div>
-            
-            &nbsp&nbsp&nbsp&nbsp
-            
-            <!--FOLLOWERS-->
-            <div><p id="follower"><a href="followers.php?user_name=<?php 
+<div class="content">
+	<div class="data">
+		<ul>
+		<!--Total Media Added (on logged in user profile)/Mutual Count (on other users profile)-->	
+        <li>
+        <!--Count is show here-->
+            <?php
+            // ADDED MEDIA COUNT - GET REQUEST (on logged in user profile)
+            if (isset($_GET['user_name'])){
+                if($_GET['user_name']==$user_data['user_name']){
+                    echo $total_count_get;
+                }
+            }
+            ?>  
+
+            <?php
+            // ADDED MEDIA COUNT - POST REQUEST (on logged in user profile)
+            if (!isset($_GET['user_name'])){ 
+                    echo $total_count_post;
+            }
+            ?>  
+        
+            <?php
+                // MUTUAL MEDIA COUNT - GET REQUEST (on other users profile)
+                if (isset($_GET['user_name'])) {
+                    $otheruser = $_GET['user_name'];
+                    $me = $user_data['user_name'];  
+                    if ($otheruser != $me) {
+                        echo (get_mutual_media_count($me, $otheruser)[5]);
+                    }          
+                }
+            ?>     
+            <!--Text is show heres-->
+		    <span> 
+                <?php 
+                // MUTUAL MEDIA 
+                    if(isset($_GET['user_name'])){    
+                    echo("<a href='mutual_view.php?user_name=".$_GET['user_name']."' style='color:black'");
+                    if($_GET['user_name'] == $user_data['user_name'])
+                        echo ("hidden");                
+                    echo(">Mutual Media</a>");
+                        }
+                ?>
+
+                <?php 
+                // ADDED MEDIA
+                    if(isset($_GET['user_name'])){    
+                        if($_GET['user_name'] == $user_data['user_name'])                
+                        echo("<a style='color:black'>Added Media</a>");
+                    }
+                    if(!isset($_GET['user_name'])){
+                        echo("<a style='color:black'>Added Media</a>");
+                    }
+                ?>
+            </span>			
+        </li>
+			
+            <!--Followers-->
+            <li>
+            <?php echo $total_followers; ?>
+			<span><a href="followers.php?user_name=<?php 
                 if(isset($_GET['user_name'])){
                     echo $_GET['user_name'];
                 }else{
                     echo $username;
                 }
             ?>"  
-            style="color:black">Followers</a></p> 
-            <p id="follower-count"><?php echo $total_followers; ?></p>
-            </div>
-
-            &nbsp&nbsp&nbsp&nbsp
-
-            <!--GET MUTUAL-->
-            <div><p id="mutual-view">
-            <?php 
-            if(isset($_GET['user_name'])){    
-            echo("<a href='mutual_view.php?user_name=".$_GET['user_name']."' style='color:black'");
-            
-            if($_GET['user_name'] == $user_data['user_name'])
-                echo ("hidden");
-            
-                
-            echo(">Mutual View</a>");
-            
-            
-                }
-            ?></p>
-
-                
-                <div><!-- Count of mutual view-->
-                    <?php
-                        if (isset($_GET['user_name'])) {
-                            $otheruser = $_GET['user_name'];
-                            $me = $user_data['user_name'];  
-                            if ($otheruser != $me) {
-                                echo (get_mutual_media_count($me, $otheruser)[5]);
-                            }          
-                        }
-                    ?>            
-                </div>
-            
-            </div><!-- END OF MUTUAL DIV-->
-        </div>
-
-</div>
-
-        <!--Videogame, Album, Book, Movie and TV will be below here. -->
-        <div name="activity" id="activity">
-            <?php include "WYDRN.php";?>
-        </div>
-    </div>  <!-- This DIV is the end of the bottom half of the card. White Section-->
-</div> <!-- This DIV is the end of the entire card-->
-
-
-<div>
-    <!-- Hide this if a GET request is made but username is not matching to logged in person-->
-    <input type="button" value="Clear" onclick="location.href='clear.php'" 
-    <?php 
+            style="color:black">Followers</a></span>
+			</li>
+			
+            <!--Following-->
+            <li>
+            <?php echo $total_following; ?>
+			<span><a href="following.php?user_name=<?php 
             if(isset($_GET['user_name'])){
-                if($_GET['user_name'] != $user_data['user_name']){
-                    echo "hidden";
-                }
-              }
-    ?>
-    >  
-    <!--input button end-->
+                echo $_GET['user_name'];
+            }else{
+                echo $username;
+            }?>" style="color:black">Following</a></span>
+			</li>
+
+		</ul> <!--End of Follower, Following and Media Count Grid-->
+    </div> <!--End of data-->
+</div> <!--End of content-->
+        
+<!--Videogame, Album, Book, Movie and TV will be below here. -->
+<div name="activity" id="activity">
+    <?php include "WYDRN.php";?>
 </div>
 
-
+</div> <!-- This DIV is the end of the bottom half of the card. White Section-->
+</div> <!-- This DIV is the end of the entire card-->
 
 <!--END OF MAIN BODY-->
 </body>

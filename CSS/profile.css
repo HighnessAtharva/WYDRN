@@ -87,7 +87,6 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         position: relative;
         box-sizing: border-box;
         padding-top: 40px;
-        padding-left: 25px;
         font-family: 'Open Sans', sans-serif;
     }
     
@@ -98,6 +97,8 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         max-height: 900px;
         max-width: 500px;
         overflow: auto;
+        padding-left: 25px;
+        padding-top: 0.5em;
     }
     
     .follow-button {
@@ -147,7 +148,7 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
     #profile .nickname {
         color: #888;
         font-size: 0.9rem;
-        padding-bottom: 7px;
+        padding-bottom: 5px;
     }
     
     #profile .location {
@@ -191,6 +192,7 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
         font-variant: small-caps;
         text-align: center;
         font-weight: bold;
+        padding-left: 25px;
     }
     
     #following {
@@ -225,12 +227,41 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
     }
     
     .bottom {
-        margin-top: 10px;
+        margin-top: 2px;
     }
     
     .count {
         color: black;
         font-family: 'Open Sans', sans-serif;
         font-size: 0.9rem;
+        font-weight: 700;
+    }
+    
+    .data {
+        margin-top: .7em;
+        color: #81878b;
+        margin-bottom: 2px;
+        border-bottom: 3px solid #f9dd94;
+    }
+    
+    .data li {
+        width: 32%;
+        text-align: center;
+        display: inline-block;
+        font-size: 1.5em;
+        font-family: 'Lato';
+        border-right: solid 1px #bdc3c7;
+    }
+    
+    .data li:last-child {
+        border: none;
+    }
+    
+    .data li span {
+        display: block;
+        text-transform: uppercase;
+        font-family: 'Quicksand';
+        font-size: .5em;
+        margin-top: .2em;
         font-weight: 700;
     }
