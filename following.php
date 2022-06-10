@@ -6,6 +6,8 @@
   }
   include "connection.php";
   include "functions.php";
+  $user_data = check_login($con);
+  $username = $user_data['user_name'];
   ?>
 
 <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
@@ -15,18 +17,32 @@
 <input type="button" class="btn btn-primary" value="Return To Profile" onclick="window.location.href='profile.php?user_name=<?php echo $_GET['user_name']?>'">
 <div>
 
-   <!--THIS IS THE DIV OF THE FOLLOWING SECTION-->  
+
+
+<!--THIS IS THE DIV OF THE FOLLOWING SECTION-->  
    <div class="col-sm">
    <ul class="list-group ms-5 p-3" style="margin-top:250px; width: 400px;">
+   
+   <div>
+      <?php
+       $follower=$_GET['user_name'];
+       $sql2 = "SELECT `followed_username` from `social`  where `follower_username`='$follower' AND `followed_username` = '$username';";
+       $result = mysqli_query($con, $sql2);
+         if(mysqli_num_rows($result) > 0){
+            echo ("@". $follower . " is following you");     
+         }
+      ?>
+   </div>
+
+   <div>
+   <b>@<?php echo $follower?> is Following </b><br>
+   </div>   
+
+ 
          
          <?php
-         
-         $follower=$_GET['user_name']; // the person who is logged in
-                     
-         // Displays the complete list of people logged-in user is following
-         echo "<b>". $follower." - Following </b>";
-         echo "<br>";
-        $sql2 = "SELECT `followed_username` from `social`  where `follower_username`='$follower';";    
+         // Displays the complete list of people logged-in user is following  
+        $sql2 = "SELECT `followed_username` from `social`  where `follower_username`='$follower' AND `followed_username` != '$username';";    
          $result = mysqli_query($con, $sql2);
          if(mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_assoc($result)){

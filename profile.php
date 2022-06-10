@@ -100,25 +100,25 @@ $total_count_post= $row[0];
             <div class="image">
                 <img src="<?php echo $profile_pic ?>" alt="Profile Picture">
             </div>
+            
             <!--Username on Profile-->
             <span id="user-font"><?php echo $username ?></span>
+            
+            <!--Clear Button-->
             <span>
                 <!-- Hide this if a GET request is made but username is not matching to logged in person-->
-    <input type="button" value="Clear" onclick="location.href='clear.php'" 
-    <?php 
-            if(isset($_GET['user_name'])){
-                if($_GET['user_name'] != $user_data['user_name']){
-                    echo "hidden";
-                }
-              }
-    ?>
-    >  
-    <!--input button end-->
+                <input type="button" value="Clear" onclick="location.href='clear.php'" 
+                <?php 
+                    if(isset($_GET['user_name'])){
+                        if($_GET['user_name'] != $user_data['user_name']){
+                            echo "hidden";
+                        }}?>
+                >  
             </span>
-
             
+            <!--Follow/Unfollow Button-->
+            <span>
             
-            <!--Displays a Follow Button only if User is visiting another users page-->
 
             <!------------------------------------------------------------------------------------
             HERE COMPLEX LOGIC IS USED FOR THE ANCHOR TAG
@@ -129,42 +129,47 @@ $total_count_post= $row[0];
             --------------------------------------------------------------------------------------->
 
             <a style="color:black" href="follow.php?user_name=<?php
-if (isset($_GET['user_name'])) {
-    if ($_GET['user_name'] != $user_data['user_name']) {
-        echo $_GET['user_name'];
-    }
-}
-?>"
+            if (isset($_GET['user_name'])) {
+                if ($_GET['user_name'] != $user_data['user_name']) {
+                    echo $_GET['user_name'];
+                }
+            }
+            ?>"
 
-<?php
-if (!isset($_GET['user_name'])) {
-    echo 'hidden';
-}
-
-if (isset($_GET['user_name'])) {
-    if ($_GET['user_name'] == $user_data['user_name']) {
-        echo 'hidden';
-    }
-}
-
-if (!isset($_POST)) {
-    echo 'hidden';
-}
-?>>
-        <!--THE CONTENT OF THE A TAG GOES HERE [FOLLOW/UNFOLLOW] DEPENDING ON WHETHER A USER IS ALREADY FOLLOWING A PERSON OR NOT.-->
             <?php
-$user_data = check_login($con);
-$username = $user_data['user_name'];
-$sql = "SELECT `followed_username` FROM `social` WHERE `follower_username`='$username' and `followed_username`='$_GET[user_name]'";
-if ($query = mysqli_query($con, $sql)) {
-    $result = mysqli_num_rows($query);
-    if ($result == 0) {
-        echo "Follow";
-    } else {
-        echo "Unfollow";
-    }
-}
-?></a>
+            if (!isset($_GET['user_name'])) {
+                echo 'hidden';
+            }
+
+            if (isset($_GET['user_name'])) {
+                if ($_GET['user_name'] == $user_data['user_name']) {
+                    echo 'hidden';
+                }
+            }
+
+            if (!isset($_POST)) {
+                echo 'hidden';
+            }
+            ?>>
+            <!--THE CONTENT OF THE A TAG GOES HERE [FOLLOW/UNFOLLOW] DEPENDING ON WHETHER A USER IS ALREADY FOLLOWING A PERSON OR NOT.-->
+            <?php
+            $user_data = check_login($con);
+            $username = $user_data['user_name'];
+            $sql = "SELECT `followed_username` FROM `social` WHERE `follower_username`='$username' and `followed_username`='$_GET[user_name]'";
+            if ($query = mysqli_query($con, $sql)) {
+                $result = mysqli_num_rows($query);
+                if ($result == 0) {
+                    echo "Follow";
+                } else {
+                    echo "Unfollow";
+                }
+            }
+            ?></a>
+            </span>
+
+            
+            
+
 
 <div class="content">
 	<div class="data">
