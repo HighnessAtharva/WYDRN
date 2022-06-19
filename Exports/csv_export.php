@@ -117,7 +117,13 @@ th, td {
     <br><hr><br>
     <!--  Content   -->
     <div class="form-group">
-        <?php echo $data ?>
+        <?php 
+        if (!empty($data)){
+            echo $data;
+        }else{
+            echo "No Media added yet!";
+        }
+        ?>
     </div>
     <div class="form-group">
    

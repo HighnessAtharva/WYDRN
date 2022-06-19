@@ -25,6 +25,7 @@ if (isset($_GET['user_name'])) {
     set_active($username);
 }
 
+// profile pic and background pic
 $sql = "SELECT profile_pic, background_pic FROM users WHERE user_name='$username'";
 if ($query = mysqli_query($con, $sql)) {
     if (mysqli_num_rows($query) == 1) {
@@ -36,6 +37,7 @@ if ($query = mysqli_query($con, $sql)) {
     }
 }
 
+// get total followers count
 $sql = "SELECT COUNT(follower_username) FROM `social` where `followed_username`='$username'";
 if ($query = mysqli_query($con, $sql)) {
     $row = mysqli_fetch_array($query);
@@ -44,6 +46,7 @@ if ($query = mysqli_query($con, $sql)) {
     echo mysqli_error($con);
 }
 
+// get total following count
 $sql = "SELECT COUNT(followed_username) FROM `social` where `follower_username`='$username'";
 if ($query = mysqli_query($con, $sql)) {
     $row = mysqli_fetch_array($query);
@@ -52,7 +55,7 @@ if ($query = mysqli_query($con, $sql)) {
     echo mysqli_error($con);
 }
 
-//profile.php?user_name=xyz
+//profile.php?user_name=xyz -  get total media count for get request
 $sql = "SELECT COUNT(*) FROM `data` WHERE `username`='$username'";
 if ($query = mysqli_query($con, $sql)) {
 $row = mysqli_fetch_array($query);
@@ -61,7 +64,7 @@ $total_count_get= $row[0];
     echo mysqli_error($con);
 }
 
-//profile.php
+//profile.php - get total media count for post request
 $sql = "SELECT COUNT(*) FROM `data` WHERE `username`='$user_data[user_name]'";
 if ($query = mysqli_query($con, $sql)) {
 $row = mysqli_fetch_array($query);
@@ -92,7 +95,9 @@ $total_count_post= $row[0];
 
 <div class="shadow overflow" style="position:relative;">
     <!--Background Image-->
-    <div id="header" style="background-image:url(<?php echo $background_pic ?>)" alt="Background Image"></div>
+    <div id="header" style="background-image:url(<?php echo $background_pic ?>)" alt="Background Image">
+        
+    </div>
 
         <div id="profile">
 

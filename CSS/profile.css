@@ -1,267 +1,267 @@
-    /*
+/*
 
 DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
 
 */
-    
-    @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
-    @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-    body,
-    html {
-        margin: 0;
-        padding: 0;
-    }
-    
-    a,
-    a:hover,
-    a:focus,
-    a:active {
-        text-decoration: none;
-        color: black;
-    }
-    
-    body {
-        min-height: 100vh;
-        min-width: 100vw;
-        background-image: linear-gradient(-225deg, #FF3CAC 0%, #562B7C 52%, #2B86C5 100%);
-        background-size: cover;
-        background-position: center center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    a:link {
-        color: white;
-        background-color: transparent;
-        text-decoration: none;
-    }
-    
-    a:visited {
-        color: whitesmoke;
-        background-color: transparent;
-        text-decoration: none;
-    }
-    
-    .top {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-    }
-    
-    .get-mutual {
-        color: #3399FF;
-        font-family: "Helvetica";
-        font-size: 10pt;
-        background-color: #ffffff;
-        border: 1px solid;
-        border-color: #3399FF;
-        border-radius: 3px;
-        width: 85px;
-        height: 30px;
-        position: absolute;
-        top: 50px;
-        left: 50px;
-        cursor: hand;
-    }
-    
-    #header {
-        width: 50vw;
-        max-width: 450px;
-        min-width: 300px;
-        height: 150px;
-        background-size: cover;
-        background-position: center center;
-        transition: all 0.08s linear;
-        z-index: -1;
-        position: relative;
-    }
-    
-    #profile {
-        /* width: 50vw;
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: linear-gradient(-225deg, #FF3CAC 0%, #562B7C 52%, #2B86C5 100%);
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: whitesmoke;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.top {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+.get-mutual {
+    color: #3399FF;
+    font-family: "Helvetica";
+    font-size: 10pt;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #3399FF;
+    border-radius: 3px;
+    width: 85px;
+    height: 30px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    cursor: hand;
+}
+
+#header {
+    width: 50vw;
+    max-width: 450px;
+    min-width: 300px;
+    height: 150px;
+    background-size: cover;
+    background-position: center center;
+    transition: all 0.08s linear;
+    z-index: -1;
+    position: relative;
+}
+
+#profile {
+    /* width: 50vw;
         max-width: 450px;
         min-width: 300px; */
-        width: clamp(300px, 50vw, 450px);
-        min-height: 300px;
-        background: white;
-        position: relative;
-        box-sizing: border-box;
-        padding-top: 40px;
-        font-family: 'Open Sans', sans-serif;
-    }
-    
-    #activity {
-        margin-right: 30px;
-        word-wrap: break-word;
-        min-height: auto;
-        max-height: 900px;
-        max-width: 500px;
-        overflow: auto;
-        padding-left: 25px;
-        padding-top: 0.5em;
-    }
-    
-    .follow-button {
-        color: #3399FF;
-        font-family: "Helvetica";
-        font-size: 10pt;
-        background-color: #ffffff;
-        border: 1px solid;
-        border-color: #3399FF;
-        border-radius: 3px;
-        width: 85px;
-        height: 30px;
-        position: absolute;
-        top: 50px;
-        left: 50px;
-        cursor: hand;
-    }
-    
-    .follow-button:hover {
-        background-color: rgb(30, 255, 0);
-        color: white;
-    }
-    
-    #profile .image {
-        position: absolute;
-        border: 3px solid white;
-        top: -55px;
-        left: 20px;
-        height: 80px;
-        width: 80px;
-        border-radius: 10px;
-    }
-    
-    #profile .image img {
-        width: inherit;
-        height: inherit;
-        border-radius: 8px;
-        overflow: auto;
-    }
-    
-    #profile .name {
-        font-size: 1.3rem;
-        font-weight: 500;
-        color: #444;
-    }
-    
-    #profile .nickname {
-        color: #888;
-        font-size: 0.9rem;
-        padding-bottom: 5px;
-    }
-    
-    #profile .location {
-        color: #555;
-        font-size: 0.9rem;
-        padding-left: 0px;
-        position: relative;
-        left: -5px;
-    }
-    
-    #profile .location .material-icons {
-        position: relative;
-        top: 3px;
-        font-size: 1rem;
-    }
-    
-    #logout {
-        color: black;
-        position: fixed;
-        top: 1em;
-        right: 1em;
-        padding: 10px;
-        background-color: white;
-        cursor: pointer;
-    }
-    
-    #add-data {
-        color: black;
-        position: fixed;
-        top: 1em;
-        left: 1em;
-        padding: 10px;
-        background-color: white;
-        cursor: pointer;
-    }
-    
-    #user-font {
-        font-family: 'Baskerville', 'Times', 'Times New Roman', 'serif';
-        font-size: 25px;
-        color: #000000;
-        font-variant: small-caps;
-        text-align: center;
-        font-weight: bold;
-        padding-left: 25px;
-    }
-    
-    #following {
-        background-color: pink;
-        padding: 2px;
-        margin-bottom: 0px;
-    }
-    
-    #following-count {
-        padding-left: 30px;
-        background-color: pink;
-    }
-    
-    #follower {
-        background-color: skyblue;
-        padding: 2px;
-        margin-bottom: 0px;
-    }
-    
-    #follower-count {
-        padding-left: 30px;
-        background-color: skyblue;
-    }
-    
-    .shadow {
-        box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
-    }
-    
-    .overflow {
-        overflow: hidden;
-    }
-    
-    .bottom {
-        margin-top: 2px;
-    }
-    
-    .count {
-        color: black;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 0.9rem;
-        font-weight: 700;
-    }
-    
-    .data {
-        margin-top: .7em;
-        color: #81878b;
-        margin-bottom: 2px;
-        border-bottom: 3px solid #f9dd94;
-    }
-    
-    .data li {
-        width: 32%;
-        text-align: center;
-        display: inline-block;
-        font-size: 1.5em;
-        font-family: 'Lato';
-        border-right: solid 1px #bdc3c7;
-    }
-    
-    .data li:last-child {
-        border: none;
-    }
-    
-    .data li span {
-        display: block;
-        text-transform: uppercase;
-        font-family: 'Quicksand';
-        font-size: .5em;
-        margin-top: .2em;
-        font-weight: 700;
-    }
+    width: clamp(300px, 50vw, 450px);
+    min-height: 300px;
+    background: white;
+    position: relative;
+    box-sizing: border-box;
+    padding-top: 40px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#activity {
+    margin-right: 30px;
+    word-wrap: break-word;
+    min-height: auto;
+    max-height: 900px;
+    max-width: 500px;
+    overflow: auto;
+    padding-left: 25px;
+    padding-top: 0.5em;
+}
+
+.follow-button {
+    color: #3399FF;
+    font-family: "Helvetica";
+    font-size: 10pt;
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #3399FF;
+    border-radius: 3px;
+    width: 85px;
+    height: 30px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    cursor: hand;
+}
+
+.follow-button:hover {
+    background-color: rgb(30, 255, 0);
+    color: white;
+}
+
+#profile .image {
+    position: absolute;
+    border: 3px solid white;
+    top: -55px;
+    left: 20px;
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+#profile .image img {
+    width: inherit;
+    height: inherit;
+    border-radius: 8px;
+    overflow: auto;
+}
+
+#profile .name {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #444;
+}
+
+#profile .nickname {
+    color: #888;
+    font-size: 0.9rem;
+    padding-bottom: 5px;
+}
+
+#profile .location {
+    color: #555;
+    font-size: 0.9rem;
+    padding-left: 0px;
+    position: relative;
+    left: -5px;
+}
+
+#profile .location .material-icons {
+    position: relative;
+    top: 3px;
+    font-size: 1rem;
+}
+
+#logout {
+    color: black;
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    padding: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#add-data {
+    color: black;
+    position: fixed;
+    top: 1em;
+    left: 1em;
+    padding: 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#user-font {
+    font-family: 'Baskerville', 'Times', 'Times New Roman', 'serif';
+    font-size: 25px;
+    color: #000000;
+    font-variant: small-caps;
+    text-align: center;
+    font-weight: bold;
+    padding-left: 25px;
+}
+
+#following {
+    background-color: pink;
+    padding: 2px;
+    margin-bottom: 0px;
+}
+
+#following-count {
+    padding-left: 30px;
+    background-color: pink;
+}
+
+#follower {
+    background-color: skyblue;
+    padding: 2px;
+    margin-bottom: 0px;
+}
+
+#follower-count {
+    padding-left: 30px;
+    background-color: skyblue;
+}
+
+.shadow {
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.overflow {
+    overflow: hidden;
+}
+
+.bottom {
+    margin-top: 2px;
+}
+
+.count {
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.data {
+    margin-top: .7em;
+    color: #81878b;
+    margin-bottom: 2px;
+    border-bottom: 3px solid #f9dd94;
+}
+
+.data li {
+    width: 32%;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.5em;
+    font-family: 'Lato';
+    border-right: solid 1px #bdc3c7;
+}
+
+.data li:last-child {
+    border: none;
+}
+
+.data li span {
+    display: block;
+    text-transform: uppercase;
+    font-family: 'Quicksand';
+    font-size: .5em;
+    margin-top: .2em;
+    font-weight: 700;
+}

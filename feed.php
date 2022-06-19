@@ -11,7 +11,7 @@ if (empty($_SESSION)) {
     header("Location: login.php");
 }
 include "header2.php";
-include "footer.php";
+
 include "connection.php";
 include "functions.php";
 error_reporting(E_ERROR | E_PARSE);
@@ -112,7 +112,7 @@ if ($query = mysqli_query($con, $sql)) {
 
 
 </div>  <!-- container div ends -->
-
-
 </body>
+<?php include "footer.php"; ?>
 </html>
+

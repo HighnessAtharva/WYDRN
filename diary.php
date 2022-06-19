@@ -14,7 +14,7 @@ if (empty($_SESSION)) {
 include "header2.php";
 include "connection.php";
 include "functions.php";
-include "footer.php";
+
 //getting the username from the session
 $user_data = check_login($con);
 $username = $user_data['user_name'];
@@ -196,4 +196,6 @@ if ($query = mysqli_query($con, $sql)) {
         window.location.href = 'diary.php?page='+page;
     }
   </script>
-</body></html>
+</body>
+</html>
+<?php include "footer.php"; ?>

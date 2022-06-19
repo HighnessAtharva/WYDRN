@@ -64,32 +64,33 @@ if (isset($_GET['user_name'])) {
     
     </center>
     <!--VIDEO GAMES-->
-    <div>
+    <div class="media">
         <div>
             <h2>Video Games</h2>
         </div>
 
         <?php
-$sql = "SELECT videogame FROM data WHERE username='$me'  AND videogame != ''
-            INTERSECT
-            SELECT videogame FROM data WHERE username='$otheruser'  AND videogame != ''";
-if ($query = mysqli_query($con, $sql)) {
-    if (mysqli_num_rows($query) > 0) {
-        while ($row = mysqli_fetch_assoc($query)) {
-            $videogame = $row['videogame'];
-            echo $videogame;
-            echo "<br>";
+        $sql = "SELECT videogame FROM data WHERE username='$me'  AND videogame != ''
+                    INTERSECT
+                    SELECT videogame FROM data WHERE username='$otheruser'  AND videogame != ''";
+        if ($query = mysqli_query($con, $sql)) {
+            if (mysqli_num_rows($query) > 0) {
+                echo "<ul>";
+                while ($row = mysqli_fetch_assoc($query)) {
+                    $videogame = $row['videogame'];
+                    echo ("<li>".$videogame."</li>");
+                }
+                echo "</ul>";
+            } else {
+                echo ("There are no common videogames between you and $otheruser");
+            }
         }
-    } else {
-        echo ("There are no common videogames between you and $otheruser");
-    }
-}
-?>
+        ?>
     </div>
 
 
      <!--Music-->
-     <div class="container">
+     <div class="media">
         <div>
             <h2>Music</h2>
         </div>
@@ -113,7 +114,7 @@ if ($query = mysqli_query($con, $sql)) {
     </div>
 
     <!--Books-->
-    <div class="container">
+    <div class="media">
         <div>
             <h2>Books</h2>
         </div>
@@ -137,7 +138,7 @@ if ($query = mysqli_query($con, $sql)) {
     </div>
 
       <!--Movie-->
-      <div class="container">
+      <div class="media">
         <div>
             <h2>Movies</h2>
         </div>
@@ -161,7 +162,7 @@ if ($query = mysqli_query($con, $sql)) {
     </div>
 
       <!--TV-->
-      <div class="container">
+      <div class="media">
         <div>
             <h2>TV</h2>
         </div>

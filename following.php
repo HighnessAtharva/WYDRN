@@ -6,6 +6,7 @@
   }
   include "connection.php";
   include "functions.php";
+   include "header2.php";
   $user_data = check_login($con);
   $username = $user_data['user_name'];
   ?>
@@ -13,8 +14,8 @@
 <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-<div>
-<input type="button" class="btn btn-primary" value="Return To Profile" onclick="window.location.href='profile.php?user_name=<?php echo $_GET['user_name']?>'">
+<div><br><br><br>
+<input type="button" class="btn btn-primary" style="margin-left:20px;" value="Return To Profile" onclick="window.location.href='profile.php?user_name=<?php echo $_GET['user_name']?>'">
 <div>
 
 <!--THIS IS THE DIV OF THE FOLLOWING SECTION-->  
@@ -66,3 +67,5 @@ if(mysqli_num_rows($result) > 0){
 </ul>
 </div>
 <!--DIV END FOLLOWING SECTION-->  
+
+<?php include "footer.php"; ?>

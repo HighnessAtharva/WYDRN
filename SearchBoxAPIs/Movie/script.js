@@ -77,7 +77,10 @@ function loadMovieDetails() {
             // console.log(movieDetails);
             //console.log(movieDetails['original_title'], movieDetails['release_date']);
             movieSearchBox.value = movieDetails['original_title'];
-            movieYearBox.value = movieDetails['release_date'];
+            let year = movieDetails['release_date']
+            year = year.split("-");
+            year = year[0];
+            movieYearBox.value = year;
             movieSearchBox.setAttribute("readonly", "readonly");
             movieYearBox.setAttribute("readonly", "readonly");
 

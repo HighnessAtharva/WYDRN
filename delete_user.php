@@ -8,7 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-    <p class="alert-danger alert"> Are you sure you want to delete your account? This action is not reversible.</p>
-    <input type="button" value="Delete Account" onclick="window.location.href='delete_user_confirm.php'">
+    <center>
+    <div>
+        <p class="alert-danger alert"> Are you sure you want to delete your account? This action is not reversible.</p>
+        <input type="button" value="Delete Account" onclick="window.location.href='delete_user_confirm.php'">
+    </div>
+    </center>
 </body>
 </html>
