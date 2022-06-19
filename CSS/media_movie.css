@@ -14,11 +14,12 @@ body {
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 5rem;
-    padding: 5rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    padding: 2rem;
     margin: 0 auto;
     width: max-content;
+    justify-items: center;
 }
 
 .card {
@@ -31,7 +32,6 @@ body {
     color: white;
     border-radius: 1em;
     padding: 1em;
-    /*margin: 2em;*/
     display: flex;
     align-items: flex-end;
     background-size: cover;
@@ -44,17 +44,20 @@ body {
     color: white;
 }
 
-.card h1 {
+h1 {
     margin: 0;
     font-size: 1em;
     line-height: 1em;
+    /*
+    NEED TO BREAK WORDS SO THAT THEY DO NOT STRECTCH AND LOOK WEIRD
+    word-break: break-word;*/
 }
 
-.card .tags {
+.tags {
     display: flex;
 }
 
-.card .tags .tag {
+.tags .tag {
     font-size: 0.75em;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 0.3rem;
@@ -65,6 +68,7 @@ body {
 }
 
 .card .logged-date {
+    display: none;
     position: absolute;
     top: 0;
     right: 0;
@@ -77,7 +81,12 @@ body {
 .card-grid-space .num {
     font-size: 3em;
     margin-bottom: 1.2rem;
-    margin-left: 0.5rem;
+    margin-left: 1rem;
+}
+
+.card:hover .logged-date {
+    display: block;
+    background-color: black;
 }
 
 
