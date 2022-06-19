@@ -33,7 +33,7 @@ function getposterpath($name, $year){
 <html>
 <head>
 <!--Bootstrap Link-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <!--Custom Link-->
 <link rel="stylesheet" href="css/media_movie.css">
 </head>
@@ -43,7 +43,7 @@ function getposterpath($name, $year){
 
 <body>
     <?php
-    $html_movie="<section class='cards-wrapper'>"; // $html_movie stores the html code for the movie cards
+    $html_movie="<br><br><section class='cards-wrapper'>"; // $html_movie stores the html code for the movie cards
     
     $sql = "SELECT DISTINCT `movie`, `year`, `date` FROM `data` where movie != '' and username='$username' order by `date` DESC";
     if ($query = mysqli_query($con, $sql)) {

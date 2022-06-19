@@ -3,6 +3,11 @@
 <!-- START OF HEADER-->
 <link href=css/header.css rel=stylesheet type=text/css>
 
+    <!--WELCOME TO WRYDRN-->
+    <div style="left:2.3em;" class="header">
+    <a href="welcome.php" class="wydrn-logo">WDYRN</a>
+    </div>
+
     <!--LOGOUT-->
     <div style="right: 1em;" class="header">
         <a href="logout.php">Logout</a>
@@ -40,14 +45,15 @@
     </div>
 
     <!--Search Users-->
-    <div style="right: 29em;" class="header">
+    <div style="right: 28em;" class="header">
         <a href="search_users.php">Search Users</a>
     </div>
 
-
-    <!--WELCOME TO WRYDRN-->
-    <div style="left:2.3em;" class="header">
-    <a href="welcome.php" class="wydrn-logo">WDYRN</a>
+     <!--Media-->
+     <div style="right: 35em;" class="header">
+        <a href="media.php">Media</a>
     </div>
+
+    
 
 <!-- END OF HEADER-->
