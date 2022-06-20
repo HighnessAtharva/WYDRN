@@ -19,7 +19,7 @@ function getposterpath($name, $year){
     curl_close($curl);
     
     if (empty($response['results'][0]['poster_path'])) {
-        $response = "https://via.placeholder.com/300x450";
+        $response = "https://www.prokerala.com/movies/assets/img/no-poster-available.jpg";
     }
     else {
         $response = "https://image.tmdb.org/t/p/w300".$response['results'][0]['poster_path'];
