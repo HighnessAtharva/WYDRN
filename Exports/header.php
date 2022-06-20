@@ -48,5 +48,11 @@
     <div style="font-size:20px; position:absolute; color:black; top: 0.5em; left:0.2em; padding:5px;">
         <a href="../welcome.php" style="color:black;">WDYRN</a>
     </div>
+
+    <!--Media-->
+       <div style="right: 35em; font-size:20px; position:absolute; color:black; top: 0.5em; padding:5px;" class="header">
+        <a href="../media.php" style="color:black;">Media</a>
+    </div>
+
 </div>
 <!-- END OF HEADER-->
