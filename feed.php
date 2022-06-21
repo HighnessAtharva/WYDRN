@@ -1,9 +1,7 @@
 <?php
 
 /*
-
 DESCRIPTION: THIS WILL BE THE SOCIAL FEED WHERE USERS WILL SEE THE ACTIVITY OF THE PEOPLE THEY FOLLOW. NEED TO ADD INFINITE SCROLL FEATURE WHICH WILL LOAD MORE RECORDS WHEN THE USER REACHES THE END OF THE PAGE. INITIALLY SET RECORD FETCH COUNT TO 10 SO THAT ONLY 10 RECORDS ARE DISPLAYED AT A TIME SO AS NOT TO PUT LOAD ON THE SERVER.
-
  */
 
 session_start();
@@ -71,7 +69,7 @@ if ($query = mysqli_query($con, $sql)) {
             } else {
               
                 //container of each post on the page
-                echo "<div class='postid'>";
+                echo "<div class='post'>";
               
 
                 echo ("<img src=" . $profile_pic . " class='profile-pic' alt='Profile Picture'/>");
@@ -119,4 +117,3 @@ if ($query = mysqli_query($con, $sql)) {
 </body>
 <?php include "footer.php"; ?>
 </html>
-
