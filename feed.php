@@ -30,7 +30,8 @@ $username = $user_data['user_name'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="css/feed.css">
-
+    
+ 
   </head>
 
 <body style="background: white;">
@@ -68,8 +69,10 @@ if ($query = mysqli_query($con, $sql)) {
                 echo "You are all caught up!";
 
             } else {
+              
                 //container of each post on the page
-                echo "<div class='post'>";
+                echo "<div class='postid'>";
+              
 
                 echo ("<img src=" . $profile_pic . " class='profile-pic' alt='Profile Picture'/>");
                 echo ("<a class='username' href='profile.php?user_name=" . $person . "'>" . $person . "</a><br>");
