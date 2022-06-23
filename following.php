@@ -4,9 +4,9 @@
   {
     header("Location: login.php");
   }
-  include "connection.php";
-  include "functions.php";
-   include "header2.php";
+  require "connection.php";
+  require "functions.php";
+   require "header.php";
   $user_data = check_login($con);
   $username = $user_data['user_name'];
   ?>
@@ -70,5 +70,5 @@ if(mysqli_num_rows($result) > 0){
 
 <?php 
 	mysqli_close($con);
-   include "footer.php"; 
+   require "footer.php"; 
 ?>

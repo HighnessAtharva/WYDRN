@@ -17,7 +17,7 @@ div{
 </style>
 ';
 
-	include("connection.php");
+	require("connection.php");
     $user_data = check_login($con);
     //$username=$user_data['user_name'];
 

@@ -22,10 +22,10 @@ session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
-include "header2.php";
-include "connection.php";
-include "functions.php";
-include "footer.php";
+require "header.php";
+require "connection.php";
+require "functions.php";
+require "footer.php";
 
 $user_data = check_login($con);
 if (isset($_GET['user_name'])) {

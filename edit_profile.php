@@ -10,9 +10,9 @@ session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
-include "connection.php";
-include "functions.php";
-include "header2.php";
+require "connection.php";
+require "functions.php";
+require "header.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 ?>
@@ -77,8 +77,8 @@ echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$u
     </form>
 </div>
         </div>
-<!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
-<?php include "footer.php";?>
+<!--STICKY FOOTER requireD AT THE BOTTOM OF THE PAGE-->
+<?php require "footer.php";?>
 <!--END OF MAIN BODY-->
 </body>
 </html>

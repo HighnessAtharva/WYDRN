@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (empty($_SESSION)) {
+    header("Location: login.php");
+}
+require "header.php";
+// require "footer.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,14 +36,8 @@ if ( window.history.replaceState ) {
 </body>
 </html>
 
-<?php
-session_start();
-if (empty($_SESSION)) {
-    header("Location: login.php");
-}
-include "header2.php";
-// include "footer.php";
 
+<?php
 // to display movie medias
 if (isset($_GET['movie'])) {
     require "media_movie.php";

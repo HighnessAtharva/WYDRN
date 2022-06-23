@@ -11,9 +11,9 @@ session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
-include "header2.php";
-include "connection.php";
-include "functions.php";
+require "header.php";
+require "connection.php";
+require "functions.php";
 
 //getting the username from the session
 $user_data = check_login($con);
@@ -205,4 +205,4 @@ if ($query = mysqli_query($con, $sql)) {
 </html>
 <?php 
 mysqli_close($con);
-include "footer.php"; ?>
+require "footer.php"; ?>

@@ -5,7 +5,7 @@ DESCRIPTION: SEARCH PAGE FOR THE USERS. USERS CAN SEARCH FOR USERS BY USERNAME.
 
 */
 
-include "header2.php";
+require "header.php";
 
 session_start();
 if (empty($_SESSION)) {
@@ -72,4 +72,4 @@ if (empty($_SESSION)) {
 </body>
 </html>
 <?php 
-include "footer.php"; ?>
+require "footer.php"; ?>

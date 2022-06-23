@@ -1,6 +1,6 @@
 <?php
-include "connection.php";
-include "functions.php";
+require "connection.php";
+require "functions.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 function getposterpath($name){

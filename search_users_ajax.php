@@ -7,8 +7,8 @@ DESCRIPTION: USED TO DISPLAY DATA FROM THE DATABASE ASYNCHRONOUSLY ON THE SEARCH
 */
 
 //Including Database configuration file
-include "connection.php";
-include "functions.php";
+require "connection.php";
+require "functions.php";
 if (isset($_POST['search'])) {
    $name = $_POST['search'];
    $query = "SELECT `user_name` FROM `users` WHERE `user_name` LIKE '%$name%' LIMIT 5";

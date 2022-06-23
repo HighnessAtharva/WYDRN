@@ -8,7 +8,7 @@
 -->
 
 <?php
-include("connection.php");
+require("connection.php");
 
 if($_GET['key'] && $_GET['reset'])
 {

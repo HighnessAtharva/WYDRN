@@ -12,8 +12,8 @@ if(empty($_SESSION))
 {
   header("Location: login.php");
 }
-include "connection.php";
-include "functions.php";
+require "connection.php";
+require "functions.php";
 
 if(isset($_GET['user_name'])){
 $user_data = check_login($con);

@@ -23,8 +23,8 @@
 
 <?php
 
-include("connection.php");
-include("functions.php");
+require("connection.php");
+require("functions.php");
 
 if(isset($_POST['submit_email']) && $_POST['email'])
 {

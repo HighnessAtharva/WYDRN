@@ -3,8 +3,8 @@ session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
-include "connection.php";
-include "functions.php";
+require "connection.php";
+require "functions.php";
 
 //to insert blank records into the database
 $user_data = check_login($con); 

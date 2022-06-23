@@ -5,8 +5,8 @@
 DESCRIPTION: LOGS OUT THE USER. REDIRCTS TO THE LOGIN PAGE AND CLEARS THE SESSION. 
 
 */
-include("functions.php");
-include("connection.php");
+require("functions.php");
+require("connection.php");
 session_start();
 if(empty($_SESSION))
 {

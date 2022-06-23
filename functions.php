@@ -56,7 +56,7 @@ Sends an Email requesting verification of the account to the recipient.
 */ 
 
 function mailer_verify_email($recipient){
-	include("connection.php");
+	require("connection.php");
 	require "PHPMailer/Exception.php";
 	require "PHPMailer/PHPMailer.php";
 	require "PHPMailer/SMTP.php";
@@ -130,7 +130,7 @@ function send_reset_link($recipient, $link){
 Returns whether a user account is verified or not (1 - Verified  ||  0 -  Not Verified)
 */ 
 function check_verified_status($username){
-include("connection.php");
+require("connection.php");
 $sql = "SELECT verified FROM users WHERE user_name='$username'";
 	if ($query = mysqli_query($con, $sql)) {
 		if (mysqli_num_rows($query) == 1) {
@@ -148,7 +148,7 @@ $sql = "SELECT verified FROM users WHERE user_name='$username'";
 Sets a user account is verified or not (1 - Verified  ||  0 -  Not Verified)
 */
 function set_verified($username){
-	include("connection.php");
+	require("connection.php");
 	$sql = "UPDATE users SET verified=1 WHERE user_name='$username'";
 	if (mysqli_query($con, $sql)){
 		return 1;
@@ -164,7 +164,7 @@ function set_verified($username){
 Checks whether a user is active or not (1 - Active  ||  0 -  Inactive)
 */
 function check_active_status($username){
-include("connection.php");
+require("connection.php");
 $sql = "SELECT active FROM users WHERE user_name='$username'";
 	if ($query = mysqli_query($con, $sql)) {
 		if (mysqli_num_rows($query) == 1) {
@@ -182,7 +182,7 @@ $sql = "SELECT active FROM users WHERE user_name='$username'";
 Sets a user account status as active (Returns 1 - Set Active Successfully  ||  0 -  Error in Setting Active)
 */
 function set_active($username){
-	include("connection.php");
+	require("connection.php");
 	$sql = "UPDATE users SET active=1 WHERE user_name='$username'";
 	if (mysqli_query($con, $sql)){
 		return 1;
@@ -198,7 +198,7 @@ function set_active($username){
 Sets a user account status as inactive (Returns 1 - Set inactive Successfully  ||  0 -  Error in Setting inactive)
 */
 function set_inactive($username){
-	include("connection.php");
+	require("connection.php");
 	$sql = "UPDATE users SET active=0 WHERE user_name='$username'";
 	if (mysqli_query($con, $sql)){
 		return 1;
@@ -280,7 +280,7 @@ function printable_date($date){
 Get total mutual media count between two users
 */
 function get_mutual_media_count($user1, $user2){
-	include("connection.php");
+	require("connection.php");
 	$array=array();
 	
 	// mutual video game count

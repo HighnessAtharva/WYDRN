@@ -10,8 +10,8 @@ DESCRIPTION:
 
 session_start();
 
-include "connection.php";
-include "functions.php";
+require "connection.php";
+require "functions.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //something was
@@ -100,9 +100,9 @@ mysqli_close($con);
 	</div>
 
 <!-------------------------------------------------------------------------------------
-STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE
+STICKY FOOTER requireD AT THE BOTTOM OF THE PAGE
 ------------------------------------------------------------------------------------->
-<?php include "footer.php";?>
+<?php require "footer.php";?>
 
 
 <!-------------------------------------------------------------------------------------

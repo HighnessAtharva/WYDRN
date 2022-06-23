@@ -6,8 +6,8 @@ DESCRIPTION: PAGE WITH FORM THAT TAKES USER INPUT SUCH AS VIDEO GAMES, BOOKS, MO
  */
 session_start();
 
-include "connection.php";
-include "functions.php";
+require "connection.php";
+require "functions.php";
 
 $user_data = check_login($con);
 ?>
@@ -51,7 +51,7 @@ $user_data = check_login($con);
 
 
 <body>
-<?php include "header.php"; ?>
+<?php require "header.php"; ?>
 
 
 <!--START OF MAIN  BODY-->
@@ -198,8 +198,8 @@ $user_data = check_login($con);
 
 
 
-<!--STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE-->
-<?php include "footer.php";?>
+<!--STICKY FOOTER requireD AT THE BOTTOM OF THE PAGE-->
+<?php require "footer.php";?>
 <!--END OF MAIN BODY-->
 <script src="SearchBoxAPIs/Videogame/script.js"></script> 
 <script src="SearchBoxAPIs/Music/script.js"></script>

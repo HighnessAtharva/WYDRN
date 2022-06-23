@@ -11,9 +11,9 @@ if (empty($_SESSION)) {
     header("Location: login.php");
 }
 
-include "connection.php";
-include "functions.php";
-include "header2.php";
+require "connection.php";
+require "functions.php";
+require "header.php";
 //getting the username from the session
 $user_data = check_login($con);
 $username = $user_data['user_name'];

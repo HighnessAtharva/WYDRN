@@ -4,7 +4,7 @@
 
 DESCRIPTION: THE MAIN PROFILE PAGE OF  THE USER. THE MOST IMPORTANT PAGE TO THIS PROJECT.
 - CHECKS IF USER HAS LOGGED IN AND GRABS THE USERNAME FROM THE DATABASE. IF THE USERNAME IS MENTIONED IN THE URL ADDRESS, THE USERNAME IS GRABBED USING A "GET" REQUEST AND THE USER DATA CORRESPONDING TO THE USERNAME IS GRABBED FROM THE DATABASE. (MAY BE THE SAME USER OR MAY BE A PUBLIC PROFILE URL OF ANOTHER USER)
-- THIS FILE INCLUDES THE DEPENDENCY - WYDRN.PHP
+- THIS FILE requireS THE DEPENDENCY - WYDRN.PHP
 
  */
 
@@ -12,10 +12,11 @@ session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
-include "connection.php";
-include "functions.php";
-include "footer.php";
-include "header2.php";
+require "header.php";
+require "connection.php";
+require "functions.php";
+require "footer.php";
+
 
 $user_data = check_login($con);
 if (isset($_GET['user_name'])) {
@@ -86,6 +87,7 @@ $total_count_post= $row[0];
 <head><title>Profile</title>
 <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   
     <link href="CSS/profile.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -263,7 +265,7 @@ $total_count_post= $row[0];
         
 <!--Videogame, Album, Book, Movie and TV will be below here. -->
 <div name="activity" id="activity">
-    <?php include "WYDRN.php";?>
+    <?php require "WYDRN.php";?>
 </div>
 
 </div> <!-- This DIV is the end of the bottom half of the card. White Section-->

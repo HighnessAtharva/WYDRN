@@ -6,8 +6,8 @@ DESCRIPTION: SIMILAR TO LOGIN PAGE, THIS PAGE DISPLAYS THE SIGNUP PAGE WITH THE 
 - HASHES THE PASSWORD AND INSERTS TO DATABASE.
 --------------------------------------------------------------------------------------------------------------------------*/
 
-include "connection.php";
-include "functions.php";
+require "connection.php";
+require "functions.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	/*---------------------------------------------------------------------------------------------------------------------- 
@@ -113,9 +113,9 @@ mysqli_close($con);
 	</div>
 
 <!-------------------------------------------------------------------------------------
-	STICKY FOOTER INCLUDED AT THE BOTTOM OF THE PAGE
+	STICKY FOOTER requireD AT THE BOTTOM OF THE PAGE
 ------------------------------------------------------------------------------------->
-<?php include "footer.php";?>
+<?php require "footer.php";?>
 
 
 <!-------------------------------------------------------------------------------------
