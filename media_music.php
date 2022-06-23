@@ -84,6 +84,7 @@ function getposterpath($name, $artist){
     }
     $html_album.="</section>";
     echo $html_album;
+    mysqli_close($con);
 ?>
 </body>
 </html>

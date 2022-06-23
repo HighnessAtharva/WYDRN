@@ -174,7 +174,7 @@ if (isset($_POST['save_profile'])) {
         echo $updated;
     }
   
-
+	mysqli_close($con);
 
 }
 ?>

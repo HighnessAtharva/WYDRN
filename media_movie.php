@@ -87,6 +87,7 @@ function getposterpath($name, $year){
     
     $html_movie.="</section>";
     echo $html_movie;
+    mysqli_close($con);
 ?>
 
 

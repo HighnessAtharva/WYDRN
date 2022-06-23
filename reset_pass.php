@@ -32,4 +32,5 @@ if($_GET['key'] && $_GET['reset'])
     <?php
   }
 }
+mysqli_close($con);
 ?>

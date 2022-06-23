@@ -68,4 +68,7 @@ if(mysqli_num_rows($result) > 0){
 </div>
 <!--DIV END FOLLOWING SECTION-->  
 
-<?php include "footer.php"; ?>
+<?php 
+	mysqli_close($con);
+   include "footer.php"; 
+?>

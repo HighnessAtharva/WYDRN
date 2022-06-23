@@ -85,6 +85,7 @@ function getposterpath($name, $author){
     
     $html_book.="</section>";
     echo $html_book;
+    mysqli_close($con);
 ?>
 <body>
 </html>

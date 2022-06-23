@@ -85,6 +85,7 @@ function getposterpath($name){
     
     $html_game.="</section>";
     echo $html_game;
+    mysqli_close($con);
 ?>
 <body>
 </html>

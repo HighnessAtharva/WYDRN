@@ -82,6 +82,7 @@ if ($query = mysqli_query($con, $sql)) {
 
 $html_tv.="</section>";
 echo $html_tv;
+mysqli_close($con);
 ?>
 <body>
 </html>

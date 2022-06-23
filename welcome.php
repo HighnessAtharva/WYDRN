@@ -207,6 +207,6 @@ $user_data = check_login($con);
 <script src="SearchBoxAPIs/Movie/script.js"></script>
 <script src="SearchBoxAPIs/Book/script.js"></script>
 
-
+<?php     mysqli_close($con); ?>
 </body>
 </html>

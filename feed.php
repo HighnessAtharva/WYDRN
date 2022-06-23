@@ -98,7 +98,7 @@ if ($query = mysqli_query($con, $sql)) {
                     $binging = "<div class='activity'> &#128250 Binging <b>" . $tv . "</b> on " . $streaming . "</div>";
                     echo $binging;
                 }
-                $datetime = printable_date($datetime);
+                $datetime = printable_datetime($datetime);
                 echo ("<div class='datetime'>" . $datetime . "</div>");
 
                 echo "<br>";
@@ -110,6 +110,7 @@ if ($query = mysqli_query($con, $sql)) {
         echo "Nothing to show here";
     }
 }
+mysqli_close($con);
 ?>
 
 

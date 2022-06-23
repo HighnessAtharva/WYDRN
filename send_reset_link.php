@@ -45,4 +45,5 @@ $email=$_POST['email'];
     }
   }	
 }
+mysqli_close($con);
 ?>

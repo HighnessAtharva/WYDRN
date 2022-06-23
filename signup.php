@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         die;
     } // END OF ELSE
 } // END OF MAIN IF CONDITIONAL
+mysqli_close($con);
 ?>
 
 <!-------------------------------------------------------------------------------------------------------------------------

@@ -35,5 +35,6 @@ if (isset($_POST['search'])) {
 <!-- Below php code is just for closing parenthesis. Don't be confused. -->
    <?php
 }}
+mysqli_close($con);
 ?>
 </ul>

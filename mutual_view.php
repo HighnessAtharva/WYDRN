@@ -182,6 +182,7 @@ if ($query = mysqli_query($con, $sql)) {
         echo ("There are no common Television Shows between you and $otheruser");
     }
 }
+mysqli_close($con);
 ?>
     </div>
 

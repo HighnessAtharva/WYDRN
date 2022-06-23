@@ -17,7 +17,7 @@ $result = mysqli_query($con, $sql);
 $sql = "DELETE FROM data WHERE 
 username = '$username_coded' AND videogame = '' AND platform ='' AND album='' and artist='' and book='' and author='' and movie='' and year='' and tv='' and streaming='' AND datetime<> (SELECT max(datetime) from data where videogame = '' AND platform ='' AND album='' and artist='' and book='' and author='' and movie='' and year='' and tv='' and streaming='')";
 $result = mysqli_query($con, $sql);
-
+mysqli_close($con);
 // redirect back to the profile page
 header("Location: profile.php");
 ?>

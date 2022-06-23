@@ -85,7 +85,7 @@ if ($query = mysqli_query($con, $sql)) {
 
             //date and time. Check other fields because datetime will be added even in blank records added during clearing done by the user. 
             if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($TV))) {
-                $datetime = printable_date($datetime);
+                $datetime = printable_datetime($datetime);
                 echo ("<tr><td>");
                 echo ("<div class='datetime'><h2>" . $datetime . "</h2></div>");
                 echo ("</td></tr>");
@@ -203,4 +203,6 @@ if ($query = mysqli_query($con, $sql)) {
   </script>
 </body>
 </html>
-<?php include "footer.php"; ?>
+<?php 
+mysqli_close($con);
+include "footer.php"; ?>

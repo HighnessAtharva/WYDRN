@@ -29,10 +29,14 @@ if(isset($_POST['userdate'])){
 <!--HTML PART -->
 <html>
     <head><title>DIARY</title></head>
+    <!--Bootstrap Link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!--Custom Link-->
     <link rel="stylesheet" href="css/diary.css">
 <body>
-<br>
-<h1> Diary Entries For <?php echo $username;?> on <?php echo $date_selected;?> </h1>
+<br><br>
+<h1> Diary Entries For <?php echo $username;?> on <?php echo printable_date($date_selected);?> </h1>
 
 <!--PHP PART -->
 <?php
@@ -66,9 +70,9 @@ if ($query = mysqli_query($con, $sql)) {
             echo "<div class='post'>"; //div start
             echo ("<table id='diarytable'"); //table start
 
-            //date and time
-            if (!empty($date)) {
-                $datetime = printable_date($datetime);
+            //date and time. Check other fields because datetime will be added even in blank records added during clearing done by the user. 
+            if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($TV))) {
+                $datetime = printable_datetime($datetime);
                 echo ("<tr><td>");
                 echo ("<div class='datetime'><h2>" . $datetime . "</h2></div>");
                 echo ("</td></tr>");
@@ -124,5 +128,5 @@ if ($query = mysqli_query($con, $sql)) {
 } else{
     mysqli_error($con);
 }
-
+mysqli_close($con);
 ?>

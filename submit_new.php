@@ -23,4 +23,5 @@ if(isset($_POST['email']) && $_POST['password'] && $_POST['submit_password'])
     echo "Error in Changing Password";
     }
 }
+mysqli_close($con);
 ?>

@@ -40,4 +40,6 @@ if (isset($_GET['link'])) {
     } else {
         echo ("Invalid Link. Your account remains unverified.");
     }
+
 }
+mysqli_close($con);

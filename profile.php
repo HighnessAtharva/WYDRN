@@ -270,5 +270,8 @@ $total_count_post= $row[0];
 </div> <!-- This DIV is the end of the entire card-->
 
 <!--END OF MAIN BODY-->
+<?php 
+mysqli_close($con);
+?>
 </body>
 </html>

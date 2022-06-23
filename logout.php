@@ -22,4 +22,5 @@ if(isset($_SESSION['user_id']))
 }
 
 header("Location: login.php");
+mysqli_close($con);
 die;

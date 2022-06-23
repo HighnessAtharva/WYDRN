@@ -11,7 +11,7 @@
 <body>
 <br><br><br>
 <center>
-<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
     <input type=submit name="music" value="music" class="">
     <input type=submit name="book" value="book" class="">
     <input type=submit name="movie" value="movie" class="">
@@ -34,29 +34,29 @@ if (empty($_SESSION)) {
     header("Location: login.php");
 }
 include "header2.php";
-include "footer.php";
+// include "footer.php";
 
 // to display movie medias
-if (isset($_POST['movie'])) {
+if (isset($_GET['movie'])) {
     require "media_movie.php";
 } 
 // to display book medias
-elseif (isset($_POST['book'])) {
+elseif (isset($_GET['book'])) {
     require("media_book.php");
 } 
 
 // to display music medias    
-elseif (isset($_POST['music'])) {
+elseif (isset($_GET['music'])) {
     require("media_music.php");
 }
 
 // to display TV medias    
-elseif (isset($_POST['tv'])) {
+elseif (isset($_GET['tv'])) {
     require("media_tv.php");
 } 
 
 // to display videogame medias    
-elseif (isset($_POST['videogame'])) {
+elseif (isset($_GET['videogame'])) {
     require("media_videogame.php");
 }
 

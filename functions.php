@@ -86,6 +86,8 @@ function mailer_verify_email($recipient){
 		echo "Message has been sent";
 		return 1;
 	}
+
+	mysqli_close($con);
 }
 
 
@@ -120,6 +122,7 @@ function send_reset_link($recipient, $link){
 		echo "Message has been sent";
 		return 1;
 	}
+	mysqli_close($con);
 }
 
 
@@ -137,6 +140,7 @@ $sql = "SELECT verified FROM users WHERE user_name='$username'";
 			die('That user does not exist' . mysqli_error($con));
 		}
 	}
+	mysqli_close($con);
 }
 
 
@@ -153,6 +157,7 @@ function set_verified($username){
 		echo "User does not exist";
 		return 0;
 	}
+	mysqli_close($con);
 }
 
 /*
@@ -169,6 +174,7 @@ $sql = "SELECT active FROM users WHERE user_name='$username'";
 			die('That user does not exist' . mysqli_error($con));
 		}
 	}
+	mysqli_close($con);
 }
 
 
@@ -185,6 +191,7 @@ function set_active($username){
 		echo "User does not exist";
 		return 0;
 	}
+	mysqli_close($con);
 }
 
 /*
@@ -200,12 +207,26 @@ function set_inactive($username){
 		echo "User does not exist";
 		return 0;
 	}
+	mysqli_close($con);
 }
 
 /*
 Used to pass the datetime and return a printable and user-friendly datetime format D:M:Y H:M:AM/PM
 */
-function printable_date($datetime){
+function printable_datetime($datetime){
+	$montharr=array("01"=>"Jan",
+		"02"=>"Feb",
+		"03"=>"Mar",
+		"04"=>"Apr",
+		"05"=>"May",
+		"06"=>"Jun",
+		"07"=>"Jul",
+		"08"=>"Aug",
+		"09"=>"Sep",
+		"10"=>"Oct",
+		"11"=>"Nov",
+		"12"=>"Dec"		
+);
 	$datetime=explode(" ", $datetime);
 
 	$date=$datetime[0];
@@ -224,8 +245,35 @@ function printable_date($datetime){
 	else{
 		$meridian='AM';
 	}
-	$new_datetime = $day ."-". $month ."-" .$year. " | " .$hours. ":" .$mins." ".$meridian;
+	$new_datetime = $day ."th ". $montharr[$month] ." " .$year. " | " .$hours. ":" .$mins." ".$meridian;
 	return $new_datetime; 
+}
+
+function printable_date($date){
+	$montharr=array("01"=>"Jan",
+		"02"=>"Feb",
+		"03"=>"Mar",
+		"04"=>"Apr",
+		"05"=>"May",
+		"06"=>"Jun",
+		"07"=>"Jul",
+		"08"=>"Aug",
+		"09"=>"Sep",
+		"10"=>"Oct",
+		"11"=>"Nov",
+		"12"=>"Dec"		
+);
+	$date=explode(" ", $date);
+
+	$date=$date[0];
+	$date=explode("-", $date);
+	$year=$date[0];
+	$month=$date[1];
+	$day=$date[2];
+
+	
+	$new_date = $day ."th ". $montharr[$month] ." " .$year;
+	return $new_date; 
 }
 
 /*
@@ -301,7 +349,7 @@ function get_mutual_media_count($user1, $user2){
 			die('Could not get the records' . mysqli_error($con));
 		}
 	}
-
+	mysqli_close($con);
 
 	$total_mutual_count=$mutual_videogame_count+$mutual_album_count+$mutual_book_count+$mutual_movie_count+$mutual_tvshow_count;
 	

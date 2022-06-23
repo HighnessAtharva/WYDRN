@@ -58,4 +58,5 @@ if($to_follow!=$follower){
       die; 
       }
 }
+mysqli_close($con);
 ?>

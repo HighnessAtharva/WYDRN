@@ -150,5 +150,5 @@ div{
 
     if ((empty($playing))&& (empty($listening))&& (empty($reading))&& (empty($watching))&& (empty($binging)))
         echo "<div> &#128542 Nothing to see here.</div>";
-
+    
     ?>

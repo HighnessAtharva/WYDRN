@@ -68,4 +68,7 @@
    </div>
    <!--DIV END FOLLOWERS SECTION-->  
 
-   <?php include "footer.php"; ?>
+   <?php 
+   	mysqli_close($con);
+      include "footer.php"; 
+   ?>
