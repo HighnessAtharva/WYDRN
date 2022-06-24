@@ -77,8 +77,7 @@ echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$u
     </form>
 </div>
         </div>
-<!--STICKY FOOTER requireD AT THE BOTTOM OF THE PAGE-->
-<?php require "footer.php";?>
+
 <!--END OF MAIN BODY-->
 </body>
 </html>

@@ -6,7 +6,6 @@ DESCRIPTION:
 - FORMAT MUST STRICTLY BE THE SAME AS THE ONE EXPORTED. (CSV HEADERS)
 
 */
-include("../footer.php");
 include("header.php");
 ?>
 

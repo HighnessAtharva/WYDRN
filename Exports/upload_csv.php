@@ -3,7 +3,6 @@
 session_start();
 include "../connection.php";
 include "../functions.php";
-include "../footer.php";
 include "header.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];

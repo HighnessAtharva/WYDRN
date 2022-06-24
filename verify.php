@@ -1,7 +1,6 @@
 <?php
 require "connection.php";
 require "functions.php";
-require "footer.php";
 require "header.php";
 
 session_start();

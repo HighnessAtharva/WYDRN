@@ -25,5 +25,4 @@ require("header.php");
 echo '<h1>'.$title.'</h1>
 <p>'.$message.'</p>';
 
-require("footer.php");
 ?>

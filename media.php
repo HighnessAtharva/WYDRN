@@ -4,7 +4,6 @@ if (empty($_SESSION)) {
     header("Location: login.php");
 }
 require "header.php";
-// require "footer.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

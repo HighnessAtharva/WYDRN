@@ -204,5 +204,4 @@ if ($query = mysqli_query($con, $sql)) {
 </body>
 </html>
 <?php 
-mysqli_close($con);
-require "footer.php"; ?>
+mysqli_close($con);?>

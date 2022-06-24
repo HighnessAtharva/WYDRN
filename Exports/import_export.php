@@ -8,7 +8,6 @@ DESCRIPTION:
     3) EXPORT DATA TO PDF -> pdf.php
 
 */
-include("../footer.php");
 include("header.php");
 ?>
 

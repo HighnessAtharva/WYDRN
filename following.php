@@ -70,5 +70,4 @@ if(mysqli_num_rows($result) > 0){
 
 <?php 
 	mysqli_close($con);
-   require "footer.php"; 
 ?>

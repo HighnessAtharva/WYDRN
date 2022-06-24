@@ -12,7 +12,6 @@ BUTTON AT THE TOP TO ALLOW DOWNLOAD OF CSV
 session_start();
 include("../connection.php");
 include("../functions.php");
-include("../footer.php");
 include("header.php");
 
 $user_data = check_login($con);

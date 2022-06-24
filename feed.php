@@ -116,5 +116,4 @@ mysqli_close($con);
 
 </div>  <!-- container div ends -->
 </body>
-<?php include "footer.php"; ?>
 </html>

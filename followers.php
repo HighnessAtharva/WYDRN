@@ -70,5 +70,5 @@
 
    <?php 
    	mysqli_close($con);
-      require "footer.php"; 
+
    ?>
