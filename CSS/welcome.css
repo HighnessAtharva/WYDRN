@@ -1,0 +1,13 @@
+body {
+    background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+}
+
+h3 {
+    color: black;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    margin-top: 100px;
+}

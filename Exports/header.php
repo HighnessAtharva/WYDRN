@@ -1,58 +1,72 @@
-<!-- HEADER2 is the alternative header to be used in the rest of the pages where the Clicking on Profile does not redirect with GET Request-->
 
-<!-- START OF HEADER-->
-<div>
-  <!--LOGOUT-->
-  <div style="font-size:20px; position: absolute; top: 0.5em; right: 1em; padding:5px;">
-        <a href="../logout.php" style="color:black;" >Logout</a>
-    </div>
+<!DOCTYPE HTML>
+<html lang="en">
 
-    <!--PROFILE-->
-    <div style="font-size:20px; position: absolute; top: 0.5em; right: 5em; padding:5px;">
-        <a style="color:black" href="../profile.php">Profile</a>
-    </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!--Delete Account-->
-    <div style="font-size:20px; position: absolute; top: 0.5em; right: 9em; padding:5px;" >
-        <a href="../delete_user.php" style="color:black;">Delete</a>
-    </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
-     <!--Edit Profile-->
-    <div style="font-size:20px; position: absolute; top: 0.5em; right: 12.5em; padding:5px;" >
-        <a href="../edit_profile.php" style="color:black;">Edit Profile</a>
-    </div>
+    <style type="stylesheet">
+        /* ============ desktop view ============ */
 
-     <!--Export Data-->
-     <div style="font-size:20px; position: absolute; top: 0.5em; right: 18em; padding:5px;" >
-        <a href="import_export.php" style="color:black;">Export</a>
-    </div>
+        @media all and (min-width: 992px) {
+            .navbar .nav-item .dropdown-menu {
+                display: none;
+            }
+            .navbar .nav-item:hover .dropdown-menu {
+                display: block;
+            }
+            .navbar .nav-item .dropdown-menu {
+                margin-top: 0;
+            }
+        }
+        /* ============ desktop view .end// ============ */
+    </style>
+</head>
 
-    
-     <!--Social-->
-     <div style="font-size:20px; position: absolute; top: 0.5em; right: 22em; padding:5px;" >
-        <a href="../feed.php" style="color:black;">Feed</a>
-    </div>
+<body>
 
-     <!--Diary-->
-     <div style="font-size:20px; position: absolute; top: 0.5em; right: 25em; padding:5px;" >
-        <a href="../diary.php" style="color:black;">Diary</a>
-    </div>
+    <!-- <div class="container"> -->
 
-     <!--Search Users-->
-     <div style="right: 29em; font-size:20px; position: absolute; top: 0.5em; padding:5px; ">
-        <a href="../search_users.php" style="color:black;">Search Users</a>
-    </div>
+    <!-- ============= COMPONENT ============== -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="welcome.php"><img src="../images/website/logos/WYDRN-logos_transparent.png" style="height:50px; width:50px;" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+            <div class="collapse navbar-collapse" id="main_nav">
+
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../diary.php"> Diary </a></li>
+                    <li class="nav-item"><a class="nav-link" href="../feed.php"> Social Feed </a></li>
+                    <li class="nav-item"><a class="nav-link" href="../search_users.php"> Search Users </a></li>
+                    <li class="nav-item"><a class="nav-link" href="../media.php"> Your Media </a></li>
+                    <li class="nav-item dropdown">
+                        <li class="nav-link" href="#" data-bs-toggle="dropdown"> <img src="https://picsum.photos/200" class="h-10 w-10 rounded-circle" style="height:25px; width:25px;"> </li>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="../profile.php"> Profile</a></li>
+                            <li><a class="dropdown-item" href="../edit_profile.php"> Settings </a></li>
+                            <li><a class="dropdown-item" href="import_export.php"> Import/Export</a></li>
+                            <li><a class="dropdown-item" href="../logout.php"> Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- navbar-collapse.// -->
+        </div>
+        <!-- container-fluid.// -->
+    </nav>
+
+    <!-- ============= COMPONENT END// ============== -->
 
 
-    <!--WELCOME TO WRYDRN-->
-    <div style="font-size:20px; position:absolute; color:black; top: 0.5em; left:0.2em; padding:5px;">
-        <a href="../welcome.php" style="color:black;">WDYRN</a>
-    </div>
+    <!-- </div> -->
+    <!-- container //  -->
 
-    <!--Media-->
-       <div style="right: 35em; font-size:20px; position:absolute; color:black; top: 0.5em; padding:5px;" class="header">
-        <a href="../media.php" style="color:black;">Media</a>
-    </div>
+</body>
 
-</div>
-<!-- END OF HEADER-->
+</html>

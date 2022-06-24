@@ -12,10 +12,9 @@ session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
-require "header.php";
+
 require "connection.php";
 require "functions.php";
-require "footer.php";
 
 
 $user_data = check_login($con);
@@ -86,16 +85,21 @@ $total_count_post= $row[0];
 <html>
 <head><title>Profile</title>
 <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-   
+    
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+ 
     <link href="CSS/profile.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
 </head>
 
 <body>
 
 
 <div class="shadow overflow" style="position:relative;">
+
+<?php require "header.php";?>
+
     <!--Background Image-->
     <div id="header" style="background-image:url(<?php echo $background_pic ?>)" alt="Background Image">
         
