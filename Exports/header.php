@@ -1,4 +1,19 @@
+<?php
+include_once("../connection.php");
+if(isset($_SESSION['user_id']))
+	{
+		$id = $_SESSION['user_id'];
+		$query = "select `profile_pic` from users where user_id = '$id'";
 
+		$result = mysqli_query($con,$query);
+		if($result && mysqli_num_rows($result) > 0){
+			$pic = mysqli_fetch_array($result);
+			$pfp= $pic[0];
+            $pfp="../".$pfp;
+		}
+	
+    }
+?>
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -46,7 +61,7 @@
                     <li class="nav-item"><a class="nav-link" href="../search_users.php"> Search Users </a></li>
                     <li class="nav-item"><a class="nav-link" href="../media.php"> Your Media </a></li>
                     <li class="nav-item dropdown">
-                        <li class="nav-link" href="#" data-bs-toggle="dropdown"> <img src="https://picsum.photos/200" class="h-10 w-10 rounded-circle" style="height:25px; width:25px;"> </li>
+                        <li class="nav-link" href="#" data-bs-toggle="dropdown"> <img src="<?php echo $pfp;?>" class="h-10 w-10 rounded-circle" style="height:25px; width:25px;"> </li>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="../profile.php"> Profile</a></li>
                             <li><a class="dropdown-item" href="../edit_profile.php"> Settings </a></li>

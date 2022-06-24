@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (empty($_SESSION)) {
+    header("Location: login.php");
+}
+require "header.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

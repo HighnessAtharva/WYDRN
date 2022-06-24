@@ -5,12 +5,11 @@ DESCRIPTION: SEARCH PAGE FOR THE USERS. USERS CAN SEARCH FOR USERS BY USERNAME.
 
 */
 
-require "header.php";
-
 session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
+require "header.php";
 ?>
 
 <!DOCTYPE html>

@@ -25,6 +25,7 @@
 
 require("connection.php");
 require("functions.php");
+require("header.php");
 
 if(isset($_POST['submit_email']) && $_POST['email'])
 {

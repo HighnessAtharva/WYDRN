@@ -1,9 +1,9 @@
 <?php
 // include mysql database configuration file
 session_start();
-include "../connection.php";
-include "../functions.php";
-include "header.php";
+include("../connection.php");
+include("../functions.php");
+include("header.php");
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 echo ("<br><br>");

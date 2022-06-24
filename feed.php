@@ -8,10 +8,9 @@ session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
-include "header.php";
-
 include "connection.php";
 include "functions.php";
+include "header.php";
 error_reporting(E_ERROR | E_PARSE);
 $user_data = check_login($con);
 $username = $user_data['user_name'];

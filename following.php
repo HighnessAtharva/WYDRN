@@ -6,7 +6,7 @@
   }
   require "connection.php";
   require "functions.php";
-   require "header.php";
+  require "header.php";
   $user_data = check_login($con);
   $username = $user_data['user_name'];
   ?>

@@ -4,6 +4,9 @@ require "functions.php";
 require "header.php";
 
 session_start();
+if (empty($_SESSION)) {
+    header("Location: login.php");
+}
 $user_data = check_login($con);
 $usermail = $user_data['email'];
 $username = $user_data['user_name'];

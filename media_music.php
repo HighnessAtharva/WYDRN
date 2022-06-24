@@ -1,4 +1,7 @@
 <?php
+if (empty($_SESSION)) {
+    header("Location: login.php");
+}
 require "connection.php";
 require "functions.php";
 $user_data = check_login($con);

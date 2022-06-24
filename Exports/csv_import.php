@@ -6,6 +6,10 @@ DESCRIPTION:
 - FORMAT MUST STRICTLY BE THE SAME AS THE ONE EXPORTED. (CSV HEADERS)
 
 */
+
+session_start();
+include("../connection.php");
+include("../functions.php");
 include("header.php");
 ?>
 
