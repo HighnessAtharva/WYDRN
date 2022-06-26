@@ -31,15 +31,16 @@ $username = $user_data['user_name'];
     </head>
 <body>
 <br><br>
+<div style="margin-left:50px;">
 <h1> Diary Entries For <?php echo $username; ?></h1>
 
 <!--To Allow Users to Filter Date Wise -->
 <form method="post" name="dateselect" action="diary_date.php">
-Filter By Date: <input type="date" name="userdate" id="userdate">
-<input type="submit" value="submit">
+<input type="date" name="userdate" id="userdate">
+<input type="submit" value="Filter by Date">
 </form>
 
-
+<hr>
 <!--PHP PART -->
 <?php
 
@@ -190,6 +191,7 @@ if ($query = mysqli_query($con, $sql)) {
 
 <!--END OF GRID CONTAINER-->
 <div>
+    </div> <!--END OF MAIN DIV-->
 
  <script>
     //FUNCTION TO GO TO SPECIFIED PAGE - INVOKED ONLY BY MANUAL PAGINATION INPUT BOX

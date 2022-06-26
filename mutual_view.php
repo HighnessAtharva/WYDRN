@@ -15,8 +15,6 @@ DESCRIPTION: USERS CAN ARRIVE HERE BY CLICKING ON THE MUTUAL VIEW BUTTON ON THE 
     <link href="css/mutual_view.css" rel="stylesheet">
 </head>
 <body>
-<br><br>
-
 <?php
 session_start();
 if (empty($_SESSION)) {

@@ -82,7 +82,7 @@ function getposterpath($name){
 
             }
         }else{
-            $html_game.="No Movies Logged";
+            $html_game.="No Videogames Logged";
         }
 }
     

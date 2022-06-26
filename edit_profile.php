@@ -34,7 +34,7 @@ $username = $user_data['user_name'];
 <body>
 <!--MAIN DIV-->
 <div style="margin-top:50px; margin-left:25px;">
-<div>Hello <b><u><?php echo ucfirst($username) ?></u></b>, you can change your PFP and Background Image here.</div>
+<div>Hello <b><u><?php echo ucfirst($username) ?></u></b></div>
 <div>
     <div>
         <?php
@@ -54,12 +54,12 @@ if (check_verified_status($username) == 1) {
     $current_user = check_login($con);
     $user_name = $current_user['user_name'];
     $hashed_verify = md5($user_name);
-    echo "<a href='verify.php' style='padding:5px; background-color: white; cursor:pointer;'>Verify Now</a></span>";
+    echo "<a href='verify.php' style='padding:5px; background-color: white; cursor:pointer;'>Verify Now</a></span><br>";
 }
 
 // Account Created On
 $account_birthday = explode(" ", $user_data['date'])[0];
-echo "Member Since: " . $account_birthday . "<br>";
+echo "Member Since: " . printable_date($account_birthday) . "<br>";
 
 // Public Profile Link
 echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$username</a>";
@@ -68,12 +68,12 @@ echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$u
 </div>
 <form action="" method="POST" name="ImageUploads" enctype="multipart/form-data">
         <br>
-        Select Profile Photo to Upload: <input type="file" name="PFP" accept=".png, .jpg, .jpeg, image/png, image/jpg, image/jpeg, .gif">
+        Select Profile Photo to Upload: <br><input type="file" name="PFP" accept=".png, .jpg, .jpeg, image/png, image/jpg, image/jpeg, .gif">
         <br><br>
-        Select Background Photo to Upload: <input type="file" name="BgImage" accept=".png, .jpg, .jpeg, image/png, image/jpg, image/jpeg, .gif">
+        Select Background Photo to Upload: <br><input type="file" name="BgImage" accept=".png, .jpg, .jpeg, image/png, image/jpg, image/jpeg, .gif">
 
         <br><br><br>
-        <input type="submit" value="Save" name="save_profile">
+        <input type="submit" value="Update Profile" name="save_profile">
     </form>
 </div>
         </div>
