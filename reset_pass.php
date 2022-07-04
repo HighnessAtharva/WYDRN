@@ -9,7 +9,7 @@
 
 <?php
 require("connection.php");
-require("header.php");
+// require("header.php");
 if($_GET['key'] && $_GET['reset'])
 {
   $email=$_GET['key'];
