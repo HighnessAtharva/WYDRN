@@ -36,7 +36,8 @@ if(isset($_POST['userdate'])){
     <link rel="stylesheet" href="css/diary.css">
 <body>
 <br><br>
-<h1> Diary Entries For <?php echo $username;?> on <?php echo printable_date($date_selected);?> </h1>
+<div style="margin-left:50px;">
+<h1> Diary Entries For <?php echo $username;?> <?php if (!empty($date_selected)) {echo "on ". printable_date($date_selected);}?> </h1>
 
 <!--PHP PART -->
 <?php
@@ -130,3 +131,4 @@ if ($query = mysqli_query($con, $sql)) {
 }
 mysqli_close($con);
 ?>
+</div>

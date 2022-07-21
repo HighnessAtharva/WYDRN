@@ -73,12 +73,12 @@ if (isset($_GET['user_name'])) {
                     SELECT videogame FROM data WHERE username='$otheruser'  AND videogame != ''";
         if ($query = mysqli_query($con, $sql)) {
             if (mysqli_num_rows($query) > 0) {
-                echo "<ul>";
+                
                 while ($row = mysqli_fetch_assoc($query)) {
                     $videogame = $row['videogame'];
-                    echo ("<li>".$videogame."</li>");
-                }
-                echo "</ul>";
+                    echo $videogame;
+                    echo "<br>";
+                }    
             } else {
                 echo ("There are no common videogames between you and $otheruser");
             }

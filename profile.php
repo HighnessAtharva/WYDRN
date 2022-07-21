@@ -64,9 +64,21 @@ $total_count_get= $row[0];
     echo mysqli_error($con);
 }
 
-//profile.php - get total media count for post request
-$sql = "SELECT COUNT(*) FROM `data` WHERE `username`='$user_data[user_name]'";
-if ($query = mysqli_query($con, $sql)) {
+//profile.php - get total media count for post request 
+$sql2="SELECT sum(allcount) AS Total_Count FROM(
+    (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='')
+    UNION ALL
+    (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='')
+    UNION ALL
+    (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='')
+    UNION ALL
+    (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='')
+    UNION ALL
+    (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='')
+)t";
+
+// outdate-->$sql = "SELECT COUNT(*) FROM `data` WHERE `username`='$user_data[user_name]'";
+if ($query = mysqli_query($con, $sql2)) {
 $row = mysqli_fetch_array($query);
 $total_count_post= $row[0];
 }else{

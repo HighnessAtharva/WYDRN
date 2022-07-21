@@ -12,22 +12,22 @@ require "functions.php";
 if (isset($_POST['search'])) {
    $name = $_POST['search'];
    $query = "SELECT `user_name` FROM `users` WHERE `user_name` LIKE '%$name%' LIMIT 5";
-   
-
    $exec=mysqli_query($con,$query);
    while ($result = mysqli_fetch_assoc($exec)) {
-       ?>
+   ?>
 
 <center>
 <div style="padding: 5px; background-color:skyblue;">
-    <p onclick='fill("<?php echo $result["user_name"]; ?>")' style='font-size:1.2em '>    
-    <a>
+    <p onclick='fill("<?php echo $result["user_name"]; ?>")' style='font-size:1.2em '>   
+     
     <!-- Assigning searched result in "Search box" in "search.php" file. -->
-        <?php 
-        echo "<a href=profile.php?user_name=".$result['user_name'].">".$result['user_name']."</a>" ;
-        ?>
+    <?php 
+    if ($result["user_name"]){
+    echo "<a href=profile.php?user_name=".$result['user_name'].">".$result['user_name']."</a>" ;
+    }
+     ?>
     </p>
-    </a>
+    
 </div>
 </center>
 

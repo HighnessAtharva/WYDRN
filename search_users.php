@@ -49,7 +49,7 @@ require "header.php";
     $("#search").keyup(function() {
         var name = $('#search').val();
         if (name == "") {
-            $("#display").html("");
+            $("#display").html("No Results Found");
         }
 
         else {
