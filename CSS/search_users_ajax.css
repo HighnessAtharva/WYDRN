@@ -1,0 +1,12 @@
+.profile-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: inline;
+}
+
+.search-result-area {
+    padding: 5px;
+    background-color: skyblue;
+}
