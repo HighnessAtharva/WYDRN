@@ -34,6 +34,7 @@ if (isset($_POST['submit'])) {
 
         // Parse data from CSV file line by line
         // Parse data from CSV file line by line
+        $counter=0;
         while (($getData = fgetcsv($csvFile, 10000, ",")) !== false) {
 
             $videogame = $getData[0];
@@ -85,17 +86,18 @@ if (isset($_POST['submit'])) {
                 $query = "INSERT INTO `data` (`username`, `videogame`, `platform`, `album`, `artist`, `book` ,`author` ,`movie`,`year`,`tv`,`streaming`) VALUES ('$username', '$videogame', '$platform', '$album', '$artist', '$book', '$author', '$movie', '$year', '$tv', '$streaming')";
 
                 if (mysqli_query($con, $query)) {
-                    echo "Data insert success!<br>";
-                    sleep(1);
+                    // echo "Data insert success!<br>";
+                    //sleep for 1 second between each insert because datetime requires it to be unique
+                    // sleep(1);
+                    $counter+=mysqli_affected_rows($con);
                 } else {
                     echo "Insert failed! Please check CSV format.<br>";
                 }
             }
         }
-        $counter=0;
-        $counter+=mysqli_affected_rows($con);
+    
         echo("<br>");
-        echo($counter);
+        echo("Added ".$counter." logs to your account.");
         fclose($csvFile);
     } else {
         echo "Please select valid file";
