@@ -65,4 +65,4 @@ if(isset($_SESSION['user_id']))
         </div>
         <!-- container-fluid.// -->
     </nav>
-    <!-- ============= COMPONENT END// ============== -->
+<!-- ============= COMPONENT END// ============== -->

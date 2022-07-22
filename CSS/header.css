@@ -21,16 +21,12 @@
     padding: 5px;
 }
 
-a {
-    color: black;
-}
-
-a:hover {
-    color: blue;
-}
-
 .wydrn-logo {
     color: black;
     background-color: white;
     padding: 10px;
+}
+
+ul>li>a {
+    color: black !important;
 }
