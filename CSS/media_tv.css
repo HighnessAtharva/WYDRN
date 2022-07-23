@@ -8,6 +8,10 @@ body {
     min-height: 100vh;
     font-family: 'Open Sans';
     background: #fafafa;
+    /* no selection */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 .cards-wrapper {

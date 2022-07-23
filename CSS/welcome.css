@@ -11,3 +11,10 @@ h3 {
     width: 50%;
     margin-top: 100px;
 }
+
+body {
+    /* no selection */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}

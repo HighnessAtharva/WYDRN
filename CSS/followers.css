@@ -1,3 +1,9 @@
+body {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
 .follower-pfp {
     width: 35px;
     height: 35px;

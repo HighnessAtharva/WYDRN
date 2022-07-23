@@ -21,6 +21,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* no selectable text */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 a:link {

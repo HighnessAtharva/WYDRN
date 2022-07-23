@@ -6,6 +6,13 @@
     width: 100px;
 }
 
+body {
+    /* no selection */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
 #search {
     margin-bottom: 50px;
 }

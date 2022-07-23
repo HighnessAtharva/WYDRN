@@ -10,3 +10,10 @@
     padding: 5px;
     background-color: skyblue;
 }
+
+body {
+    /* no selection */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
