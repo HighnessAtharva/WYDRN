@@ -26,7 +26,7 @@ The site is not deployed currently so you can't get a live preview but you can t
 - A guest account with `username` : `dev` and `password` : `deadlines` is already made avaiable for your usage. Login with it.
 - You can now add media, export your media, search for other users and see your mutual medias. 
 
-## Functionalities and Features 
-- `signup.php` - 
-- `login.php` - 
+## [Documentation](https://github.com/HighnessAtharva/WYDRN/wiki/Documentation)
+
+## [Project Plan Board](https://github.com/users/HighnessAtharva/projects/1)
 
