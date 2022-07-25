@@ -25,19 +25,21 @@ $username = $user_data['user_name'];
 <head>
   <title>Edit Profile</title>
   <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
-    <!--Bootstrap Link-->
+    
+  <!--Bootstrap Link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
-    <link href="css/header.css" type="stylesheet/css">
+    
+    <link rel="stylesheet" href="css/edit_profile.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
 <!--MAIN DIV-->
 <div style="margin-top:50px; margin-left:25px;">
-<div>Hello <b><u><?php echo ucfirst($username) ?></u></b></div>
-<div>
-    <div>
-        <?php
+<h2>Hello <u><?php echo ucfirst($username) ?></u></h2>
+
+
+<?php
 //user active status
 if (check_active_status($username) == 1) {
     echo "<br>User Status: Active<br>";
@@ -59,24 +61,38 @@ if (check_verified_status($username) == 1) {
 
 // Account Created On
 $account_birthday = explode(" ", $user_data['date'])[0];
-echo "Member Since: " . printable_date($account_birthday) . "<br>";
+echo "Member Since: " . printable_date($account_birthday);
 
 // Public Profile Link
 echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$username</a>";
 ?>
 
-</div>
-<form action="" method="POST" name="ImageUploads" enctype="multipart/form-data">
-        <br>
-        Select Profile Photo to Upload: <br><input type="file" name="PFP" accept=".png, .jpg, .jpeg, image/png, image/jpg, image/jpeg, .gif">
-        <br><br>
-        Select Background Photo to Upload: <br><input type="file" name="BgImage" accept=".png, .jpg, .jpeg, image/png, image/jpg, image/jpeg, .gif">
 
-        <br><br><br>
-        <input type="submit" value="Update Profile" name="save_profile">
+    <!-- CHANGE AVATAR AND BANNER -->
+    
+    <form action="" method="POST" name="ImageUploads" enctype="multipart/form-data">
+        <br>
+        <fieldset>     
+            <legend> Change Account Photos</legend>   
+        <br>
+        Select Profile Photo: <br>
+        <input type="file" name="PFP" accept=".png, .jpg, .jpeg, image/png, image/jpg, image/jpeg, .gif">
+        <br>
+        Select Background Banner Photo: <br>
+        <input type="file" name="BgImage" accept=".png, .jpg, .jpeg, image/png, image/jpg, image/jpeg, .gif">
+        <br><br>
+        <input type="submit" value="Update Profile" class="btn btn-success" name="save_profile">
+        </fieldset>
     </form>
+
+    <br>
+        <fieldset>     
+            <legend> Delete Account</legend>
+            <button onclick="window.location.href='delete_user.php'" class="btn btn-danger">Delete Account</button>
+        </fieldset>
+
+
 </div>
-        </div>
 
 <!--END OF MAIN BODY-->
 </body>
@@ -89,7 +105,7 @@ echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$u
 -->
 
 <?php
-// CODE TO CHANG THE PROFILE PICTURE AND BACKGROUND IMAGE
+// CODE TO CHANGE THE PROFILE PICTURE AND BACKGROUND IMAGE
 if (isset($_POST['save_profile'])) {
     $target_dir = "images/users/";
 
@@ -97,6 +113,7 @@ if (isset($_POST['save_profile'])) {
     FOR PROFILE PICTURE 
     ******************/
     $PFPName = date("his") . $_FILES["PFP"]["name"]; //profile picture
+    $PFPName = str_replace(' ', '', $PFPName); //remove any whitespaces
     $target_file = $target_dir . basename($PFPName);
 
     if ($_FILES['PFP']['size'] > 1024000) {
@@ -137,7 +154,8 @@ if (isset($_POST['save_profile'])) {
     /*****************
     FOR BACKGROUND IMAGE 
     ******************/
-    $BGName = $_FILES["BgImage"]["name"]; //background image
+    $BGName = date("his") . $_FILES["BgImage"]["name"]; //background image
+    $BGName = str_replace(' ', '', $BGName); //remove any whitespaces
     $target_file2 = $target_dir . basename($BGName);
 
     if ($_FILES['BgImage']['size'] > 1024000) {

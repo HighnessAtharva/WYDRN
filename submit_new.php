@@ -25,7 +25,9 @@ if(isset($_POST['email']) && $_POST['password'] && $_POST['submit_password'])
   
   $result=mysqli_query($con, "update users set password='$pass' where email='$email'");
   if ($result) {
-  echo "Password Changed Successfully";
+  echo "Password Changed Successfully. Redirecting you to Login Page in 5 seconds";
+  sleep(5);
+  header("Location: login.php");
 }else{
     echo "Error in Changing Password";
     }

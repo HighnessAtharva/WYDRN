@@ -8,25 +8,33 @@
   3) submit_new.php (Logic to update the database with the new password)
 -->
 
+<?php
+require("connection.php");
+require("functions.php");
+// DO NOT INCLUDE THE HEADER BECAUSE USER IS NOT LOGGED IN! IT WILL BE INCLUDED IN THE LOGIN PAGE.
+?>
+
+
 <html>
+  <!-- Head begins -->
+  <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  </head>
 
-<body>
-    <form method="post" action="send_reset_link.php">
-        <p>Enter Email Address To Send Password Link</p>
-        <input type="text" name="email">
-        <input type="submit" name="submit_email">
-    </form>
-</body>
-
+  <!-- Body Begins -->
+  <body>
+  <div class="container" style="justify-content-center">
+  <form method="post" action="send_reset_link.php">
+          <p class="alert-success alert">Enter Email Address To Send Password Reset Link</p>
+          <input type="text" name="email">
+          <input type="submit" name="submit_email">
+      </form>
+  </body>
 </html>
 
 
 <?php
-
-require("connection.php");
-require("functions.php");
-require("header.php");
-
 if(isset($_POST['submit_email']) && $_POST['email'])
 {
 $email=$_POST['email'];
