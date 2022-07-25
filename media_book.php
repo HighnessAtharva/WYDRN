@@ -1,7 +1,9 @@
 <?php
+session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
+require "header.php";
 require "connection.php";
 require "functions.php";
 $user_data = check_login($con);
@@ -42,6 +44,11 @@ function getposterpath($name, $author){
 <link rel="stylesheet" href="CSS/media_book.css">
 </head>
 <body>
+
+<div class="heading">
+  <h1>Your Books<span>"So many books, so little time." -  Frank Zappa</span></h1>
+</div>
+
 <?php
     $html_book="<br><br><section class='cards-wrapper'>"; // $html_book stores the html code for the movie cards
     

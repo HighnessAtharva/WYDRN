@@ -1,7 +1,9 @@
 <?php
+session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
+require "header.php";
 require "connection.php";
 require "functions.php";
 $user_data = check_login($con);
@@ -40,6 +42,11 @@ function getposterpath($name){
 <link rel="stylesheet" href="CSS/media_tv.css">
 </head>
 <body>
+
+<div class="heading">
+  <h1>Your TV Shows<span>"There is ugliness in this world. Disarray. I choose to see the beauty." - Westworld</span></h1>
+</div>
+
 <?php
 $html_tv="<br><br><section class='cards-wrapper'>"; // $html_tv stores the html code for the movie cards
     

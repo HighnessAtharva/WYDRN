@@ -1,7 +1,9 @@
 <?php
+session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
+require "header.php";
 require "connection.php";
 require "functions.php";
 $user_data = check_login($con);
@@ -45,9 +47,13 @@ function getposterpath($name, $year){
 
 
 <body>
+
+<div class="heading">
+  <h1>Your Movies<span>"I'm gonna make him an offer he can't refuse." - The Godfather</span></h1>
+</div>
+
     <?php
     $html_movie="<br><br><section class='cards-wrapper'>"; // $html_movie stores the html code for the movie cards
-    
     $sql = "SELECT DISTINCT `movie`, `year`, `date` FROM `data` where movie != '' and username='$username' order by `date` DESC";
     if ($query = mysqli_query($con, $sql)) {
         $totalmoviecount=mysqli_num_rows($query);

@@ -1,7 +1,9 @@
 <?php
+session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
+require "header.php";
 require "connection.php";
 require "functions.php";
 $user_data = check_login($con);
@@ -43,6 +45,11 @@ function getposterpath($name){
 
 </head>
 <body>
+
+<div class="heading">
+  <h1>Your Video Games<span>"Praise the sun." - Dark Souls</span></h1>
+</div>
+
 <?php
     $html_game="<br><br><section class='cards-wrapper'>"; // $html_game stores the html code for the movie cards
     

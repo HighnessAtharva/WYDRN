@@ -1,7 +1,9 @@
 <?php
+session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
 }
+require "header.php";
 require "connection.php";
 require "functions.php";
 $user_data = check_login($con);
@@ -46,6 +48,11 @@ function getposterpath($name, $artist){
 
 
 <body>
+
+<div class="heading">
+  <h1>Your Albums<span>"I light my torch and burn it. I am the beast I worship" - Death Grips</span></h1>
+</div>
+
 <?php
     $html_album="<br><br><section class='cards-wrapper'>"; // $html_album stores the html code for the album cards
     
