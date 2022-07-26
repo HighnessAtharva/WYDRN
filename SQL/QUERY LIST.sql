@@ -61,17 +61,6 @@ select count(follower_username) from social where followed_username='susujpeg';
 select count(followed_username) from social where follower_username='susujpeg';
 
 
-
-
-/*****************************/
--- to show the total count of entries made for single user (add this in profile page)
-SELECT * FROM `data` where username = 'susujpeg';
-
-
-
-
-
-
 /*****************************/
 -- to get all the blank insert records in the database which are a result of clear button on profile.php
 SELECT * FROM `data` where videogame = '' AND platform ='' AND album='' and artist='' and book='' and author='' and movie='' and year='' and tv='' and streaming='';

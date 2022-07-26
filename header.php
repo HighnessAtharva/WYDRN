@@ -36,6 +36,8 @@ if(isset($_SESSION['user_id']))
         /* ============ desktop view .end// ============ */
     </style>
 </head>
+
+
     <!-- <div class="container"> -->
     <!-- ============= COMPONENT ============== -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">

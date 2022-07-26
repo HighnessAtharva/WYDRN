@@ -242,10 +242,10 @@ $total_count_post= $row[0];
                 // ADDED MEDIA
                     if(isset($_GET['user_name'])){    
                         if($_GET['user_name'] == $user_data['user_name'])                
-                        echo("<a style='color:black' href='media.php'>Added Media</a>");
+                        echo("<a style='color:black'>Added Media</a>");
                     }
                     if(!isset($_GET['user_name'])){
-                        echo("<a style='color:black' href='media.php'>Added Media</a>");
+                        echo("<a style='color:black'>Added Media</a>");
                     }
                 ?>
             </span>			
