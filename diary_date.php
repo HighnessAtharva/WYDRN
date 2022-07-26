@@ -1,9 +1,12 @@
 <?php
-/*
 
-DESCRIPTION: SHOW FILTERED RECORDS FROM THE DIARY BASED ON SELECTED DATE. THIS PAGE CAN BE ACCCESSED ONLY FROM DIARY.PHP
-
-*/
+/**
+ * SHOW FILTERED RECORDS OF MEDIA ITEMS FOR THE USER FROM THE DIARY BASED ON SELECTED DATE.
+ *
+ * @version    PHP 8.0.12 
+ * @since      July 2022
+ * @author     AtharvaShah
+ */
 
 error_reporting(E_ERROR | E_PARSE);
 session_start();

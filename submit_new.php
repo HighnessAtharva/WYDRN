@@ -1,13 +1,15 @@
-<!--
-  Description: 
-  Logic to update the database with the new password
-  
-  1) send_reset_link.php (Sends the Reset Link)
-  2) reset_pass.php (Upon Clicking the Link, user arrives here and is asked to enter a new password)
-  3) submit_new.php (Logic to update the database with the new password)
--->
-
 <?php
+/**
+ *  Displays Single Input Field asking user to enter an Email to Recieve the Password Link On.
+ * On Form Submission It checks if the Email Entered is Registered with WYDRN Service and pushes an email if yes. 
+ * 1) send_reset_link.php (Sends the Reset Link)
+ * 2) reset_pass.php (Upon Clicking the Link, user arrives here and is asked to enter a new password)
+ * 3) submit_new.php (Logic to update the database with the new password)
+ *
+ * @version    PHP 8.0.12 
+ * @since      June 2022
+ * @author     AtharvaShah
+ */
 
 include("connection.php");
 if(isset($_POST['email']) && $_POST['password'] && $_POST['submit_password'])

@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Wipe all user data from the database and redirect back to the login page.
+ *
+ * @version    PHP 8.0.12 
+ * @since      May 2022
+ * @author     AtharvaShah
+ */
+
 /*------------------------------------------------------------------------------------------------
 DESCRIPTION: CHECKS IF A USER HAS LOGGED IN AND IF SO, DELETES THE USER DATA FROM THE DATABASE.
 ------------------------------------------------------------------------------------------------*/

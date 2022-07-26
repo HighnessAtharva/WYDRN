@@ -1,12 +1,10 @@
 <?php
-
-/*
-
-DESCRIPTION: 
-SHOWS TABULAR DATA FROM THE DATABASE. 
-BUTTON AT THE TOP TO ALLOW DOWNLOAD OF CSV 
-
-*/
+/**
+ *SHOWS TABULAR DATA FROM THE DATABASE.  BUTTON AT THE TOP TO ALLOW DOWNLOAD OF CSV 
+ * @version    PHP 8.0.12 
+ * @since      June 2022
+ * @author     AtharvaShah
+ */
 
 
 session_start();

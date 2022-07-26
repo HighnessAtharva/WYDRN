@@ -1,4 +1,14 @@
 <?php
+
+/**
+ * SHOWS NON-DUPLICATE ALBUMS LOGGED BY THE USER IN A GRID/GALLERY FORM. ON HOVERING ON AN ITEM THE DATE OF LOGGING IS DISPLAYED.  
+ *
+ * @version    PHP 8.0.12 
+ * @since      July 2022
+ * @author     AtharvaShah
+ */
+
+
 session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");

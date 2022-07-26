@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * Clear the a users' profile page by inserting a blank row in the DB.
+ *
+ * @version    PHP 8.0.12 
+ * @since      July 2022
+ * @author     AtharvaShah
+ */
+
 session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");

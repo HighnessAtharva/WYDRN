@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * - Accept a CSV file from the user and log all records from the CSV into the user database. Basically, this is the import function.
+ * @version    PHP 8.0.12 
+ * @since      June 2022
+ * @author     AtharvaShah
+ */
+
+
 // include mysql database configuration file
 session_start();
 include("../connection.php");

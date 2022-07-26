@@ -1,4 +1,12 @@
 <?php
+/**
+ * Shows list of users who a particular user is following.
+ *
+ * @version    PHP 8.0.12 
+ * @since      June 2022
+ * @author     AtharvaShah
+ */
+
   session_start();
   if(empty($_SESSION))
   {

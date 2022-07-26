@@ -1,15 +1,25 @@
-  <?php
-  session_start();
-  if(empty($_SESSION))
-  {
-    header("Location: login.php");
-  }
-  require "connection.php";
-  require "functions.php";
-  require "header.php";
-  $user_data = check_login($con);
-  $username = $user_data['user_name'];
-  ?>
+<?php
+
+/**
+ * Shows list of users who are following a particular user.
+ *
+ * @version    PHP 8.0.12 
+ * @since      June 2022
+ * @author     AtharvaShah
+ */
+
+
+session_start();
+if(empty($_SESSION))
+{
+  header("Location: login.php");
+}
+require "connection.php";
+require "functions.php";
+require "header.php";
+$user_data = check_login($con);
+$username = $user_data['user_name'];
+?>
 
 <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">

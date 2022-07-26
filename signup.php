@@ -1,18 +1,21 @@
 <?php
+
+/**
+ *   SIMILAR TO LOGIN PAGE, THIS PAGE DISPLAYS THE SIGNUP PAGE WITH THE ACCOMODATION TO CHECK IF PASSWORDS MATCH. IF USERNAME IS ALREADY TAKEN, ECHOS AN ERROR REGARDING DUPLICATE VALUE. REDIRECTS TO LOGIN PAGE AFTER SUCCESSFUL SIGNUP.HASHES THE PASSWORD AND INSERTS TO DATABASE.
+ *
+ * @version    PHP 8.0.12 
+ * @since      March 2022
+ * @author     AtharvaShah
+ */
+
 session_start();
-
-/*---------------------------------------------------------------------------------------------------------------------------
-DESCRIPTION: SIMILAR TO LOGIN PAGE, THIS PAGE DISPLAYS THE SIGNUP PAGE WITH THE ACCOMODATION TO CHECK IF PASSWORDS MATCH. IF USERNAME IS ALREADY TAKEN, ECHOS AN ERROR REGARDING DUPLICATE VALUE. REDIRECTS TO LOGIN PAGE AFTER SUCCESSFUL SIGNUP.
-- HASHES THE PASSWORD AND INSERTS TO DATABASE.
---------------------------------------------------------------------------------------------------------------------------*/
-
 require "connection.php";
 require "functions.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-	/*---------------------------------------------------------------------------------------------------------------------- 
+	/*------------------------------------------------------------------------------------------------------------------ 
 	GRAB THE POSTED DATA FROM THE SIGNUP FORM AND STORE IT INSIDE VARIABLES AND PROCESS IT.
-	----------------------------------------------------------------------------------------------------------------------*/
+	------------------------------------------------------------------------------------------------------------------*/
     $user_name = mysqli_real_escape_string($con, $_POST['user_name']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = mysqli_real_escape_string($con, $_POST['password']);

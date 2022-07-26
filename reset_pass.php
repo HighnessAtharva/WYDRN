@@ -1,13 +1,16 @@
-<!--
-  Description: 
-  Upon Clicking the Link, user arrives here and is asked to enter a new password. This page asks the User to Enter the New password. 
-  
-  1) send_reset_link.php (Sends the Reset Link)
-  2) reset_pass.php (Upon Clicking the Link, user arrives here and is asked to enter a new password)
-  3) submit_new.php (Logic to update the database with the new password)
--->
-
 <?php
+
+/**
+ *   Upon Clicking the Link, user arrives here and is asked to enter a new password. This page asks the User to Enter the New password. 
+ * 1) send_reset_link.php (Sends the Reset Link) 
+ * 2) reset_pass.php (Upon Clicking the Link, user arrives here and is asked to enter a new passwor
+ * 3) submit_new.php (Logic to update the database with the new password)
+ *
+ * @version    PHP 8.0.12 
+ * @since      June 2022
+ * @author     AtharvaShah
+ */
+
 require("connection.php");
 // require("header.php");
 if($_GET['key'] && $_GET['reset'])

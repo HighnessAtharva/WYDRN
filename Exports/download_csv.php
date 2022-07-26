@@ -1,14 +1,15 @@
 <?php
-/*
 
-DESCRIPTION: 
-- PROGRAMATICALLY DUMPS THE DATABASE FOR THE USER INTO A CSV AND PROMPTS A DOWNLOAD WINDOW SO THAT CSV CAN BE DOWNLOADED ON LOCAL MACHINE OF THE USER.
+/**
+ * PROGRAMATICALLY DUMPS THE DATABASE FOR THE USER INTO A CSV AND PROMPTS A DOWNLOAD WINDOW SO THAT CSV CAN BE DOWNLOADED ON LOCAL MACHINE OF THE USER.
+ * @version    PHP 8.0.12 
+ * @since      June 2022
+ * @author     AtharvaShah
+ */
 
-*/
 session_start();
 include("../connection.php");
 include("../functions.php");
-
 
 $user_data = check_login($con);
 $username=$user_data['user_name'];

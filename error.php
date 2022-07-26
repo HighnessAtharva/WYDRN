@@ -1,9 +1,12 @@
 <?php
-/*
 
-DESCRIPTION: TO DISPLAY CUSTOM ERROR PAGES FOR EACH ERROR.  
-
-*/
+/**
+ * TO DISPLAY CUSTOM ERROR PAGES FOR EACH ERROR. 
+ *
+ * @version    PHP 8.0.12 
+ * @since      May 2022
+ * @author     AtharvaShah
+ */
 
 $status = $_SERVER['REDIRECT_STATUS'];
 $codes = array(

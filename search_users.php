@@ -1,9 +1,13 @@
 <?php
-/*
 
-DESCRIPTION: SEARCH PAGE FOR THE USERS. USERS CAN SEARCH FOR USERS BY USERNAME.  
+/**
+ * USERS CAN SEARCH FOR OTHER USERS BY USERNAME AND VISIT THEIR PROFILE.
+ *
+ * @version    PHP 8.0.12 
+ * @since      May 2022
+ * @author     AtharvaShah
+ */
 
-*/
 
 session_start();
 if (empty($_SESSION)) {

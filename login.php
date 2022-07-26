@@ -1,7 +1,14 @@
 <?php
 
+/**
+ * Login Page for registered users.
+ *
+ * @version    PHP 8.0.12 
+ * @since      March 2022
+ * @author     AtharvaShah
+ */
+
 /*-----------------------------------------------------------------------------------
-DESCRIPTION:
 - THE HTML PART SHOWS THE LOGIN FORM WITH THE USERNAME AND PASSWORD FIELDS
 - THE PHP PART GRABS THE INPUT FROM THE FORM, VALIDATES IT AND CHECKS IF THE USERNAME AND PASSWORD MATCHES WITH THE DATABASE.
 - VERIFIES AND DECRYTPS THE HASH PASSWORD AND LOGS IN THE USER

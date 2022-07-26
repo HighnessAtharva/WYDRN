@@ -1,10 +1,12 @@
 <?php
-/*
-DESCRIPTION: 
-- CHECK_LOGIN ---> FUNCTION CHECKS IF A USER HAS LOGGED IN AND IF SO, RETURNS THE USER DATA.
-- RANDOM_NUM ---> GENERATES A RANDOM NUMBER 5 TO 20 DIGIT NUMBER TO GENERATE DYNAMIC IDS FOR NEW REGISTRATIONS.
-- MAILER_VERIFY_EMAIL ---> Sends an Email requesting verification of the account to the recipient.
-*/
+
+/**
+ * Handy and frequently used functions for WYDRN
+ *
+ * @version    PHP 8.0.12 
+ * @since      March 2022
+ * @author     AtharvaShah
+ */
 
 
 /*

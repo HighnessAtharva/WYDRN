@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Sends an email to the user with a link to view the form to reset their password.
+ * @version    PHP 8.0.12 
+ * @since      June 2022
+ * @author     AtharvaShah
+ */
+
 session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");

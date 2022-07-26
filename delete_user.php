@@ -1,4 +1,14 @@
 <?php
+
+/**
+ * Page to ask for confirmation to delete the user account.
+ *
+ * @version    PHP 8.0.12 
+ * @since      May 2022
+ * @author     AtharvaShah
+ */
+
+
 session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");

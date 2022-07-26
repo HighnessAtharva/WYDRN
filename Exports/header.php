@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * Header Navbar for all the pages.
+ * @version    PHP 8.0.12 
+ * @since      June 2022
+ * @author     AtharvaShah
+ */
+
+
 include_once("../connection.php");
 if(isset($_SESSION['user_id']))
 	{

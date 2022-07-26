@@ -77,7 +77,6 @@ $sql2="SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='')
 )t";
 
-// outdate-->$sql = "SELECT COUNT(*) FROM `data` WHERE `username`='$user_data[user_name]'";
 if ($query = mysqli_query($con, $sql2)) {
 $row = mysqli_fetch_array($query);
 $total_count_post= $row[0];

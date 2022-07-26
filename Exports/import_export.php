@@ -1,13 +1,15 @@
 <?php
-/*
 
-DESCRIPTION: 
-- THIS IS THE MAIN IMPORT/EXPORT PAGE WITH 3 BUTTONS
-    1) IMPORT CSV -> csv_import.php -> upload_csv.php
-    2) EXPORT CSV -> csv_export.php -> download_csv.php
-    3) EXPORT DATA TO PDF -> pdf.php
+/**
+ * THIS IS THE MAIN IMPORT/EXPORT PAGE WITH 3 BUTTONS 
+ * 1) IMPORT CSV -> csv_import.php -> upload_csv.php 
+ * 2) EXPORT CSV -> csv_export.php -> download_csv.php 
+ * 3) EXPORT DATA TO PDF -> pdf.php
+ * @version    PHP 8.0.12 
+ * @since      June 2022
+ * @author     AtharvaShah
+ */
 
-*/
 session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");

@@ -1,10 +1,12 @@
 <?php
 
-/*
-
-DESCRIPTION: MYSQL CONNECTIVITY WITH PHP IS DEFINED AND CONNECTED HERE
-
-*/
+/**
+ * MYSQL CONNECTIVITY WITH PHP IS DEFINED AND CONNECTED HERE
+ *
+ * @version    PHP 8.0.12 
+ * @since      May 2022
+ * @author     AtharvaShah
+ */
 
 
 $dbhost = "localhost";

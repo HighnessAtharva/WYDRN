@@ -1,10 +1,12 @@
 <?php
 
-/*
-
-DESCRIPTION: USERS LAND ON THIS PAGE FROM THE FOLLOW/FOLLOWING BUTTON ON THE PROFILE PAGE. ALLOWS USERS TO FOLLOW OTHER USERS AND DISPLAYS A LIST OF ALL THE FOLLOWED/FOLLOWING USERS WITH HYPERLINKS TO THIER PROFILES IN FORM OF 2 DIVS.   
-
-*/
+/**
+ * From the profile page, users can follow/unfollow other users. Adds a new row to the social table with the follower and followed username.
+ *
+ * @version    PHP 8.0.12 
+ * @since      May 2022
+ * @author     AtharvaShah
+ */
 
 
 session_start();

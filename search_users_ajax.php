@@ -5,15 +5,16 @@
 <link rel="stylesheet" href="CSS/search_users_ajax.css">
 
 <?php
-
-/*
-DESCRIPTION: USED TO DISPLAY DATA FROM THE DATABASE ASYNCHRONOUSLY ON THE SEARCH_USERS.PHP PAGE.  
-*/
-
+/**
+ *  DISPLAY DATA FROM THE DATABASE ASYNCHRONOUSLY ON THE SEARCH_USERS.PHP PAGE.
+ *
+ * @version    PHP 8.0.12 
+ * @since      July 2022
+ * @author     AtharvaShah
+ */
 
 require "connection.php";
 require "functions.php";
-
 
 if (isset($_POST['search'])) {
    $name = $_POST['search'];

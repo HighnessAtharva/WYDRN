@@ -1,10 +1,13 @@
 <?php
+/**
+ * LOGS OUT THE USER. REDIRCTS TO THE LOGIN PAGE AND CLEARS THE SESSION. 
+ *
+ * @version    PHP 8.0.12 
+ * @since      March 2022
+ * @author     AtharvaShah
+ */
 
-/*
 
-DESCRIPTION: LOGS OUT THE USER. REDIRCTS TO THE LOGIN PAGE AND CLEARS THE SESSION. 
-
-*/
 require("functions.php");
 require("connection.php");
 session_start();
