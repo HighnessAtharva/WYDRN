@@ -1,3 +1,13 @@
+/*********************************
+
+API DETAILS FOR BOOK SEARCH
+
+API USED: GoogleBooks API (https://developers.google.com/books/docs/v1/using)
+Application name: WYDRN
+API key: N/A (None Required to Access Publicly Avaiable Data)
+
+*********************************/
+
 const BooksearchBox = document.getElementById('movie-search-box');
 const searchList = document.getElementById('search-list');
 const resultGrid = document.getElementById('result-grid');
@@ -24,7 +34,7 @@ function findBook() {
 function displayBookList(Books) {
     searchList.innerHTML = "";
     //NOTE: TRY TO REDUCE THE LENGTH OF THE LOOP. USE AT MOST 3 TO REDUCE API CALLS.
-    for (let idx = 0; idx < Books.length; idx++) {
+    for (let idx = 0; idx < 3; idx++) {
         let BookListItem = document.createElement('div');
         BookListItem.dataset.id = Books[idx]['id']; // setting book id in data id
         BookListItem.classList.add('search-list-item');

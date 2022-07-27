@@ -130,7 +130,21 @@ if (isset($_POST['save_profile'])) {
     }
 
     //inserting PFP into DB
-    if (move_uploaded_file($_FILES["PFP"]["tmp_name"], $target_file)) {
+    if (move_uploaded_file($_FILES["PFP"]["tmp_name"], $target_file)){
+        
+        // ADDING CONTENT BELOW TO AUTOMATICALLY DELETE PREVIOUSLY STORED PFP WHEN A NEW ONE IS UPLOADED
+        $sql = "SELECT `profile_pic` FROM `users` WHERE user_name='$username'";
+        if (mysqli_query($con, $sql)) {
+            $result = mysqli_query($con, $sql);
+            $row = mysqli_fetch_assoc($result);
+            $profile_pic_old = $row['profile_pic'];
+            //ensure that you don't delete the default profile image
+            if ($profile_pic_old != "images/website/defaultPFP.png") {
+                unlink($profile_pic_old);
+            }
+        }
+        // ADDING CONTENT ABOVE TO AUTOMATICALLY DELETE PREVIOUSLY STORED PFP WHEN A NEW ONE IS UPLOADED
+
         $sql = "UPDATE users SET `profile_pic` = '$target_file' WHERE user_name='$username'";
         if (mysqli_query($con, $sql)) {
             $msg = "Image uploaded and saved in the Database";
@@ -147,6 +161,11 @@ if (isset($_POST['save_profile'])) {
                Could not update the Profile Pic
                </div></center>";
         echo $messed;
+        sleep(5);
+        header("Location: edit_profile.php");
+        
+
+
     } else {
         $updated = "<center><div class='alert alert-success w-25 text-center' style='position: absolute;
         top: 450px; left: 570px;' role='alert'>
@@ -171,6 +190,21 @@ if (isset($_POST['save_profile'])) {
 
     //inserting Background into DB
     if (move_uploaded_file($_FILES["BgImage"]["tmp_name"], $target_file2)) {
+
+         // ADDING CONTENT BELOW TO AUTOMATICALLY DELETE PREVIOUSLY STORED BACKGROUND BANNER WHEN A NEW ONE IS UPLOADED
+         $sql = "SELECT `background_pic` FROM `users` WHERE user_name='$username'";
+         if (mysqli_query($con, $sql)) {
+             $result = mysqli_query($con, $sql);
+             $row = mysqli_fetch_assoc($result);
+             $bg_pic_old = $row['background_pic'];
+             //ensure that you don't delete the default banner image
+             if ($bg_pic_old != "images/website/defaultBackground.jpg") {
+                 unlink($bg_pic_old);
+             }
+         }
+         // ADDING CONTENT ABOVE TO AUTOMATICALLY DELETE PREVIOUSLY STORED BACKGROUND BANNER WHEN A NEW ONE IS UPLOADED
+
+
         $sql = "UPDATE users SET `background_pic` = '$target_file2' WHERE user_name='$username'";
         if (mysqli_query($con, $sql)) {
             $msg = "Image uploaded and saved in the Database";
@@ -187,6 +221,9 @@ if (isset($_POST['save_profile'])) {
         Could not update the background image!
         </div></center>";
         echo $messed;
+
+        sleep(5);
+        header("Location: edit_profile.php");
     } else {
         $updated = "<center><div class='alert alert-success w-25 text-center' style='position: absolute; top: 490px; left: 570px;' role='alert'>
         Background image updated successfully!

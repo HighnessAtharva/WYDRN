@@ -103,3 +103,11 @@ select sum(allcount) AS Total_Count from(
 )t;
 
 
+/*****************
+TO WIPE A USER'S DATA. PERMAMENTLY DELETE ALL THE DATA OF A USER.
+**************/
+
+DELETE FROM `users` WHERE `user_name` = 'jamesjoyce';
+DELETE FROM `data` WHERE `username` = 'jamesjoyce';
+DELETE FROM `social` WHERE `follower_username` = 'jamesjoyce';
+DELETE FROM `social` WHERE `followed_username` = 'jamesjoyce';
