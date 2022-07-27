@@ -63,10 +63,13 @@ function loadgameDetails() {
 }
 
 function displaygameDetails(details) {
-    // add developers
-    // add genre
-    //       
-
+    console.log(details)
+    var genres = null;
+    if ('genres' [0]['name'] in details) {
+        genres = "NA";
+    } else {
+        genres = ['genres'][0]['name'];
+    }
     resultGrid.innerHTML = `
     <div class = "movie-poster">
         <img src = "${(details['background_image'] != null) ?  details['background_image'] : "https://i.ibb.co/hRCvsdq/image-not-found.png"}" alt = "game poster">
@@ -77,7 +80,7 @@ function displaygameDetails(details) {
             <li class = "year">Release Date: ${details['released']}</li>
         </ul>
         <p class = "language"><b>Publisher:</b> ${details['publishers'][0]['name']}</p><br>
-        <p class = "genre"><b>Genre:</b> ${details['genres'][0]['name']}</p><br>
+        <p class = "genre"><b>Genre:</b> ${genres}</p><br>
         <p class = "plot"><b>Plot:</b> ${details['description_raw']}</p>
         
         

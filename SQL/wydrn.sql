@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2022 at 06:02 PM
+-- Generation Time: Jul 27, 2022 at 11:16 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -220,7 +220,8 @@ INSERT INTO `social` (`follower_username`, `followed_username`, `followed_time`)
 ('HighnessAtharva', 'jamesjoyce', '2022-06-08 16:19:10'),
 ('HighnessAtharva', 'susujpeg', '2022-06-23 19:56:35'),
 ('anay', 'HighnessAtharva', '2022-06-26 19:16:28'),
-('HighnessAtharva', 'musicbot', '2022-07-22 11:01:24');
+('dev', 'HighnessAtharva', '2022-07-23 21:36:00'),
+('HighnessAtharva', 'musicbot', '2022-07-26 20:29:51');
 
 -- --------------------------------------------------------
 
@@ -250,12 +251,12 @@ INSERT INTO `users` (`id`, `user_id`, `user_name`, `email`, `password`, `date`, 
 (62, 100333, 'pppppppppppp', 'pppppppp@gmail.com', '$2y$10$rYdZUmCkuoAX3399dqiFAesbg.ycr2CjCqenKCmZcoQ5SOkNe5Y92', '2022-03-19 14:49:34', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
 (66, 86554043705, 'jamesjoyce', 'wydrnwebapp@gmail.com', '$2y$10$e9jU7bIvrgVLFWBOdNXLrubWwSKwbNz/fmI9inelUN5ChWW47Ujuq', '2022-03-19 14:59:20', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
 (67, 192511, 'wydrnbae', 'wydrnapp@gmail.com', '$2y$10$sZow5C2lbfA5fgovkj21LueQUhc379J76g4NQGSPcBfdbxGzfgLvC', '2022-03-19 15:00:28', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
-(71, 862114561492, 'susujpeg', 'darlingjamiesooo@gmail.com', '$2y$10$v/ZcsYOjV7xaJKJNViD4wOyyY4ntPCPcBPRswBOAUh5y7aZbBZPYS', '2022-07-22 05:55:59', 'images/users/110321yeeeee.JPG', 'images/website/defaultBackground.jpg', 0, 0),
-(114, 32726220398725619, 'HighnessAtharva', 'HighnessAtharva@gmail.com', '$2y$10$Nr7ey6X.vczFwUrhmh1hbeMeNXA3xQ9kEhcrkN7LjSyC7lg1n0gFe', '2022-07-22 05:55:33', 'images/users/042722500x500-000000-80-0-0(3).jpg', 'images/users/Capture.JPG', 0, 1),
+(71, 862114561492, 'susujpeg', 'darlingjamiesooo@gmail.com', '$2y$10$v/ZcsYOjV7xaJKJNViD4wOyyY4ntPCPcBPRswBOAUh5y7aZbBZPYS', '2022-07-26 13:24:39', 'images/users/110321yeeeee.JPG', 'images/website/defaultBackground.jpg', 0, 0),
+(114, 32726220398725619, 'HighnessAtharva', 'HighnessAtharva@gmail.com', '$2y$10$N20olViAKiwwJQDVbIBiXumiwjwUzXBuhrc9GGwri5j3ZH/uO5QPG', '2022-07-27 09:14:52', 'images/users/042722500x500-000000-80-0-0(3).jpg', 'images/users/023743ezgif-5-95f925855a.gif', 1, 1),
 (119, 74383560500, 'weebshooter', 'abcdefg@gmail.com', '$2y$10$k.Av6PfUY3W2U3VVqWix6.Pnl20agyynHFpigOtz/O5kjRUFgcLSy', '2022-06-26 13:07:31', 'images/users/095843atharva.png', 'images/website/defaultBackground.jpg', 0, 0),
 (120, 43960315659, 'musicbot', 'mycloudbackupmusic@gmail.com', '$2y$10$743rMLwA7DoSe.SoMkt1/OHx7CLKyY.8kaZDAsJBTb71c/yE1V.fa', '2022-07-23 10:10:36', 'images/users/031519tmp_1608820741507.jpg', 'images/users/a0127997326_10.jpg', 1, 1),
 (121, 36627543520, 'anay', 'anaydesh1234@gmail.com', '$2y$10$R0cvJsbAK8w9AuqsUWuC8ONh0J9x/wWOzfPubwHkBxClv/KDGYz2a', '2022-06-26 14:11:20', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 1),
-(122, 5784303861, 'dev', 'dummymail2069@gmail.com', '$2y$10$V/cOlDorenUUcbJyn8p0qO1NO4hE019f/f7LF0hvufhahCaWszZMK', '2022-07-23 16:00:15', 'images/users/060015brooo.JPG', 'images/users/final.gif', 1, 0);
+(122, 5784303861, 'dev', 'dummymail2069@gmail.com', '$2y$10$V/cOlDorenUUcbJyn8p0qO1NO4hE019f/f7LF0hvufhahCaWszZMK', '2022-07-25 12:37:21', 'images/users/022641maskable@19233.png', 'images/users/022641final2.gif', 0, 0);
 
 --
 -- Indexes for dumped tables

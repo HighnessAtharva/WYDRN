@@ -25,7 +25,7 @@ function findMovies() {
 function displayMovieList(movies) {
     searchList.innerHTML = "";
     //NOTE: TRY TO REDUCE THE LENGTH OF THE LOOP. USE AT MOST 3 TO REDUCE API CALLS.
-    for (let idx = 0; idx < movies.length; idx++) {
+    for (let idx = 0; idx < 3; idx++) {
         let movieListItem = document.createElement('div');
         movieListItem.dataset.id = movies[idx]['id']; // setting movie id in  data-id
         movieListItem.classList.add('search-list-item');
@@ -33,13 +33,17 @@ function displayMovieList(movies) {
             moviePoster = movies[idx]['poster_path'];
         else
             moviePoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+
+        let year = movies[idx]['release_date'];
+        year = year.split("-");
+        year = year[0];
         movieListItem.innerHTML = `
         <div class = "search-item-thumbnail">
             <img src = "https://image.tmdb.org/t/p/w185/${moviePoster}">
         </div>
         <div class = "search-item-info">
             <h3>${movies[idx]['original_title']}</h3>
-            <p>${movies[idx]['release_date']}</p>
+            <p>${year}</p>
         </div>`;
         searchList.appendChild(movieListItem);
     }
@@ -63,6 +67,26 @@ function loadMovieDetails() {
 }
 
 function displayMovieDetails(details) {
+    if (details === undefined) {
+        resultGrid.innerHTML += "NO DATA AVAILABLE FOR THIS ALBUM";
+    }
+
+    // TO HANDLE MISSING GENRES
+    let genres = null;
+    if ('genres' in details) {
+        if ('genres' [0]['name'] in details) {
+            genres = details['genres'][0]['name'];
+        }
+
+    } else {
+        genres = "NA";
+    }
+
+    console.log(details);
+
+    release_year = details['release_date'];
+    release_year = release_year.split("-");
+    release_year = release_year[0];
     resultGrid.innerHTML = `
     <div class = "movie-poster">
         <img src = "${(details['poster_path'] != null) ? "https://image.tmdb.org/t/p/original/"+ details['poster_path'] : "https://i.ibb.co/hRCvsdq/image-not-found.png"}" alt = "movie poster">
@@ -70,9 +94,9 @@ function displayMovieDetails(details) {
     <div class = "movie-info">
         <h3 class = "movie-title">${details['original_title']}</h3>
         <ul class = "movie-misc-info">
-            <li class = "year">Release Date: ${details['release_date']}</li>
+            <li class = "year">Release Date: ${release_year}</li>
         </ul>
-        <p class = "genre"><b>Genre:</b> ${details['genres'][0]['name']}</p>
+        <p class = "genre"><b>Genre:</b> ${genres}</p>
         <p class = "plot"><b>Plot:</b> ${details['overview']}</p>
         <p class = "language"><b>Language:</b> ${details['original_language']}</p>
         
