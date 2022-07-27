@@ -1,10 +1,21 @@
+/*******************************
+API DETAILS FOR MOVIE SEARCH
+
+API USED: TMDB [Television and Movie Database] API (https://developers.themoviedb.org/3/getting-started/introduction)
+Application name: Movie-Web-App
+API key: e446bc89015229cf337e16b0849d506c
+Registered to: HighnessAtharva
+
+********************************/
+
+const movieKey = "e446bc89015229cf337e16b0849d506c";
 const movieSearchBox = document.getElementById('movie-search-box');
 const searchList = document.getElementById('search-list');
 const resultGrid = document.getElementById('result-grid');
 
 // load movies from API
 async function loadMovies(searchTerm) {
-    const URL = `https://api.themoviedb.org/3/search/movie?api_key=e446bc89015229cf337e16b0849d506c&language=en-US&query=${searchTerm}&page=1&include_adult=true`;
+    const URL = `https://api.themoviedb.org/3/search/movie?api_key=${movieKey}&language=en-US&query=${searchTerm}&page=1&include_adult=true`;
     const res = await fetch(`${URL}`);
     const data = await res.json();
     var results = data['results']
@@ -58,7 +69,7 @@ function loadMovieDetails() {
             searchList.classList.add('hide-search-list');
             movieSearchBox.value = "";
 
-            const result = await fetch(`https://api.themoviedb.org/3/movie/${movie.dataset.id}?api_key=e446bc89015229cf337e16b0849d506c&language=en-US`);
+            const result = await fetch(`https://api.themoviedb.org/3/movie/${movie.dataset.id}?api_key=${movieKey}&language=en-US`);
             const movieDetails = await result.json();
             // console.log(movieDetails);
             displayMovieDetails(movieDetails);

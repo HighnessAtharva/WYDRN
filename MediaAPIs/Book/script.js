@@ -1,3 +1,13 @@
+/*********************************
+
+API DETAILS FOR BOOK SEARCH
+
+API USED: GoogleBooks API (https://developers.google.com/books/docs/v1/using)
+Application name: WYDRN
+API key: N/A (None Required to Access Publicly Avaiable Data)
+
+*********************************/
+
 const BooksearchBox = document.getElementById('movie-search-box');
 const searchList = document.getElementById('search-list');
 const resultGrid = document.getElementById('result-grid');

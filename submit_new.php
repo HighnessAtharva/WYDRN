@@ -12,26 +12,25 @@
  */
 
 include("connection.php");
-if(isset($_POST['email']) && $_POST['password'] && $_POST['submit_password'])
-{
-  $email=$_POST['email'];
-  $pass=$_POST['password'];
-  if (strlen($pass)<=8){
-    echo "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
-                                top: 50px; left: 570px;' role='alert'>
-                                  Password must be atleast 8 characters long!
-                                </div></center>";
-                                die;
-  }
-  $pass=password_hash($pass, PASSWORD_DEFAULT);
+if(isset($_POST['email']) && $_POST['password'] && $_POST['submit_password']){
+    $email=$_POST['email'];
+    $pass=$_POST['password'];
+
+    if (strlen($pass)<=8){
+      echo "<center><div class='alert alert-danger w-25 text-center' style='position: absolute; top: 50px; left: 570px;' role='alert'>Password must be atleast 8 characters long!</div></center>";
+      die;
+    }
   
-  $result=mysqli_query($con, "update users set password='$pass' where email='$email'");
-  if ($result) {
-  echo "Password Changed Successfully. Redirecting you to Login Page in 5 seconds";
-  sleep(5);
-  header("Location: login.php");
-}else{
-    echo "Error in Changing Password";
+    $pass=password_hash($pass, PASSWORD_DEFAULT);
+  
+    $result=mysqli_query($con, "update users set password='$pass' where email='$email'");
+    // on success display the message, await for 5 seconds and redirect to login page.
+    if ($result){
+    echo "Password Changed Successfully. Redirecting you to Login Page in 5 seconds";
+    sleep(5);
+    header("Location: login.php");
+    }else{
+      echo "Error in Changing Password";
     }
 }
 mysqli_close($con);

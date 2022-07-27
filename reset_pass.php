@@ -3,7 +3,7 @@
 /**
  *   Upon Clicking the Link, user arrives here and is asked to enter a new password. This page asks the User to Enter the New password. 
  * 1) send_reset_link.php (Sends the Reset Link) 
- * 2) reset_pass.php (Upon Clicking the Link, user arrives here and is asked to enter a new passwor
+ * 2) reset_pass.php (Upon Clicking the Link, user arrives here and is asked to enter a new password
  * 3) submit_new.php (Logic to update the database with the new password)
  *
  * @version    PHP 8.0.12 

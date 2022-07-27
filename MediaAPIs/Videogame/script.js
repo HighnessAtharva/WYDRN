@@ -1,12 +1,22 @@
+/*******************************
+API DETAILS FOR VIDEOGAME SEARCH
+
+API USED: RAWG API (https://rawg.io/apidocs)
+Application name: WYDRN
+API key: fe197746ce494b4791441d9a9161c1be
+Registered to: HighnessAtharva
+Rate Limit: 20000 requests per month. Renews on 12th of every month
+
+********************************/
+const gameKey = "fe197746ce494b4791441d9a9161c1be";
 const gameSearchBox = document.getElementById('movie-search-box');
 const searchList = document.getElementById('search-list');
 const resultGrid = document.getElementById('result-grid');
-// e446bc89015229cf337e16b0849d506c
 
 // load movies from API
 async function loadgame(searchTerm) {
 
-    const URL = `https://api.rawg.io/api/games?search=${searchTerm}&key=fe197746ce494b4791441d9a9161c1be`;
+    const URL = `https://api.rawg.io/api/games?search=${searchTerm}&key=${gameKey}`;
     const res = await fetch(`${URL}`);
     const data = await res.json();
     var results = data['results'];
@@ -34,13 +44,16 @@ function displaygameList(game) {
             gamePoster = game[idx]['background_image'];
         else
             gamePoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+        let year = game[idx]['released'];
+        year = year.split("-");
+        year = year[0];
         gameListItem.innerHTML = `
         <div class = "search-item-thumbnail">
             <img src = "${gamePoster}">
         </div>
         <div class = "search-item-info">
             <h3>${game[idx]['name']}</h3>
-            <p>${game[idx]['released']}</p>
+            <p>${year}</p>
         </div>`;
         searchList.appendChild(gameListItem);
     }
@@ -55,7 +68,7 @@ function loadgameDetails() {
             searchList.classList.add('hide-search-list');
             gameSearchBox.value = "";
 
-            const result = await fetch(`https://api.rawg.io/api/games/${game.dataset.id}?key=fe197746ce494b4791441d9a9161c1be`);
+            const result = await fetch(`https://api.rawg.io/api/games/${game.dataset.id}?key=${gameKey}`);
             const gameDetails = await result.json();
             displaygameDetails(gameDetails);
         });
@@ -64,6 +77,9 @@ function loadgameDetails() {
 
 function displaygameDetails(details) {
     console.log(details)
+    let year = details['released'];
+    year = year.split("-");
+    year = year[0];
     var genres = null;
     if ('genres' [0]['name'] in details) {
         genres = "NA";
@@ -77,7 +93,7 @@ function displaygameDetails(details) {
     <div class = "movie-info">
         <h3 class = "movie-title">${details['name_original']}</h3>
         <ul class = "movie-misc-info">
-            <li class = "year">Release Date: ${details['released']}</li>
+            <li class = "year">Release Date: ${year}</li>
         </ul>
         <p class = "language"><b>Publisher:</b> ${details['publishers'][0]['name']}</p><br>
         <p class = "genre"><b>Genre:</b> ${genres}</p><br>
