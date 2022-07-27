@@ -27,6 +27,30 @@ body {
     -webkit-user-select: none;
 }
 
+.follow-icon {
+    width: 1.5em;
+    height: 1.5em;
+    display: inline-block;
+    margin-left: 0.8em;
+    margin-bottom: 0.6em;
+}
+
+.unfollow-icon {
+    width: 1.5em;
+    height: 1.5em;
+    display: inline-block;
+    margin-left: 0.8em;
+    margin-bottom: 0.6em;
+}
+
+.clear-icon {
+    width: 1.5em;
+    height: 1.5em;
+    display: inline-block;
+    margin-left: 0.8em;
+    margin-bottom: 0.6em;
+}
+
 a:link {
     color: black;
     text-decoration: none;
@@ -176,7 +200,7 @@ a:link {
 
 #user-font {
     font-family: 'Baskerville', 'Times', 'Times New Roman', 'serif';
-    font-size: 25px;
+    font-size: 32px;
     color: #000000;
     font-variant: small-caps;
     text-align: center;

@@ -67,8 +67,6 @@ SELECT * FROM `data` where videogame = '' AND platform ='' AND album='' and arti
 
 
 
-
-
 /*****************************/
 -- to delete all the blank records from the database except the most recent blank record. (Make a trigger out of this)
 DELETE FROM data
@@ -76,20 +74,8 @@ WHERE username = 'HighnessAtharva' AND videogame = '' AND platform ='' AND album
 
 
 
-
 /*****************************/
 -- To get the total media count for a user (total media count is displayed in profile)
-
---Ignore the following queries, they just give a rough idea:
-SELECT count(videogame) FROM `data` where username='HighnessAtharva' AND videogame!='';
-SELECT count(album) FROM `data` where username='HighnessAtharva' AND album!='';
-SELECT count(book) FROM `data` where username='HighnessAtharva' AND book!='';
-SELECT count(movie) FROM `data` where username='HighnessAtharva' AND movie!='';
-SELECT count(tv) FROM `data` where username='HighnessAtharva' AND tv!='';
-
-
-
---Use this
 select sum(allcount) AS Total_Count from(
      (SELECT count(videogame) as allcount FROM `data` where username='HighnessAtharva' AND videogame!='')
      UNION ALL

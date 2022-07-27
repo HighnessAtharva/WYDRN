@@ -129,13 +129,13 @@ $total_count_post= $row[0];
             <!--Clear Button-->
             <span>
                 <!-- Hide this if a GET request is made but username is not matching to logged in person-->
-                <input type="button" value="Clear" onclick="location.href='clear.php'" 
+                <a href='clear.php' 
                 <?php 
                     if(isset($_GET['user_name'])){
                         if($_GET['user_name'] != $user_data['user_name']){
                             echo "hidden";
-                        }}?>
-                >  
+                }}?>
+                ><img src="images/icons/clear.svg" title="Clear Profile" class="clear-icon"></a> 
             </span>
             
             <!--Follow/Unfollow Button-->
@@ -181,9 +181,11 @@ $total_count_post= $row[0];
             if ($query = mysqli_query($con, $sql)) {
                 $result = mysqli_num_rows($query);
                 if ($result == 0) {
-                    echo "Follow";
+                    // echo "Follow";
+                    echo "<img src='images/icons/follow.svg' class='follow-icon' title='Follow User'>";
                 } else {
-                    echo "Unfollow";
+                    // echo "Unfollow";
+                    echo "<img src='images/icons/unfollow.svg' class='unfollow-icon' title='Unfollow User'>";
                 }
             }
             ?></a>

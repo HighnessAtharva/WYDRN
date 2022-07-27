@@ -65,10 +65,10 @@ mysqli_close($con);
 </head>
 
 <body style="background-image: url(images/website/login.png); background-size: cover;" onload="getcookiedata()">>
-
 	<div id="box" style="background: rgba(0,0,0,0.5); margin-top: 150px;">
 		<form method="post" action="login.php" onsubmit="return Validation();">
 			<div class="WYDRN">WYDRN</div>
+			
 
 			<!----------------
 			USERNAME
