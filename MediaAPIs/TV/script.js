@@ -35,9 +35,8 @@ function findTV() {
 }
 
 function displayTVList(tvseries) {
+
     searchList.innerHTML = "";
-
-
     //NOTE: TRY TO REDUCE THE LENGTH OF THE LOOP. USE AT MOST 3 TO REDUCE API CALLS.
     for (let idx = 0; idx < 3; idx++) {
         let TVListItem = document.createElement('div');
@@ -49,8 +48,7 @@ function displayTVList(tvseries) {
             tvPoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
 
         let year = tvseries[idx]['first_air_date'];
-        year = year.split("-");
-        year = year[0];
+
 
         TVListItem.innerHTML = `
         <div class = "search-item-thumbnail">
