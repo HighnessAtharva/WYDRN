@@ -22,8 +22,8 @@ require "functions.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //something was
-    $user_name = $_POST['user_name'];
-    $password = $_POST['password'];
+    $user_name = strip_tags(trim($_POST['user_name']));
+    $password = strip_tags(trim($_POST['password']));
 
     $query = "select * from users where user_name = '$user_name' limit 1";
     $result = mysqli_query($con, $query);

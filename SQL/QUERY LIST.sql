@@ -1,4 +1,6 @@
-/*****************************/
+/****************************
+THIS GETS THE ACTUAL MEDIA*/
+
 -- To Get Mutual Videogame list (irrespective of platform) between two users
 SELECT videogame FROM data WHERE username='HighnessAtharva' AND videogame != ''
 INTERSECT
@@ -24,7 +26,9 @@ INTERSECT
 SELECT tv FROM data WHERE username='susujpeg' AND tv != '';
 
 
-/*****************************/
+/*****************************
+THIS GETS ONLY THE MUTUAL MEDIA COUNT*/
+
 -- to get total count of mutual videogames (logged in user)
 SELECT COUNT(*) FROM(SELECT videogame FROM data WHERE username='HighnessAtharva' AND videogame != ''
 INTERSECT
@@ -89,11 +93,50 @@ select sum(allcount) AS Total_Count from(
 )t;
 
 
-/*****************
-TO WIPE A USER'S DATA. PERMAMENTLY DELETE ALL THE DATA OF A USER.
-**************/
+/*****************************/
+-- TO WIPE A USER'S DATA. PERMAMENTLY DELETE ALL THE DATA OF A USER.
 
 DELETE FROM `users` WHERE `user_name` = 'jamesjoyce';
 DELETE FROM `data` WHERE `username` = 'jamesjoyce';
 DELETE FROM `social` WHERE `follower_username` = 'jamesjoyce';
 DELETE FROM `social` WHERE `followed_username` = 'jamesjoyce';
+
+
+/*****************************/
+-- GET TOTAL COUNT OF REGISTERED USERS
+
+SELECT COUNT(*) AS USERS FROM `users`;
+
+
+/*****************************/
+-- GET TOTAL COUNT OF ALL ADDED MEDIA BY ALL REGISTERED USERS
+select sum(allcount) AS TOTAL_MEDIA_ADDED from(
+     (SELECT count(videogame) as allcount FROM `data` where videogame!='')
+     UNION ALL
+     (SELECT count(album) as allcount FROM `data` where album!='')
+     UNION ALL
+     (SELECT count(book) as allcount FROM `data` where book!='')
+     UNION ALL
+     (SELECT count(movie) as allcount FROM `data` where movie!='')
+     UNION ALL
+     (SELECT count(tv) as allcount FROM `data` where tv!='')
+)t;
+
+
+/*****************************/
+-- GET TOP 5 USERS WITH MOST MEDIA ADDED
+-- Rough Idea
+-- select username from data order by count(total_media_added) ASC limit 5;
+
+
+/*****************************/
+-- GET TOP 10 NEIGHBOURS OF A USER. (NEIGHBOURS ARE USERS WHO HAVE MUTUAL MEDIA WITH THE LOGGED IN USER).
+-- NEIGHBOURS OF DIFFERENT MEDIA ARE DIFFERENT. (E.G. NEIGHBOURS OF MOVIES MUTUAL MEDIA ARE DIFFERENT FROM NEIGHBOURS OF ALBUMS MUTUAL MEDIA etc.)
+
+
+
+/*****************************/
+-- GET TOP 5 USERS WITH MOST FOLLOWERS
+SELECT followed_username as popular_users, COUNT(*) AS follower_count 
+FROM social
+GROUP BY followed_username ORDER BY follower_count desc limit 5;
