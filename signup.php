@@ -27,9 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // generate a random userid
     $user_id = random_num(20);
 
+	$date = date("Y-m-d"); 
+
     //insert into DB
-    $query = "INSERT INTO `users`(user_id, user_name, email, password) VALUES
-	 		 ('$user_id','$user_name','$email','$hashed_pass')";
+    $query = "INSERT INTO `users`(user_id, user_name, email, password, date) VALUES
+	 		 ('$user_id','$user_name','$email','$hashed_pass','$date')";
 
     /*---------------------------------------------------------------------------------------------------------------------- IF THE USERNAME IS ALREADY TAKEN, DISPLAY BOOTSTRAP ERROR. SEND AN EMAIL AND REDIRECT TO LOGIN PAGE. ALSO DISPLAY AND ERROR IF THE EMAIL IS NOT SENT.
     -----------------------------------------------------------------------------------------------------------------------*/

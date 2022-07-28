@@ -22,6 +22,12 @@ require "functions.php";
 $user_data = check_login($con);
 $username = $user_data['user_name']; //username of the currently logged in user
 
+if(isset($_SESSION['user_id']))
+{
+	set_inactive($username);
+	unset($_SESSION['user_id']);
+}
+
 /* ------------------------------------------------------------------------------------------------
 DELETES THE USERS FROM THE USERS TABLE IN THE DATABASE.
 ------------------------------------------------------------------------------------------------*/

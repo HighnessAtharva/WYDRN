@@ -18,6 +18,8 @@ include "header.php";
 error_reporting(E_ERROR | E_PARSE);
 $user_data = check_login($con);
 $username = $user_data['user_name'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +42,16 @@ $username = $user_data['user_name'];
         
 <?php
 
-$sql = "SELECT `username`, `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`datetime`, `profile_pic` from `data` INNER JOIN `users` on `user_name` = `username` WHERE `username` in (SELECT `followed_username` from social where `follower_username`='$username') ORDER BY `datetime` DESC";
+$per_page_record = 20; // Number of entries to show in a page.
+// Look for a GET variable page if not found default is 1.
+if (isset($_GET["page"])) {
+    $page = $_GET["page"];
+} else {
+    $page = 1;
+}
+
+$start_from = ($page - 1) * $per_page_record;
+$sql = "SELECT `username`, `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`datetime`, `profile_pic` from `data` INNER JOIN `users` on `user_name` = `username` WHERE `username` in (SELECT `followed_username` from social where `follower_username`='$username') ORDER BY `datetime` DESC  LIMIT $start_from, $per_page_record;";
 if ($query = mysqli_query($con, $sql)) {
     if (mysqli_num_rows($query) > 0) {
         for ($i = 0; $i <= mysqli_num_rows($query); $i++) {
@@ -67,7 +78,7 @@ if ($query = mysqli_query($con, $sql)) {
             $datetime = $row[$i]['datetime'];
 
             if (empty($person)) {
-                echo "You are all caught up!";
+                // echo "You are all caught up!";
 
             } else {
               
@@ -113,10 +124,52 @@ if ($query = mysqli_query($con, $sql)) {
         echo "Nothing to show here";
     }
 }
-mysqli_close($con);
 ?>
 
+ <!--PAGINATION ROW -->
+ <center>
+ <div class="pagination">
+        <?php
+        // $query = "SELECT count(*) from `data` WHERE `username`= '$username'";
+        $query="SELECT count(*) from `data` INNER JOIN `users` on `user_name` = `username` WHERE `username` in (SELECT `followed_username` from social where `follower_username`='$username')";
+        $rs_result = mysqli_query($con, $query);
+        $row = mysqli_fetch_row($rs_result);
+        $total_records = $row[0];
 
-</div>  <!-- container div ends -->
+        echo "</br>";
+        // CALCULATING THE NUMBER OF PAGES
+        $total_pages = ceil($total_records / $per_page_record);
+        $pageLink = "";
+
+        // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
+        if ($page >= 2) {
+            echo "<a href='feed.php?page=" . ($page - 1) . "'>  Prev </a>";
+        }
+
+        // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
+        for ($i = 1; $i <= $total_pages; $i++) {
+            if ($i == $page) {
+                $pageLink .= "<a class = 'active' href='feed.php?page="
+                    . $i . "'>" . $i . " </a>";
+            } else {
+                $pageLink .= "<a href='feed.php?page=" . $i . "'>" . $i . " </a>";
+            }
+        }
+        echo $pageLink;
+
+        // SHOW NEXT BUTTON IF NOT ON LAST PAGE
+        if ($page < $total_pages) {
+            echo "<a href='feed.php?page=" . ($page + 1) . "'>  Next </a>";
+        }
+        ?>
+    </div><!--END OF PAGINATION ROW -->
+</center>
+
+
+</div><!-- container div ends -->
 </body>
 </html>
+
+<?php 
+
+mysqli_close($con);?>

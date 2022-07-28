@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2022 at 07:16 PM
+-- Generation Time: Jul 28, 2022 at 09:45 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -86,7 +86,6 @@ INSERT INTO `data` (`username`, `videogame`, `platform`, `album`, `artist`, `boo
 ('HighnessAtharva', '', '', '', '', 'THE ART OF WAR', 'SUN TZU', '', '', '', '', '2022-06-23 14:27:52', '2022-06-23'),
 ('HighnessAtharva', 'MIDDLE-EARTH: SHADOW OF WAR', 'PC', '', '', '', '', '', '', '', '', '2022-06-23 16:16:43', '2022-06-23'),
 ('HighnessAtharva', 'MIDDLE-EARTH: SHADOW OF MORDOR', 'PC', '', '', '', '', '', '', '', '', '2022-06-23 16:16:55', '2022-06-23'),
-('HighnessAtharva', '', '', '', '', '', '', '', '', '', '', '2022-06-23 20:18:49', '2022-06-23'),
 ('HighnessAtharva', 'ELDEN RING', 'NINTENDO', 'PETALS FOR ARMOR', 'HAYLEY WILLIAMS', 'SKULDUGGERY PLEASANT', 'DEREK LANDY', '', '', '', '', '2022-06-24 21:27:36', '2022-06-24'),
 ('weebshooter', '', '', '', '', 'DRAGON BALL Z, VOL. 12', 'AKIRA TORIYAMA', 'RAYA AND THE LAST DRAGON', '2021', '', '', '2022-06-25 13:31:58', '2022-06-25'),
 ('weebshooter', '', '', 'MOTOMAMI', 'ROSALÍA', 'THE WORLD OF THE BOOK', 'DES COWLEY,CLARE WILLIAMSON', 'FANTASTIC BEASTS: THE SECRETS OF DUMBLEDORE', '2022', 'MR. MERCEDES', 'AMAZON PRIME', '2022-06-25 13:33:54', '2022-06-25'),
@@ -195,7 +194,14 @@ INSERT INTO `data` (`username`, `videogame`, `platform`, `album`, `artist`, `boo
 ('musicbot', '', '', '', '', 'MIGRAINE JOURNAL', 'ROGUE PLUS PUBLISHING', '', '', '', '', '2022-07-22 11:35:47', '2022-07-22'),
 ('musicbot', '', '', 'CIRCLES', 'MAC MILLER', '', '', 'SKY SHARKS', '2020', '', '', '2022-07-22 11:35:47', '2022-07-22'),
 ('musicbot', 'BORDERLANDS', 'NINTENDO', 'AM', 'ARCTIC MONKEYS', '1984', 'GEORGE ORWELL', 'MANDY', '2018', 'THE MANDALORIAN', 'YOUTUBE', '2022-07-22 11:37:31', '2022-07-22'),
-('dev', '', '', 'OK COMPUTER (COLLECTOR\'S EDITION)', 'RADIOHEAD', '', '', '', '', '', '', '2022-07-23 21:31:09', '2022-07-23');
+('dev', '', '', 'OK COMPUTER (COLLECTOR\'S EDITION)', 'RADIOHEAD', '', '', '', '', '', '', '2022-07-23 21:31:09', '2022-07-23'),
+('HighnessAtharva', '', '', 'WHOLE LOTTA RED', 'PLAYBOI CARTI', '', '', 'EMPEROR OF THE NORTH', '1973', '', '', '2022-07-28 02:22:44', '2022-07-28'),
+('HighnessAtharva', '', '', '', '', '', '', '', '', '', '', '2022-07-28 02:22:51', '2022-07-28'),
+('HighnessAtharva', '', '', '', '', 'EMPIRE OF THE VAMPIRE', 'JAY KRISTOFF', '', '', '', '', '2022-07-28 10:43:07', '2022-07-28'),
+('anay', '', '', '', '', 'EMPIRE OF THE VAMPIRE', 'JAY KRISTOFF', '', '', '', '', '2022-07-28 10:43:29', '2022-07-28'),
+('HighnessAtharva', 'BORDER', 'PLAYSTATION', 'APHEX TWINS', 'APHEX TWIN', 'COMPUTATIONAL THINKING: A PERSPECTIVE ON COMPUTER SCIENCE', 'ZHIWEI XU,JIALIN ZHANG', 'THE MUMMY: TOMB OF THE DRAGON EMPEROR', '2008', '', '', '2022-07-28 20:09:48', '2022-07-28'),
+('HighnessAtharva', 'FAR CRY 2', 'NINTENDO', 'ZABA', 'GLASS ANIMALS', 'CITROëN DS', 'LANCE COLE', 'S IS FOR STANLEY', '2016', 'THE GRIM ADVENTURES OF BILLY AND MANDY', 'AMAZON PRIME', '2022-07-28 20:11:25', '2022-07-28'),
+('dev', '', '', '', '', '', '', 'THE INVITATION', '2015', '', '', '2022-07-29 00:56:33', '2022-07-29');
 
 -- --------------------------------------------------------
 
@@ -216,11 +222,11 @@ CREATE TABLE `social` (
 INSERT INTO `social` (`follower_username`, `followed_username`, `followed_time`) VALUES
 ('susujpeg', 'highnessatharva', '2022-05-26 18:05:58'),
 ('HighnessAtharva', 'susujpeg', '2022-06-23 19:56:35'),
-('anay', 'HighnessAtharva', '2022-06-26 19:16:28'),
 ('dev', 'HighnessAtharva', '2022-07-23 21:36:00'),
 ('HighnessAtharva', 'musicbot', '2022-07-26 20:29:51'),
-('HighnessAtharva', 'wydrnbae', '2022-07-27 17:26:53'),
-('HighnessAtharva', 'dev', '2022-07-27 17:27:40');
+('HighnessAtharva', 'dev', '2022-07-27 17:27:40'),
+('anay', 'musicbot', '2022-07-28 11:18:46'),
+('anay', 'HighnessAtharva', '2022-07-28 23:43:39');
 
 -- --------------------------------------------------------
 
@@ -234,7 +240,7 @@ CREATE TABLE `users` (
   `user_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `date` date NOT NULL,
   `profile_pic` varchar(255) DEFAULT 'images/website/defaultPFP.png',
   `background_pic` varchar(255) DEFAULT 'images/website/defaultBackground.jpg',
   `active` tinyint(1) NOT NULL,
@@ -246,13 +252,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `user_name`, `email`, `password`, `date`, `profile_pic`, `background_pic`, `active`, `verified`) VALUES
-(67, 192511, 'wydrnbae', 'wydrnapp@gmail.com', '$2y$10$sZow5C2lbfA5fgovkj21LueQUhc379J76g4NQGSPcBfdbxGzfgLvC', '2022-03-19 15:00:28', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
-(71, 862114561492, 'susujpeg', 'darlingjamiesooo@gmail.com', '$2y$10$v/ZcsYOjV7xaJKJNViD4wOyyY4ntPCPcBPRswBOAUh5y7aZbBZPYS', '2022-07-26 13:24:39', 'images/users/110321yeeeee.JPG', 'images/website/defaultBackground.jpg', 0, 0),
-(114, 32726220398725619, 'HighnessAtharva', 'HighnessAtharva@gmail.com', '$2y$10$N20olViAKiwwJQDVbIBiXumiwjwUzXBuhrc9GGwri5j3ZH/uO5QPG', '2022-07-27 17:08:48', 'images/users/042722500x500-000000-80-0-0(3).jpg', 'images/users/023743ezgif-5-95f925855a.gif', 0, 1),
-(119, 74383560500, 'weebshooter', 'abcdefg@gmail.com', '$2y$10$k.Av6PfUY3W2U3VVqWix6.Pnl20agyynHFpigOtz/O5kjRUFgcLSy', '2022-07-27 16:54:04', 'images/users/095843atharva.png', 'images/website/defaultBackground.jpg', 0, 0),
-(120, 43960315659, 'musicbot', 'mycloudbackupmusic@gmail.com', '$2y$10$743rMLwA7DoSe.SoMkt1/OHx7CLKyY.8kaZDAsJBTb71c/yE1V.fa', '2022-07-27 17:06:07', 'images/users/031519tmp_1608820741507.jpg', 'images/users/a0127997326_10.jpg', 0, 1),
-(121, 36627543520, 'anay', 'anaydesh1234@gmail.com', '$2y$10$R0cvJsbAK8w9AuqsUWuC8ONh0J9x/wWOzfPubwHkBxClv/KDGYz2a', '2022-07-27 17:02:59', 'images/users/070231maskable@19233.png', 'images/users/064726rotarylogo.png', 0, 1),
-(122, 5784303861, 'dev', 'dummymail2069@gmail.com', '$2y$10$V/cOlDorenUUcbJyn8p0qO1NO4hE019f/f7LF0hvufhahCaWszZMK', '2022-07-27 17:09:35', 'images/users/070935pexelsabstract992.jpg', 'images/users/070935hm.JPG', 1, 0);
+(67, 192511, 'wydrnbae', 'wydrnapp@gmail.com', '$2y$10$sZow5C2lbfA5fgovkj21LueQUhc379J76g4NQGSPcBfdbxGzfgLvC', '2022-03-19', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
+(71, 862114561492, 'susujpeg', 'darlingjamiesooo@gmail.com', '$2y$10$v/ZcsYOjV7xaJKJNViD4wOyyY4ntPCPcBPRswBOAUh5y7aZbBZPYS', '2022-07-29', 'images/users/110321yeeeee.JPG', 'images/website/defaultBackground.jpg', 0, 0),
+(114, 32726220398725619, 'HighnessAtharva', 'HighnessAtharva@gmail.com', '$2y$10$N20olViAKiwwJQDVbIBiXumiwjwUzXBuhrc9GGwri5j3ZH/uO5QPG', '2022-07-29', 'images/users/042722500x500-000000-80-0-0(3).jpg', 'images/users/023743ezgif-5-95f925855a.gif', 1, 1),
+(119, 74383560500, 'weebshooter', 'abcdefg@gmail.com', '$2y$10$k.Av6PfUY3W2U3VVqWix6.Pnl20agyynHFpigOtz/O5kjRUFgcLSy', '2022-07-27', 'images/users/095843atharva.png', 'images/website/defaultBackground.jpg', 0, 0),
+(120, 43960315659, 'musicbot', 'mycloudbackupmusic@gmail.com', '$2y$10$743rMLwA7DoSe.SoMkt1/OHx7CLKyY.8kaZDAsJBTb71c/yE1V.fa', '2022-07-29', 'images/users/031519tmp_1608820741507.jpg', 'images/users/a0127997326_10.jpg', 0, 1),
+(121, 36627543520, 'anay', 'anaydesh1234@gmail.com', '$2y$10$R0cvJsbAK8w9AuqsUWuC8ONh0J9x/wWOzfPubwHkBxClv/KDGYz2a', '2022-07-29', 'images/users/070231maskable@19233.png', 'images/users/064726rotarylogo.png', 0, 1),
+(122, 5784303861, 'dev', 'dummymail2069@gmail.com', '$2y$10$V/cOlDorenUUcbJyn8p0qO1NO4hE019f/f7LF0hvufhahCaWszZMK', '2022-07-29', 'images/users/070935pexelsabstract992.jpg', 'images/users/070935hm.JPG', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -290,7 +296,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
