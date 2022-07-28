@@ -104,29 +104,32 @@ img {
     width: 350px;
 }
 
-.search-list {
+.search-list-movies {
     position: absolute;
-    left: 50;
-    top: 100%;
+    left: 65px;
+    margin-top: -110px;
     max-height: 500px;
+    border-left: 1px solid black;
+    width: 600px;
     overflow-y: scroll;
     z-index: 10;
+    background-color: var(--md-dark-color);
 }
 
-.search-list .search-list-item {
-    background-color: var(--light-dark-color);
+.search-list-movies .search-list-item {
+    background-color: #fafafa;
     padding: 0.5rem;
     border-bottom: 1px solid var(--dark-color);
-    width: calc(350px - 8px);
-    color: #fff;
+    width: 100%;
+    color: rgb(0, 0, 0);
     cursor: pointer;
     -webkit-transition: background-color 200ms ease;
     -o-transition: background-color 200ms ease;
     transition: background-color 200ms ease;
 }
 
-.search-list .search-list-item:Hover {
-    background-color: #ffffff;
+.search-list-movies .search-list-item:hover {
+    background-color: #878787;
 }
 
 .search-list-item {

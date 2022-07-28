@@ -28,7 +28,7 @@ function findAlbum() {
 
 // load movies from API
 async function loadAlbums(searchTerm) {
-    const URL = `https://ws.audioscrobbler.com/2.0/?method=album.search&album=${searchTerm}&limit=3&api_key=${LastFMAPIKey}&format=json`;
+    const URL = `https://ws.audioscrobbler.com/2.0/?method=album.search&album=${searchTerm}&limit=5&api_key=${LastFMAPIKey}&format=json`;
     const res = await fetch(`${URL}`);
     const data = await res.json();
     var results = data['results']['albummatches']['album'];

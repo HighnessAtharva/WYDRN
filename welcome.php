@@ -28,11 +28,12 @@ $user_data = check_login($con);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link rel="stylesheet" href="CSS/welcome.css">
-    <link rel="stylesheet" href="SearchBoxAPIs/Book/main.css">
-    <link rel="stylesheet" href="SearchBoxAPIs/Movie/main.css">
-    <link rel="stylesheet" href="SearchBoxAPIs/Music/main.css">
-    <link rel="stylesheet" href="SearchBoxAPIs/TV/main.css">
+
     <link rel="stylesheet" href="SearchBoxAPIs/Videogame/main.css">
+    <link rel="stylesheet" href="SearchBoxAPIs/TV/main.css">
+    <link rel="stylesheet" href="SearchBoxAPIs/Movie/main.css">
+    <link rel="stylesheet" href="SearchBoxAPIs/Book/main.css">
+    <link rel="stylesheet" href="SearchBoxAPIs/Music/main.css">
 </head>
 
 
@@ -56,7 +57,7 @@ $user_data = check_login($con);
                 Who's the Artist?
                 <input type="text" class="form-control" name="Artist" placeholder="Black Midi" id="music-artist"><br>
                 
-                <div class="search-list" id="search-list-music">
+                <div class="search-list-music" id="search-list-music">
                     <!--ALBUM SUGGESTIONS WILL APPEAR HERE-->
                 </div>
             </div>
@@ -73,7 +74,7 @@ $user_data = check_login($con);
                 Drop the name of the Author bro
                 <input type="text" class="form-control" name="Author" placeholder="Robin Hobb"  id="book-author"><br>
                 
-                <div class="search-list" id="search-list-book">
+                <div class="search-list-books" id="search-list-book">
                     <!--BOOK SUGGESTIONS WILL APPEAR HERE-->
                 </div>
             </div>
@@ -90,7 +91,7 @@ $user_data = check_login($con);
                 Release Year
                 <input type="text" class="form-control" name="MovieRelease" placeholder="2022" id="movie-year"><br>
                 
-                <div class="search-list" id="search-list-movies">
+                <div class="search-list-movies" id="search-list-movies">
                      <!--MOVIE SUGGESTIONS WILL APPEAR HERE-->
                 </div>
 
@@ -120,7 +121,7 @@ $user_data = check_login($con);
                         <option value="Discovery+">Discovery+</option>
                 </select>
 
-                <div class="search-list" id="search-list-tv">
+                <div class="search-list-tv" id="search-list-tv">
                      <!--MOVIE SUGGESTIONS WILL APPEAR HERE-->
                 </div>
 
@@ -147,7 +148,7 @@ $user_data = check_login($con);
                     <option value="Wii">Wii</option>
                 </select>
                 
-                <div class="search-list" id="search-list-games">
+                <div class="search-list-games" id="search-list-games">
                     <!--VIDEOGAME SUGGESTIONS WILL APPEAR HERE-->
                 </div>
             </div>
@@ -184,11 +185,12 @@ $user_data = check_login($con);
 
 
 <!--END OF MAIN BODY-->
-<script src="SearchBoxAPIs/Videogame/script.js"></script> 
+
 <script src="SearchBoxAPIs/Music/script.js"></script>
 <script src="SearchBoxAPIs/TV/script.js"></script>
 <script src="SearchBoxAPIs/Movie/script.js"></script>
 <script src="SearchBoxAPIs/Book/script.js"></script>
+<script src="SearchBoxAPIs/Videogame/script.js"></script> 
 
 <?php mysqli_close($con); ?>
 </body>
