@@ -121,7 +121,7 @@ if ($query = mysqli_query($con, $sql)) {
             } //else ends
         }
     } else {
-        echo "Nothing to show here";
+        echo "<center><b>EMPTY FEED. YOU ARE SUCH A LONER!</b><br><a href='search_users.php'>FOLLOW MORE PEOPLE</a></center>";
     }
 }
 ?>

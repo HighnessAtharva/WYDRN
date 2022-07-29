@@ -124,7 +124,7 @@ function getposterpath($name, $year){
 <center>
  <div class="pagination">
         <?php
-        $query="SELECT DISTINCT count(*) FROM `data` where movie != '' and username='$username'";
+        $query="SELECT count(DISTINCT `movie`) FROM `data` where movie != '' and username='$username'";
         $rs_result = mysqli_query($con, $query);
         $row = mysqli_fetch_row($rs_result);
         $total_records = $row[0];

@@ -44,8 +44,20 @@ if (isset($_POST['submit'])) {
         // Parse data from CSV file line by line
         // Parse data from CSV file line by line
         $counter=0;
+        $videogamecount=0;
+        $albumcount=0;
+        $moviecount=0;
+        $bookcount=0;
+        $tvcount=0;
         while (($getData = fgetcsv($csvFile, 10000, ",")) !== false) {
-
+            if(empty($getData)){
+                continue;
+            }
+            $videogamecount++;
+            $albumcount++;
+            $moviecount++;
+            $bookcount++;
+            $tvcount++;
             $videogame = mysqli_real_escape_string($con, $getData[0]);
             $platform = mysqli_real_escape_string($con,$getData[1]);
             $album = mysqli_real_escape_string($con,$getData[2]);
@@ -61,30 +73,35 @@ if (isset($_POST['submit'])) {
 
             if (empty($videogame)){
                 $videogame = "";
+                $videogamecount--;
             }
             if (empty($platform)){
                 $platform = "";
             }
             if (empty($album)){
                 $album = "";
+                $albumcount--;
             }
             if (empty($artist)){
                 $artist = "";
             }
             if (empty($book)){
                 $book = "";
+                $bookcount--;
             }
             if (empty($author)){
                 $author = "";
             }
             if (empty($movie)){
                 $movie = "";
+                $moviecount--;
             }
             if (empty($year)){
                 $year = "";
             }
             if (empty($tv)){
                 $tv = "";
+                $tvcount--;
             }
             if (empty($streaming)){
                 $streaming = "";
@@ -95,9 +112,7 @@ if (isset($_POST['submit'])) {
                 $query = "INSERT INTO `data` (`username`, `videogame`, `platform`, `album`, `artist`, `book` ,`author` ,`movie`,`year`,`tv`,`streaming`) VALUES ('$username', '$videogame', '$platform', '$album', '$artist', '$book', '$author', '$movie', '$year', '$tv', '$streaming')";
 
                 if (mysqli_query($con, $query)) {
-                    // echo "Data insert success!<br>";
-                    //sleep for 1 second between each insert because datetime requires it to be unique
-                    // sleep(1);
+                  
                     $counter+=mysqli_affected_rows($con);
                 } else {
                     echo "Insert failed! Please check CSV format.<br>";
@@ -105,8 +120,14 @@ if (isset($_POST['submit'])) {
             }
         }
     
-        echo("<br>");
-        echo("Added ".$counter." logs to your account.");
+
+        echo("Added ".$videogamecount." Videogames to your account."."<br>");
+        echo("Added ".$moviecount." Movies to your account."."<br>");
+        echo("Added ".$tvcount." TV Shows to your account."."<br>");
+        echo("Added ".$bookcount." Books to your account."."<br>");
+        echo("Added ".$albumcount." Albums to your account."."<br>");
+        echo("Total media items to your account are: ".$counter."<br>");
+
         fclose($csvFile);
     } else {
         echo "Please select valid file";

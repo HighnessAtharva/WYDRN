@@ -122,7 +122,7 @@ $start_from = ($page - 1) * $per_page_record;
 <center>
  <div class="pagination">
         <?php
-        $query="SELECT DISTINCT count(*) FROM `data` where album != '' and username='$username'";
+        $query="SELECT DISTINCT count(DISTINCT `album`) FROM `data` where album != '' and username='$username'";
         $rs_result = mysqli_query($con, $query);
         $row = mysqli_fetch_row($rs_result);
         $total_records = $row[0];

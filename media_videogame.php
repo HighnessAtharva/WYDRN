@@ -122,7 +122,7 @@ function getposterpath($name){
 <center>
  <div class="pagination">
         <?php
-        $query="SELECT DISTINCT count(*) FROM `data` where videogame != '' and username='$username'";
+        $query="SELECT DISTINCT count(DISTINCT `videogame`) FROM `data` where videogame != '' and username='$username'";
         $rs_result = mysqli_query($con, $query);
         $row = mysqli_fetch_row($rs_result);
         $total_records = $row[0];
