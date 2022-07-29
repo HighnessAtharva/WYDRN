@@ -24,6 +24,7 @@ The site is not deployed currently so you can't get a live preview but you can t
 ![5](https://user-images.githubusercontent.com/68660002/180612842-7a10aeb5-d734-4d85-a2da-2b5a3ece72b9.JPG)
 
 - A guest account with `username` : `dev` and `password` : `deadlines` is already made avaiable for your usage. Login with it.
+- For Load Testing use username `spammer` with password `hellohi123`.
 - You can now add media, export your media, search for other users and see your mutual medias. 
 
 ## [Documentation](https://github.com/HighnessAtharva/WYDRN/wiki/Documentation)
