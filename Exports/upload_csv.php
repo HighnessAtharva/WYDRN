@@ -46,18 +46,18 @@ if (isset($_POST['submit'])) {
         $counter=0;
         while (($getData = fgetcsv($csvFile, 10000, ",")) !== false) {
 
-            $videogame = $getData[0];
-            $platform = $getData[1];
-            $album = $getData[2];
-            $artist = $getData[3];
-            $book = $getData[4];
-            $author = $getData[5];
-            $movie = $getData[6];
-            $year = $getData[7];
-            $tv = $getData[8];
-            $streaming = $getData[9];
-            $datetime = $getData[10];
-            $date = $getData[11];
+            $videogame = mysqli_real_escape_string($con, $getData[0]);
+            $platform = mysqli_real_escape_string($con,$getData[1]);
+            $album = mysqli_real_escape_string($con,$getData[2]);
+            $artist = mysqli_real_escape_string($con,$getData[3]);
+            $book = mysqli_real_escape_string($con,$getData[4]);
+            $author = mysqli_real_escape_string($con,$getData[5]);
+            $movie = mysqli_real_escape_string($con,$getData[6]);
+            $year = mysqli_real_escape_string($con,$getData[7]);
+            $tv = mysqli_real_escape_string($con,$getData[8]);
+            $streaming = mysqli_real_escape_string($con,$getData[9]);
+            $datetime = mysqli_real_escape_string($con,$getData[10]);
+            $date = mysqli_real_escape_string($con,$getData[11]);
 
             if (empty($videogame)){
                 $videogame = "";
