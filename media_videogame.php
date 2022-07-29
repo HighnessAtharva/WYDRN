@@ -62,9 +62,18 @@ function getposterpath($name){
 </div>
 
 <?php
+  $per_page_record = 8; // Number of entries to show in a page.
+  // Look for a GET variable page if not found default is 1.
+  if (isset($_GET["page"])) {
+      $page = $_GET["page"];
+  } else {
+      $page = 1;
+  }
+  $start_from = ($page - 1) * $per_page_record;
+
     $html_game="<br><br><section class='cards-wrapper'>"; // $html_game stores the html code for the movie cards
     
-    $sql = "SELECT DISTINCT `videogame`, `platform`, `date` FROM `data` where videogame != '' and username='$username' order by `date` DESC";
+    $sql = "SELECT DISTINCT `videogame`, `platform`, `date` FROM `data` where videogame != '' and username='$username' order by `date` DESC LIMIT $start_from, $per_page_record;";
     if ($query = mysqli_query($con, $sql)) {
         $totalgamecount=mysqli_num_rows($query);
         if ($totalgamecount > 0) {
@@ -106,7 +115,46 @@ function getposterpath($name){
     
     $html_game.="</section>";
     echo $html_game;
-    mysqli_close($con);
+    
 ?>
+
+<!--PAGINATION ROW -->
+<center>
+ <div class="pagination">
+        <?php
+        $query="SELECT DISTINCT count(*) FROM `data` where videogame != '' and username='$username'";
+        $rs_result = mysqli_query($con, $query);
+        $row = mysqli_fetch_row($rs_result);
+        $total_records = $row[0];
+
+        echo "</br>";
+        // CALCULATING THE NUMBER OF PAGES
+        $total_pages = ceil($total_records / $per_page_record);
+        $pageLink = "";
+
+        // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
+        if ($page >= 2) {
+            echo "<a href='media_videogame.php?page=" . ($page - 1) . "'>  Prev </a>";
+        }
+
+        // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
+        for ($i = 1; $i <= $total_pages; $i++) {
+            if ($i == $page) {
+                $pageLink .= "<a class = 'active' href='media_videogame.php?page="
+                    . $i . "'>" . $i . " </a>";
+            } else {
+                $pageLink .= "<a href='media_videogame.php?page=" . $i . "'>" . $i . " </a>";
+            }
+        }
+        echo $pageLink;
+
+        // SHOW NEXT BUTTON IF NOT ON LAST PAGE
+        if ($page < $total_pages) {
+            echo "<a href='media_videogame.php?page=" . ($page + 1) . "'>  Next </a>";
+        }
+        ?>
+    </div><!--END OF PAGINATION ROW -->
+</center>
 <body>
 </html>
+<?php  mysqli_close($con);?>
