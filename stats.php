@@ -20,7 +20,18 @@ require "functions.php";
 
 //getting the username from the session
 $user_data = check_login($con);
-$username = $user_data['user_name'];
+
+
+// http://localhost/WYDRN/stats.php?user_name=spammer (if get param is set)
+if ($_SERVER['REQUEST_METHOD']=='GET' and isset($_GET['user_name'])) {
+    $username = $_GET['user_name'];
+}
+
+// by default show the stats of the logged in user
+else{
+  $username = $user_data['user_name'];
+}
+
 
 /*************
   TOTAL MEDIA COUNT
@@ -229,6 +240,9 @@ $total_book_count= $row[0];
 
 ?>
 
+<!-- *******************
+       HTML STUFF
+******************* -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -240,14 +254,35 @@ $total_book_count= $row[0];
     <link rel="stylesheet" href="css/stats.css">
 </head>
 <body>
+
     <div class="container">
-    <?php 
-    echo "Total Media Count: ".$total_media_count."<br>";
-    echo "Total Unique Media Count: ".$total_media_count_unique."<br>";
-    echo "Total Books Count: ".$total_book_count."<br>";
-    // add more queries and stats data below in similar way as above
     
-    ?>
+        <div class="stat-item">Total Media Count: <span> <?php echo($total_media_count) ?> </span></div>
+        <div class="stat-item">Total Unique Media Count: <span> <?php echo($total_media_count_unique) ?></span></div>
+        <div class="stat-item">Total Books Count: <span> <?php echo($total_book_count) ?></span></div>
+        
+        <!-- Add more stat items below in the same format as above. -->
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+        <div class="stat-item"></div>
+
     </div>
 </body>
 </html>
