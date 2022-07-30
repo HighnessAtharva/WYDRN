@@ -188,27 +188,25 @@ $sql="SELECT count(`user_name`) FROM `users`";
         
         
         <!-- Add more stat items below in the same format as above. -->
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
 
     </div>
 </body>

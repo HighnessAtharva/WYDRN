@@ -80,6 +80,93 @@ $total_media_count_unique= executeSQL($con, $sql);
 
 
 /*************
+  TOTAL MEDIA ADDED LAST WEEK
+*************/
+
+$sql="SELECT sum(allcount) AS Total_Count FROM(
+  (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 7 DAY)
+  UNION ALL
+  (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 7 DAY)
+  UNION ALL
+  (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='' AND DATE(date) >= CURDATE() - INTERVAL 7 DAY)
+  UNION ALL
+  (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='' AND DATE(date) >= CURDATE() - INTERVAL 7 DAY)
+  UNION ALL
+  (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 7 DAY)
+)t ";
+$total_media_added_last_week= executeSQL($con, $sql);
+
+
+/*************
+  TOTAL MEDIA ADDED LAST MONTH
+*************/
+$sql="SELECT sum(allcount) AS Total_Count FROM(
+  (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 30 DAY)
+  UNION ALL
+  (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 30 DAY)
+  UNION ALL
+  (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='' AND DATE(date) >= CURDATE() - INTERVAL 30 DAY)
+  UNION ALL
+  (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='' AND DATE(date) >= CURDATE() - INTERVAL 30 DAY)
+  UNION ALL
+  (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 30 DAY)
+)t ";
+$total_media_added_last_month= executeSQL($con, $sql);
+
+
+
+/*************
+  TOTAL MEDIA ADDED LAST 3 MONTHS
+*************/
+$sql="SELECT sum(allcount) AS Total_Count FROM(
+  (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 90 DAY)
+  UNION ALL
+  (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 90 DAY)
+  UNION ALL
+  (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='' AND DATE(date) >= CURDATE() - INTERVAL 90 DAY)
+  UNION ALL
+  (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='' AND DATE(date) >= CURDATE() - INTERVAL 90 DAY)
+  UNION ALL
+  (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 90 DAY)
+)t ";
+$total_media_added_last_3months= executeSQL($con, $sql);
+
+
+/*************
+  TOTAL MEDIA ADDED LAST 6 MONTHS
+*************/
+$sql="SELECT sum(allcount) AS Total_Count FROM(
+  (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 180 DAY)
+  UNION ALL
+  (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 180 DAY)
+  UNION ALL
+  (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='' AND DATE(date) >= CURDATE() - INTERVAL 180 DAY)
+  UNION ALL
+  (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='' AND DATE(date) >= CURDATE() - INTERVAL 180 DAY)
+  UNION ALL
+  (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 180 DAY)
+)t ";
+$total_media_added_last_6months= executeSQL($con, $sql);
+
+
+/*************
+  TOTAL MEDIA ADDED LAST YEAR
+*************/
+$sql="SELECT sum(allcount) AS Total_Count FROM(
+  (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 365 DAY)
+  UNION ALL
+  (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 365 DAY)
+  UNION ALL
+  (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='' AND DATE(date) >= CURDATE() - INTERVAL 365 DAY)
+  UNION ALL
+  (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='' AND DATE(date) >= CURDATE() - INTERVAL 365 DAY)
+  UNION ALL
+  (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 365 DAY)
+)t ";
+$total_media_added_last_year= executeSQL($con, $sql);
+
+
+/*************
   TOTAL BOOKS COUNT 
 *************/
 $sql="SELECT count(book) AS Total_Count FROM `data` where `username`='$username' AND book!=''";
@@ -201,36 +288,6 @@ $total_book_count= executeSQL($con, $sql);
 
 
 /*************
-  TOTAL MEDIA ADDED LAST WEEK
-*************/
-
-
-
-/*************
-  TOTAL MEDIA ADDED LAST MONTH
-*************/
-
-
-
-/*************
-  TOTAL MEDIA ADDED LAST 3 MONTHS
-*************/
-
-
-
-/*************
-  TOTAL MEDIA ADDED LAST 6 MONTHS
-*************/
-
-
-
-/*************
-  TOTAL MEDIA ADDED LAST YEAR
-*************/
-
-
-
-/*************
   AVERAGE MEDIA ADDED PER DAY 
 *************/
 //Hint: Total Media Count/ (Current Date - Date of Account Creation ['date' column in 'users' table] )
@@ -256,29 +313,33 @@ $total_book_count= executeSQL($con, $sql);
         <h1>Stats for <?php echo $username;?></h1><br>
         <div class="stat-item">Total Media Count: <span> <?php echo($total_media_count) ?> </span></div>
         <div class="stat-item">Total Unique Media Count: <span> <?php echo($total_media_count_unique) ?></span></div>
+        <div class="stat-item">Total Media Added Last Week: <span><?php echo($total_media_added_last_week)?></span></div>
+        <div class="stat-item">Total Media Added Last Month: <span><?php echo($total_media_added_last_month)?></span></div>
+        <div class="stat-item">Total Media Added Last 3 Months: <span><?php echo($total_media_added_last_3months)?></span></div>
+        <div class="stat-item">Total Media Added Last 6 Months: <span><?php echo($total_media_added_last_6months)?></span></div>
+        <div class="stat-item">Total Media Added Last Year: <span><?php echo($total_media_added_last_year)?></span></div>
         <div class="stat-item">Total Books Count: <span> <?php echo($total_book_count) ?></span></div>
-        
-        <!-- Add more stat items below in the same format as above. -->
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
-        <div class="stat-item"></div>
+
+           <!-- Add more stat items below in the same format as above. -->
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item">: <span> <?php?> </span></div>
 
     </div>
 </body>
