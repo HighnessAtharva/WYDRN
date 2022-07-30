@@ -1,0 +1,13 @@
+.stat-item {
+    text-shadow: black 0px 0px 1px;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.stat-item>span {
+    text-decoration: underline;
+}
+
+.container {
+    margin-top: 20px;
+}

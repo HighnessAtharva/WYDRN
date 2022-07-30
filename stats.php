@@ -32,6 +32,14 @@ else{
   $username = $user_data['user_name'];
 }
 
+function executeSQL($con, $sql){
+  if ($query = mysqli_query($con, $sql)) {
+    $row = mysqli_fetch_array($query);
+    return $row[0];
+    }else{
+        echo mysqli_error($con);
+    }
+}
 
 /*************
   TOTAL MEDIA COUNT
@@ -48,12 +56,9 @@ $sql="SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='')
 )t";
 
-if ($query = mysqli_query($con, $sql)) {
-$row = mysqli_fetch_array($query);
-$total_media_count= $row[0];
-}else{
-    echo mysqli_error($con);
-}
+
+$total_media_count= executeSQL($con, $sql);
+
 
 /*************
   TOTAL MEDIA COUNT UNIQUE
@@ -70,24 +75,16 @@ $sql="SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(DISTINCT `tv`) AS allcount FROM `data` where `username`='$username' AND tv!='')
 )t";
 
-if ($query = mysqli_query($con, $sql)) {
-$row = mysqli_fetch_array($query);
-$total_media_count_unique= $row[0];
-}else{
-    echo mysqli_error($con);
-}
+$total_media_count_unique= executeSQL($con, $sql);
+
+
 
 /*************
   TOTAL BOOKS COUNT 
 *************/
 $sql="SELECT count(book) AS Total_Count FROM `data` where `username`='$username' AND book!=''";
+$total_book_count= executeSQL($con, $sql);
 
-if ($query = mysqli_query($con, $sql)) {
-$row = mysqli_fetch_array($query);
-$total_book_count= $row[0];
-}else{
-    echo mysqli_error($con);
-}
 
 /*************
   TOTAL BOOKS COUNT UNIQUE
@@ -256,7 +253,7 @@ $total_book_count= $row[0];
 <body>
 
     <div class="container">
-    
+        <h1>Stats for <?php echo $username;?></h1><br>
         <div class="stat-item">Total Media Count: <span> <?php echo($total_media_count) ?> </span></div>
         <div class="stat-item">Total Unique Media Count: <span> <?php echo($total_media_count_unique) ?></span></div>
         <div class="stat-item">Total Books Count: <span> <?php echo($total_book_count) ?></span></div>
