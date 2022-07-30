@@ -24,10 +24,20 @@ $user_data = check_login($con);
 
 // http://localhost/WYDRN/stats.php?user_name=spammer (if get param is set)
 if ($_SERVER['REQUEST_METHOD']=='GET' and isset($_GET['user_name'])) {
-    $username = $_GET['user_name'];
+  
+  //we are checking if username passed in GET request actually exists in the database. If yes, we will show the stats of that user. If not, we will show an error message.
+  $sql="SELECT `user_name` FROM `users` WHERE `user_name`='".$_GET['user_name']."'";
+  if ($query = mysqli_query($con, $sql)) {
+    $row = mysqli_fetch_array($query);
+    if ($row[0]==$_GET['user_name']) {
+      $username=$_GET['user_name'];
+    }else{
+        die("<h1> User not found! </h1>");
+    }
+}
 }
 
-// by default show the stats of the logged in user
+// BY DEFAULT SHOW THE STATS OF THE LOGGED IN USER.
 else{
   $username = $user_data['user_name'];
 }
@@ -321,25 +331,25 @@ $total_book_count= executeSQL($con, $sql);
         <div class="stat-item">Total Books Count: <span> <?php echo($total_book_count) ?></span></div>
 
            <!-- Add more stat items below in the same format as above. -->
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
 
     </div>
 </body>

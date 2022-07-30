@@ -61,6 +61,7 @@ $current_active_users= executeSQL($con, $sql);
 *************/
 
 $sql="SELECT count(`user_name`) FROM `users`";
+$total_users_count= executeSQL($con, $sql);
 
 /*************
   TOTAL BOOKS COUNT (SUM OF ALL USERS)
@@ -118,9 +119,10 @@ $sql="SELECT count(`user_name`) FROM `users`";
   GET TOP 50 MOST POPULAR USERS (USERS WITH MOST FOLLOWERS)
 *************/
 
-// SELECT followed_username as popular_users, COUNT(*) AS follower_count 
-// FROM social
-// GROUP BY followed_username ORDER BY follower_count desc limit 50;
+$sql="SELECT followed_username as popular_users, COUNT(*) AS follower_count 
+FROM social
+GROUP BY followed_username ORDER BY follower_count desc limit 50";
+$popular_users= executeSQL($con, $sql);
 
 
 /*************
@@ -188,25 +190,25 @@ $sql="SELECT count(`user_name`) FROM `users`";
         
         
         <!-- Add more stat items below in the same format as above. -->
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
-        <div class="stat-item">: <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item"> <span> <?php?> </span></div>
 
     </div>
 </body>
