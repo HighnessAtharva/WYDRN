@@ -39,7 +39,7 @@ def getuserAlbums(user_name:str) -> list[str]:
 
 
 
-print("-------------- BOOK RECOMMENDATION SYSTEM -------------- \n\n")
+print("-------------- MUSIC RECOMMENDATION SYSTEM -------------- \n\n")
 
 
 RecList=[]

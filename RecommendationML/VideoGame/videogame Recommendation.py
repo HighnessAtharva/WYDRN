@@ -38,7 +38,7 @@ def getUsergames(user_name:str) -> list[str]:
 
 
 
-print("-------------- BOOK RECOMMENDATION SYSTEM -------------- \n\n")
+print("-------------- VIDEOGAME RECOMMENDATION SYSTEM -------------- \n\n")
 
 
 RecList=[]
