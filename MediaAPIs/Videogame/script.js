@@ -76,16 +76,39 @@ function loadgameDetails() {
 }
 
 function displaygameDetails(details) {
+    if (details === undefined) {
+        resultGrid.innerHTML += "NO DATA AVAILABLE FOR THIS VIDEOGAME";
+    }
     console.log(details)
+
     let year = details['released'];
     year = year.split("-");
     year = year[0];
+
     var genres = null;
-    if ('genres' [0]['name'] in details) {
-        genres = "NA";
+    if ('genres' in details) {
+        genres = details['genres'];
+        if (genres.length > 0) {
+            genres = genres[0]['name']
+        }
+
     } else {
-        genres = ['genres'][0]['name'];
+        genres = "NA";
+
     }
+
+    var publisher = null;
+    if ('publishers' in details) {
+        publisher = details['publishers'];
+        if (publisher.length > 0) {
+            publisher = publisher[0]['name'];
+        }
+        // console.log('Yes')
+    } else {
+
+        publisher = "NA";
+    }
+
     resultGrid.innerHTML = `
     <div class = "movie-poster">
         <img src = "${(details['background_image'] != null) ?  details['background_image'] : "https://i.ibb.co/hRCvsdq/image-not-found.png"}" alt = "game poster">
@@ -95,7 +118,7 @@ function displaygameDetails(details) {
         <ul class = "movie-misc-info">
             <li class = "year">Release Date: ${year}</li>
         </ul>
-        <p class = "language"><b>Publisher:</b> ${details['publishers'][0]['name']}</p><br>
+        <p class = "language"><b>Publisher:</b> ${publisher}</p><br>
         <p class = "genre"><b>Genre:</b> ${genres}</p><br>
         <p class = "plot"><b>Plot:</b> ${details['description_raw']}</p>
         

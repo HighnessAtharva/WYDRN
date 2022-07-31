@@ -36,7 +36,7 @@ function findMovies() {
 function displayMovieList(movies) {
     searchList.innerHTML = "";
     //NOTE: TRY TO REDUCE THE LENGTH OF THE LOOP. USE AT MOST 3 TO REDUCE API CALLS.
-    for (let idx = 0; idx < 3; idx++) {
+    for (let idx = 0; idx < movies.length; idx++) {
         let movieListItem = document.createElement('div');
         movieListItem.dataset.id = movies[idx]['id']; // setting movie id in  data-id
         movieListItem.classList.add('search-list-item');
