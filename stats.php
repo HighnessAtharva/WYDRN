@@ -330,26 +330,27 @@ $total_book_count= executeSQL($con, $sql);
         <div class="stat-item">Total Media Added Last Year: <span><?php echo($total_media_added_last_year)?></span></div>
         <div class="stat-item">Total Books Count: <span> <?php echo($total_book_count) ?></span></div>
 
-           <!-- Add more stat items below in the same format as above. -->
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
+      <!-- Add more stat items below in the same format as above. -->
+      <div class="stat-item">TOTAL BOOKS COUNT UNIQUE: <span> <?php?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED BOOKS:  <span> <?php?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED AUTHORS: <span> <?php?> </span></div>
+      <div class="stat-item">TOTAL MOVIE COUNT: <span> <?php?> </span></div>
+      <div class="stat-item">TOTAL MOVIE COUNT UNIQUE: <span> <?php?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED MOVIES : <span> <?php?> </span></div>
+      <div class="stat-item">TOTAL TV SHOW COUNT:  <span> <?php?> </span></div>
+      <div class="stat-item">TOTAL TV SHOW COUNT UNIQUE: <span> <?php?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED TV SHOWS:  <span> <?php?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED STREAMING PLATFORM: <span> <?php?> </span></div>
+      <div class="stat-item">TOTAL VIDEOGAME COUNT:  <span> <?php?> </span></div>
+      <div class="stat-item">TOTAL VIDEOGAME COUNT UNIQUE: <span> <?php?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED GAMING PLATFORM: <span> <?php?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED VIDEOGAMES : <span> <?php?> </span></div>
+      <div class="stat-item">TOTAL ALBUM COUNT:  <span> <?php?> </span></div>
+      <div class="stat-item"> TOTAL ALBUM COUNT UNIQUE: <span> <?php?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED ALBUMS: <span> <?php?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED ARTIST: <span> <?php?> </span></div>
+      <div class="stat-item"> YOUR FAVORITE MEDIA TYPE: <span> <?php?> </span></div>
+      <div class="stat-item">  AVERAGE MEDIA ADDED PER DAY:  <span> <?php?> </span></div>
 
     </div>
 </body>

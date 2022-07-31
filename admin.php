@@ -185,30 +185,29 @@ $popular_users= executeSQL($con, $sql);
 
     <div class="container">
     
-        <div class="stat-item">Total Media Logged on WYDRN by all users: <span> <?php echo($total_media_count) ?> </span></div>
-        <div class="stat-item">Total Active Visitors On Site: <span> <?php echo($current_active_users) ?></span></div>
-        
-        
+        <div class="stat-item"> TOTAL MEDIA ADDED BY ALL USERS: <span> <?php echo($total_media_count) ?> </span></div>
+        <div class="stat-item">CURRENT ACTIVE USERS ON SITE: <span> <?php echo($current_active_users) ?></span></div>
+ 
         <!-- Add more stat items below in the same format as above. -->
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
-        <div class="stat-item"> <span> <?php?> </span></div>
+        <div class="stat-item">TOTAL USERS COUNT: <span> <?php?> </span></div>
+        <div class="stat-item">TOTAL BOOKS ADDED BY ALL USERS: <span> <?php?> </span></div>
+        <div class="stat-item"> TOTAL MOVIES ADDED BY ALL USERS: <span> <?php?> </span></div>
+        <div class="stat-item">TOTAL TVS ADDED BY ALL USERS:  <span> <?php?> </span></div>
+        <div class="stat-item">TOTAL VIDEOGAMES ADDED BY ALL USERS: <span> <?php?> </span></div>
+        <div class="stat-item">TOTAL ALBUMS ADDED BY ALL USERS:  <span> <?php?> </span></div>
+        <div class="stat-item">TOP 50 MOST LOGGED BOOKS: <span> <?php?> </span></div>
+        <div class="stat-item">TOP 50 MOST LOGGED ALBUMS: <span> <?php?> </span></div>
+        <div class="stat-item">TOP 50 MOST LOGGED TV SHOWS: <span> <?php?> </span></div>
+        <div class="stat-item">TOP 50 MOST LOGGED VIDEOGAMES: <span> <?php?> </span></div>
+        <div class="stat-item">TOP 50 MOST LOGGED MOVIES: <span> <?php?> </span></div>
+        <div class="stat-item">TOP 50 MOST POPULAR USERS (USERS WITH MOST FOLLOWERS): <span> <?php?> </span></div>
+        <div class="stat-item">COUNT OF USERS WHO ARE NOT VERIFIED: <span> <?php?> </span></div>
+        <div class="stat-item">USERS WHO HAVE NOT LOGGED ANY MEDIA IN THE LAST 6 MONTHS: <span> <?php?> </span></div>
+        <div class="stat-item">USERS WHO HAVE LOGGED MORE THAN 1000 MEDIA ITEMS: <span> <?php?> </span></div>
+        <div class="stat-item"> TOTAL MEDIA ADDED LAST 3 MONTHS: <span> <?php?> </span></div>
+        <div class="stat-item"> TOTAL MEDIA ADDED LAST 6 MONTHS: <span> <?php?> </span></div>
+        <div class="stat-item">TOTAL MEDIA ADDED LAST YEAR: <span> <?php?> </span></div>
+        <div class="stat-item">AVERAGE MEDIA ADDED PER DAY (ACROSS ALL USERS: <span> <?php?> </span></div>
 
     </div>
 </body>
