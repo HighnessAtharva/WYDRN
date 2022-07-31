@@ -1,14 +1,16 @@
 import numpy as np
 import pandas as pd
-import mysql.connector
 import random
+from collections import Counter
+import mysql.connector
 import matplotlib.pyplot as plt
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 from sklearn.metrics.pairwise import cosine_similarity
 from ast import literal_eval
-from collections import Counter
+
 
 
 def getUserMovies(user_name:str) -> list[str]:
@@ -34,7 +36,7 @@ def getUserMovies(user_name:str) -> list[str]:
         if connection.is_connected():
             connection.close()
             cursor.close()
-            print("MySQL connection is closed")
+            # print("MySQL connection is closed")
 
 
 
@@ -113,20 +115,23 @@ def get_recommendations(title, cosine_sim=cosine_sim):
         # print("Skipped 1 movie")
         pass
 
+
+
+print("################ MOVIE RECOMMENDATION SYSTEM #############\n\n\n\n")
+
 RecList=[]
-
-print("################ MOVIE RECOMMENDATION SYSTEM #############")
-print()
-
 # dummy_list=["Avatar","Spectre","Pirates of the Caribbean: At World's End","John Carter","The Dark Knight Rises","Tangled","Spider-Man 3","Harry Potter and the Half-Blood Prince","Avengers: Age of Ultron","Superman Returns","Batman v Superman: Dawn of Justice","Pirates of the Caribbean: Dead Man's Chest","Quantum of Solace","Man of Steel","The Lone Ranger","The Avengers","The Chronicles of Narnia: Prince Caspian","Men in Black 3","Pirates of the Caribbean: On Stranger Tides","The Amazing Spider-Man","The Hobbit: The Battle of the Five Armies","The Hobbit: The Desolation of Smaug","Robin Hood","King Kong","The Golden Compass","Captain America: Civil War","Titanic","Jurassic World","Battleship","Spider-Man 2","Skyfall","Alice in Wonderland","Iron Man 3","Monsters University","X-Men: The Last Stand","Transformers: Age of Extinction","Transformers: Revenge of the Fallen","The Amazing Spider-Man 2","Oz: The Great and Powerful","Cars 2","TRON: Legacy","Toy Story 3","Green Lantern","Furious 7","Terminator Salvation","X-Men: Days of Future Past","World War Z","Jack the Giant Slayer","Star Trek Into Darkness","Prince of Persia: The Sands of Time","The Great Gatsby","Transformers: Dark of the Moon","Pacific Rim","The Good Dinosaur","Indiana Jones and the Kingdom of the Crystal Skull","Star Trek Beyond","Brave","Rush Hour 3","WALL·E","A Christmas Carol","2012","The Legend of Tarzan","Jupiter Ascending","X-Men: Apocalypse","The Chronicles of Narnia: The Lion, the Witch and the Wardrobe","Up","The Dark Knight","Iron Man","Monsters vs Aliens","Wild Wild West","Hugo","Suicide Squad","Edge of Tomorrow","Waterworld","The Jungle Book","Inside Out","Snow White and the Huntsman"]
 
 userMovies=getUserMovies('anay')
 userMovies=[string.title() for string in userMovies]
 # print(userMovies)
 
-# for movie in userMovies:
-#     RecList.append(get_recommendations(movie)) 
 
+# COMMENT THIS WHEN YOU UNCOMMENT DUMMY LIST
+for movie in userMovies:
+    RecList.append(get_recommendations(movie)) 
+
+# UNCOMMENT THIS WHEN YOU UNCOMMENT DUMMY LIST
 # for movie in dummy_list:
 #     RecList.append(get_recommendations(movie))
 
