@@ -21,13 +21,19 @@ require("functions.php");
 <html>
   <!-- Head begins -->
   <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> WYDRN - Password Reset</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
   </head>
 
   <!-- Body Begins -->
   <body>
-  <div class="container" style="justify-content-center">
+  <div class="container" style="justify-content:center">
   <form method="post" action="send_reset_link.php">
           <p class="alert-success alert">Enter Email Address To Send Password Reset Link</p>
           <input type="text" name="email">

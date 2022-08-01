@@ -55,7 +55,11 @@ mysqli_close($con);
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login</title>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>WYDRN - Login</title>
 	<!------------------
 	BOOTSTRAP CDN
 	-------------------->
@@ -107,7 +111,7 @@ mysqli_close($con);
 	</div>
 
 <!-------------------------------------------------------------------------------------
-STICKY FOOTER requireD AT THE BOTTOM OF THE PAGE
+STICKY FOOTER REQUIRED AT THE BOTTOM OF THE PAGE
 ------------------------------------------------------------------------------------->
 
 

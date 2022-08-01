@@ -15,7 +15,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mutual View</title>
+    
+    <title>WYDRN - Mutual View</title>
+    
+    <!--Bootstrap Link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    
     <link href="css/mutual_view.css" rel="stylesheet">
 </head>
 <body>
@@ -73,8 +78,8 @@ if (isset($_GET['user_name'])) {
 
         <?php
         $sql = "SELECT videogame FROM data WHERE username='$me'  AND videogame != ''
-                    INTERSECT
-                    SELECT videogame FROM data WHERE username='$otheruser'  AND videogame != ''";
+                INTERSECT
+                SELECT videogame FROM data WHERE username='$otheruser'  AND videogame != ''";
         if ($query = mysqli_query($con, $sql)) {
             if (mysqli_num_rows($query) > 0) {
                 
@@ -98,21 +103,21 @@ if (isset($_GET['user_name'])) {
         </div>
 
         <?php
-$sql = "SELECT album, artist FROM data WHERE username='$me' AND album!='' AND artist!=''
-            INTERSECT
-            SELECT album, artist FROM data WHERE username='$otheruser' AND album!='' AND artist!=''";
-if ($query = mysqli_query($con, $sql)) {
-    if (mysqli_num_rows($query) > 0) {
-        while ($row = mysqli_fetch_assoc($query)) {
-            $album = $row['album'];
-            echo $album;
-            echo "<br>";
+        $sql = "SELECT album, artist FROM data WHERE username='$me' AND album!='' AND artist!=''
+                INTERSECT
+                SELECT album, artist FROM data WHERE username='$otheruser' AND album!='' AND artist!=''";
+        if ($query = mysqli_query($con, $sql)) {
+            if (mysqli_num_rows($query) > 0) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                    $album = $row['album'];
+                    echo $album;
+                    echo "<br>";
+                }
+            } else {
+                echo ("There are no common albums between you and $otheruser");
+            }
         }
-    } else {
-        echo ("There are no common albums between you and $otheruser");
-    }
-}
-?>
+        ?>
     </div>
 
     <!--Books-->
@@ -122,21 +127,21 @@ if ($query = mysqli_query($con, $sql)) {
         </div>
 
         <?php
-$sql = "SELECT book, author FROM data WHERE username='$me'  AND book!='' AND author!=''
-            INTERSECT
-            SELECT book, author FROM data WHERE username='$otheruser'  AND book!='' AND author!=''";
-if ($query = mysqli_query($con, $sql)) {
-    if (mysqli_num_rows($query) > 0) {
-        while ($row = mysqli_fetch_assoc($query)) {
-            $book = $row['book'];
-            echo $book;
-            echo "<br>";
+        $sql = "SELECT book, author FROM data WHERE username='$me'  AND book!='' AND author!=''
+                INTERSECT
+                SELECT book, author FROM data WHERE username='$otheruser'  AND book!='' AND author!=''";
+        if ($query = mysqli_query($con, $sql)) {
+            if (mysqli_num_rows($query) > 0) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                    $book = $row['book'];
+                    echo $book;
+                    echo "<br>";
+                }
+            } else {
+                echo ("There are no common books between you and $otheruser");
+            }
         }
-    } else {
-        echo ("There are no common books between you and $otheruser");
-    }
-}
-?>
+        ?>
     </div>
 
       <!--Movie-->
@@ -146,21 +151,21 @@ if ($query = mysqli_query($con, $sql)) {
         </div>
 
         <?php
-$sql = "SELECT movie, year FROM data WHERE username='$me' AND movie!='' AND year!=''
-            INTERSECT
-            SELECT movie, year FROM data WHERE username='$otheruser' AND movie!='' AND year!=''";
-if ($query = mysqli_query($con, $sql)) {
-    if (mysqli_num_rows($query) > 0) {
-        while ($row = mysqli_fetch_assoc($query)) {
-            $movie = $row['movie'];
-            echo $movie;
-            echo "<br>";
+        $sql = "SELECT movie, year FROM data WHERE username='$me' AND movie!='' AND year!=''
+                INTERSECT
+                SELECT movie, year FROM data WHERE username='$otheruser' AND movie!='' AND year!=''";
+        if ($query = mysqli_query($con, $sql)) {
+            if (mysqli_num_rows($query) > 0) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                    $movie = $row['movie'];
+                    echo $movie;
+                    echo "<br>";
+                }
+            } else {
+                echo ("There are no common movies between you and $otheruser");
+            }
         }
-    } else {
-        echo ("There are no common movies between you and $otheruser");
-    }
-}
-?>
+        ?>
     </div>
 
       <!--TV-->
@@ -170,23 +175,23 @@ if ($query = mysqli_query($con, $sql)) {
         </div>
 
         <?php
-$sql = "SELECT tv FROM data WHERE username='$me' AND tv != ''
-            INTERSECT
-            SELECT tv FROM data WHERE username='$otheruser' AND tv != ''";
-if ($query = mysqli_query($con, $sql)) {
-    if (mysqli_num_rows($query) > 0) {
-        while ($row = mysqli_fetch_assoc($query)) {
-            $tv = $row['tv'];
-            echo $tv;
-            echo "<br>";
+        $sql = "SELECT tv FROM data WHERE username='$me' AND tv != ''
+                INTERSECT
+                SELECT tv FROM data WHERE username='$otheruser' AND tv != ''";
+        if ($query = mysqli_query($con, $sql)) {
+            if (mysqli_num_rows($query) > 0) {
+                while ($row = mysqli_fetch_assoc($query)) {
+                    $tv = $row['tv'];
+                    echo $tv;
+                    echo "<br>";
+                }
+            } else {
+                echo ("There are no common Television Shows between you and $otheruser");
+            }
         }
-    } else {
-        echo ("There are no common Television Shows between you and $otheruser");
-    }
-}
-mysqli_close($con);
-?>
-    </div>
+        mysqli_close($con);
+        ?>
+</div>
 
 </body>
 </html>

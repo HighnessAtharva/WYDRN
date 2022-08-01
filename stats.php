@@ -316,7 +316,9 @@ $total_movie_count= executeSQL($con, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Stats</title>
+
+    <title>WYDRN - User Stats</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="css/stats.css">
 </head>
@@ -336,24 +338,24 @@ $total_movie_count= executeSQL($con, $sql);
       <!-- Add more stat items below in the same format as above. -->
       <div class="stat-item">TOTAL BOOKS COUNT UNIQUE: <span> <?php echo $total_book_count_unique;?> </span></div>
       <div class="stat-item">TOP 5 MOST LOGGED BOOKS:  <span> <?php ?> </span></div>
-      <div class="stat-item">TOP 5 MOST LOGGED AUTHORS: <span> <?php?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED AUTHORS: <span> <?php ?> </span></div>
       <div class="stat-item">TOTAL MOVIE COUNT: <span> <?php echo $total_movie_count;?> </span></div>
-      <div class="stat-item">TOTAL MOVIE COUNT UNIQUE: <span> <?php?> </span></div>
-      <div class="stat-item">TOP 5 MOST LOGGED MOVIES : <span> <?php?> </span></div>
-      <div class="stat-item">TOTAL TV SHOW COUNT:  <span> <?php?> </span></div>
-      <div class="stat-item">TOTAL TV SHOW COUNT UNIQUE: <span> <?php?> </span></div>
-      <div class="stat-item">TOP 5 MOST LOGGED TV SHOWS:  <span> <?php?> </span></div>
-      <div class="stat-item">TOP 5 MOST LOGGED STREAMING PLATFORM: <span> <?php?> </span></div>
-      <div class="stat-item">TOTAL VIDEOGAME COUNT:  <span> <?php?> </span></div>
-      <div class="stat-item">TOTAL VIDEOGAME COUNT UNIQUE: <span> <?php?> </span></div>
-      <div class="stat-item">TOP 5 MOST LOGGED GAMING PLATFORM: <span> <?php?> </span></div>
-      <div class="stat-item">TOP 5 MOST LOGGED VIDEOGAMES : <span> <?php?> </span></div>
-      <div class="stat-item">TOTAL ALBUM COUNT:  <span> <?php?> </span></div>
-      <div class="stat-item"> TOTAL ALBUM COUNT UNIQUE: <span> <?php?> </span></div>
-      <div class="stat-item">TOP 5 MOST LOGGED ALBUMS: <span> <?php?> </span></div>
-      <div class="stat-item">TOP 5 MOST LOGGED ARTIST: <span> <?php?> </span></div>
-      <div class="stat-item"> YOUR FAVORITE MEDIA TYPE: <span> <?php?> </span></div>
-      <div class="stat-item">  AVERAGE MEDIA ADDED PER DAY:  <span> <?php?> </span></div>
+      <div class="stat-item">TOTAL MOVIE COUNT UNIQUE: <span> <?php ?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED MOVIES : <span> <?php ?> </span></div>
+      <div class="stat-item">TOTAL TV SHOW COUNT:  <span> <?php ?> </span></div>
+      <div class="stat-item">TOTAL TV SHOW COUNT UNIQUE: <span> <?php ?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED TV SHOWS:  <span> <?php ?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED STREAMING PLATFORM: <span> <?php ?> </span></div>
+      <div class="stat-item">TOTAL VIDEOGAME COUNT:  <span> <?php ?> </span></div>
+      <div class="stat-item">TOTAL VIDEOGAME COUNT UNIQUE: <span> <?php ?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED GAMING PLATFORM: <span> <?php ?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED VIDEOGAMES : <span> <?php ?> </span></div>
+      <div class="stat-item">TOTAL ALBUM COUNT:  <span> <?php ?> </span></div>
+      <div class="stat-item">TOTAL ALBUM COUNT UNIQUE: <span> <?php ?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED ALBUMS: <span> <?php ?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED ARTIST: <span> <?php ?> </span></div>
+      <div class="stat-item">YOUR FAVORITE MEDIA TYPE: <span> <?php ?> </span></div>
+      <div class="stat-item">AVERAGE MEDIA ADDED PER DAY:  <span> <?php ?> </span></div>
 
     </div>
 </body>
