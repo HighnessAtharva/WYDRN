@@ -17,7 +17,7 @@ function check_login($con)
 	if(isset($_SESSION['user_id']))
 	{
 		$id = $_SESSION['user_id'];
-		$query = "select * from users where user_id = '$id' limit 1";
+		$query = "select * from `users` where `user_id` = '$id' limit 1";
 
 		$result = mysqli_query($con,$query);
 		if($result && mysqli_num_rows($result) > 0){
@@ -33,7 +33,7 @@ function check_login($con)
 }
 
 /*
-Generates a random 5 to 20 digit number that is to be used to generate dynamic userIDs
+Generates a random 5 to 20-digit number that is to be used to generate dynamic userIDs
 */ 
 function random_num($length)
 {
@@ -131,7 +131,7 @@ Returns whether a user account is verified or not (1 - Verified  ||  0 -  Not Ve
 */ 
 function check_verified_status($username){
 require("connection.php");
-$sql = "SELECT verified FROM users WHERE user_name='$username'";
+$sql = "SELECT `verified` FROM users WHERE `user_name`='$username'";
 	if ($query = mysqli_query($con, $sql)) {
 		if (mysqli_num_rows($query) == 1) {
 			$row = mysqli_fetch_array($query);
