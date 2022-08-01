@@ -4,9 +4,7 @@
     margin-bottom: 5px;
 }
 
-.stat-item>span {
-    text-decoration: underline;
-}
+.stat-item>span {}
 
 .container {
     margin-top: 20px;

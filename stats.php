@@ -193,15 +193,17 @@ $total_book_count_unique= executeSQL($con, $sql);
 /*************
   TOP 5 MOST LOGGED BOOKS -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
 *************/
-// $sql="SELECT MAX(count(`book`)) AS Total_Count FROM `data` where `username`='$username' AND book!='' LIMIT 5";
-// $total_5_books= executeSQL($con, $sql);
+$sql="SELECT book, count(book) as favorites FROM `data` where username='$username' and book!='' GROUP BY book HAVING count(book)>1 ORDER BY count(book) DESC LIMIT 5";
+
+$top_5_books=executeSQL($con, $sql);
 
 
 /*************
   TOP 5 MOST LOGGED AUTHORS -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
 *************/
+$sql="SELECT author, count(author) as favorites FROM `data` where username='$username' and author!='' GROUP BY book HAVING count(author)>1 ORDER BY count(author) DESC LIMIT 5";
 
-
+$top_5_authors=executeSQL($con, $sql);
 
 /*************
   TOTAL MOVIE COUNT
@@ -304,6 +306,21 @@ $total_movie_count= executeSQL($con, $sql);
   AVERAGE MEDIA ADDED PER DAY 
 *************/
 //Hint: Total Media Count/ (Current Date - Date of Account Creation ['date' column in 'users' table] )
+$sql= "SELECT @today := CURRENT_DATE(); 
+SELECT @registered :=  `date` from users where user_name='HighnessAtharva'; 
+SELECT @interval := DATEDIFF(@today, @registered);
+SELECT sum(allcount)/@interval AS Total_Count FROM(
+    (SELECT count(`videogame`) as allcount FROM `data` where `username`='HighnessAtharva' AND videogame!='')
+    UNION ALL
+    (SELECT count(album) AS allcount FROM `data` where `username`='HighnessAtharva' AND album!='')
+    UNION ALL
+    (SELECT count(book) AS allcount FROM `data` where `username`='HighnessAtharva' AND book!='')
+    UNION ALL
+    (SELECT count(movie) AS allcount FROM `data` where `username`='HighnessAtharva' AND movie!='')
+    UNION ALL
+    (SELECT count(tv) AS allcount FROM `data` where `username`='HighnessAtharva' AND tv!='')
+)t";
+ 
 
 ?>
 
@@ -337,8 +354,8 @@ $total_movie_count= executeSQL($con, $sql);
 
       <!-- Add more stat items below in the same format as above. -->
       <div class="stat-item">TOTAL BOOKS COUNT UNIQUE: <span> <?php echo $total_book_count_unique;?> </span></div>
-      <div class="stat-item">TOP 5 MOST LOGGED BOOKS:  <span> <?php ?> </span></div>
-      <div class="stat-item">TOP 5 MOST LOGGED AUTHORS: <span> <?php ?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED BOOKS:  <span> <?php echo $top_5_books; ?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED AUTHORS: <span> <?php echo $top_5_authors; ?> </span></div>
       <div class="stat-item">TOTAL MOVIE COUNT: <span> <?php echo $total_movie_count;?> </span></div>
       <div class="stat-item">TOTAL MOVIE COUNT UNIQUE: <span> <?php ?> </span></div>
       <div class="stat-item">TOP 5 MOST LOGGED MOVIES : <span> <?php ?> </span></div>
@@ -355,7 +372,7 @@ $total_movie_count= executeSQL($con, $sql);
       <div class="stat-item">TOP 5 MOST LOGGED ALBUMS: <span> <?php ?> </span></div>
       <div class="stat-item">TOP 5 MOST LOGGED ARTIST: <span> <?php ?> </span></div>
       <div class="stat-item">YOUR FAVORITE MEDIA TYPE: <span> <?php ?> </span></div>
-      <div class="stat-item">AVERAGE MEDIA ADDED PER DAY:  <span> <?php ?> </span></div>
+      <div class="stat-item">AVERAGE MEDIA ADDED PER DAY:  <span> <?php echo $average_media_added;?> </span></div>
 
     </div>
 </body>

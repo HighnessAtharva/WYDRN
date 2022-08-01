@@ -72,3 +72,5 @@ if ($result = mysqli_query($con, $sql4)) {
 }
 
 mysqli_close($con);
+
+?>
