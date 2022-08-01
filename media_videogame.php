@@ -9,7 +9,16 @@
  * @author     AtharvaShah
  */
 
-
+ /* CACHING IMAGES*/
+ session_cache_limiter('none'); 
+ header('Cache-control: max-age='.(60*60*24*365));
+ header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
+ 
+ if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+     header('HTTP/1.1 304 Not Modified');
+     die();
+  }
+ 
 session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
@@ -19,6 +28,9 @@ require "connection.php";
 require "functions.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
+
+flush(); 
+ob_flush();
 function getposterpath($name){
     $api_key="fe197746ce494b4791441d9a9161c1be";
     $url = 'https://api.rawg.io/api/games?search='.$name.'&key='.$api_key;

@@ -129,6 +129,8 @@ $popular_users= executeSQL($con, $sql);
  GET USERS WHO ARE NOT VERIFIED (CHECK `USERS` TABLE)
 *************/
 
+$sql="SELECT COUNT(`user_name`) FROM users where verified =0";
+$not_verified= executeSQL($con, $sql);
 
 
 /*************
@@ -201,7 +203,7 @@ $popular_users= executeSQL($con, $sql);
         <div class="stat-item">TOP 50 MOST LOGGED VIDEOGAMES: <span> <?php?> </span></div>
         <div class="stat-item">TOP 50 MOST LOGGED MOVIES: <span> <?php?> </span></div>
         <div class="stat-item">TOP 50 MOST POPULAR USERS (USERS WITH MOST FOLLOWERS): <span> <?php?> </span></div>
-        <div class="stat-item">COUNT OF USERS WHO ARE NOT VERIFIED: <span> <?php?> </span></div>
+        <div class="stat-item">COUNT OF USERS WHO ARE NOT VERIFIED: <span> <?php echo $not_verified;?> </span></div>
         <div class="stat-item">USERS WHO HAVE NOT LOGGED ANY MEDIA IN THE LAST 6 MONTHS: <span> <?php?> </span></div>
         <div class="stat-item">USERS WHO HAVE LOGGED MORE THAN 1000 MEDIA ITEMS: <span> <?php?> </span></div>
         <div class="stat-item"> TOTAL MEDIA ADDED LAST 3 MONTHS: <span> <?php?> </span></div>

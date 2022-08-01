@@ -40,8 +40,8 @@ function displayMovieList(movies) {
         let movieListItem = document.createElement('div');
         movieListItem.dataset.id = movies[idx]['id']; // setting movie id in  data-id
         movieListItem.classList.add('search-list-item');
-        if (movies[idx]['poster_path'] != "")
-            moviePoster = movies[idx]['poster_path'];
+        if (movies[idx]['poster_path'] != null)
+            moviePoster = "https://image.tmdb.org/t/p/w185/" + movies[idx]['poster_path'];
         else
             moviePoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
 
@@ -50,7 +50,7 @@ function displayMovieList(movies) {
         year = year[0];
         movieListItem.innerHTML = `
         <div class = "search-item-thumbnail">
-            <img src = "https://image.tmdb.org/t/p/w185/${moviePoster}">
+            <img src = "${moviePoster}">
         </div>
         <div class = "search-item-info">
             <h3>${movies[idx]['original_title']}</h3>

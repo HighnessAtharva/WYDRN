@@ -1,3 +1,24 @@
+<?php
+/**
+ * ALLOWS USERS TO BROWSE GENERAL TV SHOWS
+ *
+ * @version    PHP 8.0.12 
+ * @since      May 2022
+ * @author     AtharvaShah
+ */
+
+
+session_start();
+if (empty($_SESSION)) {
+    header("Location: login.php");
+}
+include "../../connection.php";
+include "../../functions.php";
+include "../header.php";
+$user_data = check_login($con);
+$username = $user_data['user_name'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +37,7 @@
 <body style="color:white">
 
     <div class="wrapper">
-        <h1 class="center">WYDRN - TV Search</h1>
+       
         <!-- search container -->
         <div class="search-container">
             <div class="search-element">

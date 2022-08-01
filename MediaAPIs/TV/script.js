@@ -38,21 +38,25 @@ function displayTVList(tvseries) {
 
     searchList.innerHTML = "";
     //NOTE: TRY TO REDUCE THE LENGTH OF THE LOOP. USE AT MOST 3 TO REDUCE API CALLS.
-    for (let idx = 0; idx < 3; idx++) {
+    for (let idx = 0; idx < tvseries.length; idx++) {
         let TVListItem = document.createElement('div');
         TVListItem.dataset.id = tvseries[idx]['id']; // setting movie id in  data-id
         TVListItem.classList.add('search-list-item');
+
+
         if (tvseries[idx]['poster_path'] != null)
-            tvPoster = tvseries[idx]['poster_path'];
+            tvPoster = "https://image.tmdb.org/t/p/w185/" + tvseries[idx]['poster_path'];
         else
             tvPoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
 
         let year = tvseries[idx]['first_air_date'];
+        year = year.split("-");
+        year = year[0];
 
 
         TVListItem.innerHTML = `
         <div class = "search-item-thumbnail">
-            <img src = "https://image.tmdb.org/t/p/w185/${tvPoster}">
+            <img src = "${tvPoster}">
         </div>
         <div class = "search-item-info">
             <h3>${tvseries[idx]['original_name']}</h3>

@@ -8,6 +8,15 @@
  * @author     AtharvaShah
  */
 
+ /* CACHING IMAGES*/
+session_cache_limiter('none'); 
+header('Cache-control: max-age='.(60*60*24*365));
+header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
+
+if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+    header('HTTP/1.1 304 Not Modified');
+    die();
+ }
 
 session_start();
 if (empty($_SESSION)) {
@@ -18,6 +27,8 @@ require "connection.php";
 require "functions.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
+flush(); 
+ob_flush();
 
 function getposterpath($name, $artist){
     $api_key="6a4eb1d0536cfe3583784a65332ee179";
@@ -51,7 +62,6 @@ function getposterpath($name, $artist){
 
 <!--Custom Link-->
 <link rel="stylesheet" href="CSS/media_music.css">
-
 </head>
 
 
@@ -86,13 +96,17 @@ $start_from = ($page - 1) * $per_page_record;
                 $album_logged=date("F jS, Y", strtotime($row['date']));
                 $stripalbum=$stripped = str_replace(' ', '+', $album_name);
                 $stripartist=$stripped = str_replace(' ', '+', $album_artist);
-                
+                $poster_path=getposterpath($stripalbum, $stripartist);
                 // one single div tag for each album
                 $html_album.="<div class='card-grid-space'>";
                     // image tag for the album
                     $html_album.="<div class='card' style='background-image:url(";
-                    $html_album.= getposterpath($stripalbum, $stripartist);  // get the poster path from the api
+                    $html_album.= $poster_path;  // get the poster path from the api
                     $html_album.=")'";
+                    // $html_album.="<div class='card'";
+                    // $html_album.= "style=";
+                    // $html_album.= "background-image:url('images/Icons/loading.gif')";
+
                     $html_album.=">";
                 
                     $html_album.="<div>"; 

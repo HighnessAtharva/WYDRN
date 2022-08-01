@@ -8,7 +8,17 @@
  * @author     AtharvaShah
  */
 
+ /* CACHING IMAGES*/
+ session_cache_limiter('none'); 
+ header('Cache-control: max-age='.(60*60*24*365));
+ header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
+ 
+ if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+     header('HTTP/1.1 304 Not Modified');
+     die();
+  }
 
+  
 session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
@@ -18,6 +28,8 @@ require "connection.php";
 require "functions.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
+flush(); 
+ob_flush();
 
 function getposterpath($name, $year){
     $api_key="e446bc89015229cf337e16b0849d506c";

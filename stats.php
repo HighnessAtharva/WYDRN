@@ -9,7 +9,7 @@
  */
 
 
-error_reporting(E_ERROR | E_PARSE);
+// error_reporting(E_ERROR | E_PARSE);
 session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
@@ -186,13 +186,15 @@ $total_book_count= executeSQL($con, $sql);
 /*************
   TOTAL BOOKS COUNT UNIQUE
 *************/
-
+$sql="SELECT count(DISTINCT `book`) AS Total_Count FROM `data` where `username`='$username' AND book!=''";
+$total_book_count_unique= executeSQL($con, $sql);
 
 
 /*************
   TOP 5 MOST LOGGED BOOKS -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
 *************/
-
+// $sql="SELECT MAX(count(`book`)) AS Total_Count FROM `data` where `username`='$username' AND book!='' LIMIT 5";
+// $total_5_books= executeSQL($con, $sql);
 
 
 /*************
@@ -204,7 +206,8 @@ $total_book_count= executeSQL($con, $sql);
 /*************
   TOTAL MOVIE COUNT
 *************/
-
+$sql="SELECT count(`movie`) AS Total_Count FROM `data` where `username`='$username' AND movie!=''";
+$total_movie_count= executeSQL($con, $sql);
 
 
 /*************
@@ -331,10 +334,10 @@ $total_book_count= executeSQL($con, $sql);
         <div class="stat-item">Total Books Count: <span> <?php echo($total_book_count) ?></span></div>
 
       <!-- Add more stat items below in the same format as above. -->
-      <div class="stat-item">TOTAL BOOKS COUNT UNIQUE: <span> <?php?> </span></div>
-      <div class="stat-item">TOP 5 MOST LOGGED BOOKS:  <span> <?php?> </span></div>
+      <div class="stat-item">TOTAL BOOKS COUNT UNIQUE: <span> <?php echo $total_book_count_unique;?> </span></div>
+      <div class="stat-item">TOP 5 MOST LOGGED BOOKS:  <span> <?php ?> </span></div>
       <div class="stat-item">TOP 5 MOST LOGGED AUTHORS: <span> <?php?> </span></div>
-      <div class="stat-item">TOTAL MOVIE COUNT: <span> <?php?> </span></div>
+      <div class="stat-item">TOTAL MOVIE COUNT: <span> <?php echo $total_movie_count;?> </span></div>
       <div class="stat-item">TOTAL MOVIE COUNT UNIQUE: <span> <?php?> </span></div>
       <div class="stat-item">TOP 5 MOST LOGGED MOVIES : <span> <?php?> </span></div>
       <div class="stat-item">TOTAL TV SHOW COUNT:  <span> <?php?> </span></div>

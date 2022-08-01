@@ -73,23 +73,23 @@ if(isset($_SESSION['user_id']))
                      <li class="nav-item dropdown">
                         <li class="nav-link" href="#" data-bs-toggle="dropdown">Browse</li>
                         <ul class="dropdown-menu dropdown-menu-right" style="right: 290px; left: auto; margin-top:-20px">
-                        <li><a class="dropdown-item" href="../MediaAPIs/Book/index.html">
+                        <li><a class="dropdown-item" href="../MediaAPIs/Book/index.php">
                             <span><img src="../images/Icons/book.svg" class='header-icon'>Book</span>
                             </a></li>
 
-                            <li><a class="dropdown-item" href="../MediaAPIs/Movie/index.html">
+                            <li><a class="dropdown-item" href="../MediaAPIs/Movie/index.php">
                             <span><img src="../images/Icons/movie.svg" class='header-icon'>Movie</span> 
                             </a></li>
 
-                            <li><a class="dropdown-item" href="../MediaAPIs/Music/index.html">
+                            <li><a class="dropdown-item" href="../MediaAPIs/Music/index.php">
                             <span><img src="../images/Icons/music.svg" class='header-icon'>Music</span>
                             </a></li>
 
-                            <li><a class="dropdown-item" href="../MediaAPIs/TV/index.html">
+                            <li><a class="dropdown-item" href="../MediaAPIs/TV/index.php">
                             <span><img src="../images/Icons/tv.svg" class='header-icon'>TV</span>
                             </a></li>
 
-                            <li><a class="dropdown-item" href="../MediaAPIs/Videogame/index.html">
+                            <li><a class="dropdown-item" href="../MediaAPIs/Videogame/index.php">
                             <span><img src="../images/Icons/videogame.svg" class='header-icon'>Videogame</span>
                             </a></li>
                     </ul>

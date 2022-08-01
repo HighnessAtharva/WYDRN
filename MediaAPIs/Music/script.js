@@ -45,10 +45,15 @@ function displayAlbumList(albums) {
         albumListItem.dataset.name = albums[idx]['name'];
         albumListItem.dataset.artist = albums[idx]['artist'];
         albumListItem.classList.add('search-list-item');
-        if (albums[idx]['image'][1]["#text"] != null)
-            albumPoster = albums[idx]['image'][1]["#text"];
-        else
-            albumPoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+        // albumPoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+        // if (albums[idx]['image'][1]["#text"] != null)
+        //     albumPoster = albums[idx]['image'][1]["#text"];
+        if (albums[idx]['image'][1]['#text'] != "") {
+            albumPoster = albums[idx]['image'][1]['#text'];
+        } else {
+            albumPoster = 'https://i.ibb.co/hRCvsdq/image-not-found.png'
+        }
+
         albumListItem.innerHTML = `
         <div class = "search-item-thumbnail">
             <img src = "${albumPoster}">
@@ -103,10 +108,15 @@ function displayalbumDetails(details) {
         summary = "Not available";
     }
 
+    if (details['image'][4]['#text'] != "") {
+        albumPoster = details['image'][4]['#text'];
+    } else {
+        albumPoster = 'https://i.ibb.co/hRCvsdq/image-not-found.png'
+    }
 
     resultGrid.innerHTML = `
     <div class = "movie-poster">
-        <img src = "${(details['image'][4]['#text'] != null) ?  details['image'][4]['#text'] : "https://i.ibb.co/hRCvsdq/image-not-found.png"}" alt = "album poster">
+        <img src = "${albumPoster}" alt = "album poster">
     </div>
     <div class = "movie-info">
         <h3 class = "movie-title">${name} - ${artist}</h3>

@@ -9,7 +9,7 @@
  */
 
 
-include_once("connection.php");
+include_once("../../connection.php");
 if(isset($_SESSION['user_id']))
 	{
 		$id = $_SESSION['user_id'];
@@ -32,7 +32,7 @@ if(isset($_SESSION['user_id']))
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <!-- custom css link -->
-    <link href="CSS/header.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="../../CSS/header.css" rel="stylesheet" crossorigin="anonymous">
 
     <style type="text/css">
         /* ============ desktop view ============ */
@@ -56,7 +56,7 @@ if(isset($_SESSION['user_id']))
     <!-- ============= COMPONENT ============== -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="welcome.php"><img src="images/website/logo.png" style="height:50px; width:50px;" /></a>
+            <a class="navbar-brand" href="../../welcome.php"><img src="../../images/website/logo.png" style="height:50px; width:50px;" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -67,33 +67,33 @@ if(isset($_SESSION['user_id']))
                      <li class="nav-item dropdown">
                         <li class="nav-link" href="#" data-bs-toggle="dropdown">Browse</li>
                         <ul class="dropdown-menu dropdown-menu-right" style="right: 230px; left: auto; margin-top:-20px">
-                            <li><a class="dropdown-item" href="MediaAPIs/Book/index.php">
-                            <span><img src="images/Icons/book.svg" class='header-icon'>Book</span>
+                            <li><a class="dropdown-item" href="../../MediaAPIs/Book/index.php">
+                            <span><img src="../../images/Icons/book.svg" class='header-icon'>Book</span>
                             </a></li>
 
-                            <li><a class="dropdown-item" href="MediaAPIs/Movie/index.php">
-                            <span><img src="images/Icons/movie.svg" class='header-icon'>Movie</span> 
+                            <li><a class="dropdown-item" href="../../MediaAPIs/Movie/index.php">
+                            <span><img src="../../images/Icons/movie.svg" class='header-icon'>Movie</span> 
                             </a></li>
 
-                            <li><a class="dropdown-item" href="MediaAPIs/Music/index.php">
-                            <span><img src="images/Icons/music.svg" class='header-icon'>Music</span>
+                            <li><a class="dropdown-item" href="../../MediaAPIs/Music/index.php">
+                            <span><img src="../../images/Icons/music.svg" class='header-icon'>Music</span>
                             </a></li>
 
-                            <li><a class="dropdown-item" href="MediaAPIs/TV/index.php">
-                            <span><img src="images/Icons/tv.svg" class='header-icon'>TV</span>
+                            <li><a class="dropdown-item" href="../../MediaAPIs/TV/index.php">
+                            <span><img src="../../images/Icons/tv.svg" class='header-icon'>TV</span>
                             </a></li>
 
-                            <li><a class="dropdown-item" href="MediaAPIs/Videogame/index.php">
-                            <span><img src="images/Icons/videogame.svg" class='header-icon'>Videogame</span>
+                            <li><a class="dropdown-item" href="../../MediaAPIs/Videogame/index.php">
+                            <span><img src="../../images/Icons/videogame.svg" class='header-icon'>Videogame</span>
                             </a></li>
                         </ul>
                     </li>
                 
 
                     <!-- DIARY, FEED AND SEARHC USERS -->
-                    <li class="nav-item"><a class="nav-link" href="diary.php">Diary</a></li>
-                    <li class="nav-item"><a class="nav-link" href="feed.php">Feed</a></li>
-                    <li class="nav-item"><a class="nav-link" href="search_users.php">Search Users</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../diary.php">Diary</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../feed.php">Feed</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../search_users.php">Search Users</a></li>
                    
 
 
@@ -101,24 +101,24 @@ if(isset($_SESSION['user_id']))
                     <li class="nav-item dropdown">
                         <li class="nav-link" href="#" data-bs-toggle="dropdown">Media</li>
                         <ul class="dropdown-menu dropdown-menu-end" style="right: 0px; left: auto; margin-top:-20px">
-                            <li><a class="dropdown-item" href="media_book.php">
-                            <span><img src="images/Icons/book.svg" class='header-icon'>Book</span>
+                            <li><a class="dropdown-item" href="../../media_book.php">
+                            <span><img src="../../images/Icons/book.svg" class='header-icon'>Book</span>
                             </a></li>
 
-                            <li><a class="dropdown-item" href="media_movie.php">
-                            <span><img src="images/Icons/movie.svg" class='header-icon'>Movie</span>
+                            <li><a class="dropdown-item" href="../../media_movie.php">
+                            <span><img src="../../images/Icons/movie.svg" class='header-icon'>Movie</span>
                             </a></li>
 
-                            <li><a class="dropdown-item" href="media_music.php">
-                            <span><img src="images/Icons/music.svg" class='header-icon'>Music</span>
+                            <li><a class="dropdown-item" href="../../media_music.php">
+                            <span><img src="../../images/Icons/music.svg" class='header-icon'>Music</span>
                             </a></li>
 
-                            <li><a class="dropdown-item" href="media_tv.php">
-                            <span><img src="images/Icons/tv.svg" class='header-icon'>TV</span>
+                            <li><a class="dropdown-item" href="../../media_tv.php">
+                            <span><img src="../../images/Icons/tv.svg" class='header-icon'>TV</span>
                             </a></li>
 
-                            <li><a class="dropdown-item" href="media_videogame.php">
-                            <span><img src="images/Icons/videogame.svg" class='header-icon'>Videogame</span>
+                            <li><a class="dropdown-item" href="../../media_videogame.php">
+                            <span><img src="../../images/Icons/videogame.svg" class='header-icon'>Videogame</span>
                             </a></li>
 
                         </ul>
@@ -127,23 +127,23 @@ if(isset($_SESSION['user_id']))
 
                     <!-- Your Account Dropdown -->
                     <li class="nav-item dropdown">
-                        <li class="nav-link" href="#" data-bs-toggle="dropdown"> <img src="<?php echo $pfp;?>" class="h-10 w-10 rounded-circle" style="height:25px; width:25px;"> </li>
+                        <li class="nav-link" href="#" data-bs-toggle="dropdown"> <img src="../../<?php echo $pfp;?>" class="h-10 w-10 rounded-circle" style="height:25px; width:25px;"> </li>
                         <ul class="dropdown-menu dropdown-menu-end" style="right: 0px; left: auto; margin-top:-20px">
                             
-                            <li><a class="dropdown-item" href="profile.php"> 
-                            <span><img src="images/Icons/profile.svg" class='header-icon'>Profile</span>
+                            <li><a class="dropdown-item" href="../../profile.php"> 
+                            <span><img src="../../images/Icons/profile.svg" class='header-icon'>Profile</span>
                             </a></li>
                             
-                            <li><a class="dropdown-item" href="edit_profile.php"> 
-                            <span><img src="images/Icons/settings.svg" class='header-icon'>Settings</span>
+                            <li><a class="dropdown-item" href="../../edit_profile.php"> 
+                            <span><img src="../../images/Icons/settings.svg" class='header-icon'>Settings</span>
                             </a></li>
                             
-                            <li><a class="dropdown-item" href="Exports/import_export.php"> 
-                            <span><img src="images/Icons/backup.svg" class='header-icon'>Import/Export</span>
+                            <li><a class="dropdown-item" href="../../Exports/import_export.php"> 
+                            <span><img src="../../images/Icons/backup.svg" class='header-icon'>Import/Export</span>
                             </a></li>
                             
-                            <li><a class="dropdown-item" href="logout.php"> 
-                            <span><img src="images/Icons/logout.svg" class='header-icon'>Logout</span>
+                            <li><a class="dropdown-item" href="../../logout.php"> 
+                            <span><img src="../../images/Icons/logout.svg" class='header-icon'>Logout</span>
                             </a></li>
 
                         </ul>
