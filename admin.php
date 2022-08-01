@@ -1,5 +1,4 @@
 <?php
-
 /**
  * All The adminstrative functions such as member count, member deletion and member data/authorization will be displayed here.
  *
@@ -8,18 +7,12 @@
  * @author     AtharvaShah
  */
 
-
-
 error_reporting(E_ERROR | E_PARSE);
-
-
-//USE TO VIEW THE ADMIN PAGE -> // http://localhost/WYDRN/admin.php?letmein
-
 if (!isset($_GET['letmein'])){
-    echo "<h1> Imposter was ejected! </h1>";
-    echo "<img src='images/website/imposter.jpg' style='width:1080px'></img>";
-    die();
+  echo ("<img src='images/website/imposter.jpg' style='width: 100%; height: 100%;'>");
+  die();
 }
+
 require "connection.php";
 require "functions.php";
 
@@ -183,7 +176,8 @@ $not_verified= executeSQL($con, $sql);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="css/admin.css">
 </head>
-<body>
+
+<body >
 
     <div class="container">
     

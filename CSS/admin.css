@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo:400,700|Open+Sans:400,700');
+* {
+    box-sizing: border-box;
+}
+
+.heading h1 {
+    text-align: center;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: #222;
+    letter-spacing: 1px;
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    margin: auto;
+    margin-top: 50px;
+    min-width: 1000px;
+}
+
 .stat-item {
     text-shadow: black 0px 0px 1px;
     font-size: 1.2em;
