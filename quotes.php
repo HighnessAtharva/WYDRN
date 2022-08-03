@@ -1,4 +1,11 @@
 <?php
+/**
+ * TO STORE QUOTES RELATED TO MEDIAS AND GET RANDOM QUOTE FOR EACH MEDIA TO DISPLAY ON OTHER PAGES. 
+ *
+ * @version    PHP 8.0.12 
+ * @since      July 2022
+ * @author     AtharvaShah
+ */
 
 $bookquotes=[
     "Nothing is insoluble. Nothing is hopeless. Not while there's life. -  Alan Moore",
