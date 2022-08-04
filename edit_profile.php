@@ -173,7 +173,9 @@ if (isset($_POST['save_profile'])) {
                 } else {
                     echo "There was an error uploading the file";
                 }
-            }
+            }// end of if(msg=="")
+        
+            // if(msg!="") we print the relevant message.
             else{
                 echo ("<center><div class='alert alert-danger w-25 text-center alert-dismissible fade show' style='position: absolute; top: 75px; left: 570px; width:500px;' role='alert'>
                 "
@@ -239,12 +241,15 @@ if (isset($_POST['save_profile'])) {
             } else {
                 $errorBG = "There was an erro uploading the file";
             }
-        }else{
+        }// end of if(msg2=="")
+        
+        // if(msg2!="") we print the relevant message.
+        else{
                 echo ("<center><div class='alert alert-danger w-25 text-center alert-dismissible fade show' style='position: absolute; top: 160px; left: 570px; width:500px;' role='alert'>"
                 .$msg2.
                 "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                 </div></center>");
-            }
+        }
         
         } //end of is_uploaded_file(BACKGROUND IMG)        
             
