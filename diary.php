@@ -41,6 +41,7 @@ $username = $user_data['user_name'];
     </head>
 <body>
 <br><br>
+
 <div style="margin-left:50px;">
 <h1> Diary Entries For <?php echo $username; ?></h1>
 
