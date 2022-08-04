@@ -82,10 +82,10 @@ echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$u
             <legend> Change Account Photos</legend>   
         <br>
         Select Profile Photo: <br>
-        <input type="file" name="PFP" accept=".png, .jpg, .jpeg, image/png, image/jpg, image/jpeg, .gif">
+        <input type="file" name="PFP" accept="image/png, image/gif, image/jpeg"/>
         <br>
         Select Background Banner Photo: <br>
-        <input type="file" name="BgImage" accept=".png, .jpg, .jpeg, image/png, image/jpg, image/jpeg, .gif">
+        <input type="file" name="BgImage" accept="image/png, image/gif, image/jpeg"/>
         <br><br>
         <input type="submit" value="Update Profile" class="btn btn-success" name="save_profile">
         </fieldset>
@@ -118,124 +118,138 @@ if (isset($_POST['save_profile'])) {
     /*****************
     FOR PROFILE PICTURE 
     ******************/
-    $PFPName = date("his") . $_FILES["PFP"]["name"]; //profile picture
-    $PFPName = str_replace(' ', '', $PFPName); //remove any whitespaces
-    $target_file = $target_dir . basename($PFPName);
+    if(is_uploaded_file($_FILES['PFP']['tmp_name'])){
+   
+            $PFPName = date("his") . $_FILES["PFP"]["name"]; //profile picture
 
-    if ($_FILES['PFP']['size'] > 1024000) {
-        $msg = "Image size should not be greated than 1MBs";
-        $msg_class = "alert-danger";
-    }
+            $PFPName = str_replace(' ', '', $PFPName); //remove any whitespaces
+            $target_file = $target_dir . basename($PFPName);
 
-    if (file_exists($target_file)) {
-        $msg = "File already exists";
-        $msg_class = "alert-danger";
-    }
+            $file_type = $_FILES['PFP']['type']; //returns the mimetype
+            $allowed = array("image/jpeg", "image/gif", "image/png");
+            
+            $msg_class="";
 
-    //inserting PFP into DB
-    if (move_uploaded_file($_FILES["PFP"]["tmp_name"], $target_file)){
-        
-        // ADDING CONTENT BELOW TO AUTOMATICALLY DELETE PREVIOUSLY STORED PFP WHEN A NEW ONE IS UPLOADED
-        $sql = "SELECT `profile_pic` FROM `users` WHERE user_name='$username'";
-        if (mysqli_query($con, $sql)) {
-            $result = mysqli_query($con, $sql);
-            $row = mysqli_fetch_assoc($result);
-            $profile_pic_old = $row['profile_pic'];
-            //ensure that you don't delete the default profile image
-            if ($profile_pic_old != "images/website/defaultPFP.png") {
-                unlink($profile_pic_old);
+            if(!in_array($file_type, $allowed)) {
+                $msg= "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                $msg_class = "alert-danger";
             }
-        }
-        // ADDING CONTENT ABOVE TO AUTOMATICALLY DELETE PREVIOUSLY STORED PFP WHEN A NEW ONE IS UPLOADED
 
-        $sql = "UPDATE users SET `profile_pic` = '$target_file' WHERE user_name='$username'";
-        if (mysqli_query($con, $sql)) {
-            $msg = "Image uploaded and saved in the Database";
-        } else {
-            $msg = "There was an error in the database";
-        }
-    } else {
-        $errorPFP = "There was an erro uploading the file";
-    }
+            if ($_FILES['PFP']['size'] > 1024000) {
+                $msg = "Image size should not be greated than 1MBs";
+                $msg_class = "alert-danger";
+            }
 
-    if (!empty($errorPFP)) {
-        $messed = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
-               top: 450px; left: 570px;' role='alert'>
-               Could not update the Profile Pic
-               </div></center>";
-        echo $messed;
-        sleep(5);
-        header("Location: edit_profile.php");
-        
+            if (file_exists($target_file)) {
+                $msg = "File already exists";
+                $msg_class = "alert-danger";
+            }
+
+            if($msg_class==""){
+                if (move_uploaded_file($_FILES["PFP"]["tmp_name"], $target_file)){
+                
+                    // ADDING CONTENT BELOW TO AUTOMATICALLY DELETE PREVIOUSLY STORED PFP WHEN A NEW ONE IS UPLOADED
+                    $sql = "SELECT `profile_pic` FROM `users` WHERE user_name='$username'";
+                    if (mysqli_query($con, $sql)) {
+                        $result = mysqli_query($con, $sql);
+                        $row = mysqli_fetch_assoc($result);
+                        $profile_pic_old = $row['profile_pic'];
+                        //ensure that you don't delete the default profile image
+                        if ($profile_pic_old != "images/website/defaultPFP.png") {
+                            unlink($profile_pic_old);
+                        }
+                    }
+
+                    // UPDATE THE PROFILE PICTURE IN THE DATABASE
+                    $sql = "UPDATE users SET `profile_pic` = '$target_file' WHERE user_name='$username'";
+                    if (mysqli_query($con, $sql)) {
+                        echo("<center><div class='alert alert-success w-25 text-center alert-dismissible fade show' style='position: absolute; top: 75px; left: 570px;width:fit-content;' role='alert'>
+                        Profile Picture Updated Successfully
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div></center>");
+                    } else {
+                        $msg = "There was an error in the database";
+                    }
+                } else {
+                    echo "There was an error uploading the file";
+                }
+            }
+            else{
+                echo ("<center><div class='alert alert-danger w-25 text-center alert-dismissible fade show' style='position: absolute; top: 75px; left: 570px; width:500px;' role='alert'>
+                "
+                .$msg.
+                "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div></center>");
+            }
+   
+    } //end of is_uploaded_file(PROFILE IMG)       
 
 
-    } else {
-        $updated = "<center><div class='alert alert-success w-25 text-center' style='position: absolute;
-        top: 450px; left: 570px;' role='alert'>
-        Profile Pic Updated Successfully!
-        </div></center>";
-        echo $updated;
-    }
     /*****************
     FOR BACKGROUND IMAGE 
     ******************/
-    $BGName = date("his") . $_FILES["BgImage"]["name"]; //background image
-    $BGName = str_replace(' ', '', $BGName); //remove any whitespaces
-    $target_file2 = $target_dir . basename($BGName);
+    if(is_uploaded_file($_FILES['BgImage']['tmp_name'])){
+            $BGName = date("his") . $_FILES["BgImage"]["name"]; //background image
+            $BGName = str_replace(' ', '', $BGName); //remove any whitespaces
+            $target_file2 = $target_dir . basename($BGName);
 
-    if ($_FILES['BgImage']['size'] > 1024000) {
-        $msg = "Image size should not be greated than 1MBs";
-    }
+            $file_type2 = $_FILES['BgImage']['type']; //returns the mimetype
+            $allowed = array("image/jpeg", "image/gif", "image/png");
+            
+            $msg2="";
+            
+            if(!in_array($file_type2, $allowed)) {
+                $msg2= "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                $msg_class = "alert-danger";
+            }
 
-    if (file_exists($target_file2)) {
-        $msg = "File already exists";
-    }
+            if ($_FILES['BgImage']['size'] > 1024000) {
+                $msg2 = "Image size should not be greater than 1MBs";
+            }
 
-    //inserting Background into DB
-    if (move_uploaded_file($_FILES["BgImage"]["tmp_name"], $target_file2)) {
+            if (file_exists($target_file2)) {
+                $msg2 = "File already exists";
+            }
 
-         // ADDING CONTENT BELOW TO AUTOMATICALLY DELETE PREVIOUSLY STORED BACKGROUND BANNER WHEN A NEW ONE IS UPLOADED
-         $sql = "SELECT `background_pic` FROM `users` WHERE user_name='$username'";
-         if (mysqli_query($con, $sql)) {
-             $result = mysqli_query($con, $sql);
-             $row = mysqli_fetch_assoc($result);
-             $bg_pic_old = $row['background_pic'];
-             //ensure that you don't delete the default banner image
-             if ($bg_pic_old != "images/website/defaultBackground.jpg") {
-                 unlink($bg_pic_old);
-             }
-         }
-         // ADDING CONTENT ABOVE TO AUTOMATICALLY DELETE PREVIOUSLY STORED BACKGROUND BANNER WHEN A NEW ONE IS UPLOADED
+            if($msg2==""){
+            if (move_uploaded_file($_FILES["BgImage"]["tmp_name"], $target_file2)) {
+                // ADDING CONTENT BELOW TO AUTOMATICALLY DELETE PREVIOUSLY STORED BACKGROUND BANNER WHEN A NEW ONE IS UPLOADED
+                $sql = "SELECT `background_pic` FROM `users` WHERE user_name='$username'";
+                if (mysqli_query($con, $sql)) {
+                    $result = mysqli_query($con, $sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $bg_pic_old = $row['background_pic'];
+                    //ensure that you don't delete the default banner image
+                    if ($bg_pic_old != "images/website/defaultBackground.jpg") {
+                        unlink($bg_pic_old);
+                    }
+                }
+                // ADDING CONTENT ABOVE TO AUTOMATICALLY DELETE PREVIOUSLY STORED BACKGROUND BANNER WHEN A NEW ONE IS UPLOADED
 
 
-        $sql = "UPDATE users SET `background_pic` = '$target_file2' WHERE user_name='$username'";
-        if (mysqli_query($con, $sql)) {
-            $msg = "Image uploaded and saved in the Database";
-            $msg_class = "alert-success";
-        } else {
-            $msg = "There was an error in the database";
-        }
-    } else {
-        $errorBG = "There was an erro uploading the file";
-    }
+                $sql = "UPDATE users SET `background_pic` = '$target_file2' WHERE user_name='$username'";
+                if (mysqli_query($con, $sql)) {
+                    echo("<center><div class='alert alert-success w-25 text-center alert-dismissible fade show' style='position: absolute; top: 150px; left: 570px;width:fit-content;' role='alert'>
+                    Background Picture Updated Successfully
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                    </div></center>");
+                } else {
+                    $msg2 = "There was an error in the database";
+                }
+            } else {
+                $errorBG = "There was an erro uploading the file";
+            }
+        }else{
+                echo ("<center><div class='alert alert-danger w-25 text-center alert-dismissible fade show' style='position: absolute; top: 160px; left: 570px; width:500px;' role='alert'>"
+                .$msg2.
+                "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div></center>");
+            }
+        
+        } //end of is_uploaded_file(BACKGROUND IMG)        
+            
+} //end of isset(submit)
 
-    if (!empty($errorBG)) {
-        $messed = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute; top: 490px; left: 570px;' role='alert'>
-        Could not update the background image!
-        </div></center>";
-        echo $messed;
-
-        sleep(5);
-        header("Location: edit_profile.php");
-    } else {
-        $updated = "<center><div class='alert alert-success w-25 text-center' style='position: absolute; top: 490px; left: 570px;' role='alert'>
-        Background image updated successfully!
-        </div></center>";
-        echo $updated;
-    }
-  
-	mysqli_close($con);
-
-}
+mysqli_close($con);
 ?>
 
