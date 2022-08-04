@@ -36,6 +36,22 @@ $username = $user_data['user_name'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     
     <link rel="stylesheet" href="css/edit_profile.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        function previewFile(input){
+        var file = $("input[type=file]").get(0).files[0];
+        if(file){
+            var reader = new FileReader();
+            reader.onload = function(){
+                $("#pfpinput").attr("src", reader.result);
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+
+
+    </script>
 
 </head>
 
@@ -81,14 +97,22 @@ echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$u
         <fieldset>     
             <legend> Change Account Photos</legend>   
         <br>
+        
+        
         Select Profile Photo: <br>
-        <input type="file" name="PFP" accept="image/png, image/gif, image/jpeg"/>
+        <input type="file" name="PFP" accept="image/png, image/gif, image/jpeg" onchange="previewFile(this);"/>
+        <img id="pfpinput" src="images/website/preview.jpg" alt="" style="width:100px; height:100px; border-radius:50%;">
         <br>
+
+
         Select Background Banner Photo: <br>
-        <input type="file" name="BgImage" accept="image/png, image/gif, image/jpeg"/>
+        <input type="file" id="bginput" name="BgImage" accept="image/png, image/gif, image/jpeg"/>
         <br><br>
+
+
         <input type="submit" value="Update Profile" class="btn btn-success" name="save_profile">
-        </fieldset>
+        
+    </fieldset>
     </form>
 
     <br>
