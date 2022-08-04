@@ -20,10 +20,9 @@
     font-family: "Playfair Display", serif;
     font-weight: 400;
     margin-top: 50px;
-    min-width: 1000px;
+    min-width: fit-content;
     margin-right: auto;
     border: 1px solid #222;
-    width: auto;
 }
 
 .stat-item {
