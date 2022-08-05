@@ -369,15 +369,255 @@ SELECT sum(allcount)/@interval AS Total_Count FROM(
 </head>
 <body>
 
-    <div class="container">
+  
         <h1 class="heading">Your Stats</h1>
         <br>
 
-        <h2 class="heading2">General</h2>
-        <div class="stat-item">Media Count: <span> <?php echo($total_media_count) ?> </span></div>
-        <div class="stat-item">Unique Media Count: <span> <?php echo($total_media_count_unique) ?></span></div>
-        <div class="stat-item">Media Added Last Week: <span><?php echo($total_media_added_last_week)?></span></div>
-        <div class="stat-item">Media Added Last Month: <span><?php echo($total_media_added_last_month)?></span></div>
+        <!-- GENERAL STATS TABLE  -->
+        <div class="table-wrapper">
+        <table class="fl-table">
+          <thead>
+            <tr>
+              <th colspan="2" class="heading2">General</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Media Count</td>
+            <td> <?php echo($total_media_count) ?></td>
+          </tr>
+          <tr>
+            <td>Unique Media Count</td>
+            <td> <?php echo($total_media_count_unique) ?></td>
+          </tr>
+          <tr>
+            <td>Media Added Last Week</td>
+            <td> <?php echo($total_media_added_last_week) ?></td>
+          </tr>
+          <tr>
+            <td>Media Added Last Month</td>
+            <td> <?php echo($total_media_added_last_month) ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+          </tbody>
+        </table>
+        </div>
+
+
+
+         <!-- BOOK STATS TABLE  -->
+        <div class="table-wrapper">
+        <table class="fl-table">
+          <thead>
+            <tr>
+              <th colspan="2" class="heading2">Book Stats</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+          </tbody>
+        </table>
+  </div>
+
+   <!-- MOVIE STATS TABLE  -->
+   <div class="table-wrapper">
+        <table class="fl-table">
+          <thead>
+            <tr>
+              <th colspan="2" class="heading2">Movie Stats</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+          </tbody>
+        </table>
+  </div>
+
+
+
+    <!-- TV SHOW STATS TABLE  -->
+    <div class="table-wrapper">
+        <table class="fl-table">
+          <thead>
+            <tr>
+              <th colspan="2" class="heading2">TV Stats</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+          </tbody>
+        </table>
+  </div>
+
+   <!-- VIDEOGAME STATS TABLE  -->
+   <div class="table-wrapper">
+        <table class="fl-table">
+          <thead>
+            <tr>
+              <th colspan="2" class="heading2">VideoGame Stats</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+          </tbody>
+        </table>
+  </div>
+
+   <!--MUSIC STATS TABLE -->
+   <div class="table-wrapper">
+        <table class="fl-table">
+          <thead>
+            <tr>
+              <th colspan="2" class="heading2">Music Stats</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td> <?php ?></td>
+          </tr>
+          </tbody>
+        </table>
+  </div>
+
+<!-- 
+
         <div class="stat-item">Media Added Last 3 Months: <span><?php echo($total_media_added_last_3months)?></span></div>
         <div class="stat-item">Media Added Last 6 Months: <span><?php echo($total_media_added_last_6months)?></span></div>
         <div class="stat-item">Media Added Last Year: <span><?php echo($total_media_added_last_year)?></span></div>
@@ -412,7 +652,7 @@ SELECT sum(allcount)/@interval AS Total_Count FROM(
         <div class="stat-item">Album Count Unique: <span> <?php echo $total_album_count_unique;?> </span></div>
         <div class="stat-item">Favorite Album: <span> <?php echo $top_albums;?> </span></div>
         <div class="stat-item">Favorite Artist: <span> <?php echo $top_artists;?> </span></div>
-
+ -->
 
     </div>
 </body>
