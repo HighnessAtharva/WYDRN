@@ -71,7 +71,8 @@ $total_movie_count= executeSQL($con, $sql);
 /*************
   TOTAL TV COUNT (SUM OF ALL USERS)
 *************/
-
+$sql="SELECT count(`tv`) FROM `data`";
+$total_tv_count= executeSQL($con, $sql);
 
 /*************
   TOTAL VIDEOGAME COUNT (SUM OF ALL USERS)
@@ -191,9 +192,9 @@ $not_verified= executeSQL($con, $sql);
  
         <!-- Add more stat items below in the same format as above. -->
         <div class="stat-item">TOTAL USERS COUNT: <span> <?php ?> </span></div>
-        <div class="stat-item">TOTAL BOOKS ADDED BY ALL USERS: <span> <?php echo $total_book_count; ?> </span></div>
-        <div class="stat-item"> TOTAL MOVIES ADDED BY ALL USERS: <span> <?php  echo $total_movie_count; ?> </span></div>
-        <div class="stat-item">TOTAL TVS ADDED BY ALL USERS:  <span> <?php ?> </span></div>
+        <div class="stat-item">TOTAL BOOKS ADDED BY ALL USERS: <span> <?php echo "$total_book_count;"?> </span></div>
+        <div class="stat-item"> TOTAL MOVIES ADDED BY ALL USERS: <span> <?php echo "$total_movie_count;" ?> </span></div>
+        <div class="stat-item">TOTAL TVS ADDED BY ALL USERS:  <span> <?php echo "$total_tv_count;" ?> </span></div>
         <div class="stat-item">TOTAL VIDEOGAMES ADDED BY ALL USERS: <span> <?php ?> </span></div>
         <div class="stat-item">TOTAL ALBUMS ADDED BY ALL USERS:  <span> <?php ?> </span></div>
         <div class="stat-item">TOP 50 MOST LOGGED BOOKS: <span> <?php ?> </span></div>
