@@ -58,18 +58,18 @@ if (isset($_POST['submit'])) {
             $moviecount++;
             $bookcount++;
             $tvcount++;
-            $videogame = mysqli_real_escape_string($con, $getData[0]);
-            $platform = mysqli_real_escape_string($con,$getData[1]);
-            $album = mysqli_real_escape_string($con,$getData[2]);
-            $artist = mysqli_real_escape_string($con,$getData[3]);
-            $book = mysqli_real_escape_string($con,$getData[4]);
-            $author = mysqli_real_escape_string($con,$getData[5]);
-            $movie = mysqli_real_escape_string($con,$getData[6]);
-            $year = mysqli_real_escape_string($con,$getData[7]);
-            $tv = mysqli_real_escape_string($con,$getData[8]);
-            $streaming = mysqli_real_escape_string($con,$getData[9]);
-            $datetime = mysqli_real_escape_string($con,$getData[10]);
-            $date = mysqli_real_escape_string($con,$getData[11]);
+            $videogame = strtoupper(mysqli_real_escape_string($con, $getData[0]));
+            $platform = strtoupper(mysqli_real_escape_string($con,$getData[1]));
+            $album = strtoupper(mysqli_real_escape_string($con,$getData[2]));
+            $artist = strtoupper(mysqli_real_escape_string($con,$getData[3]));
+            $book = strtoupper(mysqli_real_escape_string($con,$getData[4]));
+            $author = strtoupper(mysqli_real_escape_string($con,$getData[5]));
+            $movie =strtoupper( mysqli_real_escape_string($con,$getData[6]));
+            $year = strtoupper(mysqli_real_escape_string($con,$getData[7]));
+            $tv = strtoupper(mysqli_real_escape_string($con,$getData[8]));
+            $streaming =strtoupper( mysqli_real_escape_string($con,$getData[9]));
+            $datetime = strtoupper(mysqli_real_escape_string($con,$getData[10]));
+            $date = strtoupper(mysqli_real_escape_string($con,$getData[11]));
 
             if (empty($videogame)){
                 $videogame = "";

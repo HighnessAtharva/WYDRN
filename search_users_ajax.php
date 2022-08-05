@@ -13,20 +13,23 @@
  * @author     AtharvaShah
  */
 
+session_start();
 require "connection.php";
 require "functions.php";
+$user_data = check_login($con);
+$username = $user_data['user_name'];
+
 
 if (isset($_POST['search'])) {
    $name = $_POST['search'];
-   $query = "SELECT `user_name`, `profile_pic` FROM `users` WHERE `user_name` LIKE '%$name%' LIMIT 5";
+   //filter out logged in users username.
+   $query = "SELECT `user_name`, `profile_pic` FROM `users` WHERE `user_name` LIKE '%$name%' and `user_name`!='$username' LIMIT 5";
    $exec=mysqli_query($con,$query);
    while ($result = mysqli_fetch_assoc($exec)) {
 ?>
 
 <center>
 <div class='search-results'>
-    <!-- <p onclick='fill("<?php echo $result["user_name"]; ?>")' style='font-size:1.2em '>    -->
-     
     <!-- Assigning searched result in "Search box" in "search.php" file. -->
     <?php 
    if ($result["user_name"]){

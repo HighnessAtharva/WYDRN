@@ -139,7 +139,7 @@ $popular_users = executeSQL($con, $sql);
 
 
 /*************
- GET USERS WHO ARE NOT VERIFIED (CHECK `USERS` TABLE)
+ GET COUNT OF USERS WHO ARE NOT VERIFIED (CHECK `USERS` TABLE)
  *************/
 
 $sql = "SELECT COUNT(`user_name`) FROM users where verified =0";
@@ -147,39 +147,107 @@ $not_verified = executeSQL($con, $sql);
 
 
 /*************
-  GET USERS WHO HAVE NOT LOGGED ANY MEDIA IN THE LAST 6 MONTHS
+  GET COUNT OF USERS WHO HAVE NOT LOGGED ANY MEDIA (DEAD ACCOUNT)
  *************/
-
+$sql="SELECT count(t1.user_name)
+FROM users t1
+LEFT JOIN data t2 ON t2.username = t1.user_name
+WHERE t2.username IS NULL;";
+$dead_accounts = executeSQL($con, $sql);
 
 
 /*************
   GET USERS WHO HAVE LOGGED MORE THAN 1000 MEDIA ITEMS (THIS CAN BE EXTENDED LATER TO CHECK FOR SPAMMING)
  *************/
+$sql="SELECT COUNT(*) FROM (
 
+  SELECT sum(allcount) AS Total_Count FROM(
+          (SELECT username, count(`videogame`) as allcount FROM `data` WHERE videogame!=''  GROUP BY username)
+          UNION ALL
+          (SELECT username, count(album) AS allcount FROM `data` WHERE album!=''  GROUP BY username)
+          UNION ALL
+          (SELECT username, count(book) AS allcount FROM `data` WHERE book!=''  GROUP BY username)
+          UNION ALL
+          (SELECT username, count(movie) AS allcount FROM `data` WHERE movie!='' GROUP BY username)
+          UNION ALL
+          (SELECT username, count(tv) AS allcount FROM `data` WHERE tv!=''  GROUP BY username)
+  )t group by username having Total_count > 1000) 
+
+as whales";
+$whale_users = executeSQL($con, $sql);
+
+/*************
+  TOTAL MEDIA ADDED YESTERDAY
+ *************/
+$sql="SELECT sum(allcount) AS Total_Count FROM(
+  (SELECT count(`videogame`) as allcount FROM `data` WHERE videogame!='' and date > DATE_SUB(now(), INTERVAL 1 DAY))
+  UNION ALL
+  (SELECT count(`album`) AS allcount FROM `data` WHERE album!='' and date > DATE_SUB(now(), INTERVAL 1 DAY))
+  UNION ALL
+  (SELECT count(`book`) AS allcount FROM `data` WHERE book!='' and date > DATE_SUB(now(), INTERVAL 1 DAY))
+  UNION ALL
+  (SELECT count(`movie`) AS allcount FROM `data` WHERE movie!='' and date > DATE_SUB(now(), INTERVAL 1 DAY))
+  UNION ALL
+  (SELECT count(`tv`) AS allcount FROM `data` WHERE tv!='' and date > DATE_SUB(now(), INTERVAL 1 DAY))
+)t";
+$total_media_added_yesterday= executeSQL($con, $sql);
 
 
 /*************
-  TOTAL MEDIA ADDED LAST 3 MONTHS (ACROSS ALL USERS)
+  TOTAL MEDIA ADDED LAST WEEK
  *************/
 
-
+$sql="SELECT sum(allcount) AS Total_Count FROM(
+  (SELECT count(`videogame`) as allcount FROM `data` WHERE videogame!='' and date > DATE_SUB(now(), INTERVAL 7 DAY))
+  UNION ALL
+  (SELECT count(`album`) AS allcount FROM `data` WHERE album!='' and date > DATE_SUB(now(), INTERVAL 7 DAY))
+  UNION ALL
+  (SELECT count(`book`) AS allcount FROM `data` WHERE book!='' and date > DATE_SUB(now(), INTERVAL 7 DAY))
+  UNION ALL
+  (SELECT count(`movie`) AS allcount FROM `data` WHERE movie!='' and date > DATE_SUB(now(), INTERVAL 7 DAY))
+  UNION ALL
+  (SELECT count(`tv`) AS allcount FROM `data` WHERE tv!='' and date > DATE_SUB(now(), INTERVAL 7 DAY))
+)t";
+$total_media_added_last_week= executeSQL($con, $sql);
 
 /*************
-  TOTAL MEDIA ADDED LAST 6 MONTHS
+  TOTAL MEDIA ADDED LAST MONTH
  *************/
+$sql="SELECT sum(allcount) AS Total_Count FROM(
+  (SELECT count(`videogame`) as allcount FROM `data` WHERE videogame!='' and date > DATE_SUB(now(), INTERVAL 31 DAY))
+  UNION ALL
+  (SELECT count(`album`) AS allcount FROM `data` WHERE album!='' and date > DATE_SUB(now(), INTERVAL 31  DAY))
+  UNION ALL
+  (SELECT count(`book`) AS allcount FROM `data` WHERE book!='' and date > DATE_SUB(now(), INTERVAL 31 DAY))
+  UNION ALL
+  (SELECT count(`movie`) AS allcount FROM `data` WHERE movie!='' and date > DATE_SUB(now(), INTERVAL 31  DAY))
+  UNION ALL
+  (SELECT count(`tv`) AS allcount FROM `data` WHERE tv!='' and date > DATE_SUB(now(), INTERVAL 31  DAY))
+)t";
+$total_media_added_last_month= executeSQL($con, $sql);
 
-
-
-/*************
+ /*************
   TOTAL MEDIA ADDED LAST YEAR
  *************/
-
+$sql="SELECT sum(allcount) AS Total_Count FROM(
+  (SELECT count(`videogame`) as allcount FROM `data` WHERE videogame!='' and date > DATE_SUB(now(), INTERVAL 1 YEAR))
+  UNION ALL
+  (SELECT count(`album`) AS allcount FROM `data` WHERE album!='' and date > DATE_SUB(now(), INTERVAL 1 YEAR))
+  UNION ALL
+  (SELECT count(`book`) AS allcount FROM `data` WHERE book!='' and date > DATE_SUB(now(), INTERVAL 1 YEAR))
+  UNION ALL
+  (SELECT count(`movie`) AS allcount FROM `data` WHERE movie!='' and date > DATE_SUB(now(), INTERVAL 1 YEAR))
+  UNION ALL
+  (SELECT count(`tv`) AS allcount FROM `data` WHERE tv!='' and date > DATE_SUB(now(), INTERVAL 1 YEAR))
+  )t";
+$total_media_added_last_year= executeSQL($con, $sql);
 
 
 /*************
-  AVERAGE MEDIA ADDED PER DAY (ACROSS ALL USERS) -> USEFUL TO DETERMINE RATE AT WHICH DB SIZE IS INCREASING
+  AVERAGE MEDIA ADDED PER USER 
  *************/
-
+$avg_media_per_user= $total_media_count/$total_users_count;
+$avg_media_per_user=round($avg_media_per_user)
 
 ?>
 
@@ -213,72 +281,72 @@ $not_verified = executeSQL($con, $sql);
       <tbody>
         <tr>
           <td>TOTAL MEDIA ADDED BY ALL USERS</td>
-          <td><?php echo ($total_media_count) ?></td>
+          <td><?php echo $total_media_count; ?></td>
         </tr>
         
         <tr>
           <td> CURRENT ACTIVE USERS ON SITE </td>
-          <td> <?php echo ($current_active_users) ?> </td>
+          <td> <?php echo $current_active_users; ?> </td>
         </tr>   
 
         <tr>
           <td> TOTAL USERS COUNT </td>
-          <td> <?php echo "$total_users_count" ?> </td>
+          <td> <?php echo $total_users_count; ?> </td>
         </tr>
 
         <tr>
           <td> TOTAL BOOKS ADDED BY ALL USERS </td>
-          <td> <?php echo "$total_book_count" ?> </td>
+          <td> <?php echo $total_book_count; ?> </td>
         </tr>
 
         <tr>
           <td> TOTAL MOVIES ADDED BY ALL USERS </td>
-          <td> <?php echo "$total_movie_count" ?> </td>
+          <td> <?php echo $total_movie_count; ?> </td>
         </tr>
 
         <tr>
           <td> TOTAL TVS ADDED BY ALL USERS </td>
-          <td> <?php echo "$total_tv_count" ?> </td>
+          <td> <?php echo $total_tv_count; ?> </td>
         </tr>
 
         <tr>
           <td> TOTAL VIDEOGAMES ADDED BY ALL USERS </td>
-          <td> <?php echo "$total_videogame_count" ?> </td>
+          <td> <?php echo $total_videogame_count; ?> </td>
         </tr>
 
         <tr>
           <td> TOTAL ALBUMS ADDED BY ALL USERS </td>
-          <td> <?php echo "$total_album_count" ?> </td>
+          <td> <?php echo $total_album_count; ?> </td>
         </tr>
 
         <tr>
-          <td> TOP 50 MOST LOGGED BOOKS </td>
-          <td> <?php echo "$top_50_books" ?> </td>
+          <td> MOST LOGGED BOOK </td>
+          <td> <?php echo $top_50_books; ?> </td>
         </tr>
 
         <tr>
-          <td> TOP 50 MOST LOGGED ALBUMS </td>
-          <td> <?php echo "$top_50_albums"; ?> </td>
+          <td> MOST LOGGED ALBUM </td>
+          <td> <?php echo $top_50_albums; ?> </td>
         </tr>
 
         <tr>
-          <td> TOP 50 MOST LOGGED TV SHOWS </td>
-          <td> <?php echo "$top_50_tvs"; ?> </td>
+          <td> MOST LOGGED TV SHOW </td>
+          <td> <?php echo $top_50_tvs; ?> </td>
         </tr>
 
         <tr>
-          <td> TOP 50 MOST LOGGED VIDEOGAMES </td>
-          <td> <?php echo "$top_50_videogames"; ?> </td>
+          <td> MOST LOGGED VIDEOGAME </td>
+          <td> <?php echo $top_50_videogames; ?> </td>
         </tr>
 
         <tr>
-          <td> TOP 50 MOST LOGGED MOVIES </td>
-          <td>  <?php echo "$top_50_movies"; ?> </td>
+          <td> MOST LOGGED MOVIE </td>
+          <td>  <?php echo $top_50_movies; ?> </td>
         </tr>
 
         <tr>
-          <td> TOP 50 MOST POPULAR USERS (USERS WITH MOST FOLLOWERS) </td>
-          <td> <?php echo "$popular_users"; ?> </td>
+          <td> MOST POPULAR USERS </td>
+          <td> <?php echo $popular_users; ?> </td>
         </tr>
 
         <tr>
@@ -287,33 +355,38 @@ $not_verified = executeSQL($con, $sql);
         </tr>
 
         <tr>
-          <td> USERS WHO HAVE NOT LOGGED ANY MEDIA IN THE LAST 6 MONTHS </td>
-          <td> <?php ?> </td>
+          <td> COUNT OF USERS WHO HAVE NOT LOGGED ANY MEDIA </td>
+          <td> <?php echo $dead_accounts; ?> </td>
         </tr>
 
         <tr>
-          <td> USERS WHO HAVE LOGGED MORE THAN 1000 MEDIA ITEMS </td>
-          <td> <?php ?> </td>
+          <td> COUNT OF USERS WHO HAVE LOGGED MORE THAN 1000 MEDIA ITEMS </td>
+          <td> <?php echo $whale_users; ?> </td>
         </tr>
         
         <tr>
-          <td> TOTAL MEDIA ADDED LAST 3 MONTHS </td>
-          <td> <?php ?> </td>
+          <td> TOTAL MEDIA ADDED YESTERDAY </td>
+          <td> <?php echo $total_media_added_yesterday; ?> </td>
         </tr>
         
         <tr>
-          <td> TOTAL MEDIA ADDED LAST 6 MONTHS </td>
-          <td> <?php ?> </td>
+          <td> TOTAL MEDIA ADDED LAST WEEK </td>
+          <td> <?php echo $total_media_added_last_week; ?> </td>
         </tr>
         
+        <tr>
+          <td> TOTAL MEDIA ADDED LAST MONTH </td>
+          <td> <?php echo $total_media_added_last_month;?> </td>
+        </tr>
+
         <tr>
           <td> TOTAL MEDIA ADDED LAST YEAR </td>
-          <td> <?php ?> </td>
+          <td> <?php echo $total_media_added_last_year;?> </td>
         </tr>
         
         <tr>
-          <td> AVERAGE MEDIA ADDED PER DAY (ACROSS ALL USERS) </td>
-          <td> <?php ?> </td>
+          <td>  AVERAGE MEDIA ADDED PER USER  </td>
+          <td> <?php echo $avg_media_per_user;?> </td>
         </tr>
         
       </tbody>
