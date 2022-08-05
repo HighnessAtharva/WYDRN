@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - GSAP Draggable and ScrollTrigger timeline [FINAL]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <nav>
+        <!--Shows our position on the timeline-->
+        <div class="marker"></div>
+
+        <!--Draggable element-->
+        <div class="nav__track" data-draggable>
+            <ul class="nav__list">
+                <li>
+                    <a href="#section_1" class="nav__link" data-link><span>Meet the Team</span></a>
+                </li>
+                <li>
+                    <a href="#section_2" class="nav__link" data-link><span>Atharva Shah</span></a>
+                </li>
+                <li>
+                    <a href="#section_3" class="nav__link" data-link><span>Anay Deshpande</span></a>
+                </li>
+                <li>
+                    <a href="#section_4" class="nav__link" data-link><span>Om Khulbe</span></a>
+                </li>
+                <li>
+                    <a href="#section_5" class="nav__link" data-link><span>Atharva Shiurkar</span></a>
+                </li>
+                <li>
+                    <a href="#section_6" class="nav__link" data-link><span>Rashmi Kamble</span></a>
+                </li>
+                <li>
+                    <a href="#section_7" class="nav__link" data-link><span>Lavesh Milani</span></a>
+                </li>
+                <li>
+                    <a href="#section_8" class="nav__link" data-link><span>Nikhil Haswani</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="section_1" style="--i: 0">
+            <div class="container">
+                <h2 class="section__heading">
+                    <span>WYDRN</span>
+                    <span>Meet the Team</span>
+                </h2>
+                <div class="section__image">
+                    <img src="https://assets.codepen.io/85648/radiohead_the-bends.webp" width="1200" height="1200" />
+                </div>
+            </div>
+        </section>
+        <section id="section_2" style="--i: 1">
+            <div class="container">
+                <h2 class="section__heading">
+                    <span>☕</span>
+                    <span>Atharva Shah</span>
+                </h2>
+                <div class="section__image">
+                    <img src="https://assets.codepen.io/85648/radiohead_pablo-honey.jpg" width="1200" height="1200" />
+                </div>
+            </div>
+        </section>
+        <section id="section_3" style="--i: 2">
+            <div class="container">
+                <h2 class="section__heading">
+                    <span>☯️</span>
+                    <span>Anay Deshpande</span>
+                </h2>
+                <div class="section__image">
+                    <img src="https://assets.codepen.io/85648/radiohead_ok-computer.webp" width="1200" height="1200" />
+                </div>
+            </div>
+        </section>
+        <section id="section_4" style="--i: 3">
+            <div class="container">
+                <h2 class="section__heading">
+                    <span>🎮</span>
+                    <span>Om Khulbe</span>
+                </h2>
+                <div class="section__image">
+                    <img src="https://assets.codepen.io/85648/radiohead_kid-a.webp" width="1200" height="1200" />
+                </div>
+            </div>
+        </section>
+        <section id="section_5" style="--i: 4">
+            <div class="container">
+                <h2 class="section__heading">
+                    <span>🤖</span>
+                    <span>Atarva Shirukar</span>
+                </h2>
+                <div class="section__image">
+                    <img src="https://assets.codepen.io/85648/radiohead_amnesiac.webp" width="1200" height="1200" />
+                </div>
+            </div>
+        </section>
+        <section id="section_6" style="--i: 5">
+            <div class="container">
+                <h2 class="section__heading">
+                    <span>🍿</span>
+                    <span>Rashmi Kamble</span>
+                </h2>
+                <div class="section__image" style="--i: 6">
+                    <img src="https://assets.codepen.io/85648/radiohead_hail-to-the-thief.webp" width="1200" height="1200" />
+                </div>
+            </div>
+        </section>
+        <section id="section_7" style="--i: 7">
+            <div class="container">
+                <h2 class="section__heading">
+                    <span>🎶</span>
+                    <span>Lavesh Milani</span>
+                </h2>
+                <div class="section__image">
+                    <img src="https://assets.codepen.io/85648/radiohead_in-rainbows.webp" width="1200" height="1200" />
+                </div>
+            </div>
+        </section>
+        <section id="section_8" style="--i: 8">
+            <div class="container">
+                <h2 class="section__heading">
+                    <span>🍺</span>
+                    <span>Nikhil Haswani</span>
+                </h2>
+                <div class="section__image">
+                    <img src="https://assets.codepen.io/85648/radiohead_king-of-linbs.webp" width="1200" height="1200" />
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- partial -->
+    <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
+    <script src='https://unpkg.com/gsap@3/dist/Draggable.min.js'></script>
+    <script src='https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js'></script>
+    <script src='https://assets.codepen.io/16327/InertiaPlugin.min.js'></script>
+    <script type="module" src="./script.js"></script>
+
+</body>
+
+</html>
