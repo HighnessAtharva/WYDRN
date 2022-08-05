@@ -327,29 +327,33 @@ $top_artists = executeSQL($con, $sql);
   WHAT'S YOUR FAVORITE MEDIA TYPE
  *************/
 //Hint: Select MAX(total book count, total movie count, total tv count, total videogame count, total album count). Use variables stored in above queries. 
+$media_array=array("Books"=>$total_book_count,
+                  "Movies"=>$total_movie_count,
+                  "TV"=>$total_tv_count,
+                  "Video Games"=>$total_videogame_count,
+                  "Albums"=>$total_album_count,
+                  );
+$fav_media_val = max($media_array); //gets the highest value in the array
+$fav_media = array_search($fav_media_val, $media_array); //gets the key of the highest value in the array. Key is the media type.
 
 
 
 /*************
   AVERAGE MEDIA ADDED PER DAY 
  *************/
-//Hint: Total Media Count/ (Current Date - Date of Account Creation ['date' column in 'users' table] )
-$sql = "SELECT @today := CURRENT_DATE(); 
-SELECT @registered :=  `date` from users where user_name='$username'; 
-SELECT @interval := DATEDIFF(@today, @registered);
-SELECT sum(allcount)/@interval AS Total_Count FROM(
-    (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='')
-    UNION ALL
-    (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='')
-    UNION ALL
-    (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='')
-    UNION ALL
-    (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='')
-    UNION ALL
-    (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='')
-)";
+//gets date of account creation and converts it to date object
+$date_created = executeSQL($con, "SELECT `date` FROM `users` where `user_name`='$username'");
+$date_created = strtotime($date_created);
 
-//$avg_media_added=executeSQL($con, $sql);
+//gets current date and converts it to date object
+$today=date("Y-m-d");
+$today=strtotime($today);
+
+//gets the difference between the two date objects and converts it to days
+$interval_in_days=round(($today-$date_created)/(60*60*24));
+
+//divide total media count by the number of days since account creation and round to 2 decimal places
+$avg_media_per_day = round($total_media_count/$interval_in_days);
 
 ?>
 
@@ -419,12 +423,12 @@ SELECT sum(allcount)/@interval AS Total_Count FROM(
 
         <tr>
           <td>Favorite Media Type</td>
-          <td> <?php ?></td>
+          <td> <?php echo ($fav_media ." (total ".$fav_media_val." logged)" ); ?></td>
         </tr>
 
         <tr>
           <td>Average Media Added Per Day</td>
-          <td> <?php ?></td>
+          <td> <?php echo $avg_media_per_day; ?>
         </tr>
       </tbody>
     </table>
@@ -525,7 +529,7 @@ SELECT sum(allcount)/@interval AS Total_Count FROM(
 
         <tr>
           <td>Favorite Streaming Platform</td>
-          <td> <?php $top_streaming; ?></td>
+          <td> <?php echo $top_streaming; ?></td>
         </tr>
 
       </tbody>
