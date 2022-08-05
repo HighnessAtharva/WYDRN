@@ -71,44 +71,59 @@ $total_movie_count= executeSQL($con, $sql);
 /*************
   TOTAL TV COUNT (SUM OF ALL USERS)
 *************/
-$sql="SELECT count(`tv`) FROM `data`";
+$sql="SELECT count(`tv`) FROM `data` where `tv`!=''";
 $total_tv_count= executeSQL($con, $sql);
 
 /*************
   TOTAL VIDEOGAME COUNT (SUM OF ALL USERS)
 *************/
-
+$sql="SELECT count(`videogame`) FROM `data` where `videogame`!=''";
+$total_videogame_count= executeSQL($con, $sql);
 
 /*************
   TOTAL ALBUM COUNT (SUM OF ALL USERS)
 *************/
-
+$sql="SELECT count(`album`) FROM `data` where `album`!=''";
+$total_album_count= executeSQL($con, $sql);
 
 
 /*************
   TOP 50 MOST LOGGED BOOKS -> ACROSS ALL USERS
 *************/
+$sql="SELECT book, count(book) FROM `data` where book!='' GROUP BY book HAVING count(book)>1 ORDER BY count(book) DESC LIMIT 50";
+
+$top_50_books=executeSQL($con, $sql);
 
 
 /*************
   TOP 50 MOST LOGGED ALBUMS -> ACROSS ALL USERS
 *************/
+$sql="SELECT album, count(album) FROM `data` where album!='' GROUP BY album HAVING count(album)>1 ORDER BY count(album) DESC LIMIT 50";
+
+$top_50_albums=executeSQL($con, $sql);
 
 
 /*************
   TOP 50 MOST LOGGED TV SHOWS -> ACROSS ALL USERS
 *************/
+$sql="SELECT tv, count(tv) FROM `data` where tv!='' GROUP BY tv HAVING count(tv)>1 ORDER BY count(tv) DESC LIMIT 50";
+
+$top_50_tvs=executeSQL($con, $sql);
 
 
 /*************
   TOP 50 MOST LOGGED VIDEOGAMES -> ACROSS ALL USERS
 *************/
+$sql="SELECT videogame, count(videogame) FROM `data` where videogame!='' GROUP BY videogame HAVING count(videogame)>1 ORDER BY count(videogame) DESC LIMIT 50";
 
+$top_50_videogames=executeSQL($con, $sql);
 
 /*************
   TOP 50 MOST LOGGED MOVIES -> ACROSS ALL USERS
 *************/
+$sql="SELECT movie, count(movie) FROM `data` where movie!='' GROUP BY movie HAVING count(movie)>1 ORDER BY count(movie) DESC LIMIT 50";
 
+$top_50_movies=executeSQL($con, $sql);
 
 
 /*************
@@ -191,18 +206,18 @@ $not_verified= executeSQL($con, $sql);
         <div class="stat-item">CURRENT ACTIVE USERS ON SITE: <span> <?php echo($current_active_users) ?></span></div>
  
         <!-- Add more stat items below in the same format as above. -->
-        <div class="stat-item">TOTAL USERS COUNT: <span> <?php ?> </span></div>
+        <div class="stat-item">TOTAL USERS COUNT: <span> <?php echo "$total_users_count";?> </span></div>
         <div class="stat-item">TOTAL BOOKS ADDED BY ALL USERS: <span> <?php echo "$total_book_count;"?> </span></div>
         <div class="stat-item"> TOTAL MOVIES ADDED BY ALL USERS: <span> <?php echo "$total_movie_count;" ?> </span></div>
         <div class="stat-item">TOTAL TVS ADDED BY ALL USERS:  <span> <?php echo "$total_tv_count;" ?> </span></div>
-        <div class="stat-item">TOTAL VIDEOGAMES ADDED BY ALL USERS: <span> <?php ?> </span></div>
-        <div class="stat-item">TOTAL ALBUMS ADDED BY ALL USERS:  <span> <?php ?> </span></div>
-        <div class="stat-item">TOP 50 MOST LOGGED BOOKS: <span> <?php ?> </span></div>
-        <div class="stat-item">TOP 50 MOST LOGGED ALBUMS: <span> <?php ?> </span></div>
-        <div class="stat-item">TOP 50 MOST LOGGED TV SHOWS: <span> <?php ?> </span></div>
-        <div class="stat-item">TOP 50 MOST LOGGED VIDEOGAMES: <span> <?php ?> </span></div>
-        <div class="stat-item">TOP 50 MOST LOGGED MOVIES: <span> <?php ?> </span></div>
-        <div class="stat-item">TOP 50 MOST POPULAR USERS (USERS WITH MOST FOLLOWERS): <span> <?php ?> </span></div>
+        <div class="stat-item">TOTAL VIDEOGAMES ADDED BY ALL USERS: <span> <?php echo "$total_videogame_count";?> </span></div>
+        <div class="stat-item">TOTAL ALBUMS ADDED BY ALL USERS:  <span> <?php echo "$total_album_count";?> </span></div>
+        <div class="stat-item">TOP 50 MOST LOGGED BOOKS: <span> <?php echo "$top_50_books";?> </span></div>
+        <div class="stat-item">TOP 50 MOST LOGGED ALBUMS: <span> <?php echo "$top_50_albums";?> </span></div>
+        <div class="stat-item">TOP 50 MOST LOGGED TV SHOWS: <span> <?php echo "$top_50_tvs";?> </span></div>
+        <div class="stat-item">TOP 50 MOST LOGGED VIDEOGAMES: <span> <?php echo "$top_50_videogames";?> </span></div>
+        <div class="stat-item">TOP 50 MOST LOGGED MOVIES: <span> <?php echo "$top_50_movies";?> </span></div>
+        <div class="stat-item">TOP 50 MOST POPULAR USERS (USERS WITH MOST FOLLOWERS): <span> <?php echo "$popular_users";?> </span></div>
         <div class="stat-item">COUNT OF USERS WHO ARE NOT VERIFIED: <span> <?php echo $not_verified;?> </span></div>
         <div class="stat-item">USERS WHO HAVE NOT LOGGED ANY MEDIA IN THE LAST 6 MONTHS: <span> <?php ?> </span></div>
         <div class="stat-item">USERS WHO HAVE LOGGED MORE THAN 1000 MEDIA ITEMS: <span> <?php ?> </span></div>
