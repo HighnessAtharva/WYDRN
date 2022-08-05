@@ -224,7 +224,7 @@ $not_verified= executeSQL($con, $sql);
         <div class="stat-item"> TOTAL MEDIA ADDED LAST 3 MONTHS: <span> <?php ?> </span></div>
         <div class="stat-item"> TOTAL MEDIA ADDED LAST 6 MONTHS: <span> <?php ?> </span></div>
         <div class="stat-item">TOTAL MEDIA ADDED LAST YEAR: <span> <?php ?> </span></div>
-        <div class="stat-item">AVERAGE MEDIA ADDED PER DAY (ACROSS ALL USERS: <span> <?php ?> </span></div>
+        <div class="stat-item">AVERAGE MEDIA ADDED PER DAY (ACROSS ALL USERS): <span> <?php ?> </span></div>
 
     </div>
 </body>
