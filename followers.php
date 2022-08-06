@@ -36,56 +36,50 @@ $username = $user_data['user_name'];
    </head>
 
 <body>
-<div><br><br><br>
-<input type="button" class="btn btn-primary" style="margin-left:20px;" value="Return" onclick="window.location.href='profile.php?user_name=<?php echo $_GET['user_name']?>'">
-<div>
 
-<!--THIS IS THE DIV OF THE FOLLOWERS SECTION-->  
-<div class="col-sm">
-  <ul class="list-group ms-5 p-3" style="margin-top:50px; width: 400px;">
-  
-  <div>
-      <?php
-      $follower=$_GET['user_name'];
-      $sql2 = "SELECT `follower_username`, `profile_pic` from `social` s LEFT JOIN `users` u ON s.followed_username=u.user_name where followed_username='$follower' AND `follower_username` = '$username'";    
-      $result = mysqli_query($con, $sql2);
-      if(mysqli_num_rows($result) > 0){
-         echo ("You are following @". $follower);            
-      }
-      ?>
-   </div>
+<?php
+$follower=$_GET['user_name'];
+$sql="SELECT count(*) from `social` s LEFT JOIN `users` u ON s.follower_username=u.user_name where followed_username='$follower'";
+$result = mysqli_query($con, $sql);
+$row = mysqli_fetch_array($result);
+$count = $row[0];
 
-   <div>
-      <b>Followers of @<?php echo $follower?> - </b><br>
-   </div>  
-   
-
-   <?php
-   //outdated
-   $sql = "SELECT `follower_username` from `social` where followed_username='$follower' AND `follower_username` != '$username';";
-   
-   //new
-   $sql2="SELECT `follower_username`, `profile_pic` from `social` s LEFT JOIN `users` u ON s.follower_username=u.user_name where followed_username='$follower' AND `follower_username` != '$username'";
-
-   $result = mysqli_query($con, $sql2);
-   if(mysqli_num_rows($result) > 0){
-      while($row = mysqli_fetch_assoc($result)){
+?>
+<div class="container">
+   <h1 class="h1count"><?php echo $count; ?> Followers</h1>
+      <ul class="follow-ul">
          
-            // this echo statement displays the list of followers with their own links.
-            echo "<li class='list-group-item-info rounded-pill p-1 m-1'>".
-            "<span><img src=".$row['profile_pic']." class='follower-pfp'></span>&nbsp&nbsp&nbsp".
-            "<a href=profile.php?user_name=".$row['follower_username'].">".$row['follower_username']."</a>         
-            </li>";
+         <?php
             
-         }
-      }  
-   ?>
-   </ul>
-   </div>
-   <!--DIV END FOLLOWERS SECTION-->  
-   </body>
-   </html>
-   <?php 
-   	mysqli_close($con);
-
-   ?>
+            $sql2="SELECT `follower_username`, `profile_pic` from `social` s LEFT JOIN `users` u ON s.follower_username=u.user_name where followed_username='$follower'";
+            $result = mysqli_query($con, $sql2);
+            if(mysqli_num_rows($result) > 0){
+               while($row = mysqli_fetch_assoc($result)){
+         ?>
+   
+                  <!-- Displays the list of followers with their own links. -->
+                  <li class='follow-li'>
+                     <?php $profile_link="profile.php?user_name=".$row['follower_username'];?>
+                     <a class="follow-a" href=<?php echo $profile_link; ?>>
+                        <div class="flex-container" style="vertical-align:middle;">
+                        <span class="follow-span">
+                           <img src=<?php echo $row['profile_pic']; ?> class="follower-pfp">
+                        </span>
+                        <strong class="follow-username"><?php echo strtoupper($row['follower_username']); ?></strong>
+                        </div>
+                     </a>                     
+                  </li>
+         
+            
+         <?php  
+               }
+            }  
+         ?>
+           
+          
+</div> <!--Container DIV end.-->
+</body>
+</html>
+<?php 
+	mysqli_close($con);
+?>

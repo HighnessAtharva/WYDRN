@@ -1,13 +1,120 @@
+@charset "utf8";
+@import url(https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap);
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
 body {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
 }
 
+.container {
+    /* width: 100vw; */
+    min-width: 98.9vw;
+    max-width: 98.9vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font: 300 12px/1.618 "Oswald", sans-serif;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 460 55'><g fill='none' fill-rule='evenodd' stroke='%23fff' stroke-width='7' opacity='.1'><path d='M-345 34.5s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 48.3 0 48.3s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/><path d='M-345 20.7s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 34.5 0 34.5s115-13.8 115-13.8S172.5 6.9 230 6.9s115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8m-920 27.6s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 62.1 0 62.1s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/><path d='M-345 6.9s57.5-13.8 115-13.8S-115 6.9-115 6.9-57.5 20.7 0 20.7 115 6.9 115 6.9 172.5-6.9 230-6.9 345 6.9 345 6.9s57.5 13.8 115 13.8S575 6.9 575 6.9'/><path d='M-345-6.9s57.5-13.8 115-13.8S-115-6.9-115-6.9-57.5 6.9 0 6.9 115-6.9 115-6.9s57.5-13.8 115-13.8S345-6.9 345-6.9 402.5 6.9 460 6.9 575-6.9 575-6.9m-920 69s57.5-13.8 115-13.8 115 13.8 115 13.8S-57.5 75.9 0 75.9s115-13.8 115-13.8 57.5-13.8 115-13.8 115 13.8 115 13.8 57.5 13.8 115 13.8 115-13.8 115-13.8'/></g></svg>"), linear-gradient(90deg, #202, #404);
+    background-position: 50% 50%;
+    animation: stripes 15s linear infinite;
+    background-size: 100vw auto, 100% 100%;
+}
+
+@keyframes stripes {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+    100% {
+        background-position: 100vw 0, 0 0;
+        background-position: max(100vw, 0) 0, 0 0;
+    }
+}
+
+.h1count {
+    font-size: 4rem;
+    border-bottom: 5px solid white;
+    margin-bottom: 5vw;
+    padding-bottom: 1.5vw;
+    color: #ffffff;
+}
+
+.follow-ul {
+    width: 90%;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.follow-li {
+    height: 100%;
+    flex-grow: 1;
+    flex-basis: 300px;
+    background: #1e1f26;
+    margin: 1vw;
+    border-radius: 6px;
+}
+
+.follow-a {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: .5em;
+    text-decoration: none;
+    color: rgba(255, 255, 255, .5);
+    transition: all .25s ease 0s;
+}
+
+.follow-a:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
 .follower-pfp {
-    width: 35px;
-    height: 35px;
+    width: 5em;
+    height: 5em;
     border-radius: 50%;
-    margin: 0 auto;
-    display: inline;
+}
+
+.follow-span {
+    width: 100%;
+    color: #76daff;
+    font-size: .5rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.follow-username {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1rem;
+    font-size: calc(1vw + 1vh);
+    padding-left: 1em;
+}
+
+.order {
+    font-size: 1.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    padding-bottom: 5vw;
+}
+
+.order span {
+    padding: .5em;
+    cursor: pointer;
+}
+
+.order span:hover {
+    background: rgba(255, 255, 255, .2);
 }
