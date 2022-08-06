@@ -46,7 +46,12 @@ function executeSQL($con, $sql)
 {
   if ($query = mysqli_query($con, $sql)) {
     $row = mysqli_fetch_array($query);
-    return $row[0];
+        if (isset($row[0])) {
+          return $row[0];
+        }
+        else{
+          return '--';
+        }
   } else {
     echo mysqli_error($con);
   }
@@ -351,6 +356,9 @@ $today=strtotime($today);
 
 //gets the difference between the two date objects and converts it to days
 $interval_in_days=round(($today-$date_created)/(60*60*24));
+if ($interval_in_days==0) {
+  $interval_in_days=1;
+}
 
 //divide total media count by the number of days since account creation and round to 2 decimal places
 $avg_media_per_day = round($total_media_count/$interval_in_days);

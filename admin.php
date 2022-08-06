@@ -89,42 +89,42 @@ $sql = "SELECT count(`album`) FROM `data` where `album`!=''";
 $total_album_count = executeSQL($con, $sql);
 
 /*************
-TOP 50 MOST LOGGED BOOKS -> ACROSS ALL USERS
+MOST LOGGED BOOKS -> ACROSS ALL USERS
  *************/
 $sql = "SELECT book, count(book) FROM `data` where book!='' GROUP BY book HAVING count(book)>1 ORDER BY count(book) DESC LIMIT 50";
 
-$top_50_books = executeSQL($con, $sql);
+$top_books = executeSQL($con, $sql);
 
 /*************
-TOP 50 MOST LOGGED ALBUMS -> ACROSS ALL USERS
+MOST LOGGED ALBUMS -> ACROSS ALL USERS
  *************/
 $sql = "SELECT album, count(album) FROM `data` where album!='' GROUP BY album HAVING count(album)>1 ORDER BY count(album) DESC LIMIT 50";
 
-$top_50_albums = executeSQL($con, $sql);
+$top_albums = executeSQL($con, $sql);
 
 /*************
-TOP 50 MOST LOGGED TV SHOWS -> ACROSS ALL USERS
+MOST LOGGED TV SHOWS -> ACROSS ALL USERS
  *************/
 $sql = "SELECT tv, count(tv) FROM `data` where tv!='' GROUP BY tv HAVING count(tv)>1 ORDER BY count(tv) DESC LIMIT 50";
 
-$top_50_tvs = executeSQL($con, $sql);
+$top_tv = executeSQL($con, $sql);
 
 /*************
-TOP 50 MOST LOGGED VIDEOGAMES -> ACROSS ALL USERS
+MOST LOGGED VIDEOGAMES -> ACROSS ALL USERS
  *************/
 $sql = "SELECT videogame, count(videogame) FROM `data` where videogame!='' GROUP BY videogame HAVING count(videogame)>1 ORDER BY count(videogame) DESC LIMIT 50";
 
-$top_50_videogames = executeSQL($con, $sql);
+$top_games = executeSQL($con, $sql);
 
 /*************
-TOP 50 MOST LOGGED MOVIES -> ACROSS ALL USERS
+MOST LOGGED MOVIES -> ACROSS ALL USERS
  *************/
 $sql = "SELECT movie, count(movie) FROM `data` where movie!='' GROUP BY movie HAVING count(movie)>1 ORDER BY count(movie) DESC LIMIT 50";
 
-$top_50_movies = executeSQL($con, $sql);
+$top_movies = executeSQL($con, $sql);
 
 /*************
-GET TOP 50 MOST POPULAR USERS (USERS WITH MOST FOLLOWERS)
+GET MOST POPULAR USERS (USERS WITH MOST FOLLOWERS)
  *************/
 
 $sql = "SELECT followed_username as popular_users, COUNT(*) AS follower_count
@@ -145,7 +145,7 @@ GET COUNT OF USERS WHO HAVE NOT LOGGED ANY MEDIA (DEAD ACCOUNT)
 $sql = "SELECT count(t1.user_name)
 FROM users t1
 LEFT JOIN data t2 ON t2.username = t1.user_name
-WHERE t2.username IS NULL;";
+WHERE t2.username IS NULL";
 $dead_accounts = executeSQL($con, $sql);
 
 /*************
@@ -309,11 +309,11 @@ if ($query = mysqli_query($con, $sql)) {
         <tr><td> TOTAL MEDIA ADDED LAST MONTH </td><td> <?php echo $total_media_added_last_month; ?> </td></tr>
         <tr><td> TOTAL MEDIA ADDED LAST YEAR </td><td> <?php echo $total_media_added_last_year; ?> </td></tr>
         <tr><td>  AVERAGE MEDIA ADDED PER USER  </td><td> <?php echo $avg_media_per_user; ?> </td></tr>
-        <tr><td> MOST LOGGED BOOK </td><td> <?php echo $top_50_books; ?> </td></tr>
-        <tr><td> MOST LOGGED ALBUM </td><td> <?php echo $top_50_albums; ?> </td></tr>
-        <tr><td> MOST LOGGED TV SHOW </td><td> <?php echo $top_50_tvs; ?> </td></tr>
-        <tr><td> MOST LOGGED VIDEOGAME </td><td> <?php echo $top_50_videogames; ?> </td></tr>
-        <tr><td> MOST LOGGED MOVIE </td><td>  <?php echo $top_50_movies; ?> </td></tr>
+        <tr><td> MOST LOGGED BOOK </td><td> <?php echo $top_books; ?> </td></tr>
+        <tr><td> MOST LOGGED ALBUM </td><td> <?php echo $top_albums; ?> </td></tr>
+        <tr><td> MOST LOGGED TV SHOW </td><td> <?php echo $top_tv; ?> </td></tr>
+        <tr><td> MOST LOGGED VIDEOGAME </td><td> <?php echo $top_games; ?> </td></tr>
+        <tr><td> MOST LOGGED MOVIE </td><td>  <?php echo $top_movies; ?> </td></tr>
         <tr><td> MOST POPULAR USER </td><td> <?php echo $popular_users; ?> </td></tr>
       </tbody>
     </table>
@@ -324,35 +324,35 @@ if ($query = mysqli_query($con, $sql)) {
 
 <!-- USER MANAGEMENT TABLE BEGINS -->
 <div id="user-mgmt-table" style="display:none;">
-  
+
   <?php
-  foreach($userlist as $user){
-  ?>
+foreach ($userlist as $user) {
+    ?>
     <div class='user-container'>
-    <img class='user-pfp' src=<?php echo $user['profile_pic']?> >
+    <img class='user-pfp' src=<?php echo $user['profile_pic'] ?> >
     <div class='user-name'> <?php echo $user['user_name'] ?></div>
     <div class='user-email'> <?php echo $user['email'] ?></div>
         <div class='user-buttons'>
-        
-        <!-- <?php echo "window.location.href='delete_user_confirm.php?user_name=".$user['user_name']."'"?> -->
-           
+
+        <!-- <?php echo "window.location.href='delete_user_confirm.php?user_name=" . $user['user_name'] . "'" ?> -->
+
            <!-- View Profile Button -->
-            <button class='btn btn-success' id=<?php echo $user['uid']?> onclick=<?php echo "window.location.href='profile.php?user_name=".$user['user_name']."'"?>
+            <button class='btn btn-success' id=<?php echo $user['uid'] ?> onclick=<?php echo "window.location.href='profile.php?user_name=" . $user['user_name'] . "'" ?>
             >View Profile
             </button>
-            
+
 
             <!-- Delete User Button -->
-            <button class='btn btn-danger' id=<?php echo $user['uid']?> onclick=<?php echo "window.location.href='delete_user_confirm.php?user_name=".$user['user_name']."'"?>
+            <button class='btn btn-danger' id=<?php echo $user['uid'] ?> onclick=<?php echo "window.location.href='delete_user_confirm.php?user_name=" . $user['user_name'] . "'" ?>
             >Delete User
             </button>
-        
+
         </div>
     </div>
-    
+
     <?php
-  } //end of foreach
-  ?>
+} //end of foreach
+?>
 
 </div>
 <!-- USER MANAGEMENT TABLE ENDS -->
@@ -360,28 +360,24 @@ if ($query = mysqli_query($con, $sql)) {
 
 
 
-</div>
-
 
 <script>
-
-  // TOGGLE VISIBILITY FOR BUTTON SITEWIDE STATS
-  const btnSiteStats= document.getElementById('site-stats-btn');
-  const siteStatsDiv= document.getElementById('site-stats-table');
-  btnSiteStats.onclick = function () {
-  if (siteStatsDiv.style.display !== "none") {
-    siteStatsDiv.style.display = "none";
-  } else {
-    //set other divs to none
-    userMgmtDiv.style.display = "none";
-    siteStatsDiv.style.display = "block";
-  }
+// TOGGLE VISIBILITY FOR BUTTON SITEWIDE STATS
+const btnSiteStats= document.getElementById('site-stats-btn');
+const siteStatsDiv= document.getElementById('site-stats-table');
+btnSiteStats.onclick = function () {
+if (siteStatsDiv.style.display !== "none") {
+  siteStatsDiv.style.display = "none";
+} else {
+  //set other divs to none
+  userMgmtDiv.style.display = "none";
+  siteStatsDiv.style.display = "block";
+}
 };
 
 
- // TOGGLE VISIBILITY FOR BUTTON SITEWIDE STATS
-
- const btnUserMgmt= document.getElementById('user-management-btn');
+// TOGGLE VISIBILITY FOR BUTTON USER MANAGEMENT
+const btnUserMgmt= document.getElementById('user-management-btn');
 const userMgmtDiv= document.getElementById('user-mgmt-table');
 btnUserMgmt.onclick = function () {
   if (userMgmtDiv.style.display !== "none") {
