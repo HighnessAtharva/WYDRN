@@ -16,6 +16,26 @@
     min-width: 1000px;
 }
 
+.user-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 0.2rem;
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+    justify-items: center;
+    border: 1px solid black;
+}
+
+.user-pfp {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: auto;
+}
+
 .stat-item {
     text-shadow: black 0px 0px 1px;
     font-size: 1.2em;
@@ -44,6 +64,7 @@
 @media (min-width: 1100px) {
     /*CSS for really wide screens*/
 }
+
 
 /* Table Styles */
 

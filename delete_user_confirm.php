@@ -3,7 +3,7 @@
 /**
  * Wipe all user data from the database and redirect back to the login page.
  *
- * @version    PHP 8.0.12 
+ * @version    PHP 8.0.12
  * @since      May 2022
  * @author     AtharvaShah
  */
@@ -12,20 +12,28 @@
 DESCRIPTION: CHECKS IF A USER HAS LOGGED IN AND IF SO, DELETES THE USER DATA FROM THE DATABASE.
 ------------------------------------------------------------------------------------------------*/
 
-session_start();
-if(empty($_SESSION))
-{
-  header("Location: login.php");
-}
 require "connection.php";
 require "functions.php";
-$user_data = check_login($con);
-$username = $user_data['user_name']; //username of the currently logged in user
 
-if(isset($_SESSION['user_id']))
-{
-	set_inactive($username);
-	unset($_SESSION['user_id']);
+// if GET REQUEST IS MADE FROM ADMIN PAGE SET USERNAME TO IT
+if (isset($_GET['user_name'])) {
+    $username = $_GET['user_name'];
+} 
+
+// else assume user is logged in and delete their own data from the database
+else {
+    session_start();
+    if (empty($_SESSION)) {
+        header("Location: login.php");
+
+    }
+    $user_data = check_login($con);
+    $username = $user_data['user_name']; //username of the currently logged in user
+}
+
+if (isset($_SESSION['user_id'])) {
+    set_inactive($username);
+    unset($_SESSION['user_id']);
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -47,7 +55,6 @@ if ($result = mysqli_query($con, $sql2)) {
 } else {
     die('Unable to delete User Data in Data Table' . mysqli_error($con));
 }
-
 
 /*------------------------------------------------------------------------------------------------
 DELETES ALL THE RECORDS WHERE USER WAS FOLLOWING OTHER PEOPLE
@@ -72,5 +79,3 @@ if ($result = mysqli_query($con, $sql4)) {
 }
 
 mysqli_close($con);
-
-?>
