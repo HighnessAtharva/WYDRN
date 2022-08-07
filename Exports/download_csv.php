@@ -31,9 +31,7 @@ header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=data.csv');
 $output = fopen('php://output', 'w');
 fputcsv($output, array('Videogame', 'Platform', 'Album', 'Artist', 'Book', 'Author', 'Movie', 'Year', 'TV', 'Streaming', 'Datetime', 'Date'));
-
 if (count($data) > 0) {
-
     foreach ($data as $row) {
         fputcsv($output, $row);
     }
