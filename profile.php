@@ -14,7 +14,6 @@ if (empty($_SESSION)) {
 require "connection.php";
 require "functions.php";
 
-
 $user_data = check_login($con);
 if (isset($_GET['user_name'])) {
     $username = $_GET['user_name'];

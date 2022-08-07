@@ -48,7 +48,8 @@ $username = $user_data['user_name'];
 <!--To Allow Users to Filter Date Wise -->
 <form method="post" name="dateselect" action="diary_date.php">
 <input type="date" name="userdate" id="userdate">
-<input type="submit" value="Filter by Date">
+<input type="submit" value="Filter by Date" class="btn btn-primary" style="margin-bottom:5px;">
+<button type="button" onclick="window.location.href='stats.php'" class="btn btn-success" style="margin-bottom:5px;">View Stats</button>
 </form>
 
 <hr>

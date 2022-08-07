@@ -18,6 +18,7 @@ require "header.php";
 require "connection.php";
 require "functions.php";
 
+
 //getting the username from the session
 $user_data = check_login($con);
 
