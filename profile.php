@@ -106,7 +106,6 @@ $total_count_post= $row[0];
 <body>
 
 <div class="shadow overflow" style="position:relative;">
-
 <?php require "header.php";?>
 
     <!--Background Image-->
@@ -290,5 +289,12 @@ $total_count_post= $row[0];
 <?php 
 mysqli_close($con);
 ?>
+
+<!-- To prevent form resubmission when page is refreshed (F5 / CTRL+R) -->
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 </body>
 </html>

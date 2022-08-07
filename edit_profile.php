@@ -37,6 +37,10 @@ $username = $user_data['user_name'];
     
     <link rel="stylesheet" href="css/edit_profile.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Sweet Alert (Beautiful looking alert plugin-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
     <script>
         function previewFile(input){
         var file = $("input[type=file]").get(0).files[0];
@@ -48,8 +52,6 @@ $username = $user_data['user_name'];
             reader.readAsDataURL(file);
         }
     }
-
-
 
     </script>
 
@@ -92,7 +94,7 @@ echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$u
 
     <!-- CHANGE AVATAR AND BANNER -->
     
-    <form action="" method="POST" name="ImageUploads" enctype="multipart/form-data">
+    <form action="" method="POST" name="ImageUploads" enctype="multipart/form-data" onsubmit ="return Validation();">
         <br>
         <fieldset>     
             <legend> Change Account Photos</legend>   
@@ -100,7 +102,7 @@ echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$u
         
         
         Select Profile Photo: <br>
-        <input type="file" name="PFP" accept="image/png, image/gif, image/jpeg" onchange="previewFile(this);"/>
+        <input type="file" id="pfpinput" name="PFP" accept="image/png, image/gif, image/jpeg" onchange="previewFile(this);"/>
         <img id="pfpinput" src="images/website/preview.jpg" alt="" style="width:100px; height:100px; border-radius:50%;">
         <br>
 
@@ -125,6 +127,35 @@ echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$u
 </div>
 
 <!--END OF MAIN BODY-->
+
+<script>
+
+// To prevent form resubmission when page is refreshed (F5 / CTRL+R) 
+if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+}
+
+function Validation(){
+let pfpfile = document.getElementById("pfpinput").value;
+let bgfile = document.getElementById("bginput").value;
+    
+    if ((pfpfile) || (bgfile)){
+        return true;
+        
+    }
+    else{
+        //sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+        swal({
+        title: "Select a file",
+        text: "Upload at least one file!",
+        icon: "error",
+        button: "Retry",
+        });
+        return false;
+    }
+}
+
+</script>
 </body>
 </html>
 

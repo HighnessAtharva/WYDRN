@@ -143,3 +143,10 @@ if ($query = mysqli_query($con, $sql)) {
 mysqli_close($con);
 ?>
 </div>
+<script>
+    // To prevent form resubmission when page is refreshed (F5 / CTRL+R) 
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
+</body>

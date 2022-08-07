@@ -2,7 +2,7 @@
 
 /**
  * PAGE WITH FORM THAT TAKES USER INPUT SUCH AS VIDEO GAMES, BOOKS, MOVIES, TV AND MUSIC AND SHOWS THE TOP MENU BAR WITH THE OPTIONS TO DELETE USER, EDIT PROFILE, SHARE PROFILE URL WITH FRIENDS AND LOGOUT. PAGE IS DIVIDED INTO TWO COLUMNS WHERE THE FORM TAKES THE LEFT HALF AND THE RIGHT HALF CONSISTS OF "WYDRN" DESCRIPTION AND USAGE GUIDELINES
- * @version    PHP 8.0.12 
+ * @version    PHP 8.0.12
  * @since      June 2022
  * @author     AtharvaShah
  */
@@ -24,9 +24,9 @@ $user_data = check_login($con);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>WYDRN - Add Media</title>
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link rel="stylesheet" href="CSS/welcome.css">
@@ -36,6 +36,9 @@ $user_data = check_login($con);
     <link rel="stylesheet" href="SearchBoxAPIs/Movie/main.css">
     <link rel="stylesheet" href="SearchBoxAPIs/Book/main.css">
     <link rel="stylesheet" href="SearchBoxAPIs/Music/main.css">
+
+    <!-- Sweet Alert (Beautiful looking alert plugin-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 
@@ -44,7 +47,7 @@ $user_data = check_login($con);
 <!--START OF MAIN  BODY-->
 <!-- LEFT COLUMN-->
 <div class="column">
-    <form class="ms-5" method="POST" action="profile.php" name="userinput">
+    <form class="ms-5" method="POST" action="profile.php" name="userinput" onsubmit ="return Validation();">
         <div style="margin-right: 100px;">
 
             <!----------------
@@ -52,13 +55,13 @@ $user_data = check_login($con);
             ---------------->
             <h3 class="mb-3">Music</h3>
             <div class="mb-3 ms-3" name="album">
-                
+
                 What Album you spinnin'?
                 <input type="text" class="form-control" name="Album" autofocus="true" placeholder="Cavalcade" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()"><br>
-                
+
                 Who's the Artist?
                 <input type="text" class="form-control" name="Artist" placeholder="Black Midi" id="music-artist"><br>
-                
+
                 <div class="search-list-music" id="search-list-music">
                     <!--ALBUM SUGGESTIONS WILL APPEAR HERE-->
                 </div>
@@ -69,13 +72,13 @@ $user_data = check_login($con);
             ---------------->
             <h3 class="mb-3">Books</h3>
             <div class="mb-3 ms-3" name="book">
-                
+
                 What is an intellectual like yourself Reading?
                 <input type="text" name="Book" class="form-control" placeholder="Royal Assassin" id="book-search-box" onkeyup="findBook()" onclick="findBook()"><br>
-                
+
                 Drop the name of the Author bro
                 <input type="text" class="form-control" name="Author" placeholder="Robin Hobb"  id="book-author"><br>
-                
+
                 <div class="search-list-books" id="search-list-book">
                     <!--BOOK SUGGESTIONS WILL APPEAR HERE-->
                 </div>
@@ -86,13 +89,13 @@ $user_data = check_login($con);
             ---------------->
             <h3 class="mb-3">Movies</h3>
             <div class="mb-3 ms-3" name="movie">
-                
-                What movie we watchin' today matey? 
+
+                What movie we watchin' today matey?
                 <input type="text" class="form-control" name="Movie" placeholder="The Batman" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()"><br>
-                
+
                 Release Year
                 <input type="text" class="form-control" name="MovieRelease" placeholder="2022" id="movie-year"><br>
-                
+
                 <div class="search-list-movies" id="search-list-movies">
                      <!--MOVIE SUGGESTIONS WILL APPEAR HERE-->
                 </div>
@@ -104,11 +107,11 @@ $user_data = check_login($con);
             ---------------->
             <h3 class="mb-3">TV/Streaming</h3>
             <div class="mb-3 ms-3" name="TV">
-                
-                What TV series you watching RN hon? 
-                <input type="text" class="form-control" name="TV" placeholder="Peaky Blinders" id="tv-search-box" onkeyup="findTV()" onclick="findTV()"><br> 
-                
-                Where is it streaming/broadcasting? 
+
+                What TV series you watching RN hon?
+                <input type="text" class="form-control" name="TV" placeholder="Peaky Blinders" id="tv-search-box" onkeyup="findTV()" onclick="findTV()"><br>
+
+                Where is it streaming/broadcasting?
                 <select class="form-control" name="StreamPlatform"><br>
                         <option value="" selected disabled hidden>Choose</option>
                         <option value="Netflix">Netflix</option>
@@ -127,19 +130,19 @@ $user_data = check_login($con);
                      <!--MOVIE SUGGESTIONS WILL APPEAR HERE-->
                 </div>
 
-           
+
             </div>
-        </div>
+
 
             <!----------------
                 Video Games
             ------------------>
             <h3 class="mb-3">Video Game</h3>
             <div class="mb-3 ms-3" name="videogame">
-                
+
                 Watchu playing son?
                 <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring" id="game-search-box" onkeyup="findgame()" onclick="findgame()"><br>
-                
+
                 Platform
                 <select class="form-control" name="Platform">
                     <option value="" selected disabled hidden>Choose</option>
@@ -149,24 +152,21 @@ $user_data = check_login($con);
                     <option value="Nintendo">Nintendo Switch</option>
                     <option value="Wii">Wii</option>
                 </select>
-                
+
                 <div class="search-list-games" id="search-list-games">
                     <!--VIDEOGAME SUGGESTIONS WILL APPEAR HERE-->
                 </div>
             </div>
 
-        <form>
+        </div> <!---END OF 5 MEDIA CONTAINER DIV--->
+        <form> <!---END OF FORM --->
 
           <!--The div below puts the submit button below the first column at center-->
 
         <div class="text-center mb-lg-3">
             <button type="submit" class="btn btn-outline-primary btn-light btn-lg" name="submit" value="btn1" style="margin-left:-100px">Submit</button>
-    <!-- CLEAR BUTTON
-            <button type="submit" class="btn btn-outline-primary btn-light btn-lg" style="margin-left:10px" name="clear" value="btn2">
-            Clear</button>
-       -->
         </div>
-        
+
 
         </div>
         <!--END OF LEFT COLUMN-->
@@ -183,17 +183,39 @@ $user_data = check_login($con);
         </div>
         <!--END OF RIGHT COLUMN-->
 
-
-
-
 <!--END OF MAIN BODY-->
-
 <script src="SearchBoxAPIs/Music/script.js"></script>
 <script src="SearchBoxAPIs/TV/script.js"></script>
 <script src="SearchBoxAPIs/Movie/script.js"></script>
 <script src="SearchBoxAPIs/Book/script.js"></script>
-<script src="SearchBoxAPIs/Videogame/script.js"></script> 
+<script src="SearchBoxAPIs/Videogame/script.js"></script>
+<script>
+function Validation(){
+    let musicInput= document.getElementById("music-search-box").value;
+    let bookInput= document.getElementById("book-search-box").value;
+    let movieInput= document.getElementById("movie-search-box").value;
+    let tvInput= document.getElementById("tv-search-box").value;
+    let gameInput= document.getElementById("game-search-box").value;
 
-<?php mysqli_close($con); ?>
+    //If all of the inputs are empty, then the user will be alerted that they must fill in all the fields.
+    if ((musicInput) || (bookInput) || (movieInput) || (tvInput) || (gameInput)){
+        return true;   
+    }
+    else{
+        //sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+        swal({
+        title: "Log a Media",
+        text: "You must enter at least one media type!",
+        icon: "error",
+        button: "Let me retry",
+        });
+        return false;
+    }
+
+
+}
+</script>
+
+<?php mysqli_close($con);?>
 </body>
 </html>

@@ -64,7 +64,12 @@ mysqli_close($con);
 	BOOTSTRAP CDN
 	-------------------->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	
 	<link rel="stylesheet" href="CSS/login.css">
+	
+    <!-- Sweet Alert (Beautiful looking alert plugin-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -120,6 +125,13 @@ STICKY FOOTER REQUIRED AT THE BOTTOM OF THE PAGE
 JAVASCRIPT
 ------------------------------------------------------------------------------------->
 <script>
+		
+		// To prevent form resubmission when page is refreshed (F5 / CTRL+R) 
+		if ( window.history.replaceState ) {
+		window.history.replaceState( null, null, window.location.href );
+		}
+
+		// to check and validate form data and raise alerts if input is erronous. 
 		function Validation(){
 			var name = document.getElementById("username").value;
 			var password = document.getElementById("pass").value;
@@ -127,19 +139,38 @@ JAVASCRIPT
 			
 			// CHECK IF USERNAME IS LONG ENOUGH
 			if(name.length < 3 || name.length > 20){
-				alert("Username must be between 3 and 20 characters");
+				 //sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+				swal({
+				title: "Username Invalid",
+				text: "Username must be between 3 and 20 characters",
+				icon: "warning",
+				button: "Retry",
+				});
+      
 				return false;
 			}
 
 			// CHECK IF USERNAME IS ALPHANUMERIC
 			else if(!isAlphaNumeric(name)){
-				alert("Username must not contain special characters");
+				//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+				swal({
+				title: "Username Invalid",
+				text: "Username must not contain special characters",
+				icon: "warning",
+				button: "Retry",
+				});
+			
 				return false;
 			}
 
 			// CHECK FOR PASSWORD SECURITY LENGTH
 			else if(password.length < 8 || password.length > 30){
-				alert("Password must be between 8 and 30 characters");
+				swal({
+				title: "Password Invalid",
+				text: "Password must be between 8 and 30 characters",
+				icon: "warning",
+				button: "Retry",
+				});
 				return false;
 			}
 
@@ -148,6 +179,7 @@ JAVASCRIPT
 		}
 
 		
+		//implementing cookies for the REMEMBER ME function.
 		function setcookie(){
 			//"username" & "pass" is the ID of the two input fields
             var u =document.getElementById('username').value;

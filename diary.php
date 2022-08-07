@@ -214,6 +214,8 @@ if ($query = mysqli_query($con, $sql)) {
         page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));
         window.location.href = 'diary.php?page='+page;
     }
+
+
   </script>
 </body>
 </html>

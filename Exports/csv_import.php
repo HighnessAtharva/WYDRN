@@ -60,7 +60,13 @@ include("header.php");
       </div>
   </form>
   </div>
- 
+
+<!-- To prevent form resubmission when page is refreshed (F5 / CTRL+R) -->
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
 </body>
 </html>
 

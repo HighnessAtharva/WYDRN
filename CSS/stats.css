@@ -35,6 +35,10 @@ body {
     font-family: Helvetica;
     -webkit-font-smoothing: antialiased;
     background: rgba( 71, 147, 227, 1);
+    /* no selection */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 .heading2 {

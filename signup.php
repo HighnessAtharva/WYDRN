@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (!mysqli_query($con, $query)) {
         $invalid_signup = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
 							top: 50px; left: 570px;' role='alert'>
-  						    	That username is already taken!
+  						    	That username or email is already taken!
 							</div></center>";
         echo $invalid_signup;
     } 
@@ -71,6 +71,10 @@ mysqli_close($con);
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="CSS/signup.css">
+
+	
+    <!-- Sweet Alert (Beautiful looking alert plugin-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	
 </head>
 
@@ -129,6 +133,12 @@ mysqli_close($con);
 	JAVASCRIPT VALIDATION
 ------------------------------------------------------------------------------------->
 <script>
+	// To prevent form resubmission when page is refreshed (F5 / CTRL+R) 
+	if ( window.history.replaceState ) {
+		window.history.replaceState( null, null, window.location.href );
+		}
+
+	// to check and validate form data and raise alerts if input is erronous. 	
 	function Validation(){
 		var name = document.getElementById("name").value;
 		var password = document.getElementById("pass").value;
@@ -139,31 +149,61 @@ mysqli_close($con);
 		
 		// CHECK IF USERNAME IS LONG ENOUGH
 		if(name.length < 3 || name.length > 20){
-			alert("Username must be between 3 and 20 characters");
+			//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+			swal({
+				title: "Username Invalid",
+				text: "Username must be between 3 and 20 characters",
+				icon: "warning",
+				button: "Retry",
+				});
 			return false;
 		}
 		
 		// CHECK IF USERNAME IS ALPHANUMERIC
 		else if(!isAlphaNumeric(name)){
-			alert("Username must not contain special characters");
+			//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+			swal({
+				title: "Username Invalid",
+				text: "Username must not contain special characters",
+				icon: "warning",
+				button: "Retry",
+				});
 			return false;
 		}
 		
 		// CHECK FOR VALID EMAIL
 		else if(!re.test(email)){
-			alert("Please enter a valid email address");
+			//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+			swal({
+				title: "Email Invalid",
+				text: "Please enter a valid email address. Don't hoax.",
+				icon: "warning",
+				button: "Retry",
+				});
 			return false;
 		}
 		
 		// CHECK FOR PASSWORD SECURITY LENGTH
 		else if(password.length < 8 || password.length > 30){
-			alert("Password must be between 8 and 30 characters");
+			//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+			swal({
+				title: "Password Invalid",
+				text: "Password must be between 8 and 30 characters",
+				icon: "warning",
+				button: "Retry",
+				});
 			return false;
 		}
 		
 		// CHECK FOR PASSWORD EQUALITY
 		else if(password != confirmpassword){
-			alert("Passwords do not match");
+			//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+			swal({
+				title: "Confirm Password Invalid",
+				text: "Passwords do not match",
+				icon: "warning",
+				button: "Retry",
+				});
 			return false;
 		}
 	
