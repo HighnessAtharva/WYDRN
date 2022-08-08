@@ -184,6 +184,31 @@ function getposterpath($name, $year){
     </div><!--END OF PAGINATION ROW -->
 </center>
 
+<!-- 
+ 
+        HTML USED IN PACMAN HTML TEMPLATE
+
+<div class="pagination">	
+	<input id="dot-1" type="radio" name="dots">	
+	<label for="dot-1"></label>	
+	<input id="dot-2" type="radio" name="dots">
+	<label for="dot-2"></label>	
+	<input id="dot-3" type="radio" name="dots" checked="checked">
+	<label for="dot-3"></label>	
+	<input id="dot-4" type="radio" name="dots">
+	<label for="dot-4"></label>	
+	<input id="dot-5" type="radio" name="dots">
+	<label for="dot-5"></label>	
+	<input id="dot-6" type="radio" name="dots">
+	<label for="dot-6"></label>	
+	<input id="dot-7" type="radio" name="dots">
+	<label for="dot-7"></label>	
+	<input id="dot-8" type="radio" name="dots">
+	<label for="dot-8"></label>
+	<div class="pacman"></div>
+</div>
+
+ -->
 
 </body>
 </html>
