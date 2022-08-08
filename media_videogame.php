@@ -135,7 +135,7 @@ function getposterpath($name){
 
                     $html_game.="</div>"; // end of card
 
-                    $html_game.="<h1 class='moviename'>". $game."</h1>";
+                    $html_game.="<h1 class='moviename'><b>". $game."</b></h1>";
                     $html_game.="<div class='tags'>"; // div for the tags
                     $html_game.="<div class='tag'>". $platform."</div>";
                     $html_game.="</div>"; // end of tags
@@ -168,7 +168,7 @@ function getposterpath($name){
 
         // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
         if ($page >= 2) {
-            echo "<a href='media_videogame.php?page=" . ($page - 1) . "'>  Prev </a>";
+            echo "<a href='media_videogame.php?page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
         }
 
         // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
@@ -184,7 +184,7 @@ function getposterpath($name){
 
         // SHOW NEXT BUTTON IF NOT ON LAST PAGE
         if ($page < $total_pages) {
-            echo "<a href='media_videogame.php?page=" . ($page + 1) . "'>  Next </a>";
+            echo "<a href='media_videogame.php?page=" . ($page + 1) . "'>  <span class='neonText'> → </span> </a>";
         }
         ?>
     </div><!--END OF PAGINATION ROW -->

@@ -120,7 +120,7 @@ body {
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 2rem;
     padding: 2rem;
     margin: 0 auto;
@@ -131,52 +131,32 @@ body {
 .card {
     font-family: 'Heebo';
     --bg-filter-opacity: 0.5;
+    background-color: black;
     background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img);
     height: 12em;
-    width: 10em;
+    width: 9em;
     font-size: 1.5em;
     color: white;
     border-radius: 1em;
     padding: 1em;
     display: flex;
     align-items: flex-end;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
+    background-repeat: no-repeat;
     box-shadow: 0 0 3em -1em black;
     position: relative;
     overflow: hidden;
     border: 5px solid #ccc;
     text-decoration: none;
-    color: white;
 }
 
-h1 {
-    margin: 0;
+h1.moviename {
     font-size: 1em;
     line-height: 1em;
     max-width: fit-content;
-}
-
-.pagination {
-    display: inline-block;
-}
-
-.pagination a {
-    font-weight: bold;
-    font-size: 18px;
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    border: 1px solid black;
-}
-
-.pagination a.active {
-    background-color: rgb(38, 161, 254);
-}
-
-.pagination a:hover:not(.active) {
-    background-color: rgb(177, 233, 255);
+    margin: 0 auto;
+    margin-top: 1em;
 }
 
 .tags {
@@ -190,7 +170,10 @@ h1 {
     padding: 0 0.5em;
     margin-top: 0.7em;
     margin-right: 0.5em;
+    margin-left: 0.5em;
     line-height: 1em;
+    margin: 0 auto;
+    margin-top: 0.5em;
 }
 
 .card .logged-date {
@@ -216,17 +199,58 @@ h1 {
 }
 
 
+/*PAGINATION STYLES*/
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(249, 249, 249);
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    background-color: rgb(0, 0, 0);
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+}
+
+.pagination a.active {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.pagination a:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+a>span.neonText {
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+}
+
+a>span.neonText:hover {
+    color: rgb(0, 0, 0);
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+}
+
+
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 1285px) {
     .cards-wrapper {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
 @media screen and (max-width: 900px) {
     .cards-wrapper {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
     .info {
         justify-content: center;

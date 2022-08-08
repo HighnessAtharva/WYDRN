@@ -162,7 +162,7 @@ function getposterpath($name, $year){
 
         // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
         if ($page >= 2) {
-            echo "<a href='media_movie.php?page=" . ($page - 1) . "'>  Prev </a>";
+            echo "<a href='media_movie.php?page=" . ($page - 1) . "'><span class='neonText'> ← </span></a>";
         }
 
         // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
@@ -178,37 +178,12 @@ function getposterpath($name, $year){
 
         // SHOW NEXT BUTTON IF NOT ON LAST PAGE
         if ($page < $total_pages) {
-            echo "<a href='media_movie.php?page=" . ($page + 1) . "'>  Next </a>";
+            echo "<a href='media_movie.php?page=" . ($page + 1) . "'><span class='neonText'> → </span></a>";
         }
         ?>
     </div><!--END OF PAGINATION ROW -->
 </center>
 
-<!-- 
- 
-        HTML USED IN PACMAN HTML TEMPLATE
-
-<div class="pagination">	
-	<input id="dot-1" type="radio" name="dots">	
-	<label for="dot-1"></label>	
-	<input id="dot-2" type="radio" name="dots">
-	<label for="dot-2"></label>	
-	<input id="dot-3" type="radio" name="dots" checked="checked">
-	<label for="dot-3"></label>	
-	<input id="dot-4" type="radio" name="dots">
-	<label for="dot-4"></label>	
-	<input id="dot-5" type="radio" name="dots">
-	<label for="dot-5"></label>	
-	<input id="dot-6" type="radio" name="dots">
-	<label for="dot-6"></label>	
-	<input id="dot-7" type="radio" name="dots">
-	<label for="dot-7"></label>	
-	<input id="dot-8" type="radio" name="dots">
-	<label for="dot-8"></label>
-	<div class="pacman"></div>
-</div>
-
- -->
 
 </body>
 </html>

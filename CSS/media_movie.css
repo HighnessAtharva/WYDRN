@@ -120,7 +120,7 @@ body {
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 2rem;
     padding: 2rem;
     margin: 0 auto;
@@ -131,30 +131,32 @@ body {
 .card {
     font-family: 'Heebo';
     --bg-filter-opacity: 0.5;
+    background-color: black;
     background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img);
     height: 12em;
-    width: 10em;
+    width: 9em;
     font-size: 1.5em;
     color: white;
     border-radius: 1em;
     padding: 1em;
     display: flex;
     align-items: flex-end;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
+    background-repeat: no-repeat;
     box-shadow: 0 0 3em -1em black;
     position: relative;
     overflow: hidden;
     border: 5px solid #ccc;
     text-decoration: none;
-    color: white;
 }
 
-h1 {
-    margin: 0;
+h1.moviename {
     font-size: 1em;
     line-height: 1em;
     max-width: fit-content;
+    margin: 0 auto;
+    margin-top: 1em;
 }
 
 .tags {
@@ -168,7 +170,10 @@ h1 {
     padding: 0 0.5em;
     margin-top: 0.7em;
     margin-right: 0.5em;
+    margin-left: 0.5em;
     line-height: 1em;
+    margin: 0 auto;
+    margin-top: 0.5em;
 }
 
 .card .logged-date {
@@ -193,7 +198,9 @@ h1 {
     background-color: black;
 }
 
-/*
+
+/*PAGINATION STYLES*/
+
 .pagination {
     display: inline-block;
 }
@@ -201,127 +208,49 @@ h1 {
 .pagination a {
     font-weight: bold;
     font-size: 18px;
-    color: black;
+    color: rgb(249, 249, 249);
     float: left;
     padding: 8px 16px;
     text-decoration: none;
-    border: 1px solid black;
+    background-color: rgb(0, 0, 0);
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 50px;
+    border-radius: 10px;
 }
 
 .pagination a.active {
-    background-color: rgb(38, 161, 254);
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
-.pagination a:hover:not(.active) {
-    background-color: rgb(177, 233, 255);
-}
-*/
-
-body {
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	background: black;
+.pagination a:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
-.pagination {
-	position: relative;
-	display: flex;
-	flex-direction: row;
-	--ddim: 10px;
-	--rd: 15px;
-	--rdim: calc(var(--rd)*2);
-	--pm: #FD0000;
-	margin-top: 100px;
+a>span.neonText {
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
 }
 
-label {
-	content: '';
-	margin: 0 10px;
-	height: var(--ddim);
-	width: var(--ddim);
-	background:  #FFFF00;
-	cursor: pointer;
+a>span.neonText:hover {
+    color: rgb(0, 0, 0);
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
 }
-
-label:first-child {margin-left: 0;}
-label:last-child {margin-right: 0;}
-input {display: none;}
-
-.pacman {
-	content: '';
-	position: absolute;
-	top: calc(-1*var(--ddim));
-	left: calc(-1*var(--ddim)/2);
-	height: var(--rdim);
-	width: var(--rdim);
-	transition: transform 250ms linear;
-}
-
-.pacman:before,
-.pacman:after {
-	content: '';
-	position: absolute;
-	height: var(--rd);
-	width: var(--rdim);
-	left: 0;
-	background: var(--pm);
-	transition: inherit;
-}
-
-.pacman:before {
-	top: 0;
-	border-top-left-radius: var(--rdim);
-	border-top-right-radius: var(--rdim);
-	transform-origin: bottom center;
-	transform: rotate(-45deg);
-}
-
-.pacman:after {
-	bottom: 0;
-	border-bottom-left-radius: var(--rdim);
-	border-bottom-right-radius: var(--rdim);
-	transform-origin: top center;
-	transform: rotate(45deg);
-}
-
-@keyframes waka {
-	0% {}
-	50% {transform: rotate(0);}
-	100% {}
-}
-
-input[type="radio"]:hover ~ .pacman:before,
-input[type="radio"]:hover ~ .pacman:after {
-	animation: waka 500ms infinite;
-}
-
-input[id="dot-1"]:checked ~ .pacman {transform: translateX(var(--ddim));}
-input[id="dot-2"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)));}
-input[id="dot-3"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)*2));}
-input[id="dot-4"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)*3));}
-input[id="dot-5"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)*4));}
-input[id="dot-6"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)*5));}
-input[id="dot-7"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)*6));}
-input[id="dot-8"]:checked ~ .pacman {transform: translateX(calc(var(--ddim) + var(--rdim)*7));}
-
-
-
 
 
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 1285px) {
     .cards-wrapper {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
 @media screen and (max-width: 900px) {
     .cards-wrapper {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
     .info {
         justify-content: center;

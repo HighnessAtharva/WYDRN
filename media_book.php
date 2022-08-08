@@ -162,7 +162,7 @@ $start_from = ($page - 1) * $per_page_record;
 
         // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
         if ($page >= 2) {
-            echo "<a href='media_book.php?page=" . ($page - 1) . "'>  Prev </a>";
+            echo "<a href='media_book.php?page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
         }
 
         // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
@@ -178,7 +178,7 @@ $start_from = ($page - 1) * $per_page_record;
 
         // SHOW NEXT BUTTON IF NOT ON LAST PAGE
         if ($page < $total_pages) {
-            echo "<a href='media_book.php?page=" . ($page + 1) . "'>  Next </a>";
+            echo "<a href='media_book.php?page=" . ($page + 1) . "'> <span class='neonText'> → </span> </a>";
         }
         ?>
     </div><!--END OF PAGINATION ROW -->
