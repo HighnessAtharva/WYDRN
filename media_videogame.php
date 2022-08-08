@@ -9,8 +9,8 @@
  * @author     AtharvaShah
  */
 
- /* CACHING IMAGES*/
- session_cache_limiter('none'); 
+/*****  CACHING IMAGES********/
+/* session_cache_limiter('none'); 
  header('Cache-control: max-age='.(60*60*24*365));
  header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
  
@@ -18,6 +18,7 @@
      header('HTTP/1.1 304 Not Modified');
      die();
   }
+*/
  
 session_start();
 if (empty($_SESSION)) {
@@ -46,7 +47,7 @@ function getposterpath($name){
     curl_close($curl);
     
     if (empty($response['results'][0]['background_image'])) {
-        $response = "https://www.prokerala.com/movies/assets/img/no-poster-available.jpg";
+        $response = "images/API/WYDRNgame.png";
     }
     else {
         $response = $response['results'][0]['background_image'];
@@ -104,11 +105,26 @@ function getposterpath($name){
                 $stripgame=str_replace(' ', '+', $game);
                 
 
+                
+            /**if poster is not downloaded, download the poster in the directory and show the image*/
+            $pseudo_poster='images/API/game-'.$stripgame.'.jpg';
+            if (file_exists($pseudo_poster)) {
+                $posterpath=$pseudo_poster;
+            }
+            else {
+                $posterpath = getposterpath($stripgame); // URL to download file from
+                $img = 'images/API/game-'.$stripgame.'.jpg'; // Image path to save downloaded image
+                // Save image 
+                file_put_contents($img, file_get_contents($posterpath));
+                
+            }
+         
+
                 // one single div tag for each movie
                 $html_game.="<div class='card-grid-space'>";
                     // image tag for the movie
                     $html_game.="<div class='card' style='background-image:url(";
-                    $html_game.= getposterpath($stripgame);  // get the poster path from the api
+                    $html_game.= $posterpath;  // get the poster path from the api
                     $html_game.=")'";
                     $html_game.=">";
                 

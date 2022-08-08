@@ -8,15 +8,17 @@
  * @author     AtharvaShah
  */
 
- /* CACHING IMAGES*/
-session_cache_limiter('none'); 
-header('Cache-control: max-age='.(60*60*24*365));
-header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
-
-if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
-    header('HTTP/1.1 304 Not Modified');
-    die();
- }
+/*****  CACHING IMAGES********/
+/* session_cache_limiter('none'); 
+ header('Cache-control: max-age='.(60*60*24*365));
+ header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
+ 
+ if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+     header('HTTP/1.1 304 Not Modified');
+     die();
+  }
+*/
+  
 
 session_start();
 if (empty($_SESSION)) {
@@ -45,7 +47,7 @@ function getposterpath($name, $artist){
     curl_close($curl);
     
     if (empty($response['album']['image'][5]['#text'])) {
-        $response = "https://appletoolbox.com/wp-content/uploads/2018/11/Blank-iTunes-Album-Cover-no-artwork.jpg";
+        $response = "images/API/WYDRNmusic.png";
     }
     else {
         $response = $response['album']['image'][5]['#text'];
@@ -101,12 +103,27 @@ $start_from = ($page - 1) * $per_page_record;
                 $album_logged=date("F jS, Y", strtotime($row['date']));
                 $stripalbum=$stripped = str_replace(' ', '+', $album_name);
                 $stripartist=$stripped = str_replace(' ', '+', $album_artist);
-                $poster_path=getposterpath($stripalbum, $stripartist);
+                
+                /**if poster is not downloaded, download the poster in the directory and show the image*/
+                $pseudo_poster='images/API/music-'.$stripalbum.'.jpg';
+                if (file_exists($pseudo_poster)) {
+                    $posterpath=$pseudo_poster;
+                }
+                else {
+                    $posterpath = getposterpath($stripalbum, $stripartist); // URL to download file from
+                    $img = 'images/API/music-'.$stripalbum.'.jpg'; // Image path to save downloaded image
+                    // Save image 
+                    file_put_contents($img, file_get_contents($posterpath));
+                    
+                }
+
+
+
                 // one single div tag for each album
                 $html_album.="<div class='card-grid-space'>";
                     // image tag for the album
                     $html_album.="<div class='card' style='background-image:url(";
-                    $html_album.= $poster_path;  // get the poster path from the api
+                    $html_album.= $posterpath;  // get the poster path from the api
                     $html_album.=")'";
                     // $html_album.="<div class='card'";
                     // $html_album.= "style=";

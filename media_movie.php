@@ -8,8 +8,9 @@
  * @author     AtharvaShah
  */
 
- /* CACHING IMAGES*/
- session_cache_limiter('none'); 
+
+/*****  CACHING IMAGES********/
+/* session_cache_limiter('none'); 
  header('Cache-control: max-age='.(60*60*24*365));
  header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
  
@@ -17,7 +18,7 @@
      header('HTTP/1.1 304 Not Modified');
      die();
   }
-
+*/
   
 session_start();
 if (empty($_SESSION)) {
@@ -46,7 +47,7 @@ function getposterpath($name, $year){
     curl_close($curl);
     
     if (empty($response['results'][0]['poster_path'])) {
-        $response = "https://www.prokerala.com/movies/assets/img/no-poster-available.jpg";
+        $response = "images/API/WYDRNmovie.png";
     }
     else {
         $response = "https://image.tmdb.org/t/p/w300".$response['results'][0]['poster_path'];
@@ -100,12 +101,24 @@ function getposterpath($name, $year){
                
                 $stripnamemovie= str_replace(' ', '+', $movie_name);
                 
+                 /**if poster is not downloaded, download the poster in the directory and show the image*/
+                 $pseudo_poster='images/API/movie-'.$stripnamemovie.'.jpg';
+                 if (file_exists($pseudo_poster)) {
+                     $posterpath=$pseudo_poster;
+                 }
+                 else {
+                     $posterpath = getposterpath($stripnamemovie, $movie_year); // URL to download file from
+                     $img = 'images/API/movie-'.$stripnamemovie.'.jpg'; // Image path to save downloaded image
+                     // Save image 
+                     file_put_contents($img, file_get_contents($posterpath));
+                     
+                 }
 
                 // one single div tag for each movie
                 $html_movie.="<div class='card-grid-space'>";
                     // image tag for the movie
                     $html_movie.="<div class='card' style='background-image:url(";
-                    $html_movie.= getposterpath($stripnamemovie, $movie_year);  // get the poster path from the api
+                    $html_movie.= $posterpath;  // get the poster path from the api
                     $html_movie.=")'";
                     $html_movie.=">";
                 

@@ -75,12 +75,12 @@ if (check_active_status($username) == 1) {
 if (check_verified_status($username) == 1) {
     echo "User is Verified<br>";
 } else {
-    echo "User is not Verified.";
+    echo "<div id='verified-status'>User is not Verified.</div>";
 
     $current_user = check_login($con);
     $user_name = $current_user['user_name'];
     $hashed_verify = md5($user_name);
-    echo "<a href='verify.php' style='padding:5px; background-color: white; cursor:pointer;'>Verify Now</a></span><br>";
+    echo "<a href='verify.php' style='padding:5px; background-color: white; cursor:pointer;'><span>Verify Now</span></a><br>";
 }
 
 // Account Created On
@@ -153,6 +153,18 @@ let bgfile = document.getElementById("bginput").value;
         });
         return false;
     }
+}
+
+//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+// Gets verification status of the user and if account is not verified, displays a reminders.
+let verification= document.getElementById("verified-status");
+if (verification.innerHTML == "User is not Verified."){
+    swal({
+        title: "Verify Account",
+        text: "Get your account verified soon!",
+        icon: "warning",
+        button: "I will do it",
+        });
 }
 
 </script>

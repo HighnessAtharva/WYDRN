@@ -86,7 +86,6 @@ function mailer_verify_email($recipient)
         return 1;
     }
 
-    mysqli_close($con);
 }
 
 /*
@@ -121,7 +120,6 @@ function send_reset_link($recipient, $link)
         echo "Message has been sent";
         return 1;
     }
-    mysqli_close($con);
 }
 
 /*
@@ -155,7 +153,6 @@ function set_verified($username)
         echo "User does not exist";
         return 0;
     }
-    mysqli_close($con);
 }
 
 /*
@@ -189,7 +186,6 @@ function set_active($username)
         echo "User does not exist";
         return 0;
     }
-    mysqli_close($con);
 }
 
 /*
@@ -205,7 +201,6 @@ function set_inactive($username)
         echo "User does not exist";
         return 0;
     }
-    mysqli_close($con);
 }
 
 /*

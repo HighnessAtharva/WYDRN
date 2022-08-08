@@ -9,8 +9,8 @@
  * @author     AtharvaShah
  */
 
- /* CACHING IMAGES*/
- session_cache_limiter('none'); 
+/*****  CACHING IMAGES********/
+/* session_cache_limiter('none'); 
  header('Cache-control: max-age='.(60*60*24*365));
  header('Expires: '.gmdate(DATE_RFC1123,time()+60*60*24*365));
  
@@ -18,6 +18,7 @@
      header('HTTP/1.1 304 Not Modified');
      die();
   }
+*/
  
 
 session_start();
@@ -48,7 +49,7 @@ function getposterpath($name){
     curl_close($curl);
     
     if (empty($response['results'][0]['poster_path'])) {
-        $response = "https://www.prokerala.com/movies/assets/img/no-poster-available.jpg";
+        $response = "images/API/WYDRNtv.png";
     }
     else {
         $response = "https://image.tmdb.org/t/p/w300".$response['results'][0]['poster_path'];
@@ -101,15 +102,29 @@ if ($query = mysqli_query($con, $sql)) {
             $platform=$row['streaming'];
             $tv_logged=date("F jS, Y", strtotime($row['date']));
 
-           
             $stripnametv=$stripped = str_replace(' ', '+', $tvname);
+
+            /**if poster is not downloaded, download the poster in the directory and show the image*/
+            $pseudo_poster='images/API/tv-'.$stripnametv.'.jpg';
+            if (file_exists($pseudo_poster)) {
+                $posterpath=$pseudo_poster;
+            }
+            else {
+                $posterpath = getposterpath($stripnametv); // URL to download file from
+                $img = 'images/API/tv-'.$stripnametv.'.jpg'; // Image path to save downloaded image
+                // Save image 
+                file_put_contents($img, file_get_contents($posterpath));
+                
+            }
+         
+          
             
 
             // one single div tag for each movie
             $html_tv.="<div class='card-grid-space'>";
                 // image tag for the movie
                 $html_tv.="<div class='card' style='background-image:url(";
-                $html_tv.= getposterpath($stripnametv);  // get the poster path from the api
+                $html_tv.=  $posterpath; // get the poster path from the api
                 $html_tv.=")'";
                 $html_tv.=">";
             
