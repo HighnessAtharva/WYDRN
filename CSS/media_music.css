@@ -3,6 +3,66 @@
     box-sizing: border-box;
 }
 
+
+/* Responsible for animated gradient background*/
+
+.css-selector {
+    background: linear-gradient(200deg, #bd88fb, #485bf1);
+    background-size: 400% 400%;
+    -webkit-animation: AnimationName 4s ease infinite;
+    -moz-animation: AnimationName 4s ease infinite;
+    -o-animation: AnimationName 4s ease infinite;
+    animation: AnimationName 4s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 58% 0%
+    }
+    50% {
+        background-position: 43% 100%
+    }
+    100% {
+        background-position: 58% 0%
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 58% 0%
+    }
+    50% {
+        background-position: 43% 100%
+    }
+    100% {
+        background-position: 58% 0%
+    }
+}
+
+@-o-keyframes AnimationName {
+    0% {
+        background-position: 58% 0%
+    }
+    50% {
+        background-position: 43% 100%
+    }
+    100% {
+        background-position: 58% 0%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 58% 0%
+    }
+    50% {
+        background-position: 43% 100%
+    }
+    100% {
+        background-position: 58% 0%
+    }
+}
+
 body {
     margin: 0;
     min-height: 100vh;

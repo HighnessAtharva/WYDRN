@@ -70,7 +70,7 @@ function getposterpath($name, $year){
         <link rel="stylesheet" href="CSS/media_movie.css">
     </head>
 
-<body>
+<body class="css-selector">
 
 <div class="heading">
   <h1>Your Movies<span>"I'm gonna make him an offer he can't refuse." - The Godfather</span></h1>

@@ -69,7 +69,7 @@ function getposterpath($name, $author){
         <!--Custom Link-->
         <link rel="stylesheet" href="CSS/media_book.css">
     </head>
-<body>
+<body class="css-selector">
 
 <div class="heading">
   <h1>Your Books<span>"So many books, so little time." -  Frank Zappa</span></h1>

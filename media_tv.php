@@ -75,7 +75,7 @@ function getposterpath($name){
     <!--Custom Link-->
     <link rel="stylesheet" href="CSS/media_tv.css">
 </head>
-<body>
+<body class="css-selector">
 
 <div class="heading">
   <h1>Your TV Shows<span>"There is ugliness in this world. Disarray. I choose to see the beauty." - Westworld</span></h1>

@@ -74,7 +74,7 @@ function getposterpath($name){
 
 
 </head>
-<body>
+<body class="css-selector">
 
 <div class="heading">
   <h1>Your Video Games<span>"Praise the sun." - Dark Souls</span></h1>

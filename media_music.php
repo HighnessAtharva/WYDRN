@@ -74,7 +74,7 @@ function getposterpath($name, $artist){
 
 
 
-<body>
+<body class="css-selector">
 
 <div class="heading">
   <h1>Your Albums<span>"I light my torch and burn it. I am the beast I worship" - Death Grips</span></h1>

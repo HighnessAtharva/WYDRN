@@ -43,7 +43,7 @@ $username = $user_data['user_name'];
         
 <?php
 
-$per_page_record = 20; // Number of entries to show in a page.
+$per_page_record = 30; // Number of entries to show in a page.
 // Look for a GET variable page if not found default is 1.
 if (isset($_GET["page"])) {
     $page = $_GET["page"];
