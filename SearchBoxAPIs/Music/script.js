@@ -75,12 +75,17 @@ function loadalbumDetails() {
             const albumDetails = await result.json();
             albumSearchBox.value = albumDetails['album']['name'];
             albumArtist.value = albumDetails['album']['artist'];
+
+            //once user makes a choice from the search list, prevent more input from being made
             albumSearchBox.setAttribute("readonly", "readonly");
             albumArtist.setAttribute("readonly", "readonly");
 
         });
     });
 }
+
+
+
 
 window.addEventListener('click', (event) => {
     if (event.target.className != "form-control") {

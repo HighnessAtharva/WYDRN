@@ -60,7 +60,7 @@ $user_data = check_login($con);
                 <input type="text" class="form-control" name="Album" autofocus="true" placeholder="Cavalcade" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()"><br>
 
                 Who's the Artist?
-                <input type="text" class="form-control" name="Artist" placeholder="Black Midi" id="music-artist"><br>
+                <input type="text" class="form-control" name="Artist" placeholder="Black Midi" id="music-artist" readonly><br>
 
                 <div class="search-list-music" id="search-list-music">
                     <!--ALBUM SUGGESTIONS WILL APPEAR HERE-->
@@ -77,7 +77,7 @@ $user_data = check_login($con);
                 <input type="text" name="Book" class="form-control" placeholder="Royal Assassin" id="book-search-box" onkeyup="findBook()" onclick="findBook()"><br>
 
                 Drop the name of the Author bro
-                <input type="text" class="form-control" name="Author" placeholder="Robin Hobb"  id="book-author"><br>
+                <input type="text" class="form-control" name="Author" placeholder="Robin Hobb"  id="book-author" readonly><br>
 
                 <div class="search-list-books" id="search-list-book">
                     <!--BOOK SUGGESTIONS WILL APPEAR HERE-->
@@ -94,7 +94,7 @@ $user_data = check_login($con);
                 <input type="text" class="form-control" name="Movie" placeholder="The Batman" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()"><br>
 
                 Release Year
-                <input type="text" class="form-control" name="MovieRelease" placeholder="2022" id="movie-year"><br>
+                <input type="text" class="form-control" name="MovieRelease" placeholder="2022" id="movie-year" readonly><br>
 
                 <div class="search-list-movies" id="search-list-movies">
                      <!--MOVIE SUGGESTIONS WILL APPEAR HERE-->
@@ -207,7 +207,7 @@ function Validation(){
         title: "Log a Media",
         text: "You must enter at least one media type!",
         icon: "error",
-        button: "Let me retry",
+        button: "Retry",
         });
         return false;
     }

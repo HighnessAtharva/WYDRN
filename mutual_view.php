@@ -44,34 +44,34 @@ if (isset($_GET['user_name'])) {
     <center><h1>Mutual View for <?php echo ($me . " & " . $otheruser) ?></h1>
     
     <div class="flex spaceEvenly" id="counter">
-        <div id="mydiv">
+        <button class="mydiv" >
             Total Mutual Media<br><?php echo (get_mutual_media_count($me, $otheruser)[5]); ?>
-        </div>
+        </button>
        
-        <div id="mydiv">
+        <button class="mydiv" id="mututalGameBtn">
             VideoGame<br><?php echo (get_mutual_media_count($me, $otheruser)[0]); ?>
-        </div>
+        </button>
        
-        <div id="mydiv">
+        <button class="mydiv" id="mututalMusicBtn">
             Albums<br><?php echo (get_mutual_media_count($me, $otheruser)[1]); ?>
-        </div>
+        </button>
        
-        <div id="mydiv">
+        <button class="mydiv" id="mututalBookBtn">
             Books<br><?php echo (get_mutual_media_count($me, $otheruser)[2]); ?>
-        </div>
+        </button>
        
-        <div id="mydiv">
+        <button class="mydiv" id="mututalMovieBtn">
             Movies<br><?php echo (get_mutual_media_count($me, $otheruser)[3]); ?>
-        </div>
+        </button>
         
-        <div id="mydiv">
+        <button class="mydiv" id="mututalTVBtn">
             TV<br><?php echo (get_mutual_media_count($me, $otheruser)[4]); ?>
-        </div id="mydiv">
+        </button>
     <div>
     
     </center>
     <!--VIDEO GAMES-->
-    <div class="media">
+    <div class="media" id="mututalGameDiv" style="display:none;">
         <div>
             <h2>Video Games</h2>
         </div>
@@ -97,7 +97,7 @@ if (isset($_GET['user_name'])) {
 
 
      <!--Music-->
-     <div class="media">
+     <div class="media" id="mututalMusicDiv" style="display:none;">
         <div>
             <h2>Music</h2>
         </div>
@@ -121,7 +121,7 @@ if (isset($_GET['user_name'])) {
     </div>
 
     <!--Books-->
-    <div class="media">
+    <div class="media" id="mututalBookDiv" style="display:none;">
         <div>
             <h2>Books</h2>
         </div>
@@ -145,7 +145,7 @@ if (isset($_GET['user_name'])) {
     </div>
 
       <!--Movie-->
-      <div class="media">
+      <div class="media" id="mututalMovieDiv" style="display:none;">
         <div>
             <h2>Movies</h2>
         </div>
@@ -169,7 +169,7 @@ if (isset($_GET['user_name'])) {
     </div>
 
       <!--TV-->
-      <div class="media">
+      <div class="media" id="mututalTVDiv" style="display:none;">
         <div>
             <h2>TV</h2>
         </div>
@@ -193,5 +193,111 @@ if (isset($_GET['user_name'])) {
         ?>
 </div>
 
+
+<script>
+const gameBtn= document.getElementById('mututalGameBtn');
+const gameDiv= document.getElementById('mututalGameDiv');
+
+const musicBtn= document.getElementById('mututalMusicBtn');
+const musicDiv= document.getElementById('mututalMusicDiv');
+
+const bookBtn= document.getElementById('mututalBookBtn');
+const bookDiv= document.getElementById('mututalBookDiv');
+
+const movieBtn= document.getElementById('mututalMovieBtn');
+const movieDiv= document.getElementById('mututalMovieDiv');
+
+const tvBtn= document.getElementById('mututalTVBtn');
+const tvDiv= document.getElementById('mututalTVDiv');
+
+//TOGGLE VISIBILITY FOR VIDEOGAME BUTTON
+gameBtn.onclick = function () {
+    if (gameDiv.style.display !== "none") {
+        gameDiv.style.display = "none";
+    } 
+    else{    
+        //set other divs to none
+        musicDiv.style.display = "none";
+        bookDiv.style.display = "none";
+        movieDiv.style.display = "none";
+        tvDiv.style.display = "none";
+        
+        //set game div to block
+        gameDiv.style.display = "block";
+    }
+};
+
+
+//TOGGLE VISIBILITY FOR MUSIC BUTTON
+musicBtn.onclick = function () {
+    if (musicDiv.style.display !== "none") {
+        musicDiv.style.display = "none";
+    } 
+    else{    
+        //set other divs to none
+        gameDiv.style.display = "none";
+        bookDiv.style.display = "none";
+        movieDiv.style.display = "none";
+        tvDiv.style.display = "none";
+        
+        //set music div to block
+        musicDiv.style.display = "block";
+    }
+};
+
+
+//TOGGLE VISIBILITY FOR Books BUTTON
+bookBtn.onclick = function () {
+    if (bookDiv.style.display !== "none") {
+        bookDiv.style.display = "none";
+    } 
+    else{    
+        //set other divs to none
+        gameDiv.style.display = "none";
+        musicDiv.style.display = "none";
+        movieDiv.style.display = "none";
+        tvDiv.style.display = "none";
+        
+        //set book div to block
+        bookDiv.style.display = "block";
+    }
+};
+
+
+//TOGGLE VISIBILITY FOR Movie BUTTON
+movieBtn.onclick = function () {
+    if (movieDiv.style.display !== "none") {
+        movieDiv.style.display = "none";
+    } 
+    else{    
+        //set other divs to none
+        gameDiv.style.display = "none";
+        musicDiv.style.display = "none";
+        bookDiv.style.display = "none";
+        tvDiv.style.display = "none";
+        
+        //set movie div to block
+        movieDiv.style.display = "block";
+    }
+};
+
+
+//TOGGLE VISIBILITY FOR TV BUTTON
+tvBtn.onclick = function () {
+    if (tvDiv.style.display !== "none") {
+        tvDiv.style.display = "none";
+    } 
+    else{    
+        //set other divs to none
+        gameDiv.style.display = "none";
+        musicDiv.style.display = "none";
+        bookDiv.style.display = "none";
+        movieDiv.style.display = "none";
+        
+        //set tv div to block
+        tvDiv.style.display = "block";
+    }
+};
+</script>
 </body>
 </html>
