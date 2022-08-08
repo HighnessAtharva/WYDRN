@@ -43,7 +43,7 @@ function displaygameList(game) {
         if (game[idx]['background_image'] != null)
             gamePoster = game[idx]['background_image'];
         else
-            gamePoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+            gamePoster = "images/API/WYDRNgame.png";
         let name = game[idx]['name']
         let year = game[idx]['released'];
         year = year.split("-");

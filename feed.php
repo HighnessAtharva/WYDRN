@@ -52,7 +52,7 @@ if (isset($_GET["page"])) {
 }
 
 $start_from = ($page - 1) * $per_page_record;
-$sql = "SELECT `username`, `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`datetime`, `profile_pic` from `data` INNER JOIN `users` on `user_name` = `username` WHERE `username` in (SELECT `followed_username` from social where `follower_username`='$username') ORDER BY `datetime` DESC  LIMIT $start_from, $per_page_record;";
+$sql = "SELECT `username`, `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`, `datetime`, `profile_pic` from `data` INNER JOIN `users` on `user_name` = `username` WHERE `username` in (SELECT `followed_username` from social where `follower_username`='$username') ORDER BY `datetime` DESC LIMIT $start_from, $per_page_record;";
 if ($query = mysqli_query($con, $sql)) {
     if (mysqli_num_rows($query) > 0) {
         for ($i = 0; $i <= mysqli_num_rows($query); $i++) {
@@ -140,6 +140,11 @@ if ($query = mysqli_query($con, $sql)) {
         echo "</br>";
         // CALCULATING THE NUMBER OF PAGES
         $total_pages = ceil($total_records / $per_page_record);
+        
+        // in pagination, show a max of 10 pages. No More!
+        if($total_pages>10){
+            $total_pages=10;
+        }
         $pageLink = "";
 
         // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1

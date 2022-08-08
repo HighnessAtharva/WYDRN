@@ -41,9 +41,9 @@ function displayTVList(tvseries) {
         TVListItem.dataset.id = tvseries[idx]['id'];
         TVListItem.classList.add('search-list-item');
         if (tvseries[idx]['poster_path'] != null)
-            tvPoster = tvseries[idx]['poster_path'];
+            tvPoster = "https://image.tmdb.org/t/p/w185" + tvseries[idx]['poster_path'];
         else
-            tvPoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+            tvPoster = "images/API/WYDRNtv.png";
 
         let name = tvseries[idx]['original_name'];
         let year = tvseries[idx]['first_air_date'];
@@ -51,7 +51,7 @@ function displayTVList(tvseries) {
         year = year[0];
         TVListItem.innerHTML = `
         <div class = "search-item-thumbnail">
-            <img src = "https://image.tmdb.org/t/p/w185/${tvPoster}">
+            <img src = "${tvPoster}">
         </div>
         <div class = "search-item-info">
             <h3>${name}</h3>

@@ -46,13 +46,15 @@ function displayAlbumList(albums) {
         albumListItem.dataset.name = albums[idx]['name'];
         albumListItem.dataset.artist = albums[idx]['artist'];
         albumListItem.classList.add('search-list-item');
-        if (albums[idx]['image'][1]["#text"] != null)
+
+        var albumPoster = 'images/API/WYDRNmusic.png';
+        if (albums[idx]['image'][1]["#text"] != null) {
             albumPoster = albums[idx]['image'][1]["#text"];
-        else
-            albumPoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+        } else
+            albumPoster = 'images/API/WYDRNmusic.png';
         albumListItem.innerHTML = `
         <div class = "search-item-thumbnail">
-            <img src = "${albumPoster}">
+            <img src = '${albumPoster}'>
         </div>
         <div class = "search-item-info">
             <h3>${albums[idx]['name']}</h3>
