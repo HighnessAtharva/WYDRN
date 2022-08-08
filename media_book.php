@@ -77,7 +77,7 @@ function getposterpath($name, $author){
 
 <?php
 
-$per_page_record = 12; // Number of entries to show in a page.
+$per_page_record = 15; // Number of entries to show in a page.
 // Look for a GET variable page if not found default is 1.
 if (isset($_GET["page"])) {
     $page = $_GET["page"];
