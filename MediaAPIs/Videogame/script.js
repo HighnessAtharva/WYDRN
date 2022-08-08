@@ -43,7 +43,7 @@ function displaygameList(game) {
         if (game[idx]['background_image'] != null)
             gamePoster = game[idx]['background_image'];
         else
-            gamePoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+            gamePoster = "../../images/API/WYDRNgame.png";
         let year = game[idx]['released'];
         year = year.split("-");
         year = year[0];
@@ -90,6 +90,8 @@ function displaygameDetails(details) {
         genres = details['genres'];
         if (genres.length > 0) {
             genres = genres[0]['name']
+        } else {
+            genres = "NA"
         }
 
     } else {
@@ -102,6 +104,8 @@ function displaygameDetails(details) {
         publisher = details['publishers'];
         if (publisher.length > 0) {
             publisher = publisher[0]['name'];
+        } else {
+            publisher = "NA";
         }
         // console.log('Yes')
     } else {
@@ -111,7 +115,7 @@ function displaygameDetails(details) {
 
     resultGrid.innerHTML = `
     <div class = "movie-poster">
-        <img src = "${(details['background_image'] != null) ?  details['background_image'] : "https://i.ibb.co/hRCvsdq/image-not-found.png"}" alt = "game poster">
+        <img src = "${(details['background_image'] != null) ?  details['background_image'] : "../../images/API/WYDRNgame.png"}" alt = "game poster">
     </div>
     <div class = "movie-info">
         <h3 class = "movie-title">${details['name_original']}</h3>
@@ -120,7 +124,7 @@ function displaygameDetails(details) {
         </ul>
         <p class = "language"><b>Publisher:</b> ${publisher}</p><br>
         <p class = "genre"><b>Genre:</b> ${genres}</p><br>
-        <p class = "plot"><b>Plot:</b> ${details['description_raw']}</p>
+        <p class = "plot"><b>Plot:</b> ${details['description']}</p>
         
         
     </div>

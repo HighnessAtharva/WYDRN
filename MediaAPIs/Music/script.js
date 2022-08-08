@@ -45,13 +45,13 @@ function displayAlbumList(albums) {
         albumListItem.dataset.name = albums[idx]['name'];
         albumListItem.dataset.artist = albums[idx]['artist'];
         albumListItem.classList.add('search-list-item');
-        // albumPoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+        // albumPoster = "../../images/API/WYDRNmusic.png";
         // if (albums[idx]['image'][1]["#text"] != null)
         //     albumPoster = albums[idx]['image'][1]["#text"];
         if (albums[idx]['image'][1]['#text'] != "") {
             albumPoster = albums[idx]['image'][1]['#text'];
         } else {
-            albumPoster = 'https://i.ibb.co/hRCvsdq/image-not-found.png'
+            albumPoster = '../../images/API/WYDRNmusic.png'
         }
 
         albumListItem.innerHTML = `
@@ -111,7 +111,7 @@ function displayalbumDetails(details) {
     if (details['image'][4]['#text'] != "") {
         albumPoster = details['image'][4]['#text'];
     } else {
-        albumPoster = 'https://i.ibb.co/hRCvsdq/image-not-found.png'
+        albumPoster = '../../images/API/WYDRNmusic.png'
     }
 
     resultGrid.innerHTML = `

@@ -47,7 +47,7 @@ function displayTVList(tvseries) {
         if (tvseries[idx]['poster_path'] != null)
             tvPoster = "https://image.tmdb.org/t/p/w185/" + tvseries[idx]['poster_path'];
         else
-            tvPoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+            tvPoster = "../../images/API/WYDRNtv.png";
 
         let year = tvseries[idx]['first_air_date'];
         year = year.split("-");
@@ -83,14 +83,27 @@ function loadtvDetails() {
 }
 
 function displaytvDetails(details) {
-    let year = details['first_air_date'];
-    year = year.split("-");
-    year = year[0];
+
+    // to handle missing first air date
+    var year = null;
+    if ('first_air_date' in details) {
+        var year = details['first_air_date'];
+        year = year.split("-");
+        year = year[0];
+    } else {
+        year = "N/A";
+    }
+
+    if (year.length != 4) {
+        year = "N/A";
+    }
 
     // TO HANDLE MISSING GENRES
-    let genres = null;
+    var genres = null;
     if ('genres' in details) {
-        if ('genres' [0]['name'] in details) {
+        if (details['genres'].length == 0) {
+            genres = "N/A";
+        } else {
             genres = details['genres'][0]['name'];
         }
 
@@ -98,9 +111,19 @@ function displaytvDetails(details) {
         genres = "NA";
     }
 
+    // TO HANDLE MISSING OVERVIEW
+    var overview = null;
+    if ('overview' in details) {
+        if (details['overview'].length == 0) {
+            overview = "N/A";
+        } else {
+            overview = details['overview'];
+        }
+    }
+
     resultGrid.innerHTML = `
     <div class = "movie-poster">
-        <img src = "${(details['poster_path'] != null) ? "https://image.tmdb.org/t/p/original/"+ details['poster_path'] : "https://i.ibb.co/hRCvsdq/image-not-found.png"}" alt = "tv poster">
+        <img src = "${(details['poster_path'] != null) ? "https://image.tmdb.org/t/p/original/"+ details['poster_path'] : "../../images/API/WYDRNtv.png"}" alt = "tv poster">
     </div>
     <div class = "movie-info">
         <h3 class = "movie-title">${details['original_name']}</h3>
@@ -108,7 +131,7 @@ function displaytvDetails(details) {
             <li class = "year">Release Date: ${year}</li>
         </ul>
         <p class = "genre"><b>Genre:</b> ${genres}</p>
-        <p class = "plot"><b>Plot:</b> ${details['overview']}</p>
+        <p class = "plot"><b>Plot:</b> ${overview}</p>
         <p class = "language"><b>Language:</b> ${details['original_language']}</p>
         
     </div>

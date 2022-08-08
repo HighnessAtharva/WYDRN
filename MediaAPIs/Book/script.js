@@ -79,11 +79,20 @@ function loadBookDetails() {
 }
 
 function displayBookDetails(details) {
-    // need to figure out a way to add images here!
+
+    var description = null;
+    if ('description' in details) {
+        description = details['description'];
+    } else {
+        description = "No Description Available";
+    }
+
+
     console.log(details);
+
     resultGrid.innerHTML = `
     <div class = "movie-poster">
-        <img src = "${(details['imageLinks']['thumbnail'] !=null) ? details['imageLinks']['thumbnail'] : "https://i.ibb.co/hRCvsdq/image-not-found.png"}" alt = "Book poster">
+        <img src = "${(details['imageLinks']['thumbnail'] !=null) ? details['imageLinks']['thumbnail'] : "../../images/API/WYDRNbook.png"}" alt = "Book poster">
     </div>
     <div class = "movie-info">
         <h3 class = "movie-title">${details['title']} - ${details['authors']}</h3>
@@ -95,7 +104,7 @@ function displayBookDetails(details) {
 <ul class = "movie-misc-info">
         <li class = "year">Publisher: ${details['publisher']}</li><br>
         </ul>
-        <br>Summary:<br><p>${details['description']}</p>`;
+        <br>Summary:<br><p>${description}</p>`;
 }
 
 window.addEventListener('click', (event) => {

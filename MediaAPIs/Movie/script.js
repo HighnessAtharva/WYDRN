@@ -43,7 +43,7 @@ function displayMovieList(movies) {
         if (movies[idx]['poster_path'] != null)
             moviePoster = "https://image.tmdb.org/t/p/w185/" + movies[idx]['poster_path'];
         else
-            moviePoster = "https://i.ibb.co/hRCvsdq/image-not-found.png";
+            moviePoster = "../../images/API/WYDRNmovie.png";
 
         let year = movies[idx]['release_date'];
         year = year.split("-");
@@ -79,18 +79,31 @@ function loadMovieDetails() {
 
 function displayMovieDetails(details) {
     if (details === undefined) {
-        resultGrid.innerHTML += "NO DATA AVAILABLE FOR THIS ALBUM";
+        resultGrid.innerHTML += "NO DATA AVAILABLE FOR THIS MOVIE";
     }
 
     // TO HANDLE MISSING GENRES
     let genres = null;
     if ('genres' in details) {
-        if ('genres' [0]['name'] in details) {
+        if (details['genres'].length == 0) {
+            genres = "N/A";
+        } else {
             genres = details['genres'][0]['name'];
         }
 
     } else {
         genres = "NA";
+    }
+
+
+    // TO HANDLE MISSING OVERVIEW
+    var overview = null;
+    if ('overview' in details) {
+        if (details['overview'].length == 0) {
+            overview = "N/A";
+        } else {
+            overview = details['overview'];
+        }
     }
 
     console.log(details);
@@ -100,7 +113,7 @@ function displayMovieDetails(details) {
     release_year = release_year[0];
     resultGrid.innerHTML = `
     <div class = "movie-poster">
-        <img src = "${(details['poster_path'] != null) ? "https://image.tmdb.org/t/p/original/"+ details['poster_path'] : "https://i.ibb.co/hRCvsdq/image-not-found.png"}" alt = "movie poster">
+        <img src = "${(details['poster_path'] != null) ? "https://image.tmdb.org/t/p/original/"+ details['poster_path'] : "../../images/API/WYDRNmovie.png"}" alt = "movie poster">
     </div>
     <div class = "movie-info">
         <h3 class = "movie-title">${details['original_title']}</h3>
@@ -108,7 +121,7 @@ function displayMovieDetails(details) {
             <li class = "year">Release Date: ${release_year}</li>
         </ul>
         <p class = "genre"><b>Genre:</b> ${genres}</p>
-        <p class = "plot"><b>Plot:</b> ${details['overview']}</p>
+        <p class = "plot"><b>Plot:</b> ${overview}</p>
         <p class = "language"><b>Language:</b> ${details['original_language']}</p>
         
     </div>
