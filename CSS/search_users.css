@@ -13,6 +13,99 @@ body {
     -webkit-user-select: none;
 }
 
+
+/* For Stylish Heading*/
+
+.heading h1 {
+    text-align: center;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+    letter-spacing: 1px;
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    margin: auto;
+    margin-top: 50px;
+    min-width: 1000px;
+}
+
+.heading h1 span {
+    margin-top: 5px;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    word-spacing: 1px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.heading h1 span:after,
+.heading h1 span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+    background-color: #f8f8f8;
+}
+
+
+/* Flexbox 3 column*/
+
+.columns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.column {
+    flex: 33.33%;
+}
+
+#most-followed-div {
+    background-color: rgb(255, 149, 149);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#search-div {
+    background-color: rgb(255, 255, 255)
+}
+
+#most-active-div {
+    border-radius: 10px;
+    padding: 20px;
+    background-color: aquamarine;
+}
+
+.most-followed-items .most-active-items {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.most-followed-person {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.most-active-person {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
 #search {
     margin-bottom: 50px;
 }
