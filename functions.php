@@ -75,7 +75,12 @@ function mailer_verify_email($recipient)
     $mail->Password = "apfyljgxwbgwutlq"; //Google Account -> Security -> App Passwords
     $mail->SetFrom("wydrnapp@gmail.com");
     $mail->Subject = "WYDRN - Verify Your Email";
-    $mail->Body = "Click the link below to verify your Account and get access to all the features. localhost/WYDRN/verify.php?link=$hashed_verify";
+    //mailer body start
+    $mailerbody="<button style='padding:20px;'>";
+    $mailerbody.="<a style='text-decoration: none;' href='localhost/WYDRN/verify.php?link=$hashed_verify'>Click the link below to verify your Account and get access to all the features.</a>";
+    $mailerbody.='</button>';
+    //mailer body end
+    $mail->Body = $mailerbody;
     $mail->AddAddress($recipient);
 
     if (!$mail->Send()) {

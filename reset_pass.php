@@ -12,8 +12,8 @@
  */
 
 require("connection.php");
-// require("header.php");
-if($_GET['key'] && $_GET['reset'])
+
+if(isset($_GET['key']) && isset($_GET['reset']))
 {
   $email=$_GET['key'];
   $pass=$_GET['reset'];
@@ -31,19 +31,21 @@ if($_GET['key'] && $_GET['reset'])
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         
-        <link href="CSS/reset_pass.css" rel="stylesheet">
+      
     </head>
 
     <body>
-        <!--HTML Form for Resetting Password-->
+    <div class="container" style="justify-content:center">    
+    <!--HTML Form for Resetting Password-->
         <form method="POST" action="submit_new.php">
         <input type="hidden" name="email" value="<?php echo $email;?>">
-        <p>Enter New password</p>
+        <p class="alert-success alert">Enter New password</p>
         <input type="password" name='password'>
         <input type="submit" name="submit_password">
         </form>
         <!--HTML Form for Resetting Password-->
-    </body>    
+  </div>
+      </body>    
 </html>
 
 
@@ -51,5 +53,10 @@ if($_GET['key'] && $_GET['reset'])
 <?php
   }
 }
+//if the user directly lands on this page, then they are not allowed to access the page and requested to use a reset link.
+else{
+  echo "You need a proper verification link to reset your password. Can't find the link in your inbox? <a href='send_reset_link.php'>Send another one</a>";
+}
+
 mysqli_close($con);
 ?>

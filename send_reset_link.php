@@ -52,6 +52,7 @@ require("functions.php");
 
 
 <?php
+
 if(isset($_POST['submit_email']) && $_POST['email'])
 {
 $email=$_POST['email'];
@@ -62,7 +63,14 @@ if(mysqli_num_rows($select)==1){
     $email=($row['email']);
     $pass=($row['password']);
   }
-  $link="<a href='localhost/WYDRN/reset_pass.php?key=".$email."&reset=".$pass."'".">Click Here To Reset Password</a>";
+
+  
+  // $link="<img src='images/website/logo.png' alt='WYDRN' width=100' height='100' style='margin-left:75px;'>";
+  // $link.="<br><br><br>";
+  $link="<button style='padding:20px;'>";
+  $link.="<a style='text-decoration: none;' href='localhost/WYDRN/reset_pass.php?key=".$email."&reset=".$pass."'".">Click Here To Reset Password</a>";
+  $link.='</button>';
+
   // Check if mail was sent successfully
   if(send_reset_link($email, $link)){
       echo "Reset Link Sent to Your Email";
