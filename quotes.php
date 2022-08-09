@@ -10,18 +10,18 @@
 $bookquotes=[
     "Nothing is insoluble. Nothing is hopeless. Not while there's life. -  Alan Moore",
     "So many books, so little time.-  Frank Zappa",
-    //add more quotes here
+    //add 13 more quotes here
 ];
 
 $moviequotes=[
     "Quote - Movie Name",
-    //add more quotes here
+    //add 14 more quotes here
 ];
 
 
 $tvquotes=[
     "Quote - Show Name",
-    //add more quotes here
+    //add 14 more quotes here
 ];
 
 
@@ -33,7 +33,7 @@ $videogamequotes=[
 
 $albumquotes=[
     "Quote - Artist Name",
-    //add more quotes here
+    //add 14 more quotes here
 ];
 
 

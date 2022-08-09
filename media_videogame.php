@@ -138,7 +138,7 @@ function getposterpath($name){
 
                     $html_game.="</div>"; // end of card
 
-                    $html_game.="<h1 class='moviename'><b>". $game."</b></h1>";
+                    $html_game.="<h1 class='moviename'>". $game."</h1>";
                     $html_game.="<div class='tags'>"; // div for the tags
                     $html_game.="<div class='tag'>". $platform."</div>";
                     $html_game.="</div>"; // end of tags
