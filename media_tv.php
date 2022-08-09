@@ -93,7 +93,8 @@ function getposterpath($name){
 
 $html_tv="<br><br><section class='cards-wrapper'>"; // $html_tv stores the html code for the movie cards
     
-$sql = "SELECT DISTINCT `tv`, `streaming`, `date` FROM `data` where tv != '' and username='$username' order by `date` DESC LIMIT $start_from, $per_page_record;";
+//only select unique shows logged by the user
+$sql = "SELECT `tv`, `streaming`, `date` FROM `data` where tv != '' and username='$username' GROUP BY `tv` order by `date` DESC LIMIT $start_from, $per_page_record;";
 if ($query = mysqli_query($con, $sql)) {
     $totaltvcount=mysqli_num_rows($query);
     if ($totaltvcount > 0) {
@@ -105,13 +106,15 @@ if ($query = mysqli_query($con, $sql)) {
             $stripnametv=$stripped = str_replace(' ', '+', $tvname);
 
             /**if poster is not downloaded, download the poster in the directory and show the image*/
-            $pseudo_poster='images/API/tv-'.$stripnametv.'.jpg';
+            //remove special characters since we are using it as a file name
+            $filename= preg_replace('/[^A-Za-z0-9\-]/', '', $stripnametv);
+            $pseudo_poster='images/API/tv-'.$filename.'.jpg';
             if (file_exists($pseudo_poster)) {
                 $posterpath=$pseudo_poster;
             }
             else {
                 $posterpath = getposterpath($stripnametv); // URL to download file from
-                $img = 'images/API/tv-'.$stripnametv.'.jpg'; // Image path to save downloaded image
+                $img = 'images/API/tv-'.$filename.'.jpg'; // Image path to save downloaded image
                 // Save image 
                 file_put_contents($img, file_get_contents($posterpath));
                 

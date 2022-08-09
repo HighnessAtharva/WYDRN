@@ -93,7 +93,8 @@ $start_from = ($page - 1) * $per_page_record;
 
     $html_album="<br><br><section class='cards-wrapper'>"; // $html_album stores the html code for the album cards
     
-    $sql = "SELECT DISTINCT `album`, `artist`, `date` FROM `data` where album != '' and username='$username' order by `date` DESC LIMIT $start_from, $per_page_record;";
+    //only select unique albums logged by the user
+    $sql = "SELECT `album`, `artist`, `date` FROM `data` where album != '' and username='$username' GROUP BY `album` order by `date` DESC LIMIT $start_from, $per_page_record;";
     if ($query = mysqli_query($con, $sql)) {
         $totalalbumcount=mysqli_num_rows($query);
         if ($totalalbumcount > 0) {
@@ -105,13 +106,15 @@ $start_from = ($page - 1) * $per_page_record;
                 $stripartist=$stripped = str_replace(' ', '+', $album_artist);
                 
                 /**if poster is not downloaded, download the poster in the directory and show the image*/
-                $pseudo_poster='images/API/music-'.$stripalbum.'.jpg';
+                //remove special characters since we are using it as a file name
+                $filename= preg_replace('/[^A-Za-z0-9\-]/', '', $stripalbum);
+                $pseudo_poster='images/API/music-'.$filename.'.jpg';
                 if (file_exists($pseudo_poster)) {
                     $posterpath=$pseudo_poster;
                 }
                 else {
                     $posterpath = getposterpath($stripalbum, $stripartist); // URL to download file from
-                    $img = 'images/API/music-'.$stripalbum.'.jpg'; // Image path to save downloaded image
+                    $img = 'images/API/music-'.$filename.'.jpg'; // Image path to save downloaded image
                     // Save image 
                     file_put_contents($img, file_get_contents($posterpath));
                     

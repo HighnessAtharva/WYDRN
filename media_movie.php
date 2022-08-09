@@ -87,9 +87,9 @@ function getposterpath($name, $year){
     $start_from = ($page - 1) * $per_page_record;
     
     
-
+    //only select unique movies logged by the user
     $html_movie="<br><br><section class='cards-wrapper'>"; // $html_movie stores the html code for the movie cards
-    $sql = "SELECT DISTINCT `movie`, `year`, `date` FROM `data` where movie != '' and username='$username' order by `date` DESC LIMIT $start_from, $per_page_record;";
+    $sql = "SELECT `movie`, `year`, `date` FROM `data` where movie != '' and username='$username' GROUP BY `movie` order by `date` DESC LIMIT $start_from, $per_page_record;";
     if ($query = mysqli_query($con, $sql)) {
         $totalmoviecount=mysqli_num_rows($query);
         if ($totalmoviecount > 0) {
@@ -102,15 +102,17 @@ function getposterpath($name, $year){
                 $stripnamemovie= str_replace(' ', '+', $movie_name);
                 
                  /**if poster is not downloaded, download the poster in the directory and show the image*/
-                 $pseudo_poster='images/API/movie-'.$stripnamemovie.'.jpg';
+                 
+                //remove special characters since we are using it as a file name
+                $filename= preg_replace('/[^A-Za-z0-9\-]/', '', $stripnamemovie);
+                 $pseudo_poster='images/API/movie-'.$filename.'.jpg';
                  if (file_exists($pseudo_poster)) {
                      $posterpath=$pseudo_poster;
                  }
                  else {
-                     $posterpath = getposterpath($stripnamemovie, $movie_year); // URL to download file from
-                     $img = 'images/API/movie-'.$stripnamemovie.'.jpg'; // Image path to save downloaded image
-                     // Save image 
-                     file_put_contents($img, file_get_contents($posterpath));
+                    $posterpath = getposterpath($stripnamemovie, $movie_year); // URL to download file from
+                    $img = 'images/API/movie-'.$filename.'.jpg'; // Image path to save downloaded image
+                    file_put_contents($img, file_get_contents($posterpath)); // Save image
                      
                  }
 

@@ -92,7 +92,8 @@ function getposterpath($name){
 
     $html_game="<br><br><section class='cards-wrapper'>"; // $html_game stores the html code for the movie cards
     
-    $sql = "SELECT DISTINCT `videogame`, `platform`, `date` FROM `data` where videogame != '' and username='$username' order by `date` DESC LIMIT $start_from, $per_page_record;";
+    //only select unique videogames logged by the user
+    $sql = "SELECT `videogame`, `platform`, `date` FROM `data` where videogame != '' and username='$username' GROUP BY `videogame` order by `date` DESC LIMIT $start_from, $per_page_record;";
     if ($query = mysqli_query($con, $sql)) {
         $totalgamecount=mysqli_num_rows($query);
         if ($totalgamecount > 0) {
@@ -107,13 +108,15 @@ function getposterpath($name){
 
                 
             /**if poster is not downloaded, download the poster in the directory and show the image*/
-            $pseudo_poster='images/API/game-'.$stripgame.'.jpg';
+            //remove special characters since we are using it as a file name
+            $filename= preg_replace('/[^A-Za-z0-9\-]/', '', $stripgame);
+            $pseudo_poster='images/API/game-'.$filename.'.jpg';
             if (file_exists($pseudo_poster)) {
                 $posterpath=$pseudo_poster;
             }
             else {
                 $posterpath = getposterpath($stripgame); // URL to download file from
-                $img = 'images/API/game-'.$stripgame.'.jpg'; // Image path to save downloaded image
+                $img = 'images/API/game-'.$filename.'.jpg'; // Image path to save downloaded image
                 // Save image 
                 file_put_contents($img, file_get_contents($posterpath));
                 

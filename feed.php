@@ -38,8 +38,12 @@ $username = $user_data['user_name'];
  
 </head>
 
-<body style="background: white;">
-    <div class="container">
+<body>
+<div class="heading">
+  <h1>Social Feed<span>It's never too late to catch up with your friends.</span></h1>
+</div>
+
+<div class="container">
         
 <?php
 
@@ -89,30 +93,31 @@ if ($query = mysqli_query($con, $sql)) {
 
                 echo ("<img src=" . $profile_pic . " class='profile-pic' alt='Profile Picture'/>");
                 echo ("<a class='username' href='profile.php?user_name=" . $person . "'>" . $person . "</a><br>");
+                echo ("<div class='activity-container'>");
+                    if ((!empty($videogame)) && (!empty($platform))) {
+                        $playing = "<div class='activity'> &#127918 Playing <b>" . $videogame . "</b> on " . $platform . "</div>";
+                        echo $playing;
+                    }
 
-                if ((!empty($videogame)) && (!empty($platform))) {
-                    $playing = "<div class='activity'> &#127918 Playing <b>" . $videogame . "</b> on " . $platform . "</div>";
-                    echo $playing;
-                }
+                    if ((!empty($album)) && (!empty($artist))) {
+                        $listening = "<div class='activity'> &#127911 Listening to <b>" . $album . "</b> by <b>" . $artist . "</b></div>";
+                        echo $listening;
+                    }
+                    if ((!empty($book)) && (!empty($author))) {
+                        $reading = "<div class='activity'> &#128213 Reading <b>" . $book . "</b> by <b>" . $author . "</b></div>";
+                        echo $reading;
+                    }
 
-                if ((!empty($album)) && (!empty($artist))) {
-                    $listening = "<div class='activity'> &#127911 Listening to <b>" . $album . "</b> by <b>" . $artist . "</b></div>";
-                    echo $listening;
-                }
-                if ((!empty($book)) && (!empty($author))) {
-                    $reading = "<div class='activity'> &#128213 Reading <b>" . $book . "</b> by <b>" . $author . "</b></div>";
-                    echo $reading;
-                }
+                    if ((!empty($movie)) && (!empty($year))) {
+                        $watching = "<div class='activity'> &#128253 Watching <b>" . $movie . "</b> (" . $year . ")" . "</div>";
+                        echo $watching;
+                    }
 
-                if ((!empty($movie)) && (!empty($year))) {
-                    $watching = "<div class='activity'> &#128253 Watching <b>" . $movie . "</b> (" . $year . ")" . "</div>";
-                    echo $watching;
-                }
-
-                if ((!empty($tv)) && (!empty($streaming))) {
-                    $binging = "<div class='activity'> &#128250 Binging <b>" . $tv . "</b> on " . $streaming . "</div>";
-                    echo $binging;
-                }
+                    if ((!empty($tv)) && (!empty($streaming))) {
+                        $binging = "<div class='activity'> &#128250 Binging <b>" . $tv . "</b> on " . $streaming . "</div>";
+                        echo $binging;
+                    }
+                echo ("</div>"); //end of activity-container
                 $datetime = printable_datetime($datetime);
                 echo ("<div class='datetime'>" . $datetime . "</div>");
 
@@ -149,7 +154,7 @@ if ($query = mysqli_query($con, $sql)) {
 
         // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
         if ($page >= 2) {
-            echo "<a href='feed.php?page=" . ($page - 1) . "'>  Prev </a>";
+            echo "<a href='feed.php?page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
         }
 
         // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
@@ -165,7 +170,7 @@ if ($query = mysqli_query($con, $sql)) {
 
         // SHOW NEXT BUTTON IF NOT ON LAST PAGE
         if ($page < $total_pages) {
-            echo "<a href='feed.php?page=" . ($page + 1) . "'>  Next </a>";
+            echo "<a href='feed.php?page=" . ($page + 1) . "'>  <span class='neonText'> → </span> </a>";
         }
         ?>
     </div><!--END OF PAGINATION ROW -->

@@ -65,7 +65,7 @@ function mailer_verify_email($recipient)
 
     $mail = new PHPMailer\PHPMailer\PHPMailer(); // create a new object
     $mail->IsSMTP(); // enable SMTP
-    $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+    $mail->SMTPDebug = 0; // debugging: 0 = messages only, 1 = errors + messages
     $mail->SMTPAuth = true; // authentication enabled
     $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
     $mail->Host = "smtp.gmail.com";
@@ -82,7 +82,7 @@ function mailer_verify_email($recipient)
         echo "Mailer Error: " . $mail->ErrorInfo;
         return 0;
     } else {
-        echo "Message has been sent";
+        // echo "Message has been sent";
         return 1;
     }
 
@@ -100,7 +100,7 @@ function send_reset_link($recipient, $link)
 
     $mail = new PHPMailer\PHPMailer\PHPMailer(); // create a new object
     $mail->IsSMTP(); // enable SMTP
-    $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+    $mail->SMTPDebug = 0; // debugging: 0 = messages only, 1 = errors + messages
     $mail->SMTPAuth = true; // authentication enabled
     $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
     $mail->Host = "smtp.gmail.com";
@@ -117,7 +117,7 @@ function send_reset_link($recipient, $link)
         echo "Mailer Error: " . $mail->ErrorInfo;
         return 0;
     } else {
-        echo "Message has been sent";
+        // echo "Message has been sent";
         return 1;
     }
 }

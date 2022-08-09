@@ -39,6 +39,14 @@ require("functions.php");
           <input type="text" name="email">
           <input type="submit" name="submit_email">
       </form>
+
+      
+    <script>
+          // To prevent form resubmission when page is refreshed (F5 / CTRL+R) 
+    if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+    }
+    </script>
   </body>
 </html>
 
@@ -54,7 +62,7 @@ if(mysqli_num_rows($select)==1){
     $email=($row['email']);
     $pass=($row['password']);
   }
-  $link="localhost/WYDRN/reset_pass.php?key=".$email."&reset=".$pass;
+  $link="<a href='localhost/WYDRN/reset_pass.php?key=".$email."&reset=".$pass."'".">Click Here To Reset Password</a>";
   // Check if mail was sent successfully
   if(send_reset_link($email, $link)){
       echo "Reset Link Sent to Your Email";

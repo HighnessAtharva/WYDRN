@@ -2,14 +2,60 @@ html,
 body {
     margin: 0;
     padding: 0;
-}
-
-body {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     height: 100vh;
     width: 100vw;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(46, 0, 89, 1) 35%, rgba(55, 0, 79, 1) 100%);
+}
+
+
+/* For Stylish Heading*/
+
+.heading h1 {
+    text-align: center;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: rgb(255, 245, 245);
+    letter-spacing: 1px;
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    margin: auto;
+    margin-top: 50px;
+    min-width: 1000px;
+}
+
+.heading h1 span {
+    margin-top: 5px;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    word-spacing: 1px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.heading h1 span:after,
+.heading h1 span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+    background-color: #f8f8f8;
+}
+
+.activity-container {
+    border-top: 1px solid black;
+    width: inherit;
 }
 
 #loader {
@@ -69,6 +115,9 @@ body {
     overflow-y: auto;
 }
 
+
+/*PAGINATION STYLES*/
+
 .pagination {
     display: inline-block;
 }
@@ -76,17 +125,33 @@ body {
 .pagination a {
     font-weight: bold;
     font-size: 18px;
-    color: black;
+    color: rgb(249, 249, 249);
     float: left;
     padding: 8px 16px;
     text-decoration: none;
-    border: 1px solid black;
+    background-color: rgb(0, 0, 0);
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 50px;
+    border-radius: 10px;
 }
 
 .pagination a.active {
-    background-color: rgb(38, 161, 254);
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
-.pagination a:hover:not(.active) {
-    background-color: rgb(177, 233, 255);
+.pagination a:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+a>span.neonText {
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+}
+
+a>span.neonText:hover {
+    color: rgb(0, 0, 0);
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
 }
