@@ -166,11 +166,15 @@ if ($query = mysqli_query($con, $sql)) {
         echo "</br>";
         // CALCULATING THE NUMBER OF PAGES
         $total_pages = ceil($total_records / $per_page_record);
+        $unmodified_total_pages=$total_pages;
+        if($total_pages>10){
+            $total_pages=10;
+        }
         $pageLink = "";
 
         // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
         if ($page >= 2) {
-            echo "<a href='diary.php?page=" . ($page - 1) . "'>  Prev </a>";
+            echo "<a href='diary.php?page=" . ($page - 1) . "'>  <span class='neonText'> ← </span></a>";
         }
 
         // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
@@ -186,7 +190,7 @@ if ($query = mysqli_query($con, $sql)) {
 
         // SHOW NEXT BUTTON IF NOT ON LAST PAGE
         if ($page < $total_pages) {
-            echo "<a href='diary.php?page=" . ($page + 1) . "'>  Next </a>";
+            echo "<a href='diary.php?page=" . ($page + 1) . "'>  <span class='neonText'> → </span>  </a>";
         }
         ?>
     </div>
@@ -195,8 +199,8 @@ if ($query = mysqli_query($con, $sql)) {
 
     <!--MANUAL PAGINATION INPUT BOX-->
     <div class="inline grid-child">
-    <input id="page" type="number" min="1" max="<?php echo $total_pages ?>"
-    placeholder="<?php echo $page . "/" . $total_pages; ?>" required>
+    <input id="page" type="number" min="1" max="<?php echo $unmodified_total_pages ?>"
+    placeholder="<?php echo $page . "/" . $unmodified_total_pages; ?>" required>
     <button onClick="go2Page();">Go</button>
     </div>
     <!--END OF MANUAL PAGINATION INPUT BOX-->
@@ -211,7 +215,7 @@ if ($query = mysqli_query($con, $sql)) {
     {
         var page = document.getElementById("page").value;
         //a check to ensure that the user enters a valid page number
-        page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));
+        page = ((page><?php echo $unmodified_total_pages; ?>)?<?php echo $unmodified_total_pages; ?>:((page<1)?1:page));
         window.location.href = 'diary.php?page='+page;
     }
 
