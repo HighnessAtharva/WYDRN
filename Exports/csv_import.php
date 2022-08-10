@@ -25,33 +25,34 @@ include("header.php");
  
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
- 
+  <link rel="stylesheet" href="../CSS/csv_import.css">
+  
+  <!-- Sweet Alert (Beautiful looking alert plugin-->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
   <title>Import CSV File into MySQL using PHP</title>
  
-  <style>
-    .custom-file-input.selected:lang(en)::after {
-      content: "" !important;
-    }
- 
-    .custom-file {
-      overflow: hidden;
-    }
- 
-    .custom-file-input {
-      white-space: nowrap;
-    }
-  </style>
 </head>
  
 
 <!-- HTML UPLOAD FORM -->
 <body>
  <br><br>
-  <div class="container">
-    <form action="" method="post" enctype="multipart/form-data">
+ <div class="heading">
+  <h1>Upload CSV<span>Quickly Import Your Medias</span></h1>
+</div>
+
+<center><div class="info">
+    CSV headers should be <u>Videogame, Platform, Album, Artist, Book,	Author,	Movie, Year, TV, Streaming,	Datetime, Date</u>. Order of the CSV headers should be the same as the order of the columns mentioned. If Datetime, Date is absent in the CSV, it will be automatically filled with the current date and time. Sample Import File will look like this. Download it and use it as a template if required.
+    <br><br>
+    <button onclick="window.location.href='dummy_import_data.csv'">Download Import CSV</button>    
+</div></center>
+<br><br>
+<div class="container">
+    <form action="" method="post" enctype="multipart/form-data" onsubmit ="return Validation();">
       <div class="input-group">
         <div class="custom-file">
-          <input type="file" class="custom-file-input" id="customFileInput" aria-describedby="customFileInput" name="file">
+          <input type="file" id='user-csv' class="custom-file-input" id="customFileInput" aria-describedby="customFileInput" name="file">
           <label class="custom-file-label" for="customFileInput">Select file</label>
         </div>
         <div class="input-group-append">
@@ -63,9 +64,28 @@ include("header.php");
 
 <!-- To prevent form resubmission when page is refreshed (F5 / CTRL+R) -->
 <script>
-    if ( window.history.replaceState ) {
-        window.history.replaceState( null, null, window.location.href );
+if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
+}
+
+function Validation(){
+let csvfile = document.getElementById("user-csv").value;
+    
+    if (csvfile){
+        return true;
+        
     }
+    else{
+        //sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+        swal({
+        title: "Select a file",
+        text: "Upload a CSV file first!",
+        icon: "error",
+        button: "Upload",
+        });
+        return false;
+    }
+}
 </script>
 </body>
 </html>
@@ -105,7 +125,7 @@ if (isset($_POST['submit'])) {
 
         // Parse data from CSV file line by line
         // Parse data from CSV file line by line
-        $counter=0;
+        $TotalMediaCount=0;
         $videogamecount=0;
         $albumcount=0;
         $moviecount=0;
@@ -183,19 +203,58 @@ if (isset($_POST['submit'])) {
             }
         }
     
-        $counter=$videogamecount+$albumcount+$moviecount+$bookcount+$tvcount;
-        echo("Added ".$videogamecount." Videogames to your account."."<br>");
-        echo("Added ".$moviecount." Movies to your account."."<br>");
-        echo("Added ".$tvcount." TV Shows to your account."."<br>");
-        echo("Added ".$bookcount." Books to your account."."<br>");
-        echo("Added ".$albumcount." Albums to your account."."<br>");
-        echo("Total media items added your account are: ".$counter."<br>");
+        $TotalMediaCount=$videogamecount+$albumcount+$moviecount+$bookcount+$tvcount;
 
         fclose($csvFile);
-    } else {
+        ?>
+ 
+        
+        <center>
+        <!-- Videogame Import Success Message! -->
+        <div class='alert alert-success w-50 text-center alert-dismissible fade show' role='alert'>
+        <img src="../images/Icons/videogame.svg" class="media-icon">Added <?php echo($videogamecount); ?> Videogames to your account.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>
+
+        <!-- Movie Import Success Message! -->
+        <div class='alert alert-success w-50 text-center alert-dismissible fade show' role='alert'>
+        <img src="../images/Icons/Movie.svg" class="media-icon">Added <?php echo($moviecount); ?> Movies to your account.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>
+
+        <!-- TV Import Success Message! -->
+        <div class='alert alert-success w-50 text-center alert-dismissible fade show' role='alert'>
+        <img src="../images/Icons/TV.svg" class="media-icon">Added <?php echo($tvcount); ?> TV Shows to your account.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>
+
+        <!-- Book Import Success Message! -->
+        <div class='alert alert-success w-50 text-center alert-dismissible fade show' role='alert'>
+        <img src="../images/Icons/Book.svg" class="media-icon">Added <?php echo($bookcount); ?> Books to your account.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>
+
+        <!-- Album Import Success Message! -->
+        <div class='alert alert-success w-50 text-center alert-dismissible fade show' role='alert'>
+        <img src="../images/Icons/Music.svg" class="media-icon">Added <?php echo($albumcount); ?> Albums to your account.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>
+    
+        <!--Total Media Added Count -->
+        <div class='alert alert-success w-50 text-center alert-dismissible fade show' role='alert'>
+        <img src="../images/Icons/Like.svg" class="media-icon">Total <?php echo($TotalMediaCount); ?> Medias imported
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>
+
+        <!--Click here to go to your profile -->
+        <button onclick="window.location.href='../profile.php'">Return to Profile</button>
+        
+        <br>
+        <br>
+        </center>
+<?php
+    }else {
         echo "Please select valid file";
     }
-   
-
 }
 ?>

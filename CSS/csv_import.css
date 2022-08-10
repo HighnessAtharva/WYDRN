@@ -1,0 +1,70 @@
+.media-icon {
+    width: 25px;
+    height: 25px;
+    display: inline;
+    margin-right: 10px;
+    padding-bottom: 4px;
+}
+
+.custom-file-input.selected:lang(en)::after {
+    content: "" !important;
+}
+
+.custom-file {
+    overflow: hidden;
+}
+
+.custom-file-input {
+    white-space: nowrap;
+}
+
+.info {
+    color: white;
+    width: 50%;
+}
+
+body {
+    background-color: #000000;
+}
+
+
+/* For Stylish Heading*/
+
+.heading h1 {
+    text-align: center;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: rgb(255, 245, 245);
+    letter-spacing: 1px;
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    margin: auto;
+    margin-top: 50px;
+    min-width: 1000px;
+}
+
+.heading h1 span {
+    margin-top: 5px;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    word-spacing: 1px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.heading h1 span:after,
+.heading h1 span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+    background-color: #f8f8f8;
+}

@@ -34,7 +34,7 @@ $username = $user_data['user_name'];
     <link rel="stylesheet" href="main.css">
 </head>
 
-<body style="color:white">
+<body>
 
     <div class="wrapper">
         
@@ -45,7 +45,7 @@ $username = $user_data['user_name'];
 
                 <input type="text" class="form-control" placeholder="Enter Book Name and Author's name" id="movie-search-box" onkeyup="findBook()" onclick="findBook()">
                 <div class="search-list" id="search-list">
-                    <!-- list here -->
+                    <!--  Dynamically generated LIST APPEARS IN THIS MANNER -->
                     <!-- <div class = "search-list-item">
                         <div class = "search-item-thumbnail">
                             <img src = "medium-cover.jpg">
@@ -72,13 +72,8 @@ $username = $user_data['user_name'];
     </div>
 
 
-    <!-- movie app js -->
-    <!-- <script>
-        $('#movie-search-box').keyup(_.debounce(findBook, 500));
-    </script> -->
-    <script src="script.js"></script>
-    <!-- <script src="https: //cdn.jsdelivr.net/npm/underscore@1.13.3/underscore-umd-min.js"></script> -->
+   
+<script src="script.js"></script>
 </body>
 </body>
-
 </html>

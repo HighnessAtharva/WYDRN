@@ -30,7 +30,7 @@ require "header.php";
 <body>
     <center>
     <div>
-        <p class="alert-danger alert"> Are you sure you want to delete your account? This action is not reversible.</p>
+        <p class="alert-danger alert"> Are you sure you want to delete your account? This action is not reversible. We encourage you to export your data first. Do it <a href="exports/csv_export.php">here</a>.</p>
         <input type="button" value="Delete Account" onclick="window.location.href='delete_user_confirm.php'">
     </div>
     </center>
