@@ -53,7 +53,17 @@ if ($query = mysqli_query($con, $sql)) {
 }
 
 //profile.php?user_name=xyz -  get total media count for get request
-$sql = "SELECT COUNT(*) FROM `data` WHERE `username`='$username'";
+$sql = "SELECT sum(allcount) AS Total_Count FROM(
+    (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='')
+    UNION ALL
+    (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='')
+    UNION ALL
+    (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='')
+    UNION ALL
+    (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='')
+    UNION ALL
+    (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='')
+)t";
 if ($query = mysqli_query($con, $sql)) {
 $row = mysqli_fetch_array($query);
 $total_count_get= $row[0];
