@@ -76,7 +76,7 @@ require "header.php";
             <!--HTML CONTENTS-->
             <a href=<?php echo "profile.php?user_name=".$username; ?>> 
             <article class="leaderboard__profile">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" class="leaderboard__picture">
+            <img src="images/website/assets/numbers/<?php echo $i;?>.png" alt="" class="leaderboard__picture">
             <span class="leaderboard__name"><?php echo $username;?></span>
             <span class="leaderboard__value"><?php echo $follower_count; ?> </span>
             </article>
@@ -148,7 +148,7 @@ require "header.php";
 
                     <a href=<?php echo "profile.php?user_name=".$username; ?>> 
                     <article class="leaderboard__profile">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" class="leaderboard__picture">
+                    <img src="images/website/assets/numbers/<?php echo $i;?>.png"  alt="" class="leaderboard__picture">
                     <span class="leaderboard__name"><?php echo $username;?></span>
                     <span class="leaderboard__value"><?php echo $media_count; ?> </span>
                     </article>
