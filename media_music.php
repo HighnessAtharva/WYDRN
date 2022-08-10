@@ -15,6 +15,7 @@ if (empty($_SESSION)) {
 require "header.php";
 require "connection.php";
 require "functions.php";
+require "quotes.php"; //to get a random quote
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 flush(); 
@@ -65,7 +66,7 @@ function getposterpath($name, $artist){
 <body class="css-selector">
 
 <div class="heading">
-  <h1>Your Albums<span>"I light my torch and burn it. I am the beast I worship" - Death Grips</span></h1>
+  <h1>Your Albums<span><?php echo getRandomAlbumQuote() ?></span></h1>
 </div>
 
 <?php

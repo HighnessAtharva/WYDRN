@@ -16,6 +16,7 @@ if (empty($_SESSION)) {
 require "header.php";
 require "connection.php";
 require "functions.php";
+require "quotes.php"; //to get a random quote
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 flush(); 
@@ -62,7 +63,7 @@ function getposterpath($name, $author){
 <body class="css-selector">
 
 <div class="heading">
-  <h1>Your Books<span>"So many books, so little time." -  Frank Zappa</span></h1>
+  <h1>Your Books<span><?php echo getRandomBookQuote() ?></span></h1>
 </div>
 
 <?php

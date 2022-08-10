@@ -16,6 +16,7 @@ if (empty($_SESSION)) {
 require "header.php";
 require "connection.php";
 require "functions.php";
+require "quotes.php"; //to get a random quote
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 
@@ -66,7 +67,7 @@ function getposterpath($name){
 <body class="css-selector">
 
 <div class="heading">
-  <h1>Your Video Games<span>"Praise the sun." - Dark Souls</span></h1>
+  <h1>Your Video Games<span><?php echo getRandomVideoGameQuote(); ?> </span></h1>
 </div>
 
 <?php

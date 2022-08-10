@@ -15,6 +15,7 @@ if (empty($_SESSION)) {
 require "header.php";
 require "connection.php";
 require "functions.php";
+require "quotes.php"; //to get a random quote
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 flush(); 
@@ -61,7 +62,7 @@ function getposterpath($name, $year){
 <body class="css-selector">
 
 <div class="heading">
-  <h1>Your Movies<span>"I'm gonna make him an offer he can't refuse." - The Godfather</span></h1>
+  <h1>Your Movies<span><?php echo getRandomMovieQuote() ?></span></h1>
 </div>
 
     <?php
