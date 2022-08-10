@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-.profilepic {
-    margin-top: 50px;
-    height: 100px;
-    width: 100px;
-}
-
 body {
     /* no selection */
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
+}
+
+.profilepic {
+    margin-top: 50px;
+    height: 100px;
+    width: 100px;
 }
 
 
@@ -69,13 +69,9 @@ body {
     flex: 33.33%;
 }
 
-#most-followed-div {}
-
 #search-div {
     background-color: rgb(255, 255, 255)
 }
-
-#most-active-div {}
 
 #search {
     margin-bottom: 50px;
@@ -94,6 +90,9 @@ body {
     border: 1px solid black;
     border-radius: 20px;
 }
+
+
+/* For left and right side leaderboard */
 
 .leaderboard {
     max-width: 490px;
