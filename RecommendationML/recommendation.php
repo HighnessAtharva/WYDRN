@@ -2,11 +2,20 @@
 
 //Everything will work fine. Just put the respective CSV files in the same folder as the python file.
 
+session_start();
+if (empty($_SESSION)) {
+    header("Location: login.php");
+}
+require "../connection.php";
+require "../functions.php";
+$user_data = check_login($con);
+$username = $user_data['user_name'];
 
-function MovieRecommendations(){
+
+function MovieRecommendations($username){
     
-    /*exec -> executes script in terminal and returns output*/
-    $MovieResult=exec("python Movie/MovieRecommendation.py");
+    /*exec -> executes script in terminal and returns output || PASS THE USERNAME AS CMD LINE ARGUMENT TO THE PYTHON SCRIPT*/
+    $MovieResult=exec("python Movie/MovieRecommendation.py ".$username);
     
     //print_r($MovieResult);
 
@@ -18,9 +27,9 @@ function MovieRecommendations(){
 
 }
 
-function BookRecommendations(){
+function BookRecommendations($username){
     
-    /*exec -> executes script in terminal and returns output*/
+   /*exec -> executes script in terminal and returns output || PASS THE USERNAME AS CMD LINE ARGUMENT TO THE PYTHON SCRIPT*/
     $BookResult=exec("python Books/BookRecommendation.py");
 
     $result_array=json_decode($BookResult,true);
@@ -31,9 +40,9 @@ function BookRecommendations(){
 
 }
 
-function TVRecommendations(){
+function TVRecommendations($username){
     
-    /*exec -> executes script in terminal and returns output*/
+    /*exec -> executes script in terminal and returns output || PASS THE USERNAME AS CMD LINE ARGUMENT TO THE PYTHON SCRIPT*/
     $TVResult=exec("python TV/TVRecommendation.py");
 
     $result_array=json_decode($TVResult,true);
@@ -45,9 +54,9 @@ function TVRecommendations(){
 }
 
 
-function AlbumRecommendations(){
+function AlbumRecommendations($username){
     
-    /*exec -> executes script in terminal and returns output*/
+    /*exec -> executes script in terminal and returns output || PASS THE USERNAME AS CMD LINE ARGUMENT TO THE PYTHON SCRIPT*/
     $AlbumResult=exec("python Albums/AlbumRecommendation.py");
 
     $result_array=json_decode($AlbumResult,true);
@@ -58,9 +67,9 @@ function AlbumRecommendations(){
 
 }
 
-function GameRecommendations(){
+function GameRecommendations($username){
     
-    /*exec -> executes script in terminal and returns output*/
+    /*exec -> executes script in terminal and returns output || PASS THE USERNAME AS CMD LINE ARGUMENT TO THE PYTHON SCRIPT*/
     $GameResult=exec("python VideoGame/VideoGameRecommendation.py");
 
     $result_array=json_decode($GameResult,true);
@@ -77,33 +86,33 @@ function GameRecommendations(){
 /*http://localhost/WYDRN/RecommendationML/recommendation.php?Movie*/
 if (isset($_GET['Movie']))
 {
-    MovieRecommendations();
+    MovieRecommendations($username);
 }
 
 /*http://localhost/WYDRN/RecommendationML/recommendation.php?Book*/
 if (isset($_GET['Book']))
 {
-    BookRecommendations();
+    BookRecommendations($username);
 }
 
 /*http://localhost/WYDRN/RecommendationML/recommendation.php?TV*/
 if (isset($_GET['TV']))
 {
-    TVRecommendations();
+    TVRecommendations($username);
 }
 
 
 /*http://localhost/WYDRN/RecommendationML/recommendation.php?Album*/
 if (isset($_GET['Album']))
 {
-    AlbumRecommendations();
+    AlbumRecommendations($username);
 }
 
 
 /*http://localhost/WYDRN/RecommendationML/recommendation.php?Game*/
 if (isset($_GET['Game']))
 {
-    GameRecommendations();
+    GameRecommendations($username);
 }
 
 ?>

@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import random
 import json
+import sys
 from collections import Counter
 import mysql.connector
 import matplotlib.pyplot as plt
@@ -104,43 +105,46 @@ def get_recommendations(title, cosine_sim=cosine_sim):
 
 
 
-# print("################ MOVIE RECOMMENDATION SYSTEM #############\n\n\n\n")
+def recommend(username):
+    """ 
+    dummy_list=["Avatar","Spectre","Pirates of the Caribbean: At World's End","John Carter","The Dark Knight Rises","Tangled","Spider-Man 3","Harry Potter and the Half-Blood Prince","Avengers: Age of Ultron","Superman Returns","Batman v Superman: Dawn of Justice","Pirates of the Caribbean: Dead Man's Chest","Quantum of Solace","Man of Steel","The Lone Ranger","The Avengers","The Chronicles of Narnia: Prince Caspian","Men in Black 3","Pirates of the Caribbean: On Stranger Tides","The Amazing Spider-Man","The Hobbit: The Battle of the Five Armies","The Hobbit: The Desolation of Smaug","Robin Hood","King Kong","The Golden Compass","Captain America: Civil War","Titanic","Jurassic World","Battleship","Spider-Man 2","Skyfall","Alice in Wonderland","Iron Man 3","Monsters University","X-Men: The Last Stand","Transformers: Age of Extinction","Transformers: Revenge of the Fallen","The Amazing Spider-Man 2","Oz: The Great and Powerful","Cars 2","TRON: Legacy","Toy Story 3","Green Lantern","Furious 7","Terminator Salvation","X-Men: Days of Future Past","World War Z","Jack the Giant Slayer","Star Trek Into Darkness","Prince of Persia: The Sands of Time","The Great Gatsby","Transformers: Dark of the Moon","Pacific Rim","The Good Dinosaur","Indiana Jones and the Kingdom of the Crystal Skull","Star Trek Beyond","Brave","Rush Hour 3","WALL·E","A Christmas Carol","2012","The Legend of Tarzan","Jupiter Ascending","X-Men: Apocalypse","The Chronicles of Narnia: The Lion, the Witch and the Wardrobe","Up","The Dark Knight","Iron Man","Monsters vs Aliens","Wild Wild West","Hugo","Suicide Squad","Edge of Tomorrow","Waterworld","The Jungle Book","Inside Out","Snow White and the Huntsman"]
+    """
 
-""" 
-dummy_list=["Avatar","Spectre","Pirates of the Caribbean: At World's End","John Carter","The Dark Knight Rises","Tangled","Spider-Man 3","Harry Potter and the Half-Blood Prince","Avengers: Age of Ultron","Superman Returns","Batman v Superman: Dawn of Justice","Pirates of the Caribbean: Dead Man's Chest","Quantum of Solace","Man of Steel","The Lone Ranger","The Avengers","The Chronicles of Narnia: Prince Caspian","Men in Black 3","Pirates of the Caribbean: On Stranger Tides","The Amazing Spider-Man","The Hobbit: The Battle of the Five Armies","The Hobbit: The Desolation of Smaug","Robin Hood","King Kong","The Golden Compass","Captain America: Civil War","Titanic","Jurassic World","Battleship","Spider-Man 2","Skyfall","Alice in Wonderland","Iron Man 3","Monsters University","X-Men: The Last Stand","Transformers: Age of Extinction","Transformers: Revenge of the Fallen","The Amazing Spider-Man 2","Oz: The Great and Powerful","Cars 2","TRON: Legacy","Toy Story 3","Green Lantern","Furious 7","Terminator Salvation","X-Men: Days of Future Past","World War Z","Jack the Giant Slayer","Star Trek Into Darkness","Prince of Persia: The Sands of Time","The Great Gatsby","Transformers: Dark of the Moon","Pacific Rim","The Good Dinosaur","Indiana Jones and the Kingdom of the Crystal Skull","Star Trek Beyond","Brave","Rush Hour 3","WALL·E","A Christmas Carol","2012","The Legend of Tarzan","Jupiter Ascending","X-Men: Apocalypse","The Chronicles of Narnia: The Lion, the Witch and the Wardrobe","Up","The Dark Knight","Iron Man","Monsters vs Aliens","Wild Wild West","Hugo","Suicide Squad","Edge of Tomorrow","Waterworld","The Jungle Book","Inside Out","Snow White and the Huntsman"]
-"""
-userMovies=getUserMovies('spammer')
-userMovies=[string.title() for string in userMovies]
-RecList = [get_recommendations(movie) for movie in userMovies]
+    userMovies=getUserMovies(username)
+    userMovies=[string.title() for string in userMovies]
+    RecList = [get_recommendations(movie) for movie in userMovies]
 
-# UNCOMMENT THIS WHEN YOU UNCOMMENT DUMMY LIST
-# for movie in dummy_list:
-#     RecList.append(get_recommendations(movie))
+    # UNCOMMENT THIS WHEN YOU UNCOMMENT DUMMY LIST
+    # for movie in dummy_list:
+    #     RecList.append(get_recommendations(movie))
 
-RecList=[x for x in RecList if x is not None] # remove None values
-RecList = [item for sublist in RecList for item in sublist] # flatten list
-# print(RecList)
-random.shuffle(RecList)
+    RecList=[x for x in RecList if x is not None] # remove None values
+    RecList = [item for sublist in RecList for item in sublist] # flatten list
+    # print(RecList)
+    random.shuffle(RecList)
 
-weightedList = Counter(RecList).most_common(10)
-movies=[]
-ranks=[]
-weightedDict = dict(dict(weightedList))
-# print(weightedDict)
-print(json.dumps(weightedDict))
+    weightedList = Counter(RecList).most_common(10)
+    movies=[]
+    ranks=[]
+    weightedDict = dict(dict(weightedList))
+    # print(weightedDict)
+    print(json.dumps(weightedDict))
 
 
-# Uncomment this when you want to print plot in Script (Plot not tested yet for webpage)
-# for i in range(len(weightedList)):
-#     movies.append(weightedList[i][0])
-#     ranks.append(weightedList[i][1])
+    # Uncomment this when you want to print plot in Script (Plot not tested yet for webpage)
+    # for i in range(len(weightedList)):
+    #     movies.append(weightedList[i][0])
+    #     ranks.append(weightedList[i][1])
 
-# def plot():
-#     popularity = movies_df.sort_values("popularity", ascending=False)
-#     plt.figure(figsize=(12, 6))
-#     plt.barh(movies,ranks, align="center", color="skyblue")
-#     plt.gca().invert_yaxis()
-#     plt.title("Top 25 Movie Recommendations")
-#     plt.xlabel("Most Likely to be Watched")
-#     plt.show()
-# plot()
+    # def plot():
+    #     popularity = movies_df.sort_values("popularity", ascending=False)
+    #     plt.figure(figsize=(12, 6))
+    #     plt.barh(movies,ranks, align="center", color="skyblue")
+    #     plt.gca().invert_yaxis()
+    #     plt.title("Top 25 Movie Recommendations")
+    #     plt.xlabel("Most Likely to be Watched")
+    #     plt.show()
+    # plot()
+
+# Username is recieved from the server i.e. PHP script that invokes this python script using exec()
+recommend(username=sys.argv[1])
