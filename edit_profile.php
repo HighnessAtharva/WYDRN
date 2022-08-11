@@ -18,11 +18,40 @@ require "functions.php";
 require "header.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
+
+/* USER ACTIVE STATUS */
+if (check_active_status($username) == 1) {
+    $active_or_not= "<br>User Status: Active<br>";
+} else {
+    $active_or_not= "<br>User Status: Offline<br>";
+}
+
+
+/* USER VERFICATION STATUS */
+if (check_verified_status($username) == 1) {
+    $verified_or_not= "User is Verified<br>";
+} else {
+    $verified_or_not= "<div id='verified-status'>User is not Verified.</div>";
+    $current_user = check_login($con);
+    $user_name = $current_user['user_name'];
+    $hashed_verify = md5($user_name);
+    $verified_or_not.= "<a href='verify.php' style='padding:5px; background-color: white; cursor:pointer;'><span>Verify Now</span></a><br>";
+}
+
+
+/* ACCOUNT BIRTHDAY */
+$account_birthday = explode(" ", $user_data['date'])[0];
+$account_birthday = "Member Since: " . printable_date($account_birthday);
+
+
+/* Public Profile Link */
+$public_profile_link="<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$username</a>";
+
 ?>
 
-<!--
-    HTML PART
--->
+<!-------------------------------------------------------------------------------------
+       			                HTML PART
+------------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html>
 <head>    
@@ -52,9 +81,7 @@ $username = $user_data['user_name'];
             reader.readAsDataURL(file);
         }
     }
-
     </script>
-
 </head>
 
 <body>
@@ -64,36 +91,14 @@ $username = $user_data['user_name'];
 
 
 <?php
-//user active status
-if (check_active_status($username) == 1) {
-    echo "<br>User Status: Active<br>";
-} else {
-    echo "<br>User Status: Offline<br>";
-}
-
-// user verification status
-if (check_verified_status($username) == 1) {
-    echo "User is Verified<br>";
-} else {
-    echo "<div id='verified-status'>User is not Verified.</div>";
-
-    $current_user = check_login($con);
-    $user_name = $current_user['user_name'];
-    $hashed_verify = md5($user_name);
-    echo "<a href='verify.php' style='padding:5px; background-color: white; cursor:pointer;'><span>Verify Now</span></a><br>";
-}
-
-// Account Created On
-$account_birthday = explode(" ", $user_data['date'])[0];
-echo "Member Since: " . printable_date($account_birthday);
-
-// Public Profile Link
-echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$username</a>";
+echo $active_or_not;
+echo $verified_or_not;
+echo $account_birthday;
+echo $public_profile_link;
 ?>
 
 
     <!-- CHANGE AVATAR AND BANNER -->
-    
     <form action="" method="POST" name="ImageUploads" enctype="multipart/form-data" onsubmit ="return Validation();">
         <br>
         <fieldset>     
@@ -116,8 +121,9 @@ echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$u
         
     </fieldset>
     </form>
-
     <br>
+
+    <!-- TO DELETE ACCOUNT PERMANENTLY -->
         <fieldset>     
             <legend> Delete Account</legend>
             <button onclick="window.location.href='delete_user.php'" class="btn btn-danger">Delete Account</button>
@@ -126,7 +132,9 @@ echo "<br>Your Public Profile Link: <a href='profile.php?user_name=$username'>$u
 
 </div>
 
-<!--END OF MAIN BODY-->
+<!-------------------------------------------------------------------------------------
+       			                JAVASCRIPT PART
+------------------------------------------------------------------------------------->
 
 <script>
 
@@ -156,7 +164,7 @@ let bgfile = document.getElementById("bginput").value;
 }
 
 //sweet alert plugin to display error message. IT REPLACES the JS alert() function.
-// Gets verification status of the user and if account is not verified, displays a reminders.
+//Gets verification status of the user and if account is not verified, displays a reminders.
 let verification= document.getElementById("verified-status");
 if (verification.innerHTML == "User is not Verified."){
     swal({
@@ -172,12 +180,11 @@ if (verification.innerHTML == "User is not Verified."){
 </html>
 
 
-<!--
-
-    PHP PART
--->
-
+<!-------------------------------------------------------------------------------------
+       			               PHP PART
+------------------------------------------------------------------------------------->
 <?php
+
 // CODE TO CHANGE THE PROFILE PICTURE AND BACKGROUND IMAGE
 if (isset($_POST['save_profile'])) {
     $target_dir = "images/users/";
@@ -221,6 +228,7 @@ if (isset($_POST['save_profile'])) {
                         $result = mysqli_query($con, $sql);
                         $row = mysqli_fetch_assoc($result);
                         $profile_pic_old = $row['profile_pic'];
+                        
                         //ensure that you don't delete the default profile image
                         if ($profile_pic_old != "images/website/defaultPFP.png") {
                             unlink($profile_pic_old);

@@ -24,7 +24,7 @@ $username = $user_data['user_name'];
 
 if (check_verified_status($username) == 0) {
     if (mailer_verify_email($usermail)) {
-        echo "<p class='alert alert-success w-25 text-center'>Email sent!</p>";
+        echo "<p class='alert alert-success w-25 text-center'>Verification Email sent!</p>";
     } else {
         $email_error = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
                                     top: 50px; left: 570px;' role='alert'>

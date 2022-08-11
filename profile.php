@@ -95,9 +95,9 @@ $total_count_post= $row[0];
 ?>
 
 
-<!--
-    HTML PART
--->
+<!----------------------------------------------------------------------
+                      HTML PART
+------------------------------------------------------------------------>
 
 <!DOCTYPE html>
 <html>
@@ -118,22 +118,28 @@ $total_count_post= $row[0];
 <div class="shadow overflow" style="position:relative;">
 <?php require "header.php";?>
 
-    <!--Background Image-->
-    <div id="header" style="background-image:url(<?php echo $background_pic ?>)" alt="Background Image">
-        
-    </div>
+    <!----------------
+	Background Image
+	------------------>
+    <div id="header" style="background-image:url(<?php echo $background_pic ?>)" alt="Background Image"></div>
 
         <div id="profile">
 
-            <!--Profile Image-->
-            <div class="image">
-                <img src="<?php echo $profile_pic ?>" alt="Profile Picture">
-            </div>
+            <!----------------
+			Profile Pic
+			------------------>
+            <div class="image"><img src="<?php echo $profile_pic ?>" alt="Profile Picture"></div>
             
-            <!--Username on Profile-->
+            
+            <!----------------
+			Username
+			------------------>
             <span id="user-font"><?php echo $username ?></span>
             
-            <!--Clear Button-->
+
+            <!----------------
+			Clear Icon
+			------------------>
             <span>
                 <!-- Hide this if a GET request is made but username is not matching to logged in person-->
                 <a href='clear.php' 
@@ -145,18 +151,19 @@ $total_count_post= $row[0];
                 ><img src="images/icons/clear.svg" title="Clear Profile" class="clear-icon"></a> 
             </span>
             
-            <!--Follow/Unfollow Button-->
-            <span>
+           
+            <!----------------
+			Follow/Unfollow Button based on state change
             
 
-            <!------------------------------------------------------------------------------------
             HERE COMPLEX LOGIC IS USED FOR THE ANCHOR TAG
             - If the user is visiting his own profile, the anchor tag is not displayed.
             - If the user is visiting another users profile, the anchor tag is displayed.
             - If the user is not following another user, the anchor tag is displayed with the text "Follow"
             - If the user is already following another user, the anchor tag is displayed with the text "Unfollow"
-            --------------------------------------------------------------------------------------->
-
+ 
+		    ------------------>
+            <span>
             <a style="color:black" href="follow.php?user_name=<?php
             if (isset($_GET['user_name'])) {
                 if ($_GET['user_name'] != $user_data['user_name']) {
@@ -182,19 +189,19 @@ $total_count_post= $row[0];
             ?>>
             <!--THE CONTENT OF THE A TAG GOES HERE [FOLLOW/UNFOLLOW] DEPENDING ON WHETHER A USER IS ALREADY FOLLOWING A PERSON OR NOT.-->
             <?php
-            $user_data = check_login($con);
-            $username = $user_data['user_name'];
-            $sql = "SELECT `followed_username` FROM `social` WHERE `follower_username`='$username' and `followed_username`='$_GET[user_name]'";
-            if ($query = mysqli_query($con, $sql)) {
-                $result = mysqli_num_rows($query);
-                if ($result == 0) {
-                    // echo "Follow";
-                    echo "<img src='images/icons/follow.svg' class='follow-icon' title='Follow User'>";
-                } else {
-                    // echo "Unfollow";
-                    echo "<img src='images/icons/unfollow.svg' class='unfollow-icon' title='Unfollow User'>";
+                $user_data = check_login($con);
+                $username = $user_data['user_name'];
+                $sql = "SELECT `followed_username` FROM `social` WHERE `follower_username`='$username' and `followed_username`='$_GET[user_name]'";
+                if ($query = mysqli_query($con, $sql)) {
+                    $result = mysqli_num_rows($query);
+                    if ($result == 0) {
+                        // echo "Follow";
+                        echo "<img src='images/icons/follow.svg' class='follow-icon' title='Follow User'>";
+                    } else {
+                        // echo "Unfollow";
+                        echo "<img src='images/icons/unfollow.svg' class='unfollow-icon' title='Unfollow User'>";
+                    }
                 }
-            }
             ?></a>
             </span>
 
@@ -207,7 +214,10 @@ $total_count_post= $row[0];
 		<ul>
 		<!--Total Media Added (on logged in user profile)/Mutual Count (on other users profile)-->	
         <li>
-        <!--Count is show here-->
+            
+            <!----------------
+			Total Media Count
+			------------------>
             <?php
             // ADDED MEDIA COUNT - GET REQUEST (on logged in user profile)
             if (isset($_GET['user_name'])){
@@ -224,6 +234,9 @@ $total_count_post= $row[0];
             }
             ?>  
         
+            <!----------------
+			Mutual Media Count
+			------------------>
             <?php
                 // MUTUAL MEDIA COUNT - GET REQUEST (on other users profile)
                 if (isset($_GET['user_name'])) {
@@ -234,7 +247,7 @@ $total_count_post= $row[0];
                     }          
                 }
             ?>     
-            <!--Text is show heres-->
+         
 		    <span> 
                 <?php 
                 // MUTUAL MEDIA 
@@ -259,7 +272,9 @@ $total_count_post= $row[0];
             </span>			
         </li>
 			
-            <!--Followers-->
+            <!----------------
+			FOLLOWERS COUNT
+			------------------>
             <li>
             <?php echo $total_followers; ?>
 			<span><a href="followers.php?user_name=<?php 
@@ -272,7 +287,9 @@ $total_count_post= $row[0];
             style="color:black">Followers</a></span>
 			</li>
 			
-            <!--Following-->
+            <!----------------
+			FOLLOWING COUNT
+			------------------>
             <li>
             <?php echo $total_following; ?>
 			<span><a href="following.php?user_name=<?php 
@@ -287,7 +304,10 @@ $total_count_post= $row[0];
     </div> <!--End of data-->
 </div> <!--End of content-->
         
-<!--Videogame, Album, Book, Movie and TV will be below here. -->
+
+<!----------------------------------------------------------------
+	Videogame, Album, Book, Movie and TV will be below here.
+------------------------------------------------------------------>
 <div name="activity" id="activity">
     <?php require "WYDRN.php";?>
 </div>
@@ -295,13 +315,16 @@ $total_count_post= $row[0];
 </div> <!-- This DIV is the end of the bottom half of the card. White Section-->
 </div> <!-- This DIV is the end of the entire card-->
 
-<!--END OF MAIN BODY-->
-<?php 
-mysqli_close($con);
-?>
+<?php mysqli_close($con);?>
 
-<!-- To prevent form resubmission when page is refreshed (F5 / CTRL+R) -->
+
+
+<!----------------------------------------------------------------------
+                       JAVASCRIPT PART
+------------------------------------------------------------------------>
+
 <script>
+    //  To prevent form resubmission when page is refreshed (F5 / CTRL+R)
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
     }

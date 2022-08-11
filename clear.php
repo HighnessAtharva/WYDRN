@@ -30,3 +30,7 @@ mysqli_close($con);
 // redirect back to the profile page
 header("Location: profile.php");
 ?>
+
+<!-------------------------------------------------------------------------------------
+                    NO HTML OR JAVASCRIPT IS REQUIRED FOR THIS PAGE
+------------------------------------------------------------------------------------->

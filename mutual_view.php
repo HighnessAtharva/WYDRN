@@ -6,9 +6,28 @@
  * @since      June 2022
  * @author     AtharvaShah
  */
+
+session_start();
+if (empty($_SESSION)) {
+    header("Location: login.php");
+}
+
+require "connection.php";
+require "functions.php";
+require "header.php";
+
+$user_data = check_login($con);
+if (isset($_GET['user_name'])) {
+    $otheruser = $_GET['user_name'];
+    $me = $user_data['user_name'];
+}
+
 ?>
 
 
+<!-------------------------------------------------------------------------------------
+                             HTML PART
+------------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,23 +43,10 @@
     <link href="css/mutual_view.css" rel="stylesheet">
 </head>
 <body>
-<?php
-session_start();
-if (empty($_SESSION)) {
-    header("Location: login.php");
-}
 
-require "connection.php";
-require "functions.php";
-require "header.php";
-
-$user_data = check_login($con);
-if (isset($_GET['user_name'])) {
-    $otheruser = $_GET['user_name'];
-    $me = $user_data['user_name'];
-}?>
-
-    <!--HEADING-->
+    <!------------------------------------------
+            SHOWING BUTTONS
+    --------------------------------------------->
     <center><h1>Mutual View for <?php echo ($me . " & " . $otheruser) ?></h1>
     
     <div class="flex spaceEvenly" id="counter">
@@ -68,9 +74,13 @@ if (isset($_GET['user_name'])) {
             TV<br><?php echo (get_mutual_media_count($me, $otheruser)[4]); ?>
         </button>
     <div>
-    
     </center>
-    <!--VIDEO GAMES-->
+
+
+
+     <!------------------------------------------
+                VIDEO GAMES SECTION
+    --------------------------------------------->
     <div class="media" id="mututalGameDiv" style="display:none;">
         <div>
             <h2>Video Games</h2>
@@ -96,7 +106,9 @@ if (isset($_GET['user_name'])) {
     </div>
 
 
-     <!--Music-->
+     <!------------------------------------------
+                ALBUMS SECTION
+    --------------------------------------------->
      <div class="media" id="mututalMusicDiv" style="display:none;">
         <div>
             <h2>Music</h2>
@@ -120,7 +132,10 @@ if (isset($_GET['user_name'])) {
         ?>
     </div>
 
-    <!--Books-->
+
+    <!------------------------------------------
+                BOOKS SECTION
+    --------------------------------------------->
     <div class="media" id="mututalBookDiv" style="display:none;">
         <div>
             <h2>Books</h2>
@@ -144,7 +159,10 @@ if (isset($_GET['user_name'])) {
         ?>
     </div>
 
-      <!--Movie-->
+
+    <!------------------------------------------
+            MOVIES SECTION
+    --------------------------------------------->
       <div class="media" id="mututalMovieDiv" style="display:none;">
         <div>
             <h2>Movies</h2>
@@ -168,7 +186,9 @@ if (isset($_GET['user_name'])) {
         ?>
     </div>
 
-      <!--TV-->
+    <!------------------------------------------
+                TV SERIES SECTION
+    --------------------------------------------->
       <div class="media" id="mututalTVDiv" style="display:none;">
         <div>
             <h2>TV</h2>
@@ -194,6 +214,10 @@ if (isset($_GET['user_name'])) {
 </div>
 
 
+
+<!----------------------------------------------------------------------
+                       JAVASCRIPT PART
+------------------------------------------------------------------------>
 <script>
 const gameBtn= document.getElementById('mututalGameBtn');
 const gameDiv= document.getElementById('mututalGameDiv');

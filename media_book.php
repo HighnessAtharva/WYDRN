@@ -49,6 +49,11 @@ function getposterpath($name, $author){
 ?>
 
 
+
+
+<!-------------------------------------------------------------------------------------
+                                HTML PART
+------------------------------------------------------------------------------------->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -66,18 +71,26 @@ function getposterpath($name, $author){
   <h1>Your Books<span><?php echo getRandomBookQuote() ?></span></h1>
 </div>
 
+
+<!-------------------------------------------------------------------------------------
+                         DYNAMICALLY GENERATED PHP PART 
+------------------------------------------------------------------------------------->
 <?php
 
-$per_page_record = 15; // Number of entries to show in a page.
+// Number of entries to show in a page.
+$per_page_record = 15; 
+
+
 // Look for a GET variable page if not found default is 1.
 if (isset($_GET["page"])) {
     $page = $_GET["page"];
 } else {
     $page = 1;
 }
+
 $start_from = ($page - 1) * $per_page_record;
  
-    $html_book="<br><br><section class='cards-wrapper'>"; // $html_book stores the html code for the movie cards
+$html_book="<br><br><section class='cards-wrapper'>"; // $html_book stores the html code for the movie cards
     
     //only select unique books logged by the user
     $sql = "SELECT `book`, `author`, `date` FROM `data` where book != '' and username='$username' GROUP BY `book` order by `date` DESC LIMIT $start_from, $per_page_record;";
@@ -141,7 +154,9 @@ $start_from = ($page - 1) * $per_page_record;
 
 ?>
 
-<!--PAGINATION ROW -->
+<!-------------------------------------------------------------------------------------
+                                PAGINATION
+------------------------------------------------------------------------------------->
 <center>
  <div class="pagination">
         <?php

@@ -22,6 +22,10 @@ if(isset($_GET['key']) && isset($_GET['reset']))
   if(mysqli_num_rows($select)==1)
   {
 ?>
+
+<!----------------------------------------------------------------
+                        HTML PART
+----------------------------------------------------------------->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -38,6 +42,8 @@ if(isset($_GET['key']) && isset($_GET['reset']))
     <div class="container" style="justify-content:center">    
     <!--HTML Form for Resetting Password-->
         <form method="POST" action="submit_new.php">
+        
+        <!--Take on the email from the get request and pass it onto the next page whilst keeping it hidden because password will be updated where email is matching -->
         <input type="hidden" name="email" value="<?php echo $email;?>">
         <p class="alert-success alert">Enter New password</p>
         <input type="password" name='password'>
@@ -49,13 +55,17 @@ if(isset($_GET['key']) && isset($_GET['reset']))
 </html>
 
 
-
+<!----------------------------------------------------------------
+                        PHP ART
+----------------------------------------------------------------->
 <?php
   }
 }
+
 //if the user directly lands on this page, then they are not allowed to access the page and requested to use a reset link.
 else{
-  echo "You need a proper verification link to reset your password. Can't find the link in your inbox? <a href='send_reset_link.php'>Send another one</a>";
+  $invalid_reset_link_error="<center><div class='alert alert-danger w-50 text-center ' style='position: absolute; top: 75px; left: 400px;' role='alert'>You need a proper verification link to reset your password. Can't find the link in your inbox? <a href='send_reset_link.php'>Send another one</a>";
+  echo $invalid_reset_link_error;
 }
 
 mysqli_close($con);

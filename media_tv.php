@@ -9,8 +9,6 @@
  * @author     AtharvaShah
  */
 
- 
-
 session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
@@ -50,6 +48,9 @@ function getposterpath($name){
 }
 ?>
 
+<!-------------------------------------------------------------------------------------
+                                HTML PART
+------------------------------------------------------------------------------------->
 
 <html>
 <head>
@@ -72,15 +73,24 @@ function getposterpath($name){
   <h1>Your TV Shows<span><?php echo getRandomTvQuote() ?></span></h1>
 </div>
 
+
+
+<!-------------------------------------------------------------------------------------
+                         DYNAMICALLY GENERATED PHP PART 
+------------------------------------------------------------------------------------->
 <?php
-    $per_page_record = 15; // Number of entries to show in a page.
-    // Look for a GET variable page if not found default is 1.
-    if (isset($_GET["page"])) {
-        $page = $_GET["page"];
-    } else {
-        $page = 1;
-    }
-    $start_from = ($page - 1) * $per_page_record;
+// Number of entries to show in a page.
+$per_page_record = 15; 
+
+
+// Look for a GET variable page if not found default is 1.
+if (isset($_GET["page"])) {
+    $page = $_GET["page"];
+} else {
+    $page = 1;
+}
+
+$start_from = ($page - 1) * $per_page_record;
 
 $html_tv="<br><br><section class='cards-wrapper'>"; // $html_tv stores the html code for the movie cards
     
@@ -97,6 +107,7 @@ if ($query = mysqli_query($con, $sql)) {
             $stripnametv=$stripped = str_replace(' ', '+', $tvname);
 
             /**if poster is not downloaded, download the poster in the directory and show the image*/
+
             //remove special characters since we are using it as a file name
             $filename= preg_replace('/[^A-Za-z0-9\-]/', '', $stripnametv);
             $pseudo_poster='images/API/tv-'.$filename.'.jpg';
@@ -111,8 +122,6 @@ if ($query = mysqli_query($con, $sql)) {
                 
             }
          
-          
-            
 
             // one single div tag for each movie
             $html_tv.="<div class='card-grid-space'>";
@@ -126,7 +135,6 @@ if ($query = mysqli_query($con, $sql)) {
                 $html_tv.="<div class='logged-date'>". $tv_logged ."</div>"; 
                 $html_tv.="</div>";  // end of div for the movie name
 
-
                 $html_tv.="</div>"; // end of card
 
                 $html_tv.="<h1 class='moviename'>". $tvname."</h1>";
@@ -134,7 +142,6 @@ if ($query = mysqli_query($con, $sql)) {
                 $html_tv.="<div class='tag'>". $platform."</div>";
                 $html_tv.="</div>"; // end of tags
                 $html_tv.="</div>"; //end of card-grid-space
-
         }
     }else{
         $html_tv.="No TV shows Logged";
@@ -145,7 +152,10 @@ $html_tv.="</section>";
 echo $html_tv;
 ?>
 
-<!--PAGINATION ROW -->
+
+<!-------------------------------------------------------------------------------------
+                                PAGINATION
+------------------------------------------------------------------------------------->
 <center>
  <div class="pagination">
         <?php
@@ -180,10 +190,9 @@ echo $html_tv;
             echo "<a href='media_tv.php?page=" . ($page + 1) . "'> <span class='neonText'> → </span> </a>";
         }
         ?>
+    
     </div><!--END OF PAGINATION ROW -->
 </center>
-
-
 <body>
 </html>
 <?php  mysqli_close($con);?>

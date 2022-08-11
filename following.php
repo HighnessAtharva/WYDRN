@@ -21,19 +21,24 @@ $user_data = check_login($con);
 $username = $user_data['user_name'];
 ?>
 
+
+<!-------------------------------------------------------------------------------------
+                              HTML PART
+------------------------------------------------------------------------------------->
+
 <html>
-   <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      
-      <title>WYDRN - Following</title>
+      <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+            <title>WYDRN - Following</title>
 
-      <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+            <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-      <link href="CSS/following.css" rel="stylesheet">
-   </head>
+            <link href="CSS/following.css" rel="stylesheet">
+      </head>
 
 <body>
 
@@ -57,7 +62,7 @@ $count = $row[0];
                while($row = mysqli_fetch_assoc($result)){
          ?>
    
-                  <!-- Displays the list of following with their own links. -->
+                  <!-- DYNAMICALLY THE LIST OF ALL FOLLOWING USERS WITH PROFILE PIC AND LINK TO THEIR PROFILES -->
                   <li class='follow-li'>
                      <?php $profile_link="profile.php?user_name=".$row['followed_username'];?>
                      <a class="follow-a" href=<?php echo $profile_link; ?>>
@@ -76,7 +81,7 @@ $count = $row[0];
             }  
          ?>
            
-          
+      </ul>     
 </div> <!--Container DIV end.-->
 </body>
 </html>

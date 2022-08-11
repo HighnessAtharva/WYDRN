@@ -21,6 +21,9 @@ $user_data = check_login($con);
 $username = $user_data['user_name'];
 ?>
 
+<!-------------------------------------------------------------------------------------
+                              HTML PART
+------------------------------------------------------------------------------------->
 <html>
    <head>
       <meta charset="UTF-8">
@@ -43,8 +46,10 @@ $sql="SELECT count(*) from `social` s LEFT JOIN `users` u ON s.follower_username
 $result = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($result);
 $count = $row[0];
-
 ?>
+
+
+
 <div class="container">
    <h1 class="h1count"><?php echo $count; ?> Followers</h1>
       <ul class="follow-ul">
@@ -57,7 +62,7 @@ $count = $row[0];
                while($row = mysqli_fetch_assoc($result)){
          ?>
    
-                  <!-- Displays the list of followers with their own links. -->
+                  <!-- DYNAMICALLY THE LIST OF ALL FOLLOWERS WITH PROFILE PIC AND LINK TO THEIR PROFILES -->
                   <li class='follow-li'>
                      <?php $profile_link="profile.php?user_name=".$row['follower_username'];?>
                      <a class="follow-a" href=<?php echo $profile_link; ?>>
@@ -76,7 +81,7 @@ $count = $row[0];
             }  
          ?>
            
-          
+      </ul>        
 </div> <!--Container DIV end.-->
 </body>
 </html>

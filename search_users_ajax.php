@@ -32,20 +32,23 @@ if (isset($_POST['search'])) {
 <div class='search-results'>
     <!-- Assigning searched result in "Search box" in "search.php" file. -->
     <?php 
-   if ($result["user_name"]){
-   echo "<img src=".$result['profile_pic']." class='profile-pic'></span>&nbsp&nbsp";
-   echo "<a href=profile.php?user_name=".$result['user_name']." style='font-size:1.2em'>".$result['user_name']."</a>" ;
-}
+         if ($result["user_name"]){
+         echo "<img src=".$result['profile_pic']." class='profile-pic'></span>&nbsp&nbsp";
+         echo "<a href=profile.php?user_name=".$result['user_name']." style='font-size:1.2em'>".$result['user_name']."</a>" ;
+         }
      ?>
-    </p>
-    
 </div>
 </center>
 
 
 <!-- Below php code is just for closing parenthesis. Don't be confused. -->
-   <?php
-}}
-mysqli_close($con);
+<?php
+   }}
+   mysqli_close($con);
 ?>
 </ul>
+
+
+<!-------------------------------------------------------------------------------------
+                    NO HTML OR JAVASCRIPT IS REQUIRED FOR THIS PAGE
+------------------------------------------------------------------------------------->

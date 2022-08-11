@@ -366,9 +366,9 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
 
 ?>
 
-<!-- *******************
-       HTML STUFF
-******************* -->
+<!-------------------------------------------------------------------------------------
+                              HTML PART
+------------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -389,7 +389,9 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
   <h1 class="heading">Your Stats</h1>
   <br>
 
-  <!-- GENERAL STATS TABLE  -->
+<!-----------------------------
+      GENERAL STATS TABLE
+-------------------------------->
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
@@ -445,8 +447,9 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
 
 
   
-
-  <!-- BOOK STATS TABLE  -->
+<!-----------------------------
+      BOOK STATS TABLE
+-------------------------------->
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
@@ -482,7 +485,9 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
 
 
 
-  <!-- MOVIE STATS TABLE  -->
+<!-----------------------------
+      MOVIE STATS TABLE
+-------------------------------->
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
@@ -512,7 +517,9 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
 
 
 
-  <!-- TV SHOW STATS TABLE  -->
+<!-----------------------------
+      TV SHOW STATS TABLE
+-------------------------------->
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
@@ -548,7 +555,9 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
 
 
 
-  <!-- VIDEOGAME STATS TABLE  -->
+<!-----------------------------
+      VIDEOGAME STATS TABLE
+-------------------------------->
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
@@ -585,7 +594,9 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
 
 
 
-  <!--MUSIC STATS TABLE -->
+<!-----------------------------
+      ALBUM STATS TABLE
+-------------------------------->
   <div class="table-wrapper">
     <table class="fl-table">
       <thead>
@@ -618,8 +629,6 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
     </table>
   </div>
 
-
   </div>
 </body>
-
 </html>

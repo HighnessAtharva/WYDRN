@@ -29,7 +29,9 @@ if(isset($_POST['userdate'])){
 
 ?>
 
-<!--HTML PART -->
+<!-------------------------------------------------------------------------------------
+       			                HTML PART
+------------------------------------------------------------------------------------->
 <html>
 
     <head>
@@ -50,7 +52,9 @@ if(isset($_POST['userdate'])){
 <div style="margin-left:50px;">
 <h1> Diary Entries For <?php echo $username;?> <?php if (!empty($date_selected)) {echo "on ". printable_date($date_selected);}?> </h1>
 
-<!--PHP PART -->
+<!-------------------------------------------------------------------------------------
+       			                PHP PART
+------------------------------------------------------------------------------------->
 <?php
  $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' AND `date`= '$date_selected' ORDER BY `date` DESC;";
 
@@ -143,6 +147,11 @@ if ($query = mysqli_query($con, $sql)) {
 mysqli_close($con);
 ?>
 </div>
+
+
+<!-------------------------------------------------------------------------------------
+       			                JAVASCRIPT
+------------------------------------------------------------------------------------->
 <script>
     // To prevent form resubmission when page is refreshed (F5 / CTRL+R) 
     if ( window.history.replaceState ) {

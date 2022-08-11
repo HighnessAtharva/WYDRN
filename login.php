@@ -15,13 +15,14 @@
 - IF THE USERNAME AND PASSWORD MATCHES, THE USER IS REDIRECTED TO THE PROFILE PAGE.
 -----------------------------------------------------------------------------------*/
 
-session_start();
+
 
 require "connection.php";
 require "functions.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //something was
+	
     $user_name = strip_tags(trim($_POST['user_name']));
     $password = strip_tags(trim($_POST['password']));
 
@@ -29,11 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $result = mysqli_query($con, $query);
     if ($result) {
         if ($result && mysqli_num_rows($result) > 0) {
-
             $user_data = mysqli_fetch_assoc($result);
             $hashed_pass = $user_data['password'];
             if (password_verify($password, $hashed_pass)) {
-                $_SESSION['user_id'] = $user_data['user_id'];
+                //start the session only if user is authenticated
+				session_start();
+				$_SESSION['user_id'] = $user_data['user_id'];
                 header("Location: profile.php");
                 die;
             }
@@ -115,14 +117,11 @@ mysqli_close($con);
 		</form>
 	</div>
 
-<!-------------------------------------------------------------------------------------
-STICKY FOOTER REQUIRED AT THE BOTTOM OF THE PAGE
-------------------------------------------------------------------------------------->
 
 
 
 <!-------------------------------------------------------------------------------------
-JAVASCRIPT
+JAVASCRIPT VALIDATION
 ------------------------------------------------------------------------------------->
 <script>
 		

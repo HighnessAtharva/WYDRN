@@ -35,3 +35,8 @@ if(isset($_POST['email']) && $_POST['password'] && $_POST['submit_password']){
 }
 mysqli_close($con);
 ?>
+
+
+<!----------------------------------------------------
+      NO HTML OR JAVASCRIPT CODE NEEDED FOR THIS FILE
+------------------------------------------------------->

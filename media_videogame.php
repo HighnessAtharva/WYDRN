@@ -47,7 +47,9 @@ function getposterpath($name){
 }
 ?>
 
-
+<!-------------------------------------------------------------------------------------
+                        HTML PART
+------------------------------------------------------------------------------------->
 <html>
 <head>
     <meta charset="UTF-8">
@@ -70,17 +72,24 @@ function getposterpath($name){
   <h1>Your Video Games<span><?php echo getRandomVideoGameQuote(); ?> </span></h1>
 </div>
 
-<?php
-  $per_page_record = 10; // Number of entries to show in a page.
-  // Look for a GET variable page if not found default is 1.
-  if (isset($_GET["page"])) {
-      $page = $_GET["page"];
-  } else {
-      $page = 1;
-  }
-  $start_from = ($page - 1) * $per_page_record;
 
-    $html_game="<br><br><section class='cards-wrapper'>"; // $html_game stores the html code for the movie cards
+<!-------------------------------------------------------------------------------------
+                         DYNAMICALLY GENERATED PHP PART 
+------------------------------------------------------------------------------------->
+
+<?php
+// Number of entries to show in a page.
+$per_page_record = 10; 
+
+// Look for a GET variable page if not found default is 1.
+if (isset($_GET["page"])) {
+    $page = $_GET["page"];
+} else {
+    $page = 1;
+}
+$start_from = ($page - 1) * $per_page_record;
+
+$html_game="<br><br><section class='cards-wrapper'>"; // $html_game stores the html code for the movie cards
     
     //only select unique videogames logged by the user
     $sql = "SELECT `videogame`, `platform`, `date` FROM `data` where videogame != '' and username='$username' GROUP BY `videogame` order by `date` DESC LIMIT $start_from, $per_page_record;";
@@ -90,14 +99,12 @@ function getposterpath($name){
             while ($row = mysqli_fetch_assoc($query)) {
                 $game=$row['videogame'];
                 $platform=$row['platform'];
-                $game_logged=date("F jS, Y", strtotime($row['date']));
-
-               
+                $game_logged=date("F jS, Y", strtotime($row['date']));               
                 $stripgame=str_replace(' ', '+', $game);
                 
 
-                
             /**if poster is not downloaded, download the poster in the directory and show the image*/
+            
             //remove special characters since we are using it as a file name
             $filename= preg_replace('/[^A-Za-z0-9\-]/', '', $stripgame);
             $pseudo_poster='images/API/game-'.$filename.'.jpg';
@@ -111,10 +118,10 @@ function getposterpath($name){
                 file_put_contents($img, file_get_contents($posterpath));
                 
             }
-         
 
-                // one single div tag for each movie
-                $html_game.="<div class='card-grid-space'>";
+                    // one single div tag for each movie
+                    $html_game.="<div class='card-grid-space'>";
+
                     // image tag for the movie
                     $html_game.="<div class='card' style='background-image:url(";
                     $html_game.= $posterpath;  // get the poster path from the api
@@ -125,7 +132,6 @@ function getposterpath($name){
                     $html_game.="<div class='logged-date'>". $game_logged ."</div>"; 
                     $html_game.="</div>";  // end of div for the movie name
 
-
                     $html_game.="</div>"; // end of card
 
                     $html_game.="<h1 class='moviename'>". $game."</h1>";
@@ -133,19 +139,18 @@ function getposterpath($name){
                     $html_game.="<div class='tag'>". $platform."</div>";
                     $html_game.="</div>"; // end of tags
                     $html_game.="</div>"; //end of card-grid-space
-
             }
         }else{
             $html_game.="No Videogames Logged";
         }
 }
-    
     $html_game.="</section>";
-    echo $html_game;
-    
+    echo $html_game;   
 ?>
 
-<!--PAGINATION ROW -->
+<!-------------------------------------------------------------------------------------
+                                PAGINATION
+------------------------------------------------------------------------------------->
 <center>
  <div class="pagination">
         <?php
@@ -180,6 +185,7 @@ function getposterpath($name){
             echo "<a href='media_videogame.php?page=" . ($page + 1) . "'>  <span class='neonText'> → </span> </a>";
         }
         ?>
+        
     </div><!--END OF PAGINATION ROW -->
 </center>
 <body>

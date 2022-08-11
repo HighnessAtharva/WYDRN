@@ -46,6 +46,10 @@ function getposterpath($name, $artist){
 ?>
 
 
+<!-------------------------------------------------------------------------------------
+                                PAGINATION
+------------------------------------------------------------------------------------->
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -60,27 +64,31 @@ function getposterpath($name, $artist){
         <link rel="stylesheet" href="CSS/media_music.css">
     </head>
 
-
-
-
 <body class="css-selector">
-
 <div class="heading">
   <h1>Your Albums<span><?php echo getRandomAlbumQuote() ?></span></h1>
 </div>
 
+
+
+<!-------------------------------------------------------------------------------------
+                         DYNAMICALLY GENERATED PHP PART 
+------------------------------------------------------------------------------------->
 <?php
-$per_page_record = 15; // Number of entries to show in a page.
+
+// Number of entries to show in a page.
+$per_page_record = 15; 
+
 // Look for a GET variable page if not found default is 1.
 if (isset($_GET["page"])) {
     $page = $_GET["page"];
 } else {
     $page = 1;
 }
+
 $start_from = ($page - 1) * $per_page_record;
 
-
-    $html_album="<br><br><section class='cards-wrapper'>"; // $html_album stores the html code for the album cards
+$html_album="<br><br><section class='cards-wrapper'>"; // $html_album stores the html code for the album cards
     
     //only select unique albums logged by the user
     $sql = "SELECT `album`, `artist`, `date` FROM `data` where album != '' and username='$username' GROUP BY `album` order by `date` DESC LIMIT $start_from, $per_page_record;";
@@ -117,16 +125,11 @@ $start_from = ($page - 1) * $per_page_record;
                     $html_album.="<div class='card' style='background-image:url(";
                     $html_album.= $posterpath;  // get the poster path from the api
                     $html_album.=")'";
-                    // $html_album.="<div class='card'";
-                    // $html_album.= "style=";
-                    // $html_album.= "background-image:url('images/Icons/loading.gif')";
-
                     $html_album.=">";
                 
                     $html_album.="<div>"; 
                     $html_album.="<div class='logged-date'>". $album_logged ."</div>"; 
                     $html_album.="</div>";  // end of div for the album name
-
 
                     $html_album.="</div>"; // end of card
 
@@ -145,8 +148,9 @@ $start_from = ($page - 1) * $per_page_record;
 
 ?>
 
-
-<!--PAGINATION ROW -->
+<!-------------------------------------------------------------------------------------
+                                PAGINATION
+------------------------------------------------------------------------------------->
 <center>
  <div class="pagination">
         <?php

@@ -14,9 +14,9 @@ require "header.php";
 $user_data = check_login($con);
 ?>
 
-<!--
-    HTML PART
--->
+<!------------------------------------------------------------------------------
+                                        HTML PART
+------------------------------------------------------------------------------>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,9 +50,9 @@ $user_data = check_login($con);
     <form class="ms-5" method="POST" action="profile.php" name="userinput" onsubmit ="return Validation();">
         <div style="margin-right: 100px;">
 
-            <!----------------
-                Music
-            ---------------->
+            <!------------------------------------------------------
+                                Music
+            ------------------------------------------------------>
             <h3 class="mb-3">Music</h3>
             <div class="mb-3 ms-3" name="album">
 
@@ -67,9 +67,9 @@ $user_data = check_login($con);
                 </div>
             </div>
 
-            <!----------------
-                Books
-            ---------------->
+            <!------------------------------------------------------
+                                 Books
+            ------------------------------------------------------>
             <h3 class="mb-3">Books</h3>
             <div class="mb-3 ms-3" name="book">
 
@@ -84,9 +84,9 @@ $user_data = check_login($con);
                 </div>
             </div>
 
-            <!----------------
-                Movies
-            ---------------->
+            <!------------------------------------------------------
+                                  Movies
+            ------------------------------------------------------>
             <h3 class="mb-3">Movies</h3>
             <div class="mb-3 ms-3" name="movie">
 
@@ -102,9 +102,9 @@ $user_data = check_login($con);
 
             </div>
 
-            <!----------------
-                  TV
-            ---------------->
+            <!------------------------------------------------------
+                                TV
+            ------------------------------------------------------>
             <h3 class="mb-3">TV/Streaming</h3>
             <div class="mb-3 ms-3" name="TV">
 
@@ -134,9 +134,9 @@ $user_data = check_login($con);
             </div>
 
 
-            <!----------------
-                Video Games
-            ------------------>
+            <!-------------------------------------------------
+                         Video Games
+            --------------------------------------------------->
             <h3 class="mb-3">Video Game</h3>
             <div class="mb-3 ms-3" name="videogame">
 
@@ -184,6 +184,11 @@ $user_data = check_login($con);
         <!--END OF RIGHT COLUMN-->
 
 <!--END OF MAIN BODY-->
+
+
+<!------------------------------------------------------------------------
+                        JAVASCRIPT PART
+-------------------------------------------------------------------------->
 <script src="SearchBoxAPIs/Music/script.js"></script>
 <script src="SearchBoxAPIs/TV/script.js"></script>
 <script src="SearchBoxAPIs/Movie/script.js"></script>
