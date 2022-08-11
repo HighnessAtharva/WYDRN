@@ -103,7 +103,9 @@ mysqli_close($con);
 			PASSWORD
 			------------------>
 			<span  class="inputboxes">PASSWORD</span>
-			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" required><br><br>
+			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" required><br>
+			<!-- An element to toggle between password visibility -->
+			<input type="checkbox" onclick="showPass()" value="Show Password" ><span style="color:white">Show Password<br><br>
 
 			<!----------------
 			CONFIRM PASSWORD
@@ -134,6 +136,16 @@ mysqli_close($con);
 	// To prevent form resubmission when page is refreshed (F5 / CTRL+R) 
 	if ( window.history.replaceState ) {
 		window.history.replaceState( null, null, window.location.href );
+		}
+
+	//toggle password visibilty
+	function showPass() {
+			var x = document.getElementById("pass");
+			if (x.type === "password") {
+				x.type = "text";
+			} else {
+				x.type = "password";
+			}
 		}
 
 	// to check and validate form data and raise alerts if input is erronous. 	
