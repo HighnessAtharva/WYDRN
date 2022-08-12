@@ -73,12 +73,79 @@ function getposterpath($name){
   <h1>Your TV Shows<span><?php echo getRandomTvQuote() ?></span></h1>
 </div>
 
+<!-- Sorting Functionality -->
+<form method="get" action="" name="sort">
+    <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
+    <option value="">Sort By</option>
 
+    <option value="added-desc">Added Date (Newest To Oldest)</option>
+    <option value="added-asc">Added Date (Oldest To Newest)</option>
+
+    
+    <option value="alphabetic-asc">TV Show (A-Z)</option>
+    <option value="alphabetic-desc">TV Show(Z-A)</option>
+    
+    <option value="streaming-asc">Streaming(A-Z)</option>
+    <option value="streaming-desc">Streaming(Z-A)</option>
+    
+    </select>
+</form>
 
 <!-------------------------------------------------------------------------------------
                          DYNAMICALLY GENERATED PHP PART 
 ------------------------------------------------------------------------------------->
 <?php
+
+//set default sort order
+$sortby="added-desc";
+$sorting="`date`"; //default sorting is by added date;  
+$order="DESC"; //default order is newest to oldest  
+
+// default sorting is by added date;
+if (isset($_GET["sortby"])) {
+    $sortby = $_GET["sortby"];
+
+
+    /***************  SORT BY DATE OF LOGGING ***********/
+    // Newest To Oldest
+    if($sortby=="added-desc"){
+        $sorting="`date`";
+        $order="DESC";
+    }
+
+    //Oldest to Newest
+    else if($sortby=="added-asc"){
+        $sorting="`date`";
+        $order="ASC";
+    }
+
+    /***************  SORT BY TV SHOW NAME ***********/
+       //A-Z
+      else if ($sortby == "alphabetic-asc") {
+          $sorting = "`tv`";
+          $order = "ASC";
+      }
+      // Z-A
+      else if ($sortby == "alphabetic-desc") {
+          $sorting = "`tv`";
+          $order = "DESC";
+      }
+
+    /***************  SORT BY STREAMING SERVICES***********/
+    //A-Z
+      else if ($sortby == "streaming-asc") {
+        $sorting = "`streaming`";
+        $order = "ASC";
+    }
+    //Z-A
+    else if ($sortby == "streaming-desc") {
+        $sorting = "`streaming`";
+        $order = "DESC";
+    }
+}//end of if isset($_GET["sortby"])
+
+
+
 // Number of entries to show in a page.
 $per_page_record = 15; 
 
@@ -95,7 +162,7 @@ $start_from = ($page - 1) * $per_page_record;
 $html_tv="<br><br><section class='cards-wrapper'>"; // $html_tv stores the html code for the movie cards
     
 //only select unique shows logged by the user
-$sql = "SELECT `tv`, `streaming`, `date` FROM `data` where tv != '' and username='$username' GROUP BY `tv` order by `date` DESC LIMIT $start_from, $per_page_record;";
+$sql = "SELECT `tv`, `streaming`, `date` FROM `data` where tv != '' and username='$username' GROUP BY `tv` order by ".$sorting." ".$order." LIMIT $start_from, $per_page_record;";
 if ($query = mysqli_query($con, $sql)) {
     $totaltvcount=mysqli_num_rows($query);
     if ($totaltvcount > 0) {
@@ -171,7 +238,7 @@ echo $html_tv;
 
         // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
         if ($page >= 2) {
-            echo "<a href='media_tv.php?page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
+            echo "<a href='media_tv.php?sortby=".$sortby."&page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
         }
 
         // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
@@ -180,14 +247,14 @@ echo $html_tv;
                 $pageLink .= "<a class = 'active' href='media_tv.php?page="
                     . $i . "'>" . $i . " </a>";
             } else {
-                $pageLink .= "<a href='media_tv.php?page=" . $i . "'>" . $i . " </a>";
+                $pageLink .= "<a href='media_tv.php?sortby=".$sortby."&page=" . $i . "'>" . $i . " </a>";
             }
         }
         echo $pageLink;
 
         // SHOW NEXT BUTTON IF NOT ON LAST PAGE
         if ($page < $total_pages) {
-            echo "<a href='media_tv.php?page=" . ($page + 1) . "'> <span class='neonText'> → </span> </a>";
+            echo "<a href='media_tv.php?sortby=".$sortby."&page=" . ($page + 1) . "'> <span class='neonText'> → </span> </a>";
         }
         ?>
     

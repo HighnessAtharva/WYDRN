@@ -72,12 +72,80 @@ function getposterpath($name){
   <h1>Your Video Games<span><?php echo getRandomVideoGameQuote(); ?> </span></h1>
 </div>
 
+<!-- Sorting Functionality -->
+<form method="get" action="" name="sort">
+    <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
+    <option value="">Sort By</option>
+
+    <option value="added-desc">Added Date (Newest To Oldest)</option>
+    <option value="added-asc">Added Date (Oldest To Newest)</option>
+
+    
+    <option value="alphabetic-asc">Videogame (A-Z)</option>
+    <option value="alphabetic-desc">Videogame (Z-A)</option>
+    
+    <option value="platform-asc">Platform (A-Z)</option>
+    <option value="platform-desc">Platform(Z-A)</option>
+    
+    </select>
+</form>
+
 
 <!-------------------------------------------------------------------------------------
                          DYNAMICALLY GENERATED PHP PART 
 ------------------------------------------------------------------------------------->
 
 <?php
+
+//set default sort order
+$sortby="added-desc";
+$sorting="`date`"; //default sorting is by added date;  
+$order="DESC"; //default order is newest to oldest  
+
+// default sorting is by added date;
+if (isset($_GET["sortby"])) {
+    $sortby = $_GET["sortby"];
+
+
+    /***************  SORT BY DATE OF LOGGING ***********/
+    // Newest To Oldest
+    if($sortby=="added-desc"){
+        $sorting="`date`";
+        $order="DESC";
+    }
+
+    //Oldest to Newest
+    else if($sortby=="added-asc"){
+        $sorting="`date`";
+        $order="ASC";
+    }
+
+    /***************  SORT BY VIDEOGAME NAME ***********/
+       //A-Z
+      else if ($sortby == "alphabetic-asc") {
+          $sorting = "`videogame`";
+          $order = "ASC";
+      }
+      // Z-A
+      else if ($sortby == "alphabetic-desc") {
+          $sorting = "`videogame`";
+          $order = "DESC";
+      }
+
+    /***************  SORT BY GAMING PLATFORM***********/
+    //A-Z
+      else if ($sortby == "platform-asc") {
+        $sorting = "`platform`";
+        $order = "ASC";
+    }
+    //Z-A
+    else if ($sortby == "platform-desc") {
+        $sorting = "`platform`";
+        $order = "DESC";
+    }
+}//end of if isset($_GET["sortby"])
+
+
 // Number of entries to show in a page.
 $per_page_record = 10; 
 
@@ -92,7 +160,7 @@ $start_from = ($page - 1) * $per_page_record;
 $html_game="<br><br><section class='cards-wrapper'>"; // $html_game stores the html code for the movie cards
     
     //only select unique videogames logged by the user
-    $sql = "SELECT `videogame`, `platform`, `date` FROM `data` where videogame != '' and username='$username' GROUP BY `videogame` order by `date` DESC LIMIT $start_from, $per_page_record;";
+    $sql = "SELECT `videogame`, `platform`, `date` FROM `data` where videogame != '' and username='$username' GROUP BY `videogame` order by ".$sorting." ".$order." LIMIT $start_from, $per_page_record;";
     if ($query = mysqli_query($con, $sql)) {
         $totalgamecount=mysqli_num_rows($query);
         if ($totalgamecount > 0) {
@@ -166,7 +234,7 @@ $html_game="<br><br><section class='cards-wrapper'>"; // $html_game stores the h
 
         // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
         if ($page >= 2) {
-            echo "<a href='media_videogame.php?page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
+            echo "<a href='media_videogame.php?sortby=".$sortby."&page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
         }
 
         // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
@@ -175,14 +243,14 @@ $html_game="<br><br><section class='cards-wrapper'>"; // $html_game stores the h
                 $pageLink .= "<a class = 'active' href='media_videogame.php?page="
                     . $i . "'>" . $i . " </a>";
             } else {
-                $pageLink .= "<a href='media_videogame.php?page=" . $i . "'>" . $i . " </a>";
+                $pageLink .= "<a href='media_videogame.php?sortby=".$sortby."&page=" . $i . "'>" . $i . " </a>";
             }
         }
         echo $pageLink;
 
         // SHOW NEXT BUTTON IF NOT ON LAST PAGE
         if ($page < $total_pages) {
-            echo "<a href='media_videogame.php?page=" . ($page + 1) . "'>  <span class='neonText'> → </span> </a>";
+            echo "<a href='media_videogame.php?sortby=".$sortby."&page=" . ($page + 1) . "'>  <span class='neonText'> → </span> </a>";
         }
         ?>
         

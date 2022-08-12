@@ -71,11 +71,74 @@ function getposterpath($name, $author){
   <h1>Your Books<span><?php echo getRandomBookQuote() ?></span></h1>
 </div>
 
+<!-- Sorting Functionality -->
+<form method="get" action="" name="sort">
+    <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
+    <option value="">Sort By</option>
 
+    <option value="added-desc">Added Date (Newest To Oldest)</option>
+    <option value="added-asc">Added Date (Oldest To Newest)</option>
+
+    
+    <option value="alphabetic-asc">Book (A-Z)</option>
+    <option value="alphabetic-desc">Book (Z-A)</option>
+    
+    <option value="author-asc">Author(A-Z)</option>
+    <option value="author-desc">Author (Z-A)</option>
+    
+    </select>
+</form>
 <!-------------------------------------------------------------------------------------
                          DYNAMICALLY GENERATED PHP PART 
 ------------------------------------------------------------------------------------->
 <?php
+//set default sort order
+$sortby="added-desc";
+$sorting="`date`"; //default sorting is by added date;  
+$order="DESC"; //default order is newest to oldest  
+
+// default sorting is by added date;
+if (isset($_GET["sortby"])) {
+    $sortby = $_GET["sortby"];
+
+
+    /***************  SORT BY DATE OF LOGGING ***********/
+    // Newest To Oldest
+    if($sortby=="added-desc"){
+        $sorting="`date`";
+        $order="DESC";
+    }
+
+    //Oldest to Newest
+    else if($sortby=="added-asc"){
+        $sorting="`date`";
+        $order="ASC";
+    }
+
+    /***************  SORT BY BOOK NAME ***********/
+       //A-Z
+      else if ($sortby == "alphabetic-asc") {
+          $sorting = "`book`";
+          $order = "ASC";
+      }
+      // Z-A
+      else if ($sortby == "alphabetic-desc") {
+          $sorting = "`book`";
+          $order = "DESC";
+      }
+
+    /***************  SORT BY AUTHORs ***********/
+    //A-Z
+      else if ($sortby == "author-asc") {
+        $sorting = "`author`";
+        $order = "ASC";
+    }
+    //Z-A
+    else if ($sortby == "author-desc") {
+        $sorting = "`author`";
+        $order = "DESC";
+    }
+}//end of if isset($_GET["sortby"])
 
 // Number of entries to show in a page.
 $per_page_record = 15; 
@@ -93,7 +156,7 @@ $start_from = ($page - 1) * $per_page_record;
 $html_book="<br><br><section class='cards-wrapper'>"; // $html_book stores the html code for the movie cards
     
     //only select unique books logged by the user
-    $sql = "SELECT `book`, `author`, `date` FROM `data` where book != '' and username='$username' GROUP BY `book` order by `date` DESC LIMIT $start_from, $per_page_record;";
+    $sql = "SELECT `book`, `author`, `date` FROM `data` where book != '' and username='$username' GROUP BY `book` order by  ".$sorting." ".$order." LIMIT $start_from, $per_page_record;";
     if ($query = mysqli_query($con, $sql)) {
         $totalbookcount=mysqli_num_rows($query);
         if ($totalbookcount > 0) {
@@ -172,7 +235,7 @@ $html_book="<br><br><section class='cards-wrapper'>"; // $html_book stores the h
 
         // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
         if ($page >= 2) {
-            echo "<a href='media_book.php?page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
+            echo "<a href='media_book.php?sortby=".$sortby."&page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
         }
 
         // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
@@ -181,14 +244,14 @@ $html_book="<br><br><section class='cards-wrapper'>"; // $html_book stores the h
                 $pageLink .= "<a class = 'active' href='media_book.php?page="
                     . $i . "'>" . $i . " </a>";
             } else {
-                $pageLink .= "<a href='media_book.php?page=" . $i . "'>" . $i . " </a>";
+                $pageLink .= "<a href='media_book.php?sortby=".$sortby."&page=" . $i . "'>" . $i . " </a>";
             }
         }
         echo $pageLink;
 
         // SHOW NEXT BUTTON IF NOT ON LAST PAGE
         if ($page < $total_pages) {
-            echo "<a href='media_book.php?page=" . ($page + 1) . "'> <span class='neonText'> → </span> </a>";
+            echo "<a href='media_book.php?sortby=".$sortby."&page=" . ($page + 1) . "'> <span class='neonText'> → </span> </a>";
         }
         ?>
     </div><!--END OF PAGINATION ROW -->

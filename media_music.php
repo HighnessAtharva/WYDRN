@@ -69,12 +69,77 @@ function getposterpath($name, $artist){
   <h1>Your Albums<span><?php echo getRandomAlbumQuote() ?></span></h1>
 </div>
 
+<!-- Sorting Functionality -->
+<form method="get" action="" name="sort">
+    <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
+    <option value="">Sort By</option>
 
+    <option value="added-desc">Added Date (Newest To Oldest)</option>
+    <option value="added-asc">Added Date (Oldest To Newest)</option>
+
+    
+    <option value="alphabetic-asc">Album (A-Z)</option>
+    <option value="alphabetic-desc">Album(Z-A)</option>
+    
+    <option value="artist-asc">Artist(A-Z)</option>
+    <option value="artist-desc">Artist(Z-A)</option>
+    
+    </select>
+</form>
 
 <!-------------------------------------------------------------------------------------
                          DYNAMICALLY GENERATED PHP PART 
 ------------------------------------------------------------------------------------->
 <?php
+
+//set default sort order
+$sortby="added-desc";
+$sorting="`date`"; //default sorting is by added date;  
+$order="DESC"; //default order is newest to oldest  
+
+// default sorting is by added date;
+if (isset($_GET["sortby"])) {
+    $sortby = $_GET["sortby"];
+
+
+    /***************  SORT BY DATE OF LOGGING ***********/
+    // Newest To Oldest
+    if($sortby=="added-desc"){
+        $sorting="`date`";
+        $order="DESC";
+    }
+
+    //Oldest to Newest
+    else if($sortby=="added-asc"){
+        $sorting="`date`";
+        $order="ASC";
+    }
+
+    /***************  SORT BY ALBUMS ***********/
+       //A-Z
+      else if ($sortby == "alphabetic-asc") {
+          $sorting = "`album`";
+          $order = "ASC";
+      }
+      // Z-A
+      else if ($sortby == "alphabetic-desc") {
+          $sorting = "`album`";
+          $order = "DESC";
+      }
+
+    /***************  SORT BY ARTISTS ***********/
+    //A-Z
+      else if ($sortby == "artist-asc") {
+        $sorting = "`artist`";
+        $order = "ASC";
+    }
+    //Z-A
+    else if ($sortby == "artist-desc") {
+        $sorting = "`artist`";
+        $order = "DESC";
+    }
+}//end of if isset($_GET["sortby"])
+
 
 // Number of entries to show in a page.
 $per_page_record = 15; 
@@ -91,7 +156,7 @@ $start_from = ($page - 1) * $per_page_record;
 $html_album="<br><br><section class='cards-wrapper'>"; // $html_album stores the html code for the album cards
     
     //only select unique albums logged by the user
-    $sql = "SELECT `album`, `artist`, `date` FROM `data` where album != '' and username='$username' GROUP BY `album` order by `date` DESC LIMIT $start_from, $per_page_record;";
+    $sql = "SELECT `album`, `artist`, `date` FROM `data` where album != '' and username='$username' GROUP BY `album` order by ".$sorting." ".$order." LIMIT $start_from, $per_page_record;";
     if ($query = mysqli_query($con, $sql)) {
         $totalalbumcount=mysqli_num_rows($query);
         if ($totalalbumcount > 0) {
@@ -166,7 +231,7 @@ $html_album="<br><br><section class='cards-wrapper'>"; // $html_album stores the
 
         // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
         if ($page >= 2) {
-            echo "<a href='media_music.php?page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
+            echo "<a href='media_music.php?sortby=".$sortby."&page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
         }
 
         // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
@@ -175,14 +240,14 @@ $html_album="<br><br><section class='cards-wrapper'>"; // $html_album stores the
                 $pageLink .= "<a class = 'active' href='media_music.php?page="
                     . $i . "'>" . $i . " </a>";
             } else {
-                $pageLink .= "<a href='media_music.php?page=" . $i . "'>" . $i . " </a>";
+                $pageLink .= "<a href='media_music.php?sortby=".$sortby."&page=" . $i . "'>" . $i . " </a>";
             }
         }
         echo $pageLink;
 
         // SHOW NEXT BUTTON IF NOT ON LAST PAGE
         if ($page < $total_pages) {
-            echo "<a href='media_music.php?page=" . ($page + 1) . "'> <span class='neonText'> → </span></a>";
+            echo "<a href='media_music.php?sortby=".$sortby."&page=" . ($page + 1) . "'> <span class='neonText'> → </span></a>";
         }
         ?>
     </div><!--END OF PAGINATION ROW -->

@@ -65,20 +65,94 @@ function getposterpath($name, $year){
   <h1>Your Movies<span><?php echo getRandomMovieQuote() ?></span></h1>
 </div>
 
+
+<!-- Sorting Functionality -->
+<form method="get" action="" name="sort">
+    <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
+    <option value="">Sort By</option>
+    <option value="added-desc">Added Date (Newest To Oldest)</option>
+    <option value="added-asc">Added Date (Oldest To Newest)</option>
+
+    <option value="release-desc">Release Date (Newest to Oldest)</option>
+    <option value="release-asc">Release Date (Oldest to Newest)</option>
+    
+    <option value="alphabetic-asc">Movie (A-Z)</option>
+    <option value="alphabetic-desc">Movie (Z-A)</option>
+    </select>
+</form>
+
     <?php
+    //set default sort order
+    $sortby="added-desc";
+    $sorting="`date`"; //default sorting is by added date;  
+    $order="DESC"; //default order is newest to oldest  
+    
+    // default sorting is by added date;
+    if (isset($_GET["sortby"])) {
+        $sortby = $_GET["sortby"];
+
+
+        /*************** SORT BY DATE OF LOGGING ***********/
+        // Newest To Oldest
+        if($sortby=="added-desc"){
+            $sorting="`date`";
+            $order="DESC";
+        }
+
+        // Oldest to Newest
+        else if($sortby=="added-asc"){
+            $sorting="`date`";
+            $order="ASC";
+        }
+
+
+         /***************  SORT BY DATE OF RELEASE ***********/
+        // Newest To Oldest
+        else if ($sortby == "release-desc") {
+            $sorting = "`year`";
+            $order = "DESC";
+        }
+
+        // Oldest to Newest
+        else if ($sortby == "release-asc") {
+            $sorting = "`year`";
+            $order = "ASC";
+        }
+
+
+         /***************  SORT BY ALPHABETIC SORT ***********/
+        // A-Z
+        else if ($sortby == "alphabetic-asc") {
+            $sorting = "`movie`";
+            $order = "ASC";
+        }
+
+        // Z-A
+        else if ($sortby == "alphabetic-desc") {
+            $sorting = "`movie`";
+            $order = "DESC";
+        }
+        
+    } //end of if isset($_GET["sortby"])
+   
     $per_page_record = 15; // Number of entries to show in a page.
     // Look for a GET variable page if not found default is 1.
     if (isset($_GET["page"])) {
         $page = $_GET["page"];
+    
+      
     } else {
         $page = 1;
+       
     }
     $start_from = ($page - 1) * $per_page_record;
     
     
     //only select unique movies logged by the user
     $html_movie="<br><br><section class='cards-wrapper'>"; // $html_movie stores the html code for the movie cards
-    $sql = "SELECT `movie`, `year`, `date` FROM `data` where movie != '' and username='$username' GROUP BY `movie` order by `date` DESC LIMIT $start_from, $per_page_record;";
+    
+    
+    $sql = "SELECT `movie`, `year`, `date` FROM `data` where movie != '' and username='$username' GROUP BY `movie` order by ".$sorting." ".$order." LIMIT $start_from, $per_page_record;";
     if ($query = mysqli_query($con, $sql)) {
         $totalmoviecount=mysqli_num_rows($query);
         if ($totalmoviecount > 0) {
@@ -156,7 +230,7 @@ function getposterpath($name, $year){
 
         // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
         if ($page >= 2) {
-            echo "<a href='media_movie.php?page=" . ($page - 1) . "'><span class='neonText'> ← </span></a>";
+            echo "<a href='media_movie.php?sortby=".$sortby."&page=" . ($page - 1) . "'><span class='neonText'> ← </span></a>";
         }
 
         // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
@@ -165,14 +239,14 @@ function getposterpath($name, $year){
                 $pageLink .= "<a class = 'active' href='media_movie.php?page="
                     . $i . "'>" . $i . " </a>";
             } else {
-                $pageLink .= "<a href='media_movie.php?page=" . $i . "'>" . $i . " </a>";
+                $pageLink .= "<a href='media_movie.php?sortby=".$sortby."&page=" . $i . "'>" . $i . " </a>";
             }
         }
         echo $pageLink;
 
         // SHOW NEXT BUTTON IF NOT ON LAST PAGE
         if ($page < $total_pages) {
-            echo "<a href='media_movie.php?page=" . ($page + 1) . "'><span class='neonText'> → </span></a>";
+            echo "<a href='media_movie.php?sortby=".$sortby."&page=" . ($page + 1) . "'><span class='neonText'> → </span></a>";
         }
         ?>
     </div><!--END OF PAGINATION ROW -->

@@ -97,7 +97,7 @@ if ($query = mysqli_query($con, $sql)) {
             echo ("<table id='diarytable'"); //table start
 
             //date and time. Check other fields because datetime will be added even in blank records added during clearing done by the user. 
-            if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($TV))) {
+            if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($tv))) {
                 $datetime = printable_datetime($datetime);
                 echo ("<tr><td>");
                 echo ("<div class='datetime'><h2>" . $datetime . "</h2></div>");
