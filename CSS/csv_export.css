@@ -14,6 +14,14 @@ body {
     -webkit-user-select: none;
 }
 
+.media-icon {
+    width: 25px;
+    height: 25px;
+    display: inline;
+    margin-right: 10px;
+    padding-bottom: 4px;
+}
+
 .heading2 {
     font-size: 30px;
     text-transform: uppercase;

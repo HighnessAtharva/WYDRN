@@ -271,11 +271,15 @@ if (mysqli_num_rows($result) > 0) {
         <!--  /Header  -->
 
         <br><hr><br>
-            
+        
+        <center>
         <!--  PRINTING VIDEOGAME DATA   -->
         <div class="form-group">
             <?php  if (!empty($gamedata)) echo $gamedata;
-                   else echo "No Videogame Media added yet!";
+                   else echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+                   <img src='../images/Icons/videogame.svg' class='media-icon'>No videogames added to your account.
+                   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                   </div>";
             ?>
         </div>
             
@@ -283,30 +287,43 @@ if (mysqli_num_rows($result) > 0) {
         <!--  PRINTING ALBUM DATA   -->
         <div class="form-group">
             <?php  if (!empty($albumdata)) echo $albumdata;
-                   else echo "No Album Media added yet!";
+                   else echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+                   <img src='../images/Icons/Music.svg' class='media-icon'>No albums added to your account.
+                   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                   </div>";
             ?>
         </div>
 
         <!--  PRINTING MOVIE DATA   -->
         <div class="form-group">
             <?php  if (!empty($movie)) echo $moviedata;
-                   else echo "No Movie Media added yet!";
+                   else echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+                   <img src='../images/Icons/Movie.svg' class='media-icon'>No movies added to your account.
+                   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                   </div>";
             ?>
         </div>
         
         <!--  PRINTING TV DATA   -->
         <div class="form-group">
             <?php  if (!empty($tvdata)) echo $tvdata;
-                   else echo "No TV Media added yet!";
+                   else echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+                   <img src='../images/Icons/TV.svg' class='media-icon'>No tv shows added to your account.
+                   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                   </div>";
             ?>
         </div>
 
         <!--  PRINTING BOOK DATA   -->
         <div class="form-group">
             <?php  if (!empty($bookdata)) echo $bookdata;
-                   else echo "No Book Media added yet!";
+                   else echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+                   <img src='../images/Icons/Book.svg' class='media-icon'>No books added to your account.
+                   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                   </div>";
             ?>
         </div>
+        </center>
 
 
     </div> <!--End of container-->

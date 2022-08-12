@@ -68,7 +68,7 @@ function mailer_verify_email($recipient)
     $mail->Port = 465; // or 587
     $mail->IsHTML(true);
     $mail->Username = "westerospatriot@gmail.com";
-    $mail->Password = "bilxvsxtedlvormq"; //Google Account -> Security -> App Passwords
+    $mail->Password = "snqaqtbdavtchhoh"; //Google Account -> Security -> App Passwords
     $mail->SetFrom("westerospatriot@gmail.com");
     $mail->Subject = "WYDRN - Verify Your Email";
     //mailer body start
@@ -108,7 +108,7 @@ function send_reset_link($recipient, $link)
     $mail->Port = 465; // or 587
     $mail->IsHTML(true);
     $mail->Username = "westerospatriot@gmail.com";
-    $mail->Password = "bilxvsxtedlvormq"; //Google Account -> Security -> App Passwords
+    $mail->Password = "snqaqtbdavtchhoh"; //Google Account -> Security -> App Passwords
     $mail->SetFrom("westerospatriot@gmail.com");
     $mail->Subject = "WYDRN - Reset Password";
     $mail->Body = $link;
