@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         header("Location: login.php");
         die;
     } // END OF ELSE
-} // END OF MAIN IF CONDITIONAL
+} // END OF MAIN IF CONDITIONAL	
 mysqli_close($con);
 ?>
 
