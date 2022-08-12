@@ -57,6 +57,12 @@ $username = $user_data['user_name'];
                     </div> -->
                 </div>
             </div>
+
+
+            <!--GET VIDEOGAME RECOMMENDATIONS-->
+            <div>
+                <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/recommendation.php?Game'">Get Videogame<br> Recommendations</button>
+            </div>
         </div>
         <!-- end of search container -->
 

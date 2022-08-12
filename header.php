@@ -10,6 +10,10 @@
 
 
 include_once("connection.php");
+if(empty($_SESSION))
+{
+  header("Location: login.php");
+}
 if(isset($_SESSION['user_id']))
 	{
 		$id = $_SESSION['user_id'];

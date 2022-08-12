@@ -31,7 +31,7 @@ function MovieRecommendations($username){
 function BookRecommendations($username){
     
    /*exec -> executes script in terminal and returns output || PASS THE USERNAME AS CMD LINE ARGUMENT TO THE PYTHON SCRIPT*/
-    $BookResult=exec("python Books/BookRecommendation.py");
+    $BookResult=exec("python Books/BookRecommendation.py ".$username);
 
     $result_array=json_decode($BookResult,true);
     foreach($result_array as $book=>$rank)
@@ -44,7 +44,7 @@ function BookRecommendations($username){
 function TVRecommendations($username){
     
     /*exec -> executes script in terminal and returns output || PASS THE USERNAME AS CMD LINE ARGUMENT TO THE PYTHON SCRIPT*/
-    $TVResult=exec("python TV/TVRecommendation.py");
+    $TVResult=exec("python TV/TVRecommendation.py ".$username);
 
     $result_array=json_decode($TVResult,true);
     foreach($result_array as $show=>$rank)
@@ -58,7 +58,7 @@ function TVRecommendations($username){
 function AlbumRecommendations($username){
     
     /*exec -> executes script in terminal and returns output || PASS THE USERNAME AS CMD LINE ARGUMENT TO THE PYTHON SCRIPT*/
-    $AlbumResult=exec("python Albums/AlbumRecommendation.py");
+    $AlbumResult=exec("python Albums/AlbumRecommendation.py ".$username);
 
     $result_array=json_decode($AlbumResult,true);
     foreach($result_array as $album=>$rank)
@@ -71,7 +71,7 @@ function AlbumRecommendations($username){
 function GameRecommendations($username){
     
     /*exec -> executes script in terminal and returns output || PASS THE USERNAME AS CMD LINE ARGUMENT TO THE PYTHON SCRIPT*/
-    $GameResult=exec("python VideoGame/VideoGameRecommendation.py");
+    $GameResult=exec("python VideoGame/VideoGameRecommendation.py ".$username);
 
     $result_array=json_decode($GameResult,true);
     foreach($result_array as $game=>$rank)

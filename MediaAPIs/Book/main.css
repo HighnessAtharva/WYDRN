@@ -82,6 +82,7 @@ img {
     -ms-flex-direction: column;
     flex-direction: column;
     position: relative;
+    margin-right: 20em;
 }
 
 .search-element h3 {

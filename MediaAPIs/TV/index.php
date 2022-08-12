@@ -57,6 +57,11 @@ $username = $user_data['user_name'];
                     </div> -->
                 </div>
             </div>
+
+            <!--GET TV RECOMMENDATIONS-->
+            <div>
+                <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/recommendation.php?TV'">Get TV<br> Recommendations</button>
+            </div>
         </div>
         <!-- end of search container -->
 
