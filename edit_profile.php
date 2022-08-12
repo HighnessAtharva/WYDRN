@@ -281,7 +281,7 @@ if (isset($_POST['save_profile'])) {
             }
 
             if ($_FILES['BgImage']['size'] > 1024000) {
-                $msg2 = "Image size should not be greater than 1MBs";
+                $msg2 = "Image size should not be greater than 1MB";
             }
 
             if (file_exists($target_file2)) {
