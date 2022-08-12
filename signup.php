@@ -71,9 +71,6 @@ mysqli_close($con);
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="CSS/signup.css">
-
-	<!--JQUERY-->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	
     <!-- Sweet Alert (Beautiful looking alert plugin-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -105,7 +102,7 @@ mysqli_close($con);
 			PASSWORD
 			------------------>
 			<span  class="inputboxes">PASSWORD</span>
-			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" onCopy="return false" required><br>
+			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" onCopy="return false" required><br><br>
 			
 
 			<!----------------
@@ -137,19 +134,6 @@ mysqli_close($con);
 	JAVASCRIPT VALIDATION
 ------------------------------------------------------------------------------------->
 <script>
-
-$(document).ready(function () {
-    $('input.pass').bind('copy paste', function (e) {
-       e.preventDefault();
-    });
-  });
-
-  $(document).ready(function () {
-    $('input.confirmpass').bind('copy paste', function (e) {
-       e.preventDefault();
-    });
-  });
-
 
 
 	// To prevent form resubmission when page is refreshed (F5 / CTRL+R) 
