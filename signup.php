@@ -72,6 +72,8 @@ mysqli_close($con);
 
 	<link rel="stylesheet" href="CSS/signup.css">
 
+	<!--JQUERY-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	
     <!-- Sweet Alert (Beautiful looking alert plugin-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -103,15 +105,17 @@ mysqli_close($con);
 			PASSWORD
 			------------------>
 			<span  class="inputboxes">PASSWORD</span>
-			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" required><br>
-			<!-- An element to toggle between password visibility -->
-			<input type="checkbox" onclick="showPass()" value="Show Password" ><span style="color:white">Show Password<br><br>
+			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" onCopy="return false" required><br>
+			
 
 			<!----------------
 			CONFIRM PASSWORD
 			------------------>
 			<span  class="inputboxes">CONFIRM PASSWORD</span>
-			<input class="text" id="confirmpass" type="password" name="confirm_password" placeholder="Karm@beatsDogm@" required><br><br>
+			<input class="text" id="confirmpass" type="password" name="confirm_password" onCopy="return false" placeholder="Karm@beatsDogm@" required><br>
+
+			<!-- An element to toggle between password visibility -->
+			<input type="checkbox" onclick="showPass()" value="Show Password" ><span style="color:white">Show Password<br><br>
 
 			<!----------------
 			SIGN UP BUTTON
@@ -133,6 +137,21 @@ mysqli_close($con);
 	JAVASCRIPT VALIDATION
 ------------------------------------------------------------------------------------->
 <script>
+
+$(document).ready(function () {
+    $('input.pass').bind('copy paste', function (e) {
+       e.preventDefault();
+    });
+  });
+
+  $(document).ready(function () {
+    $('input.confirmpass').bind('copy paste', function (e) {
+       e.preventDefault();
+    });
+  });
+
+
+
 	// To prevent form resubmission when page is refreshed (F5 / CTRL+R) 
 	if ( window.history.replaceState ) {
 		window.history.replaceState( null, null, window.location.href );
@@ -141,10 +160,13 @@ mysqli_close($con);
 	//toggle password visibilty
 	function showPass() {
 			var x = document.getElementById("pass");
-			if (x.type === "password") {
+			var y = document.getElementById("confirmpass");
+			if ((x.type === "password") && (y.type === "password")) {
 				x.type = "text";
+				y.type = "text";
 			} else {
 				x.type = "password";
+				y.type = "password";
 			}
 		}
 
@@ -155,7 +177,7 @@ mysqli_close($con);
 		var confirmpassword = document.getElementById("confirmpass").value;
 		var email = document.getElementById("email").value;
 		var re = /\S+@\S+\.\S+/;
-		const isAlphaNumeric = str => /^[a-z0-9]+$/gi.test(str);
+		const isAlphaNumeric = str => /^[a-z0-9_]+$/gi.test(str);
 		
 		// CHECK IF USERNAME IS LONG ENOUGH
 		if(name.length < 3 || name.length > 20){

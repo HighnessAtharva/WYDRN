@@ -91,7 +91,7 @@ mysqli_close($con);
 			PASSWORD
 			-------------->
 			<span  class="userandpass">PASSWORD</span>
-			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" required><br>
+			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" onCopy="return false" required><br>
 
 			<!-- An element to toggle between password visibility -->
 			<input type="checkbox" onclick="showPass()" value="Show Password" ><span style="color:white">Show Password<br>
@@ -146,23 +146,12 @@ JAVASCRIPT VALIDATION
 		function Validation(){
 			var name = document.getElementById("username").value;
 			var password = document.getElementById("pass").value;
-			const isAlphaNumeric = str => /^[a-z0-9]+$/gi.test(str);
+			const isAlphaNumeric = str => /^[a-z0-9_]+$/gi.test(str);
 			
-			// CHECK IF USERNAME IS LONG ENOUGH
-			if(name.length < 3 || name.length > 20){
-				 //sweet alert plugin to display error message. IT REPLACES the JS alert() function.
-				swal({
-				title: "Username Invalid",
-				text: "Username must be between 3 and 20 characters",
-				icon: "warning",
-				button: "Retry",
-				});
-      
-				return false;
-			}
+			
 
 			// CHECK IF USERNAME IS ALPHANUMERIC
-			else if(!isAlphaNumeric(name)){
+			if(!isAlphaNumeric(name)){
 				//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
 				swal({
 				title: "Username Invalid",
@@ -174,16 +163,7 @@ JAVASCRIPT VALIDATION
 				return false;
 			}
 
-			// CHECK FOR PASSWORD SECURITY LENGTH
-			else if(password.length < 8 || password.length > 30){
-				swal({
-				title: "Password Invalid",
-				text: "Password must be between 8 and 30 characters",
-				icon: "warning",
-				button: "Retry",
-				});
-				return false;
-			}
+		
 
 		// RETURN VALID AFTER ALL CHECKS PASS
 		return true;
