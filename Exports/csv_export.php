@@ -8,6 +8,9 @@
 
 
 session_start();
+if (empty($_SESSION)) {
+    header("Location: ../login.php");
+}
 include("../connection.php");
 include("../functions.php");
 include("header.php");

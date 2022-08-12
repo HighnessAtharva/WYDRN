@@ -12,7 +12,7 @@
 
 session_start();
 if (empty($_SESSION)) {
-    header("Location: login.php");
+    header("Location: ../login.php");
 }
 require "header.php";
 ?>
