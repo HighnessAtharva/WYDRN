@@ -34,7 +34,12 @@ $username = $user_data['user_name'];
     <link rel="stylesheet" href="main.css">
 </head>
 
+
 <body>
+
+    <div class="heading">
+        <h1>Books</h1>
+    </div>
 
     <div class="wrapper">
         
