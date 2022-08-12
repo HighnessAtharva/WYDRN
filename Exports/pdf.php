@@ -121,5 +121,7 @@ $pdf->Cell(50,10,'',0,2,'C');
 
 $pdf->Table($con,$sql, $prop);
 
+// ob_end_clean() will clear all the echoed output. REMEDY AGAINST  FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\
+ob_end_clean();
 $pdf->Output();
 ?>
