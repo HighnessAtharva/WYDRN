@@ -38,7 +38,7 @@ body {
     top: 50%;
     left: 50%;
     margin: -35px 0px 0px -35px;
-    background: #fff url(../icons/loader.gif) no-repeat center center;
+    background: #fff url(icons/loader.gif) no-repeat center center;
     width: 70px;
     height: 70px;
     z-index: 999;
@@ -66,12 +66,12 @@ body {
 
 .pp_next {
     right: -40px;
-    background: #222 url(../icons/next.png) no-repeat center center;
+    background: #222 url(icons/next.png) no-repeat center center;
 }
 
 .pp_prev {
     left: -40px;
-    background: #222 url(../icons/prev.png) no-repeat center center;
+    background: #222 url(icons/prev.png) no-repeat center center;
 }
 
 #pp_thumbContainer {
@@ -89,7 +89,7 @@ body {
     bottom: -90px;
 }
 
-.album .descr,
+.album .name,
 .pp_back {
     position: absolute;
     bottom: 0px;
@@ -150,9 +150,9 @@ body {
     box-shadow: 1px 1px 7px #000;
 }
 
-.pp_descr {
+.pp_name {
     height: 45px;
-    line-height: 45px;
+    line-height: 1.6;
     font-size: 20px;
     width: 100%;
     bottom: 0px;

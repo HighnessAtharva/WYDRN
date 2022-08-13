@@ -14,31 +14,150 @@ $user_data = check_login($con);
 $username = $user_data['user_name'];
 
 function MovieRecommendations($username){
-    $MovieResult=exec("python Movie/MovieRecommendation.py ".$username);
-    return json_decode($MovieResult,true);
+    $MovieResult=exec("python MovieRecommendation.py ".$username);
+    $result= json_decode($MovieResult,true);
+    return $result;
 }
 
+
+function getMoviePosterPath($name){
+    $api_key="e446bc89015229cf337e16b0849d506c";
+    $url = 'https://api.themoviedb.org/3/search/movie?api_key='.$api_key.'&query='.$name.'&include_adult=true';
+    // echo $url . "<br>";
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, [
+      'Content-Type: application/json'
+    ]);
+    
+    $response = curl_exec($curl);
+    $response=json_decode($response,true);
+    curl_close($curl);
+    
+    if (empty($response['results'][0]['poster_path'])) {
+        $response = "../images/API/WYDRNmovie.png";
+    }
+    else {
+        $response = "https://image.tmdb.org/t/p/w300".$response['results'][0]['poster_path'];
+    }
+    return $response;
+    
+}
+
+
 function BookRecommendations($username){
-    $BookResult=exec("python Books/BookRecommendation.py ".$username);
+    $BookResult=exec("python BookRecommendation.py ".$username);
     return json_decode($BookResult,true);
 }
 
+function getBookPosterPath($name){
+    $url = 'https://www.googleapis.com/books/v1/volumes?q='.$name.'&orderBy=relevance';
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, [
+      'Content-Type: application/json'
+    ]);
+    
+    $response = curl_exec($curl);
+    $response=json_decode($response,true);
+    curl_close($curl);
+    
+    if (empty($response['items'][0]['volumeInfo']['imageLinks']['thumbnail'])) {
+        $response = "../images/API/WYDRNbook.png";
+    }
+    else {
+        $response = $response['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
+    }
+    // print_r ($response['items'][0]['volumeInfo']['imageLinks']['thumbnail']);
+    return $response;
+    
+}
+
 function TVRecommendations($username){
-    $TVResult=exec("python TV/TVRecommendation.py ".$username);
+    $TVResult=exec("python TVRecommendation.py ".$username);
     return json_decode($TVResult,true);
 }
 
+function getTvPosterPath($name){
+    $api_key="e446bc89015229cf337e16b0849d506c";
+    $url = 'https://api.themoviedb.org/3/search/tv?api_key='.$api_key.'&query='.$name.'&include_adult=true';
+   
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, [
+      'Content-Type: application/json'
+    ]);
+    
+    $response = curl_exec($curl);
+    $response=json_decode($response,true);
+    curl_close($curl);
+    
+    if (empty($response['results'][0]['poster_path'])) {
+        $response = "../images/API/WYDRNtv.png";
+    }
+    else {
+        $response = "https://image.tmdb.org/t/p/w300".$response['results'][0]['poster_path'];
+    }
+    return $response;
+    
+}
 
 function AlbumRecommendations($username){
-    $AlbumResult=exec("python Albums/AlbumRecommendation.py ".$username);
+    $AlbumResult=exec("python AlbumRecommendation.py ".$username);
     return json_decode($AlbumResult,true);
 }
 
+function getAlbumPosterPath($name){
+    $api_key="6a4eb1d0536cfe3583784a65332ee179";
+    $url = 'https://ws.audioscrobbler.com/2.0/?method=album.search&api_key='.$api_key.'&album='.$name.'&format=json';
+    // echo $url . "<br>";
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, [
+      'Content-Type: application/json'
+    ]);
+    
+    $response = curl_exec($curl);
+    $response=json_decode($response,true);
+    curl_close($curl);
+    
+    if (empty($response['results']['albummatches']['album'][0]['image'][3]['#text'])) {
+        $response = "../images/API/WYDRNmusic.png";
+    }
+    else {
+        $response = $response['results']['albummatches']['album'][0]['image'][3]['#text'];
+    }
+    return $response;
+}
+
 function GameRecommendations($username){
-    $GameResult=exec("python VideoGame/VideogameRecommendation.py ".$username);
+    $GameResult=exec("python VideogameRecommendation.py ".$username);
     return json_decode($GameResult,true);
 }
 
+function getGamePosterPath($name){
+    $api_key="fe197746ce494b4791441d9a9161c1be";
+    $url = 'https://api.rawg.io/api/games?search='.$name.'&key='.$api_key;
+    // echo $url . "<br>";
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, [
+      'Content-Type: application/json'
+    ]);
+    
+    $response = curl_exec($curl);
+    $response=json_decode($response,true);
+    curl_close($curl);
+    
+    if (empty($response['results'][0]['background_image'])) {
+        $response = "../images/API/WYDRNgame.png";
+    }
+    else {
+        $response = $response['results'][0]['background_image'];
+    }
+    return $response;
+    
+}
 
 //do not echo, just invoke the function. Designing and layout to be done inside the function itself. 
 
@@ -77,7 +196,8 @@ function GameRecommendations($username){
 <body>
     <div class="heading">
         <h1>Recommendations</h1>
-    </div>
+    </div><br><br>
+    
 
     <div id="pp_gallery" class="pp_gallery">
 
@@ -88,64 +208,81 @@ function GameRecommendations($username){
 
 
             <!-------------------------------------
+                            MOVIES
+            -------------------------------------->
+           
+            
+            <div class="album">
+            <?php
+            $movieList=MovieRecommendations($username);
+            foreach($movieList as $movie=>$rank){
+                $stripmovie= str_replace(' ', '+', $movie);
+                $moviePoster=getMoviePosterPath($stripmovie);
+            ?>
+            <!--Priting out the image, name and summary for the user.-->
+                <div class="content">
+                    <!--important: CODE WILL BREAK IF ALT TAG IS NOT PROVIDED WITH IMAGE-->
+                    <img src="<?php echo $moviePoster ?>" alt="<?php echo $moviePoster ?>" />
+                    <span><?php echo $movie?></span>
+                </div>
+                
+            <?php
+                }
+            ?>   
+                <div class="name">
+                    Movies
+                </div>
+            </div>
+
+
+
+            <!-------------------------------------
                          BOOKS
             -------------------------------------->
             <div class="album">
-                
+            <?php
+                $bookList=BookRecommendations($username);
+                foreach($bookList as $book=>$rank){
+                    $stripbook= str_replace(' ', '+', $book);
+                    $bookPoster=getBookPosterPath($stripbook);
+            ?>
             <!--Priting out the image, name and summary for the user.-->
                 <div class="content">
-                    <img src="images/album1/thumbs/1.jpg" alt="images/album1/1.jpg" />
-                    <span>The Sixties by Tetsumo</span>
-                </div>
-                <div class="content">
-                    <img src="images/album1/thumbs/2.jpg" alt="images/album1/2.jpg" />
-                    <span>The Sixties by Tetsumo</span>
+                    <img src="<?php echo $bookPoster ?>"  alt="<?php echo $bookPoster ?>" />
+                    <span><?php echo $book?></span>
                 </div>
                 
                 
-                <div class="descr">
+            <?php
+                }
+            ?>   
+                <div class="name">
                     Books
                 </div>
             </div>
 
-            <!-------------------------------------
-                         MOVIES
-            -------------------------------------->
-            <div class="album">
-
-            <!--Priting out the image, name and summary for the user.-->
-                <div class="content">
-                    <img src="images/album2/thumbs/1.jpg" alt="images/album2/1.jpg" />
-                    <span>Butterfly Girl</span>
-                </div>
-                <div class="content">
-                    <img src="images/album2/thumbs/2.jpg" alt="images/album2/2.jpg" />
-                    <span>Mmmmmmh Strawberries</span>
-                </div>
-
-
-                <div class="descr">
-                    Movies
-                </div>
-            </div>
+            
 
             <!-------------------------------------
                         TV
             -------------------------------------->
             <div class="album">
-                
+            <?php
+                $tvList=TVRecommendations($username);
+                foreach($tvList as $tv=>$rank){
+                    $striptv= str_replace(' ', '+', $tv);
+                    $tvPoster=getTvPosterPath($striptv);
+            ?>
             <!--Priting out the image, name and summary for the user.-->
                 <div class="content">
-                    <img src="images/album2/thumbs/1.jpg" alt="images/album2/1.jpg" />
-                    <span>Butterfly Girl</span>
-                </div>
-                <div class="content">
-                    <img src="images/album2/thumbs/2.jpg" alt="images/album2/2.jpg" />
-                    <span>Mmmmmmh Strawberries</span>
+                    <img src="<?php echo $tvPoster ?>" alt="<?php echo $tvPoster ?>" />
+                    <span><?php echo $tv?></span>
                 </div>
                 
-                
-                <div class="descr">
+            <?php
+                }
+            ?>   
+                <div class="name">
                     TV
                 </div>
             </div>
@@ -155,19 +292,22 @@ function GameRecommendations($username){
                         ALBUMS
             -------------------------------------->
             <div class="album">
-                
+            <?php
+                $albumList=AlbumRecommendations($username);
+                foreach($albumList as $album=>$rank){
+                    $stripalbum= str_replace(' ', '+', $album);
+                    $albumPoster=getAlbumPosterPath($stripalbum);
+            ?>
                 <!--Priting out the image, name and summary for the user.-->
                 <div class="content">
-                    <img src="images/album2/thumbs/1.jpg" alt="images/album2/1.jpg" />
-                    <span>Butterfly Girl</span>
+                    <img src="<?php echo $albumPoster ?>" alt="<?php echo $albumPoster ?>" />
+                    <span><?php echo $album;?></span>
                 </div>
-                <div class="content">
-                    <img src="images/album2/thumbs/2.jpg" alt="images/album2/2.jpg" />
-                    <span>Mmmmmmh Strawberries</span>
-                </div>
-                
-                
-                <div class="descr">
+
+                <?php
+                }
+            ?>  
+                <div class="name">
                     Albums
                 </div>
             </div>
@@ -176,19 +316,25 @@ function GameRecommendations($username){
                         VIDEOGAMES
             -------------------------------------->
             <div class="album">
+            <?php
+                $gameList=GameRecommendations($username);
+                foreach($gameList as $game=>$rank){
+                    $stripgame= str_replace(' ', '+', $game);
+                    $gamePoster=getGamePosterPath($stripgame);
+            ?>
                 
                 <!--Priting out the image, name and summary for the user.-->
                 <div class="content">
-                    <img src="images/album2/thumbs/1.jpg" alt="images/album2/1.jpg" />
-                    <span>Butterfly Girl</span>
+                    <!--BUG: echoing the $gamePoster in image tag breaks the entire page. -->
+                    <img src="<?php echo '../images/API/WYDRNgame.png'?>" alt="<?php echo '../images/API/WYDRNgame.png'?>"/> 
+                    <span><?php echo $game ?></span>
                 </div>
-                <div class="content">
-                    <img src="images/album2/thumbs/2.jpg" alt="images/album2/2.jpg" />
-                    <span>Mmmmmmh Strawberries</span>
-                </div>
+                
+                <?php
+                }
+            ?>  
 
-
-                <div class="descr">
+                <div class="name">
                     Videogames
                 </div>
             </div>

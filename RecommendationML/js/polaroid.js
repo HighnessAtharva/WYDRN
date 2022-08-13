@@ -70,7 +70,7 @@ $(function() {
             .stop()
             .animate({
                 'left': '0px'
-            }, 500).find('.descr').stop().animate({
+            }, 500).find('.name').stop().animate({
                 'bottom': '-30px'
             }, 200);
         var total_pic = $album.find('.content').length;
@@ -126,7 +126,7 @@ $(function() {
             .animate({
                 'left': $current_album.data('left')
             }, 500)
-            .find('.descr')
+            .find('.name')
             .stop()
             .animate({
                 'bottom': '0px'
@@ -195,7 +195,7 @@ $(function() {
             var $preview = $('<div />', {
                 'id': 'pp_preview',
                 'className': 'pp_preview',
-                'html': '<div class="pp_descr"><span>' + imgL_description + '</span></div>',
+                'html': '<div class="pp_name"><span>' + imgL_description + '</span></div>',
                 'style': 'visibility:hidden;'
             });
             $preview.prepend($imgL);
@@ -212,7 +212,7 @@ $(function() {
                 'marginLeft': -largeW / 2 + 'px',
                 'visibility': 'visible'
             });
-            Cufon.replace('.pp_descr');
+            Cufon.replace('.pp_name');
             //show navigation
             showNavigation();
 
