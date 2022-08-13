@@ -1,15 +1,18 @@
+import contextlib
 import numpy as np
 import pandas as pd
 import random
+import json
+import sys
 from collections import Counter
 import mysql.connector
 import matplotlib.pyplot as plt
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 from sklearn.metrics.pairwise import cosine_similarity
 from ast import literal_eval
-
 
 def getUserTV(user_name:str) -> list[str]:
     userTV=[]
@@ -38,11 +41,16 @@ def getUserTV(user_name:str) -> list[str]:
 
 
 
-print("-------------- TV RECOMMENDATION SYSTEM -------------- \n\n")
+
+def recommend(username):
+    RecList=[]
+    userTV=getUserTV(username)
+    userTV=[string.title() for string in userTV]
+    # print(userTV)
+    # weightedDict = dict(dict(weightedList))
 
 
-RecList=[]
-userTV=getUserTV('HighnessAtharva')
-userTV=[string.title() for string in userTV]
-print(userTV)
+    weightedDict={"After Hours": 4, "EMOTION":2, "Twenty Something Nightmare":1, "Dummy4":1,"Dummy5":1,"Dummy6":1,"Dummy7":1, "Dummy8":1, "Dummy9":1, "Dummy10":1}
+    print(json.dumps(weightedDict))
 
+recommend(username=sys.argv[1])

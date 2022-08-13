@@ -12,24 +12,6 @@ require "../functions.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WYDRN - Recommendations</title>
-
-    <!-- custom css -->
-    <link rel="stylesheet" href="recommendation.css">
-</head>
-<body>
-<?php
-
-
 function MovieRecommendations($username){
     
     /*exec -> executes script in terminal and returns output || PASS THE USERNAME AS CMD LINE ARGUMENT TO THE PYTHON SCRIPT*/
@@ -88,7 +70,7 @@ function AlbumRecommendations($username){
 function GameRecommendations($username){
     
     /*exec -> executes script in terminal and returns output || PASS THE USERNAME AS CMD LINE ARGUMENT TO THE PYTHON SCRIPT*/
-    $GameResult=exec("python VideoGame/VideoGameRecommendation.py ".$username);
+    $GameResult=exec("python VideoGame/VideogameRecommendation.py ".$username);
 
     $result_array=json_decode($GameResult,true);
     foreach($result_array as $game=>$rank)
@@ -107,6 +89,23 @@ function PrintHeading($media){
 
 //do not echo, just invoke the function. Designing and layout to be done inside the function itself. 
 
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WYDRN - Recommendations</title>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="recommendation.css">
+</head>
+<body>
+
+<?php
 
 /*http://localhost/WYDRN/RecommendationML/recommendation.php?Movie*/
 if (isset($_GET['Movie']))

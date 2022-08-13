@@ -1,9 +1,13 @@
+import contextlib
 import numpy as np
 import pandas as pd
 import random
+import json
+import sys
 from collections import Counter
 import mysql.connector
 import matplotlib.pyplot as plt
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import linear_kernel
@@ -38,11 +42,17 @@ def getUserBooks(user_name:str) -> list[str]:
 
 
 
-print("-------------- BOOK RECOMMENDATION SYSTEM -------------- \n\n")
+
+def recommend(username):
+    RecList=[]
+    userBooks=getUserBooks(username)
+    userBooks=[string.title() for string in userBooks]
+    # print(userBooks)
+    # weightedDict = dict(dict(weightedList))
+
+    
+    weightedDict={"After Hours": 4, "EMOTION":2, "Twenty Something Nightmare":1, "Dummy4":1,"Dummy5":1,"Dummy6":1,"Dummy7":1, "Dummy8":1, "Dummy9":1, "Dummy10":1}
+    print(json.dumps(weightedDict))
 
 
-RecList=[]
-userBooks=getUserBooks('HighnessAtharva')
-userBooks=[string.title() for string in userBooks]
-print(userBooks)
-
+recommend(username=sys.argv[1])

@@ -25,7 +25,7 @@ def getUserMovies(user_name: str) -> list[str]:
         cursor = connection.cursor()
         cursor.execute(sql_select_Query)
         records = cursor.fetchall()
-        # print("Total number of rows in table: ", cursor.rowcount)
+        print("Total number of rows in table: ", cursor.rowcount)
         userMovies.extend(row[0] for row in records)
         return userMovies
     except mysql.connector.Error as e:
