@@ -36,9 +36,8 @@ $username = $user_data['user_name'];
 
 
 <body>
-
     <div class="heading">
-        <h1>Books</h1>
+        <h1>Search Books</h1>
     </div>
 
     <div class="wrapper">
@@ -46,8 +45,6 @@ $username = $user_data['user_name'];
         <!-- search container -->
         <div class="search-container">
             <div class="search-element">
-                <h3>Search Book</h3>
-
                 <input type="text" class="form-control" placeholder="Enter Book Name and Author's name" id="movie-search-box" onkeyup="findBook()" onclick="findBook()">
                 <div class="search-list" id="search-list">
                     <!--  Dynamically generated LIST APPEARS IN THIS MANNER -->

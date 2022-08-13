@@ -36,12 +36,15 @@ $username = $user_data['user_name'];
 
 <body style="color:white">
 
+<div class="heading">
+        <h1>Search TV Shows</h1>
+</div>
+
     <div class="wrapper">
        
         <!-- search container -->
         <div class="search-container">
             <div class="search-element">
-                <h3>Search TV series</h3>
                 <input type="text" class="form-control" placeholder="Enter TV Series" id="movie-search-box" onkeyup="findTV()" onclick="findTV()">
 
                 <div class="search-list" id="search-list">

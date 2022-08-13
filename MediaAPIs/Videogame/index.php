@@ -35,13 +35,14 @@ $username = $user_data['user_name'];
 </head>
 
 <body style="color:white">
-
+<div class="heading">
+        <h1>Search Video Games</h1>
+    </div>
     <div class="wrapper">
        
         <!-- search container -->
         <div class="search-container">
             <div class="search-element">
-                <h3>Search VideoGame</h3>
                 <input type="text" class="form-control" placeholder="Enter VideoGame" id="movie-search-box" onkeyup="findgame()" onclick="findgame()">
 
                 <div class="search-list" id="search-list">

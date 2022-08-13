@@ -12,6 +12,23 @@ require "../functions.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WYDRN - Recommendations</title>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="recommendation.css">
+</head>
+<body>
+<?php
+
 
 function MovieRecommendations($username){
     
@@ -82,23 +99,33 @@ function GameRecommendations($username){
 }
 
 
+function PrintHeading($media){
+    echo "<div class='heading'>";
+        echo "<h1>".$media."</h1>";
+    echo "</div>";
+}
+
 //do not echo, just invoke the function. Designing and layout to be done inside the function itself. 
+
 
 /*http://localhost/WYDRN/RecommendationML/recommendation.php?Movie*/
 if (isset($_GET['Movie']))
 {
+    PrintHeading("Movie Recommendations");
     MovieRecommendations($username);
 }
 
 /*http://localhost/WYDRN/RecommendationML/recommendation.php?Book*/
 if (isset($_GET['Book']))
 {
+    PrintHeading("Book Recommendations");
     BookRecommendations($username);
 }
 
 /*http://localhost/WYDRN/RecommendationML/recommendation.php?TV*/
 if (isset($_GET['TV']))
 {
+    PrintHeading("TV Recommendations");
     TVRecommendations($username);
 }
 
@@ -106,6 +133,7 @@ if (isset($_GET['TV']))
 /*http://localhost/WYDRN/RecommendationML/recommendation.php?Album*/
 if (isset($_GET['Album']))
 {
+    PrintHeading("Album Recommendations");
     AlbumRecommendations($username);
 }
 
@@ -113,7 +141,11 @@ if (isset($_GET['Album']))
 /*http://localhost/WYDRN/RecommendationML/recommendation.php?Game*/
 if (isset($_GET['Game']))
 {
+    PrintHeading("Game Recommendations");
     GameRecommendations($username);
 }
 
 ?>
+
+</body>
+</html>

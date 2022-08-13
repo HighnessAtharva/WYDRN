@@ -1,0 +1,19 @@
+/* For Stylish Heading*/
+
+.heading {
+    background-color: black;
+}
+
+.heading h1 {
+    text-align: center;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: rgb(255, 245, 245);
+    letter-spacing: 1px;
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    min-width: 1000px;
+}

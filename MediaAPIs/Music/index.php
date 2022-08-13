@@ -35,13 +35,17 @@ $username = $user_data['user_name'];
 </head>
 
 <body style="color:white">
+<div class="heading">
+        <h1>Search Albums</h1>
+    </div>
+
 
     <div class="wrapper">
         
         <!-- search container -->
         <div class="search-container">
             <div class="search-element">
-                <h3>Search Album</h3>
+         
 
                 <input type="text" class="form-control" placeholder="Enter Artist Name and Album Name" id="movie-search-box" onkeyup="findAlbum()" onclick="findAlbum()">
                 <div class="search-list" id="search-list">
