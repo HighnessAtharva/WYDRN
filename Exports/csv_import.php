@@ -158,41 +158,33 @@ if (isset($_POST['submit'])) {
             $datetime = strtoupper(mysqli_real_escape_string($con,$getData[10]));
             $date = strtoupper(mysqli_real_escape_string($con,$getData[11]));
 
-            if (empty($videogame)){
+            if (empty($videogame) || empty($platform)){
                 $videogame = "";
+                $platform = "";
                 $videogamecount--;
             }
-            if (empty($platform)){
-                $platform = "";
-            }
-            if (empty($album)){
+            if (empty($album) || empty($artist)){
                 $album = "";
+                $artist = "";
                 $albumcount--;
             }
-            if (empty($artist)){
-                $artist = "";
-            }
-            if (empty($book)){
+            if (empty($book)|| empty($author)){
                 $book = "";
+                $author = "";
                 $bookcount--;
             }
-            if (empty($author)){
-                $author = "";
-            }
-            if (empty($movie)){
+            if (empty($movie) || empty($year)){
                 $movie = "";
+                $year = "";
                 $moviecount--;
             }
-            if (empty($year)){
-                $year = "";
-            }
-            if (empty($tv)){
+          
+            if (empty($tv)|| empty($streaming)){
                 $tv = "";
+                $streaming = "";
                 $tvcount--;
             }
-            if (empty($streaming)){
-                $streaming = "";
-            }
+            
             
             if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($tv))) {
                 // If user already exists in the database with the same email
