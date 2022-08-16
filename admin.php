@@ -323,7 +323,7 @@ if ($query = mysqli_query($con, $sql)) {
 
 
 <!-- USER MANAGEMENT TABLE BEGINS -->
-<div id="user-mgmt-table" style="display:none;">
+<div id="user-mgmt-table" style="display:block;">
 
   <?php
 foreach ($userlist as $user) {
@@ -341,6 +341,11 @@ foreach ($userlist as $user) {
             >View Profile
             </button>
 
+
+            <!-- Delete User Button -->
+            <button class='btn btn-primary' id=<?php echo $user['uid'] ?> onclick=<?php echo "window.location.href='stats.php?user_name=" . $user['user_name'] . "'" ?>
+            >View Stats
+            </button>
 
             <!-- Delete User Button -->
             <button class='btn btn-danger' id=<?php echo $user['uid'] ?> onclick=<?php echo "window.location.href='delete_user_confirm.php?user_name=" . $user['user_name'] . "'" ?>
@@ -363,9 +368,12 @@ foreach ($userlist as $user) {
 JAVASCRIPT 
 ------------------------------------------------------------------------------------->
 <script>
+
+
 // TOGGLE VISIBILITY FOR BUTTON SITEWIDE STATS
 const btnSiteStats= document.getElementById('site-stats-btn');
 const siteStatsDiv= document.getElementById('site-stats-table');
+
 btnSiteStats.onclick = function () {
 if (siteStatsDiv.style.display !== "none") {
   siteStatsDiv.style.display = "none";
@@ -389,6 +397,8 @@ btnUserMgmt.onclick = function () {
     userMgmtDiv.style.display = "block";
   }
 };
+
+
 </script>
 </body>
 </html>
