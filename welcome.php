@@ -56,10 +56,10 @@ $user_data = check_login($con);
             <h3 class="mb-3">Music</h3>
             <div class="mb-3 ms-3" name="album">
 
-                What Album you spinnin'?
+                Album
                 <input type="text" class="form-control" name="Album" autofocus="true" placeholder="Cavalcade" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()"><br>
 
-                Who's the Artist?
+                Artist
                 <input type="text" class="form-control" name="Artist" placeholder="Black Midi" id="music-artist" readonly><br>
 
                 <div class="search-list-music" id="search-list-music">
@@ -73,10 +73,10 @@ $user_data = check_login($con);
             <h3 class="mb-3">Books</h3>
             <div class="mb-3 ms-3" name="book">
 
-                What is an intellectual like yourself Reading?
+                Book
                 <input type="text" name="Book" class="form-control" placeholder="Royal Assassin" id="book-search-box" onkeyup="findBook()" onclick="findBook()"><br>
 
-                Drop the name of the Author bro
+                Author
                 <input type="text" class="form-control" name="Author" placeholder="Robin Hobb"  id="book-author" readonly><br>
 
                 <div class="search-list-books" id="search-list-book">
@@ -90,7 +90,7 @@ $user_data = check_login($con);
             <h3 class="mb-3">Movies</h3>
             <div class="mb-3 ms-3" name="movie">
 
-                What movie we watchin' today matey?
+                Movie
                 <input type="text" class="form-control" name="Movie" placeholder="The Batman" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()"><br>
 
                 Release Year
@@ -108,10 +108,10 @@ $user_data = check_login($con);
             <h3 class="mb-3">TV/Streaming</h3>
             <div class="mb-3 ms-3" name="TV">
 
-                What TV series you watching RN hon?
+                TV Show
                 <input type="text" class="form-control" name="TV" placeholder="Peaky Blinders" id="tv-search-box" onkeyup="findTV()" onclick="findTV()"><br>
 
-                Where is it streaming/broadcasting?
+                Network
                 <select class="form-control" name="StreamPlatform"><br>
                         <option value="" selected disabled hidden>Choose</option>
                         <option value="Netflix">Netflix</option>
@@ -140,7 +140,7 @@ $user_data = check_login($con);
             <h3 class="mb-3">Video Game</h3>
             <div class="mb-3 ms-3" name="videogame">
 
-                Watchu playing son?
+                Video Game
                 <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring" id="game-search-box" onkeyup="findgame()" onclick="findgame()"><br>
 
                 Platform

@@ -9,6 +9,7 @@ body {
     width: 100vw;
     background: rgb(2, 0, 36);
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(46, 0, 89, 1) 35%, rgba(55, 0, 79, 1) 100%);
+    font-family: "Open Sans", Helvetica, sans-serif;
 }
 
 
@@ -20,7 +21,7 @@ body {
     text-transform: uppercase;
     color: rgb(255, 245, 245);
     letter-spacing: 1px;
-    font-family: "Playfair Display", serif;
+    font-family: "Open Sans", serif;
     font-weight: 400;
     margin: auto;
     margin-top: 50px;
@@ -54,7 +55,6 @@ body {
 }
 
 .activity-container {
-    border-top: 1px solid black;
     width: inherit;
 }
 

@@ -11,3 +11,10 @@ legend {
 input {
     margin: 5px;
 }
+
+body {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    font-family: "Open Sans", Helvetica, sans-serif;
+}

@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Helvetica;
+    font-family: "Open Sans", Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     background: rgba( 71, 147, 227, 1);
     /* no selection */

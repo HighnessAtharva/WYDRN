@@ -4,7 +4,6 @@ DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
 
 */
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 body,
 html {
@@ -25,6 +24,7 @@ body {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
+    font-family: "Open Sans", Helvetica, sans-serif;
 }
 
 .follow-icon {
@@ -64,7 +64,7 @@ a:link {
 
 .get-mutual {
     color: #3399FF;
-    font-family: "Helvetica";
+    font-family: "Open Sans", Helvetica, sans-serif;
     font-size: 10pt;
     background-color: #ffffff;
     border: 1px solid;
@@ -116,7 +116,7 @@ a:link {
 
 .follow-button {
     color: #3399FF;
-    font-family: "Helvetica";
+    font-family: "Open Sans", Helvetica, sans-serif;
     font-size: 10pt;
     background-color: #ffffff;
     border: 1px solid;
@@ -203,7 +203,7 @@ a:link {
 }
 
 #user-font {
-    font-family: 'Baskerville', 'Times', 'Times New Roman', 'serif';
+    font-family: "Open Sans", Helvetica, sans-serif;
     font-size: 32px;
     color: #000000;
     font-variant: small-caps;
@@ -266,7 +266,7 @@ a:link {
     text-align: center;
     display: inline-block;
     font-size: 1.5em;
-    font-family: 'Lato';
+    font-family: "Open Sans", Helvetica, sans-serif;
     border-right: solid 1px #bdc3c7;
 }
 
@@ -277,7 +277,7 @@ a:link {
 .data li span {
     display: block;
     text-transform: uppercase;
-    font-family: 'Quicksand';
+    font-family: "Open Sans", Helvetica, sans-serif;
     font-size: .5em;
     margin-top: .2em;
     font-weight: 700;

@@ -29,13 +29,13 @@
     
     .inputboxes {
         color: white;
-        font-family: Baskerville, Times, 'Times New Roman', serif;
+        font-family: "Open Sans", Helvetica, sans-serif;
         padding-bottom: 10px;
         float: left;
     }
     
     .WYDRN {
-        font-family: Baskerville, Times, 'Times New Roman', serif;
+        font-family: "Open Sans", Helvetica, sans-serif;
         font-size: 30px;
         color: #FFFFFF;
         font-variant: small-caps;
