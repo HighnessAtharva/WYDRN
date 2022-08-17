@@ -2,11 +2,10 @@
 /**
  * ALLOWS USERS TO BROWSE GENERAL BOOKS
  *
- * @version    PHP 8.0.12 
+ * @version    PHP 8.0.12
  * @since      May 2022
  * @author     AtharvaShah
  */
-
 
 session_start();
 if (empty($_SESSION)) {
@@ -41,11 +40,13 @@ $username = $user_data['user_name'];
     </div>
 
     <div class="wrapper">
-        
-        <!-- search container -->
+
+        <!--------------------------
+             SEARCH CONTAINER
+        ---------------------------->
         <div class="search-container">
             <div class="search-element">
-                <input type="text" class="form-control" placeholder="Enter Book Name and Author's name" id="movie-search-box" onkeyup="findBook()" onclick="findBook()">
+                <input type="text" class="form-control" placeholder="Enter Book Name and Author's name" id="movie-search-box" onkeyup="findBook()" onclick="findBook()"  autocomplete="off">
                 <div class="search-list" id="search-list">
                     <!--  Dynamically generated LIST APPEARS IN THIS MANNER -->
                     <!-- <div class = "search-list-item">
@@ -65,21 +66,31 @@ $username = $user_data['user_name'];
                 <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/index.php'">Get Book<br> Recommendations</button>
             </div>
         </div>
-        <!-- end of search container -->
+        <!--------------------------
+            END OF SEARCH CONTAINER
+       ---------------------------->
 
-        <!-- result container -->
+
+
+        <!---------------------
+        RESULT CONTAINER
+        ------------------->
         <div class="container">
             <div class="result-container">
                 <div class="result-grid" id="result-grid">
-                    <!-- movie information here -->
+                    <!-- BOOK INFO WILL APPEAR HERE (DYNAMICALLY GENERATED USING JS. CHECK JS FILE.-->
                 </div>
             </div>
         </div>
-        <!-- end of result container -->
-    </div>
+        <!---------------------
+        END OF RESULT CONTAINER
+        ------------------->
 
 
-   
+    </div> <!-- end of wrapper -->
+
+
+
 <script src="script.js"></script>
 </body>
 </body>

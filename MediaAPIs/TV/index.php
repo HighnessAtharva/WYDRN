@@ -42,10 +42,12 @@ $username = $user_data['user_name'];
 
     <div class="wrapper">
        
-        <!-- search container -->
+         <!--------------------------
+             SEARCH CONTAINER
+        ---------------------------->
         <div class="search-container">
             <div class="search-element">
-                <input type="text" class="form-control" placeholder="Enter TV Series" id="movie-search-box" onkeyup="findTV()" onclick="findTV()">
+                <input type="text" class="form-control" placeholder="Enter TV Series" id="movie-search-box" onkeyup="findTV()" onclick="findTV()"  autocomplete="off">
 
                 <div class="search-list" id="search-list">
                     <!-- list here -->
@@ -66,22 +68,28 @@ $username = $user_data['user_name'];
                 <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/index.php'">Get TV<br> Recommendations</button>
             </div>
         </div>
-        <!-- end of search container -->
+        <!--------------------------
+            END OF SEARCH CONTAINER
+       ---------------------------->
 
-        <!-- result container -->
+        <!---------------------
+        RESULT CONTAINER
+        ------------------->
         <div class="container">
             <div class="result-container">
                 <div class="result-grid" id="result-grid">
-                    <!-- movie information here -->
+                     <!-- TV INFO WILL APPEAR HERE (DYNAMICALLY GENERATED USING JS. CHECK JS FILE.-->
                 </div>
             </div>
         </div>
-        <!-- end of result container -->
-    </div>
+      <!---------------------
+        END OF RESULT CONTAINER
+        ------------------->
+
+    </div><!-- end of wrapper -->
 
 
-    <!-- movie app js -->
-    <script src="script.js"></script>
+    
+<script src="script.js"></script>
 </body>
-
 </html>

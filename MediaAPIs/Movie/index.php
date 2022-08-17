@@ -2,11 +2,10 @@
 /**
  * ALLOWS USERS TO BROWSE GENERAL MOVIES
  *
- * @version    PHP 8.0.12 
+ * @version    PHP 8.0.12
  * @since      May 2022
  * @author     AtharvaShah
  */
-
 
 session_start();
 if (empty($_SESSION)) {
@@ -38,12 +37,14 @@ $username = $user_data['user_name'];
 <div class="heading">
         <h1>Search Movies</h1>
     </div>
-    
+
     <div class="wrapper">
-        <!-- search container -->
+         <!--------------------------
+             SEARCH CONTAINER
+        ---------------------------->
         <div class="search-container">
             <div class="search-element">
-                <input type="text" class="form-control" placeholder="Enter Movie Name" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()">
+                <input type="text" class="form-control" placeholder="Enter Movie Name" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()"  autocomplete="off">
 
                 <div class="search-list" id="search-list">
                     <!-- list here -->
@@ -59,28 +60,40 @@ $username = $user_data['user_name'];
                 </div>
             </div>
 
-            <!--GET Movie RECOMMENDATIONS-->
+            <!--GET MOVIE RECOMMENDATIONS-->
             <div>
                 <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/index.php'">Get Movie<br> Recommendations</button>
             </div>
 
         </div>
-        <!-- end of search container -->
+        <!--------------------------
+            END OF SEARCH CONTAINER
+       ---------------------------->
 
-        <!-- result container -->
+
+
+
+
+        <!---------------------
+        RESULT CONTAINER
+        ------------------->
         <div class="container">
             <div class="result-container">
                 <div class="result-grid" id="result-grid">
-                    <!-- movie information here -->
+                   <!-- MOVIE INFO WILL APPEAR HERE (DYNAMICALLY GENERATED USING JS. CHECK JS FILE.-->
                 </div>
             </div>
         </div>
-        <!-- end of result container -->
-    </div>
+      <!---------------------
+        END OF RESULT CONTAINER
+        ------------------->
 
 
-    <!-- movie app js -->
-    <script src="script.js"></script>
+    </div> <!-- end of wrapper -->
+
+
+
+
+<script src="script.js"></script>
 </body>
-
 </html>

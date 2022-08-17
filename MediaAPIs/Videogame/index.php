@@ -40,10 +40,12 @@ $username = $user_data['user_name'];
     </div>
     <div class="wrapper">
        
-        <!-- search container -->
+         <!--------------------------
+             SEARCH CONTAINER
+        ---------------------------->
         <div class="search-container">
             <div class="search-element">
-                <input type="text" class="form-control" placeholder="Enter VideoGame" id="movie-search-box" onkeyup="findgame()" onclick="findgame()">
+                <input type="text" class="form-control" placeholder="Enter VideoGame" id="movie-search-box" onkeyup="findgame()" onclick="findgame()"  autocomplete="off">
 
                 <div class="search-list" id="search-list">
                     <!-- list here -->
@@ -65,9 +67,13 @@ $username = $user_data['user_name'];
                 <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/index.php'">Get Videogame<br> Recommendations</button>
             </div>
         </div>
-        <!-- end of search container -->
+        <!--------------------------
+            END OF SEARCH CONTAINER
+       ---------------------------->
 
-        <!-- result container -->
+        <!---------------------
+        RESULT CONTAINER
+        ------------------->
         <div class="container">
             <div class="result-container">
                 <div class="result-grid" id="result-grid">
@@ -75,12 +81,15 @@ $username = $user_data['user_name'];
                 </div>
             </div>
         </div>
-        <!-- end of result container -->
-    </div>
+      <!---------------------
+        END OF RESULT CONTAINER
+        ------------------->
+    
+    
+    </div><!-- end of wrapper -->
 
 
-    <!-- movie app js -->
-    <script src="script.js"></script>
+    
+<script src="script.js"></script>
 </body>
-
 </html>
