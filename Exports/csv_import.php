@@ -18,7 +18,6 @@ include("../functions.php");
 include("header.php");
 ?>
 
-<!doctype html>
 <html lang="en">
  
 <head>
@@ -120,6 +119,8 @@ if (isset($_POST['submit'])) {
 
     // Validate whether selected file is a CSV file
     if (!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'], $fileMimes)) {
+        
+
 
         // Open uploaded CSV file with read-only mode
         $csvFile = fopen($_FILES['file']['tmp_name'], 'r');
@@ -127,7 +128,6 @@ if (isset($_POST['submit'])) {
         // Skip the first line
         fgetcsv($csvFile);
 
-        // Parse data from CSV file line by line
         // Parse data from CSV file line by line
         $TotalMediaCount=0;
         $videogamecount=0;
@@ -146,18 +146,33 @@ if (isset($_POST['submit'])) {
             $tvcount++;
 
             //data sanitization
-            $videogame = strtoupper(mysqli_real_escape_string($con, $getData[0]));
-            $platform = strtoupper(mysqli_real_escape_string($con,$getData[1]));
-            $album = strtoupper(mysqli_real_escape_string($con,$getData[2]));
-            $artist = strtoupper(mysqli_real_escape_string($con,$getData[3]));
-            $book = strtoupper(mysqli_real_escape_string($con,$getData[4]));
-            $author = strtoupper(mysqli_real_escape_string($con,$getData[5]));
-            $movie =strtoupper( mysqli_real_escape_string($con,$getData[6]));
-            $year = strtoupper(mysqli_real_escape_string($con,$getData[7]));
-            $tv = strtoupper(mysqli_real_escape_string($con,$getData[8]));
-            $streaming =strtoupper( mysqli_real_escape_string($con,$getData[9]));
-            $datetime = strtoupper(mysqli_real_escape_string($con,$getData[10]));
-            $date = strtoupper(mysqli_real_escape_string($con,$getData[11]));
+            $videogame = mysqli_real_escape_string($con, $getData[0]);
+            $platform = mysqli_real_escape_string($con,$getData[1]);
+            $album = mysqli_real_escape_string($con,$getData[2]);
+            $artist = mysqli_real_escape_string($con,$getData[3]);
+            $book = mysqli_real_escape_string($con,$getData[4]);
+            $author = mysqli_real_escape_string($con,$getData[5]);
+            $movie = mysqli_real_escape_string($con,$getData[6]);
+            $year = mysqli_real_escape_string($con,$getData[7]);
+            $tv = mysqli_real_escape_string($con,$getData[8]);
+            $streaming = mysqli_real_escape_string($con,$getData[9]);
+            $datetime = mysqli_real_escape_string($con,$getData[10]);
+            $date = mysqli_real_escape_string($con,$getData[11]);
+
+            $videogame = mb_convert_encoding($videogame,'HTML-ENTITIES','utf-8');
+            $platform = mb_convert_encoding($platform,'HTML-ENTITIES','utf-8');
+            $album = mb_convert_encoding($album,'HTML-ENTITIES','utf-8');
+            $artist = mb_convert_encoding($artist,'HTML-ENTITIES','utf-8');
+            $book = mb_convert_encoding($book,'HTML-ENTITIES','utf-8');
+            $author = mb_convert_encoding($author,'HTML-ENTITIES','utf-8');
+            $movie = mb_convert_encoding($movie,'HTML-ENTITIES','utf-8');
+            $year = mb_convert_encoding($year,'HTML-ENTITIES','utf-8');
+            $tv = mb_convert_encoding($tv,'HTML-ENTITIES','utf-8');
+            $streaming = mb_convert_encoding($streaming,'HTML-ENTITIES','utf-8');
+
+        
+
+            
 
             if (empty($videogame) || empty($platform)){
                 $videogame = "";

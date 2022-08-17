@@ -46,37 +46,37 @@ div{
     //video game validation
     if ((!empty($_POST['Videogame'])) &&  (!empty($_POST['Platform']))){
         global $videogame, $platform;
-        $videogame=mysqli_real_escape_string($con, $_POST['Videogame']);            $videogame = strtoupper($videogame);
-        $platform=mysqli_real_escape_string($con, $_POST['Platform']);              $platform = strtoupper($platform);
+        $videogame=mysqli_real_escape_string($con, $_POST['Videogame']);            
+        $platform=mysqli_real_escape_string($con, $_POST['Platform']);              
     }
 
     //music validation
     if ((!empty($_POST['Album'])) &&  (!empty($_POST['Artist']))){
         global $album, $artist; 
-        $album=mysqli_real_escape_string($con, $_POST['Album']);                    $album = strtoupper($album);
-        $artist=mysqli_real_escape_string($con, $_POST['Artist']);                  $artist = strtoupper($artist);
+        $album=mysqli_real_escape_string($con, $_POST['Album']);                    
+        $artist=mysqli_real_escape_string($con, $_POST['Artist']);                  
     }
 
     //book validation
     if ((!empty($_POST['Book'])) &&  (!empty($_POST['Author']))){
         global $book, $author;  
         $book=mysqli_real_escape_string($con, $_POST['Book']); 
-        $book=trim($book,".");                                                      $book = strtoupper($book);
-        $author=mysqli_real_escape_string($con, $_POST['Author']);                  $author = strtoupper($author);
+        $book=trim($book,".");                                                      
+        $author=mysqli_real_escape_string($con, $_POST['Author']);                  
     }
 
     //movie validation
     if ((!empty($_POST['Movie'])) &&  (!empty($_POST['MovieRelease']))){
         global $movie, $movierelease; 
-        $movie=mysqli_real_escape_string($con, $_POST['Movie']);                    $movie = strtoupper($movie);
+        $movie=mysqli_real_escape_string($con, $_POST['Movie']);                    
         $movierelease=mysqli_real_escape_string($con, $_POST['MovieRelease']);
     }
 
     //tv validation
     if ((!empty($_POST['TV'])) &&  (!empty($_POST['StreamPlatform']))){
         global $TV, $streamplatform; 
-        $TV=mysqli_real_escape_string($con,$_POST['TV']);                           $TV = strtoupper($TV);
-        $streamplatform=mysqli_real_escape_string($con,$_POST['StreamPlatform']);   $streamplatform = strtoupper($streamplatform); 
+        $TV=mysqli_real_escape_string($con,$_POST['TV']);                           
+        $streamplatform=mysqli_real_escape_string($con,$_POST['StreamPlatform']);    
     }
 
     // insert the fields into the database if at least one of the above fields is filled.

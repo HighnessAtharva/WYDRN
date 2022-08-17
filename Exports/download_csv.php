@@ -31,7 +31,8 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 header('Content-Type: text/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=data.csv');
+header('Content-Disposition: attachment; filename=Export.csv');
+ob_clean();
 $output = fopen('php://output', 'w');
 fputcsv($output, array('Videogame', 'Platform', 'Album', 'Artist', 'Book', 'Author', 'Movie', 'Year', 'TV', 'Streaming', 'Datetime', 'Date'));
 if (count($data) > 0) {

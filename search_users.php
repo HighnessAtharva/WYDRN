@@ -134,10 +134,10 @@ require "header.php";
                 (SELECT username, count(movie) AS allcount FROM `data` WHERE movie!='' GROUP BY username)
                 UNION ALL
                 (SELECT username, count(tv) AS allcount FROM `data` WHERE tv!=''  GROUP BY username)
-            )t group by username ORDER BY media_count DESC;";
+            )t group by username ORDER BY media_count DESC LIMIT 10;";
             $query = mysqli_query($con, $sql);
             if (mysqli_num_rows($query) > 0) {
-                for ($i = 1; $i <9; $i++) {
+                for ($i = 1; $i <=mysqli_num_rows($query); $i++) {
                     $row[$i] = mysqli_fetch_array($query);
                     
                     // $pfp=$row[$i]['profile_pic'];
