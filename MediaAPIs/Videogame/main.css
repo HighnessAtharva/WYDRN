@@ -68,11 +68,6 @@ a {
     text-decoration: none;
 }
 
-img {
-    width: 100%;
-    display: block;
-}
-
 .wrapper {
     min-height: 100vh;
     background-color: var(--dark-color);
@@ -235,10 +230,9 @@ img {
     padding: 3rem 0;
 }
 
-.movie-poster img {
-    max-width: 300px;
-    margin: 0 auto;
-    border: 4px solid #fff;
+.movie-poster>img {
+    margin-left: auto;
+    margin-right: 50px;
 }
 
 .movie-info {

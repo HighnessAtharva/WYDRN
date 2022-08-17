@@ -115,7 +115,7 @@ function displaygameDetails(details) {
 
     resultGrid.innerHTML = `
     <div class = "movie-poster">
-        <img src = "${(details['background_image'] != null) ?  details['background_image'] : "../../images/API/WYDRNgame.png"}" alt = "game poster">
+        <img src = "${(details['background_image'] != null) ?  details['background_image'] : "../../images/API/WYDRNgame.png"}" alt = "game poster" width="500" height="300">
     </div>
 
     <div class = "movie-info">
