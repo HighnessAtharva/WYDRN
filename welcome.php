@@ -57,10 +57,10 @@ $user_data = check_login($con);
             <div class="mb-3 ms-3" name="album">
 
                 Album
-                <input type="text" class="form-control" name="Album" autofocus="true" placeholder="Cavalcade" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()"><br>
+                <input type="text" class="form-control" name="Album" autofocus="true" placeholder="Cavalcade" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()" autocomplete="off"><br>
 
                 Artist
-                <input type="text" class="form-control" name="Artist" placeholder="Black Midi" id="music-artist" readonly><br>
+                <input type="text" class="form-control" name="Artist" placeholder="Black Midi" id="music-artist" readonly autocomplete="off"><br>
 
                 <div class="search-list-music" id="search-list-music">
                     <!--ALBUM SUGGESTIONS WILL APPEAR HERE-->
@@ -74,10 +74,10 @@ $user_data = check_login($con);
             <div class="mb-3 ms-3" name="book">
 
                 Book
-                <input type="text" name="Book" class="form-control" placeholder="Royal Assassin" id="book-search-box" onkeyup="findBook()" onclick="findBook()"><br>
+                <input type="text" name="Book" class="form-control" placeholder="Royal Assassin" id="book-search-box" onkeyup="findBook()" onclick="findBook()" autocomplete="off"><br>
 
                 Author
-                <input type="text" class="form-control" name="Author" placeholder="Robin Hobb"  id="book-author" readonly><br>
+                <input type="text" class="form-control" name="Author" placeholder="Robin Hobb"  id="book-author" readonly autocomplete="off"><br>
 
                 <div class="search-list-books" id="search-list-book">
                     <!--BOOK SUGGESTIONS WILL APPEAR HERE-->
@@ -91,10 +91,10 @@ $user_data = check_login($con);
             <div class="mb-3 ms-3" name="movie">
 
                 Movie
-                <input type="text" class="form-control" name="Movie" placeholder="The Batman" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()"><br>
+                <input type="text" class="form-control" name="Movie" placeholder="The Batman" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()" autocomplete="off"><br>
 
                 Release Year
-                <input type="text" class="form-control" name="MovieRelease" placeholder="2022" id="movie-year" readonly><br>
+                <input type="text" class="form-control" name="MovieRelease" placeholder="2022" id="movie-year" readonly autocomplete="off"><br>
 
                 <div class="search-list-movies" id="search-list-movies">
                      <!--MOVIE SUGGESTIONS WILL APPEAR HERE-->
@@ -109,7 +109,7 @@ $user_data = check_login($con);
             <div class="mb-3 ms-3" name="TV">
 
                 TV Show
-                <input type="text" class="form-control" name="TV" placeholder="Peaky Blinders" id="tv-search-box" onkeyup="findTV()" onclick="findTV()"><br>
+                <input type="text" class="form-control" name="TV" placeholder="Peaky Blinders" id="tv-search-box" onkeyup="findTV()" onclick="findTV()" autocomplete="off"><br>
 
                 Network
                 <select class="form-control" name="StreamPlatform"><br>
@@ -141,7 +141,7 @@ $user_data = check_login($con);
             <div class="mb-3 ms-3" name="videogame">
 
                 Video Game
-                <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring" id="game-search-box" onkeyup="findgame()" onclick="findgame()"><br>
+                <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring" id="game-search-box" onkeyup="findgame()" onclick="findgame()" autocomplete="off"><br>
 
                 Platform
                 <select class="form-control" name="Platform">

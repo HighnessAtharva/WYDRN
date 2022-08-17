@@ -65,10 +65,10 @@ require "header.php";
     <main class="leaderboard__profiles">
     <?php
         // Get the top 10 most followed users.
-        $sql="SELECT `followed_username` as `user_name`, COUNT(*) as `follower_count` from social GROUP BY `followed_username` ORDER BY `follower_count` desc  limit 8";
+        $sql="SELECT `followed_username` as `user_name`, COUNT(*) as `follower_count` from social GROUP BY `followed_username` ORDER BY `follower_count` desc  limit 10";
         $query = mysqli_query($con, $sql);
         if (mysqli_num_rows($query) > 0) {
-            for ($i = 1; $i <9; $i++) {
+            for ($i = 1; $i <=mysqli_num_rows($query); $i++) {
                 $row[$i] = mysqli_fetch_array($query);
                 $username = $row[$i]['user_name'];
                 $follower_count = $row[$i]['follower_count'];
