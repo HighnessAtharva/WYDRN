@@ -94,17 +94,24 @@ function displayBookDetails(details) {
     <div class = "movie-poster">
         <img src = "${(details['imageLinks']['thumbnail'] !=null) ? details['imageLinks']['thumbnail'] : "../../images/API/WYDRNbook.png"}" alt = "Book poster">
     </div>
-    <div class = "movie-info">
-        <h3 class = "movie-title">${details['title']} - ${details['authors']}</h3>
 
+    <div class = "movie-info">
+        <h3 class = "movie-title">${details['title']} <br> <small>By ${details['authors']}</small></h3>
+   
         <ul class = "movie-misc-info">
-            <li class = "year">Release Date: ${details['publishedDate']}</li>
+            <li class = "year"><b>Release Date</b>: ${details['publishedDate']}</li><br>
+        </ul>    
+        
+        <ul class = "movie-misc-info">
+            <li class = "year"><b>Publisher</b>: ${details['publisher']}</li>
         </ul>
-<br>
-<ul class = "movie-misc-info">
-        <li class = "year">Publisher: ${details['publisher']}</li><br>
-        </ul>
-        <br>Summary:<br><p>${description}</p>`;
+
+        <div class="summary">
+            <b>Summary</b>:<p>${description}</p>
+        </div>
+        
+    </div>`;
+
 }
 
 window.addEventListener('click', (event) => {

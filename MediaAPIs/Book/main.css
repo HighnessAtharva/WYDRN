@@ -39,31 +39,8 @@ body {
     min-width: 1000px;
 }
 
-.heading h1 span {
-    margin-top: 5px;
-    font-size: 15px;
-    color: rgb(255, 255, 255);
-    word-spacing: 1px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-family: "Raleway", sans-serif;
-    font-weight: 500;
-    display: grid;
-    grid-template-columns: 1fr max-content 1fr;
-    grid-template-rows: 27px 0;
-    grid-gap: 20px;
-    align-items: center;
-}
 
-.heading h1 span:after,
-.heading h1 span:before {
-    content: " ";
-    display: block;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    height: 5px;
-    background-color: #f8f8f8;
-}
+/*  Stylish Heading END*/
 
 a {
     text-decoration: none;
@@ -236,6 +213,14 @@ img {
     padding: 3rem 0;
 }
 
+.movie-poster {
+    max-width: fit-content;
+    min-height: fit-content;
+    max-height: fit-content;
+    margin-right: 100px;
+    margin-left: auto;
+}
+
 .movie-poster img {
     max-width: 300px;
     margin: 0 auto;
@@ -254,6 +239,14 @@ img {
 .movie-title {
     font-size: 2rem;
     color: var(--yellow-color);
+    line-height: 25px;
+}
+
+.movie-title small {
+    margin-top: -10px;
+    font-size: 1rem;
+    color: var(--yellow-color);
+    line-height: 25px;
 }
 
 .movie-misc-info {
@@ -267,11 +260,23 @@ img {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    padding: 1rem;
+    padding: 0.2rem;
 }
 
 .movie-info .year {
     font-weight: 500;
+}
+
+.movie-info .year b {
+    text-decoration: underline;
+    text-decoration-color: #d4aa11;
+    text-decoration-thickness: 3px;
+}
+
+.summary b {
+    text-decoration: underline;
+    text-decoration-color: #d4aa11;
+    text-decoration-thickness: 3px;
 }
 
 .movie-info .rated {

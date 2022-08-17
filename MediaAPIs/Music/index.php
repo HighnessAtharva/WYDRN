@@ -64,7 +64,7 @@ $username = $user_data['user_name'];
 
             <!--GET ALBUM RECOMMENDATIONS-->
             <div>
-                <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/recommendation.php?Album'">Get Album<br> Recommendations</button>
+                <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/index.php'">Get Album<br> Recommendations</button>
             </div>
         </div>
         <!-- end of search container -->
