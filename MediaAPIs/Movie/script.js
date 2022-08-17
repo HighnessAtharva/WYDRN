@@ -111,18 +111,27 @@ function displayMovieDetails(details) {
     release_year = details['release_date'];
     release_year = release_year.split("-");
     release_year = release_year[0];
+
+    // TO CONVERT ISO LANGUAGE FORMAT TO FULL NAME. EX: EN -> ENGLISH 
+    let languageNames = new Intl.DisplayNames(['en'], { type: 'language' });
+
+
     resultGrid.innerHTML = `
     <div class = "movie-poster">
         <img src = "${(details['poster_path'] != null) ? "https://image.tmdb.org/t/p/original/"+ details['poster_path'] : "../../images/API/WYDRNmovie.png"}" alt = "movie poster">
     </div>
+
     <div class = "movie-info">
         <h3 class = "movie-title">${details['original_title']}</h3>
-        <ul class = "movie-misc-info">
-            <li class = "year">Release Date: ${release_year}</li>
-        </ul>
-        <p class = "genre"><b>Genre:</b> ${genres}</p>
-        <p class = "plot"><b>Plot:</b> ${overview}</p>
-        <p class = "language"><b>Language:</b> ${details['original_language']}</p>
+        
+        <div class = "movie-details">
+            <p class = "year"><b>Released:</b> ${release_year}</p>
+            <p class = "genre"><b>Genre:</b> ${genres}</p>
+            <p class = "language"><b>Language:</b> ${languageNames.of(details['original_language'])}</p>
+            <br>
+            
+            <p class = "plot summary"><b>Summary:<br></b><br> ${overview}</p>
+        </div>
         
     </div>
     `;

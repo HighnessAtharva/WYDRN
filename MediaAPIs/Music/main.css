@@ -250,9 +250,23 @@ img {
 
 /* movie info stylings */
 
+.summary b {
+    text-decoration: underline;
+    text-decoration-color: #d4aa11;
+    text-decoration-thickness: 3px;
+}
+
 .movie-title {
     font-size: 2rem;
     color: var(--yellow-color);
+    line-height: 25px;
+}
+
+.movie-title small {
+    margin-top: -10px;
+    font-size: 1rem;
+    color: var(--yellow-color);
+    line-height: 25px;
 }
 
 .movie-misc-info {
@@ -273,6 +287,31 @@ img {
 
 .movie-info .year {
     font-weight: 500;
+}
+
+.movie-details {
+    padding: 0.1rem 0;
+}
+
+.movie-info .genre {
+    background-color: var(--light-dark-color);
+    display: inline-block;
+    padding: 0.5rem;
+    border-radius: 3px;
+}
+
+.movie-info .year {
+    background-color: var(--light-dark-color);
+    display: inline-block;
+    padding: 0.5rem;
+    border-radius: 3px;
+}
+
+.movie-info .language {
+    background-color: var(--light-dark-color);
+    display: inline-block;
+    padding: 0.5rem;
+    border-radius: 3px;
 }
 
 .movie-info .rated {
@@ -308,16 +347,6 @@ img {
 .movie-info .language {
     color: var(--yellow-color);
     font-style: italic;
-}
-
-.movie-info .awards {
-    font-weight: 300;
-    font-size: 0.9rem;
-}
-
-.movie-info .awards i {
-    color: var(--yellow-color);
-    margin: 1rem 0.7rem 0 0;
 }
 
 .center {

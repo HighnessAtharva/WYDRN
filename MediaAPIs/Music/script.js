@@ -98,6 +98,7 @@ function displayalbumDetails(details) {
         tags = "NA";
     } else {
         tags = details['tags']['tag'][0]['name'];
+        tags = titleCase(tags);
     }
 
     // TO HANDLE MISSING SUMMARY
@@ -119,15 +120,16 @@ function displayalbumDetails(details) {
         <img src = "${albumPoster}" alt = "album poster">
     </div>
     <div class = "movie-info">
-        <h3 class = "movie-title">${name} - ${artist}</h3>
-        
-        <br><p class = "genre"><b>Genre:</b> ${tags}</p><br>
-        
-        <br><p class = "genre">Wiki</p><p>${summary}</p>
+        <h3 class = "movie-title">${name} <br> <small>${artist}</small></h3>
+        <div class = "movie-details">
+            <p class = "genre"><b>Genre:</b> ${tags}</p><br>
+            <p class = "genre"><b>Background:</b> <br>${summary}</p>
 
-        <br><br><h4 class = "genre"> Track Listing </h4> <br>
-        
-
+            <br><br>
+            
+            <p class = "summary"><b>TRACK LIST</b></p> 
+            
+        </div>
         `;
     resultGrid.innerHTML += "<div class = 'movie-poster'>";
     for (let idx = 0; idx < details['tracks']['track'].length; idx++) {
@@ -144,3 +146,9 @@ window.addEventListener('click', (event) => {
         searchList.classList.add('hide-search-list');
     }
 });
+
+function titleCase(str) {
+    return str.toLowerCase().split(' ').map(function(word) {
+        return word.replace(word[0], word[0].toUpperCase());
+    }).join(' ');
+}

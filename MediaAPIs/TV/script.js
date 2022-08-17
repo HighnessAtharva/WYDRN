@@ -121,19 +121,33 @@ function displaytvDetails(details) {
         }
     }
 
+    var episodes = null;
+    if ('number_of_episodes' in details) {
+        episodes = details['number_of_episodes'];
+    } else {
+        episodes = "N/A";
+    }
+
+    // TO CONVERT ISO LANGUAGE FORMAT TO FULL NAME. EX: EN -> ENGLISH 
+    let languageNames = new Intl.DisplayNames(['en'], { type: 'language' });
+
     resultGrid.innerHTML = `
     <div class = "movie-poster">
         <img src = "${(details['poster_path'] != null) ? "https://image.tmdb.org/t/p/original/"+ details['poster_path'] : "../../images/API/WYDRNtv.png"}" alt = "tv poster">
     </div>
     <div class = "movie-info">
         <h3 class = "movie-title">${details['original_name']}</h3>
-        <ul class = "movie-misc-info">
-            <li class = "year">Release Date: ${year}</li>
-        </ul>
-        <p class = "genre"><b>Genre:</b> ${genres}</p>
-        <p class = "plot"><b>Plot:</b> ${overview}</p>
-        <p class = "language"><b>Language:</b> ${details['original_language']}</p>
-        
+       
+        <div class = "movie-details">
+            <p class = "year"><b>Aired:</b> ${year}</p>
+            <p class = "genre"><b>Genre:</b> ${genres}</p>
+            <p class = "genre"><b> No. of Episodes:</b> ${episodes}</p>
+            <p class = "language"><b>Language:</b> ${languageNames.of(details['original_language'])}</p>
+            <br>
+            
+            <p class = "plot summary"><b>Plot:</b><br> ${overview}</p>
+    
+        </div>
     </div>
     `;
 }

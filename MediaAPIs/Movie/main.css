@@ -291,7 +291,25 @@ img {
     margin: 1rem 0;
 }
 
+.movie-details {
+    padding: 1rem 0;
+}
+
 .movie-info .genre {
+    background-color: var(--light-dark-color);
+    display: inline-block;
+    padding: 0.5rem;
+    border-radius: 3px;
+}
+
+.movie-info .year {
+    background-color: var(--light-dark-color);
+    display: inline-block;
+    padding: 0.5rem;
+    border-radius: 3px;
+}
+
+.movie-info .language {
     background-color: var(--light-dark-color);
     display: inline-block;
     padding: 0.5rem;
@@ -303,19 +321,10 @@ img {
     margin: 1rem auto;
 }
 
-.movie-info .language {
-    color: var(--yellow-color);
-    font-style: italic;
-}
-
-.movie-info .awards {
-    font-weight: 300;
-    font-size: 0.9rem;
-}
-
-.movie-info .awards i {
-    color: var(--yellow-color);
-    margin: 1rem 0.7rem 0 0;
+.summary b {
+    text-decoration: underline;
+    text-decoration-color: #d4aa11;
+    text-decoration-thickness: 3px;
 }
 
 .center {

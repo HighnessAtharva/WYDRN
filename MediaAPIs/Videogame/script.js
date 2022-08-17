@@ -117,16 +117,15 @@ function displaygameDetails(details) {
     <div class = "movie-poster">
         <img src = "${(details['background_image'] != null) ?  details['background_image'] : "../../images/API/WYDRNgame.png"}" alt = "game poster">
     </div>
+
     <div class = "movie-info">
         <h3 class = "movie-title">${details['name_original']}</h3>
-        <ul class = "movie-misc-info">
-            <li class = "year">Release Date: ${year}</li>
-        </ul>
+        <br>
+        <p class = "year"><b>Released:</b> ${year}</p>
         <p class = "language"><b>Publisher:</b> ${publisher}</p><br>
         <p class = "genre"><b>Genre:</b> ${genres}</p><br>
-        <p class = "plot"><b>Plot:</b> ${details['description']}</p>
         
-        
+        <p class = "plot summary"><b>Plot:</b> ${details['description']}</p>    
     </div>
     `;
 }

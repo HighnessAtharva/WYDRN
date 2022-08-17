@@ -26,7 +26,7 @@ $username = $user_data['user_name'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Search Website</title>
+    <title>WYDRN - TV Show Search</title>
     <!-- font awesome icons cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
@@ -37,7 +37,7 @@ $username = $user_data['user_name'];
 <body style="color:white">
 
 <div class="heading">
-        <h1>Search TV Shows</h1>
+        <h1>WYDRN - Search TV Shows</h1>
 </div>
 
     <div class="wrapper">

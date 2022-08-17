@@ -252,16 +252,6 @@ img {
     font-style: italic;
 }
 
-.movie-info .awards {
-    font-weight: 300;
-    font-size: 0.9rem;
-}
-
-.movie-info .awards i {
-    color: var(--yellow-color);
-    margin: 1rem 0.7rem 0 0;
-}
-
 .center {
     text-align: center;
 }

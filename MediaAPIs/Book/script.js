@@ -87,6 +87,9 @@ function displayBookDetails(details) {
         description = "No Description Available";
     }
 
+    let pub_date = details['publishedDate'];
+    pub_date = pub_date.split("-");
+    pub_date = pub_date[0];
 
     console.log(details);
 
@@ -98,16 +101,11 @@ function displayBookDetails(details) {
     <div class = "movie-info">
         <h3 class = "movie-title">${details['title']} <br> <small>By ${details['authors']}</small></h3>
    
-        <ul class = "movie-misc-info">
-            <li class = "year"><b>Release Date</b>: ${details['publishedDate']}</li><br>
-        </ul>    
-        
-        <ul class = "movie-misc-info">
-            <li class = "year"><b>Publisher</b>: ${details['publisher']}</li>
-        </ul>
-
-        <div class="summary">
-            <b>Summary</b>:<p>${description}</p>
+        <div class = "movie-details">
+            <p class = "year"><b>Published</b>: ${pub_date}</p>
+            <p class = "genre"><b>Publisher</b>: ${details['publisher']}</p>
+            <br>
+            <p class="summary"><b>Summary</b>:<br>${description}</p>
         </div>
         
     </div>`;
