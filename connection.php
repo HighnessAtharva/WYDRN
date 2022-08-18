@@ -18,8 +18,6 @@ if(!$con = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))
 {
 	die("failed to connect!");
 }
-mysqli_set_charset($con, "utf8mb4_general_ci");
-
 
 ?>
 
