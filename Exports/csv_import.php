@@ -170,10 +170,6 @@ if (isset($_POST['submit'])) {
             $tv = mb_convert_encoding($tv,'HTML-ENTITIES','utf-8');
             $streaming = mb_convert_encoding($streaming,'HTML-ENTITIES','utf-8');
 
-        
-
-            
-
             if (empty($videogame) || empty($platform)){
                 $videogame = "";
                 $platform = "";
@@ -201,10 +197,14 @@ if (isset($_POST['submit'])) {
                 $tvcount--;
             }
             
+            if(empty($date)){
+                $date=date("Y-m-d");
+                $datetime=date("Y-m-d H:i:s");
+            }
             
             if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($tv))){
                 // If user already exists in the database with the same email
-                $query = "INSERT INTO `data` (`username`, `videogame`, `platform`, `album`, `artist`, `book` ,`author` ,`movie`,`year`,`tv`,`streaming`) VALUES ('$username', '$videogame', '$platform', '$album', '$artist', '$book', '$author', '$movie', '$year', '$tv', '$streaming')";
+                $query = "INSERT INTO `data` (`username`, `videogame`, `platform`, `album`, `artist`, `book` ,`author` ,`movie`,`year`,`tv`,`streaming`, `datetime`,`date`) VALUES ('$username', '$videogame', '$platform', '$album', '$artist', '$book', '$author', '$movie', '$year', '$tv', '$streaming','$datetime','$date')";
 
                 if (mysqli_query($con, $query)) {
                     
