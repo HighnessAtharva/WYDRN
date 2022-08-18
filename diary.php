@@ -43,6 +43,7 @@ $username = $user_data['user_name'];
 <br><br>
 
 <div style="margin-left:50px;">
+<center>
 <h1> Diary Entries For <?php echo $username; ?></h1>
 
 <!--To Allow Users to Filter Date Wise -->
@@ -51,7 +52,7 @@ $username = $user_data['user_name'];
 <input type="submit" value="Filter by Date" class="btn btn-primary" style="margin-bottom:5px;">
 <button type="button" onclick="window.location.href='stats.php'" class="btn btn-success" style="margin-bottom:5px;">View Stats</button>
 </form>
-
+</center>
 <hr>
 <!--PHP PART -->
 <?php
@@ -148,6 +149,8 @@ if ($query = mysqli_query($con, $sql)) {
             echo ("<table>"); //table end
             echo "</div>"; //div end
         }
+    }else{
+       echo "<center><img src='images/website/empty-diary.jpg' alt='Empty Diary' height='300' width='350'></center>";
     }
 }
 ?>
