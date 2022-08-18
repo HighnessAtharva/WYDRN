@@ -101,6 +101,15 @@ $tvcount_mutual = SQLGetCount($con, "SELECT tv FROM data WHERE username='$me' AN
 INTERSECT
 SELECT tv FROM data WHERE username='$otheruser' AND tv != ''");
 
+if ($videogamecount_other==0){
+    $videogamecount_other=1;
+}
+
+
+if ($count_other==0){
+    $videogamecount_other=1;
+}
+
 $mutual_game_percentage = round(($videogamecount_mutual / $videogamecount_other) * 100);
 $mutual_movie_percentage = round(($moviecount_mutual / $moviecount_other) * 100);
 $mutual_music_percentage = round(($musiccount_mutual / $musiccount_other) * 100);
