@@ -18,8 +18,6 @@ require "functions.php";
 require "quotes.php"; //to get a random quote
 $user_data = check_login($con);
 $username = $user_data['user_name'];
-flush();
-ob_flush();
 
 function getposterpath($name, $author)
 {
@@ -70,18 +68,20 @@ function getposterpath($name, $author)
     <script src="js/modernizr-2.6.2.min.js"></script>
     <!--PRELOADER JS-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
     <script>
         window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')
     </script>
+
     <script>
-      
-function Preloader(){
+        $(document).ready(function() {
+
             setTimeout(function() {
                 $('body').addClass('loaded');
                 $('h1').css('color', '#222222');
-            }, 3000);
-        }
-        Preloader();
+            }, 1000);
+
+        });
     </script>
 
 
