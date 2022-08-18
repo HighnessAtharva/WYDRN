@@ -236,7 +236,9 @@ function getposterpath($name, $artist)
                         $html_album .= "</div>"; //end of card-grid-space
                     }
                 } else {
-                    $html_album .= "No Albums Logged";
+                    //NO ALBUMS LOGGED MESSAGE
+                    $AlbumsNotAdded= "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Music.svg' width='15' height='15' class='media-icon'>No Albums added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+                    echo $AlbumsNotAdded;
                 }
             }
             $html_album .= "</section>";

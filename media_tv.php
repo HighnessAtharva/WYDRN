@@ -238,7 +238,9 @@ function getposterpath($name)
                         $html_tv .= "</div>"; //end of card-grid-space
                     }
                 } else {
-                    $html_tv .= "No TV shows Logged";
+                   //NO TV SHOWS LOGGED MESSAGE
+                   $TVNotAdded= "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/TV.svg' width='15' height='15' class='media-icon'>No TV Shows added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+                   echo $TVNotAdded;
                 }
             }
 

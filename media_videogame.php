@@ -239,7 +239,10 @@ function getposterpath($name)
                         $html_game .= "</div>"; //end of card-grid-space
                     }
                 } else {
-                    $html_game .= "No Videogames Logged";
+
+                    //NO VIDEOGAMES LOGGED MESSAGE
+                    $GamesNotAdded= "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Videogame.svg' width='15' height='15' class='media-icon'>No Videogames added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+                    echo $GamesNotAdded;
                 }
             }
             $html_game .= "</section>";

@@ -239,7 +239,9 @@ function getposterpath($name, $author)
 
                     }
                 } else {
-                    $html_book .= "No Books Logged";
+                    //NO BOOKS LOGGED MESSAGE
+                    $BooksNotAdded= "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Book.svg' width='15' height='15' class='media-icon'>No books added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+                    echo $BooksNotAdded;
                 }
             }
 

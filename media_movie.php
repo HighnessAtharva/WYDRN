@@ -228,7 +228,9 @@ function getposterpath($name, $year)
 
                     }
                 } else {
-                    $html_movie .= "No Movies Logged";
+                    //NO MOVIES LOGGED MESSAGE
+                    $MoviesNotAdded= "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Movie.svg' width='15' height='15' class='media-icon'>No Movies added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+                    echo $MoviesNotAdded;
                 }
             }
 
