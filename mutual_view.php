@@ -71,44 +71,58 @@ $tvcount_other = SQLGetCount($con, "SELECT tv FROM data WHERE username='$otherus
 
 
 
-$videogamecount_mutual = SQLGetCount(
-    $con,
-    "SELECT videogame FROM data WHERE username='$me'  AND videogame != ''
+$videogamecount_mutual = SQLGetCount($con,
+"SELECT LOWER(videogame) FROM data WHERE username='$me'  AND videogame != ''
 INTERSECT
-SELECT videogame FROM data WHERE username='$otheruser'  AND videogame != ''"
+SELECT LOWER(videogame) FROM data WHERE username='$otheruser'  AND videogame != ''"
 );
 
-$moviecount_mutual = SQLGetCount(
-    $con,
-    "SELECT movie, year FROM data WHERE username='$me' AND movie!='' 
+$moviecount_mutual = SQLGetCount($con,
+"SELECT LOWER(movie) , year FROM data WHERE username='$me' AND movie!='' 
 INTERSECT
-SELECT movie, year FROM data WHERE username='$otheruser' AND movie!=''"
+SELECT LOWER(movie) , year FROM data WHERE username='$otheruser' AND movie!=''"
 );
 
-$musiccount_mutual = SQLGetCount($con, "SELECT album, artist FROM data WHERE username='$me' AND album!='' AND artist!=''
+$musiccount_mutual = SQLGetCount($con, 
+"SELECT LOWER(album) , artist FROM data WHERE username='$me' AND album!='' AND artist!=''
 INTERSECT
-SELECT album, artist FROM data WHERE username='$otheruser' AND album!='' AND artist!=''");
+SELECT LOWER(album), artist FROM data WHERE username='$otheruser' AND album!='' AND artist!=''");
 
-$bookcount_mutual = SQLGetCount(
-    $con,
-    "SELECT book, author FROM data WHERE username='$me'  AND book!='' AND author!=''
+$bookcount_mutual = SQLGetCount($con,
+"SELECT LOWER(book), author FROM data WHERE username='$me'  AND book!='' AND author!=''
 INTERSECT
-SELECT book, author FROM data WHERE username='$otheruser'  AND book!='' AND author!=''"
+SELECT LOWER(book), author FROM data WHERE username='$otheruser'  AND book!='' AND author!=''"
 );
 
 
-$tvcount_mutual = SQLGetCount($con, "SELECT tv FROM data WHERE username='$me' AND tv != ''
+$tvcount_mutual = SQLGetCount($con,
+"SELECT tv FROM data WHERE username='$me' AND tv != ''
 INTERSECT
 SELECT tv FROM data WHERE username='$otheruser' AND tv != ''");
 
+
+// TO PREVENT ZERO DIVISION ERROR
 if ($videogamecount_other==0){
     $videogamecount_other=1;
 }
 
-
-if ($count_other==0){
-    $videogamecount_other=1;
+if($bookcount_other==0){
+    $bookcount_other=1;
 }
+
+if($musiccount_other==0){
+    $musiccount_other=1;
+}
+
+if($moviecount_other==0){
+    $moviecount_other=1;
+}
+
+if($tvcount_other==0){
+    $tvcount_other=1;
+}
+
+
 
 $mutual_game_percentage = round(($videogamecount_mutual / $videogamecount_other) * 100);
 $mutual_movie_percentage = round(($moviecount_mutual / $moviecount_other) * 100);

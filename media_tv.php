@@ -64,202 +64,246 @@ function getposterpath($name){
     <!--Bootstrap Link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     
+    <!--JQUERY-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    
     <!--Custom Link-->
     <link rel="stylesheet" href="CSS/media_tv.css">
+    
+    <!--Preloader Links-->
+    <link rel="stylesheet" href="css/preloader.css">
+    <script src="js/modernizr-2.6.2.min.js"></script>
 </head>
+
 <body class="css-selector">
+<div> 
+    <!--PRELOADER-->
+    <header class="entry-header">
+        <h1 class="entry-title"></h1>
+    </header>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <!--END OF PRELOADER-->
 
-<div class="heading">
-  <h1>Your TV Shows<span><?php echo getRandomTvQuote() ?></span></h1>
-</div>
+        <!--ALL MEDIA ITEMS THAT WILL APPEAR AFTER PRELOADER-->
+        <div id="content">
+            <div class="heading">
+            <h1>Your TV Shows<span><?php echo getRandomTvQuote() ?></span></h1>
+            </div>
 
-<!-- Sorting Functionality -->
-<form method="get" action="" name="sort">
-    <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
-    <option value="">Sort By</option>
+            <!-- Sorting Functionality -->
+            <form method="get" action="" name="sort">
+                <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
+                <option value="">Sort By</option>
 
-    <option value="added-desc">Added Date (Newest To Oldest)</option>
-    <option value="added-asc">Added Date (Oldest To Newest)</option>
+                <option value="added-desc">Added Date (Newest To Oldest)</option>
+                <option value="added-asc">Added Date (Oldest To Newest)</option>
 
-    
-    <option value="alphabetic-asc">TV Show (A-Z)</option>
-    <option value="alphabetic-desc">TV Show(Z-A)</option>
-    
-    <option value="streaming-asc">Streaming(A-Z)</option>
-    <option value="streaming-desc">Streaming(Z-A)</option>
-    
-    </select>
-</form>
-
-<!-------------------------------------------------------------------------------------
-                         DYNAMICALLY GENERATED PHP PART 
-------------------------------------------------------------------------------------->
-<?php
-
-//set default sort order
-$sortby="added-desc";
-$sorting="`date`"; //default sorting is by added date;  
-$order="DESC"; //default order is newest to oldest  
-
-// default sorting is by added date;
-if (isset($_GET["sortby"])) {
-    $sortby = $_GET["sortby"];
-
-
-    /***************  SORT BY DATE OF LOGGING ***********/
-    // Newest To Oldest
-    if($sortby=="added-desc"){
-        $sorting="`date`";
-        $order="DESC";
-    }
-
-    //Oldest to Newest
-    else if($sortby=="added-asc"){
-        $sorting="`date`";
-        $order="ASC";
-    }
-
-    /***************  SORT BY TV SHOW NAME ***********/
-       //A-Z
-      else if ($sortby == "alphabetic-asc") {
-          $sorting = "`tv`";
-          $order = "ASC";
-      }
-      // Z-A
-      else if ($sortby == "alphabetic-desc") {
-          $sorting = "`tv`";
-          $order = "DESC";
-      }
-
-    /***************  SORT BY STREAMING SERVICES***********/
-    //A-Z
-      else if ($sortby == "streaming-asc") {
-        $sorting = "`streaming`";
-        $order = "ASC";
-    }
-    //Z-A
-    else if ($sortby == "streaming-desc") {
-        $sorting = "`streaming`";
-        $order = "DESC";
-    }
-}//end of if isset($_GET["sortby"])
-
-
-
-// Number of entries to show in a page.
-$per_page_record = 15; 
-
-
-// Look for a GET variable page if not found default is 1.
-if (isset($_GET["page"])) {
-    $page = $_GET["page"];
-} else {
-    $page = 1;
-}
-
-$start_from = ($page - 1) * $per_page_record;
-
-$html_tv="<br><br><section class='cards-wrapper'>"; // $html_tv stores the html code for the movie cards
-    
-//only select unique shows logged by the user
-$sql = "SELECT `tv`, `streaming`, `date` FROM `data` where tv != '' and username='$username' GROUP BY `tv` order by ".$sorting." ".$order." LIMIT $start_from, $per_page_record;";
-if ($query = mysqli_query($con, $sql)) {
-    $totaltvcount=mysqli_num_rows($query);
-    if ($totaltvcount > 0) {
-        while ($row = mysqli_fetch_assoc($query)) {
-            $tvname=$row['tv'];
-            $platform=$row['streaming'];
-            $tv_logged=date("F jS, Y", strtotime($row['date']));
-
-            $stripnametv=$stripped = str_replace(' ', '+', $tvname);
-
-            /**if poster is not downloaded, download the poster in the directory and show the image*/
-
-            //remove special characters since we are using it as a file name
-            $filename= preg_replace('/[^A-Za-z0-9\-]/', '', $stripnametv);
-            $pseudo_poster='images/API/tv-'.$filename.'.jpg';
-            if (file_exists($pseudo_poster)) {
-                $posterpath=$pseudo_poster;
-            }
-            else {
-                $posterpath = getposterpath($stripnametv); // URL to download file from
-                $img = 'images/API/tv-'.$filename.'.jpg'; // Image path to save downloaded image
-                // Save image 
-                file_put_contents($img, file_get_contents($posterpath));
                 
-            }
-         
+                <option value="alphabetic-asc">TV Show (A-Z)</option>
+                <option value="alphabetic-desc">TV Show(Z-A)</option>
+                
+                <option value="streaming-asc">Streaming(A-Z)</option>
+                <option value="streaming-desc">Streaming(Z-A)</option>
+                
+                </select>
+            </form>
 
-            // one single div tag for each movie
-            $html_tv.="<div class='card-grid-space'>";
-                // image tag for the movie
-                $html_tv.="<div class='card' style='background-image:url(";
-                $html_tv.=  $posterpath; // get the poster path from the api
-                $html_tv.=")'";
-                $html_tv.=">";
-            
-                $html_tv.="<div>"; 
-                $html_tv.="<div class='logged-date'>". $tv_logged ."</div>"; 
-                $html_tv.="</div>";  // end of div for the movie name
+            <!-------------------------------------------------------------------------------------
+                                    DYNAMICALLY GENERATED PHP PART 
+            ------------------------------------------------------------------------------------->
+            <?php
 
-                $html_tv.="</div>"; // end of card
+            //set default sort order
+            $sortby="added-desc";
+            $sorting="`date`"; //default sorting is by added date;  
+            $order="DESC"; //default order is newest to oldest  
 
-                $html_tv.="<h1 class='moviename'>". $tvname."</h1>";
-                $html_tv.="<div class='tags'>"; // div for the tags
-                $html_tv.="<div class='tag'>". $platform."</div>";
-                $html_tv.="</div>"; // end of tags
-                $html_tv.="</div>"; //end of card-grid-space
-        }
-    }else{
-        $html_tv.="No TV shows Logged";
-    }
-}
-
-$html_tv.="</section>";
-echo $html_tv;
-?>
+            // default sorting is by added date;
+            if (isset($_GET["sortby"])) {
+                $sortby = $_GET["sortby"];
 
 
-<!-------------------------------------------------------------------------------------
-                                PAGINATION
-------------------------------------------------------------------------------------->
-<center>
- <div class="pagination">
-        <?php
-        $query="SELECT DISTINCT count(DISTINCT `tv`) FROM `data` where tv != '' and username='$username'";
-        $rs_result = mysqli_query($con, $query);
-        $row = mysqli_fetch_row($rs_result);
-        $total_records = $row[0];
+                /***************  SORT BY DATE OF LOGGING ***********/
+                // Newest To Oldest
+                if($sortby=="added-desc"){
+                    $sorting="`date`";
+                    $order="DESC";
+                }
 
-        echo "</br>";
-        // CALCULATING THE NUMBER OF PAGES
-        $total_pages = ceil($total_records / $per_page_record);
-        $pageLink = "";
+                //Oldest to Newest
+                else if($sortby=="added-asc"){
+                    $sorting="`date`";
+                    $order="ASC";
+                }
 
-        // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
-        if ($page >= 2) {
-            echo "<a href='media_tv.php?sortby=".$sortby."&page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
-        }
+                /***************  SORT BY TV SHOW NAME ***********/
+                //A-Z
+                else if ($sortby == "alphabetic-asc") {
+                    $sorting = "`tv`";
+                    $order = "ASC";
+                }
+                // Z-A
+                else if ($sortby == "alphabetic-desc") {
+                    $sorting = "`tv`";
+                    $order = "DESC";
+                }
 
-        // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
-        for ($i = 1; $i <= $total_pages; $i++) {
-            if ($i == $page) {
-                $pageLink .= "<a class = 'active' href='media_tv.php?page="
-                    . $i . "'>" . $i . " </a>";
+                /***************  SORT BY STREAMING SERVICES***********/
+                //A-Z
+                else if ($sortby == "streaming-asc") {
+                    $sorting = "`streaming`";
+                    $order = "ASC";
+                }
+                //Z-A
+                else if ($sortby == "streaming-desc") {
+                    $sorting = "`streaming`";
+                    $order = "DESC";
+                }
+            }//end of if isset($_GET["sortby"])
+
+
+
+            // Number of entries to show in a page.
+            $per_page_record = 15; 
+
+
+            // Look for a GET variable page if not found default is 1.
+            if (isset($_GET["page"])) {
+                $page = $_GET["page"];
             } else {
-                $pageLink .= "<a href='media_tv.php?sortby=".$sortby."&page=" . $i . "'>" . $i . " </a>";
+                $page = 1;
             }
-        }
-        echo $pageLink;
 
-        // SHOW NEXT BUTTON IF NOT ON LAST PAGE
-        if ($page < $total_pages) {
-            echo "<a href='media_tv.php?sortby=".$sortby."&page=" . ($page + 1) . "'> <span class='neonText'> → </span> </a>";
-        }
-        ?>
+            $start_from = ($page - 1) * $per_page_record;
+
+            $html_tv="<br><br><section class='cards-wrapper'>"; // $html_tv stores the html code for the movie cards
+                
+            //only select unique shows logged by the user
+            $sql = "SELECT `tv`, `streaming`, `date` FROM `data` where tv != '' and username='$username' GROUP BY `tv` order by ".$sorting." ".$order." LIMIT $start_from, $per_page_record;";
+            if ($query = mysqli_query($con, $sql)) {
+                $totaltvcount=mysqli_num_rows($query);
+                if ($totaltvcount > 0) {
+                    while ($row = mysqli_fetch_assoc($query)) {
+                        $tvname=$row['tv'];
+                        $platform=$row['streaming'];
+                        $tv_logged=date("F jS, Y", strtotime($row['date']));
+
+                        $stripnametv=$stripped = str_replace(' ', '+', $tvname);
+
+                        /**if poster is not downloaded, download the poster in the directory and show the image*/
+
+                        //remove special characters since we are using it as a file name
+                        $filename= preg_replace('/[^A-Za-z0-9\-]/', '', $stripnametv);
+                        $pseudo_poster='images/API/tv-'.$filename.'.jpg';
+                        if (file_exists($pseudo_poster)) {
+                            $posterpath=$pseudo_poster;
+                        }
+                        else {
+                            $posterpath = getposterpath($stripnametv); // URL to download file from
+                            $img = 'images/API/tv-'.$filename.'.jpg'; // Image path to save downloaded image
+                            // Save image 
+                            file_put_contents($img, file_get_contents($posterpath));
+                            
+                        }
+                    
+
+                        // one single div tag for each movie
+                        $html_tv.="<div class='card-grid-space'>";
+                            // image tag for the movie
+                            $html_tv.="<div class='card' style='background-image:url(";
+                            $html_tv.=  $posterpath; // get the poster path from the api
+                            $html_tv.=")'";
+                            $html_tv.=">";
+                        
+                            $html_tv.="<div>"; 
+                            $html_tv.="<div class='logged-date'>". $tv_logged ."</div>"; 
+                            $html_tv.="</div>";  // end of div for the movie name
+
+                            $html_tv.="</div>"; // end of card
+
+                            $html_tv.="<h1 class='moviename'>". $tvname."</h1>";
+                            $html_tv.="<div class='tags'>"; // div for the tags
+                            $html_tv.="<div class='tag'>". $platform."</div>";
+                            $html_tv.="</div>"; // end of tags
+                            $html_tv.="</div>"; //end of card-grid-space
+                    }
+                }else{
+                    $html_tv.="No TV shows Logged";
+                }
+            }
+
+            $html_tv.="</section>";
+            echo $html_tv;
+            ?>
+
+
+            <!-------------------------------------------------------------------------------------
+                                            PAGINATION
+            ------------------------------------------------------------------------------------->
+            <center>
+            <div class="pagination">
+                    <?php
+                    $query="SELECT DISTINCT count(DISTINCT `tv`) FROM `data` where tv != '' and username='$username'";
+                    $rs_result = mysqli_query($con, $query);
+                    $row = mysqli_fetch_row($rs_result);
+                    $total_records = $row[0];
+
+                    echo "</br>";
+                    // CALCULATING THE NUMBER OF PAGES
+                    $total_pages = ceil($total_records / $per_page_record);
+                    $pageLink = "";
+
+                    // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
+                    if ($page >= 2) {
+                        echo "<a href='media_tv.php?sortby=".$sortby."&page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
+                    }
+
+                    // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
+                    for ($i = 1; $i <= $total_pages; $i++) {
+                        if ($i == $page) {
+                            $pageLink .= "<a class = 'active' href='media_tv.php?page="
+                                . $i . "'>" . $i . " </a>";
+                        } else {
+                            $pageLink .= "<a href='media_tv.php?sortby=".$sortby."&page=" . $i . "'>" . $i . " </a>";
+                        }
+                    }
+                    echo $pageLink;
+
+                    // SHOW NEXT BUTTON IF NOT ON LAST PAGE
+                    if ($page < $total_pages) {
+                        echo "<a href='media_tv.php?sortby=".$sortby."&page=" . ($page + 1) . "'> <span class='neonText'> → </span> </a>";
+                    }
+                    ?>
+                
+                </div><!--END OF PAGINATION ROW -->
+
+            </div><!--END OF MEDIA CONTENT -->
     
-    </div><!--END OF PAGINATION ROW -->
+        </div><!---END OF ENTIRE DOCUMENT (PRELOADER + MEDIA CONTENT) -->
 </center>
-<body>
+
+
+<!--PRELOADER JS-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')
+</script>
+<script>
+    $(document).ready(function() {
+
+        setTimeout(function() {
+            $('body').addClass('loaded');
+            $('h1').css('color', '#222222');
+        }, 3000);
+
+    });
+</script>
+
+
+</body>
 </html>
 <?php  mysqli_close($con);?>
