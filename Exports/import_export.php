@@ -54,7 +54,9 @@ if (empty($_SESSION)) {
                     <div class="arrow-down">
                         <div class="arrow-down-inner"></div>
                     </div>
-                    <a id="tab0" href="#tabBody0" role="tab" aria-controls="tabBody0" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-desktop"></span><span class="hidden-xs"><b>Goodreads</b><br>Import Books</span></a>
+                    <a id="tab0" href="#tabBody0" role="tab" aria-controls="tabBody0" aria-selected="true" data-toggle="tab" tabindex="0">
+                        <span><img src="../images/Icons/goodreads.svg" height="100" width="100"></span>
+                        <span class="hidden-xs"><br><b>Goodreads</b><br>Import Books</span></a>
                     <div class="whiteBlock"></div>
                 </li>
 
@@ -62,7 +64,8 @@ if (empty($_SESSION)) {
                     <div class="arrow-down">
                         <div class="arrow-down-inner"></div>
                     </div>
-                    <a id="tab1" href="#tabBody1" role="tab" aria-controls="tabBody1" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-firefox"></span><span class="hidden-xs"><b>RYM</b><br>Import Albums</span></a>
+                    <a id="tab1" href="#tabBody1" role="tab" aria-controls="tabBody1" aria-selected="true" data-toggle="tab" tabindex="0"><span><img src="../images/Icons/rym.svg" height="100" width="100"></span>
+                    <span class="hidden-xs"><br><b>RYM</b><br>Import Albums</span></a>
                     <div class="whiteBlock"></div>
                 </li>
 
@@ -70,7 +73,9 @@ if (empty($_SESSION)) {
                     <div class="arrow-down">
                         <div class="arrow-down-inner"></div>
                     </div>
-                    <a id="tab2" href="#tabBody2" role="tab" aria-controls="tabBody2" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-envira"></span><span class="hidden-xs"><b>IMDB/Letterboxd</b><br>Import Movies</span></a>
+                    <a id="tab2" href="#tabBody2" role="tab" aria-controls="tabBody2" aria-selected="true" data-toggle="tab" tabindex="0"><span>
+                    <img src="../images/Icons/imdb.svg" height="100" width="100"></span>
+                    </span><span class="hidden-xs"><br><b>IMDB/Letterboxd</b><br>Import Movies</span></a>
                     <div class="whiteBlock"></div>
                 </li>
 
@@ -78,7 +83,9 @@ if (empty($_SESSION)) {
                     <div class="arrow-down">
                         <div class="arrow-down-inner"></div>
                     </div>
-                    <a id="tab3" href="#tabBody3" role="tab" aria-controls="tabBody3" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-mortar-board"></span><span class="hidden-xs"><b>Steam</b><br>Import Videogames</span></a>
+                    <a id="tab3" href="#tabBody3" role="tab" aria-controls="tabBody3" aria-selected="true" data-toggle="tab" tabindex="0"><span>
+                    <img src="../images/Icons/steam.svg" height="100" width="100"></span>
+                    </span><span class="hidden-xs"><br><b>Steam</b><br>Import Videogames</span></a>
                     <div class="whiteBlock"></div>
                 </li>
 
@@ -86,7 +93,9 @@ if (empty($_SESSION)) {
                     <div class="arrow-down">
                         <div class="arrow-down-inner"></div>
                     </div>
-                    <a id="tab4" href="#tabBody4" role="tab" aria-controls="tabBody4" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-stack-overflow"></span><span class="hidden-xs"><b>Trakt</b><br>Import TV Shows</span></a>
+                    <a id="tab4" href="#tabBody4" role="tab" aria-controls="tabBody4" aria-selected="true" data-toggle="tab" tabindex="0"><span>
+                    <img src="../images/Icons/trakt.svg" height="100" width="100"></span>
+                    </span><span class="hidden-xs"><br><b>Trakt</b><br>Import TV Shows</span></a>
                     <div class="whiteBlock"></div>
                 </li>
 
@@ -109,7 +118,7 @@ if (empty($_SESSION)) {
                                     <b>Step 3:</b> Click on the "Export" button in the left sidebar and and request an export. You will be granted a link to download your book catalogue. Download the CSV.
                                 </li>
                                 <li>
-                                    <b>Step 4:</b> Copy paste the Title and the Author fields from your export CSV into the blank CSV from WYDRN Template and upload it to WYDRN. Done!
+                                    <b>Step 4:</b> Copy paste the Title and the Author fields from your export CSV into the appropriate columns in blank CSV from WYDRN Template and upload it to WYDRN. Done!
                                 </li>
                                 <br>
  
@@ -135,7 +144,7 @@ if (empty($_SESSION)) {
                                 <b>Step 2:</b> Scroll to the bottom of the profile and find Export button. You will be redirected to the page where you can download a CSV containing all your catalogued albums.
                             </li>
                             <li>
-                                <b>Step 3:</b> Copy paste the Album and the Artist fields from your export CSV to the Blank CSV from WYDRN Template and and upload it to WYDRN. Done!
+                                <b>Step 3:</b> Copy paste the Album and the Artist fields from your export CSV to the appropriate columns in blank CSV from WYDRN Template and and upload it to WYDRN. Done!
                             </li>
                             
                             <br>
@@ -147,9 +156,44 @@ if (empty($_SESSION)) {
                 <div class="tab-pane  fade" id="tabBody2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true" tabindex="0">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>This is the content of tab three.</h2>
-                            <p>This field is a rich HTML field with a content editor like others used in Sitefinity. It accepts images, video, tables, text, etc. Street art polaroid microdosing la croix taxidermy. Jean shorts kinfolk distillery lumbersexual
-                                pinterest XOXO semiotics. Tilde meggings asymmetrical literally pork belly, heirloom food truck YOLO. Meh echo park lyft typewriter. </p>
+                        
+                        <!--IMDB-->
+                        <p><b>IMDB</b> is a website that allows you to keep a catalogue of your movies. You can import your movies from IMDB and add them to WYDRN. </p>
+                                <li>
+                                    <b>Step 1:</b> Go to <a href="https://www.imdb.com/">https://www.imdb.com/</a> and sign in with your IMDB account.
+                                </li>
+                                <li>
+                                    <b>Step 2:</b> Click on the "My Ratings" tab. You will be redirected to the page where you can see all of your movies.
+                                </li>
+                                <li>
+                                    <b>Step 3:</b> Click on the 3 dots at the top right of your list and press the "Export" button. A CSV will be downloaded.
+                                </li>
+                                <li>
+                                    <b>Step 4:</b> Copy paste the Movie and the Release fields from your export CSV into the appropriate columns in blank CSV from WYDRN Template and upload it to WYDRN. Done!
+                                </li>
+                                <br>
+ 
+                                <iframe width="1200" height="600" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                                </iframe>
+
+                                <hr>
+
+
+                        <!--Letterboxd-->
+                        <p><b>Letterboxd</b> is a website that allows you to keep a catalogue of your movies. You can import your movies from Letterboxd and add them to WYDRN. </p>
+                                <li>
+                                    <b>Step 1:</b> Go to <a href="https://letterboxd.com/">https://letterboxd.com/</a> and sign in with your Letterboxd account.
+                                </li>
+                                <li>
+                                    <b>Step 2:</b> Click on Your Profile -> Settings -> Import and Export and select "Export Movies". Extract watched.CSV from the downloaded ZIP.
+                                </li>
+                                <li>
+                                    <b>Step 3:</b> Copy paste the Movie and the Release fields from your watched CSV into the appropriate columns in blank CSV from WYDRN Template and upload it to WYDRN. Done!
+                                </li>
+                                <br>
+ 
+                                <iframe width="1200" height="600" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                                </iframe>
 
                         </div>
                     </div>
@@ -157,9 +201,24 @@ if (empty($_SESSION)) {
                 <div class="tab-pane  fade" id="tabBody3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true" tabindex="0">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>This is the content of tab four.</h2>
-                            <p>This field is a rich HTML field with a content editor like others used in Sitefinity. It accepts images, video, tables, text, etc. Street art polaroid microdosing la croix taxidermy. Jean shorts kinfolk distillery lumbersexual
-                                pinterest XOXO semiotics. Tilde meggings asymmetrical literally pork belly, heirloom food truck YOLO. Meh echo park lyft typewriter. </p>
+                        <p><b>Steam</b> is a website that allows you to keep a catalogue of your videogames. You can import your videogames from Steam and add them to WYDRN. </p>
+                                <li>
+                                    <b>Step 1:</b> Go to <a href="https://store.steampowered.com/">https://store.steampowered.com/</a> and sign in with your Steam account.
+                                </li>
+                                <li>
+                                    <b>Step 2:</b> Visit your profile and Copy your SteamID from the URL. 
+                                </li>
+                                <li>
+                                    <b>Step 3:</b> Visit <a href="https://steam.tools/games/">https://steam.tools/games/</a> and paste your copied SteamID here. Say Add User, select your PFP and click Import Games. Your games will appear in the right sidebar. Say Export.
+                                </li>
+                                <li>
+                                    <b>Step 4:</b> Copy paste the Game list that is displayed in the browser into the appropriate columns in blank CSV from WYDRN Template and upload it to WYDRN. Done!
+                                </li>
+                                <br>
+ 
+                                <iframe width="1200" height="600" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                                </iframe>
+
 
                         </div>
                     </div>
@@ -167,23 +226,27 @@ if (empty($_SESSION)) {
                 <div class="tab-pane  fade" id="tabBody4" role="tabpanel" aria-labelledby="tab4" aria-hidden="true" tabindex="0">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>This is the content of tab five.</h2>
-                            <p>This field is a rich HTML field with a content editor like others used in Sitefinity. It accepts images, video, tables, text, etc. Street art polaroid microdosing la croix taxidermy. Jean shorts kinfolk distillery lumbersexual
-                                pinterest XOXO semiotics. Tilde meggings asymmetrical literally pork belly, heirloom food truck YOLO. Meh echo park lyft typewriter. </p>
+                        <p><b>Trakt tv</b> is a website that allows you to keep a catalogue of your TV Shows. You can import your TV Shows from Trakt and add them to WYDRN. </p>
+                                <li>
+                                    <b>Step 1:</b> Go to <a href="https://trakt.tv/">https://trakt.tv/</a> and sign in with your Trakt account.
+                                </li>
+                                <li>
+                                    <b>Step 2:</b> Note your username. Visit <a href="https://darekkay.com/blog/trakt-tv-backup/">https://darekkay.com/blog/trakt-tv-backup/</a> and paste your username here. 
+                                </li>
+                                    <li>
+                                        <b>Step 3:</b>Extract the watched_shows.txt file from the downloaded ZIP. Now Visit <a href="https://konklone.io/json/">https://konklone.io/json/</a> and paste contents from the text file here. Download the CSV file.
+                                    </li>
+                                    <li>
+                                        <b>Step 4:</b> Copy paste the TV show and platform of your choice into the appropriate columns in blank CSV from WYDRN Template and upload it to WYDRN. Done!
+                                <br>
+ 
+                                <iframe width="1200" height="600" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                                </iframe>
 
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane  fade" id="tabBody5" role="tabpanel" aria-labelledby="tab5" aria-hidden="true" tabindex="0">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>This is the content of tab six.</h2>
-                            <p>This field is a rich HTML field with a content editor like others used in Sitefinity. It accepts images, video, tables, text, etc. Street art polaroid microdosing la croix taxidermy. Jean shorts kinfolk distillery lumbersexual
-                                pinterest XOXO semiotics. Tilde meggings asymmetrical literally pork belly, heirloom food truck YOLO. Meh echo park lyft typewriter. </p>
 
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </section>

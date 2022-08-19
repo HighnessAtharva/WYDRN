@@ -37,7 +37,7 @@ $username = $user_data['user_name'];
 <body style="color:white">
 
 <div class="heading">
-        <h1>WYDRN - Search TV Shows</h1>
+        <h1>Search TV Shows</h1>
 </div>
 
     <div class="wrapper">
