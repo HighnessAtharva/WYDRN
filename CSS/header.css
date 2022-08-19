@@ -7,22 +7,40 @@ body {
 }
 
 .header {
-    font-size: 20px;
-    position: absolute;
-    top: 0.5em;
-    padding: 5px;
+    font-size: 20px !important;
+    position: absolute !important;
+    top: 0.5em !important;
+    padding: 5px !important;
 }
 
 .wydrn-logo {
-    color: black;
-    background-color: white;
-    padding: 10px;
+    color: black !important;
+    background-color: white !important;
+    padding: 10px !important;
 }
 
 .header-icon {
-    width: 0.8em;
-    height: 0.8em;
-    display: inline-block;
-    margin-bottom: 5px;
-    margin-right: 5px;
+    width: 0.8em !important;
+    height: 0.8em !important;
+    display: inline-block !important;
+    margin-bottom: 5px !important;
+    margin-right: 5px !important;
+}
+
+#browse {
+    right: 230px;
+    left: auto;
+    margin-top: -20px
+}
+
+#media {
+    right: 0px;
+    left: auto;
+    margin-top: -20px
+}
+
+#your-account {
+    right: 0px;
+    left: auto;
+    margin-top: -20px
 }

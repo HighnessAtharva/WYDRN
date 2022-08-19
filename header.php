@@ -42,13 +42,13 @@ if(isset($_SESSION['user_id']))
         /* ============ desktop view ============ */
         @media all and (min-width: 992px) {
             .navbar .nav-item .dropdown-menu {
-                display: none;
+                display: none !important;
             }
             .navbar .nav-item:hover .dropdown-menu {
-                display: block;
+                display: block !important;
             }
             .navbar .nav-item .dropdown-menu {
-                margin-top: 0;
+                margin-top: 0 !important;
             }
         }
         /* ============ desktop view .end// ============ */
@@ -60,7 +60,7 @@ if(isset($_SESSION['user_id']))
     <!-- ============= COMPONENT ============== -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="welcome.php"><img src="images/website/logo.png" style="height:50px; width:50px;" /></a>
+            <a class="navbar-brand" href="welcome.php"><img src="images/website/logo.png" height="50" width="50"/></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -70,7 +70,7 @@ if(isset($_SESSION['user_id']))
                      <!-- Browse Media Dropdown-->
                      <li class="nav-item dropdown">
                         <li class="nav-link" href="#" data-bs-toggle="dropdown">Browse</li>
-                        <ul class="dropdown-menu dropdown-menu-right" style="right: 230px; left: auto; margin-top:-20px">
+                        <ul class="dropdown-menu dropdown-menu-right" id="browse">
                             <li><a class="dropdown-item" href="MediaAPIs/Book/index.php">
                             <span><img src="images/Icons/book.svg" class='header-icon'>Book</span>
                             </a></li>
@@ -104,7 +104,7 @@ if(isset($_SESSION['user_id']))
                     <!-- Your Media Dropdown -->
                     <li class="nav-item dropdown">
                         <li class="nav-link" href="#" data-bs-toggle="dropdown">Media</li>
-                        <ul class="dropdown-menu dropdown-menu-end" style="right: 0px; left: auto; margin-top:-20px">
+                        <ul class="dropdown-menu dropdown-menu-end" id="media">
                             <li><a class="dropdown-item" href="media_book.php">
                             <span><img src="images/Icons/book.svg" class='header-icon'>Book</span>
                             </a></li>
@@ -131,8 +131,8 @@ if(isset($_SESSION['user_id']))
 
                     <!-- Your Account Dropdown -->
                     <li class="nav-item dropdown">
-                        <li class="nav-link" href="#" data-bs-toggle="dropdown"> <img src="<?php echo $pfp;?>" class="h-10 w-10 rounded-circle" style="height:25px; width:25px;"> </li>
-                        <ul class="dropdown-menu dropdown-menu-end" style="right: 0px; left: auto; margin-top:-20px">
+                        <li class="nav-link" href="#" data-bs-toggle="dropdown"> <img src="<?php echo $pfp;?>" class="h-10 w-10 rounded-circle" width="25" height="25"> </li>
+                        <ul class="dropdown-menu dropdown-menu-end" id="your-account">
                             
                             <li><a class="dropdown-item" href="profile.php"> 
                             <span><img src="images/Icons/profile.svg" class='header-icon'>Profile</span>
