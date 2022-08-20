@@ -112,6 +112,8 @@ function getposterpath($name, $year)
                 </select>
             </form>
 
+            <button class="btn btn-success" onclick="window.location.href='media_list_view.php?movie'">Just  show me the list</button>
+
             <?php
             //set default sort order
             $sortby = "added-desc";

@@ -120,6 +120,8 @@ function getposterpath($name, $artist)
                 </select>
             </form>
 
+            <button class="btn btn-success" onclick="window.location.href='media_list_view.php?album'">Just  show me the list</button>
+
             <!-------------------------------------------------------------------------------------
                          DYNAMICALLY GENERATED PHP PART 
 ------------------------------------------------------------------------------------->

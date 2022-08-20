@@ -125,6 +125,8 @@ function getposterpath($name)
                 </select>
             </form>
 
+            <button class="btn btn-success" onclick="window.location.href='media_list_view.php?tv'">Just  show me the list</button>
+
             <!-------------------------------------------------------------------------------------
                                     DYNAMICALLY GENERATED PHP PART
             ------------------------------------------------------------------------------------->

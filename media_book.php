@@ -108,7 +108,7 @@ function getposterpath($name, $author)
             </div>
 
             <!-- Sorting Functionality -->
-            <form method="get" action="" name="sort">
+            <form method="get" action="" name="sort" id="filter-select">
                 <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
                     <option value="">Sort By</option>
 
@@ -124,6 +124,9 @@ function getposterpath($name, $author)
 
                 </select>
             </form>
+
+            
+            <button class="btn btn-success" onclick="window.location.href='media_list_view.php?book'">Just  show me the list</button>
             <!-------------------------------------------------------------------------------------
                                 DYNAMICALLY GENERATED PHP PART
         ------------------------------------------------------------------------------------->
