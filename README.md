@@ -32,3 +32,11 @@ The site is not deployed currently so you can't get a live preview but you can t
 
 ## [Project Plan Board](https://github.com/users/HighnessAtharva/projects/1)
 
+## Known Issues
+
+- During CSV imports-> inserts the '?' character in the database when UTF-8 characters are present (Roman, Japanese, Latin, Greek)
+- On Welcome.php Movies Section will not populate the input field while selecting when dropdown options are <2
+- Diary and Export CSV pages will show a blank row when the last modified change done by the user is a clear profile page.
+- On Browse Movies and TV pages sometimes the movie details will not load after making a selection from the dropdown.
+- PDF exports are not UTF-8 safe.
+
