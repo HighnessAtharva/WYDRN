@@ -20,38 +20,44 @@
 require "connection.php";
 require "functions.php";
 
-if(isset($_SESSION['user_id'])){
-	header("Location:profile.php");
+// Trying to prevent logged in user from accessing the login page. If the user is already logged in, redirect to the profile page. Only logged out users can access the login page. Second check i.e. empty($_GET['logout']) is add to the exception when this page is being redirected to from the logout page.
+session_start();
+if(isset($_SESSION['user_name']) && empty($_GET['logout'])){
+	header("Location: profile.php");
 }
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    //something was
-	
-    $user_name = strip_tags(trim($_POST['user_name']));
-    $password = strip_tags(trim($_POST['password']));
 
-    $query = "select * from users where user_name = '$user_name' limit 1";
-    $result = mysqli_query($con, $query);
-    if ($result) {
-        if ($result && mysqli_num_rows($result) > 0) {
-            $user_data = mysqli_fetch_assoc($result);
-            $hashed_pass = $user_data['password'];
-            if (password_verify($password, $hashed_pass)) {
-                //start the session only if user is authenticated
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+	$user_name = strip_tags(trim($_POST['user_name']));
+	$password = strip_tags(trim($_POST['password']));
+
+	$query = "select * from users where user_name = '$user_name' limit 1";
+	$result = mysqli_query($con, $query);
+	if ($result) {
+		if ($result && mysqli_num_rows($result) > 0) {
+			$user_data = mysqli_fetch_assoc($result);
+			$hashed_pass = $user_data['password'];
+			if (password_verify($password, $hashed_pass)) {
+				//start the session only if user is authenticated
 				session_start();
 				$_SESSION['user_id'] = $user_data['user_id'];
-                header("Location: profile.php");
-                die;
-            }
-        }
-    }
+				$_SESSION['user_name'] = $user_data['user_name'];
+				header("Location: profile.php");
 
-    $invalid_login = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
+				die;
+			}
+		}
+	}
+
+	$invalid_login = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
 					top: 100px; left: 570px;' role='alert'>
 			    	Username or Password does not match. Retry!
 				    </div></center>";
-    echo $invalid_login;
+	echo $invalid_login;
 }
+
+
 mysqli_close($con);
 ?>
 
@@ -60,40 +66,42 @@ mysqli_close($con);
 ------------------------------------------------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>WYDRN - Login</title>
 	<!------------------
 	BOOTSTRAP CDN
 	-------------------->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	
+
 
 	<!-- Add icon library -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" href="CSS/login.css">
-	
-    <!-- Sweet Alert (Beautiful looking alert plugin-->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<!-- Sweet Alert (Beautiful looking alert plugin-->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body style="background-image: url(images/website/login.png); background-size: cover;" onload="getcookiedata()">
+
 	<div id="box">
 		<form method="post" action="login.php" onsubmit="return Validation();">
 			<div class="WYDRN">WYDRN</div>
-			
+
 
 			<!----------------
 			USERNAME
 			------------------>
-		
-			<span class="userandpass" >USERNAME</span>
+
+			<span class="userandpass">USERNAME</span>
 			<div class="input-container">
 				<i class="fa fa-user icon"></i>
 				<input class="input-field" id="username" type="text" name="user_name" placeholder="HighnessAlexDaOne" autofocus="true" required><br><br>
@@ -102,49 +110,48 @@ mysqli_close($con);
 			<!-------------
 			PASSWORD
 			-------------->
-			<span  class="userandpass">PASSWORD</span>
+			<span class="userandpass">PASSWORD</span>
 			<div class="input-container">
 				<i class="fa fa-key icon"></i>
 				<input class="input-field" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" onCopy="return false" required><br>
 			</div>
 
 			<!-- An element to toggle between password visibility -->
-			<input type="checkbox" onclick="showPass()" value="Show Password" ><span style="color:white">Show Password<br>
-			<!--------------
+			<input type="checkbox" onclick="showPass()" value="Show Password"><span style="color:white">Show Password<br>
+				<!--------------
 			REMEMBER ME CHECKBOX
 			----------------->
-			<input type="checkbox" name="rememberme" style="margin-top:20px;margin-left:65px;" onclick="setcookie()">
-			<span style="color:#cccccc;">Remember Me</span><br>
+				<input type="checkbox" name="rememberme" style="margin-top:20px;margin-left:65px;" onclick="setcookie()">
+				<span style="color:#cccccc;">Remember Me</span><br>
 
-			<!--------------
+				<!--------------
 			Forgot Password 
 			----------------->
-			<a name="forgotpass" style="margin-top:20px;margin-left:65px;" href="send_reset_link.php">
-			<span style="color:#cccccc;">Forgot Password</span><br>
+				<a name="forgotpass" style="margin-top:20px;margin-left:65px;" href="send_reset_link.php">
+					<span style="color:#cccccc;">Forgot Password</span><br>
 
-			<!----------------
+					<!----------------
 			LOGIN BUTTON
 			------------------>
-			<input id="button" style="margin-top:15px; margin-bottom:20px; margin-left:80px;" type="submit" value="Login"><br>
+					<input id="button" style="margin-top:15px; margin-bottom:20px; margin-left:80px;" type="submit" value="Login"><br>
 
-			<!---------------
+					<!---------------
 			SIGNUP BUTTON
 			----------------->
-			<a href="signup.php" style="color:white; margin-left:108px;">Signup</a><br><br>
+					<a href="signup.php" style="color:white; margin-left:108px;">Signup</a><br><br>
 		</form>
 	</div>
 
 
 
 
-<!-------------------------------------------------------------------------------------
+	<!-------------------------------------------------------------------------------------
 JAVASCRIPT VALIDATION
 ------------------------------------------------------------------------------------->
-<script>
-		
+	<script>
 		// To prevent form resubmission when page is refreshed (F5 / CTRL+R) 
-		if ( window.history.replaceState ) {
-		window.history.replaceState( null, null, window.location.href );
+		if (window.history.replaceState) {
+			window.history.replaceState(null, null, window.location.href);
 		}
 
 		//toggle password visibilty
@@ -158,71 +165,72 @@ JAVASCRIPT VALIDATION
 		}
 
 		// to check and validate form data and raise alerts if input is erronous. 
-		function Validation(){
+		function Validation() {
 			var name = document.getElementById("username").value;
 			var password = document.getElementById("pass").value;
 			const isAlphaNumeric = str => /^[a-z0-9_]+$/gi.test(str);
-			
-			
+
+
 
 			// CHECK IF USERNAME IS ALPHANUMERIC
-			if(!isAlphaNumeric(name)){
+			if (!isAlphaNumeric(name)) {
 				//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
 				swal({
-				title: "Username Invalid",
-				text: "Username must not contain special characters",
-				icon: "warning",
-				button: "Retry",
+					title: "Username Invalid",
+					text: "Username must not contain special characters",
+					icon: "warning",
+					button: "Retry",
 				});
-			
+
 				return false;
 			}
 
-		
 
-		// RETURN VALID AFTER ALL CHECKS PASS
-		return true;
+
+			// RETURN VALID AFTER ALL CHECKS PASS
+			return true;
 		}
 
-		
+
 		//implementing cookies for the REMEMBER ME function.
-		function setcookie(){
+		function setcookie() {
 			//"username" & "pass" is the ID of the two input fields
-            var u =document.getElementById('username').value;
-            var p =document.getElementById('pass').value;
+			var u = document.getElementById('username').value;
+			var p = document.getElementById('pass').value;
 
 			//"USERNAME" & "PSWD" are the cookie key names
-            document.cookie="USERNAME="+u+";path=http://localhost/WYDRN/";
-            document.cookie="PSWD="+p+";path=http://localhost/WYDRN/";
-           }
+			document.cookie = "USERNAME=" + u + ";path=http://localhost/WYDRN/";
+			document.cookie = "PSWD=" + p + ";path=http://localhost/WYDRN/";
+		}
 
 
-        function getcookiedata(){
-            console.log(document.cookie);
+		function getcookiedata() {
+			console.log(document.cookie);
 			//"USERNAME" & "PSWD" are the cookie key names
-            var user=getCookie('USERNAME');
-            var pswd=getCookie('PSWD');
+			var user = getCookie('USERNAME');
+			var pswd = getCookie('PSWD');
 
 			//"username" & "pass" is the ID of the two input fields
-            document.getElementById('username').value=user;
-            document.getElementById('pass').value=pswd;
-        }
+			document.getElementById('username').value = user;
+			document.getElementById('pass').value = pswd;
+		}
 
 		function getCookie(cname) {
 			var name = cname + "=";
 			var decodedCookie = decodeURIComponent(document.cookie);
 			var ca = decodedCookie.split(';');
-			for(var i = 0; i <ca.length; i++){
+			for (var i = 0; i < ca.length; i++) {
 				var c = ca[i];
-				while (c.charAt(0) == ' '){
+				while (c.charAt(0) == ' ') {
 					c = c.substring(1);
-					}
+				}
 				if (c.indexOf(name) == 0) {
 					return c.substring(name.length, c.length);
-					}
+				}
 			}
 			return "";
-        }
+		}
 	</script>
 </body>
+
 </html>

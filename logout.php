@@ -24,7 +24,9 @@ if(isset($_SESSION['user_id']))
 	unset($_SESSION['user_id']);
 }
 
-header("Location: login.php");
+// destroy the session and redirect to login page with a GET parameter of logout to pass the exception that the user is logged out.
+session_destroy();
+header("Location: login.php?logout=true");
 mysqli_close($con);
 die;
 
