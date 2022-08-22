@@ -6,38 +6,48 @@ body {
     font-family: "Open Sans", Helvetica, sans-serif;
 }
 
-.flex {
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
-    border: 1px solid black;
-}
-
-.flex>.mydiv {
-    width: 200px;
-    margin: 5px;
-    padding: 50px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
+.media-item-div {
+    justify-content: space-between;
     align-items: center;
-    background-color: #383ff3;
-    height: 50px;
-    font-size: 12pt;
+    min-height: 300px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.mutual-media-title {
+    text-align: center;
     color: white;
-    border-radius: 10px;
 }
 
-.spaceEvenly {
-    justify-content: space-evenly;
+.mutual-media-subtitle {
+    text-align: center;
+    color: white;
 }
 
-.spaceAround {
-    justify-content: space-around;
+#mutualGenericBtn {
+    background-image: url("../images/website/assets/abstract/skull.jpg");
 }
 
-#counter {
-    /* background-color: skyblue; */
+#mutualGameBtn {
+    background-image: url("../images/website/assets/games/1193446.jpg");
+}
+
+#mutualMusicBtn {
+    background-image: url("../images/website/assets/music/781044.jpg");
+}
+
+#mutualBookBtn {
+    background-image: url("../images/website/assets/movies/1460255.jpg");
+}
+
+#mutualMovieBtn {
+    background-image: url("../images/website/assets/movies/1561418.jpg");
+}
+
+#mutualTVBtn {
+    background-image: url("../images/website/assets/movies/1585246.jpg");
 }
 
 .media {
