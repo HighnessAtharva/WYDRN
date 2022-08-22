@@ -10,8 +10,8 @@ body {
     justify-content: space-between;
     align-items: center;
     min-height: 300px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
     border: 1px solid black;
     text-align: center;
 }
@@ -48,6 +48,31 @@ body {
 
 #mutualTVBtn {
     background-image: url("../images/website/assets/movies/1585246.jpg");
+}
+
+#mutualGameBtn:hover {
+    opacity: 85%;
+    cursor: pointer;
+}
+
+#mutualMusicBtn:hover {
+    opacity: 85%;
+    cursor: pointer;
+}
+
+#mutualBookBtn:hover {
+    opacity: 85%;
+    cursor: pointer;
+}
+
+#mutualMovieBtn:hover {
+    opacity: 85%;
+    cursor: pointer;
+}
+
+#mutualTVBtn:hover {
+    opacity: 85%;
+    cursor: pointer;
 }
 
 .media {
