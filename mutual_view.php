@@ -192,7 +192,7 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
     <!------------------------------------------
                 VIDEO GAMES SECTION
     --------------------------------------------->
-    <div class="media" id="mututalGameDiv" style="display:none;">
+    <div class="media" id="mututalGameDiv">
         <div>
             <h2>Video Games</h2>
         </div>

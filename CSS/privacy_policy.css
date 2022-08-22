@@ -1,0 +1,28 @@
+h1 {
+    font-family: bebas neue;
+    font-size: 46px;
+    text-align: center;
+    color: rgb(44, 48, 52);
+    margin: 0;
+    padding: 0 0 6px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .15);
+}
+
+h2 {
+    font-family: bebas neue;
+    font-size: 26px;
+    line-height: 20px;
+    text-align: left;
+    color: rgb(44, 48, 52);
+    margin: 0;
+    padding: 20px 0 0 0;
+}
+
+p {
+    font-family: open sans;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: rgb(44, 48, 52);
+    margin: 0;
+    padding: 10px 0 0 0;
+}

@@ -20,6 +20,10 @@
 require "connection.php";
 require "functions.php";
 
+if(isset($_SESSION['user_id'])){
+	header("Location:profile.php");
+}
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //something was
 	
@@ -67,6 +71,10 @@ mysqli_close($con);
 	-------------------->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	
+
+	<!-- Add icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	<link rel="stylesheet" href="CSS/login.css">
 	
     <!-- Sweet Alert (Beautiful looking alert plugin-->
@@ -76,7 +84,7 @@ mysqli_close($con);
 </head>
 
 <body style="background-image: url(images/website/login.png); background-size: cover;" onload="getcookiedata()">
-	<div id="box" style="background: rgba(0,0,0,0.5); margin-top: 150px;">
+	<div id="box">
 		<form method="post" action="login.php" onsubmit="return Validation();">
 			<div class="WYDRN">WYDRN</div>
 			
@@ -84,14 +92,21 @@ mysqli_close($con);
 			<!----------------
 			USERNAME
 			------------------>
+		
 			<span class="userandpass" >USERNAME</span>
-			<input class="text" id="username" type="text" name="user_name" placeholder="HighnessAlexDaOne" autofocus="true" required><br><br>
+			<div class="input-container">
+				<i class="fa fa-user icon"></i>
+				<input class="input-field" id="username" type="text" name="user_name" placeholder="HighnessAlexDaOne" autofocus="true" required><br><br>
+			</div>
 
 			<!-------------
 			PASSWORD
 			-------------->
 			<span  class="userandpass">PASSWORD</span>
-			<input class="text" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" onCopy="return false" required><br>
+			<div class="input-container">
+				<i class="fa fa-key icon"></i>
+				<input class="input-field" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" onCopy="return false" required><br>
+			</div>
 
 			<!-- An element to toggle between password visibility -->
 			<input type="checkbox" onclick="showPass()" value="Show Password" ><span style="color:white">Show Password<br>

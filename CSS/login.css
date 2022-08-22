@@ -13,6 +13,44 @@ body {
     width: 100%;
 }
 
+.input-container {
+    display: -ms-flexbox;
+    /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.icon {
+    padding-top: 15px;
+    background: dodgerblue;
+    color: white;
+    min-width: 50px;
+    height: 47px;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    height: 47px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid white;
+    margin-bottom: 10px;
+}
+
+.input-field:focus {
+    border: 2px solid dodgerblue;
+}
+
+.input-field:focus {
+    border: 2px solid dodgerblue;
+}
+
 #button {
     padding: 10px;
     width: 100px;
@@ -25,12 +63,14 @@ body {
     margin: auto;
     width: 300px;
     padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    margin-top: 100px;
 }
 
 .userandpass {
     color: white;
     font-family: "Open Sans", Helvetica, sans-serif;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
     float: left;
 }
 
