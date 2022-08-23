@@ -32,6 +32,11 @@ img {
     border-radius: 10px;
 }
 
+.about-text {
+    font-size: 8px;
+    color: #141417;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 .article {
     margin-top: -550px;
@@ -41,9 +46,8 @@ img {
     justify-content: center;
     align-items: center;
     background-color: inherit;
-    padding: 20px;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+    padding: 5px;
+    margin-bottom: 5px;
     color: black;
     font-weight: 300;
     margin-left: -100px;
@@ -54,7 +58,7 @@ img {
 .article h1,
 .article p {
     font-family: "Lora", serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 10px;
     background: rgb(255, 255, 255);
     padding: 20px;
@@ -70,6 +74,10 @@ img {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+#section_2_article {
+    margin-top: -580px;
 }
 
 section {
