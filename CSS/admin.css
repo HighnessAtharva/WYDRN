@@ -8,7 +8,255 @@ body {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-    font-family: "Open Sans", Helvetica, sans-serif;
+    font-family: "Inter", sans-serif;
+    /* background-color: #252954; */
+    /* color: #9b9ca7; */
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
+:root {
+    --delay: 0s;
+}
+
+* {
+    outline: none;
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none !important;
+}
+
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+}
+
+.wrapper {
+    /* background-color: #0e0e23; */
+    display: flex;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+@-webkit-keyframes left {
+    0% {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes left {
+    0% {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@-webkit-keyframes top {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes top {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 20px;
+    padding: 25px;
+    min-width: 100%;
+}
+
+.flex {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.flex-child-one {
+    flex: 1;
+}
+
+.flex-child-two {
+    flex: 2;
+    line-height: 1rem;
+}
+
+.card {
+    background: #1a2049;
+    background: radial-gradient(circle, #1a2049 0%, #13162f 100%);
+    padding: 30px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    max-height: 430px;
+    width: 100%;
+}
+
+.card .title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: white;
+}
+
+.card .subtitle {
+    font-size: 13px;
+}
+
+.card+.card {
+    margin-left: 20px;
+}
+
+.activity {
+    max-width: 480px;
+}
+
+.activity .title {
+    margin-bottom: 5px;
+}
+
+.activity-links {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    font-size: 15px;
+}
+
+.activity-link {
+    padding-bottom: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.destination {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+}
+
+.destination-card {
+    background: #1a1d3a;
+    background: linear-gradient(45deg, #1a1d3a 0%, #212752 100%);
+    padding: 20px;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.destination-card+.destination-card {
+    margin-left: 20px;
+    background: #1a1d3a;
+    background: linear-gradient(325deg, #1a1d3a 0%, #212752 100%);
+}
+
+.destination-profile {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding-top: 0px;
+}
+
+.destination-profile svg {
+    width: 18px;
+    flex-shrink: 0;
+    margin-right: 8px;
+}
+
+.profile-img {
+    width: 46px;
+    height: 46px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 2px;
+    border: 1px solid #bebec4;
+    flex-shrink: 0;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border: 3px solid #01020500;
+    border-radius: 2px;
+    position: relative;
+    margin: 0 auto;
+}
+
+
+/* .user-box {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+} */
+
+.pie {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+.pie svg circle {
+    fill: transparent;
+    stroke: #4356d6;
+    stroke-width: 5;
+    stroke-dasharray: 275;
+    stroke-dashoffset: 235;
+    -webkit-animation: pieChart 3.8s linear forwards;
+    animation: pieChart 3.8s linear forwards;
+}
+
+@-webkit-keyframes pieChart {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes pieChart {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+.counter {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #3e50c5;
+    font-weight: 500;
+    font-size: 17px;
+    color: #17a98a;
 }
 
 #user-mgmt-table {
