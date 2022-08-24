@@ -21,6 +21,10 @@ require "functions.php";
 //getting the username from the session
 $user_data = check_login($con);
 $username = $user_data['user_name'];
+
+if(isset($_GET['userdate'])){
+    $date_selected=$_GET['userdate'];
+}
 ?>
 
 <!--HTML PART -->
@@ -44,12 +48,19 @@ $username = $user_data['user_name'];
 
 <div style="margin-left:50px;">
 <center>
-<h1> Diary Entries For <?php echo $username; ?></h1>
+<h1> Diary Entries For 
+<?php 
+echo $username;
+if (!empty($date_selected)) {
+    echo " on ". printable_date($date_selected);
+} 
+?></h1>
 
 <!--To Allow Users to Filter Date Wise -->
-<form method="post" name="dateselect" action="diary_date.php">
+<form method="get" name="dateselect" action="diary.php">
 <input type="date" name="userdate" id="userdate">
-<input type="submit" value="Filter by Date" class="btn btn-primary" style="margin-bottom:5px;">
+<!--Change button text value depending on if the date is selcted or not-->
+<input type="submit" value=<?php if(!empty($date_selected)) echo "All"; else echo "Filter by Date;" ?> class="btn btn-primary" style="margin-bottom:5px;">
 <button type="button" onclick="window.location.href='stats.php'" class="btn btn-success" style="margin-bottom:5px;">View Stats</button>
 </form>
 </center>
@@ -68,7 +79,15 @@ if (isset($_GET["page"])) {
 $start_from = ($page - 1) * $per_page_record;
 
 //In MYSQL - LIMIT offset, count; 
-$sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`datetime` from `data` WHERE `username`= '$username' ORDER BY `datetime` DESC LIMIT $start_from, $per_page_record;";
+
+// if date is selected and get query is passed show the entries of the user on the selected date otherwise show all the entries of the user.
+if (!empty($date_selected)) {
+    $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' AND `date`= '$date_selected' ORDER BY `date` DESC";
+} else {
+    $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' ORDER BY `date` DESC LIMIT $start_from, $per_page_record;";
+}
+
+// $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`datetime` from `data` WHERE `username`= '$username' ORDER BY `datetime` DESC LIMIT $start_from, $per_page_record;";
 
 if ($query = mysqli_query($con, $sql)) {
     if (mysqli_num_rows($query) > 0) {
@@ -154,6 +173,13 @@ if ($query = mysqli_query($con, $sql)) {
     }
 }
 ?>
+<br><br><br>
+
+
+<?php 
+//hide the pagination grid if entries are filtered by date.
+if(empty($date_selected)){    
+?>
 
 <!--USING GRID CONTAINER TO SHOW PAGINATION ROW AND MANUAL INPUT BOX ADJACENT/NEXT TO EACH OTHER -->
 <div class="grid-container">
@@ -209,8 +235,12 @@ if ($query = mysqli_query($con, $sql)) {
     <!--END OF MANUAL PAGINATION INPUT BOX-->
 
 <!--END OF GRID CONTAINER-->
-<div>
-    </div> <!--END OF MAIN DIV-->
+    </div>
+
+<?php
+}
+?> 
+</div> <!--END OF MAIN DIV-->
 
  <script>
     //FUNCTION TO GO TO SPECIFIED PAGE - INVOKED ONLY BY MANUAL PAGINATION INPUT BOX

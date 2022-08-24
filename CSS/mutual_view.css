@@ -27,27 +27,27 @@ body {
 }
 
 #mutualGenericBtn {
-    background-image: url("../images/website/assets/abstract/skull.jpg");
+    background-image: url("../images/website/assets/abstract/1.jpg");
 }
 
 #mutualGameBtn {
-    background-image: url("../images/website/assets/games/1193446.jpg");
+    background-image: url("../images/website/assets/games/2.jpg");
 }
 
 #mutualMusicBtn {
-    background-image: url("../images/website/assets/music/781044.jpg");
+    background-image: url("../images/website/assets/music/3.jpg");
 }
 
 #mutualBookBtn {
-    background-image: url("../images/website/assets/movies/1460255.jpg");
+    background-image: url("../images/website/assets/movies/9.jpg");
 }
 
 #mutualMovieBtn {
-    background-image: url("../images/website/assets/movies/1561418.jpg");
+    background-image: url("../images/website/assets/movies/5.jpg");
 }
 
 #mutualTVBtn {
-    background-image: url("../images/website/assets/movies/1585246.jpg");
+    background-image: url("../images/website/assets/movies/6.jpg");
 }
 
 #mutualGameBtn:hover {

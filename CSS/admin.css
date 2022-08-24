@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Heebo:400,700|Open+Sans:400,700');
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 * {
     box-sizing: border-box;
 }
@@ -8,12 +9,11 @@ body {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-    font-family: "Inter", sans-serif;
+    font-family: "Open Sans", sans-serif;
     /* background-color: #252954; */
     /* color: #9b9ca7; */
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
 :root {
     --delay: 0s;
 }
@@ -119,6 +119,7 @@ img {
     flex-grow: 1;
     max-height: 430px;
     width: 100%;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px;
 }
 
 .card .title {
@@ -126,6 +127,7 @@ img {
     font-weight: 500;
     margin-top: 5px;
     color: white;
+    font-family: 'Oswald';
 }
 
 .card .subtitle {

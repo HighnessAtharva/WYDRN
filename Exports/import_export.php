@@ -14,6 +14,7 @@ session_start();
 if (empty($_SESSION)) {
     header("Location: ../login.php");
 }
+
 // require "header.php";
 ?>
 
@@ -25,14 +26,15 @@ if (empty($_SESSION)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WYDRN - Export Options</title>
+    
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,700'>
     <link rel="stylesheet" href="../css/import_export.css">
+   
 </head>
 
 <body>
-
     <div class="container">
         <div>
             At WYDRN, we strongly believe that the data you share with us is valuable to you. We value your privacy and want to make sure that your data is safe and secure. We also believe that users should have complete control over their data and should be able to easily import and export it as and when they want it instaneously. This is why we have created an Import/Export feature. You can use this feature to import your data from a CSV file and export it to a CSV file. You can also export your data to a PDF file for a more portable and easy to use format. If you wish to wipe your data, you can delete your account <a href='../delete_user.php'>here</a>. Please ensure that you export your data first before deleting your account so that you can import it back later. Cheers and keep adding your favorite medias to WYDRN.
