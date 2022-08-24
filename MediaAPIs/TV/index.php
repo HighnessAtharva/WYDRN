@@ -65,7 +65,7 @@ $username = $user_data['user_name'];
 
             <!--GET TV RECOMMENDATIONS-->
             <div>
-                <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/index.php'">Get TV<br> Recommendations</button>
+                <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/index.php?tv'">Get TV<br> Recommendations</button>
             </div>
         </div>
         <!--------------------------

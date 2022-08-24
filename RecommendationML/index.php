@@ -13,6 +13,7 @@ include("header.php");
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 
+
 function MovieRecommendations($username){
     $MovieResult=exec("python MovieRecommendation.py ".$username);
     $result= json_decode($MovieResult,true);
@@ -211,7 +212,9 @@ function getGamePosterPath($name){
                             MOVIES
             -------------------------------------->
            
-            
+            <?php 
+                if(isset($_GET['movie'])){
+            ?>
             <div class="album">
             <?php
             $movieList=MovieRecommendations($username);
@@ -234,11 +237,17 @@ function getGamePosterPath($name){
                 </div>
             </div>
 
-
+            <?php
+                }
+            ?>
 
             <!-------------------------------------
                          BOOKS
             -------------------------------------->
+            <?php 
+                if(isset($_GET['book'])){
+            ?>
+            
             <div class="album">
             <?php
                 $bookList=BookRecommendations($username);
@@ -261,11 +270,19 @@ function getGamePosterPath($name){
                 </div>
             </div>
 
-            
+            <?php
+                }
+            ?>
+
 
             <!-------------------------------------
                         TV
             -------------------------------------->
+            
+            <?php 
+                if(isset($_GET['tv'])){
+            ?>
+
             <div class="album">
             <?php
                 $tvList=TVRecommendations($username);
@@ -288,9 +305,19 @@ function getGamePosterPath($name){
             </div>
 
 
+            <?php
+                }
+            ?>
+
+
             <!-------------------------------------
                         ALBUMS
             -------------------------------------->
+            
+            <?php 
+                if(isset($_GET['album'])){
+            ?>
+
             <div class="album">
             <?php
                 $albumList=AlbumRecommendations($username);
@@ -312,9 +339,18 @@ function getGamePosterPath($name){
                 </div>
             </div>
 
+            <?php
+                }
+            ?>
+
             <!-------------------------------------
                         VIDEOGAMES
             -------------------------------------->
+            
+            <?php 
+                if(isset($_GET['videogame'])){
+            ?>
+
             <div class="album">
             <?php
                 $gameList=GameRecommendations($username);
@@ -338,6 +374,11 @@ function getGamePosterPath($name){
                     Videogames
                 </div>
             </div>
+
+            <?php
+                }
+            ?>
+
 
             <div id="pp_back" class="pp_back">Recommendations</div>
         </div>
