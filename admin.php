@@ -9,13 +9,18 @@
  */
 
 error_reporting(E_ERROR | E_PARSE);
-if (!isset($_GET['letmein'])) {
-  echo ("<img src='images/website/imposter.jpg' style='width: 100%; height: 100%;'>");
-  die();
-}
+
 
 require "connection.php";
 require "functions.php";
+session_start();
+$user_data = check_login($con);
+$username = $user_data['user_name'];
+
+if ($username!='admin') {
+  echo ("<img src='images/website/imposter.jpg' style='width: 100%; height: 100%;'>");
+  die();
+}
 
 // executes the query and returns the first row of the result set.
 function executeSQL($con, $sql)
@@ -378,14 +383,13 @@ $data = array(
         <div class='user-email'> <?php echo $user['email'] ?></div>
         <div class='user-buttons'>
 
-          <!-- <?php echo "window.location.href='delete_user_confirm.php?user_name=" . $user['user_name'] . "'" ?> -->
-
+         
           <!-- View Profile Button -->
           <button class='btn btn-success' id=<?php echo $user['uid'] ?> onclick=<?php echo "window.location.href='profile.php?user_name=" . $user['user_name'] . "'" ?>>View Profile
           </button>
 
 
-          <!-- Delete User Button -->
+          <!-- View Stats Button -->
           <button class='btn btn-primary' id=<?php echo $user['uid'] ?> onclick=<?php echo "window.location.href='stats.php?user_name=" . $user['user_name'] . "'" ?>>View Stats
           </button>
 

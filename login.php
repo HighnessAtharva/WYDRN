@@ -138,7 +138,7 @@ mysqli_close($con);
 					<!---------------
 			SIGNUP BUTTON
 			----------------->
-					<a href="signup.php" style="color:white; margin-left:108px;">Signup</a><br><br>
+					<a href="signup.php" style="color:white; margin-left:108px;">Sign Up</a><br><br>
 		</form>
 	</div>
 
