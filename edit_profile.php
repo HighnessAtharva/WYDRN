@@ -126,8 +126,30 @@ echo $public_profile_link;
     <!-- TO DELETE ACCOUNT PERMANENTLY -->
         <fieldset>     
             <legend> Delete Account</legend>
-            <button onclick="window.location.href='delete_user.php'" class="btn btn-danger">Delete Account</button>
+            <button type="button"  class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete Account</button>
         </fieldset>
+
+
+
+
+<!-- Modal for Delete Account Confirmation-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">WARNING: Account Deletion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <p class="alert-danger alert"> Are you sure you want to delete your account? This action is not reversible. We encourage you to export your data first. Do it <a href="exports/csv_export.php">here</a>.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" onclick="window.location.href='delete_user_confirm.php'" class="btn btn-danger">Yes, Delete Account</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </div>
