@@ -73,7 +73,7 @@ if ($result = mysqli_query($con, $sql4)) {
     echo "Removed all the records where other people were following the user.";
     echo "ACCOUNT IS DELETED. REDIRECTING TO SIGNUP PAGE.";
     session_destroy();
-    header("Location: signup.php");
+    header("Location: login.php");
     die;
 } else {
     die('Unable to delete User Data in Social "SQL4"' . mysqli_error($con));

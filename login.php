@@ -22,12 +22,14 @@ require "functions.php";
 
 // Trying to prevent logged in user from accessing the login page. If the user is already logged in, redirect to the profile page. Only logged out users can access the login page. Second check i.e. empty($_GET['logout']) is add to the exception when this page is being redirected to from the logout page.
 session_start();
-if(isset($_SESSION['user_name']) && empty($_GET['logout'])){
+if (isset($_SESSION['user_name']) && empty($_GET['logout'])) {
 	header("Location: profile.php");
 }
 
-
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+/*********
+ * logic for the SIGN IN form
+ *********/
+if (isset($_POST['signin'])) {
 
 	$user_name = strip_tags(trim($_POST['user_name']));
 	$password = strip_tags(trim($_POST['password']));
@@ -50,13 +52,53 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		}
 	}
 
-	$invalid_login = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
-					top: 100px; left: 570px;' role='alert'>
+	$invalid_login = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute; top: 20px; left: 570px;' role='alert'>
 			    	Username or Password does not match. Retry!
 				    </div></center>";
 	echo $invalid_login;
 }
 
+/*********
+ * logic for the SIGN UP form
+ *********/
+if (isset($_POST['signup'])) {
+	/*------------------------------------------------------------------------------------------------------------------ 
+	GRAB THE POSTED DATA FROM THE SIGNUP FORM AND STORE IT INSIDE VARIABLES AND PROCESS IT.
+	------------------------------------------------------------------------------------------------------------------*/
+	$user_name = mysqli_real_escape_string($con, $_POST['user_name']);
+	$email = mysqli_real_escape_string($con, $_POST['email']);
+	$password = mysqli_real_escape_string($con, $_POST['password']);
+	$confirm_password = mysqli_real_escape_string($con, $_POST['confirm_password']);
+
+	// hash the password
+	$hashed_pass = password_hash($password, PASSWORD_DEFAULT);
+
+	// generate a random userid
+	$user_id = random_num(20);
+
+	$date = date("Y-m-d");
+
+	//insert into DB
+	$query = "INSERT INTO `users`(user_id, user_name, email, password, date) VALUES
+	 		 ('$user_id','$user_name','$email','$hashed_pass','$date')";
+
+	/*---------------------------------------------------------------------------------------------------------------------- IF THE USERNAME IS ALREADY TAKEN, DISPLAY BOOTSTRAP ERROR. SEND AN EMAIL AND REDIRECT TO LOGIN PAGE. ALSO DISPLAY AND ERROR IF THE EMAIL IS NOT SENT.
+    -----------------------------------------------------------------------------------------------------------------------*/
+	if (!mysqli_query($con, $query)) {
+		$invalid_signup = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute; top: 20px; left: 570px;' 		 role='alert'>
+  		That username or email is already taken!
+		</div></center>";
+		echo $invalid_signup;
+	}
+
+	/*-----------------------------------------------------------------------------------------------------------------
+		 AFTER SUCCESSFUL SIGNUP, REDIRECT TO LOGIN PAGE;
+   	-------------------------------------------------------------------------------------------------------------*/ else {
+
+		header("Location: login.php");
+		die;
+	}
+}
 
 mysqli_close($con);
 ?>
@@ -73,11 +115,9 @@ mysqli_close($con);
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>WYDRN - Login</title>
-	<!------------------
-	BOOTSTRAP CDN
-	-------------------->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+	<!--- BOOTSTRAP CDN ---->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 	<!-- Add icon library -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -86,62 +126,123 @@ mysqli_close($con);
 
 	<!-- Sweet Alert (Beautiful looking alert plugin-->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 
 <body style="background-image: url(images/website/login.png); background-size: cover;" onload="getcookiedata()">
 
-	<div id="box">
-		<form method="post" action="login.php" onsubmit="return Validation();">
-			<div class="WYDRN">WYDRN</div>
+<!-----------------------
+Container for Two Forms
+-------------------------->
+	<div class="container" id="container">
+
+	<!------------------
+	Sign In Form
+	-------------------->
+		<div class="form-container sign-in-container">
+			<form method="post" action="login.php" onsubmit="return SignInValidation();">
+				<h1>Sign in</h1>
+
+				<!-- USERNAME -->
+				<div class="flex">
+					<input class="input-box" id="username" type="text" name="user_name" placeholder="Username" autofocus="true" required />
+					<i class="fa fa-user icon"></i>
+				</div>
+
+				<!-- PASSWORD -->
+				<div class="flex">
+					<input class="input-box" id="pass" type="password" name="password" placeholder="Password" onCopy="return false" required /><br>
+					<i class="fa fa-key icon"></i>
+				</div>
+
+				<!-- SHOW PASSWORD-->
+				<label><input type="checkbox" onclick="LoginshowPass()" value="Show Password" />
+				Show Password</label>
+
+				<!-- REMEMBER ME CHECKBOX -->
+				<label><input type="checkbox" name="rememberme" onclick="setcookie()" />
+				Remember Me</label>
+
+				<!-- FORGOT PASSWORD -->
+				<a href="send_reset_link.php">Forgot Your Password?</a>
+
+				<!-- SIGNIN BUTTON -->
+				<button type="submit" name="signin">Sign In</button>
+
+			</form>
+		</div>
+		<!------------------
+	END OF Sign In Form
+	-------------------->
 
 
-			<!----------------
-			USERNAME
-			------------------>
 
-			<span class="userandpass">USERNAME</span>
-			<div class="input-container">
-				<i class="fa fa-user icon"></i>
-				<input class="input-field" id="username" type="text" name="user_name" placeholder="HighnessAlexDaOne" autofocus="true" required><br><br>
+
+		<!----------------
+		SIGN UP FORM
+	------------------>
+		<div class="form-container sign-up-container">
+			<form method="post" action="login.php" onsubmit="return SignUpValidation();">
+				<h1>Create Account</h1>
+
+				<!-- USERNAME -->
+				<div class="flex">
+					<input class="input-box" id="name" type="text" name="user_name" placeholder="Username" autofocus="true" required />
+					<i class="fa fa-user icon"></i>
+				</div>
+
+				<!-- E-MAIL -->
+				<div class="flex">
+					<input class="input-box" id="email" type="email" name="email" placeholder="E-mail" required />
+					<i class="fa fa-envelope icon"></i>
+				</div>
+
+				<!-- PASSWORD -->
+				<div class="flex">
+					<input class="input-box" id="firstpass" type="password" name="password" placeholder="Password" onCopy="return false" required />
+					<i class="fa fa-key icon"></i>
+				</div>
+
+				<!-- CONFIRM PASSWORD -->
+				<div class="flex">
+					<input class="input-box" id="confirmpass" type="password" name="confirm_password" placeholder="Confirm Password" onCopy="return false" required />
+					<i class="fa fa-key icon"></i>
+				</div>
+				
+				<!-- SHOW PASSWORD-->
+				<label><input type="checkbox" onclick="showPass()" value="Show Password" />Show Password</label>
+
+					<!-- SIGNUP PASSWORD-->
+					<button type="submit" name="signup">Sign Up</button>
+			</form>
+		</div>
+
+		<!------------------
+	END OF Sign Up Form
+	-------------------->
+
+
+
+		<div class="overlay-container">
+			<div class="overlay">
+				
+				<div class="overlay-panel overlay-left">
+					<img src="images/website/logo.png" alt="WYDRN" class="logo"/>
+					<h1>Welcome Back!</h1>
+					<p>To keep connected with us please login with your personal info</p>
+					<button class="ghost" id="signIn">Sign In</button>
+				</div>
+				
+				<div class="overlay-panel overlay-right">
+					<img src="images/website/logo.png" alt="WYDRN" class="logo"/>
+					<h1>Hello, Friend!</h1>
+					<p>Enter your personal details and start journey with us</p>
+					<button class="ghost" id="signUp">Sign Up</button>
+				</div>
 			</div>
+		</div>
 
-			<!-------------
-			PASSWORD
-			-------------->
-			<span class="userandpass">PASSWORD</span>
-			<div class="input-container">
-				<i class="fa fa-key icon"></i>
-				<input class="input-field" id="pass" type="password" name="password" placeholder="Karm@beatsDogm@" onCopy="return false" required><br>
-			</div>
-
-			<!-- An element to toggle between password visibility -->
-			<input type="checkbox" onclick="showPass()" value="Show Password"><span style="color:white">Show Password<br>
-				<!--------------
-			REMEMBER ME CHECKBOX
-			----------------->
-				<input type="checkbox" name="rememberme" style="margin-top:20px;margin-left:65px;" onclick="setcookie()">
-				<span style="color:#cccccc;">Remember Me</span><br>
-
-				<!--------------
-			Forgot Password 
-			----------------->
-				<a name="forgotpass" style="margin-top:20px;margin-left:65px;" href="send_reset_link.php">
-					<span style="color:#cccccc;">Forgot Password</span><br>
-
-					<!----------------
-			LOGIN BUTTON
-			------------------>
-					<input id="button" style="margin-top:15px; margin-bottom:20px; margin-left:80px;" type="submit" value="Login"><br>
-
-					<!---------------
-			SIGNUP BUTTON
-			----------------->
-					<a href="signup.php" style="color:white; margin-left:108px;">Sign Up</a><br><br>
-		</form>
 	</div>
-
 
 
 
@@ -149,13 +250,26 @@ mysqli_close($con);
 JAVASCRIPT VALIDATION
 ------------------------------------------------------------------------------------->
 	<script>
+		const signUpButton = document.getElementById('signUp');
+		const signInButton = document.getElementById('signIn');
+		const container = document.getElementById('container');
+
+		signUpButton.addEventListener('click', () => {
+			container.classList.add("right-panel-active");
+		});
+
+		signInButton.addEventListener('click', () => {
+			container.classList.remove("right-panel-active");
+		});
+
+
 		// To prevent form resubmission when page is refreshed (F5 / CTRL+R) 
 		if (window.history.replaceState) {
 			window.history.replaceState(null, null, window.location.href);
 		}
 
 		//toggle password visibilty
-		function showPass() {
+		function LoginshowPass() {
 			var x = document.getElementById("pass");
 			if (x.type === "password") {
 				x.type = "text";
@@ -165,7 +279,7 @@ JAVASCRIPT VALIDATION
 		}
 
 		// to check and validate form data and raise alerts if input is erronous. 
-		function Validation() {
+		function SignInValidation() {
 			var name = document.getElementById("username").value;
 			var password = document.getElementById("pass").value;
 			const isAlphaNumeric = str => /^[a-z0-9_]+$/gi.test(str);
@@ -184,8 +298,6 @@ JAVASCRIPT VALIDATION
 
 				return false;
 			}
-
-
 
 			// RETURN VALID AFTER ALL CHECKS PASS
 			return true;
@@ -229,6 +341,94 @@ JAVASCRIPT VALIDATION
 				}
 			}
 			return "";
+		}
+
+
+
+		//toggle password visibilty
+		function showPass() {
+			var x = document.getElementById("firstpass");
+			var y = document.getElementById("confirmpass");
+			if ((x.type === "password") && (y.type === "password")) {
+				x.type = "text";
+				y.type = "text";
+			} else {
+				x.type = "password";
+				y.type = "password";
+			}
+		}
+
+		// to check and validate form data and raise alerts if input is erronous. 	
+		function SignUpValidation() {
+			var name = document.getElementById("name").value;
+			var password = document.getElementById("firstpass").value;
+			var confirmpassword = document.getElementById("confirmpass").value;
+			var email = document.getElementById("email").value;
+			var re = /\S+@\S+\.\S+/;
+			const isAlphaNumeric = str => /^[a-z0-9_]+$/gi.test(str);
+
+			// CHECK IF USERNAME IS LONG ENOUGH
+			if (name.length < 3 || name.length > 20) {
+				//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+				swal({
+					title: "Username Invalid",
+					text: "Username must be between 3 and 20 characters",
+					icon: "warning",
+					button: "Retry",
+				});
+				return false;
+			}
+
+			// CHECK IF USERNAME IS ALPHANUMERIC
+			else if (!isAlphaNumeric(name)) {
+				//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+				swal({
+					title: "Username Invalid",
+					text: "Username must not contain special characters",
+					icon: "warning",
+					button: "Retry",
+				});
+				return false;
+			}
+
+			// CHECK FOR VALID EMAIL
+			else if (!re.test(email)) {
+				//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+				swal({
+					title: "Email Invalid",
+					text: "Please enter a valid email address. Don't hoax.",
+					icon: "warning",
+					button: "Retry",
+				});
+				return false;
+			}
+
+			// CHECK FOR PASSWORD SECURITY LENGTH
+			else if (password.length < 8 || password.length > 30) {
+				//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+				swal({
+					title: "Password Invalid",
+					text: "Password must be between 8 and 30 characters",
+					icon: "warning",
+					button: "Retry",
+				});
+				return false;
+			}
+
+			// CHECK FOR PASSWORD EQUALITY
+			else if (password != confirmpassword) {
+				//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+				swal({
+					title: "Confirm Password Invalid",
+					text: "Passwords do not match",
+					icon: "warning",
+					button: "Retry",
+				});
+				return false;
+			}
+
+			// RETURN VALID AFTER ALL CHECKS PASS
+			return true;
 		}
 	</script>
 </body>

@@ -88,11 +88,7 @@ $username = $user_data['user_name'];
         END OF RESULT CONTAINER
         ------------------->
 
-
     </div> <!-- end of wrapper -->
-
-
-
 
 <script src="script.js"></script>
 </body>
