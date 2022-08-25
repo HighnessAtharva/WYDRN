@@ -79,7 +79,7 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
 </head>
 
 <body className='snippet-body'>
-    <div class="container rounded bg-white mt-5 mb-5">
+    <div class="container rounded bg-white mt-5 mb-5" style="box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;">
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-2"><img class="rounded-circle mt-5" width="150px" height="150px" src="<?php echo $profile_pic ?>">
