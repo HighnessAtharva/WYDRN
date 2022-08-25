@@ -12,6 +12,13 @@ input {
     margin: 5px;
 }
 
+.font-weight-bold {
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: larger;
+}
+
 body {
     user-select: none;
     -moz-user-select: none;

@@ -31,9 +31,9 @@ if (check_active_status($username) == 1) {
 
 /* USER VERFICATION STATUS */
 if (check_verified_status($username) == 1) {
-    $verified_or_not = "User is Verified";
+    $verified_or_not = "Verified &#9989";
 } else {
-    $verified_or_not = "User is not Verified";
+    $verified_or_not = "Not Verified &#10060";
     $hashed_verify = md5($username);
 }
 
@@ -104,7 +104,7 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
                 <legend><h4 class="text-right">Profile Settings</h4></legend>
                     </div>
 
-                    <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" value="<?php echo $username; ?>" readonly></div>
+                    <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" value="<?php echo strtoupper($username); ?>" readonly></div>
 
                     <div class="col-md-12"><label class="labels">User Status</label><input type="text" class="form-control" value="<?php echo $active_or_not; ?>" readonly></div>
 
@@ -125,12 +125,12 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
 
                         <fieldset>
                             <legend> Change Account Photos</legend>
-                            <br>
+                            <br><br>
 
                             <span class="text">Select Profile Photo: </span><br>
                             <label class="input-button-label"><input type="file" id="pfpinput" name="PFP" accept="image/png, image/gif, image/jpeg" onchange="previewFile(this);" /></label>
                             <img id="pfp-preview" src="images/website/preview.jpg" alt="" style="width:50px; height:50px; border-radius:50%;">
-                            <br>
+                            <br><br>
 
                             <span class="text">Select Background Banner Photo: </span><br>
                             <label class="input-button-label"><input type="file" id="bginput" name="BgImage" accept="image/png, image/gif, image/jpeg" /></label><br><br>
