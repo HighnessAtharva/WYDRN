@@ -13,6 +13,10 @@ body {
     padding: 5px !important;
 }
 
+.nav-link {
+    cursor: pointer;
+}
+
 .wydrn-logo {
     color: black !important;
     background-color: white !important;
