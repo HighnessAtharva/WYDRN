@@ -14,31 +14,6 @@
     animation: AnimationName 4s ease infinite;
 }
 
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-
-/* Track */
-
- ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-
-/* Handle */
-
- ::-webkit-scrollbar-thumb {
-    background: #888;
-}
-
-
-/* Handle on hover */
-
- ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
 @-webkit-keyframes AnimationName {
     0% {
         background-position: 58% 0%
@@ -98,6 +73,40 @@ body {
     -webkit-user-select: none;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
 
 /* For Stylish Heading*/
 
@@ -145,34 +154,39 @@ body {
     justify-content: center;
     align-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 2rem;
+    row-gap: 5rem;
     padding: 2rem;
     margin: 0 auto;
     width: 100%;
     justify-items: center;
 }
 
+* {
+    -webkit-transition: 300ms;
+    transition: 300ms;
+}
+
 .card {
     font-family: "Open Sans", Helvetica, sans-serif;
     --bg-filter-opacity: 0.5;
     background-color: black;
-    background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img);
+    /* background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img); */
     height: 12em;
     width: 9em;
-    font-size: 1.5em;
-    color: white;
-    border-radius: 1em;
-    padding: 1em;
-    display: flex;
-    align-items: flex-end;
+    font-size: 1.7em;
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: 0 0 3em -1em black;
-    position: relative;
-    overflow: hidden;
-    border: 5px solid #ccc;
-    text-decoration: none;
+    border: 5px solid rgb(0, 0, 0);
+    color: white;
+}
+
+.card:hover {
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+    /* box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08); */
+    box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px;
 }
 
 h1.moviename {
@@ -182,6 +196,7 @@ h1.moviename {
     margin: 0 auto;
     margin-top: 1em;
     font-weight: bolder;
+    text-align: center;
 }
 
 .tags {
@@ -193,10 +208,6 @@ h1.moviename {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 0.3rem;
     padding: 0 0.5em;
-    margin-top: 0.7em;
-    margin-right: 0.5em;
-    margin-left: 0.5em;
-    line-height: 1em;
     margin: 0 auto;
     margin-top: 0.5em;
 }

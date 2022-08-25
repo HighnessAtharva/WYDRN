@@ -107,26 +107,29 @@ function getposterpath($name, $author)
                 <h1>Your Books<span><?php echo getRandomBookQuote() ?></span></h1>
             </div>
 
-            <!-- Sorting Functionality -->
-            <form method="get" action="" name="sort" id="filter-select">
-                <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
-                    <option value="">Sort By</option>
+            <div class="flex">
+                <!-- Sorting Functionality -->
+                <form method="get" action="" name="sort" id="filter-select">
+                    <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
+                        <option value="">Sort By</option>
 
-                    <option value="added-desc">Added Date (Newest To Oldest)</option>
-                    <option value="added-asc">Added Date (Oldest To Newest)</option>
+                        <option value="added-desc">Added Date (Newest To Oldest)</option>
+                        <option value="added-asc">Added Date (Oldest To Newest)</option>
 
 
-                    <option value="alphabetic-asc">Book (A-Z)</option>
-                    <option value="alphabetic-desc">Book (Z-A)</option>
+                        <option value="alphabetic-asc">Book (A-Z)</option>
+                        <option value="alphabetic-desc">Book (Z-A)</option>
 
-                    <option value="author-asc">Author(A-Z)</option>
-                    <option value="author-desc">Author (Z-A)</option>
+                        <option value="author-asc">Author(A-Z)</option>
+                        <option value="author-desc">Author (Z-A)</option>
 
-                </select>
-            </form>
+                    </select>
+                </form>
 
-            
-            <button class="btn btn-success" onclick="window.location.href='media_list_view.php?book'">Just  show me the list</button>
+
+                <button class="btn" onclick="window.location.href='media_list_view.php?book'"><img src="images/Icons/list-view.png"></button>
+
+            </div>
             <!-------------------------------------------------------------------------------------
                                 DYNAMICALLY GENERATED PHP PART
         ------------------------------------------------------------------------------------->
@@ -243,7 +246,7 @@ function getposterpath($name, $author)
                     }
                 } else {
                     //NO BOOKS LOGGED MESSAGE
-                    $BooksNotAdded= "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Book.svg' width='15' height='15' class='media-icon'>No books added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+                    $BooksNotAdded = "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Book.svg' width='15' height='15' class='media-icon'>No books added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
                     echo $BooksNotAdded;
                 }
             }

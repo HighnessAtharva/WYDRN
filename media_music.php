@@ -102,25 +102,27 @@ function getposterpath($name, $artist)
                 <h1>Your Albums<span><?php echo getRandomAlbumQuote() ?></span></h1>
             </div>
 
-            <!-- Sorting Functionality -->
-            <form method="get" action="" name="sort">
-                <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
-                    <option value="">Sort By</option>
+            <div class="flex">
+                <!-- Sorting Functionality -->
+                <form method="get" action="" name="sort">
+                    <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
+                        <option value="">Sort By</option>
 
-                    <option value="added-desc">Added Date (Newest To Oldest)</option>
-                    <option value="added-asc">Added Date (Oldest To Newest)</option>
+                        <option value="added-desc">Added Date (Newest To Oldest)</option>
+                        <option value="added-asc">Added Date (Oldest To Newest)</option>
 
 
-                    <option value="alphabetic-asc">Album (A-Z)</option>
-                    <option value="alphabetic-desc">Album(Z-A)</option>
+                        <option value="alphabetic-asc">Album (A-Z)</option>
+                        <option value="alphabetic-desc">Album(Z-A)</option>
 
-                    <option value="artist-asc">Artist(A-Z)</option>
-                    <option value="artist-desc">Artist(Z-A)</option>
+                        <option value="artist-asc">Artist(A-Z)</option>
+                        <option value="artist-desc">Artist(Z-A)</option>
 
-                </select>
-            </form>
+                    </select>
+                </form>
 
-            <button class="btn btn-success" onclick="window.location.href='media_list_view.php?album'">Just  show me the list</button>
+                <button class="btn" onclick="window.location.href='media_list_view.php?album'"><img src="images/Icons/list-view.png"></button>
+            </div>
 
             <!-------------------------------------------------------------------------------------
                          DYNAMICALLY GENERATED PHP PART 
@@ -239,7 +241,7 @@ function getposterpath($name, $artist)
                     }
                 } else {
                     //NO ALBUMS LOGGED MESSAGE
-                    $AlbumsNotAdded= "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Music.svg' width='15' height='15' class='media-icon'>No Albums added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+                    $AlbumsNotAdded = "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Music.svg' width='15' height='15' class='media-icon'>No Albums added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
                     echo $AlbumsNotAdded;
                 }
             }

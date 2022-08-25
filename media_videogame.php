@@ -104,6 +104,7 @@ function getposterpath($name)
                 <h1>Your Video Games<span><?php echo getRandomVideoGameQuote(); ?> </span></h1>
             </div>
 
+            <div class="flex">
             <!-- Sorting Functionality -->
             <form method="get" action="" name="sort">
                 <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
@@ -122,8 +123,8 @@ function getposterpath($name)
                 </select>
             </form>
 
-            <button class="btn btn-success" onclick="window.location.href='media_list_view.php?videogame'">Just  show me the list</button>
-
+            <button class="btn" onclick="window.location.href='media_list_view.php?videogame'"><img src="images/Icons/list-view.png"></button>
+    </div>
 
             <!-------------------------------------------------------------------------------------
                          DYNAMICALLY GENERATED PHP PART 
@@ -181,7 +182,7 @@ function getposterpath($name)
 
 
             // Number of entries to show in a page.
-            $per_page_record = 10;
+            $per_page_record = 9;
 
             // Look for a GET variable page if not found default is 1.
             if (isset($_GET["page"])) {

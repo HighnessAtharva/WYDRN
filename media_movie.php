@@ -96,24 +96,25 @@ function getposterpath($name, $year)
                 <h1>Your Movies<span><?php echo getRandomMovieQuote() ?></span></h1>
             </div>
 
+            <div class="flex">
+                <!-- Sorting Functionality -->
+                <form method="get" action="" name="sort">
+                    <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
+                        <option value="">Sort By</option>
+                        <option value="added-desc">Added Date (Newest To Oldest)</option>
+                        <option value="added-asc">Added Date (Oldest To Newest)</option>
 
-            <!-- Sorting Functionality -->
-            <form method="get" action="" name="sort">
-                <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
-                    <option value="">Sort By</option>
-                    <option value="added-desc">Added Date (Newest To Oldest)</option>
-                    <option value="added-asc">Added Date (Oldest To Newest)</option>
+                        <option value="release-desc">Release Date (Newest to Oldest)</option>
+                        <option value="release-asc">Release Date (Oldest to Newest)</option>
 
-                    <option value="release-desc">Release Date (Newest to Oldest)</option>
-                    <option value="release-asc">Release Date (Oldest to Newest)</option>
+                        <option value="alphabetic-asc">Movie (A-Z)</option>
+                        <option value="alphabetic-desc">Movie (Z-A)</option>
+                    </select>
+                </form>
 
-                    <option value="alphabetic-asc">Movie (A-Z)</option>
-                    <option value="alphabetic-desc">Movie (Z-A)</option>
-                </select>
-            </form>
+                <button class="btn" onclick="window.location.href='media_list_view.php?movie'"><img src="images/Icons/list-view.png"></button>
 
-            <button class="btn btn-success" onclick="window.location.href='media_list_view.php?movie'">Just  show me the list</button>
-
+            </div>
             <?php
             //set default sort order
             $sortby = "added-desc";
@@ -231,7 +232,7 @@ function getposterpath($name, $year)
                     }
                 } else {
                     //NO MOVIES LOGGED MESSAGE
-                    $MoviesNotAdded= "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Movie.svg' width='15' height='15' class='media-icon'>No Movies added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+                    $MoviesNotAdded = "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Movie.svg' width='15' height='15' class='media-icon'>No Movies added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
                     echo $MoviesNotAdded;
                 }
             }

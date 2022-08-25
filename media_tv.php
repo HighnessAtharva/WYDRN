@@ -107,26 +107,27 @@ function getposterpath($name)
                 <h1>Your TV Shows<span><?php echo getRandomTvQuote() ?></span></h1>
             </div>
 
-            <!-- Sorting Functionality -->
-            <form method="get" action="" name="sort">
-                <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
-                    <option value="">Sort By</option>
+            <div class="flex">
+                <!-- Sorting Functionality -->
+                <form method="get" action="" name="sort">
+                    <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
+                        <option value="">Sort By</option>
 
-                    <option value="added-desc">Added Date (Newest To Oldest)</option>
-                    <option value="added-asc">Added Date (Oldest To Newest)</option>
+                        <option value="added-desc">Added Date (Newest To Oldest)</option>
+                        <option value="added-asc">Added Date (Oldest To Newest)</option>
 
 
-                    <option value="alphabetic-asc">TV Show (A-Z)</option>
-                    <option value="alphabetic-desc">TV Show(Z-A)</option>
+                        <option value="alphabetic-asc">TV Show (A-Z)</option>
+                        <option value="alphabetic-desc">TV Show(Z-A)</option>
 
-                    <option value="streaming-asc">Streaming(A-Z)</option>
-                    <option value="streaming-desc">Streaming(Z-A)</option>
+                        <option value="streaming-asc">Streaming(A-Z)</option>
+                        <option value="streaming-desc">Streaming(Z-A)</option>
 
-                </select>
-            </form>
+                    </select>
+                </form>
 
-            <button class="btn btn-success" onclick="window.location.href='media_list_view.php?tv'">Just  show me the list</button>
-
+                <button class="btn" onclick="window.location.href='media_list_view.php?tv'"><img src="images/Icons/list-view.png"></button>
+            </div>
             <!-------------------------------------------------------------------------------------
                                     DYNAMICALLY GENERATED PHP PART
             ------------------------------------------------------------------------------------->
@@ -240,9 +241,9 @@ function getposterpath($name)
                         $html_tv .= "</div>"; //end of card-grid-space
                     }
                 } else {
-                   //NO TV SHOWS LOGGED MESSAGE
-                   $TVNotAdded= "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/TV.svg' width='15' height='15' class='media-icon'>No TV Shows added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
-                   echo $TVNotAdded;
+                    //NO TV SHOWS LOGGED MESSAGE
+                    $TVNotAdded = "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/TV.svg' width='15' height='15' class='media-icon'>No TV Shows added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+                    echo $TVNotAdded;
                 }
             }
 
