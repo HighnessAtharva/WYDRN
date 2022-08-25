@@ -39,4 +39,3 @@ The site is not deployed currently so you can't get a live preview but you can t
 - Diary and Export CSV pages will show a blank row when the last modified change done by the user is a clear profile page.
 - On Browse Movies and TV pages sometimes the movie details will not load after making a selection from the dropdown.
 - PDF exports are not UTF-8 safe.
-- How to prevent an already logged in user from accessing the login page.
