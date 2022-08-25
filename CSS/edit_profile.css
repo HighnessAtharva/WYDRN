@@ -17,4 +17,99 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     font-family: "Open Sans", Helvetica, sans-serif;
+    background: rgb(99, 39, 120)
+}
+
+legend {
+    font-size: 20px;
+    background-color: rgb(99, 39, 120);
+    color: white;
+    border-radius: 2px;
+}
+
+.input-button-label {
+    font-size: 12px;
+    border-radius: 2px;
+}
+
+.text {
+    font-size: 15px;
+}
+
+input[type=text] {
+    background-color: white;
+}
+
+fieldset {
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 5px;
+    background-color: #f5ebff;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
 }

@@ -10,7 +10,7 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     font-family: "Open Sans", sans-serif;
-    /* background-color: #252954; */
+    background-color: black;
     /* color: #9b9ca7; */
 }
 
@@ -107,6 +107,15 @@ img {
 .flex-child-two {
     flex: 2;
     line-height: 1rem;
+}
+
+.card:hover::before {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #00ff2f;
+}
+
+.card:hover {
+    box-shadow: 0 0 20px #00ff2f;
 }
 
 .card {
@@ -286,12 +295,13 @@ img {
     align-items: center;
     grid-template-columns: 5% 10% 20% 25%;
     /*to control the width for columns pfp, uname, uemail and 3 buttons*/
+    color: white;
     grid-gap: 0.1rem;
     padding: 0.5rem;
     margin: 0 auto;
     width: 100%;
     justify-items: center;
-    border: 1px solid black;
+    border: 1px solid rgb(91, 0, 151);
 }
 
 .user-pfp {
