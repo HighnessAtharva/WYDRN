@@ -155,7 +155,7 @@ Container for Two Forms
 
 				<!-- PASSWORD -->
 				<div class="flex">
-					<input class="input-box" id="pass" type="password" name="password" placeholder="Password" onCopy="return false" required /><br>
+					<input class="input-box" id="pass" type="password" name="password" placeholder="Password" onCopy="return false" autocomplete="on" required /><br>
 					<i class="fa fa-key icon"></i>
 				</div>
 
@@ -173,6 +173,7 @@ Container for Two Forms
 				<!-- SIGNIN BUTTON -->
 				<button type="submit" name="signin">Sign In</button>
 
+				<!--Uncomment For Google Account Button-->
 				<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
 
 			</form>
@@ -235,14 +236,14 @@ Container for Two Forms
 				<div class="overlay-panel overlay-left">
 					<img src="images/website/logo.png" alt="WYDRN" class="logo"/>
 					<h1>Welcome Back!</h1>
-					<p>To keep connected with us please login with your personal info</p>
+					<p>Stay updated with your entertainment and see what your friends are up to.</p>
 					<button class="ghost" id="signIn">Sign In</button>
 				</div>
 				
 				<div class="overlay-panel overlay-right">
 					<img src="images/website/logo.png" alt="WYDRN" class="logo"/>
 					<h1>Hello, Friend!</h1>
-					<p>Enter your personal details and start journey with us</p>
+					<p>Want to join the fun? Start adding your favorite Movies, Shows, Music, Books and Videogames and show off your incredible taste. </p>
 					<button class="ghost" id="signUp">Sign Up</button>
 				</div>
 			</div>
@@ -438,13 +439,13 @@ JAVASCRIPT VALIDATION
 		}
 
 		// Google OAuth Sign In
-		/*function onSignIn(googleUser) {
+		function onSignIn(googleUser) {
   			var profile = googleUser.getBasicProfile();
  		 	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
   			console.log('Name: ' + profile.getName());
   			console.log('Image URL: ' + profile.getImageUrl());
   			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-		}*/
+		}
 	</script>
 </body>
 
