@@ -150,6 +150,10 @@ a>span.neonText:hover {
     }
 }
 
+.row {
+    padding-bottom: 50px;
+}
+
 .myrow .single-timeline-area .timeline-date::after {
     position: absolute;
     width: 3px;
@@ -171,13 +175,14 @@ a>span.neonText:hover {
     top: 50%;
     right: 26px;
     z-index: 5;
-    margin-top: -5.5px;
+    margin-top: -40.5px;
 }
 
 .single-timeline-area .timeline-date p {
     margin-bottom: 0;
     color: #020710;
     text-transform: uppercase;
+    padding-bottom: 50px;
 }
 
 .single-timeline-area .single-timeline-content {
@@ -186,10 +191,14 @@ a>span.neonText:hover {
     padding: 30px 30px 25px;
     border-radius: 6px;
     margin-bottom: 15px;
-    margin-top: 15px;
+    margin-top: 5px;
     -webkit-box-shadow: 0 0.25rem 1rem 0 rgba(47, 91, 234, 0.125);
-    box-shadow: 0 0.25rem 1rem 0 rgba(47, 91, 234, 0.125);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     border: 1px solid #ebebeb;
+}
+
+.single-timeline-area .single-timeline-content:hover {
+    border: 1px solid #f1c40f;
 }
 
 @media only screen and (max-width: 575px) {
