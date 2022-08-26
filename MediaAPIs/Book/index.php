@@ -31,6 +31,7 @@ $username = $user_data['user_name'];
     />
     <!-- custom css -->
     <link rel="stylesheet" href="main.css">
+
 </head>
 
 
@@ -46,7 +47,7 @@ $username = $user_data['user_name'];
         ---------------------------->
         <div class="search-container">
             <div class="search-element">
-                <input type="text" class="form-control" placeholder="Enter Book Name and Author's name" id="movie-search-box" onkeyup="findBook()" onclick="findBook()"  autocomplete="off">
+                <input type="text" class="form-control" placeholder="Search Book" id="movie-search-box" onkeyup="findBook()" onclick="findBook()"  autocomplete="off">
                 <div class="search-list" id="search-list">
                     <!--  Dynamically generated LIST APPEARS IN THIS MANNER -->
                     <!-- <div class = "search-list-item">

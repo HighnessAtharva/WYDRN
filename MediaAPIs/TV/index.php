@@ -47,7 +47,7 @@ $username = $user_data['user_name'];
         ---------------------------->
         <div class="search-container">
             <div class="search-element">
-                <input type="text" class="form-control" placeholder="Enter TV Series" id="movie-search-box" onkeyup="findTV()" onclick="findTV()"  autocomplete="off">
+                <input type="text" class="form-control" placeholder="Search TV Show" id="movie-search-box" onkeyup="findTV()" onclick="findTV()"  autocomplete="off">
 
                 <div class="search-list" id="search-list">
                     <!-- list here -->

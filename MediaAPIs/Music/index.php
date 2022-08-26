@@ -48,7 +48,7 @@ $username = $user_data['user_name'];
             <div class="search-element">
          
 
-                <input type="text" class="form-control" placeholder="Enter Artist Name and Album Name" id="movie-search-box" onkeyup="findAlbum()" onclick="findAlbum()"  autocomplete="off">
+                <input type="text" class="form-control" placeholder="Search Album" id="movie-search-box" onkeyup="findAlbum()" onclick="findAlbum()"  autocomplete="off">
                 <div class="search-list" id="search-list">
                     <!-- list here -->
                     <!-- <div class = "search-list-item">

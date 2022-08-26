@@ -134,7 +134,8 @@ if ($query = mysqli_query($con, $sql)) {
             } //else ends
         }
     } else {
-        echo "<center><b>EMPTY FEED. YOU ARE SUCH A LONER!</b><br><a href='search_users.php'>FOLLOW MORE PEOPLE</a></center>";
+        echo "<center><p style='color:black; padding: 20px; width:fit-content; background-color:white;'> EMPTY FEED. YOU ARE SUCH A LONER!</p><br>
+        <a href='search_users.php' style='color:white;padding: 10px; border-radius:5px;background-color:green; text-decoration:none; '>FOLLOW MORE PEOPLE</a></center>";
     }
 }
 ?>
