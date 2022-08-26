@@ -96,11 +96,11 @@
     
     .search-list-music {
         position: absolute;
-        left: 65px;
-        margin-top: -110px;
+        left: 830px;
+        margin-top: -250px;
         max-height: 500px;
         border-left: 1px solid black;
-        width: 600px;
+        width: 480px;
         overflow-y: scroll;
         z-index: 10;
         background-color: var(--md-dark-color);

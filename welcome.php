@@ -20,6 +20,7 @@ $user_data = check_login($con);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,183 +45,188 @@ $user_data = check_login($con);
 
 <body>
 
-<!--START OF MAIN  BODY-->
-<!-- LEFT COLUMN-->
-<div class="column">
-    <form class="ms-5" method="POST" action="profile.php" name="userinput" onsubmit ="return Validation();">
-        <div style="margin-right: 100px;">
+    <div class="page-wrapper p-t-180 p-b-100 font-poppins">
+        <div class="mywrapper mywrapper--w1200">
+            <form method="POST" action="profile.php" name="userinput" onsubmit="return Validation();">
 
-            <!------------------------------------------------------
+                <!------------------------------------------------------
                                 Music
             ------------------------------------------------------>
-            <h3 class="mb-3">Music</h3>
-            <div class="mb-3 ms-3" name="album">
+                <div class="card card-3">
+                    <div class="card-heading" id="music-pic"></div>
+                    <div class="card-body">
+                        <h2 class="title">Add Albums</h2>
 
-                Album
-                <input type="text" class="form-control" name="Album" autofocus="true" placeholder="Cavalcade" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()" autocomplete="off"><br>
-
-                Artist
-                <input type="text" class="form-control" name="Artist" placeholder="Black Midi" id="music-artist" readonly autocomplete="off"><br>
+                        <div class="input-group">
+                            <input type="text" class="input--style-3" name="Album" autofocus="true" placeholder="Cavalcade" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()" autocomplete="off"><br>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="input--style-3" name="Artist" placeholder="Black Midi" id="music-artist" readonly autocomplete="off"><br>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="search-list-music" id="search-list-music">
                     <!--ALBUM SUGGESTIONS WILL APPEAR HERE-->
                 </div>
-            </div>
 
-            <!------------------------------------------------------
+
+
+                <!------------------------------------------------------
                                  Books
             ------------------------------------------------------>
-            <h3 class="mb-3">Books</h3>
-            <div class="mb-3 ms-3" name="book">
+                <div class="card card-3">
+                    <div class="card-heading" id="book-pic"></div>
+                    <div class="card-body">
+                        <h2 class="title">Add Books</h2>
 
-                Book
-                <input type="text" name="Book" class="form-control" placeholder="Royal Assassin" id="book-search-box" onkeyup="findBook()" onclick="findBook()" autocomplete="off"><br>
-
-                Author
-                <input type="text" class="form-control" name="Author" placeholder="Robin Hobb"  id="book-author" readonly autocomplete="off"><br>
-
+                        <div class="input-group">
+                            <input type="text" name="Book" class="input--style-3" placeholder="Royal Assassin" id="book-search-box" onkeyup="findBook()" onclick="findBook()" autocomplete="off"><br>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="input--style-3" name="Author" placeholder="Robin Hobb" id="book-author" readonly autocomplete="off"><br>
+                        </div>
+                    </div>
+                </div>
                 <div class="search-list-books" id="search-list-book">
                     <!--BOOK SUGGESTIONS WILL APPEAR HERE-->
                 </div>
-            </div>
 
-            <!------------------------------------------------------
+
+                <!------------------------------------------------------
                                   Movies
             ------------------------------------------------------>
-            <h3 class="mb-3">Movies</h3>
-            <div class="mb-3 ms-3" name="movie">
+                <div class="card card-3">
+                    <div class="card-heading" id="movie-pic"></div>
+                    <div class="card-body">
+                        <h2 class="title">Add Movies</h2>
 
-                Movie
-                <input type="text" class="form-control" name="Movie" placeholder="The Batman" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()" autocomplete="off"><br>
-
-                Release Year
-                <input type="text" class="form-control" name="MovieRelease" placeholder="2022" id="movie-year" readonly autocomplete="off"><br>
-
+                        <div class="input-group">
+                            <input type="text" class="input--style-3" name="Movie" placeholder="The Batman" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()" autocomplete="off"><br>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="input--style-3" name="MovieRelease" placeholder="2022" id="movie-year" readonly autocomplete="off"><br>
+                        </div>
+                    </div>
+                </div>
                 <div class="search-list-movies" id="search-list-movies">
-                     <!--MOVIE SUGGESTIONS WILL APPEAR HERE-->
+                    <!--MOVIE SUGGESTIONS WILL APPEAR HERE-->
                 </div>
 
-            </div>
 
-            <!------------------------------------------------------
+
+                <!------------------------------------------------------
                                 TV
             ------------------------------------------------------>
-            <h3 class="mb-3">TV/Streaming</h3>
-            <div class="mb-3 ms-3" name="TV">
+                <div class="card card-3">
+                    <div class="card-heading" id="tv-pic"></div>
+                    <div class="card-body">
+                        <h2 class="title">Add TV Shows</h2>
 
-                TV Show
-                <input type="text" class="form-control" name="TV" placeholder="Peaky Blinders" id="tv-search-box" onkeyup="findTV()" onclick="findTV()" autocomplete="off"><br>
+                        <div class="input-group">
+                            <input type="text" class="input--style-3" name="TV" placeholder="Peaky Blinders" id="tv-search-box" onkeyup="findTV()" onclick="findTV()" autocomplete="off">
+                        </div>
 
-                Network
-                <select class="form-control" name="StreamPlatform"><br>
-                        <option value="" selected disabled hidden>Choose</option>
-                        <option value="Netflix">Netflix</option>
-                        <option value="Hulu">Hulu</option>
-                        <option value="Amazon Prime">Amazon Prime</option>
-                        <option value="HBO Max">HBO Max</option>
-                        <option value="Disney+">Disney+</option>
-                        <option value="Tencent Video">Tencent Video</option>
-                        <option value="YouTube">YouTube Premium</option>
-                        <option value="Peacock">Peacock</option>
-                        <option value="Paramount+">Paramount+</option>
-                        <option value="Discovery+">Discovery+</option>
-                </select>
+
+                        <select class="input--style-3" name="StreamPlatform"><br>
+                            <option value="" selected disabled hidden>--Network--</option>
+                            <option class="option-text" value="Netflix">Netflix</option>
+                            <option class="option-text" value="Hulu">Hulu</option>
+                            <option class="option-text" value="Amazon Prime">Amazon Prime</option>
+                            <option class="option-text" value="HBO Max">HBO Max</option>
+                            <option class="option-text" value="Disney+">Disney+</option>
+                            <option class="option-text" value="Tencent Video">Tencent Video</option>
+                            <option class="option-text" value="YouTube">YouTube Premium</option>
+                            <option class="option-text" value="Peacock">Peacock</option>
+                            <option class="option-text" value="Paramount+">Paramount+</option>
+                            <option class="option-text" value="Discovery+">Discovery+</option>
+                        </select>
+                    </div>
+                </div>
 
                 <div class="search-list-tv" id="search-list-tv">
-                     <!--MOVIE SUGGESTIONS WILL APPEAR HERE-->
+                    <!--MOVIE SUGGESTIONS WILL APPEAR HERE-->
                 </div>
 
 
-            </div>
 
-
-            <!-------------------------------------------------
+                <!-------------------------------------------------
                          Video Games
             --------------------------------------------------->
-            <h3 class="mb-3">Video Game</h3>
-            <div class="mb-3 ms-3" name="videogame">
+                <div class="card card-3">
+                    <div class="card-heading" id="videogame-pic"></div>
+                    <div class="card-body">
+                        <h2 class="title">Add Videogames</h2>
 
-                Video Game
-                <input class="form-control" type="text" name="Videogame" placeholder="Elden Ring" id="game-search-box" onkeyup="findgame()" onclick="findgame()" autocomplete="off"><br>
+                        <div class="input-group">
+                            <input class="input--style-3" type="text" name="Videogame" placeholder="Elden Ring" id="game-search-box" onkeyup="findgame()" onclick="findgame()" autocomplete="off"><br>
+                        </div>
 
-                Platform
-                <select class="form-control" name="Platform">
-                    <option value="" selected disabled hidden>Choose</option>
-                    <option value="PC">PC</option>
-                    <option value="Xbox">Xbox</option>
-                    <option value="Playstation">Playstation</option>
-                    <option value="Nintendo">Nintendo Switch</option>
-                    <option value="Wii">Wii</option>
-                </select>
 
+                        <select class="input--style-3" name="Platform">
+                            <option value="" selected disabled hidden>--Platform--</option>
+                            <option class="option-text" value="PC">PC</option>
+                            <option class="option-text" value="Xbox">Xbox</option>
+                            <option class="option-text" value="Playstation">Playstation</option>
+                            <option class="option-text" value="Nintendo">Nintendo Switch</option>
+                            <option class="option-text" value="Wii">Wii</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="search-list-games" id="search-list-games">
                     <!--VIDEOGAME SUGGESTIONS WILL APPEAR HERE-->
                 </div>
-            </div>
 
-        </div> <!---END OF 5 MEDIA CONTAINER DIV--->
-        <form> <!---END OF FORM --->
 
-          <!--The div below puts the submit button below the first column at center-->
 
-        <div class="text-center mb-lg-3">
-            <button type="submit" class="btn btn-outline-primary btn-light btn-lg" name="submit" value="btn1" style="margin-left:-100px">Submit</button>
+
+                <div class="text-center mb-lg-3">
+                    <button type="submit" class="btn btn-outline-primary btn-light btn-lg" name="submit" value="btn1">Add Media</button>
+                </div>
+            </form>
         </div>
+    </div>
 
 
-        </div>
-        <!--END OF LEFT COLUMN-->
 
-        <!--RIGHT COLUMN-->
-        <div class="column" >
-            <div style="background:black; color:white;margin-right:30px; padding:20px;">
-                <ul>
-                    <li>WYDRN is a website that allows you to instataneously add your current video games, music, books, movies, and TV  to your profile.  </li>
-                    <li>You can then view your profile and see what you have added. </li>
-                    <li> You can also search for other users and see their profiles.  </li>
-                </ul>
-            </div>
-        </div>
-        <!--END OF RIGHT COLUMN-->
-
-<!--END OF MAIN BODY-->
+    <!--END OF MAIN BODY-->
 
 
-<!------------------------------------------------------------------------
+    <!------------------------------------------------------------------------
                         JAVASCRIPT PART
 -------------------------------------------------------------------------->
-<script src="SearchBoxAPIs/Music/script.js"></script>
-<script src="SearchBoxAPIs/TV/script.js"></script>
-<script src="SearchBoxAPIs/Movie/script.js"></script>
-<script src="SearchBoxAPIs/Book/script.js"></script>
-<script src="SearchBoxAPIs/Videogame/script.js"></script>
-<script>
-function Validation(){
-    let musicInput= document.getElementById("music-search-box").value;
-    let bookInput= document.getElementById("book-search-box").value;
-    let movieInput= document.getElementById("movie-search-box").value;
-    let tvInput= document.getElementById("tv-search-box").value;
-    let gameInput= document.getElementById("game-search-box").value;
+    <script src="SearchBoxAPIs/Music/script.js"></script>
+    <script src="SearchBoxAPIs/TV/script.js"></script>
+    <script src="SearchBoxAPIs/Movie/script.js"></script>
+    <script src="SearchBoxAPIs/Book/script.js"></script>
+    <script src="SearchBoxAPIs/Videogame/script.js"></script>
+    <script>
+        function Validation() {
+            let musicInput = document.getElementById("music-search-box").value;
+            let bookInput = document.getElementById("book-search-box").value;
+            let movieInput = document.getElementById("movie-search-box").value;
+            let tvInput = document.getElementById("tv-search-box").value;
+            let gameInput = document.getElementById("game-search-box").value;
 
-    //If all of the inputs are empty, then the user will be alerted that they must fill in all the fields.
-    if ((musicInput) || (bookInput) || (movieInput) || (tvInput) || (gameInput)){
-        return true;   
-    }
-    else{
-        //sweet alert plugin to display error message. IT REPLACES the JS alert() function.
-        swal({
-        title: "Log a Media",
-        text: "You must enter at least one media type!",
-        icon: "error",
-        button: "Retry",
-        });
-        return false;
-    }
+            //If all of the inputs are empty, then the user will be alerted that they must fill in all the fields.
+            if ((musicInput) || (bookInput) || (movieInput) || (tvInput) || (gameInput)) {
+                return true;
+            } else {
+                //sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+                swal({
+                    title: "Log a Media",
+                    text: "You must enter at least one media type!",
+                    icon: "error",
+                    button: "Retry",
+                });
+                return false;
+            }
 
 
-}
-</script>
+        }
+    </script>
 
-<?php mysqli_close($con);?>
+    <?php mysqli_close($con); ?>
 </body>
+
 </html>
