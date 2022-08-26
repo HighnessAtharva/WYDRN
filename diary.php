@@ -22,239 +22,306 @@ require "functions.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 
-if(isset($_GET['userdate'])){
-    $date_selected=$_GET['userdate'];
+if (isset($_GET['userdate'])) {
+    $date_selected = $_GET['userdate'];
 }
 ?>
 
 <!--HTML PART -->
 <html>
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>WYDRN - Diary</title>
-        
-        <!--Bootstrap Link-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-        <!--Custom Link-->
-        <link rel="stylesheet" href="css/diary.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WYDRN - Diary</title>
+
+    <!--Bootstrap Link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" rel="stylesheet" />
+
+    <!--Custom Link-->
+    <link rel="stylesheet" href="css/diary.css">
+</head>
+
 <body>
-<br><br>
+    <br><br>
 
-<div style="margin-left:50px;">
-<center>
-<h1> Diary Entries For 
-<?php 
-echo $username;
-if (!empty($date_selected)) {
-    echo " on ". printable_date($date_selected);
-} 
-?></h1>
-
-<!--To Allow Users to Filter Date Wise -->
-<form method="get" name="dateselect" action="diary.php">
-<input type="date" name="userdate" id="userdate">
-<!--Change button text value depending on if the date is selcted or not-->
-<input type="submit" value=<?php if(!empty($date_selected)) echo "All"; else echo "Filter by Date;" ?> class="btn btn-primary" style="margin-bottom:5px;">
-<button type="button" onclick="window.location.href='stats.php'" class="btn btn-success" style="margin-bottom:5px;">View Stats</button>
-</form>
-</center>
-<hr>
-<!--PHP PART -->
-<?php
-
-$per_page_record = 10; // Number of entries to show in a page.
-// Look for a GET variable page if not found default is 1.
-if (isset($_GET["page"])) {
-    $page = $_GET["page"];
-} else {
-    $page = 1;
-}
-
-$start_from = ($page - 1) * $per_page_record;
-
-//In MYSQL - LIMIT offset, count; 
-
-// if date is selected and get query is passed show the entries of the user on the selected date otherwise show all the entries of the user.
-if (!empty($date_selected)) {
-    $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' AND `date`= '$date_selected' ORDER BY `date` DESC";
-} else {
-    $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' ORDER BY `date` DESC LIMIT $start_from, $per_page_record;";
-}
-
-// $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`datetime` from `data` WHERE `username`= '$username' ORDER BY `datetime` DESC LIMIT $start_from, $per_page_record;";
-
-if ($query = mysqli_query($con, $sql)) {
-    if (mysqli_num_rows($query) > 0) {
-        for ($i = 0; $i <= mysqli_num_rows($query); $i++) {
-            $row[$i] = mysqli_fetch_array($query);
-
-            $videogame = $row[$i]['videogame'];
-            $platform = $row[$i]['platform'];
-
-            $album = $row[$i]['album'];
-            $artist = $row[$i]['artist'];
-
-            $book = $row[$i]['book'];
-            $author = $row[$i]['author'];
-
-            $movie = $row[$i]['movie'];
-            $year = $row[$i]['year'];
-
-            $tv = $row[$i]['tv'];
-            $streaming = $row[$i]['streaming'];
-
-            $datetime = $row[$i]['datetime'];
-
-            /* FORMATTING AND DISPLAYING BEGINS HERE */
-
-            echo "<div class='post'>"; //div start
-            echo ("<table id='diarytable'"); //table start
-
-            //date and time. Check other fields because datetime will be added even in blank records added during clearing done by the user. 
-            if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($tv))) {
-                $datetime = printable_datetime($datetime);
-                echo ("<tr><td>");
-                echo ("<div class='datetime'><h2>" . $datetime . "</h2></div>");
-                echo ("</td></tr>");
-
-                //videogame
-                if ((!empty($videogame)) && (!empty($platform))) {
-                    $playing = "<div class='activity'> &#127918 Playing <b>" . $videogame . "</b> on " . $platform . "</div>";
-                    echo ("<tr><td>");
-                    echo $playing;
-                    echo ("</td></tr>");
+    <div style="margin-left:50px;">
+        <center>
+            <h1> Diary Entries For
+                <?php
+                echo $username;
+                if (!empty($date_selected)) {
+                    echo " on " . printable_date($date_selected);
                 }
+                ?></h1>
 
-                //album
-                if ((!empty($album)) && (!empty($artist))) {
-                    $listening = "<div class='activity'> &#127911 Listening to <b>" . $album . "</b> by <b>" . $artist . "</b></div>";
-                    echo ("<tr><td>");
-                    echo $listening;
-                    echo ("</td></tr>");
-                }
-
-                //book
-                if ((!empty($book)) && (!empty($author))) {
-                    $reading = "<div class='activity'> &#128213 Reading <b>" . $book . "</b> by <b>" . $author . "</b></div>";
-                    echo ("<tr><td>");
-                    echo $reading;
-                    echo ("</td></tr>");
-                }
-
-                if ((!empty($movie)) && (!empty($year))) {
-                    $watching = "<div class='activity'> &#128253 Watching <b>" . $movie . "</b> (" . $year . ")" . "</div>";
-                    echo ("<tr><td>");
-                    echo $watching;
-                    echo ("</td></tr>");
-                }
-
-                //tv
-                if ((!empty($tv)) && (!empty($streaming))) {
-                    $binging = "<div class='activity'> &#128250 Binging <b>" . $tv . "</b> on " . $streaming . "</div>";
-                    echo ("<tr><td>");
-                    echo $binging;
-                    echo ("</td></tr>");
-                }
-
-                echo "<br><br>";
-            }
-
-            echo ("<table>"); //table end
-            echo "</div>"; //div end
-        }
-    }else{
-       echo "<center><img src='images/website/empty-diary.jpg' alt='Empty Diary' height='300' width='350'></center>";
-    }
-}
-?>
-<br><br><br>
-
-
-<?php 
-//hide the pagination grid if entries are filtered by date.
-if(empty($date_selected)){    
-?>
-
-<!--USING GRID CONTAINER TO SHOW PAGINATION ROW AND MANUAL INPUT BOX ADJACENT/NEXT TO EACH OTHER -->
-<div class="grid-container">
-
-    <!--PAGINATION ROW -->
-    <div class="grid-child pagination">
+            <!--To Allow Users to Filter Date Wise -->
+            <form method="get" name="dateselect" action="diary.php">
+                <input type="date" name="userdate" id="userdate">
+                <!--Change button text value depending on if the date is selcted or not-->
+                <input type="submit" value=<?php if (!empty($date_selected)) echo "All";
+                                            else echo "Filter by Date;" ?> class="btn btn-primary" style="margin-bottom:5px;">
+                <button type="button" onclick="window.location.href='stats.php'" class="btn btn-success" style="margin-bottom:5px;">View Stats</button>
+            </form>
+        </center>
+        <hr>
+        <!--PHP PART -->
         <?php
-        $query = "SELECT count(*) from `data` WHERE `username`= '$username'";
-        $rs_result = mysqli_query($con, $query);
-        $row = mysqli_fetch_row($rs_result);
-        $total_records = $row[0];
 
-        echo "</br>";
-        // CALCULATING THE NUMBER OF PAGES
-        $total_pages = ceil($total_records / $per_page_record);
-        $unmodified_total_pages=$total_pages;
-        if($total_pages>10){
-            $total_pages=10;
-        }
-        $pageLink = "";
-
-        // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
-        if ($page >= 2) {
-            echo "<a href='diary.php?page=" . ($page - 1) . "'>  <span class='neonText'> ← </span></a>";
+        $per_page_record = 10; // Number of entries to show in a page.
+        // Look for a GET variable page if not found default is 1.
+        if (isset($_GET["page"])) {
+            $page = $_GET["page"];
+        } else {
+            $page = 1;
         }
 
-        // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
-        for ($i = 1; $i <= $total_pages; $i++) {
-            if ($i == $page) {
-                $pageLink .= "<a class = 'active' href='diary.php?page="
-                    . $i . "'>" . $i . " </a>";
-            } else {
-                $pageLink .= "<a href='diary.php?page=" . $i . "'>" . $i . " </a>";
-            }
-        }
-        echo $pageLink;
+        $start_from = ($page - 1) * $per_page_record;
 
-        // SHOW NEXT BUTTON IF NOT ON LAST PAGE
-        if ($page < $total_pages) {
-            echo "<a href='diary.php?page=" . ($page + 1) . "'>  <span class='neonText'> → </span>  </a>";
+        //In MYSQL - LIMIT offset, count; 
+
+        // if date is selected and get query is passed show the entries of the user on the selected date otherwise show all the entries of the user.
+        if (!empty($date_selected)) {
+            $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' AND `date`= '$date_selected' ORDER BY `datetime` DESC";
+        } else {
+            $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' ORDER BY `datetime` DESC LIMIT $start_from, $per_page_record;";
+        }
+
+        ?>
+
+
+
+        <section class="timeline_area section_padding_130">
+            <div class="container">
+
+                <div class="myrow">
+                    <div class="col-12">
+                        <!-- Timeline Area-->
+                        <div class="apland-timeline-area">
+
+                            <?php
+                            if ($query = mysqli_query($con, $sql)) {
+                                if (mysqli_num_rows($query) > 0) {
+                            ?>
+
+                                <?php
+                                for ($i = 1; $i <= mysqli_num_rows($query); $i++) {
+                                    $row[$i] = mysqli_fetch_array($query);
+                                ?>
+                        
+                                            <?php
+                                            $videogame = $row[$i]['videogame'];
+                                            $platform = $row[$i]['platform'];
+                                            $album = $row[$i]['album'];
+                                            $artist = $row[$i]['artist'];
+                                            $book = $row[$i]['book'];
+                                            $author = $row[$i]['author'];
+                                            $movie = $row[$i]['movie'];
+                                            $year = $row[$i]['year'];
+                                            $tv = $row[$i]['tv'];
+                                            $streaming = $row[$i]['streaming'];
+                                            $datetime = $row[$i]['datetime'];
+                                            //date and time. Check other fields because datetime will be added even in blank records added during clearing done by the user. 
+                                            if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($tv))) {
+                                                $datetime = printable_datetime($datetime);
+                                            ?>
+                                        <!-- Single Timeline Content-->
+                                        <div class="single-timeline-area">
+                                        <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                                            <p class='my-date'><?php echo $datetime;?></p>
+                                        </div>
+                                        <div class="row">
+
+                                            <?php
+                                            
+                                                //videogame
+                                                if ((!empty($videogame)) && (!empty($platform))) {
+                                            ?>
+                                                    <div class="col-12 col-md-6 col-lg-4">
+                                                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+                                                            <div class="timeline-icon"><i class="fa-solid fa-gamepad gameicon" aria-hidden="true"></i></div>
+                                                            <div class="timeline-text">
+                                                                <h6><?php echo $videogame; ?></h6>
+                                                                <p class='my-date'><?php echo $platform; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                                }
+                                                //album
+                                                if ((!empty($album)) && (!empty($artist))) {
+                                                ?>
+                                                    <div class="col-12 col-md-6 col-lg-4">
+                                                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
+                                                            <div class="timeline-icon"><i class="fa-solid fa-music musicicon" aria-hidden="true"></i></div>
+                                                            <div class="timeline-text">
+                                                                <h6><?php echo $album ?></h6>
+                                                                <p class='my-date'><?php echo $artist ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                                }
+                                                //book
+                                                if ((!empty($book)) && (!empty($author))) {
+                                                ?>
+                                                    <div class="col-12 col-md-6 col-lg-4">
+                                                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
+                                                            <div class="timeline-icon"><i class="fa-solid fa-book bookicon" aria-hidden="true"></i></div>
+                                                            <div class="timeline-text">
+                                                                <h6><?php echo $book ?></h6>
+                                                                <p class='my-date'><?php echo $author ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                                }
+                                                if ((!empty($movie)) && (!empty($year))) {
+                                                ?>
+                                                    <div class="col-12 col-md-6 col-lg-4">
+                                                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
+                                                            <div class="timeline-icon"><i class="fa-solid fa-clapperboard movieicon" aria-hidden="true"></i></div>
+                                                            <div class="timeline-text">
+                                                                <h6><?php echo $movie ?></h6>
+                                                                <p class='my-date'><?php echo $year ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                                }
+                                                //tv
+                                                if ((!empty($tv)) && (!empty($streaming))) {
+                                                ?>
+                                                    <div class="col-12 col-md-6 col-lg-4">
+                                                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
+                                                            <div class="timeline-icon"><i class="fa-solid fa-tv tvicon" aria-hidden="true"></i></div>
+                                                            <div class="timeline-text">
+                                                                <h6><?php echo $tv ?></h6>
+                                                                <p class='my-date'><?php echo $streaming ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            <?php
+                                                }
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                <?php }
+                                ?>
+                        <?php } else {
+                                echo "<center><img src='images/website/empty-diary.jpg' alt='Empty Diary' height='300' width='350'></center>";
+                            }
+                        }
+                        ?>
+
+
+
+                            <!-- END OF Single Timeline Content-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <?php
+        //hide the pagination grid if entries are filtered by date.
+        if (empty($date_selected)) {
+        ?>
+
+            <!--USING GRID CONTAINER TO SHOW PAGINATION ROW AND MANUAL INPUT BOX ADJACENT/NEXT TO EACH OTHER -->
+            <div class="grid-container">
+
+                <!--PAGINATION ROW -->
+                <div class="grid-child pagination">
+                    <?php
+                    $query = "SELECT count(*) from `data` WHERE `username`= '$username'";
+                    $rs_result = mysqli_query($con, $query);
+                    $row = mysqli_fetch_row($rs_result);
+                    $total_records = $row[0];
+
+                    echo "</br>";
+                    // CALCULATING THE NUMBER OF PAGES
+                    $total_pages = ceil($total_records / $per_page_record);
+                    $unmodified_total_pages = $total_pages;
+                    if ($total_pages > 10) {
+                        $total_pages = 10;
+                    }
+                    $pageLink = "";
+
+                    // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
+                    if ($page >= 2) {
+                        echo "<a href='diary.php?page=" . ($page - 1) . "'>  <span class='neonText'> ← </span></a>";
+                    }
+
+                    // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
+                    for ($i = 1; $i <= $total_pages; $i++) {
+                        if ($i == $page) {
+                            $pageLink .= "<a class = 'active' href='diary.php?page="
+                                . $i . "'>" . $i . " </a>";
+                        } else {
+                            $pageLink .= "<a href='diary.php?page=" . $i . "'>" . $i . " </a>";
+                        }
+                    }
+                    echo $pageLink;
+
+                    // SHOW NEXT BUTTON IF NOT ON LAST PAGE
+                    if ($page < $total_pages) {
+                        echo "<a href='diary.php?page=" . ($page + 1) . "'>  <span class='neonText'> → </span>  </a>";
+                    }
+                    ?>
+                </div>
+                <!--END OF PAGINATION ROW -->
+
+
+                <!--MANUAL PAGINATION INPUT BOX-->
+                <div class="inline grid-child">
+                    <input id="page" type="number" min="1" max="<?php echo $unmodified_total_pages ?>" placeholder="<?php echo $page . "/" . $unmodified_total_pages; ?>" required>
+                    <button onClick="go2Page();">Go</button>
+                </div>
+                <!--END OF MANUAL PAGINATION INPUT BOX-->
+
+                <!--END OF GRID CONTAINER-->
+            </div>
+
+        <?php
         }
         ?>
     </div>
-    <!--END OF PAGINATION ROW -->
+    <!--END OF MAIN DIV-->
 
-
-    <!--MANUAL PAGINATION INPUT BOX-->
-    <div class="inline grid-child">
-    <input id="page" type="number" min="1" max="<?php echo $unmodified_total_pages ?>"
-    placeholder="<?php echo $page . "/" . $unmodified_total_pages; ?>" required>
-    <button onClick="go2Page();">Go</button>
-    </div>
-    <!--END OF MANUAL PAGINATION INPUT BOX-->
-
-<!--END OF GRID CONTAINER-->
-    </div>
-
-<?php
-}
-?> 
-</div> <!--END OF MAIN DIV-->
-
- <script>
-    //FUNCTION TO GO TO SPECIFIED PAGE - INVOKED ONLY BY MANUAL PAGINATION INPUT BOX
-    function go2Page()
-    {
-        var page = document.getElementById("page").value;
-        //a check to ensure that the user enters a valid page number
-        page = ((page><?php echo $unmodified_total_pages; ?>)?<?php echo $unmodified_total_pages; ?>:((page<1)?1:page));
-        window.location.href = 'diary.php?page='+page;
-    }
-
-
-  </script>
+    <script>
+        //FUNCTION TO GO TO SPECIFIED PAGE - INVOKED ONLY BY MANUAL PAGINATION INPUT BOX
+        function go2Page() {
+            var page = document.getElementById("page").value;
+            //a check to ensure that the user enters a valid page number
+            page = ((page > <?php echo $unmodified_total_pages; ?>) ? <?php echo $unmodified_total_pages; ?> : ((page < 1) ? 1 : page));
+            window.location.href = 'diary.php?page=' + page;
+        }
+    </script>
 </body>
+
 </html>
-<?php 
-mysqli_close($con);?>
+<?php
+mysqli_close($con); ?>
