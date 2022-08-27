@@ -43,6 +43,9 @@ require("functions.php");
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
+  	<!-- Sweet Alert (Beautiful looking alert plugin-->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 </head>
 
@@ -55,12 +58,12 @@ require("functions.php");
         <div class="col-12">
           <div class="sign__content">
             
-            <form method="post" action="send_reset_link.php" class="sign__form">
+            <form method="post" action="send_reset_link.php" class="sign__form" onsubmit="return validation();">
             <a href="login.php" class="sign__logo">
                                 <img src="images/website/logo.png" alt="">
                     </a>
                     <div class="sign__group">
-                                <input type="text" class="sign__input" placeholder="Email" name="email">
+                                <input type="text" id="email" class="sign__input" placeholder="Email" name="email" required>
                             </div>
               
               
@@ -70,8 +73,8 @@ require("functions.php");
                             </div>
 
 
-              <input type="submit" value="Send" name="submit_email" class="forgot-mail-submit">
-              <span class="sign__text">We will send a password to your Email</span>
+              <input type="submit" value="Send" name="submit_email" class="forgot-mail-submit" id="mbtn">
+              <span class="sign__text">We will E-mail you the password reset link </span>
             </form>
             
             <!-- end authorization form -->
@@ -91,7 +94,38 @@ require("functions.php");
     if (window.history.replaceState) {
       window.history.replaceState(null, null, window.location.href);
     }
-  </script>
+    
+    function validation(){
+
+    var email = document.getElementById("email").value;
+    var re = /\S+@\S+\.\S+/;
+      
+      
+      if (!re.test(email)) {
+				//sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+				swal({
+					title: "Email Invalid",
+					text: "Please enter a valid email address. Don't hoax.",
+					icon: "warning",
+					button: "Retry",
+				});
+				return false;
+			}
+
+      else{
+        swal({
+					title: "Reset Link Sent",
+					text: "Check your email for the reset link",
+					icon: "success",
+					button: "OK",
+				});
+        return true;
+      }
+    }
+  
+</script>
+
+
 
     <!-- JS -->
     <script src="js/jquery-3.5.1.min.js"></script>

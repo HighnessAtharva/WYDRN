@@ -32,27 +32,99 @@ if (isset($_GET['key']) && isset($_GET['reset'])) {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title> WYDRN - Password Reset</title>
 
+
+      <link rel="stylesheet" href="css/others/bootstrap-reboot.min.css">
+      <link rel="stylesheet" href="css/others/bootstrap-grid.min.css">
+      <link rel="stylesheet" href="css/others/ionicons.min.css">
+      <link rel="stylesheet" href="css/utility.css">
+
       <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
       <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
 
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+        	<!-- Sweet Alert (Beautiful looking alert plugin-->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     </head>
 
     <body>
-      <div class="container" style="justify-content:center">
-        <!--HTML Form for Resetting Password-->
-        <form method="POST" action="submit_new.php">
+      <div class="sign section--bg" data-bg="images/website/assets/abstract/section.jpg">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="sign__content">
+                <!--HTML Form for Resetting Password-->
+                <form method="POST" action="submit_new.php" class="sign__form" onsubmit="return validation();">
+                  <a href="login.php" class="sign__logo">
+                    <img src="images/website/logo.png" alt="">
+                  </a>
 
-          <!--Take on the email from the get request and pass it onto the next page whilst keeping it hidden because password will be updated where email is matching -->
-          <input type="hidden" name="email" value="<?php echo $email; ?>">
-          <p class="alert-success alert">Enter New password</p>
-          <input type="password" name='password'>
-          <input type="submit" name="submit_password">
-        </form>
-        <!--HTML Form for Resetting Password-->
+
+                  <!--Take on the email from the get request and pass it onto the next page whilst keeping it hidden because password will be updated where email is matching -->
+
+                  <input type="hidden" class="sign__input" name="email" value="<?php echo $email; ?>">
+
+
+                  <div class="sign__group">
+                    <input type="password" id="pass" name='password' class="sign__input" placeholder="Enter new password" required>
+                  </div>
+
+                  <!-- SHOW PASSWORD-->
+                  <label style="color:white; cursor:pointer; margin-left:-160px; margin-top: -10px;"><input type="checkbox" onclick="showPass()" value="Show Password" />
+                    Show Password</label>
+
+                  <input type="submit" value="Update Password" name="submit_password" class="forgot-mail-submit">
+                </form>
+                <!--HTML Form for Resetting Password-->
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- JS -->
+      <script src="js/jquery-3.5.1.min.js"></script>
+      <script src="js/jquery.magnific-popup.min.js"></script>
+      <script src="js/jquery.mCustomScrollbar.min.js"></script>
+      <script src="js/select2.min.js"></script>
+      <script src="js/utility.js"></script>
+
+      <script>
+        function showPass() {
+          var x = document.getElementById("pass");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+
+
+        function validation() {
+
+          var password = document.getElementById("pass").value;
+          if (password.length < 8 || password.length > 30) {
+            //sweet alert plugin to display error message. IT REPLACES the JS alert() function.
+            swal({
+              title: "Password Invalid",
+              text: "Password must be between 8 and 30 characters",
+              icon: "warning",
+              button: "Retry",
+            });
+            return false;
+          } else {
+            swal({
+              title: "Success",
+              text: "Your password has been updated",
+              icon: "success",
+              button: "OK",
+            });
+            return true;
+          }
+        }
+      </script>
     </body>
 
     </html>

@@ -28,7 +28,7 @@ if(isset($_POST['email']) && $_POST['password'] && $_POST['submit_password']){
     if ($result){
     echo "Password Changed Successfully. Redirecting you to Login Page in 5 seconds";
     sleep(5);
-    header("Location: login.php");
+    header("Location: login.php?logout=true");
     }else{
       echo "Error in Changing Password";
     }
