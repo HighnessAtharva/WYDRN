@@ -197,7 +197,11 @@ function getposterpath($name)
 
             $start_from = ($page - 1) * $per_page_record;
 
-            $html_tv = "<br><br><section class='cards-wrapper'>"; // $html_tv stores the html code for the movie cards
+            ?>
+            <br><br><section class='cards-wrapper'>
+                
+                
+                <?php
 
             //only select unique shows logged by the user
             $sql = "SELECT `tv`, `streaming`, `date` FROM `data` where tv != '' and username='$username' GROUP BY `tv` order by " . $sorting . " " . $order . " LIMIT $start_from, $per_page_record;";
@@ -224,37 +228,32 @@ function getposterpath($name)
                             // Save image
                             file_put_contents($img, file_get_contents($posterpath));
                         }
-
-                        // one single div tag for each movie
-                        $html_tv .= "<div class='card-grid-space'>";
-                        // image tag for the movie
-                        $html_tv .= "<div class='card' style='background-image:url(";
-                        $html_tv .= $posterpath; // get the poster path from the api
-                        $html_tv .= ")'";
-                        $html_tv .= ">";
-
-                        $html_tv .= "<div>";
-                        $html_tv .= "<div class='logged-date'>" . $tv_logged . "</div>";
-                        $html_tv .= "</div>"; // end of div for the movie name
-
-                        $html_tv .= "</div>"; // end of card
-
-                        $html_tv .= "<h1 class='moviename'>" . $tvname . "</h1>";
-                        $html_tv .= "<div class='tags'>"; // div for the tags
-                        $html_tv .= "<div class='tag'>" . $platform . "</div>";
-                        $html_tv .= "</div>"; // end of tags
-                        $html_tv .= "</div>"; //end of card-grid-space
+?>
+                                  <!-- // one single div tag for each movie -->
+                                  <div class='card-grid-space'>
+                                <!-- // image tag for the movie -->
+                                <div class='card' style='background-image:url(<?php echo $posterpath; ?>);'>
+                                    <div>
+                                        <div class='logged-date'><?php echo $tv_logged; ?></div>
+                                    </div>
+                                </div>
+                                <h1 class='moviename'><?php echo $tvname; ?></h1>
+                                <div class='tags'>
+                                    <div class='tag'><?php echo $platform ?></div>
+                                </div>
+                            </div>
+                  
+                  <?php
                     }
-                } else {
-                    //NO TV SHOWS LOGGED MESSAGE
-                    $TVNotAdded = "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/TV.svg' width='15' height='15' class='media-icon'>No TV Shows added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
-                    echo $TVNotAdded;
-                }
+                } else {?>
+                    
+                    <!-- NO TV SHOWS LOGGED MESSAGE -->
+                    <div class="zero-media"><img src='images/Icons/TV.svg' width='15' height='15' class='media-icon'>No TV Shows added to your account.</div>
+               <?php }
             }
-
-            $html_tv .= "</section>";
-            echo $html_tv;
             ?>
+
+            </section>
 
 
             <!-------------------------------------------------------------------------------------

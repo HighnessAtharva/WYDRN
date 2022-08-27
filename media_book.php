@@ -69,7 +69,7 @@ function getposterpath($name, $author)
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
 
-    
+
     <script src="js/modernizr-2.6.2.min.js"></script>
     <!--PRELOADER JS-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -112,6 +112,8 @@ function getposterpath($name, $author)
                 <h1>Your Books<span><?php echo getRandomBookQuote() ?></span></h1>
             </div>
 
+
+            
             <div class="flex">
                 <!-- Sorting Functionality -->
                 <form method="get" action="" name="sort" id="filter-select">
@@ -198,68 +200,73 @@ function getposterpath($name, $author)
 
             $start_from = ($page - 1) * $per_page_record;
 
-            $html_book = "<br><br><section class='cards-wrapper'>"; // $html_book stores the html code for the movie cards
-
-            //only select unique books logged by the user
-            $sql = "SELECT `book`, `author`, `date` FROM `data` where book != '' and username='$username' GROUP BY `book` order by  " . $sorting . " " . $order . " LIMIT $start_from, $per_page_record;";
-            if ($query = mysqli_query($con, $sql)) {
-                $totalbookcount = mysqli_num_rows($query);
-                if ($totalbookcount > 0) {
-                    while ($row = mysqli_fetch_assoc($query)) {
-                        $book_name = $row['book'];
-                        $book_author = $row['author'];
-                        $book_logged = date("F jS, Y", strtotime($row['date']));
-
-                        $stripnamebook = $stripped = str_replace(' ', '+', $book_name);
-                        $stripnameauthor = $stripped = str_replace(' ', '+', $book_author);
-
-                        /**if poster is not downloaded, download the poster in the directory and show the image*/
-
-                        //remove special characters since we are using it as a file name
-                        $filename = preg_replace('/[^A-Za-z0-9\-]/', '', $stripnamebook);
-                        $pseudo_poster = 'images/API/book-' . $filename . '.jpg';
-
-                        if (file_exists($pseudo_poster)) {
-                            $posterpath = $pseudo_poster;
-                        } else {
-                            $posterpath = getposterpath($stripnamebook, $stripnameauthor); // URL to download file from
-                            $img = 'images/API/book-' . $filename . '.jpg'; // Image path to save downloaded image
-                            file_put_contents($img, file_get_contents($posterpath)); // Save image
-
-                        }
-
-                        // one single div tag for each movie
-                        $html_book .= "<div class='card-grid-space'>";
-                        // image tag for the movie
-                        $html_book .= "<div class='card' style='background-image:url(";
-                        $html_book .= $posterpath; // get the poster path from the api
-                        $html_book .= ")'";
-                        $html_book .= ">";
-
-                        $html_book .= "<div>";
-                        $html_book .= "<div class='logged-date'>" . $book_logged . "</div>";
-                        $html_book .= "</div>"; // end of div for the movie name
-
-                        $html_book .= "</div>"; // end of card
-
-                        $html_book .= "<h1 class='moviename'>" . $book_name . "</h1>";
-                        $html_book .= "<div class='tags'>"; // div for the tags
-                        $html_book .= "<div class='tag'>" . $book_author . "</div>";
-                        $html_book .= "</div>"; // end of tags
-                        $html_book .= "</div>"; //end of card-grid-space
-
-                    }
-                } else {
-                    //NO BOOKS LOGGED MESSAGE
-                    $BooksNotAdded = "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Book.svg' width='15' height='15' class='media-icon'>No books added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
-                    echo $BooksNotAdded;
-                }
-            }
-
-            $html_book .= "</section>";
-            echo $html_book;
-
             ?>
+
+            <br><br>
+            <section class='cards-wrapper'>
+
+
+                <?php
+                //only select unique books logged by the user
+                $sql = "SELECT `book`, `author`, `date` FROM `data` where book != '' and username='$username' GROUP BY `book` order by  " . $sorting . " " . $order . " LIMIT $start_from, $per_page_record;";
+                if ($query = mysqli_query($con, $sql)) {
+                    $totalbookcount = mysqli_num_rows($query);
+                    if ($totalbookcount > 0) {
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            $book_name = $row['book'];
+                            $book_author = $row['author'];
+                            $book_logged = date("F jS, Y", strtotime($row['date']));
+
+                            $stripnamebook = $stripped = str_replace(' ', '+', $book_name);
+                            $stripnameauthor = $stripped = str_replace(' ', '+', $book_author);
+
+                            /**if poster is not downloaded, download the poster in the directory and show the image*/
+
+                            //remove special characters since we are using it as a file name
+                            $filename = preg_replace('/[^A-Za-z0-9\-]/', '', $stripnamebook);
+                            $pseudo_poster = 'images/API/book-' . $filename . '.jpg';
+
+                            if (file_exists($pseudo_poster)) {
+                                $posterpath = $pseudo_poster;
+                            } else {
+                                $posterpath = getposterpath($stripnamebook, $stripnameauthor); // URL to download file from
+                                $img = 'images/API/book-' . $filename . '.jpg'; // Image path to save downloaded image
+                                file_put_contents($img, file_get_contents($posterpath)); // Save image
+
+                            }
+                ?>
+
+                            <!-- // one single div tag for each movie -->
+                            <div class='card-grid-space'>
+                                <!-- // image tag for the movie -->
+                                <div class='card' style='background-image:url(<?php echo $posterpath; ?>);'>
+                                    <div>
+                                        <div class='logged-date'><?php echo $book_logged ?></div>
+                                    </div>
+                                </div>
+                                <h1 class='moviename'><?php echo $book_name; ?></h1>
+                                <div class='tags'>
+                                    <div class='tag'><?php echo $book_author ?></div>
+                                </div>
+                            </div>
+
+
+
+                        <?php
+                        }
+                    } else { ?>
+
+                        <!-- NO BOOKS LOGGED MESSAGE -->
+                        <div class="zero-media"><img src='images/Icons/Book.svg' width='15' height='15' class='media-icon'>No books added to your account.</div>
+
+                <?php
+                    }
+                }
+                ?>
+            </section>
+
+
+
 
             <!-------------------------------------------------------------------------------------
                                         PAGINATION

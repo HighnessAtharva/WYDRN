@@ -193,9 +193,12 @@ function getposterpath($name, $artist)
             }
 
             $start_from = ($page - 1) * $per_page_record;
+?>
 
-            $html_album = "<br><br><section class='cards-wrapper'>"; // $html_album stores the html code for the album cards
 
+            <br><br><section class='cards-wrapper'>
+                
+<?php
             //only select unique albums logged by the user
             $sql = "SELECT `album`, `artist`, `date` FROM `data` where album != '' and username='$username' GROUP BY `album` order by " . $sorting . " " . $order . " LIMIT $start_from, $per_page_record;";
             if ($query = mysqli_query($con, $sql)) {
@@ -221,39 +224,35 @@ function getposterpath($name, $artist)
                             file_put_contents($img, file_get_contents($posterpath));
                         }
 
+?>
 
-
-                        // one single div tag for each album
-                        $html_album .= "<div class='card-grid-space'>";
-                        // image tag for the album
-                        $html_album .= "<div class='card' style='background-image:url(";
-                        $html_album .= $posterpath;  // get the poster path from the api
-                        $html_album .= ")'";
-                        $html_album .= ">";
-
-                        $html_album .= "<div>";
-                        $html_album .= "<div class='logged-date'>" . $album_logged . "</div>";
-                        $html_album .= "</div>";  // end of div for the album name
-
-                        $html_album .= "</div>"; // end of card
-
-                        $html_album .= "<h1 class='moviename'>" . $album_name . "</h1>";
-                        $html_album .= "<div class='tags'>"; // div for the tags
-                        $html_album .= "<div class='tag'>" . $album_artist . "</div>";
-                        $html_album .= "</div>"; // end of tags
-                        $html_album .= "</div>"; //end of card-grid-space
-                    }
+                                 <!-- // one single div tag for each movie -->
+                                 <div class='card-grid-space'>
+                                <!-- // image tag for the movie -->
+                                <div class='card' style='background-image:url(<?php echo $posterpath; ?>);'>
+                                    <div>
+                                        <div class='logged-date'><?php echo $album_logged; ?></div>
+                                    </div>
+                                </div>
+                                <h1 class='moviename'><?php echo $album_name; ?></h1>
+                                <div class='tags'>
+                                    <div class='tag'><?php echo $album_artist ?></div>
+                                </div>
+                            </div>
+                   
+                        <?php }
                 } else {
-                    //NO ALBUMS LOGGED MESSAGE
-                    $AlbumsNotAdded = "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Music.svg' width='15' height='15' class='media-icon'>No Albums added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
-                    echo $AlbumsNotAdded;
+                    ?>
+                    <!-- NO MOVIES LOGGED MESSAGE -->
+                    <div class="zero-media"><img src='images/Icons/Music.svg' width='15' height='15' class='media-icon'>No Music added to your account.</div>
+                
+                <?php
                 }
             }
-            $html_album .= "</section>";
-            echo $html_album;
+        
 
             ?>
-
+</section>
             <!-------------------------------------------------------------------------------------
                                 PAGINATION
 ------------------------------------------------------------------------------------->

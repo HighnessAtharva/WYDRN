@@ -62,7 +62,7 @@ function getposterpath($name, $year)
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
 
-    
+
     <script src="js/modernizr-2.6.2.min.js"></script>
 
     <!--PRELOADER JS-->
@@ -182,111 +182,109 @@ function getposterpath($name, $year)
             }
             $start_from = ($page - 1) * $per_page_record;
 
+            ?>
+            <!-- //only select unique movies logged by the user -->
+            <br><br>
+            <section class='cards-wrapper'> 
+                <!-- // $html_movie stores the html code for the movie cards -->
 
-            //only select unique movies logged by the user
-            $html_movie = "<br><br><section class='cards-wrapper'>"; // $html_movie stores the html code for the movie cards
+                <?php
+                $sql = "SELECT `movie`, `year`, `date` FROM `data` where movie != '' and username='$username' GROUP BY `movie` order by " . $sorting . " " . $order . " LIMIT $start_from, $per_page_record;";
+                if ($query = mysqli_query($con, $sql)) {
+                    $totalmoviecount = mysqli_num_rows($query);
+                    if ($totalmoviecount > 0) {
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            $movie_name = $row['movie'];
+                            $movie_year = $row['year'];
+                            $movie_logged = date("F jS, Y", strtotime($row['date']));
 
 
-            $sql = "SELECT `movie`, `year`, `date` FROM `data` where movie != '' and username='$username' GROUP BY `movie` order by " . $sorting . " " . $order . " LIMIT $start_from, $per_page_record;";
-            if ($query = mysqli_query($con, $sql)) {
-                $totalmoviecount = mysqli_num_rows($query);
-                if ($totalmoviecount > 0) {
-                    while ($row = mysqli_fetch_assoc($query)) {
-                        $movie_name = $row['movie'];
-                        $movie_year = $row['year'];
-                        $movie_logged = date("F jS, Y", strtotime($row['date']));
+                            $stripnamemovie = str_replace(' ', '+', $movie_name);
+
+                            /**if poster is not downloaded, download the poster in the directory and show the image*/
+
+                            //remove special characters since we are using it as a file name
+                            $filename = preg_replace('/[^A-Za-z0-9\-]/', '', $stripnamemovie);
+                            $pseudo_poster = 'images/API/movie-' . $filename . '.jpg';
+                            if (file_exists($pseudo_poster)) {
+                                $posterpath = $pseudo_poster;
+                            } else {
+                                $posterpath = getposterpath($stripnamemovie, $movie_year); // URL to download file from
+                                $img = 'images/API/movie-' . $filename . '.jpg'; // Image path to save downloaded image
+                                file_put_contents($img, file_get_contents($posterpath)); // Save image
+
+                            }
+                ?>
+
+                            <!-- // one single div tag for each movie -->
+                            <div class='card-grid-space'>
+                                <!-- // image tag for the movie -->
+                                <div class='card' style='background-image:url(<?php echo $posterpath; ?>);'>
+                                    <div>
+                                        <div class='logged-date'><?php echo $movie_logged; ?></div>
+                                    </div>
+                                </div>
+                                <h1 class='moviename'><?php echo $movie_name; ?></h1>
+                                <div class='tags'>
+                                    <div class='tag'><?php echo $movie_year ?></div>
+                                </div>
+                            </div>
 
 
-                        $stripnamemovie = str_replace(' ', '+', $movie_name);
-
-                        /**if poster is not downloaded, download the poster in the directory and show the image*/
-
-                        //remove special characters since we are using it as a file name
-                        $filename = preg_replace('/[^A-Za-z0-9\-]/', '', $stripnamemovie);
-                        $pseudo_poster = 'images/API/movie-' . $filename . '.jpg';
-                        if (file_exists($pseudo_poster)) {
-                            $posterpath = $pseudo_poster;
-                        } else {
-                            $posterpath = getposterpath($stripnamemovie, $movie_year); // URL to download file from
-                            $img = 'images/API/movie-' . $filename . '.jpg'; // Image path to save downloaded image
-                            file_put_contents($img, file_get_contents($posterpath)); // Save image
+                <?php
 
                         }
-
-                        // one single div tag for each movie
-                        $html_movie .= "<div class='card-grid-space'>";
-                        // image tag for the movie
-                        $html_movie .= "<div class='card' style='background-image:url(";
-                        $html_movie .= $posterpath;  // get the poster path from the api
-                        $html_movie .= ")'";
-                        $html_movie .= ">";
-
-                        $html_movie .= "<div>";
-                        $html_movie .= "<div class='logged-date'>" . $movie_logged . "</div>";
-                        $html_movie .= "</div>";  // end of div for the movie name
-
-
-                        $html_movie .= "</div>"; // end of card
-
-                        $html_movie .= "<h1 class='moviename'>" . $movie_name . "</h1>";
-                        $html_movie .= "<div class='tags'>"; // div for the tags
-                        $html_movie .= "<div class='tag'>" . $movie_year . "</div>";
-                        $html_movie .= "</div>"; // end of tags
-                        $html_movie .= "</div>"; //end of card-grid-space
-
+                    } else {?>
+                        <!-- NO MOVIES LOGGED MESSAGE -->
+                        <div class="zero-media"><img src='images/Icons/Movie.svg' width='15' height='15' class='media-icon'>No Movies added to your account.</div>
+                    <?php
                     }
-                } else {
-                    //NO MOVIES LOGGED MESSAGE
-                    $MoviesNotAdded = "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Movie.svg' width='15' height='15' class='media-icon'>No Movies added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
-                    echo $MoviesNotAdded;
                 }
-            }
 
-            $html_movie .= "</section>";
-            echo $html_movie;
-
-            ?>
+                ?>
+            </section>
 
 
-            <!-------------------------------------------------------------------------------------
+
+                <!-------------------------------------------------------------------------------------
                                 PAGINATION
 ------------------------------------------------------------------------------------->
-            <center>
-                <div class="pagination">
-                    <?php
-                    $query = "SELECT count(DISTINCT `movie`) FROM `data` where movie != '' and username='$username'";
-                    $rs_result = mysqli_query($con, $query);
-                    $row = mysqli_fetch_row($rs_result);
-                    $total_records = $row[0];
+                <center>
+                    <div class="pagination">
+                        <?php
+                        $query = "SELECT count(DISTINCT `movie`) FROM `data` where movie != '' and username='$username'";
+                        $rs_result = mysqli_query($con, $query);
+                        $row = mysqli_fetch_row($rs_result);
+                        $total_records = $row[0];
 
-                    echo "</br>";
-                    // CALCULATING THE NUMBER OF PAGES
-                    $total_pages = ceil($total_records / $per_page_record);
-                    $pageLink = "";
+                        echo "</br>";
+                        // CALCULATING THE NUMBER OF PAGES
+                        $total_pages = ceil($total_records / $per_page_record);
+                        $pageLink = "";
 
-                    // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
-                    if ($page >= 2) {
-                        echo "<a href='media_movie.php?sortby=" . $sortby . "&page=" . ($page - 1) . "'><span class='neonText'> ← </span></a>";
-                    }
-
-                    // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
-                    for ($i = 1; $i <= $total_pages; $i++) {
-                        if ($i == $page) {
-                            $pageLink .= "<a class = 'active' href='media_movie.php?page="
-                                . $i . "'>" . $i . " </a>";
-                        } else {
-                            $pageLink .= "<a href='media_movie.php?sortby=" . $sortby . "&page=" . $i . "'>" . $i . " </a>";
+                        // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
+                        if ($page >= 2) {
+                            echo "<a href='media_movie.php?sortby=" . $sortby . "&page=" . ($page - 1) . "'><span class='neonText'> ← </span></a>";
                         }
-                    }
-                    echo $pageLink;
 
-                    // SHOW NEXT BUTTON IF NOT ON LAST PAGE
-                    if ($page < $total_pages) {
-                        echo "<a href='media_movie.php?sortby=" . $sortby . "&page=" . ($page + 1) . "'><span class='neonText'> → </span></a>";
-                    }
-                    ?>
-                </div>
-                <!--END OF PAGINATION ROW -->
+                        // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
+                        for ($i = 1; $i <= $total_pages; $i++) {
+                            if ($i == $page) {
+                                $pageLink .= "<a class = 'active' href='media_movie.php?page="
+                                    . $i . "'>" . $i . " </a>";
+                            } else {
+                                $pageLink .= "<a href='media_movie.php?sortby=" . $sortby . "&page=" . $i . "'>" . $i . " </a>";
+                            }
+                        }
+                        echo $pageLink;
+
+                        // SHOW NEXT BUTTON IF NOT ON LAST PAGE
+                        if ($page < $total_pages) {
+                            echo "<a href='media_movie.php?sortby=" . $sortby . "&page=" . ($page + 1) . "'><span class='neonText'> → </span></a>";
+                        }
+                        ?>
+                    </div>
+                    <!--END OF PAGINATION ROW -->
         </div>
         <!--END OF MEDIA CONTENT -->
 
