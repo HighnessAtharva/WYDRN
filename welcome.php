@@ -30,6 +30,9 @@ $user_data = check_login($con);
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+    <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
+    
     <link rel="stylesheet" href="CSS/welcome.css">
 
     <link rel="stylesheet" href="SearchBoxAPIs/Videogame/main.css">

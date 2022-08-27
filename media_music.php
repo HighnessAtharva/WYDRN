@@ -64,6 +64,10 @@ function getposterpath($name, $artist)
 
     <!--Preloader Links-->
     <link rel="stylesheet" href="css/preloader.css">
+    <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
+    
+
     <script src="js/modernizr-2.6.2.min.js"></script>
 
     <!--PRELOADER JS-->

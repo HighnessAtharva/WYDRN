@@ -30,6 +30,9 @@ require("functions.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title> WYDRN - Password Reset</title>
+
+    <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 

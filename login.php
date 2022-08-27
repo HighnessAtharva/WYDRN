@@ -124,6 +124,9 @@ mysqli_close($con);
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" href="CSS/login.css">
+	
+	<link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
 
 	<!-- Sweet Alert (Beautiful looking alert plugin-->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

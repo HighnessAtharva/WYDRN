@@ -61,6 +61,9 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
 
     <title>WYDRN - Edit Profile</title>
 
+    <link rel="icon" type="image/x-icon" href="images/website/favicons/favicon.ico">
+    <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
+    
     <!--Bootstrap Link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
@@ -72,6 +75,8 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
 
     <!--Font Awesome Icons-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+   
 
     <!-- Sweet Alert (Beautiful looking alert plugin-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

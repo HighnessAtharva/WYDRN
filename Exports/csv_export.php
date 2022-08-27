@@ -1,22 +1,21 @@
 <?php
 /**
- *SHOWS TABULAR DATA FROM THE DATABASE.  BUTTON AT THE TOP TO ALLOW DOWNLOAD OF CSV 
- * @version    PHP 8.0.12 
+ *SHOWS TABULAR DATA FROM THE DATABASE.  BUTTON AT THE TOP TO ALLOW DOWNLOAD OF CSV
+ * @version    PHP 8.0.12
  * @since      June 2022
  * @author     AtharvaShah
  */
-
 
 session_start();
 if (empty($_SESSION)) {
     header("Location: ../login.php");
 }
-include("../connection.php");
-include("../functions.php");
-include("header.php");
+include "../connection.php";
+include "../functions.php";
+include "header.php";
 
 $user_data = check_login($con);
-$username=$user_data['user_name'];
+$username = $user_data['user_name'];
 ?>
 
 
@@ -47,20 +46,20 @@ if (mysqli_num_rows($result) > 0) {
     ";
 
     while ($row = mysqli_fetch_assoc($result)) {
-        
-        $videogame=$row['videogame'];
-        $platform=$row['platform'];
-        $date=$row['date'];
 
-            // this if conditional is added to ensure that blank records are not displayed
-            if (!empty($videogame)) {
-                $gamedata .= '<tr><td>' . $videogame . '</td><td>' . $platform . '</td><td>' . $date . '</td>    </tr>';
-            }
+        $videogame = $row['videogame'];
+        $platform = $row['platform'];
+        $date = $row['date'];
+
+        // this if conditional is added to ensure that blank records are not displayed
+        if (!empty($videogame)) {
+            $gamedata .= '<tr><td>' . $videogame . '</td><td>' . $platform . '</td><td>' . $date . '</td>    </tr>';
+        }
     }
 
     $gamedata .= '</table>';
-    $gamedata.="</div'>";
-} 
+    $gamedata .= "</div'>";
+}
 
 ?>
 
@@ -91,21 +90,21 @@ if (mysqli_num_rows($result) > 0) {
     ";
 
     while ($row = mysqli_fetch_assoc($result)) {
-        
-        $album=$row['album'];
-        $artist=$row['artist'];
-        $date=$row['date'];
 
-            // this if conditional is added to ensure that blank records are not displayed
-            if (!empty($album)) {
-                $albumdata .= '<tr><td>' . $album . '</td><td>' . $artist . '</td><td>' . $date . '</td>    </tr>';
-            }
+        $album = $row['album'];
+        $artist = $row['artist'];
+        $date = $row['date'];
+
+        // this if conditional is added to ensure that blank records are not displayed
+        if (!empty($album)) {
+            $albumdata .= '<tr><td>' . $album . '</td><td>' . $artist . '</td><td>' . $date . '</td>    </tr>';
+        }
     }
 
     $albumdata .= '</table>';
-    $albumdata.="</div'>";
-  
-} 
+    $albumdata .= "</div'>";
+
+}
 ?>
 
 
@@ -137,21 +136,21 @@ if (mysqli_num_rows($result) > 0) {
     ";
 
     while ($row = mysqli_fetch_assoc($result)) {
-        
-        $movie=$row['movie'];
-        $year=$row['year'];
-        $date=$row['date'];
 
-            // this if conditional is added to ensure that blank records are not displayed
-            if (!empty($album)) {
-                $moviedata .= '<tr><td>' . $movie . '</td><td>' . $year . '</td><td>' . $date . '</td>    </tr>';
-            }
+        $movie = $row['movie'];
+        $year = $row['year'];
+        $date = $row['date'];
+
+        // this if conditional is added to ensure that blank records are not displayed
+        if (!empty($album)) {
+            $moviedata .= '<tr><td>' . $movie . '</td><td>' . $year . '</td><td>' . $date . '</td>    </tr>';
+        }
     }
 
     $moviedata .= '</table>';
-    $moviedata .="</div'>";
-  
-} 
+    $moviedata .= "</div'>";
+
+}
 ?>
 
 
@@ -184,21 +183,21 @@ if (mysqli_num_rows($result) > 0) {
     ";
 
     while ($row = mysqli_fetch_assoc($result)) {
-        
-        $tv=$row['tv'];
-        $streaming=$row['streaming'];
-        $date=$row['date'];
 
-            // this if conditional is added to ensure that blank records are not displayed
-            if (!empty($tv)) {
-                $tvdata .= '<tr><td>' . $tv . '</td><td>' . $streaming . '</td><td>' . $date . '</td>    </tr>';
-            }
+        $tv = $row['tv'];
+        $streaming = $row['streaming'];
+        $date = $row['date'];
+
+        // this if conditional is added to ensure that blank records are not displayed
+        if (!empty($tv)) {
+            $tvdata .= '<tr><td>' . $tv . '</td><td>' . $streaming . '</td><td>' . $date . '</td>    </tr>';
+        }
     }
 
     $tvdata .= '</table>';
-    $tvdata .="</div'>";
-  
-} 
+    $tvdata .= "</div'>";
+
+}
 ?>
 
 <!--**************
@@ -228,21 +227,21 @@ if (mysqli_num_rows($result) > 0) {
     ";
 
     while ($row = mysqli_fetch_assoc($result)) {
-        
-        $book=$row['book'];
-        $author=$row['author'];
-        $date=$row['date'];
 
-            // this if conditional is added to ensure that blank records are not displayed
-            if (!empty($tv)) {
-                $bookdata .= '<tr><td>' . $book . '</td><td>' . $author . '</td><td>' . $date . '</td>    </tr>';
-            }
+        $book = $row['book'];
+        $author = $row['author'];
+        $date = $row['date'];
+
+        // this if conditional is added to ensure that blank records are not displayed
+        if (!empty($tv)) {
+            $bookdata .= '<tr><td>' . $book . '</td><td>' . $author . '</td><td>' . $date . '</td>    </tr>';
+        }
     }
 
     $bookdata .= '</table>';
-    $bookdata .="</div'>";
-  
-} 
+    $bookdata .= "</div'>";
+
+}
 ?>
 
 
@@ -250,78 +249,102 @@ if (mysqli_num_rows($result) > 0) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Export Data for user <?php echo $username;?></title>
-    
+    <title>Export Data for user <?php echo $username; ?></title>
+
     <!-- Bootstrap CSS File  -->
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
-    
+
     <link rel="stylesheet" type="text/css" href="../CSS/csv_export.css"/>
+
+        <!-- FAVICON -->
+        <link rel="icon" type="image/png" href="../images/website/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="../images/website/favicons/apple-touch-icon.png">
 </head>
 <body><br><br>
-        
+
     <div class="container">
-        
+
         <!--  Header  -->
         <center><div class="row">
             <div class="col-md-12"><br><br>
-                <h2 class="heading">Export Data Requested by <u><?php echo $username;?></u></h2>
+                <h2 class="heading">Export Data Requested by <u><?php echo $username; ?></u></h2>
                 <input type="button" value="Download CSV" onclick="location.href='download_csv.php'">
             </div>
         </div></center>
         <!--  /Header  -->
 
         <br><hr><br>
-        
+
         <center>
         <!--  PRINTING VIDEOGAME DATA   -->
         <div class="form-group">
-            <?php  if (!empty($gamedata)) echo $gamedata;
-                   else echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+            <?php if (!empty($gamedata)) {
+    echo $gamedata;
+} else {
+    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
                    <img src='../images/Icons/videogame.svg' class='media-icon'>No videogames added to your account.
                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                    </div>";
-            ?>
+}
+
+?>
         </div>
-            
+
 
         <!--  PRINTING ALBUM DATA   -->
         <div class="form-group">
-            <?php  if (!empty($albumdata)) echo $albumdata;
-                   else echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+            <?php if (!empty($albumdata)) {
+    echo $albumdata;
+} else {
+    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
                    <img src='../images/Icons/Music.svg' class='media-icon'>No albums added to your account.
                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                    </div>";
-            ?>
+}
+
+?>
         </div>
 
         <!--  PRINTING MOVIE DATA   -->
         <div class="form-group">
-            <?php  if (!empty($movie)) echo $moviedata;
-                   else echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+            <?php if (!empty($movie)) {
+    echo $moviedata;
+} else {
+    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
                    <img src='../images/Icons/Movie.svg' class='media-icon'>No movies added to your account.
                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                    </div>";
-            ?>
+}
+
+?>
         </div>
-        
+
         <!--  PRINTING TV DATA   -->
         <div class="form-group">
-            <?php  if (!empty($tvdata)) echo $tvdata;
-                   else echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+            <?php if (!empty($tvdata)) {
+    echo $tvdata;
+} else {
+    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
                    <img src='../images/Icons/TV.svg' class='media-icon'>No tv shows added to your account.
                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                    </div>";
-            ?>
+}
+
+?>
         </div>
 
         <!--  PRINTING BOOK DATA   -->
         <div class="form-group">
-            <?php  if (!empty($bookdata)) echo $bookdata;
-                   else echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+            <?php if (!empty($bookdata)) {
+    echo $bookdata;
+} else {
+    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
                    <img src='../images/Icons/Book.svg' class='media-icon'>No books added to your account.
                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                    </div>";
-            ?>
+}
+
+?>
         </div>
         </center>
 

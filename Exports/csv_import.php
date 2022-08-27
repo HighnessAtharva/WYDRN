@@ -25,14 +25,18 @@ include("header.php");
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
  
+   <!-- FAVICON -->
+   <link rel="icon" type="image/png" href="../images/website/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="../images/website/favicons/apple-touch-icon.png">
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="../CSS/csv_import.css">
-  
+
   <!-- Sweet Alert (Beautiful looking alert plugin-->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   
-  <title>Import CSV File into MySQL using PHP</title>
+  <title>WYDRN - Import Media</title>
  
 </head>
  

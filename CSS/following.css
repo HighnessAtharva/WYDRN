@@ -42,8 +42,8 @@ body {
 
 .container {
     /* width: 100vw; */
-    min-width: 98.9vw;
-    max-width: 98.9vw;
+    min-width: 99.5vw;
+    max-width: 99.5vw;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
