@@ -55,7 +55,7 @@ $user_data = check_login($con);
                 <div class="card card-3">
                     <div class="card-heading" id="music-pic"></div>
                     <div class="card-body">
-                        <h2 class="title">Add Albums</h2>
+                        <h2 class="title">&#127911 Add Albums </h2>
 
                         <div class="input-group">
                             <input type="text" class="input--style-3" name="Album" autofocus="true" placeholder="Cavalcade" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()" autocomplete="off"><br>
@@ -78,7 +78,7 @@ $user_data = check_login($con);
                 <div class="card card-3">
                     <div class="card-heading" id="book-pic"></div>
                     <div class="card-body">
-                        <h2 class="title">Add Books</h2>
+                        <h2 class="title">&#128213 Add Books</h2>
 
                         <div class="input-group">
                             <input type="text" name="Book" class="input--style-3" placeholder="Royal Assassin" id="book-search-box" onkeyup="findBook()" onclick="findBook()" autocomplete="off"><br>
@@ -99,7 +99,7 @@ $user_data = check_login($con);
                 <div class="card card-3">
                     <div class="card-heading" id="movie-pic"></div>
                     <div class="card-body">
-                        <h2 class="title">Add Movies</h2>
+                        <h2 class="title">&#128253 Add Movies</h2>
 
                         <div class="input-group">
                             <input type="text" class="input--style-3" name="Movie" placeholder="The Batman" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()" autocomplete="off"><br>
@@ -121,14 +121,14 @@ $user_data = check_login($con);
                 <div class="card card-3">
                     <div class="card-heading" id="tv-pic"></div>
                     <div class="card-body">
-                        <h2 class="title">Add TV Shows</h2>
+                        <h2 class="title">&#128250 Add TV Shows</h2>
 
                         <div class="input-group">
                             <input type="text" class="input--style-3" name="TV" placeholder="Peaky Blinders" id="tv-search-box" onkeyup="findTV()" onclick="findTV()" autocomplete="off">
                         </div>
 
 
-                        <select class="input--style-3" name="StreamPlatform"><br>
+                        <select class="input--style-3" name="StreamPlatform" id="tv-network"><br>
                             <option value="" selected disabled hidden>--Network--</option>
                             <option class="option-text" value="Netflix">Netflix</option>
                             <option class="option-text" value="Hulu">Hulu</option>
@@ -156,14 +156,14 @@ $user_data = check_login($con);
                 <div class="card card-3">
                     <div class="card-heading" id="videogame-pic"></div>
                     <div class="card-body">
-                        <h2 class="title">Add Videogames</h2>
+                        <h2 class="title">&#127918 Add Videogames </h2>
 
                         <div class="input-group">
                             <input class="input--style-3" type="text" name="Videogame" placeholder="Elden Ring" id="game-search-box" onkeyup="findgame()" onclick="findgame()" autocomplete="off"><br>
                         </div>
 
 
-                        <select class="input--style-3" name="Platform">
+                        <select class="input--style-3" name="Platform" id="game-platform">
                             <option value="" selected disabled hidden>--Platform--</option>
                             <option class="option-text" value="PC">PC</option>
                             <option class="option-text" value="Xbox">Xbox</option>
@@ -179,7 +179,7 @@ $user_data = check_login($con);
 
 
 
-
+                <!-- Add media button -->
                 <div class="text-center mb-lg-3">
                     <button type="submit" class="btn btn-outline-primary btn-light btn-lg" name="submit" value="btn1">Add Media</button>
                 </div>
@@ -203,13 +203,22 @@ $user_data = check_login($con);
     <script>
         function Validation() {
             let musicInput = document.getElementById("music-search-box").value;
-            let bookInput = document.getElementById("book-search-box").value;
-            let movieInput = document.getElementById("movie-search-box").value;
-            let tvInput = document.getElementById("tv-search-box").value;
-            let gameInput = document.getElementById("game-search-box").value;
+            let artistInput= document.getElementById("music-artist").value;
 
-            //If all of the inputs are empty, then the user will be alerted that they must fill in all the fields.
-            if ((musicInput) || (bookInput) || (movieInput) || (tvInput) || (gameInput)) {
+            let bookInput = document.getElementById("book-search-box").value;
+            let authorInput = document.getElementById("book-author").value;
+
+            let movieInput = document.getElementById("movie-search-box").value;
+            let movieReleaseInput = document.getElementById("movie-year").value;
+
+            let tvInput = document.getElementById("tv-search-box").value;
+            let tvNetworkInput = document.getElementById("tv-network").value;
+            
+            let gameInput = document.getElementById("game-search-box").value;
+            let gamePlatformInput = document.getElementById("game-platform").value;
+
+            //If all of the inputs are empty or some media types are filled partially, then the user will be alerted that they must fill in all the fields.
+            if ((musicInput && artistInput) || (bookInput && authorInput) || (movieInput && movieReleaseInput) || (tvInput && tvNetworkInput) || (gameInput && gamePlatformInput)) {
                 return true;
             } else {
                 //sweet alert plugin to display error message. IT REPLACES the JS alert() function.

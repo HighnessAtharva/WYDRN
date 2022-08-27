@@ -265,7 +265,10 @@ if (isset($_POST['submit'])) {
         </center>
 <?php
     }else {
-        echo "Please select valid file";
+        echo "<center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+     Please select a valid file format.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div></center>";
     }
 }
 ?>

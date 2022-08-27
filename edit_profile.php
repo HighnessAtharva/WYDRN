@@ -81,6 +81,9 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
 <body className='snippet-body'>
     <div class="container rounded bg-white mt-5 mb-5" style="box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;">
         <div class="row">
+            
+        
+            <!-- LEFTMOST SIDE COLUMN FOR AVATAR, USERNAME, EMAIL AND VERIFY BUTTON  -->
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-2"><img class="rounded-circle mt-5" width="150px" height="150px" src="<?php echo $profile_pic ?>">
                     <span class="font-weight-bold"><?php echo $username; ?></span>
@@ -96,7 +99,7 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
                 ?>
             </div>
 
-
+            <!-- CENTER COLUMN FOR DISABLED INPUT FIELDS - EDIT PROFILE OPTIONS -->
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                 <fieldset>    
@@ -117,6 +120,7 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
                 </div>
             </div>
 
+            <!-- RIGHTMOST SIDE COLUMN FOR EDIT PICTURES AND DELETE ACCOUNT OPTIONS -->
             <div class="col-md-4">
                 <div class="p-3 py-5">
 
@@ -124,15 +128,15 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
                     <form action="" method="POST" name="ImageUploads" enctype="multipart/form-data" onsubmit="return Validation();">
 
                         <fieldset>
-                            <legend> Change Account Photos</legend>
+                            <legend> Customize Profile</legend>
                             <br><br>
 
-                            <span class="text">Select Profile Photo: </span><br>
+                            <span class="text">Change Profile Photo</span><br>
                             <label class="input-button-label"><input type="file" id="pfpinput" name="PFP" accept="image/png, image/gif, image/jpeg" onchange="previewFile(this);" /></label>
                             <img id="pfp-preview" src="images/website/preview.jpg" alt="" style="width:50px; height:50px; border-radius:50%;">
                             <br><br>
 
-                            <span class="text">Select Background Banner Photo: </span><br>
+                            <span class="text">Change Banner Photo</span><br>
                             <label class="input-button-label"><input type="file" id="bginput" name="BgImage" accept="image/png, image/gif, image/jpeg" /></label><br><br>
                             <input type="submit" value="Update Profile" class="btn btn-success" name="save_profile">
 

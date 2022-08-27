@@ -51,6 +51,8 @@ if (isset($_GET['userdate'])) {
 
     <div style="margin-left:50px;">
         <center>
+
+            <!-- Heading -->
             <h1> Diary Entries For
                 <?php
                 echo $username;
@@ -63,16 +65,18 @@ if (isset($_GET['userdate'])) {
             <form method="get" name="dateselect" action="diary.php">
                 <input type="date" name="userdate" id="userdate">
                 <!--Change button text value depending on if the date is selcted or not-->
-                <input type="submit" value=<?php if (!empty($date_selected)) echo "All";
-                                            else echo "Filter by Date;" ?> class="btn btn-primary" style="margin-bottom:5px;">
+                <input type="submit" value=<?php if (!empty($date_selected)) echo "All"; else echo "Filter by Date;" ?> class="btn btn-primary" style="margin-bottom:5px;">
                 <button type="button" onclick="window.location.href='stats.php'" class="btn btn-success" style="margin-bottom:5px;">View Stats</button>
             </form>
+
         </center>
         <hr>
+
         <!--PHP PART -->
         <?php
 
         $per_page_record = 10; // Number of entries to show in a page.
+
         // Look for a GET variable page if not found default is 1.
         if (isset($_GET["page"])) {
             $page = $_GET["page"];
@@ -82,146 +86,154 @@ if (isset($_GET['userdate'])) {
 
         $start_from = ($page - 1) * $per_page_record;
 
-        //In MYSQL - LIMIT offset, count; 
 
-        // if date is selected and get query is passed show the entries of the user on the selected date otherwise show all the entries of the user.
+        // if date is selected and get query is passed show the entries of the user on the selected date
         if (!empty($date_selected)) {
             $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' AND `date`= '$date_selected' ORDER BY `datetime` DESC";
-        } else {
+        }
+
+        // otherwise show all the entries of the user.
+        else {
             $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' ORDER BY `datetime` DESC LIMIT $start_from, $per_page_record;";
         }
 
         ?>
 
 
-
+        <!--Timeline View Wrapper-->
         <section class="timeline_area section_padding_130">
             <div class="container">
-
                 <div class="myrow">
                     <div class="col-12">
-                        <!-- Timeline Area-->
                         <div class="apland-timeline-area">
 
                             <?php
                             if ($query = mysqli_query($con, $sql)) {
                                 if (mysqli_num_rows($query) > 0) {
-                            ?>
-
-                                <?php
-                                for ($i = 1; $i <= mysqli_num_rows($query); $i++) {
-                                    $row[$i] = mysqli_fetch_array($query);
-                                ?>
-                        
-                                            <?php
-                                            $videogame = $row[$i]['videogame'];
-                                            $platform = $row[$i]['platform'];
-                                            $album = $row[$i]['album'];
-                                            $artist = $row[$i]['artist'];
-                                            $book = $row[$i]['book'];
-                                            $author = $row[$i]['author'];
-                                            $movie = $row[$i]['movie'];
-                                            $year = $row[$i]['year'];
-                                            $tv = $row[$i]['tv'];
-                                            $streaming = $row[$i]['streaming'];
-                                            $datetime = $row[$i]['datetime'];
-                                            //date and time. Check other fields because datetime will be added even in blank records added during clearing done by the user. 
-                                            if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($tv))) {
-                                                $datetime = printable_datetime($datetime);
-                                            ?>
-                                        <!-- Single Timeline Content-->
-                                        <div class="single-timeline-area">
-                                        <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
-                                            <p class='my-date'><?php echo $datetime;?></p>
-                                        </div>
-                                        <div class="row">
-
-                                            <?php
+                                    for ($i = 1; $i <= mysqli_num_rows($query); $i++) {
+                                        $row[$i] = mysqli_fetch_array($query);
+                                        $videogame = $row[$i]['videogame'];
+                                        $platform = $row[$i]['platform'];
+                                        $album = $row[$i]['album'];
+                                        $artist = $row[$i]['artist'];
+                                        $book = $row[$i]['book'];
+                                        $author = $row[$i]['author'];
+                                        $movie = $row[$i]['movie'];
+                                        $year = $row[$i]['year'];
+                                        $tv = $row[$i]['tv'];
+                                        $streaming = $row[$i]['streaming'];
+                                        $datetime = $row[$i]['datetime'];
+                                        
+                                        //date and time. Check other fields because datetime will be added even in blank records added during clearing done by the user. 
+                                        if ((!empty($videogame)) || (!empty($album)) || (!empty($book)) || (!empty($movie)) || (!empty($tv))) {
+                                            $datetime = printable_datetime($datetime);
+                                        ?>
                                             
-                                                //videogame
-                                                if ((!empty($videogame)) && (!empty($platform))) {
-                                            ?>
-                                                    <div class="col-12 col-md-6 col-lg-4">
-                                                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
-                                                            <div class="timeline-icon"><i class="fa-solid fa-gamepad gameicon" aria-hidden="true"></i></div>
-                                                            <div class="timeline-text">
-                                                                <h6><?php echo $videogame; ?></h6>
-                                                                <p class='my-date'><?php echo $platform; ?></p>
+                                            <!-- Single Timeline Content (Printing Date on the left of the timeline-->
+                                            <div class="single-timeline-area">
+                                                <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                                                    <p class='my-date'><?php echo $datetime; ?></p>
+                                                </div>
+                                                <div class="row">
+
+                                                    <?php
+
+                                                    //Print the videogame div if the videogame field is not empty
+                                                    if ((!empty($videogame)) && (!empty($platform))) {
+                                                    ?>
+                                                        <div class="col-12 col-md-6 col-lg-4">
+                                                            <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+                                                                <div class="timeline-icon"><i class="fa-solid fa-gamepad gameicon" aria-hidden="true"></i></div>
+                                                                <div class="timeline-text">
+                                                                    <h6><?php echo $videogame; ?></h6>
+                                                                    <p class='my-date'><?php echo $platform; ?></p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    <?php
+                                                    }
+
+
+                                                    //Print the album div if the album field is not empty
+                                                    if ((!empty($album)) && (!empty($artist))) {
+                                                    ?>
+                                                        <div class="col-12 col-md-6 col-lg-4">
+                                                            <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
+                                                                <div class="timeline-icon"><i class="fa-solid fa-music musicicon" aria-hidden="true"></i></div>
+                                                                <div class="timeline-text">
+                                                                    <h6><?php echo $album ?></h6>
+                                                                    <p class='my-date'><?php echo $artist ?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php
+                                                    }
+
+
+                                                    // Print the book div if the book field is not empty
+                                                    if ((!empty($book)) && (!empty($author))) {
+                                                    ?>
+                                                        <div class="col-12 col-md-6 col-lg-4">
+                                                            <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
+                                                                <div class="timeline-icon"><i class="fa-solid fa-book bookicon" aria-hidden="true"></i></div>
+                                                                <div class="timeline-text">
+                                                                    <h6><?php echo $book ?></h6>
+                                                                    <p class='my-date'><?php echo $author ?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php
+                                                    }
+
+
+                                                    // Print the movie div if the movie field is not empty
+                                                    if ((!empty($movie)) && (!empty($year))) {
+                                                    ?>
+                                                        <div class="col-12 col-md-6 col-lg-4">
+                                                            <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
+                                                                <div class="timeline-icon"><i class="fa-solid fa-clapperboard movieicon" aria-hidden="true"></i></div>
+                                                                <div class="timeline-text">
+                                                                    <h6><?php echo $movie ?></h6>
+                                                                    <p class='my-date'><?php echo $year ?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php
+                                                    }
+
+
+                                                    // Print the tv div if the tv field is not empty
+                                                    if ((!empty($tv)) && (!empty($streaming))) {
+                                                    ?>
+                                                        <div class="col-12 col-md-6 col-lg-4">
+                                                            <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
+                                                                <div class="timeline-icon"><i class="fa-solid fa-tv tvicon" aria-hidden="true"></i></div>
+                                                                <div class="timeline-text">
+                                                                    <h6><?php echo $tv ?></h6>
+                                                                    <p class='my-date'><?php echo $streaming ?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                 <?php
+                                                    }
                                                 }
-                                                //album
-                                                if ((!empty($album)) && (!empty($artist))) {
                                                 ?>
-                                                    <div class="col-12 col-md-6 col-lg-4">
-                                                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
-                                                            <div class="timeline-icon"><i class="fa-solid fa-music musicicon" aria-hidden="true"></i></div>
-                                                            <div class="timeline-text">
-                                                                <h6><?php echo $album ?></h6>
-                                                                <p class='my-date'><?php echo $artist ?></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <?php
-                                                }
-                                                //book
-                                                if ((!empty($book)) && (!empty($author))) {
-                                                ?>
-                                                    <div class="col-12 col-md-6 col-lg-4">
-                                                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
-                                                            <div class="timeline-icon"><i class="fa-solid fa-book bookicon" aria-hidden="true"></i></div>
-                                                            <div class="timeline-text">
-                                                                <h6><?php echo $book ?></h6>
-                                                                <p class='my-date'><?php echo $author ?></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <?php
-                                                }
-                                                if ((!empty($movie)) && (!empty($year))) {
-                                                ?>
-                                                    <div class="col-12 col-md-6 col-lg-4">
-                                                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
-                                                            <div class="timeline-icon"><i class="fa-solid fa-clapperboard movieicon" aria-hidden="true"></i></div>
-                                                            <div class="timeline-text">
-                                                                <h6><?php echo $movie ?></h6>
-                                                                <p class='my-date'><?php echo $year ?></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                <?php
-                                                }
-                                                //tv
-                                                if ((!empty($tv)) && (!empty($streaming))) {
-                                                ?>
-                                                    <div class="col-12 col-md-6 col-lg-4">
-                                                        <div class="single-timeline-content d-flex wow fadeInLeft" data-wow-delay="0.7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInLeft;">
-                                                            <div class="timeline-icon"><i class="fa-solid fa-tv tvicon" aria-hidden="true"></i></div>
-                                                            <div class="timeline-text">
-                                                                <h6><?php echo $tv ?></h6>
-                                                                <p class='my-date'><?php echo $streaming ?></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                            <?php
-                                                }
-                                            }
-                                            ?>
-                                        </div>
-                                    </div>
-                                <?php }
-                                ?>
-                        <?php } else {
-                                echo "<center><img src='images/website/empty-diary.jpg' alt='Empty Diary' height='300' width='350'></center>";
+                                                </div>
+                                            </div>
+                                        <?php }
+                                        ?>
+                                <?php } 
+                                
+                                // if the count of rows is 0, show the empty diary image.
+                                else {
+                                    echo "<center><img src='images/website/empty-diary.jpg' alt='Empty Diary' height='300' width='350'></center>";
+                                }
                             }
-                        }
-                        ?>
+                                ?>
 
 
 
-                            <!-- END OF Single Timeline Content-->
+                            <!-- END OF Single Timeline Content and end of wrapper section-->
                         </div>
                     </div>
                 </div>
@@ -230,23 +242,10 @@ if (isset($_GET['userdate'])) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <?php
-        //hide the pagination grid if entries are filtered by date.
+        //PAGINATION FOR THE DIARY
+        
+        //Only show the pagination if filtering is not done.
         if (empty($date_selected)) {
         ?>
 
