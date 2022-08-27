@@ -80,6 +80,10 @@ img {
     margin-top: -580px;
 }
 
+#section_3_article {
+    margin-top: -690px;
+}
+
 section {
     --h: calc(var(--i) * 30);
     min-height: 100vh;
