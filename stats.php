@@ -29,10 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and isset($_GET['user_name'])) {
   //we are checking if username passed in GET request actually exists in the database. If yes, we will show the stats of that user. If not, we will show an error message.
   $sql = "SELECT `user_name` FROM `users` WHERE `user_name`='" . $_GET['user_name'] . "'";
   if ($query = mysqli_query($con, $sql)) {
+    if(mysqli_num_rows($query)>0){
     $row = mysqli_fetch_array($query);
     if ($row[0] == $_GET['user_name']) {
       $username = $_GET['user_name'];
-    } else {
+    }
+   } else {
       die("<h1> User not found! </h1>");
     }
   }
