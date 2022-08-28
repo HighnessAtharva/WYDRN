@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('https://fonts.googleapis.com/css?family=Graduate:400,700');
 * {
     box-sizing: border-box;
 }
@@ -10,7 +10,7 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     font-family: "Open Sans", sans-serif;
-    background-color: black;
+    background-color: #1a191f;
     /* color: #9b9ca7; */
 }
 
@@ -114,9 +114,9 @@ img {
 
 .main-container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 20px;
-    padding: 25px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 57px;
+    padding: 89px;
     min-width: 100%;
 }
 
@@ -144,8 +144,7 @@ img {
 }
 
 .card {
-    background: #1a2049;
-    background: radial-gradient(circle, #1a2049 0%, #13162f 100%);
+    background: radial-gradient(circle, #ffffff 0%, #a5afff 100%);
     padding: 30px;
     border-radius: 6px;
     display: flex;
@@ -160,8 +159,8 @@ img {
     font-size: 16px;
     font-weight: 500;
     margin-top: 5px;
-    color: white;
-    font-family: 'Oswald';
+    color: rgb(17, 17, 17);
+    font-family: 'Open Sans';
 }
 
 .card .subtitle {
@@ -201,8 +200,7 @@ img {
 }
 
 .destination-card {
-    background: #1a1d3a;
-    background: linear-gradient(45deg, #1a1d3a 0%, #212752 100%);
+    background: linear-gradient(45deg, #000000 0%, #212752 100%);
     padding: 20px;
     width: 100%;
     border-radius: 6px;
@@ -228,14 +226,8 @@ img {
 }
 
 .profile-img {
-    width: 46px;
-    height: 46px;
-    -o-object-fit: cover;
-    object-fit: cover;
-    border-radius: 50%;
-    padding: 2px;
-    border: 1px solid #bebec4;
-    flex-shrink: 0;
+    width: 41px;
+    height: 28px;
 }
 
 .circle {
@@ -291,8 +283,10 @@ img {
     transform: translate(-50%, -50%);
     color: #3e50c5;
     font-weight: 500;
-    font-size: 17px;
-    color: #17a98a;
+    font-size: 20px;
+    color: #ffffff;
+    font-family: 'Graduate';
+    max-width: 110px;
 }
 
 #user-mgmt-table {

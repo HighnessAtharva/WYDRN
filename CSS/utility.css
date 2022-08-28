@@ -586,9 +586,9 @@ ul {
 ==============================*/
 
 .main {
-    position: relative;
+    /* position: relative; */
     margin-top: 70px;
-    padding: 20px 0 10px;
+    padding: 10px 10px;
 }
 
 .main__title {
@@ -962,7 +962,7 @@ ul {
 
 @media (min-width: 1200px) {
     .main {
-        padding: 0 15px 30px 295px;
+        padding: 10px 10px;
         margin-top: 0;
     }
     .main__title {
