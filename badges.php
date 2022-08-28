@@ -3,15 +3,14 @@
 /**
  *  Display Achievement Badges earned by a user.
  *
- * @version    PHP 8.0.12 
+ * @version    PHP 8.0.12
  * @since      June 2022
  * @author     AtharvaShah
  */
 
-
 session_start();
 if (empty($_SESSION)) {
-  header("Location: login.php");
+    header("Location: login.php");
 }
 
 require "header.php";
@@ -20,40 +19,40 @@ require "functions.php";
 
 $user_data = check_login($con);
 
-// http://localhost/WYDRN/badges.php?user_name=spammer 
+// http://localhost/WYDRN/badges.php?user_name=spammer
 if ($_SERVER['REQUEST_METHOD'] == 'GET' and isset($_GET['user_name'])) {
-  //we are checking if username passed in GET request actually exists in the database. If yes, we will show the badges of that user. If not, we will show an error message.
-  $sql = "SELECT `user_name` FROM `users` WHERE `user_name`='" . $_GET['user_name'] . "'";
-  if ($query = mysqli_query($con, $sql)) {
-    if (mysqli_num_rows($query) > 0) {
-      $row = mysqli_fetch_array($query);
-      if ($row[0] == $_GET['user_name']) {
-        $username = $_GET['user_name'];
-      }
-    } else {
-      die("<h1> User not found! </h1>");
+    //we are checking if username passed in GET request actually exists in the database. If yes, we will show the badges of that user. If not, we will show an error message.
+    $sql = "SELECT `user_name` FROM `users` WHERE `user_name`='" . $_GET['user_name'] . "'";
+    if ($query = mysqli_query($con, $sql)) {
+        if (mysqli_num_rows($query) > 0) {
+            $row = mysqli_fetch_array($query);
+            if ($row[0] == $_GET['user_name']) {
+                $username = $_GET['user_name'];
+            }
+        } else {
+            die("<h1> User not found! </h1>");
+        }
     }
-  }
 }
 
 // http://localhost/WYDRN/badges.php?
 else {
-  // BY DEFAULT SHOW THE STATS OF THE LOGGED IN USER.
-  $username = $user_data['user_name'];
+    // BY DEFAULT SHOW THE STATS OF THE LOGGED IN USER.
+    $username = $user_data['user_name'];
 }
 
 function executeSQL($con, $sql)
 {
-  if ($query = mysqli_query($con, $sql)) {
-    $row = mysqli_fetch_array($query);
-    if (isset($row[0])) {
-      return $row[0];
+    if ($query = mysqli_query($con, $sql)) {
+        $row = mysqli_fetch_array($query);
+        if (isset($row[0])) {
+            return $row[0];
+        } else {
+            return '--';
+        }
     } else {
-      return '--';
+        echo mysqli_error($con);
     }
-  } else {
-    echo mysqli_error($con);
-  }
 }
 
 /*********SETTING COUNTERS FOR BADGES***************/
@@ -74,10 +73,16 @@ $total_book_count = executeSQL($con, $sql);
 
 // MEMBER SINCE
 
-
 /*********BADGE IMAGE PATHS***************/
 
-// CONST ARRAY = ['PATH/TO/IMAGE/1', 'BADGE NAME TO PRINT', COUNT OF MEDIAS NEEDED TO EARN BADGE];
+/*
+
+CONST ARRAY = [
+[0] -> 'PATH/TO/IMAGE/1',
+[1] -> 'BADGE NAME TO PRINT',
+[2] -> COUNT OF MEDIAS NEEDED TO EARN BADGE];
+
+ */
 
 //BOOK
 const BOOK_BRONZE_1 = ["images/badges/book_bronze_1.png", "BRONZE - I", 1];
@@ -104,7 +109,6 @@ const MOVIE_SILVER_3 = ["images/badges/movie_silver_3.png", "SILVER - III", 250]
 const MOVIE_GOLD_1 = ["images/badges/movie_gold_1.png", "GOLD - I", 500];
 const MOVIE_GOLD_2 = ["images/badges/movie_gold_2.png", "GOLD - II", 750];
 const MOVIE_GOLD_3 = ["images/badges/movie_gold_3.png", "GOLD - III", 1000];
-
 
 //TV
 const TV_BRONZE_1 = ["images/badges/tv_bronze_1.png", "BRONZE - I", 1];
@@ -145,19 +149,15 @@ const VIDEOGAME_GOLD_1 = ["images/badges/videogame_gold_1.png", "GOLD - I", 50];
 const VIDEOGAME_GOLD_2 = ["images/badges/videogame_gold_2.png", "GOLD - II", 75];
 const VIDEOGAME_GOLD_3 = ["images/badges/videogame_gold_3.png", "GOLD - III", 100];
 
-
 // FOLLOWERS
 const FOLLOWERS_BRONZE = ["images/badges/followers_bronze.png", "BRONZE", 5];
 const FOLLOWERS_SILVER = ["images/badges/followers_silver.png", "SILVER", 20];
 const FOLLOWERS_GOLD = ["images/badges/followers_gold.png", "GOLD", 50];
 
-
 // MEMBER SINCE DAYS
 const PATRON_BRONZE = ["images/badges/patron_bronze.png", "BRONZE", 10];
 const PATRON_SILVER = ["images/badges/patron_silver.png", "SILVER", 30];
 const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
-
-
 
 ?>
 
@@ -184,39 +184,39 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
 
 
 
-  <?php 
-  // echo $username;
-  // echo "<br>";
-  // if($total_book_count >= BOOK_BRONZE_1[2]) {
-  //     echo "<img src='" . BOOK_BRONZE_1[0] . "' alt='" . BOOK_BRONZE_1[1] . "'>";
-  // }
-  // if($total_book_count >= BOOK_BRONZE_2[2]) {
-  //     echo "<img src='" . BOOK_BRONZE_2[0] . "' alt='" . BOOK_BRONZE_2[1] . "'>";
-  // }
-  // if($total_book_count >= BOOK_BRONZE_3[2]) {
-  //     echo "<img src='" . BOOK_BRONZE_3[0] . "' alt='" . BOOK_BRONZE_3[1] . "'>";
-  // }
+  <?php
+// echo $username;
+// echo "<br>";
+// if($total_book_count >= BOOK_BRONZE_1[2]) {
+//     echo "<img src='" . BOOK_BRONZE_1[0] . "' alt='" . BOOK_BRONZE_1[1] . "'>";
+// }
+// if($total_book_count >= BOOK_BRONZE_2[2]) {
+//     echo "<img src='" . BOOK_BRONZE_2[0] . "' alt='" . BOOK_BRONZE_2[1] . "'>";
+// }
+// if($total_book_count >= BOOK_BRONZE_3[2]) {
+//     echo "<img src='" . BOOK_BRONZE_3[0] . "' alt='" . BOOK_BRONZE_3[1] . "'>";
+// }
 
-  // if($total_book_count >= BOOK_SILVER_1[2]) {
-  //     echo "<img src='" . BOOK_SILVER_1[0] . "' alt='" . BOOK_SILVER_1[1] . "'>";
-  // }
-  // if($total_book_count >= BOOK_SILVER_2[2]) {
-  //     echo "<img src='" . BOOK_SILVER_2[0] . "' alt='" . BOOK_SILVER_2[1] . "'>";
-  // }
-  // if($total_book_count >= BOOK_SILVER_3[2]) {
-  //     echo "<img src='" . BOOK_SILVER_3[0] . "' alt='" . BOOK_SILVER_3[1] . "'>";
-  // }
+// if($total_book_count >= BOOK_SILVER_1[2]) {
+//     echo "<img src='" . BOOK_SILVER_1[0] . "' alt='" . BOOK_SILVER_1[1] . "'>";
+// }
+// if($total_book_count >= BOOK_SILVER_2[2]) {
+//     echo "<img src='" . BOOK_SILVER_2[0] . "' alt='" . BOOK_SILVER_2[1] . "'>";
+// }
+// if($total_book_count >= BOOK_SILVER_3[2]) {
+//     echo "<img src='" . BOOK_SILVER_3[0] . "' alt='" . BOOK_SILVER_3[1] . "'>";
+// }
 
-  // if($total_book_count >= BOOK_GOLD_1[2]) {
-  //     echo "<img src='" . BOOK_GOLD_1[0] . "' alt='" . BOOK_GOLD_1[1] . "'>";
-  // }
-  // if($total_book_count >= BOOK_GOLD_2[2]) {
-  //     echo "<img src='" . BOOK_GOLD_2[0] . "' alt='" . BOOK_GOLD_2[1] . "'>";
-  // }
-  // if($total_book_count >= BOOK_GOLD_3[2]) {
-  //     echo "<img src='" . BOOK_GOLD_3[0] . "' alt='" . BOOK_GOLD_3[1] . "'>";
-  // }
-  ?>
+// if($total_book_count >= BOOK_GOLD_1[2]) {
+//     echo "<img src='" . BOOK_GOLD_1[0] . "' alt='" . BOOK_GOLD_1[1] . "'>";
+// }
+// if($total_book_count >= BOOK_GOLD_2[2]) {
+//     echo "<img src='" . BOOK_GOLD_2[0] . "' alt='" . BOOK_GOLD_2[1] . "'>";
+// }
+// if($total_book_count >= BOOK_GOLD_3[2]) {
+//     echo "<img src='" . BOOK_GOLD_3[0] . "' alt='" . BOOK_GOLD_3[1] . "'>";
+// }
+?>
 
 
 
@@ -226,57 +226,65 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
 
     <!--BOOK DIV-->
     <div class="archive">
+
       <article class="article">
-        <span style='font-size:100px;'>&#128213</span>
+        <span class="emoji" style='font-size:100px;'>&#128213</span>
       </article>
-      <article class="article">
-        Book Text
+      <article class="article heading-text">
+        THE BIBLIOPHILE BADGES
       </article>
-      
-      <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
-      </article>
+
+      <?php if ($total_book_count >= BOOK_BRONZE_1[2]) {
+    ?>
+
+        <article class="article">
+          <p class="badge-name"> <?php echo BOOK_BRONZE_1[1]; ?></p>
+          <img class="mybadge" src="<?php echo BOOK_BRONZE_1[0]; ?>" alt="<?php echo BOOK_BRONZE_1[1]; ?>">
+        </article>
+
+      <?php
+}?>
+
+
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3<br>
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
 
     </div>
@@ -287,59 +295,54 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
     <!--MOVIE DIV-->
     <div class="archive">
       <article class="article">
-        <span style='font-size:100px;'>&#127909</span>
+        <span class="emoji" style='font-size:100px;'>&#127909</span>
       </article>
-      <article class="article">Movie Text
-        <hr>
-        <hr>
-        <hr>
-        <hr>
-        <hr>
+      <article class="article heading-text">THE CINEPHILE BADGES
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3<br>
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
 
     </div>
@@ -352,59 +355,55 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
     <!--TV DIV-->
     <div class="archive">
       <article class="article">
-        <span style='font-size:100px;'>&#128250</span>
+        <span class="emoji" style='font-size:100px;'>&#128250</span>
       </article>
-      <article class="article">TV Text
-        <hr>
-        <hr>
-        <hr>
-        <hr>
-        <hr>
+      <article class="article heading-text">THE 'OUCH 'OTATO BADGES
+
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3<br>
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
 
     </div>
@@ -415,60 +414,55 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
     <!--MUSIC DIV-->
     <div class="archive">
       <article class="article">
-        <span style='font-size:100px;'>&#127911</span>
+        <span class="emoji" style='font-size:100px;'>&#127911</span>
       </article>
-      <article class="article">Music Text
-        <hr>
-        <hr>
-        <hr>
-        <hr>
-        <hr>
+      <article class="article heading-text">THE AUDIOPHILE BADGES
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
 
       </article>
       <article class="article">BADGE NAME 3
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3<br>
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
 
     </div>
@@ -478,61 +472,57 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
     <!--VIDEOGAME DIV-->
     <div class="archive">
       <article class="article">
-        <span style='font-size:100px;'>&#127918</span>
+        <span class="emoji" style='font-size:100px;'>&#127918</span>
         <img class="image">
-        <hr>
+
       </article>
-      <article class="article">Videogame Text
-        <hr>
-        <hr>
-        <hr>
-        <hr>
-        <hr>
+      <article class="article heading-text">SWEATY PALMS BADGES
+
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">BADGE NAME 3<br>
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
     </div>
 
@@ -541,55 +531,53 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
 
 
 
-       <!--MISC DIV-->
-       <div class="archive">
+    <!--MISC DIV-->
+    <div class="archive">
       <article class="article">
-        <span style='font-size:100px;'>&#11088;</span>
+        <span class="emoji" style='font-size:100px;'>&#11088;</span>
         <img class="image">
-        <hr>
+
       </article>
-      <article class="article">Followers and Patrons Text
-        <hr>
-        <hr>
-        <hr>
-        <hr>
-        <hr>
+      <article class="article heading-text">CULT LEADER BADGES
+
       </article>
       <article class="article">FOLLOWERS BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">FOLLOWERS BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">FOLLOWERS BADGE NAME 3
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">PATRONS BADGE NAME 1
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">PATRONS BADGE NAME 2
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
       <article class="article">PATRONS BADGE NAME 3
-        <hr class="image">
-        <hr>
-        <hr>
+
+
+
       </article>
     </div>
 
 
-  </div> <!--END OF PAGE-->
+  </div>
+  <!--END OF PAGE-->
 
 </body>
+
 </html>
-<?php mysqli_close($con); ?>
+<?php mysqli_close($con);?>

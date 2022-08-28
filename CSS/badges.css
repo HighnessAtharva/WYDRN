@@ -29,10 +29,37 @@ hr.image {
     margin-bottom: 100px;
 }
 
+.badge-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #000;
+    padding: 0.3em;
+    border-radius: 0.5em;
+}
+
+.mybadge {
+    height: 14rem;
+    width: 10rem;
+    padding-top: 0.5rem;
+}
+
 .article {
     padding: 1em;
     background: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 20px 20px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.article.heading-text {
+    padding: 25px;
+    font-size: 6.8em;
+    font-weight: 900;
+    font-family: fantasy;
+    color: black;
+    word-spacing: 20px;
+    font-style: italic;
 }
 
 .article::after {
@@ -46,6 +73,4 @@ hr.image {
     background: rgb(255, 198, 198)
 }
 
-.article:nth-child(2)::after {
-    content: "2/-1";
-}
+.article:nth-child(2)::after {}
