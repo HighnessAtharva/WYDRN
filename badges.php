@@ -146,9 +146,16 @@ const VIDEOGAME_GOLD_2 = ["images/badges/videogame_gold_2.png", "GOLD - II", 75]
 const VIDEOGAME_GOLD_3 = ["images/badges/videogame_gold_3.png", "GOLD - III", 100];
 
 
+// FOLLOWERS
+const FOLLOWERS_BRONZE = ["images/badges/followers_bronze.png", "BRONZE", 5];
+const FOLLOWERS_SILVER = ["images/badges/followers_silver.png", "SILVER", 20];
+const FOLLOWERS_GOLD = ["images/badges/followers_gold.png", "GOLD", 50];
 
 
-
+// MEMBER SINCE DAYS
+const PATRON_BRONZE = ["images/badges/patron_bronze.png", "BRONZE", 10];
+const PATRON_SILVER = ["images/badges/patron_silver.png", "SILVER", 30];
+const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
 
 
 
@@ -222,9 +229,10 @@ const VIDEOGAME_GOLD_3 = ["images/badges/videogame_gold_3.png", "GOLD - III", 10
       <article class="article">
         <span style='font-size:100px;'>&#128213</span>
       </article>
-      <article class="article">Book Text
-
+      <article class="article">
+        Book Text
       </article>
+      
       <article class="article">BADGE NAME 1
         <hr class="image">
         <hr>
@@ -527,14 +535,61 @@ const VIDEOGAME_GOLD_3 = ["images/badges/videogame_gold_3.png", "GOLD - III", 10
         <hr>
       </article>
     </div>
-  </div>
 
 
 
 
 
+
+       <!--MISC DIV-->
+       <div class="archive">
+      <article class="article">
+        <span style='font-size:100px;'>&#11088;</span>
+        <img class="image">
+        <hr>
+      </article>
+      <article class="article">Followers and Patrons Text
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+        <hr>
+      </article>
+      <article class="article">FOLLOWERS BADGE NAME 1
+        <hr class="image">
+        <hr>
+        <hr>
+      </article>
+      <article class="article">FOLLOWERS BADGE NAME 2
+        <hr class="image">
+        <hr>
+        <hr>
+      </article>
+      <article class="article">FOLLOWERS BADGE NAME 3
+        <hr class="image">
+        <hr>
+        <hr>
+      </article>
+      <article class="article">PATRONS BADGE NAME 1
+        <hr class="image">
+        <hr>
+        <hr>
+      </article>
+      <article class="article">PATRONS BADGE NAME 2
+        <hr class="image">
+        <hr>
+        <hr>
+      </article>
+      <article class="article">PATRONS BADGE NAME 3
+        <hr class="image">
+        <hr>
+        <hr>
+      </article>
+    </div>
+
+
+  </div> <!--END OF PAGE-->
 
 </body>
-
 </html>
 <?php mysqli_close($con); ?>
