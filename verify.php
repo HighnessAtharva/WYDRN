@@ -20,41 +20,56 @@ require "functions.php";
 $user_data = check_login($con);
 $usermail = $user_data['email'];
 $username = $user_data['user_name'];
+?>
 
+<html>
 
-if (check_verified_status($username) == 0) {
-    if (mailer_verify_email($usermail)) {
-        echo "<p class='alert alert-success w-25 text-center'>Verification Email sent!</p>";
-    } else {
-        $email_error = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute;
-                                    top: 50px; left: 570px;' role='alert'>
-                                      Could not send the email!
-                                    </div></center>";
-        echo $email_error;
-    }
-} else {
-    echo "<br><p class='alert alert-danger w-25 text-center'>User is already Verified.</p>";
-}
+<head>
+    <title>
+        WYDRN - Verification
+    </title>
+    <link rel="stylesheet" href="css/verify.css">
+</head>
 
-if (isset($_GET['link'])) {
-    $user_data = check_login($con);
-    $username = $user_data['user_name'];
-    // echo $username;
-    // echo $_GET['link'];
+</html>
 
-    if ($_GET['link'] == md5($user_data['user_name'])) {
-        $sql = "UPDATE users SET `verified` = '1' WHERE user_name='$username'";
-        if (mysqli_query($con, $sql)) {
-            echo ("<p class='alert alert-success w-25 text-center'>
-            Account Verified. 
-            <a href='profile.php'>Click here</a> to visit your profile.
-            </p>");
+<body>
+
+    <?php
+    if (check_verified_status($username) == 0) {
+        if (mailer_verify_email($usermail)) {
+            echo "<div class='alert success-alert'><h3>Verification Email Sent</h3></div>";
         } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($con);
+            $email_error = "<div class='alert danger-alert'><h3>Could not send the E-mail</h3></div>";
+            echo $email_error;
         }
     } else {
-        echo ("Invalid Link. Your account remains unverified.");
+        echo "<div class='alert danger-alert'><h3>User is already verified</h3></div>";
     }
 
-}
-mysqli_close($con);
+    if (isset($_GET['link'])) {
+        $user_data = check_login($con);
+        $username = $user_data['user_name'];
+        // echo $username;
+        // echo $_GET['link'];
+
+        if ($_GET['link'] == md5($user_data['user_name'])) {
+            $sql = "UPDATE users SET `verified` = '1' WHERE user_name='$username'";
+            if (mysqli_query($con, $sql)) {
+                echo "<div class='alert success-alert'><h3>Your account is now verified</h3>
+            <a href='profile.php'>Click here</a> to visit your profile.
+            </div>";
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($con);
+            }
+        } else {
+            echo "<div class='alert danger-alert'><h3>Invalid Link. Your account remains unverified</h3>
+        </div>";
+        }
+    }
+    mysqli_close($con);
+    ?>
+
+</body>
+
+</html>
