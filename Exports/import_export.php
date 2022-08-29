@@ -224,7 +224,7 @@ if (empty($_SESSION)) {
                             </li>
                             <br>
 
-                            <iframe width="1200" height="600" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                            <iframe width="1200" height="600" src="https://www.youtube.com/embed/CHj6s3HsN30">
                             </iframe>
 
 
@@ -248,7 +248,7 @@ if (empty($_SESSION)) {
                                 <b>Step 4:</b> Copy paste the TV show and platform of your choice into the appropriate columns in blank CSV from WYDRN Template and upload it to WYDRN. Done!
                                 <br>
 
-                                <iframe width="1200" height="600" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                                <iframe width="1200" height="600" src="https://www.youtube.com/embed/RQxkgee4kEE">
                                 </iframe>
 
                         </div>
