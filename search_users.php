@@ -77,13 +77,17 @@ require "header.php";
                 $follower_count = $row[$i]['follower_count'];
     ?>
             <!--HTML CONTENTS-->
+
             <a href=<?php echo "profile.php?user_name=".$username; ?>> 
             <article class="leaderboard__profile">
             <img src="images/website/assets/numbers/<?php echo $i;?>.png" alt="" class="leaderboard__picture">
             <span class="leaderboard__name"><?php echo $username;?></span>
+
             <span class="leaderboard__value"><?php echo $follower_count; ?> </span>
             </article>
-            </a>
+           
+        </a>
+  
                         
                             
         <?php
@@ -100,9 +104,13 @@ require "header.php";
     ------------------------------->
 
 
-    <div class="column" id='search-div'>
+    <div class="column big" id='search-div'>
             <center>
-            <input type="text" id="search" placeholder="Search for users" autocomplete="off"/>
+        <div class="search">
+            
+            <input type="search" id="search" placeholder="Search for users" autocomplete="off"/>
+            <button class="search__clear"></button>
+    </div>
             <!-- Suggestions will be displayed in below div. -->
             <div id="display"></div>
             </center>

@@ -248,8 +248,8 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
 
 
     <!------------------------------------------
-                        ALBUMS SECTION
-            --------------------------------------------->
+            ALBUMS SECTION
+    --------------------------------------------->
 
     <div class="media-item-div" id="mutualMusicBtn">
         <h2 class="mutual-media-title">ALBUMS</h2><br>

@@ -88,18 +88,53 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
+    margin-top: 50px;
 }
 
 .column {
-    flex: 33.33%;
+    width: 360px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+}
+
+.column.big {
+    width: 805px;
 }
 
 #search-div {
     background-color: rgb(255, 255, 255)
 }
 
-#search {
-    margin-bottom: 50px;
+.search {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    position: relative;
+    height: 60px;
+}
+
+.search label,
+.search input {
+    display: block;
+}
+
+.search label {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.search input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #cacfd9;
+    font-family: inherit;
+    outline: none;
+}
+
+.search input:focus {
+    box-shadow: 0px 0px 0px 3px rgba(51, 132, 243, 0.15);
+    border-color: #3384f3;
 }
 
 #display {
@@ -114,6 +149,28 @@ body {
     padding-right: 15px;
     border: 1px solid black;
     border-radius: 20px;
+}
+
+.search__clear {
+    position: absolute;
+    top: 5.3rem;
+    right: 1rem;
+    cursor: pointer;
+    background: #e1e4ea;
+    border: 0;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 1.4rem;
+}
+
+.search__clear:focus,
+.search__clear:active {
+    outline: 0;
+}
+
+.search__clear:hover {
+    background: #cacfd9;
+    color: #597191;
 }
 
 
@@ -152,13 +209,13 @@ body {
 .leaderboard header .leaderboard__title--top {
     font-size: 24px;
     font-weight: 700;
-    letter-spacing: 6.5px;
+    letter-spacing: 2px;
 }
 
 .leaderboard header .leaderboard__title--bottom {
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 3.55px;
+    letter-spacing: 2px;
     opacity: 0.65;
     transform: translateY(-2px);
 }
@@ -211,17 +268,18 @@ body {
 .leaderboard__name {
     color: #000000;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 0.64px;
     margin-left: 12px;
     text-decoration: none !important;
 }
 
 .leaderboard__value {
-    color: #35d8ac;
+    color: #3943ff;
     font-weight: 700;
-    font-size: 34px;
+    font-size: 18px;
     text-align: right;
+    text-decoration: none;
 }
 
 .leaderboard__value>span {
