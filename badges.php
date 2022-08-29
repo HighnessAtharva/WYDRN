@@ -543,7 +543,7 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
       <article class="article heading-text">THE AUDIOPHILE BADGES
       </article>
 
-      <?php if ($total_music_count >= MUSIC_BRONZE_1[2]) {
+      <?php if ($total_album_count >= MUSIC_BRONZE_1[2]) {
       ?>
         <article class="article">
           <p class="badge-name"> <?php echo MUSIC_BRONZE_1[1]; ?></p>
@@ -553,7 +553,7 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
       }
       ?>
 
-      <?php if ($total_music_count >= MUSIC_BRONZE_2[2]) {
+      <?php if ($total_album_count >= MUSIC_BRONZE_2[2]) {
       ?>
         <article class="article">
           <p class="badge-name"> <?php echo MUSIC_BRONZE_2[1]; ?></p>
@@ -562,16 +562,16 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
       <?php
       }
       ?>
-      <?php if ($total_music_count >= MUSIC_BRONZE_3[2]) {
+      <?php if ($total_album_count >= MUSIC_BRONZE_3[2]) {
       ?>
-        [ <article class="article">
+         <article class="article">
           <p class="badge-name"> <?php echo MUSIC_BRONZE_3[1]; ?></p>
           <img class="mybadge" src="<?php echo MUSIC_BRONZE_3[0]; ?>" alt="<?php echo MUSIC_BRONZE_3[1]; ?>">
         </article>
-        [ <?php
+         <?php
         }
           ?>
-      <?php if ($total_music_count >= MUSIC_SILVER_1[2]) {
+      <?php if ($total_album_count >= MUSIC_SILVER_1[2]) {
       ?>
         <article class="article">
           <p class="badge-name"> <?php echo MUSIC_SILVER_1[1]; ?></p>
@@ -580,7 +580,7 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
       <?php
       }
       ?>
-      <?php if ($total_music_count >= MUSIC_SILVER_2[2]) {
+      <?php if ($total_album_count >= MUSIC_SILVER_2[2]) {
       ?>
         <article class="article">
           <p class="badge-name"> <?php echo MUSIC_SILVER_2[1]; ?></p>
@@ -589,7 +589,7 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
       <?php
       }
       ?>
-      <?php if ($total_music_count >= MUSIC_SILVER_3[2]) {
+      <?php if ($total_album_count >= MUSIC_SILVER_3[2]) {
       ?>
         <article class="article">
           <p class="badge-name"> <?php echo MUSIC_SILVER_3[1]; ?></p>
@@ -598,7 +598,7 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
       <?php
       }
       ?>
-      <?php if ($total_music_count >= MUSIC_GOLD_1[2]) {
+      <?php if ($total_album_count >= MUSIC_GOLD_1[2]) {
       ?>
         <article class="article">
           <p class="badge-name"> <?php echo MUSIC_GOLD_1[1]; ?></p>
@@ -607,7 +607,7 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
       <?php
       }
       ?>
-      <?php if ($total_music_count >= MUSIC_GOLD_2[2]) {
+      <?php if ($total_album_count >= MUSIC_GOLD_2[2]) {
       ?>
         <article class="article">
           <p class="badge-name"> <?php echo MUSIC_GOLD_2[1]; ?></p>
@@ -616,7 +616,7 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
       <?php
       }
       ?>
-      <?php if ($total_music_count >= MUSIC_GOLD_3[2]) {
+      <?php if ($total_album_count >= MUSIC_GOLD_3[2]) {
       ?>
         <article class="article">
           <p class="badge-name"> <?php echo MUSIC_GOLD_3[1]; ?></p>
@@ -637,7 +637,7 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
         <img class="image">
 
       </article>
-      <article class="article heading-text">SWEATY PALMS BADGES
+      <article class="article heading-text">SWEATY PALMS BADGES</article>
 
         <?php if ($total_videogame_count >= VIDEOGAME_BRONZE_1[2]) {
         ?>
