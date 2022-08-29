@@ -41,19 +41,7 @@ else {
   $username = $user_data['user_name'];
 }
 
-function executeSQL($con, $sql)
-{
-  if ($query = mysqli_query($con, $sql)) {
-    $row = mysqli_fetch_array($query);
-    if (isset($row[0])) {
-      return $row[0];
-    } else {
-      return '--';
-    }
-  } else {
-    echo mysqli_error($con);
-  }
-}
+
 
 /*********SETTING COUNTERS FOR BADGES***************/
 

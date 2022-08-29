@@ -22,16 +22,6 @@ if ($username != 'admin') {
   die();
 }
 
-// executes the query and returns the first row of the result set.
-function executeSQL($con, $sql)
-{
-  if ($query = mysqli_query($con, $sql)) {
-    $row = mysqli_fetch_array($query);
-    return $row[0];
-  } else {
-    echo mysqli_error($con);
-  }
-}
 
 /*************
 TOTAL MEDIA COUNT (SUM OF ALL USERS)

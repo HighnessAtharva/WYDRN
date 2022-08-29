@@ -8,6 +8,7 @@
  * @author     AtharvaShah
  */
 
+
 /*
 Checks if a user is logged in and is valid. If yes, redirects to the login page. Important to start the session in order to perform the check_login function. Use session_start(); in pages that you wish to use this function.
  */
@@ -307,4 +308,22 @@ function get_mutual_media_count($user1, $user2)
     [5]=>total mutual count
      */
     return $array;
+}
+
+
+
+
+// executes the query and returns the first row of the result set.
+function executeSQL($con, $sql)
+{
+  if ($query = mysqli_query($con, $sql)) {
+    $row = mysqli_fetch_array($query);
+    if (isset($row[0])) {
+      return $row[0];
+    } else {
+      return '--';
+    }
+  } else {
+    echo mysqli_error($con);
+  }
 }
