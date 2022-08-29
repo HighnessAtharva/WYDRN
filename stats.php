@@ -393,7 +393,7 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
 <body>
 
 
-  <h1 class="heading">Your Stats</h1>
+  <h1 class="heading">Stats for <?php echo $username?></h1>
   <br>
 
 <!-----------------------------
