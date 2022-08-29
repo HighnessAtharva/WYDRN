@@ -72,7 +72,7 @@ if (empty($_SESSION)) {
                     <div class="arrow-down">
                         <div class="arrow-down-inner"></div>
                     </div>
-                    <a id="tab1" href="#tabBody1" role="tab" aria-controls="tabBody1" aria-selected="true" data-toggle="tab" tabindex="0"><span><img src="../images/Icons/rym.svg" height="100" width="100"></span>
+                    <a id="tab1" href="#tabBody1" role="tab" aria-controls="tabBody1" aria-selected="true" data-toggle="tab" tabindex="0"><span><img src="../images/Icons/rym.png" height="100" width="100"></span>
                         <span class="hidden-xs"><br><b>RYM</b><br>Import Albums</span></a>
                     <div class="whiteBlock"></div>
                 </li>
