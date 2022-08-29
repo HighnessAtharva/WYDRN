@@ -1,4 +1,9 @@
+
+
 <?php
+
+//start session on web page
+session_start();
 
 //config.php
 
@@ -15,14 +20,11 @@ $google_client->setClientId('518704041766-41bs6d5lc0c0d8e08692m43isb78sv2b.apps.
 $google_client->setClientSecret('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');
 
 //Set the OAuth 2.0 Redirect URI
-$google_client->setRedirectUri('http://localhost/WYDRN/profile.php');
+$google_client->setRedirectUri('http://localhost/WYDRN/google.php');
 
-//
+// to get the email and profile 
 $google_client->addScope('email');
 
 $google_client->addScope('profile');
 
-//start session on web page
-session_start();
-
-?>
+?> 
