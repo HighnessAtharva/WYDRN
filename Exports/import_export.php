@@ -130,7 +130,7 @@ if (empty($_SESSION)) {
                                 </li>
                                 <br>
 
-                                <iframe width="1200" height="600" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                                <iframe width="1200" height="600" src="https://www.youtube.com/embed/L4CERBKG9qw">
                                 </iframe>
                             </div>
 
@@ -156,7 +156,7 @@ if (empty($_SESSION)) {
                             </li>
 
                             <br>
-                            <iframe width="1200" height="600" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+                            <iframe width="1200" height="600" src="https://www.youtube.com/embed/3ITSWlR0p-c"></iframe>
 
                         </div>
                     </div>
@@ -181,7 +181,7 @@ if (empty($_SESSION)) {
                             </li>
                             <br>
 
-                            <iframe width="1200" height="600" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                            <iframe width="1200" height="600" src="https://www.youtube.com/embed/A2WY8rySOh0">
                             </iframe>
 
                             <hr>
@@ -200,7 +200,7 @@ if (empty($_SESSION)) {
                             </li>
                             <br>
 
-                            <iframe width="1200" height="600" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                            <iframe width="1200" height="600" src="https://www.youtube.com/embed/vF37BcYNC98">
                             </iframe>
 
                         </div>
