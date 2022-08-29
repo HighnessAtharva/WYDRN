@@ -1,6 +1,7 @@
 <?php
 
-//index.php
+// In Google Console Authorized Redirect URIs, add this URL: http://localhost/WYDRN/google.php
+
 
 //Include Configuration File
 include('oAuth.php');
