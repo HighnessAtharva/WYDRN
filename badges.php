@@ -79,7 +79,7 @@ $total_videogame_count = executeSQL($con, $sql);
 
 // FOLLOWER COUNT
 $sql = "SELECT COUNT(follower_username) FROM `social` where `followed_username`='$username'";
-$total_followers= executeSQL($con, $sql);
+$total_followers = executeSQL($con, $sql);
 
 
 // MEMBER SINCE
@@ -87,13 +87,13 @@ $date_created = executeSQL($con, "SELECT `date` FROM `users` where `user_name`='
 $date_created = strtotime($date_created);
 
 //gets current date and converts it to date object
-$today=date("Y-m-d");
-$today=strtotime($today);
+$today = date("Y-m-d");
+$today = strtotime($today);
 
 //gets the difference between the two date objects and converts it to days
-$days_since_member=round(($today-$date_created)/(60*60*24));
-if ($days_since_member==0) {
-  $days_since_member=1;
+$days_since_member = round(($today - $date_created) / (60 * 60 * 24));
+if ($days_since_member == 0) {
+  $days_since_member = 1;
 }
 
 
@@ -286,30 +286,30 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
 
       <?php if ($total_book_count >= BOOK_GOLD_1[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo BOOK_GOLD_1[1]; ?></p>
-      <img class="mybadge" src="<?php echo BOOK_GOLD_1[0]; ?>" alt="<?php echo BOOK_GOLD_1[1]; ?>">
-      </article>
+        <article class="article">
+          <p class="badge-name"> <?php echo BOOK_GOLD_1[1]; ?></p>
+          <img class="mybadge" src="<?php echo BOOK_GOLD_1[0]; ?>" alt="<?php echo BOOK_GOLD_1[1]; ?>">
+        </article>
       <?php
       } ?>
 
-<?php if ($total_book_count >= BOOK_GOLD_2[2]) {
+      <?php if ($total_book_count >= BOOK_GOLD_2[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo BOOK_GOLD_2[1]; ?></p>
-      <img class="mybadge" src="<?php echo BOOK_GOLD_2[0]; ?>" alt="<?php echo BOOK_GOLD_2[1]; ?>">
-      </article>
+        <article class="article">
+          <p class="badge-name"> <?php echo BOOK_GOLD_2[1]; ?></p>
+          <img class="mybadge" src="<?php echo BOOK_GOLD_2[0]; ?>" alt="<?php echo BOOK_GOLD_2[1]; ?>">
+        </article>
       <?php
       } ?>
 
-<?php if ($total_book_count >= BOOK_GOLD_3[2]) {
+      <?php if ($total_book_count >= BOOK_GOLD_3[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo BOOK_GOLD_3[1]; ?></p>
-      <img class="mybadge" src="<?php echo BOOK_GOLD_3[0]; ?>" alt="<?php echo BOOK_GOLD_3[1]; ?>">
+        <article class="article">
+          <p class="badge-name"> <?php echo BOOK_GOLD_3[1]; ?></p>
+          <img class="mybadge" src="<?php echo BOOK_GOLD_3[0]; ?>" alt="<?php echo BOOK_GOLD_3[1]; ?>">
 
 
-      </article>
+        </article>
       <?php
       } ?>
 
@@ -326,105 +326,105 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
       </article>
       <article class="article heading-text">THE CINEPHILE BADGES
       </article>
-      
+
       <?php if ($total_movie_count >= MOVIE_BRONZE_1[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo MOVIE_BRONZE_1[1]; ?></p>
-      <img class="mybadge" src="<?php echo MOVIE_BRONZE_1[0]; ?>" alt="<?php echo MOVIE_BRONZE_1[1]; ?>">
+        <article class="article">
+          <p class="badge-name"> <?php echo MOVIE_BRONZE_1[1]; ?></p>
+          <img class="mybadge" src="<?php echo MOVIE_BRONZE_1[0]; ?>" alt="<?php echo MOVIE_BRONZE_1[1]; ?>">
 
-      </article>
-<?php
-      }
-?>
-
-
-<?php if ($total_movie_count >= MOVIE_BRONZE_2[2]) {
-      ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo MOVIE_BRONZE_2[1]; ?></p>
-      <img class="mybadge" src="<?php echo MOVIE_BRONZE_2[0]; ?>" alt="<?php echo MOVIE_BRONZE_2[1]; ?>">  
-      </article>
+        </article>
       <?php
       }
-?>
-
-
-<?php if ($total_movie_count >= MOVIE_BRONZE_3[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo MOVIE_BRONZE_3[1]; ?></p>
-      <img class="mybadge" src="<?php echo MOVIE_BRONZE_3[0]; ?>" alt="<?php echo MOVIE_BRONZE_3[1]; ?>">
-      </article>
+
+
+      <?php if ($total_movie_count >= MOVIE_BRONZE_2[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MOVIE_BRONZE_2[1]; ?></p>
+          <img class="mybadge" src="<?php echo MOVIE_BRONZE_2[0]; ?>" alt="<?php echo MOVIE_BRONZE_2[1]; ?>">
+        </article>
       <?php
       }
-?>
-
-
-<?php if ($total_movie_count >= MOVIE_SILVER_1[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo MOVIE_SILVER_1[1]; ?></p>
-      <img class="mybadge" src="<?php echo MOVIE_SILVER_1[0]; ?>" alt="<?php echo MOVIE_SILVER_1[1]; ?>">  
-      </article>
+
+
+      <?php if ($total_movie_count >= MOVIE_BRONZE_3[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MOVIE_BRONZE_3[1]; ?></p>
+          <img class="mybadge" src="<?php echo MOVIE_BRONZE_3[0]; ?>" alt="<?php echo MOVIE_BRONZE_3[1]; ?>">
+        </article>
       <?php
       }
-?>
-
-
-<?php if ($total_movie_count >= MOVIE_SILVER_2[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo MOVIE_SILVER_2[1]; ?></p>
-      <img class="mybadge" src="<?php echo MOVIE_SILVER_2[0]; ?>" alt="<?php echo MOVIE_SILVER_2[1]; ?>">  
-      </article>
+
+
+      <?php if ($total_movie_count >= MOVIE_SILVER_1[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MOVIE_SILVER_1[1]; ?></p>
+          <img class="mybadge" src="<?php echo MOVIE_SILVER_1[0]; ?>" alt="<?php echo MOVIE_SILVER_1[1]; ?>">
+        </article>
       <?php
       }
-?>
-
-
-<?php if ($total_movie_count >= MOVIE_SILVER_3[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo MOVIE_SILVER_3[1]; ?></p>
-      <img class="mybadge" src="<?php echo MOVIE_SILVER_3[0]; ?>" alt="<?php echo MOVIE_SILVER_3[1]; ?>">  
-</article>
+
+
+      <?php if ($total_movie_count >= MOVIE_SILVER_2[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MOVIE_SILVER_2[1]; ?></p>
+          <img class="mybadge" src="<?php echo MOVIE_SILVER_2[0]; ?>" alt="<?php echo MOVIE_SILVER_2[1]; ?>">
+        </article>
       <?php
       }
-?>
-      
-      
-<?php if ($total_movie_count >= MOVIE_GOLD_1[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo MOVIE_GOLD_1[1]; ?></p>
-      <img class="mybadge" src="<?php echo MOVIE_GOLD_1[0]; ?>" alt="<?php echo MOVIE_GOLD_1[1]; ?>">  
-      </article>
+
+
+      <?php if ($total_movie_count >= MOVIE_SILVER_3[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MOVIE_SILVER_3[1]; ?></p>
+          <img class="mybadge" src="<?php echo MOVIE_SILVER_3[0]; ?>" alt="<?php echo MOVIE_SILVER_3[1]; ?>">
+        </article>
       <?php
       }
-?>
-      
-<?php if ($total_movie_count >= MOVIE_GOLD_2[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo MOVIE_GOLD_2[1]; ?></p>
-      <img class="mybadge" src="<?php echo MOVIE_GOLD_2[0]; ?>" alt="<?php echo MOVIE_GOLD_2[1]; ?>">  
-      </article>
+
+
+      <?php if ($total_movie_count >= MOVIE_GOLD_1[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MOVIE_GOLD_1[1]; ?></p>
+          <img class="mybadge" src="<?php echo MOVIE_GOLD_1[0]; ?>" alt="<?php echo MOVIE_GOLD_1[1]; ?>">
+        </article>
       <?php
       }
-?>
+      ?>
+
+      <?php if ($total_movie_count >= MOVIE_GOLD_2[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MOVIE_GOLD_2[1]; ?></p>
+          <img class="mybadge" src="<?php echo MOVIE_GOLD_2[0]; ?>" alt="<?php echo MOVIE_GOLD_2[1]; ?>">
+        </article>
+      <?php
+      }
+      ?>
 
 
 
-<?php if ($total_movie_count >= MOVIE_GOLD_3[2]) {
+      <?php if ($total_movie_count >= MOVIE_GOLD_3[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo MOVIE_GOLD_3[1]; ?></p>
-      <img class="mybadge" src="<?php echo MOVIE_GOLD_3[0]; ?>" alt="<?php echo MOVIE_GOLD_3[1]; ?>">  
-      </article>
+        <article class="article">
+          <p class="badge-name"> <?php echo MOVIE_GOLD_3[1]; ?></p>
+          <img class="mybadge" src="<?php echo MOVIE_GOLD_3[0]; ?>" alt="<?php echo MOVIE_GOLD_3[1]; ?>">
+        </article>
       <?php
       }
-?>
+      ?>
     </div>
 
 
@@ -438,93 +438,98 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
         <span class="emoji" style='font-size:100px;'>&#128250</span>
       </article>
       <article class="article heading-text">THE 'OUCH 'OTATO BADGES
+      </article>
 
-      </article>
-      <?php if ($total_movie_count >= TV_BRONZE_1[2]) {
+      <?php if ($total_tv_count >= TV_BRONZE_1[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo TV_BRONZE_1[1]; ?></p>
-      <img class="mybadge" src="<?php echo TV_BRONZE_1[0]; ?>" alt="<?php echo TV_BRONZE_1[1]; ?>">  
-      </article>
+        <article class="article">
+          <p class="badge-name"> <?php echo TV_BRONZE_1[1]; ?></p>
+          <img class="mybadge" src="<?php echo TV_BRONZE_1[0]; ?>" alt="<?php echo TV_BRONZE_1[1]; ?>">
+        </article>
       <?php
       }
-?>
-      <?php if ($total_movie_count >= TV_BRONZE_2[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo TV_BRONZE_2[1]; ?></p>
-      <img class="mybadge" src="<?php echo TV_BRONZE_2[0]; ?>" alt="<?php echo TV_BRONZE_2[1]; ?>">  
-      </article>
+
+      <?php if ($total_tv_count >= TV_BRONZE_2[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo TV_BRONZE_2[1]; ?></p>
+          <img class="mybadge" src="<?php echo TV_BRONZE_2[0]; ?>" alt="<?php echo TV_BRONZE_2[1]; ?>">
+        </article>
       <?php
       }
-?>
-      
-
-      <?php if ($total_movie_count >= TV_BRONZE_3[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo TV_BRONZE_3[1]; ?></p>
-      <img class="mybadge" src="<?php echo TV_BRONZE_3[0]; ?>" alt="<?php echo TV_BRONZE_3[1]; ?>">  
-      </article>
+
+
+      <?php if ($total_tv_count >= TV_BRONZE_3[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo TV_BRONZE_3[1]; ?></p>
+          <img class="mybadge" src="<?php echo TV_BRONZE_3[0]; ?>" alt="<?php echo TV_BRONZE_3[1]; ?>">
+        </article>
       <?php
       }
-?>
-
-
-<?php if ($total_movie_count >= TV_SILVER_1[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo  TV_SILVER_1[1]; ?></p>
-      <img class="mybadge" src="<?php echo  TV_SILVER_1[0]; ?>" alt="<?php echo TV_SILVER_1[1]; ?>">  
-      </article>
+
+
+      <?php if ($total_tv_count >= TV_SILVER_1[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo  TV_SILVER_1[1]; ?></p>
+          <img class="mybadge" src="<?php echo  TV_SILVER_1[0]; ?>" alt="<?php echo TV_SILVER_1[1]; ?>">
+        </article>
       <?php
       }
-?>
-
-<?php if ($total_movie_count >= TV_SILVER_2[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo  TV_SILVER_2[1]; ?></p>
-      <img class="mybadge" src="<?php echo  TV_SILVER_2[0]; ?>" alt="<?php echo TV_SILVER_2[1]; ?>">  
-      </article>
+
+      <?php if ($total_tv_count >= TV_SILVER_2[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo  TV_SILVER_2[1]; ?></p>
+          <img class="mybadge" src="<?php echo  TV_SILVER_2[0]; ?>" alt="<?php echo TV_SILVER_2[1]; ?>">
+        </article>
       <?php
       }
-?>
-<?php if ($total_movie_count >= TV_SILVER_3[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo  TV_SILVER_3[1]; ?></p>
-      <img class="mybadge" src="<?php echo  TV_SILVER_3[0]; ?>" alt="<?php echo TV_SILVER_3[1]; ?>">  
-      </article>
+      <?php if ($total_tv_count >= TV_SILVER_3[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo  TV_SILVER_3[1]; ?></p>
+          <img class="mybadge" src="<?php echo  TV_SILVER_3[0]; ?>" alt="<?php echo TV_SILVER_3[1]; ?>">
+        </article>
       <?php
       }
-?>
-
-<?php if ($total_movie_count >= TV_GOLD_1[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo  TV_GOLD_1[1]; ?></p>
-      <img class="mybadge" src="<?php echo  TV_GOLD_1[0]; ?>" alt="<?php echo TV_GOLD_1[1]; ?>">  
-      </article>
+
+      <?php if ($total_tv_count >= TV_GOLD_1[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo  TV_GOLD_1[1]; ?></p>
+          <img class="mybadge" src="<?php echo  TV_GOLD_1[0]; ?>" alt="<?php echo TV_GOLD_1[1]; ?>">
+        </article>
       <?php
       }
-?>
-
-<?php if ($total_movie_count >= TV_GOLD_2[2]) {
       ?>
-      <article class="article">
-      <p class="badge-name"> <?php echo  TV_GOLD_2[1]; ?></p>
-      <img class="mybadge" src="<?php echo  TV_GOLD_2[0]; ?>" alt="<?php echo TV_GOLD_2[1]; ?>">  
-      </article>
+
+      <?php if ($total_tv_count >= TV_GOLD_2[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo  TV_GOLD_2[1]; ?></p>
+          <img class="mybadge" src="<?php echo  TV_GOLD_2[0]; ?>" alt="<?php echo TV_GOLD_2[1]; ?>">
+        </article>
       <?php
       }
-?>
-      <article class="article">BADGE NAME 3<br>
+      ?>
 
-
-
-      </article>
-
+      <?php if ($total_tv_count >= TV_GOLD_3[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo  TV_GOLD_3[1]; ?></p>
+          <img class="mybadge" src="<?php echo  TV_GOLD_3[0]; ?>" alt="<?php echo TV_GOLD_3[1]; ?>">
+        </article>
+      <?php
+      }
+      ?>
     </div>
 
 
@@ -537,52 +542,89 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
       </article>
       <article class="article heading-text">THE AUDIOPHILE BADGES
       </article>
-      <article class="article">BADGE NAME 1
 
+      <?php if ($total_music_count >= MUSIC_BRONZE_1[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MUSIC_BRONZE_1[1]; ?></p>
+          <img class="mybadge" src="<?php echo MUSIC_BRONZE_1[0]; ?>" alt="<?php echo MUSIC_BRONZE_1[1]; ?>">
+        </article>
+      <?php
+      }
+      ?>
 
-
-      </article>
-      <article class="article">BADGE NAME 2
-
-
-
-
-      </article>
-      <article class="article">BADGE NAME 3
-
-
-
-      </article>
-      <article class="article">BADGE NAME 1
-
-
-
-      </article>
-      <article class="article">BADGE NAME 2
-
-
-
-      </article>
-      <article class="article">BADGE NAME 3
-
-
-
-      </article>
-      <article class="article">BADGE NAME 1
-
-
-
-      </article>
-      <article class="article">BADGE NAME 2
-
-
-
-      </article>
-      <article class="article">BADGE NAME 3<br>
-
-
-
-      </article>
+      <?php if ($total_music_count >= MUSIC_BRONZE_2[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MUSIC_BRONZE_2[1]; ?></p>
+          <img class="mybadge" src="<?php echo MUSIC_BRONZE_2[0]; ?>" alt="<?php echo MUSIC_BRONZE_2[1]; ?>">
+        </article>
+      <?php
+      }
+      ?>
+      <?php if ($total_music_count >= MUSIC_BRONZE_3[2]) {
+      ?>
+        [ <article class="article">
+          <p class="badge-name"> <?php echo MUSIC_BRONZE_3[1]; ?></p>
+          <img class="mybadge" src="<?php echo MUSIC_BRONZE_3[0]; ?>" alt="<?php echo MUSIC_BRONZE_3[1]; ?>">
+        </article>
+        [ <?php
+        }
+          ?>
+      <?php if ($total_music_count >= MUSIC_SILVER_1[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MUSIC_SILVER_1[1]; ?></p>
+          <img class="mybadge" src="<?php echo MUSIC_SILVER_1[0]; ?>" alt="<?php echo MUSIC_SILVER_1[1]; ?>">
+        </article>
+      <?php
+      }
+      ?>
+      <?php if ($total_music_count >= MUSIC_SILVER_2[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MUSIC_SILVER_2[1]; ?></p>
+          <img class="mybadge" src="<?php echo MUSIC_SILVER_2[0]; ?>" alt="<?php echo MUSIC_SILVER_2[1]; ?>">
+        </article>
+      <?php
+      }
+      ?>
+      <?php if ($total_music_count >= MUSIC_SILVER_3[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MUSIC_SILVER_3[1]; ?></p>
+          <img class="mybadge" src="<?php echo MUSIC_SILVER_3[0]; ?>" alt="<?php echo MUSIC_SILVER_3[1]; ?>">
+        </article>
+      <?php
+      }
+      ?>
+      <?php if ($total_music_count >= MUSIC_GOLD_1[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MUSIC_GOLD_1[1]; ?></p>
+          <img class="mybadge" src="<?php echo MUSIC_GOLD_1[0]; ?>" alt="<?php echo MUSIC_GOLD_1[1]; ?>">
+        </article>
+      <?php
+      }
+      ?>
+      <?php if ($total_music_count >= MUSIC_GOLD_2[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MUSIC_GOLD_2[1]; ?></p>
+          <img class="mybadge" src="<?php echo MUSIC_GOLD_2[0]; ?>" alt="<?php echo MUSIC_GOLD_2[1]; ?>">
+        </article>
+      <?php
+      }
+      ?>
+      <?php if ($total_music_count >= MUSIC_GOLD_3[2]) {
+      ?>
+        <article class="article">
+          <p class="badge-name"> <?php echo MUSIC_GOLD_3[1]; ?></p>
+          <img class="mybadge" src="<?php echo MUSIC_GOLD_3[0]; ?>" alt="<?php echo MUSIC_GOLD_3[1]; ?>">
+        </article>
+      <?php
+      }
+      ?>
 
     </div>
 
@@ -597,52 +639,96 @@ const PATRON_GOLD = ["images/badges/patron_gold.png", "GOLD", 90];
       </article>
       <article class="article heading-text">SWEATY PALMS BADGES
 
-      </article>
-      <article class="article">BADGE NAME 1
+        <?php if ($total_videogame_count >= VIDEOGAME_BRONZE_1[2]) {
+        ?>
+          <article class="article">
+            <p class="badge-name"> <?php echo VIDEOGAME_BRONZE_1[1]; ?></p>
+            <img class="mybadge" src="<?php echo VIDEOGAME_BRONZE_1[0]; ?>" alt="<?php echo VIDEOGAME_BRONZE_1[1]; ?>">
+          </article>
+        <?php
+        }
+        ?>
 
+        <?php if ($total_videogame_count >= VIDEOGAME_BRONZE_2[2]) {
+        ?>
+          <article class="article">
+            <p class="badge-name"> <?php echo VIDEOGAME_BRONZE_2[1]; ?></p>
+            <img class="mybadge" src="<?php echo VIDEOGAME_BRONZE_2[0]; ?>" alt="<?php echo VIDEOGAME_BRONZE_2[1]; ?>">
+          </article>
+        <?php
+        }
+        ?>
 
+        <?php if ($total_videogame_count >= VIDEOGAME_BRONZE_3[2]) {
+        ?>
+          <article class="article">
+            <p class="badge-name"> <?php echo VIDEOGAME_BRONZE_3[1]; ?></p>
+            <img class="mybadge" src="<?php echo VIDEOGAME_BRONZE_3[0]; ?>" alt="<?php echo VIDEOGAME_BRONZE_3[1]; ?>">
+          </article>
+        <?php
+        }
+        ?>
 
-      </article>
-      <article class="article">BADGE NAME 2
+        <?php if ($total_videogame_count >= VIDEOGAME_SILVER_1[2]) {
+        ?>
+          <article class="article">
+            <p class="badge-name"> <?php echo VIDEOGAME_SILVER_1[1]; ?></p>
+            <img class="mybadge" src="<?php echo VIDEOGAME_SILVER_1[0]; ?>" alt="<?php echo VIDEOGAME_SILVER_1[1]; ?>">
+          </article>
+        <?php
+        }
+        ?>
 
+        <?php if ($total_videogame_count >= VIDEOGAME_SILVER_2[2]) {
+        ?>
+          <article class="article">
+            <p class="badge-name"> <?php echo VIDEOGAME_SILVER_2[1]; ?></p>
+            <img class="mybadge" src="<?php echo VIDEOGAME_SILVER_2[0]; ?>" alt="<?php echo VIDEOGAME_SILVER_2[1]; ?>">
+          </article>
+        <?php
+        }
+        ?>
 
+        <?php if ($total_videogame_count >= VIDEOGAME_SILVER_3[2]) {
+        ?>
+          <article class="article">
+            <p class="badge-name"> <?php echo VIDEOGAME_SILVER_3[1]; ?></p>
+            <img class="mybadge" src="<?php echo VIDEOGAME_SILVER_3[0]; ?>" alt="<?php echo VIDEOGAME_SILVER_3[1]; ?>">
+          </article>
+        <?php
+        }
+        ?>
 
-      </article>
-      <article class="article">BADGE NAME 3
+        <?php if ($total_videogame_count >= VIDEOGAME_GOLD_1[2]) {
+        ?>
+          <article class="article">
+            <p class="badge-name"> <?php echo VIDEOGAME_GOLD_1[1]; ?></p>
+            <img class="mybadge" src="<?php echo VIDEOGAME_GOLD_1[0]; ?>" alt="<?php echo VIDEOGAME_GOLD_1[1]; ?>">
+          </article>
+        <?php
+        }
+        ?>
 
+        <?php if ($total_videogame_count >= VIDEOGAME_GOLD_2[2]) {
+        ?>
+          <article class="article">
+            <p class="badge-name"> <?php echo VIDEOGAME_GOLD_2[1]; ?></p>
+            <img class="mybadge" src="<?php echo VIDEOGAME_GOLD_2[0]; ?>" alt="<?php echo VIDEOGAME_GOLD_2[1]; ?>">
+          </article>
+        <?php
+        }
+        ?>
 
+        <?php if ($total_videogame_count >= VIDEOGAME_GOLD_3[2]) {
+        ?>
+          <article class="article">
+            <p class="badge-name"> <?php echo VIDEOGAME_GOLD_3[1]; ?></p>
+            <img class="mybadge" src="<?php echo VIDEOGAME_GOLD_3[0]; ?>" alt="<?php echo VIDEOGAME_GOLD_3[1]; ?>">
+          </article>
+        <?php
+        }
+        ?>
 
-      </article>
-      <article class="article">BADGE NAME 1
-
-
-
-      </article>
-      <article class="article">BADGE NAME 2
-
-
-
-      </article>
-      <article class="article">BADGE NAME 3
-
-
-
-      </article>
-      <article class="article">BADGE NAME 1
-
-
-
-      </article>
-      <article class="article">BADGE NAME 2
-
-
-
-      </article>
-      <article class="article">BADGE NAME 3<br>
-
-
-
-      </article>
     </div>
 
 
