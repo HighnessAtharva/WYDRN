@@ -132,51 +132,42 @@ function displayalbumDetails(details) {
     //     </div>
     //     `;
 
-    resultGrid.innerHTML = `<div class="movie-card">
+    resultGrid.innerHTML = `
+    <div class="movie-card">
+        <div class="container2">
 
-    <div class="container2">
-
-        <a href="#"><img src = "${albumPoster}" alt = "album poster" class="cover" /></a>
-
-        <div class="hero">
-
-            <div class="details">
-
-                <div class="title1">${name} </div>
-
-                <div class="title2"><span>${artist}</span></div>
-
-
-
-
-
+            <a href="#"><img src = "${albumPoster}" alt = "album poster" class="cover" /></a>
+            <div class="hero">
+                <div class="details">
+                    <div class="title1">${name} </div>
+                    <div class="title2"><span>${artist}</span></div>
+                </div>
             </div>
-            <!-- end details -->
-
-        </div>
-        <!-- end hero -->
-
-        <div class="description">
-
-            <div class="column1">
-                <span class="tag">${tags}</span><br><br>
-                
-            </div>
-            <!-- end column1 -->
-
-            <div class="column2">
-            <p class="plot-summary">Summary</p>
-                <p> ${summary}</p>
             
-    
-`;
 
+            <div class="description">
+                <div class="column1">
+                    <span class="tag">${tags}</span><br><br>
+                </div>
+                <!-- end column1 -->
+
+                <div class="column2">
+                    <p class="plot-summary">Summary</p>
+                    <p> ${summary}</p>
+                 </div>   
+             `;
     for (let idx = 0; idx < details['tracks']['track'].length; idx++) {
-        resultGrid.innerHTML += `<p>${idx+1}. ${details['tracks']['track'][idx]['name']} &nbsp</p>`;
+        resultGrid.innerHTML += `<p>${idx+1}. ${details['tracks']['track'][idx]['name']}</p>`;
     }
 
+
     resultGrid.innerHTML += `
-    </div></div></div></div>`;
+            </div>
+        </div>
+    </div>
+`;
+
+
 }
 
 window.addEventListener('click', (event) => {
