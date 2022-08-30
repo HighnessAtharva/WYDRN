@@ -1,4 +1,4 @@
-DirectoryIndex login.php
+DirectoryIndex home.html
 
 ErrorDocument 404 http://localhost/WYDRN/ErrorPages/404.html
 
