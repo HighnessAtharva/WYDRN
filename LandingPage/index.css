@@ -18,14 +18,16 @@ body {
     background-color: var(--color-bg);
     font-family: soleil, sans-serif;
     -webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	/* Cursor styles */
-	--cursor-stroke: #644B47;
-	--cursor-fill: none;
-	--cursor-stroke-width: 1px;
+    -moz-osx-font-smoothing: grayscale;
+    /* Cursor styles */
+    --cursor-stroke: #644B47;
+    --cursor-fill: none;
+    --cursor-stroke-width: 1px;
 }
 
+
 /* Page Loader */
+
 .js .loading::before,
 .js .loading::after {
     content: '';
@@ -51,7 +53,6 @@ body {
     opacity: 0.4;
     background: var(--color-link);
     animation: loaderAnim 0.7s linear infinite alternate forwards;
-
 }
 
 @keyframes loaderAnim {
@@ -119,29 +120,29 @@ a:focus {
     height: 93%;
     margin: auto;
     display: grid;
-  	grid-template-columns: repeat(13,1fr);
-    grid-template-rows: repeat(8,1fr);
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(8, 1fr);
     grid-gap: 1vw;
     position: relative;
 }
 
 .grid::after {
-	content: '';
-	height: 6rem;
-	width: 1px;
-	background: #fff;
-	position: absolute;
-	bottom: 2rem;
-	left: 50%;
+    content: '';
+    height: 6rem;
+    width: 1px;
+    background: #fff;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
 }
 
 .intro .grid::after {
-	display: none;
+    display: none;
 }
 
 .grid__item {
     background-size: cover;
-	background-position: center;
+    background-position: center;
     opacity: 0;
     -webkit-filter: brightness(0.7);
     filter: brightness(0.7);
@@ -188,8 +189,8 @@ a:focus {
     --title-font-weight: 400;
     --title-font-size: 7vw;
     --title-display: none;
-	--subtitle-display: none;
-	pointer-events: none;
+    --subtitle-display: none;
+    pointer-events: none;
 }
 
 .menu__item-title {
@@ -198,30 +199,32 @@ a:focus {
     font-style: var(--title-font-style);
     font-weight: var(--title-font-weight);
     color: var(--color-title);
-    margin: 0;
+    margin-left: 120px;
+    margin-right: 120px;
+    margin-bottom: 20px;
     display: var(--title-display);
 }
 
 .menu__item-subtitle {
     font-family: meno-banner, serif;
     color: var(--color-subtitle);
-    text-align: right;
-    margin: 0 -3rem 0 0;
+    text-align: center;
+    margin: 0;
     font-size: 1.5vw;
     display: var(--subtitle-display);
 }
 
 .menu__item--current {
-	--color-title: #fff;
+    --color-title: #fff;
     --color-subtitle: #644B47;
     --title-font-style: italic;
     --title-font-weight: 900;
     cursor: pointer;
-	--title-display: block;
-	--title-font-size: 9vw;
+    --title-display: block;
+    --title-font-size: 9vw;
 }
 
-.intro .menu__item--current::before {                
+.intro .menu__item--current::before {
     content: '01';
     position: absolute;
     bottom: 110%;
@@ -229,21 +232,21 @@ a:focus {
 }
 
 .intro .menu__item--current:hover {
-	--color-title: #fff;
+    --color-title: #fff;
     --color-subtitle: #88524a;
 }
 
 .intro .menu__item--current {
-	--color-title: #e5e2e2;
-	--title-font-style: normal;
-	--title-font-size: 7vw;
-	pointer-events: auto;
+    --color-title: #e5e2e2;
+    --title-font-style: normal;
+    --title-font-size: 7vw;
+    pointer-events: auto;
 }
 
 .intro .menu__item {
-	--title-font-size: 5vw;
-	--subtitle-display: block;
-	--title-display: block;
+    --title-font-size: 5vw;
+    --subtitle-display: block;
+    --title-display: block;
 }
 
 .layers {
@@ -273,14 +276,13 @@ a:focus {
 }
 
 .cursor {
-	display: none;
+    display: none;
 }
 
 @media screen and (min-width: 53em) {
     .message {
         display: none;
     }
-
     .frame {
         display: grid;
         position: absolute;
@@ -290,28 +292,22 @@ a:focus {
         grid-template-columns: auto auto 1fr;
         grid-template-rows: auto;
     }
-
     .frame__title {
         margin: 0 4rem 0 0;
     }
-
     .frame__info {
         margin: 0;
     }
-
     .frame__links {
         padding: 0;
     }
-
     .frame__info,
     .frame__button {
         justify-self: end;
     }
-
     .frame__button {
         margin: 0 0 0 10vw;
     }
-
     .frame a {
         pointer-events: auto;
     }
@@ -327,17 +323,17 @@ a:focus {
 }
 
 @media (any-pointer: fine) {
-	.cursor {
-		position: fixed;
-		top: 0;
-		left: 0;
-		display: block;
-		pointer-events: none;
-		opacity: 0;
-	}
-	.cursor__inner {
-		fill: var(--cursor-fill);
-		stroke: var(--cursor-stroke);
-		stroke-width: var(--cursor-stroke-width);
-	}
+    .cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: block;
+        pointer-events: none;
+        opacity: 0;
+    }
+    .cursor__inner {
+        fill: var(--cursor-fill);
+        stroke: var(--cursor-stroke);
+        stroke-width: var(--cursor-stroke-width);
+    }
 }
