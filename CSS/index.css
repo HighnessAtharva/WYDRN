@@ -8,13 +8,36 @@
     font-size: 14px;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 body {
     margin: 0;
-    --color-text: #644B47;
     --color-bg: #0F0E0E;
     --color-link: #fff;
     --color-link-hover: #3d3637;
-    color: var(--color-text);
     background-color: var(--color-bg);
     font-family: soleil, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -23,6 +46,7 @@ body {
     --cursor-stroke: #644B47;
     --cursor-fill: none;
     --cursor-stroke-width: 1px;
+    overflow-x: hidden;
 }
 
 
@@ -66,6 +90,17 @@ a {
     text-decoration: none;
     color: var(--color-link);
     outline: none;
+}
+
+span.full-form {
+    margin-left: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: var(--color-link);
+    padding: 5px;
+    background-color: rgb(231, 231, 231);
+    color: black;
+    border-radius: 5px;
 }
 
 a:hover,
