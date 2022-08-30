@@ -34,11 +34,9 @@ $username = $user_data['user_name'];
     <link rel="stylesheet" href="main.css">
 </head>
 
-<body style="color:white">
+<body >
 
-<div class="heading">
-        <h1>Search TV Shows</h1>
-</div>
+
 
     <div class="wrapper">
        
@@ -65,7 +63,7 @@ $username = $user_data['user_name'];
 
             <!--GET TV RECOMMENDATIONS-->
             <div>
-                <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/index.php?tv'">Get TV<br> Recommendations</button>
+                <button class="button-29" role="button" onclick="window.location.href='../../RecommendationML/index.php?tv'">Get TV Recommendations</button>
             </div>
         </div>
         <!--------------------------
@@ -75,13 +73,11 @@ $username = $user_data['user_name'];
         <!---------------------
         RESULT CONTAINER
         ------------------->
-        <div class="container">
-            <div class="result-container">
+       
                 <div class="result-grid" id="result-grid">
                      <!-- TV INFO WILL APPEAR HERE (DYNAMICALLY GENERATED USING JS. CHECK JS FILE.-->
                 </div>
-            </div>
-        </div>
+    
       <!---------------------
         END OF RESULT CONTAINER
         ------------------->

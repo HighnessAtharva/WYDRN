@@ -115,31 +115,69 @@ function displayalbumDetails(details) {
         albumPoster = '../../images/API/WYDRNmusic.png'
     }
 
-    resultGrid.innerHTML = `
-    <div class = "movie-poster">
-        <img src = "${albumPoster}" alt = "album poster">
-    </div>
-    <div class = "movie-info">
-        <h3 class = "movie-title">${name} <br> <small>${artist}</small></h3>
-        <div class = "movie-details">
-            <p class = "genre"><b>Genre:</b> ${tags}</p><br>
-            <p class = "genre"><b>Background:</b> <br>${summary}</p>
+    // resultGrid.innerHTML = `
+    // <div class = "movie-poster">
+    //     <img src = "${albumPoster}" alt = "album poster">
+    // </div>
+    // <div class = "movie-info">
+    //     <h3 class = "movie-title">${name} <br> <small>${artist}</small></h3>
+    //     <div class = "movie-details">
+    //         <p class = "genre"><b>Genre:</b> ${tags}</p><br>
+    //         <p class = "genre"><b>Background:</b> <br>${summary}</p>
 
-            <br><br>
-            
-            <p class = "summary"><b>TRACK LIST</b></p> 
-            
+    //         <br><br>
+
+    //         <p class = "summary"><b>TRACK LIST</b></p> 
+
+    //     </div>
+    //     `;
+
+    resultGrid.innerHTML = `<div class="movie-card">
+
+    <div class="container2">
+
+        <a href="#"><img src = "${albumPoster}" alt = "album poster" class="cover" /></a>
+
+        <div class="hero">
+
+            <div class="details">
+
+                <div class="title1">${name} </div>
+
+                <div class="title2"><span>${artist}</span></div>
+
+
+
+
+
+            </div>
+            <!-- end details -->
+
         </div>
-        `;
-    resultGrid.innerHTML += "<div class = 'movie-poster'>";
-    for (let idx = 0; idx < details['tracks']['track'].length; idx++) {
+        <!-- end hero -->
 
-        resultGrid.innerHTML += `<span>${idx+1}. ${details['tracks']['track'][idx]['name']} &nbsp</span>`;
-        resultGrid.innerHTML += "<br>";
+        <div class="description">
+
+            <div class="column1">
+                <span class="tag">${tags}</span><br><br>
+                
+            </div>
+            <!-- end column1 -->
+
+            <div class="column2">
+            <p class="plot-summary">Summary</p>
+                <p> ${summary}</p>
+            
+    
+`;
+
+    for (let idx = 0; idx < details['tracks']['track'].length; idx++) {
+        resultGrid.innerHTML += `<p>${idx+1}. ${details['tracks']['track'][idx]['name']} &nbsp</p>`;
     }
 
-    resultGrid.innerHTML += "</div>";
-} { /*  */ }
+    resultGrid.innerHTML += `
+    </div></div></div></div>`;
+}
 
 window.addEventListener('click', (event) => {
     if (event.target.className != "form-control") {

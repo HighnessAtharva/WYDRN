@@ -34,10 +34,8 @@ $username = $user_data['user_name'];
     <link rel="stylesheet" href="main.css">
 </head>
 
-<body style="color:white">
-<div class="heading">
-        <h1>Search Video Games</h1>
-    </div>
+<body>
+
     <div class="wrapper">
        
          <!--------------------------
@@ -64,7 +62,7 @@ $username = $user_data['user_name'];
 
             <!--GET VIDEOGAME RECOMMENDATIONS-->
             <div>
-                <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/index.php?videogame'">Get Videogame<br> Recommendations</button>
+                <button class="button-29" role="button" onclick="window.location.href='../../RecommendationML/index.php?videogame'">Get Videogame Recommendations</button>
             </div>
         </div>
         <!--------------------------
@@ -74,13 +72,11 @@ $username = $user_data['user_name'];
         <!---------------------
         RESULT CONTAINER
         ------------------->
-        <div class="container">
-            <div class="result-container">
+
                 <div class="result-grid" id="result-grid">
                     <!-- movie information here -->
                 </div>
-            </div>
-        </div>
+
       <!---------------------
         END OF RESULT CONTAINER
         ------------------->
