@@ -116,25 +116,70 @@ function displayMovieDetails(details) {
     let languageNames = new Intl.DisplayNames(['en'], { type: 'language' });
 
 
-    resultGrid.innerHTML = `
-    <div class = "movie-poster">
-        <img src = "${(details['poster_path'] != null) ? "https://image.tmdb.org/t/p/original/"+ details['poster_path'] : "../../images/API/WYDRNmovie.png"}" alt = "movie poster">
-    </div>
+    // resultGrid.innerHTML = `
+    // <div class = "movie-poster">
+    //     <img src = "${(details['poster_path'] != null) ? "https://image.tmdb.org/t/p/original/"+ details['poster_path'] : "../../images/API/WYDRNmovie.png"}" alt = "movie poster">
+    // </div>
 
-    <div class = "movie-info">
-        <h3 class = "movie-title">${details['original_title']}</h3>
-        
-        <div class = "movie-details">
-            <p class = "year"><b>Released:</b> ${release_year}</p>
-            <p class = "genre"><b>Genre:</b> ${genres}</p>
-            <p class = "language"><b>Language:</b> ${languageNames.of(details['original_language'])}</p>
-            <br>
-            
-            <p class = "plot summary"><b>Summary:<br></b><br> ${overview}</p>
+    // <div class = "movie-info">
+    //     <h3 class = "movie-title">${details['original_title']}</h3>
+
+    //     <div class = "movie-details">
+    //         <p class = "year"><b>Released:</b> ${release_year}</p>
+    //         <p class = "genre"><b>Genre:</b> ${genres}</p>
+    //         <p class = "language"><b>Language:</b> ${languageNames.of(details['original_language'])}</p>
+    //         <br>
+
+    //         <p class = "plot summary"><b>Summary:<br></b><br> ${overview}</p>
+    //     </div>
+
+    // </div>
+    // `;
+
+    resultGrid.innerHTML = `<div class="movie-card">
+
+        <div class="container2">
+
+            <a href="#"><img src = "${(details['poster_path'] != null) ? "https://image.tmdb.org/t/p/original/"+ details['poster_path'] : "../../images/API/WYDRNmovie.png"}" alt = "movie poster" class="cover" /></a>
+
+            <div class="hero">
+
+                <div class="details">
+
+                    <div class="title1">${details['original_title']}</div>
+    
+                    <div class="title2"><span>${release_year}</span></div>
+
+
+
+
+
+                </div>
+                <!-- end details -->
+
+            </div>
+            <!-- end hero -->
+
+            <div class="description">
+
+                <div class="column1">
+                    <span class="tag">Genre: ${genres}</span><br><br>
+                    <span class="tag">Language: ${languageNames.of(details['original_language'])}</span>
+                </div>
+                <!-- end column1 -->
+
+                <div class="column2">
+                <p class="plot-summary">Summary</p>
+                    <p> ${overview}</p>
+                </div>
+                <!-- end column2 -->
+            </div>
+            <!-- end description -->
+
+
         </div>
-        
-    </div>
-    `;
+        <!-- end container -->
+    </div>`;
 }
 
 

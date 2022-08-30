@@ -15,6 +15,7 @@ body {
 
 .nav-link {
     cursor: pointer;
+    text-decoration: none !important;
 }
 
 .wydrn-logo {

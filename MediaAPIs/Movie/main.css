@@ -42,6 +42,155 @@ body {
     background: #555;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #5C7FB8;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.movie-card {
+    font: 14px/22px "Lato", Arial, sans-serif;
+    color: #A9A8A3;
+    padding-bottom: 100px;
+}
+
+.container2 {
+    width: 1000px;
+    min-height: max-content;
+    background: #F0F0ED;
+    position: relative;
+    padding-bottom: 100px;
+}
+
+.hero {
+    height: 200px;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.hero:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    background: black;
+    z-index: -1;
+    transform-origin: 0 0;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+.cover {
+    position: absolute;
+    top: 53px;
+    left: 40px;
+    z-index: 2;
+    width: 200px;
+    height: 300px;
+    border: 2px solid rgb(0, 0, 174);
+    border-radius: 10px;
+}
+
+.details {
+    padding: 50px 0 0 280px;
+}
+
+.details .title1 {
+    color: white;
+    font-size: 44px;
+    margin-bottom: 13px;
+    position: relative;
+    line-height: 50px;
+}
+
+.details .title2 span {
+    position: absolute;
+    top: 160px;
+    /* margin-left: 1px; */
+    background: #C4AF3D;
+    border-radius: 5px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 21px;
+}
+
+.details .title2 {
+    color: #C7C1BA;
+    font-size: 23px;
+    font-weight: 300;
+    margin-bottom: 15px;
+}
+
+.plot-summary {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-decoration: underline;
+}
+
+.description {
+    bottom: 0px;
+    height: 200px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #262626;
+}
+
+.column1 {
+    padding-left: 50px;
+    padding-top: 165px;
+    width: 220px;
+    float: left;
+    text-align: center;
+}
+
+.tag {
+    background: white;
+    border-radius: 10px;
+    padding: 6px 20px;
+    font-size: 14px;
+    margin-right: 4px;
+    line-height: 35px;
+    cursor: pointer;
+    color: black;
+    font-weight: 700;
+    background-color: #FBAB7E;
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+}
+
+.column2 {
+    padding-left: 41px;
+    padding-top: 30px;
+    margin-left: 20px;
+    width: 740px;
+    float: left;
+}
+
+fieldset,
+label {
+    margin: 0;
+    padding: 0;
+}
+
 
 /* For Stylish Heading*/
 
@@ -100,17 +249,19 @@ img {
 
 .wrapper {
     min-height: 100vh;
-    background-color: var(--dark-color);
+    background-color: #b9deff;
 }
 
-.wrapper .container {
+.wrapper .container2 {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 100px;
+    border-radius: 50px;
 }
 
 .search-container {
-    background-color: var(--md-dark-color);
     height: 180px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -121,21 +272,6 @@ img {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-}
-
-.logo {
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--light-dark-color);
-}
-
-.logo p {
-    font-size: 2rem;
-    color: #fff;
-    font-weight: bold;
-}
-
-.logo p span {
-    color: var(--yellow-color);
 }
 
 .search-element {
@@ -167,12 +303,10 @@ img {
 }
 
 .search-element .form-control {
-    padding: 1rem 2rem;
-    font-size: 1.4rem;
-    border: none;
+    padding: 1rem 1rem;
+    font-size: 1rem;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
-    outline: none;
     color: var(--light-dark-color);
     width: 350px;
 }
@@ -256,10 +390,6 @@ img {
 
 /* movie result */
 
-.result-container {
-    padding: 3rem 0;
-}
-
 .movie-poster img {
     max-width: 300px;
     margin: 0 auto;
@@ -291,33 +421,15 @@ img {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    padding: 1rem;
 }
 
 .movie-info .year {
     font-weight: 500;
 }
 
-.movie-info .rated {
-    background-color: var(--yellow-color);
-    padding: 0.4rem;
-    margin: 0 0.4rem;
-    border-radius: 3px;
-    font-weight: 600;
-}
-
 .movie-info .released {
     font-size: 0.9rem;
     opacity: 0.9;
-}
-
-.movie-info .writer {
-    padding: 0.5rem;
-    margin: 1rem 0;
-}
-
-.movie-details {
-    padding: 1rem 0;
 }
 
 .movie-info .genre {
@@ -343,7 +455,7 @@ img {
 
 .movie-info .plot {
     max-width: 400px;
-    margin: 1rem auto;
+    /* margin: 1rem auto; */
 }
 
 .summary b {
@@ -399,10 +511,10 @@ img {
     .search-element h3 {
         margin-bottom: 0;
     }
-    .result-grid {
+    /* .result-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-    }
+    } */
     .movie-info {
         text-align: left;
         padding-top: 0;
@@ -420,4 +532,52 @@ img {
         padding-left: 0;
         margin-left: 0;
     }
+}
+
+
+/* CSS */
+
+.button-29 {
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s, transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow, transform;
+    font-size: 18px;
+}
+
+.button-29:focus {
+    box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.button-29:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+.button-29:active {
+    box-shadow: #3c4fe0 0 3px 7px inset;
+    transform: translateY(2px);
 }

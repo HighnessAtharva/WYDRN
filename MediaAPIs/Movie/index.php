@@ -33,10 +33,8 @@ $username = $user_data['user_name'];
     <link rel="stylesheet" href="main.css">
 </head>
 
-<body style="color:white">
-<div class="heading">
-        <h1>Search Movies</h1>
-    </div>
+<body>
+
 
     <div class="wrapper">
          <!--------------------------
@@ -62,7 +60,7 @@ $username = $user_data['user_name'];
 
             <!--GET MOVIE RECOMMENDATIONS-->
             <div>
-                <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/index.php?movie'">Get Movie<br> Recommendations</button>
+                <button class="button-29" role="button" onclick="window.location.href='../../RecommendationML/index.php?movie'">Get Movie Recommendations</button>
             </div>
 
         </div>
@@ -77,13 +75,13 @@ $username = $user_data['user_name'];
         <!---------------------
         RESULT CONTAINER
         ------------------->
-        <div class="container">
-            <div class="result-container">
+        
+        
                 <div class="result-grid" id="result-grid">
                    <!-- MOVIE INFO WILL APPEAR HERE (DYNAMICALLY GENERATED USING JS. CHECK JS FILE.-->
                 </div>
-            </div>
-        </div>
+        
+        
       <!---------------------
         END OF RESULT CONTAINER
         ------------------->
