@@ -43,9 +43,7 @@ $username = $user_data['user_name'];
 
 
 <body>
-    <div class="heading">
-        <h1>Search Books</h1>
-    </div>
+ 
 
     <div class="wrapper">
 
@@ -71,7 +69,7 @@ $username = $user_data['user_name'];
 
             <!--GET BOOK RECOMMENDATIONS-->
             <div>
-                <button class="btn btn-primary" onclick="window.location.href='../../RecommendationML/index.php?book'">Get Book<br> Recommendations</button>
+                <button class="button-29" role="button" onclick="window.location.href='../../RecommendationML/index.php?book'">Get Book Recommendations</button>
             </div>
         </div>
         <!--------------------------
@@ -83,13 +81,11 @@ $username = $user_data['user_name'];
         <!---------------------
         RESULT CONTAINER
         ------------------->
-        <div class="container">
-            <div class="result-container">
+      
                 <div class="result-grid" id="result-grid">
                     <!-- BOOK INFO WILL APPEAR HERE (DYNAMICALLY GENERATED USING JS. CHECK JS FILE.-->
                 </div>
-            </div>
-        </div>
+          
         <!---------------------
         END OF RESULT CONTAINER
         ------------------->

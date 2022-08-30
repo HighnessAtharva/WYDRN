@@ -93,22 +93,62 @@ function displayBookDetails(details) {
 
     console.log(details);
 
-    resultGrid.innerHTML = `
-    <div class = "movie-poster">
-        <img src = "${(details['imageLinks']['thumbnail'] !=null) ? details['imageLinks']['thumbnail'] : "../../images/API/WYDRNbook.png"}" alt = "Book poster">
-    </div>
+    // resultGrid.innerHTML = `
+    // <div class = "movie-poster">
+    //     <img src = "${(details['imageLinks']['thumbnail'] !=null) ? details['imageLinks']['thumbnail'] : "../../images/API/WYDRNbook.png"}" alt = "Book poster">
+    // </div>
 
-    <div class = "movie-info">
-        <h3 class = "movie-title">${details['title']} <br> <small>By ${details['authors']}</small></h3>
-   
-        <div class = "movie-details">
-            <p class = "year"><b>Published</b>: ${pub_date}</p>
-            <p class = "genre"><b>Publisher</b>: ${details['publisher']}</p>
-            <br>
-            <p class="summary"><b>Summary</b>:<br>${description}</p>
+    // <div class = "movie-info">
+    //     <h3 class = "movie-title">${details['title']} <br> <small>By ${details['authors']}</small></h3>
+
+    //     <div class = "movie-details">
+    //         <p class = "year"><b>Published</b>: ${pub_date}</p>
+    //         <p class = "genre"><b>Publisher</b>: ${details['publisher']}</p>
+    //         <br>
+    //         <p class="summary"><b>Summary</b>:<br>${description}</p>
+    //     </div>
+
+    // </div>`;
+
+    resultGrid.innerHTML = `<div class="movie-card">
+
+    <div class="container2">
+
+    <a href="#"> <img src = "${(details['imageLinks']['thumbnail'] !=null) ? details['imageLinks']['thumbnail'] : "../../images/API/WYDRNbook.png"}" alt = "Book poster" class="cover"></a>
+
+        <div class="hero">
+
+            <div class="details">
+
+                <div class="title1">${details['title']}</div>
+
+                <div class="title2"><span>By ${details['authors']}</span></div>
+
+            </div>
+            <!-- end details -->
+
         </div>
-        
-    </div>`;
+        <!-- end hero -->
+
+        <div class="description">
+
+            <div class="column1"><br>
+                <span class="tag">Published:  ${pub_date}</span><br><br>
+            </div>
+            <!-- end column1 -->
+
+            <div class="column2">
+            <p class="plot-summary">Summary</p>
+                <p> ${description}</p>
+            </div>
+            <!-- end column2 -->
+        </div>
+        <!-- end description -->
+
+
+    </div>
+    <!-- end container -->
+</div>`;
 
 }
 
