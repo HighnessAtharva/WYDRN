@@ -33,8 +33,14 @@ if (mysqli_num_rows($result) > 0) {
 header('Content-Type: text/csv; charset=utf-8');
 header('Content-Disposition: attachment; filename=Export.csv');
 ob_clean();
+
+// create a file pointer connected to the output stream
 $output = fopen('php://output', 'w');
+
+// output the column headings
 fputcsv($output, array('Videogame', 'Platform', 'Album', 'Artist', 'Book', 'Author', 'Movie', 'Year', 'TV', 'Streaming', 'Datetime', 'Date'));
+
+// loop over the rows, outputting them to the CSV file if they are not empty
 if (count($data) > 0) {
     foreach ($data as $row) {
         fputcsv($output, $row);

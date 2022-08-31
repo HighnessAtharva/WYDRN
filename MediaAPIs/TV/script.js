@@ -131,25 +131,6 @@ function displaytvDetails(details) {
     // TO CONVERT ISO LANGUAGE FORMAT TO FULL NAME. EX: EN -> ENGLISH 
     let languageNames = new Intl.DisplayNames(['en'], { type: 'language' });
 
-    // resultGrid.innerHTML = `
-    // <div class = "movie-poster">
-    //     <img src = "${(details['poster_path'] != null) ? "https://image.tmdb.org/t/p/original/"+ details['poster_path'] : "../../images/API/WYDRNtv.png"}" alt = "tv poster">
-    // </div>
-    // <div class = "movie-info">
-    //     <h3 class = "movie-title">${details['original_name']}</h3>
-
-    //     <div class = "movie-details">
-    //         <p class = "year"><b>Aired:</b> ${year}</p>
-    //         <p class = "genre"><b>Genre:</b> ${genres}</p>
-    //         <p class = "genre"><b> No. of Episodes:</b> ${episodes}</p>
-    //         <p class = "language"><b>Language:</b> ${languageNames.of(details['original_language'])}</p>
-    //         <br>
-
-    //         <p class = "plot summary"><b>Plot:</b><br> ${overview}</p>
-
-    //     </div>
-    // </div>
-    // `;
 
     resultGrid.innerHTML = `<div class="movie-card">
 
@@ -158,40 +139,25 @@ function displaytvDetails(details) {
         <a href="#"><img src ="${(details['poster_path'] != null) ? "https://image.tmdb.org/t/p/original/"+ details['poster_path'] : "../../images/API/WYDRNtv.png"}" alt = "movie poster" class="cover" /></a>
 
         <div class="hero">
-
             <div class="details">
-
                 <div class="title1">${details['original_name']}</div>
-
                 <div class="title2"><span>${year}</span></div>
-
-
-
-
-
-            </div>
-            <!-- end details -->
-
-        </div>
-        <!-- end hero -->
+            </div> <!-- end details -->
+        </div><!-- end hero -->
+        
 
         <div class="description">
-
             <div class="column1">
                 <span class="tag">${genres}</span><br><br>
                 <span class="tag">Episodes: ${episodes}</span>
-            </div>
-            <!-- end column1 -->
+            </div> <!-- end column1 -->
+           
 
             <div class="column2">
             <p class="plot-summary">Summary</p>
                 <p> ${overview}</p>
-            </div>
-            <!-- end column2 -->
-        </div>
-        <!-- end description -->
-
-
+            </div>    <!-- end column2 -->
+        </div>   <!-- end description -->
     </div>
     <!-- end container -->
 </div>`;

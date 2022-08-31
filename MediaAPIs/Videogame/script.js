@@ -107,27 +107,11 @@ function displaygameDetails(details) {
         } else {
             publisher = "NA";
         }
-        // console.log('Yes')
     } else {
-
         publisher = "NA";
     }
 
-    // resultGrid.innerHTML = `
-    // <div class = "movie-poster">
-    //     <img src = "${(details['background_image'] != null) ?  details['background_image'] : "../../images/API/WYDRNgame.png"}" alt = "game poster" width="500" height="300">
-    // </div>
 
-    // <div class = "movie-info">
-    //     <h3 class = "movie-title">${details['name_original']}</h3>
-    //     <br>
-    //     <p class = "year"><b>Released:</b> ${year}</p>
-    //     <p class = "language"><b>Publisher:</b> ${publisher}</p><br>
-    //     <p class = "genre"><b>Genre:</b> ${genres}</p><br>
-
-    //     <p class = "plot summary"><b>Plot:</b> ${details['description']}</p>    
-    // </div>
-    // `;
     resultGrid.innerHTML = `<div class="movie-card">
 
     <div class="container2">
@@ -135,22 +119,12 @@ function displaygameDetails(details) {
         <a href="#"><img src = "${(details['background_image'] != null) ?  details['background_image'] : "../../images/API/WYDRNgame.png"}" alt = "game poster" class="cover" /></a>
 
         <div class="hero">
-
             <div class="details">
-
                 <div class="title1">${details['name_original']}</div>
-
                 <div class="title2"><span>${publisher}</span></div>
-
-
-
-
-
-            </div>
-            <!-- end details -->
-
-        </div>
-        <!-- end hero -->
+            </div><!-- end details -->
+        </div><!-- end hero -->
+      
 
         <div class="description">
 
@@ -163,18 +137,12 @@ function displaygameDetails(details) {
             <div class="column2">
             <p class="plot-summary">Summary</p>
                 <p> ${details['description']}</p>
-            </div>
-            <!-- end column2 -->
-        </div>
-        <!-- end description -->
-
-
-    </div>
-    <!-- end container -->
+            </div> <!-- end column2 -->
+        </div> <!-- end description -->
+    </div><!-- end container -->
+    
 </div>`;
-
 }
-
 
 
 window.addEventListener('click', (event) => {

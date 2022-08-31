@@ -39,22 +39,7 @@ function displayBookList(Books) {
         BookListItem.dataset.id = Books[idx]['id']; // setting book id in data id
         BookListItem.classList.add('search-list-item');
 
-        //works without error 
-        // if (Books[idx]['volumeInfo']['imageLinks'] != null) {
-        //     BookPoster = Books[idx]['volumeInfo']['imageLinks'];
-        // }
-
-        //does not work for half the books
-        // if (Books[idx]['volumeInfo']['imageLinks']['thumbnail'] != null) {
-        //     BookPoster = Books[idx]['volumeInfo']['imageLinks']['thumbnail'];
-        // }
-
-        //this goes in the .innerHTML
-        // <div class = "search-item-thumbnail">
-        //     <img src = "${BookPoster}">
-        // </div>
         BookListItem.innerHTML = `
-     
         <div class = "search-item-info">
             <h3>${Books[idx]['volumeInfo']['title']}</h3>
             <p>${Books[idx]['volumeInfo']['authors']}</p>
@@ -93,23 +78,6 @@ function displayBookDetails(details) {
 
     console.log(details);
 
-    // resultGrid.innerHTML = `
-    // <div class = "movie-poster">
-    //     <img src = "${(details['imageLinks']['thumbnail'] !=null) ? details['imageLinks']['thumbnail'] : "../../images/API/WYDRNbook.png"}" alt = "Book poster">
-    // </div>
-
-    // <div class = "movie-info">
-    //     <h3 class = "movie-title">${details['title']} <br> <small>By ${details['authors']}</small></h3>
-
-    //     <div class = "movie-details">
-    //         <p class = "year"><b>Published</b>: ${pub_date}</p>
-    //         <p class = "genre"><b>Publisher</b>: ${details['publisher']}</p>
-    //         <br>
-    //         <p class="summary"><b>Summary</b>:<br>${description}</p>
-    //     </div>
-
-    // </div>`;
-
     resultGrid.innerHTML = `<div class="movie-card">
 
     <div class="container2">
@@ -117,18 +85,12 @@ function displayBookDetails(details) {
     <a href="#"> <img src = "${(details['imageLinks']['thumbnail'] !=null) ? details['imageLinks']['thumbnail'] : "../../images/API/WYDRNbook.png"}" alt = "Book poster" class="cover"></a>
 
         <div class="hero">
-
             <div class="details">
-
                 <div class="title1">${details['title']}</div>
-
                 <div class="title2"><span>By ${details['authors']}</span></div>
-
-            </div>
-            <!-- end details -->
-
-        </div>
-        <!-- end hero -->
+            </div><!-- end details -->
+        </div><!-- end hero -->
+        
 
         <div class="description">
 
@@ -140,11 +102,10 @@ function displayBookDetails(details) {
             <div class="column2">
             <p class="plot-summary">Summary</p>
                 <p> ${description}</p>
-            </div>
-            <!-- end column2 -->
-        </div>
-        <!-- end description -->
-
+            </div> <!-- end column2 -->
+           
+        </div><!-- end description -->
+        
 
     </div>
     <!-- end container -->

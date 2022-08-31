@@ -115,23 +115,6 @@ function displayalbumDetails(details) {
         albumPoster = '../../images/API/WYDRNmusic.png'
     }
 
-    // resultGrid.innerHTML = `
-    // <div class = "movie-poster">
-    //     <img src = "${albumPoster}" alt = "album poster">
-    // </div>
-    // <div class = "movie-info">
-    //     <h3 class = "movie-title">${name} <br> <small>${artist}</small></h3>
-    //     <div class = "movie-details">
-    //         <p class = "genre"><b>Genre:</b> ${tags}</p><br>
-    //         <p class = "genre"><b>Background:</b> <br>${summary}</p>
-
-    //         <br><br>
-
-    //         <p class = "summary"><b>TRACK LIST</b></p> 
-
-    //     </div>
-    //     `;
-
     resultGrid.innerHTML = `
     <div class="movie-card">
         <div class="container2">
