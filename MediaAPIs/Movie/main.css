@@ -70,6 +70,7 @@ a:hover {
     background: #F0F0ED;
     position: relative;
     padding-bottom: 100px;
+    box-shadow: rgb(85 91 255) 0px 0px 0px 3px, rgb(31 193 27) 0px 0px 0px 6px, rgb(255 217 19) 0px 0px 0px 9px, rgb(255 156 85) 0px 0px 0px 12px, rgb(255 85 85) 0px 0px 0px 15px;
 }
 
 .hero {
@@ -106,6 +107,7 @@ a:hover {
     height: 300px;
     border: 2px solid rgb(0, 0, 174);
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .details {
@@ -156,9 +158,9 @@ a:hover {
 }
 
 .column1 {
-    padding-left: 50px;
-    padding-top: 165px;
-    width: 220px;
+    padding-left: 53px;
+    padding-top: 190px;
+    width: 240px;
     float: left;
     text-align: center;
 }
@@ -167,7 +169,6 @@ a:hover {
     background: white;
     border-radius: 10px;
     padding: 6px 20px;
-    font-size: 14px;
     margin-right: 4px;
     line-height: 35px;
     cursor: pointer;
@@ -249,7 +250,14 @@ img {
 
 .wrapper {
     min-height: 100vh;
-    background-color: #b9deff;
+    height: 100%;
+    z-index: 1;
+    background-image: linear-gradient(to left, rgba(10, 10, 10, 0.5), rgb(21, 21, 21)), url(../../images/website/assets/movies/movie-collage.jpg);
+    height: 100%;
+    background-color: transparent;
+    z-index: 1;
+    background-size: cover;
+    background-repeat: none;
 }
 
 .wrapper .container2 {
@@ -257,7 +265,7 @@ img {
     margin: 0 auto;
     max-width: 1200px;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 20px;
     border-radius: 50px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -318,6 +326,7 @@ img {
     box-shadow: 3px 1px 0px 2px, 0px -1px 0px 2px rgba(0, 0, 0, 0.62);
     font-family: 'Knewave', cursive;
     text-transform: uppercase;
+    box-shadow: rgb(50 50 93 / 25%) 0px 50px 100px -20px, rgb(0 0 0 / 30%) 0px 30px 60px -30px, rgb(10 37 64 / 35%) 0px -2px 6px 0px
 }
 
 .search-list {

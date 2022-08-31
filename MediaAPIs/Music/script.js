@@ -153,19 +153,15 @@ function displayalbumDetails(details) {
 
                 <div class="column2">
                     <p class="plot-summary">Summary</p>
-                    <p> ${summary}</p>
-                 </div>   
+                    <p> ${summary} </p>
+                    </div>    </div>
+                        </div>
+                    </div>
              `;
-    for (let idx = 0; idx < details['tracks']['track'].length; idx++) {
-        resultGrid.innerHTML += `<p>${idx+1}. ${details['tracks']['track'][idx]['name']}</p>`;
-    }
+    // for (let idx = 0; idx < details['tracks']['track'].length; idx++) {
+    //     resultGrid.innerHTML += `${idx+1}. ${details['tracks']['track'][idx]['name']}`;
+    // }
 
-
-    resultGrid.innerHTML += `
-            </div>
-        </div>
-    </div>
-`;
 
 
 }
