@@ -166,7 +166,7 @@ if (isset($_GET['tv'])) {
  * 
  * ******************/
 if (isset($_GET['album'])) {
-  $sql = "SELECT `album`, `artist`, `date` FROM `data` where tv != '' and username='$username' GROUP BY `album`";
+  $sql = "SELECT `album`, `artist`, `date` FROM `data` where album != '' and username='$username' GROUP BY `album`";
   $result = mysqli_query($con, $sql);
   if ($query = mysqli_query($con, $sql)) {
     $totalcount = mysqli_num_rows($query);
