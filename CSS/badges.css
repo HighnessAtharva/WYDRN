@@ -65,9 +65,9 @@ hr.image {
 }
 
 .mybadge {
-    height: 14rem;
-    width: 10rem;
-    padding-top: 0.5rem;
+    height: 12rem;
+    width: 15rem;
+    margin-left: -40px;
 }
 
 .article {

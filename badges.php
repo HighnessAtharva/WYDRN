@@ -105,79 +105,79 @@ CONST ARRAY = [
  */
 
 //BOOK
-const BOOK_BRONZE_1 = ["images/badges/book_bronze_1.png", "BRONZE - I", 1];
-const BOOK_BRONZE_2 = ["images/badges/book_bronze_2.png", "BRONZE - II", 5];
-const BOOK_BRONZE_3 = ["images/badges/book_bronze_3.png", "BRONZE - III", 10];
+const BOOK_BRONZE_1 = ["images/badges/bronze_1.png", "BRONZE - I", 1];
+const BOOK_BRONZE_2 = ["images/badges/bronze_2.png", "BRONZE - II", 5];
+const BOOK_BRONZE_3 = ["images/badges/bronze_3.png", "BRONZE - III", 10];
 
-const BOOK_SILVER_1 = ["images/badges/book_silver_1.png", "SILVER - I", 25];
-const BOOK_SILVER_2 = ["images/badges/book_silver_2.png", "SILVER - II", 50];
-const BOOK_SILVER_3 = ["images/badges/book_silver_3.png", "SILVER - III", 100];
+const BOOK_SILVER_1 = ["images/badges/silver_1.png", "SILVER - I", 25];
+const BOOK_SILVER_2 = ["images/badges/silver_2.png", "SILVER - II", 50];
+const BOOK_SILVER_3 = ["images/badges/silver_3.png", "SILVER - III", 100];
 
-const BOOK_GOLD_1 = ["images/badges/book_gold_1.png", "GOLD - I", 200];
-const BOOK_GOLD_2 = ["images/badges/book_gold_2.png", "GOLD - II", 350];
-const BOOK_GOLD_3 = ["images/badges/book_gold_3.png", "GOLD - III", 500];
+const BOOK_GOLD_1 = ["images/badges/gold_1.png", "GOLD - I", 200];
+const BOOK_GOLD_2 = ["images/badges/gold_2.png", "GOLD - II", 350];
+const BOOK_GOLD_3 = ["images/badges/gold_3.png", "GOLD - III", 500];
 
 //MOVIE
-const MOVIE_BRONZE_1 = ["images/badges/movie_bronze_1.png", "BRONZE - I", 3];
-const MOVIE_BRONZE_2 = ["images/badges/movie_bronze_2.png", "BRONZE - II", 10];
-const MOVIE_BRONZE_3 = ["images/badges/movie_bronze_3.png", "BRONZE - III", 20];
+const MOVIE_BRONZE_1 = ["images/badges/bronze_1.png", "BRONZE - I", 3];
+const MOVIE_BRONZE_2 = ["images/badges/bronze_2.png", "BRONZE - II", 10];
+const MOVIE_BRONZE_3 = ["images/badges/bronze_3.png", "BRONZE - III", 20];
 
-const MOVIE_SILVER_1 = ["images/badges/movie_silver_1.png", "SILVER - I", 50];
-const MOVIE_SILVER_2 = ["images/badges/movie_silver_2.png", "SILVER - II", 100];
-const MOVIE_SILVER_3 = ["images/badges/movie_silver_3.png", "SILVER - III", 250];
+const MOVIE_SILVER_1 = ["images/badges/silver_1.png", "SILVER - I", 50];
+const MOVIE_SILVER_2 = ["images/badges/silver_2.png", "SILVER - II", 100];
+const MOVIE_SILVER_3 = ["images/badges/silver_3.png", "SILVER - III", 250];
 
-const MOVIE_GOLD_1 = ["images/badges/movie_gold_1.png", "GOLD - I", 500];
-const MOVIE_GOLD_2 = ["images/badges/movie_gold_2.png", "GOLD - II", 750];
-const MOVIE_GOLD_3 = ["images/badges/movie_gold_3.png", "GOLD - III", 1000];
+const MOVIE_GOLD_1 = ["images/badges/gold_1.png", "GOLD - I", 500];
+const MOVIE_GOLD_2 = ["images/badges/gold_2.png", "GOLD - II", 750];
+const MOVIE_GOLD_3 = ["images/badges/gold_3.png", "GOLD - III", 1000];
 
 //TV
-const TV_BRONZE_1 = ["images/badges/tv_bronze_1.png", "BRONZE - I", 1];
-const TV_BRONZE_2 = ["images/badges/tv_bronze_2.png", "BRONZE - II", 3];
-const TV_BRONZE_3 = ["images/badges/tv_bronze_3.png", "BRONZE - III", 5];
+const TV_BRONZE_1 = ["images/badges/bronze_1.png", "BRONZE - I", 1];
+const TV_BRONZE_2 = ["images/badges/bronze_2.png", "BRONZE - II", 3];
+const TV_BRONZE_3 = ["images/badges/bronze_3.png", "BRONZE - III", 5];
 
-const TV_SILVER_1 = ["images/badges/tv_silver_1.png", "SILVER - I", 10];
-const TV_SILVER_2 = ["images/badges/tv_silver_2.png", "SILVER - II", 15];
-const TV_SILVER_3 = ["images/badges/tv_silver_3.png", "SILVER - III", 25];
+const TV_SILVER_1 = ["images/badges/silver_1.png", "SILVER - I", 10];
+const TV_SILVER_2 = ["images/badges/silver_2.png", "SILVER - II", 15];
+const TV_SILVER_3 = ["images/badges/silver_3.png", "SILVER - III", 25];
 
-const TV_GOLD_1 = ["images/badges/tv_gold_1.png", "GOLD - I", 50];
-const TV_GOLD_2 = ["images/badges/tv_gold_2.png", "GOLD - II", 75];
-const TV_GOLD_3 = ["images/badges/tv_gold_3.png", "GOLD - III", 100];
+const TV_GOLD_1 = ["images/badges/gold_1.png", "GOLD - I", 50];
+const TV_GOLD_2 = ["images/badges/gold_2.png", "GOLD - II", 75];
+const TV_GOLD_3 = ["images/badges/gold_3.png", "GOLD - III", 100];
 
 //MUSIC
-const MUSIC_BRONZE_1 = ["images/badges/music_bronze_1.png", "BRONZE - I", 1];
-const MUSIC_BRONZE_2 = ["images/badges/music_bronze_2.png", "BRONZE - II", 5];
-const MUSIC_BRONZE_3 = ["images/badges/music_bronze_3.png", "BRONZE - III", 10];
+const MUSIC_BRONZE_1 = ["images/badges/bronze_1.png", "BRONZE - I", 1];
+const MUSIC_BRONZE_2 = ["images/badges/bronze_2.png", "BRONZE - II", 5];
+const MUSIC_BRONZE_3 = ["images/badges/bronze_3.png", "BRONZE - III", 10];
 
-const MUSIC_SILVER_1 = ["images/badges/music_silver_1.png", "SILVER - I", 25];
-const MUSIC_SILVER_2 = ["images/badges/music_silver_2.png", "SILVER - II", 50];
-const MUSIC_SILVER_3 = ["images/badges/music_silver_3.png", "SILVER - III", 75];
+const MUSIC_SILVER_1 = ["images/badges/silver_1.png", "SILVER - I", 25];
+const MUSIC_SILVER_2 = ["images/badges/silver_2.png", "SILVER - II", 50];
+const MUSIC_SILVER_3 = ["images/badges/silver_3.png", "SILVER - III", 75];
 
-const MUSIC_GOLD_1 = ["images/badges/music_gold_1.png", "GOLD - I", 100];
-const MUSIC_GOLD_2 = ["images/badges/music_gold_2.png", "GOLD - II", 250];
-const MUSIC_GOLD_3 = ["images/badges/music_gold_3.png", "GOLD - III", 500];
+const MUSIC_GOLD_1 = ["images/badges/gold_1.png", "GOLD - I", 100];
+const MUSIC_GOLD_2 = ["images/badges/gold_2.png", "GOLD - II", 250];
+const MUSIC_GOLD_3 = ["images/badges/gold_3.png", "GOLD - III", 500];
 
 //VIDEOGAME
-const VIDEOGAME_BRONZE_1 = ["images/badges/videogame_bronze_1.png", "BRONZE - I", 1];
-const VIDEOGAME_BRONZE_2 = ["images/badges/videogame_bronze_2.png", "BRONZE - II", 5];
-const VIDEOGAME_BRONZE_3 = ["images/badges/videogame_bronze_3.png", "BRONZE - III", 10];
+const VIDEOGAME_BRONZE_1 = ["images/badges/bronze_1.png", "BRONZE - I", 1];
+const VIDEOGAME_BRONZE_2 = ["images/badges/bronze_2.png", "BRONZE - II", 5];
+const VIDEOGAME_BRONZE_3 = ["images/badges/bronze_3.png", "BRONZE - III", 10];
 
-const VIDEOGAME_SILVER_1 = ["images/badges/videogame_silver_1.png", "SILVER - I", 15];
-const VIDEOGAME_SILVER_2 = ["images/badges/videogame_silver_2.png", "SILVER - II", 25];
-const VIDEOGAME_SILVER_3 = ["images/badges/videogame_silver_3.png", "SILVER - III", 40];
+const VIDEOGAME_SILVER_1 = ["images/badges/silver_1.png", "SILVER - I", 15];
+const VIDEOGAME_SILVER_2 = ["images/badges/silver_2.png", "SILVER - II", 25];
+const VIDEOGAME_SILVER_3 = ["images/badges/silver_3.png", "SILVER - III", 40];
 
-const VIDEOGAME_GOLD_1 = ["images/badges/videogame_gold_1.png", "GOLD - I", 50];
-const VIDEOGAME_GOLD_2 = ["images/badges/videogame_gold_2.png", "GOLD - II", 75];
-const VIDEOGAME_GOLD_3 = ["images/badges/videogame_gold_3.png", "GOLD - III", 100];
+const VIDEOGAME_GOLD_1 = ["images/badges/gold_1.png", "GOLD - I", 50];
+const VIDEOGAME_GOLD_2 = ["images/badges/gold_2.png", "GOLD - II", 75];
+const VIDEOGAME_GOLD_3 = ["images/badges/gold_3.png", "GOLD - III", 100];
 
 // FOLLOWERS
-const FOLLOWERS_BRONZE = ["images/badges/followers_bronze.png", "MESSIAH - I", 5];
-const FOLLOWERS_SILVER = ["images/badges/followers_silver.png", "MESSIAH - II", 20];
-const FOLLOWERS_GOLD = ["images/badges/followers_gold.png", "MESSIAH - III", 50];
+const FOLLOWERS_BRONZE = ["images/badges/bronze.png", "MESSIAH - I", 1];
+const FOLLOWERS_SILVER = ["images/badges/silver.png", "MESSIAH - II", 3];
+const FOLLOWERS_GOLD = ["images/badges/gold.png", "MESSIAH - III", 5];
 
 // MEMBER SINCE DAYS
-const PATRON_BRONZE = ["images/badges/patron_bronze.png", "PATRON - I", 10];
-const PATRON_SILVER = ["images/badges/patron_silver.png", "PATRON - II", 30];
-const PATRON_GOLD = ["images/badges/patron_gold.png", "PATRON - II", 90];
+const PATRON_BRONZE = ["images/badges/bronze.png", "PATRON - I", 1];
+const PATRON_SILVER = ["images/badges/silver.png", "PATRON - II", 5];
+const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
 
 ?>
 
