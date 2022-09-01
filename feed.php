@@ -27,13 +27,14 @@ $username = $user_data['user_name'];
 ------------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>WYDRN - Social Feed</title>
-    
+
     <!--Bootstrap Link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- CSS Stylesheet -->
@@ -41,158 +42,173 @@ $username = $user_data['user_name'];
 
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
- 
+
 </head>
 
 <body>
-<div class="heading">
-  <h1>Social Feed<span>It's never too late to catch up with your friends.</span></h1>
-</div>
+    <div class="heading">
+        <h1>Social Feed<span>It's never too late to catch up with your friends.</span></h1>
+    </div>
+    <!-- 
+<div class="container"> -->
 
-<div class="container">
-        
 
-<!-------------------------------------------------------------------------------------
+    <!-------------------------------------------------------------------------------------
        			               PHP PART
 ------------------------------------------------------------------------------------->
-<?php
+    <?php
 
-$per_page_record = 30; // Number of entries to show in a page.
-// Look for a GET variable page if not found default is 1.
-if (isset($_GET["page"])) {
-    $page = $_GET["page"];
-} else {
-    $page = 1;
-}
-
-$start_from = ($page - 1) * $per_page_record;
-$sql = "SELECT `username`, `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`, `datetime`, `profile_pic` from `data` INNER JOIN `users` on `user_name` = `username` WHERE `username` in (SELECT `followed_username` from social where `follower_username`='$username') AND (`videogame` !='' OR `album`!='' OR `book`!='' OR `movie`!='' OR `tv`!='')  ORDER BY `datetime` DESC LIMIT $start_from, $per_page_record;";
-if ($query = mysqli_query($con, $sql)) {
-    if (mysqli_num_rows($query) > 0) {
-        for ($i = 0; $i <= mysqli_num_rows($query); $i++) {
-            $row[$i] = mysqli_fetch_array($query);
-
-            $person = $row[$i]['username'];
-            $profile_pic = $row[$i]['profile_pic'];
-
-            $videogame = $row[$i]['videogame'];
-            $platform = $row[$i]['platform'];
-
-            $album = $row[$i]['album'];
-            $artist = $row[$i]['artist'];
-
-            $book = $row[$i]['book'];
-            $author = $row[$i]['author'];
-
-            $movie = $row[$i]['movie'];
-            $year = $row[$i]['year'];
-
-            $tv = $row[$i]['tv'];
-            $streaming = $row[$i]['streaming'];
-
-            $datetime = $row[$i]['datetime'];
-
-            if (empty($person)) {
-                // echo "You are all caught up!";
-
-            } else {
-              
-                //container of each post on the page
-                echo "<div class='post'>";
-              
-
-                echo ("<img src=" . $profile_pic . " class='profile-pic' alt='Profile Picture'/>");
-                echo ("<a class='username' href='profile.php?user_name=" . $person . "'>" . $person . "</a><br>");
-                echo ("<div class='activity-container'>");
-                    if ((!empty($videogame)) && (!empty($platform))) {
-                        $playing = "<div class='activity'> &#127918 Playing <b>" . $videogame . "</b> on " . $platform . "</div>";
-                        echo $playing;
-                    }
-
-                    if ((!empty($album)) && (!empty($artist))) {
-                        $listening = "<div class='activity'> &#127911 Listening to <b>" . $album . "</b> by <b>" . $artist . "</b></div>";
-                        echo $listening;
-                    }
-                    if ((!empty($book)) && (!empty($author))) {
-                        $reading = "<div class='activity'> &#128213 Reading <b>" . $book . "</b> by <b>" . $author . "</b></div>";
-                        echo $reading;
-                    }
-
-                    if ((!empty($movie)) && (!empty($year))) {
-                        $watching = "<div class='activity'> &#128253 Watching <b>" . $movie . "</b> (" . $year . ")" . "</div>";
-                        echo $watching;
-                    }
-
-                    if ((!empty($tv)) && (!empty($streaming))) {
-                        $binging = "<div class='activity'> &#128250 Binging <b>" . $tv . "</b> on " . $streaming . "</div>";
-                        echo $binging;
-                    }
-                echo ("</div>"); //end of activity-container
-                $datetime = printable_datetime($datetime);
-                echo ("<div class='datetime'>" . $datetime . "</div>");
-
-                echo "<br>";
-
-                echo "</div>"; //container of each post on the page
-            } //else ends
-        }
+    $per_page_record = 30; // Number of entries to show in a page.
+    // Look for a GET variable page if not found default is 1.
+    if (isset($_GET["page"])) {
+        $page = $_GET["page"];
     } else {
-        echo "<center><p style='color:black; padding: 20px; width:fit-content; background-color:white;'> EMPTY FEED. YOU ARE SUCH A LONER!</p><br>
-        <a href='search_users.php' style='color:white;padding: 10px; border-radius:5px;background-color:green; text-decoration:none; '>FOLLOW MORE PEOPLE</a></center>";
+        $page = 1;
     }
-}
-?>
+
+    $start_from = ($page - 1) * $per_page_record;
+    $sql = "SELECT `username`, `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`, `datetime`, `profile_pic` from `data` INNER JOIN `users` on `user_name` = `username` WHERE `username` in (SELECT `followed_username` from social where `follower_username`='$username') AND (`videogame` !='' OR `album`!='' OR `book`!='' OR `movie`!='' OR `tv`!='')  ORDER BY `datetime` DESC LIMIT $start_from, $per_page_record;";
+    if ($query = mysqli_query($con, $sql)) {
+        if (mysqli_num_rows($query) > 0) {
+            for ($i = 0; $i <= mysqli_num_rows($query); $i++) {
+                $row[$i] = mysqli_fetch_array($query);
+
+                $person = $row[$i]['username'];
+                $profile_pic = $row[$i]['profile_pic'];
+
+                $videogame = $row[$i]['videogame'];
+                $platform = $row[$i]['platform'];
+
+                $album = $row[$i]['album'];
+                $artist = $row[$i]['artist'];
+
+                $book = $row[$i]['book'];
+                $author = $row[$i]['author'];
+
+                $movie = $row[$i]['movie'];
+                $year = $row[$i]['year'];
+
+                $tv = $row[$i]['tv'];
+                $streaming = $row[$i]['streaming'];
+
+                $datetime = $row[$i]['datetime'];
+
+                if (empty($person)) {
+                    // echo "You are all caught up!";
+
+                } else {
+                    $mydate = date("j", strtotime($datetime));
+                    $month = date("M", strtotime($datetime));
+                    $time = date("g:i", strtotime($datetime));
+                    $meridian = date("A", strtotime($datetime));
+                    $meridian = strtoupper($meridian);
+
+    ?>
+
+                    <div class="plx-card gold">
+                        <div class="pxc-bg" style="background-image:url('<?php echo randomImage() ?>')"> </div>
+                        <div class="pxc-avatar"><img src="<?php echo $profile_pic ?>" width="240px" height="240px" /></div>
+                        <div class="pxc-stopper"> </div>
+                        <div class="pxc-subcard myrow">
+                            <div class="mycolumn1">
+                                <div class="pxc-title"><a class="uname" href="<?php echo 'profile.php?user_name=' . $person ?>"><?php echo $person ?></a></div>
+
+                                <?php if ((!empty($videogame)) && (!empty($platform))) { ?>
+                                    <div class="pxc-sub">&#127918 Playing <b><?php echo strtoupper($videogame) ?></b> on <?php echo $platform ?></div>
+                                <?php } ?>
+
+                                <?php if ((!empty($album)) && (!empty($artist))) { ?>
+                                    <div class="pxc-sub"> &#127911 Listening to <b><?php echo strtoupper($album) ?></b> by <?php echo $artist ?></div>
+                                <?php } ?>
+
+                                <?php if ((!empty($book)) && (!empty($author))) { ?>
+                                    <div class="pxc-sub"> &#128213 Reading <b><?php echo strtoupper($book) ?></b> by <?php echo $author ?> </div>
+                                <?php } ?>
+
+                                <?php if ((!empty($movie)) && (!empty($year))) { ?>
+                                    <div class="pxc-sub"> &#128253 Watching <b><?php echo strtoupper($movie) ?></b> (<?php echo $year ?>) </div>
+                                <?php } ?>
+
+                                <?php if ((!empty($tv)) && (!empty($streaming))) { ?>
+                                    <div class="pxc-sub"> &#128250 Binging <b><?php echo strtoupper($tv) ?></b> On <?php echo $streaming ?> </div>
+                                <?php } ?>
+
+                            </div>
+                            <div class="mycolumn2">
+                                <div class="date">
+                                    <p><?php echo $mydate ?><span><?php echo $month ?></span></p>
+                                </div>
+                            </div>
+                            <div class="mycolumn3">
+                                <div class="date">
+                                    <p class="time"><?php echo $time ?><span><?php echo $meridian ?></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+    <?php
+                } //else ends
+            }
+        } else {
+            echo "<center><p style='color:black; padding: 20px; width:fit-content; background-color:white;'> EMPTY FEED. YOU ARE SUCH A LONER!</p><br>
+        <a href='search_users.php' style='color:white;padding: 10px; border-radius:5px;background-color:green; text-decoration:none; '>FOLLOW MORE PEOPLE</a></center>";
+        }
+    }
+    ?>
 
 
-<!-------------------------------------------------------------------------------------
+    <!-------------------------------------------------------------------------------------
                                 PAGINATION
 ------------------------------------------------------------------------------------->
- <center>
- <div class="pagination">
-        <?php
-        // $query = "SELECT count(*) from `data` WHERE `username`= '$username'";
-        $query="SELECT count(*) from `data` INNER JOIN `users` on `user_name` = `username` WHERE `username` in (SELECT `followed_username` from social where `follower_username`='$username')";
-        $rs_result = mysqli_query($con, $query);
-        $row = mysqli_fetch_row($rs_result);
-        $total_records = $row[0];
+    <center>
+        <div class="pagination">
+            <?php
+            // $query = "SELECT count(*) from `data` WHERE `username`= '$username'";
+            $query = "SELECT count(*) from `data` INNER JOIN `users` on `user_name` = `username` WHERE `username` in (SELECT `followed_username` from social where `follower_username`='$username')";
+            $rs_result = mysqli_query($con, $query);
+            $row = mysqli_fetch_row($rs_result);
+            $total_records = $row[0];
 
-        echo "</br>";
-        // CALCULATING THE NUMBER OF PAGES
-        $total_pages = ceil($total_records / $per_page_record);
-        
-        // in pagination, show a max of 10 pages. No More!
-        if($total_pages>10){
-            $total_pages=10;
-        }
-        $pageLink = "";
+            echo "</br>";
+            // CALCULATING THE NUMBER OF PAGES
+            $total_pages = ceil($total_records / $per_page_record);
 
-        // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
-        if ($page >= 2) {
-            echo "<a href='feed.php?page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
-        }
-
-        // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
-        for ($i = 1; $i <= $total_pages; $i++) {
-            if ($i == $page) {
-                $pageLink .= "<a class = 'active' href='feed.php?page="
-                    . $i . "'>" . $i . " </a>";
-            } else {
-                $pageLink .= "<a href='feed.php?page=" . $i . "'>" . $i . " </a>";
+            // in pagination, show a max of 10 pages. No More!
+            if ($total_pages > 10) {
+                $total_pages = 10;
             }
-        }
-        echo $pageLink;
+            $pageLink = "";
 
-        // SHOW NEXT BUTTON IF NOT ON LAST PAGE
-        if ($page < $total_pages) {
-            echo "<a href='feed.php?page=" . ($page + 1) . "'>  <span class='neonText'> → </span> </a>";
-        }
-        ?>
-    </div><!--END OF PAGINATION ROW -->
-</center>
+            // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
+            if ($page >= 2) {
+                echo "<a href='feed.php?page=" . ($page - 1) . "'> <span class='neonText'> ← </span> </a>";
+            }
+
+            // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
+            for ($i = 1; $i <= $total_pages; $i++) {
+                if ($i == $page) {
+                    $pageLink .= "<a class = 'active' href='feed.php?page="
+                        . $i . "'>" . $i . " </a>";
+                } else {
+                    $pageLink .= "<a href='feed.php?page=" . $i . "'>" . $i . " </a>";
+                }
+            }
+            echo $pageLink;
+
+            // SHOW NEXT BUTTON IF NOT ON LAST PAGE
+            if ($page < $total_pages) {
+                echo "<a href='feed.php?page=" . ($page + 1) . "'>  <span class='neonText'> → </span> </a>";
+            }
+            ?>
+        </div>
+        <!--END OF PAGINATION ROW -->
+    </center>
 
 
-</div><!-- container div ends -->
+
 </body>
+
 </html>
 
 <?php mysqli_close($con); ?>

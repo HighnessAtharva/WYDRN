@@ -24,7 +24,6 @@ function check_login($con)
             return $user_data;
         }
     }
-
 }
 
 /*
@@ -73,9 +72,9 @@ function mailer_verify_email($recipient)
     $mail->SetFrom("westerospatriot@gmail.com");
     $mail->Subject = "WYDRN - Verify Your Email";
     //mailer body start
-    $mailerbody="<button style='padding:20px;'>";
-    $mailerbody.="<a style='text-decoration: none;' href='localhost/WYDRN/verify.php?link=$hashed_verify'>Click the link below to verify your Account and get access to all the features.</a>";
-    $mailerbody.='</button>';
+    $mailerbody = "<button style='padding:20px;'>";
+    $mailerbody .= "<a style='text-decoration: none;' href='localhost/WYDRN/verify.php?link=$hashed_verify'>Click the link below to verify your Account and get access to all the features.</a>";
+    $mailerbody .= '</button>';
     //mailer body end
     $mail->Body = $mailerbody;
     $mail->AddAddress($recipient);
@@ -87,7 +86,6 @@ function mailer_verify_email($recipient)
         // echo "Message has been sent";
         return 1;
     }
-
 }
 
 /*
@@ -316,14 +314,73 @@ function get_mutual_media_count($user1, $user2)
 // executes the query and returns the first row of the result set.
 function executeSQL($con, $sql)
 {
-  if ($query = mysqli_query($con, $sql)) {
-    $row = mysqli_fetch_array($query);
-    if (isset($row[0])) {
-      return $row[0];
+    if ($query = mysqli_query($con, $sql)) {
+        $row = mysqli_fetch_array($query);
+        if (isset($row[0])) {
+            return $row[0];
+        } else {
+            return '--';
+        }
     } else {
-      return '--';
+        echo mysqli_error($con);
     }
-  } else {
-    echo mysqli_error($con);
-  }
+}
+
+
+function randomImage()
+{
+    $images = [
+        "images/website/assets/abstract/resized/1.jpg",
+        "images/website/assets/abstract/resized/3.jpg",
+        "images/website/assets/abstract/resized/4.jpg",
+        "images/website/assets/abstract/resized/7.jpg",
+        "images/website/assets/abstract/resized/9.jpg",
+        "images/website/assets/abstract/resized/10.jpg",
+        "images/website/assets/abstract/resized/11.jpg",
+        "images/website/assets/abstract/resized/12.jpg",
+        "images/website/assets/abstract/resized/15.jpg",
+        "images/website/assets/abstract/resized/17.jpg",
+        "images/website/assets/abstract/resized/18.jpg",
+        "images/website/assets/abstract/resized/19.jpg",
+        "images/website/assets/abstract/resized/20.jpg",
+        "images/website/assets/abstract/resized/21.jpg",
+        "images/website/assets/abstract/resized/22.jpg",
+        "images/website/assets/abstract/resized/23.jpg",
+        "images/website/assets/abstract/resized/24.jpg",
+        "images/website/assets/abstract/resized/25.jpg",
+        "images/website/assets/abstract/resized/25.jpg",
+        "images/website/assets/abstract/resized/25.jpg",
+        "images/website/assets/abstract/resized/25.jpg",
+        "images/website/assets/abstract/resized/25.jpg",
+        "images/website/assets/abstract/resized/26.jpg",
+        "images/website/assets/abstract/resized/27.jpg",
+        "images/website/assets/abstract/resized/28.jpg",
+        "images/website/assets/abstract/resized/29.jpg",
+        "images/website/assets/abstract/resized/30.jpg",
+        "images/website/assets/abstract/resized/31.jpg",
+        "images/website/assets/abstract/resized/32.jpg",
+        "images/website/assets/abstract/resized/33.jpg",
+        "images/website/assets/abstract/resized/34.jpg",
+        "images/website/assets/abstract/resized/35.jpg",
+        "images/website/assets/abstract/resized/36.jpg",
+        "images/website/assets/abstract/resized/37.jpg",
+        "images/website/assets/abstract/resized/38.jpg",
+        "images/website/assets/abstract/resized/39.jpg",
+        "images/website/assets/abstract/resized/40.jpg",
+        "images/website/assets/abstract/resized/41.jpg",
+        "images/website/assets/abstract/resized/42.jpg",
+        "images/website/assets/abstract/resized/43.jpg",
+        "images/website/assets/abstract/resized/44.jpg",
+        "images/website/assets/abstract/resized/45.jpg",
+        "images/website/assets/abstract/resized/46.jpg",
+        "images/website/assets/abstract/resized/47.jpg",
+        "images/website/assets/abstract/resized/48.jpg",
+        "images/website/assets/abstract/resized/49.jpg",
+        "images/website/assets/abstract/resized/56.jpg",
+        "images/website/assets/abstract/resized/57.jpg",
+        "images/website/assets/abstract/resized/58.jpg",
+    ];
+
+    $rand_keys = array_rand($images, 1);
+    return $images[$rand_keys];
 }
