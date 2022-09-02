@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  BUTTON AT THE TOP TO ALLOW DOWNLOAD CSV EXPORT FILE. SHOWS TABULAR DATA OF RECENTLY ADDED MEDIA FROM THE DATABASE. 
  * @version    PHP 8.0.12
@@ -103,7 +104,6 @@ if (mysqli_num_rows($result) > 0) {
 
     $albumdata .= '</table>';
     $albumdata .= "</div'>";
-
 }
 ?>
 
@@ -149,7 +149,6 @@ if (mysqli_num_rows($result) > 0) {
 
     $moviedata .= '</table>';
     $moviedata .= "</div'>";
-
 }
 ?>
 
@@ -196,7 +195,6 @@ if (mysqli_num_rows($result) > 0) {
 
     $tvdata .= '</table>';
     $tvdata .= "</div'>";
-
 }
 ?>
 
@@ -240,115 +238,123 @@ if (mysqli_num_rows($result) > 0) {
 
     $bookdata .= '</table>';
     $bookdata .= "</div'>";
-
 }
 ?>
 
 
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Export Data for user <?php echo $username; ?></title>
 
     <!-- Bootstrap CSS File  -->
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="../CSS/csv_export.css"/>
+    <link rel="stylesheet" type="text/css" href="../CSS/csv_export.css" />
 
-        <!-- FAVICON -->
-        <link rel="icon" type="image/png" href="../images/website/favicons/favicon-32x32.png" sizes="32x32">
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="../images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="../images/website/favicons/apple-touch-icon.png">
 </head>
+
 <body><br><br>
 
     <div class="container">
 
         <!--  Header  -->
-        <center><div class="row">
-            <div class="col-md-12"><br><br>
-                <h2 class="heading">Export Data Requested by <u><?php echo $username; ?></u></h2>
-                <input type="button" value="Download CSV" onclick="location.href='download_csv.php'">
+        <center>
+            <div class="row">
+                <div class="col-md-12"><br><br>
+                    <h2 class="heading">Export Data Requested by <u><?php echo $username; ?></u></h2>
+                    <input type="button" value="Download CSV" onclick="location.href='download_csv.php'">
+                </div>
             </div>
-        </div></center>
+        </center>
         <!--  /Header  -->
 
-        <br><hr><br>
+        <br>
+        <hr><br>
 
         <center>
-        <!--  PRINTING VIDEOGAME DATA   -->
-        <div class="form-group">
-            <?php if (!empty($gamedata)) {
-    echo $gamedata;
-} else {
-    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+            <!--  PRINTING VIDEOGAME DATA   -->
+            <div class="form-group">
+                <?php if (!empty($gamedata)) {
+                    echo $gamedata;
+                } else {
+                    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
                    <img src='../images/Icons/videogame.svg' class='media-icon'>No videogames added to your account.
                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                    </div>";
-}
+                }
 
-?>
-        </div>
+                ?>
+            </div>
 
 
-        <!--  PRINTING ALBUM DATA   -->
-        <div class="form-group">
-            <?php if (!empty($albumdata)) {
-    echo $albumdata;
-} else {
-    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+            <!--  PRINTING ALBUM DATA   -->
+            <div class="form-group">
+                <?php if (!empty($albumdata)) {
+                    echo $albumdata;
+                } else {
+                    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
                    <img src='../images/Icons/Music.svg' class='media-icon'>No albums added to your account.
                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                    </div>";
-}
+                }
 
-?>
-        </div>
+                ?>
+            </div>
 
-        <!--  PRINTING MOVIE DATA   -->
-        <div class="form-group">
-            <?php if (!empty($movie)) {
-    echo $moviedata;
-} else {
-    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+            <!--  PRINTING MOVIE DATA   -->
+            <div class="form-group">
+                <?php if (!empty($movie)) {
+                    echo $moviedata;
+                } else {
+                    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
                    <img src='../images/Icons/Movie.svg' class='media-icon'>No movies added to your account.
                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                    </div>";
-}
+                }
 
-?>
-        </div>
+                ?>
+            </div>
 
-        <!--  PRINTING TV DATA   -->
-        <div class="form-group">
-            <?php if (!empty($tvdata)) {
-    echo $tvdata;
-} else {
-    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+            <!--  PRINTING TV DATA   -->
+            <div class="form-group">
+                <?php if (!empty($tvdata)) {
+                    echo $tvdata;
+                } else {
+                    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
                    <img src='../images/Icons/TV.svg' class='media-icon'>No tv shows added to your account.
                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                    </div>";
-}
+                }
 
-?>
-        </div>
+                ?>
+            </div>
 
-        <!--  PRINTING BOOK DATA   -->
-        <div class="form-group">
-            <?php if (!empty($bookdata)) {
-    echo $bookdata;
-} else {
-    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
+            <!--  PRINTING BOOK DATA   -->
+            <div class="form-group">
+                <?php if (!empty($bookdata)) {
+                    echo $bookdata;
+                } else {
+                    echo "<div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'>
                    <img src='../images/Icons/Book.svg' class='media-icon'>No books added to your account.
                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                    </div>";
-}
+                }
 
-?>
-        </div>
+                ?>
+            </div>
         </center>
 
 
-    </div> <!--End of container-->
-    </body>
+    </div>
+    <!--End of container-->
+</body>
+
 </html>

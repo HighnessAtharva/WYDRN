@@ -15,8 +15,6 @@ require "header.php";
 require "connection.php";
 require "functions.php";
 
-
-
 $user_data = check_login($con);
 $usermail = $user_data['email'];
 $username = $user_data['user_name'];
@@ -29,6 +27,9 @@ $username = $user_data['user_name'];
     <title>
         WYDRN - Verification
     </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/verify.css">
 </head>
 
@@ -64,7 +65,7 @@ $username = $user_data['user_name'];
             } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($con);
             }
-        } 
+        }
         //if user enters an invalid or missing link.
         else {
             echo "<div class='alert danger-alert'><h3>Invalid Link. Your account remains unverified</h3>
