@@ -10,7 +10,9 @@
 
 session_start();
 if (empty($_SESSION)) {
-    header("Location: ../../login.php");
+    $redirect_url="../../login.php";
+    header("Location: $redirect_url");  
+    die();
 }
 include "../../connection.php";
 include "../../functions.php";
