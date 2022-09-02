@@ -214,10 +214,6 @@ $total_count_post= $row[0];
             ?></a>
             </span>
 
-            
-            
-
-
 <div class="content">
 	<div class="data">
 		<ul>

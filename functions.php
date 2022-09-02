@@ -326,7 +326,7 @@ function executeSQL($con, $sql)
     }
 }
 
-
+//SERVE A RANDOM IMAGE TO THE USER FROM THE ASSETS/ABSTRACT FOLDER 
 function randomImage()
 {
     $images = [

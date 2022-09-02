@@ -76,7 +76,6 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
     <!--Font Awesome Icons-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-   
 
     <!-- Sweet Alert (Beautiful looking alert plugin-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -111,15 +110,19 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
                 <div class="d-flex justify-content-between align-items-center mb-3">
                 <legend><h4 class="text-right">Profile Settings</h4></legend>
                     </div>
-
+                    <!--USERNAME-->
                     <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" value="<?php echo strtoupper($username); ?>" readonly></div>
 
+                    <!--ACTIVE OR NOT-->
                     <div class="col-md-12"><label class="labels">User Status</label><input type="text" class="form-control" value="<?php echo $active_or_not; ?>" readonly></div>
 
+                    <!--VERIFIED OR NOT-->
                     <div class="col-md-12"><label class="labels">Verified Status</label><input type="text" class="form-control" value="<?php echo $verified_or_not; ?>" readonly></div>
 
+                    <!--MEMBER SINCEE-->
                     <div class="col-md-12"><label class="labels">Member Since</label><input type="text" class="form-control" value="<?php echo $account_birthday; ?>" readonly></div>
 
+                    <!--PUBLIC PROFILE URL-->
                     <div class="col-md-12"><label class="labels">Public Profile Link</label><input type="text" class="form-control" value="<?php echo $public_profile_link; ?>" readonly></div>
                 </fieldset>
                 </div>
@@ -135,19 +138,18 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
                         <fieldset>
                             <legend> Customize Profile</legend>
                             <br><br>
-
+                            <!--CHANGE PROFILE PIC-->
                             <span class="text">Change Profile Photo</span><br>
                             <label class="input-button-label"><input type="file" id="pfpinput" name="PFP" accept="image/png, image/gif, image/jpeg" onchange="previewFile(this);" /></label>
                             <img id="pfp-preview" src="images/website/preview.jpg" alt="" style="width:50px; height:50px; border-radius:50%;">
                             <br><br>
 
+                            <!--CHANGE BANNER PHOTO-->
                             <span class="text">Change Banner Photo</span><br>
                             <label class="input-button-label"><input type="file" id="bginput" name="BgImage" accept="image/png, image/gif, image/jpeg" /></label><br><br>
                             <input type="submit" value="Update Profile" class="btn btn-success" name="save_profile">
-
                         </fieldset>
                     </form>
-
                     <br><br>
 
                     <!-- TO DELETE ACCOUNT PERMANENTLY -->
@@ -195,7 +197,7 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
             window.history.replaceState(null, null, window.location.href);
         }
 
-
+        // allow user to preview the uploaded pic
         function previewFile(input) {
             var file = $("input[type=file]").get(0).files[0];
             if (file) {
@@ -207,7 +209,7 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
             }
         }
 
-
+        // to check if profile pic or background pic is uploaded or not. If user is pressing the update button without uploading any pics, throw a sweet alert. 
         function Validation() {
             let pfpfile = document.getElementById("pfpinput").value;
             let bgfile = document.getElementById("bginput").value;
@@ -257,31 +259,35 @@ if (isset($_POST['save_profile'])) {
      ******************/
     if (is_uploaded_file($_FILES['PFP']['tmp_name'])) {
 
-        $PFPName = date("his") . $_FILES["PFP"]["name"]; //profile picture
-
+        $PFPName = date("his") . $_FILES["PFP"]["name"]; //profile picture with prefixed current timestamp
         $PFPName = str_replace(' ', '', $PFPName); //remove any whitespaces
-        $target_file = $target_dir . basename($PFPName);
+        $target_file = $target_dir . basename($PFPName); //path to store
 
         $file_type = $_FILES['PFP']['type']; //returns the mimetype
         $allowed = array("image/jpeg", "image/gif", "image/png");
 
         $msg_class = "";
 
+        //check for file format
         if (!in_array($file_type, $allowed)) {
             $msg = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             $msg_class = "alert-danger";
         }
 
+        //check for file size
         if ($_FILES['PFP']['size'] > 1024000) {
             $msg = "Image size should not be greater than 1 MB";
             $msg_class = "alert-danger";
         }
 
+
+        // check for duplicate file.
         if (file_exists($target_file)) {
             $msg = "File already exists";
             $msg_class = "alert-danger";
         }
 
+        // if no errors are encountered
         if ($msg_class == "") {
             if (move_uploaded_file($_FILES["PFP"]["tmp_name"], $target_file)) {
 
@@ -313,7 +319,7 @@ if (isset($_POST['save_profile'])) {
             }
         } // end of if(msg=="")
 
-        // if(msg!="") we print the relevant message.
+        // if(msg!="") we print the relevant ERORR MESSAGE
         else {
             echo ("<center><div class='alert alert-danger w-25 text-center alert-dismissible fade show' style='position: absolute; top: 75px; left: 570px; width:500px;' role='alert'>
                 "
@@ -328,7 +334,7 @@ if (isset($_POST['save_profile'])) {
     FOR BACKGROUND IMAGE 
      ******************/
     if (is_uploaded_file($_FILES['BgImage']['tmp_name'])) {
-        $BGName = date("his") . $_FILES["BgImage"]["name"]; //background image
+        $BGName = date("his") . $_FILES["BgImage"]["name"]; //background image with prefixed current timestamp
         $BGName = str_replace(' ', '', $BGName); //remove any whitespaces
         $target_file2 = $target_dir . basename($BGName);
 
@@ -337,15 +343,18 @@ if (isset($_POST['save_profile'])) {
 
         $msg2 = "";
 
+        //check for file type
         if (!in_array($file_type2, $allowed)) {
             $msg2 = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             $msg_class = "alert-danger";
         }
 
+        //check for file size
         if ($_FILES['BgImage']['size'] > 1024000) {
             $msg2 = "Image size should not be greater than 1MB";
         }
 
+        //check for file destination
         if (file_exists($target_file2)) {
             $msg2 = "File already exists";
         }
@@ -363,9 +372,8 @@ if (isset($_POST['save_profile'])) {
                         unlink($bg_pic_old);
                     }
                 }
+
                 // ADDING CONTENT ABOVE TO AUTOMATICALLY DELETE PREVIOUSLY STORED BACKGROUND BANNER WHEN A NEW ONE IS UPLOADED
-
-
                 $sql = "UPDATE users SET `background_pic` = '$target_file2' WHERE user_name='$username'";
                 if (mysqli_query($con, $sql)) {
                     echo ("<center><div class='alert alert-success w-25 text-center alert-dismissible fade show' style='position: absolute; top: 150px; left: 570px;width:fit-content;' role='alert'>

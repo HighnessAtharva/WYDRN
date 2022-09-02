@@ -255,6 +255,12 @@ if ($query = mysqli_query($con, $sql)) {
   echo mysqli_error($con);
 }
 
+/*
+STORE STATS DATA.
+[0] -> STAT NAME,
+[1] -> STAT COUNT,
+[2] -> STAT ICON
+*/
 
 $data = array(
   array("Media Count", $total_media_count, "images/Icons/trophy.svg"),
@@ -299,9 +305,6 @@ $data = array(
 
 
   <!-- CSS -->
-
-
-
   <link rel="stylesheet" href="css/others/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="css/others/bootstrap-grid.min.css">
   <link rel="stylesheet" href="css/others/magnific-popup.css">
@@ -352,7 +355,6 @@ $data = array(
 
                 <!--Circle -->
                 <div class="circle">
-
                   <div class="counter"><?php echo $row[1] ?></div>
                 </div>
 
@@ -370,8 +372,7 @@ $data = array(
       <!--Wrapper Stuff-->
     </div>
 
-
-    <!-- SITEWIDE STATS END -->
+  <!-- SITEWIDE STATS END -->
   </div>
 
 
@@ -386,10 +387,7 @@ $data = array(
           <div class="col-12">
             <div class="main__title">
               <h2>Users</h2>
-
               <span class="main__title-stat">Total <?php echo count($userlist); ?> Registered Members</span>
-
-
             </div>
           </div>
           <!-- end main title -->
@@ -410,37 +408,42 @@ $data = array(
 
 
                 <!-- 
-                            "uid" => $uid, 
-                            "user_name" => $uname, 
-                            "profile_pic" => $pfp, 
-                            "email" => $emailadd,
-                            "date" => $date, 
-                            "verified" => $verified, 
-                            "active" => $active 
-                        -->
+                  "uid" => $uid, 
+                  "user_name" => $uname, 
+                  "profile_pic" => $pfp, 
+                  "email" => $emailadd,
+                  "date" => $date, 
+                  "verified" => $verified, 
+                  "active" => $active 
+                -->
 
                 <tbody>
                   <?php
                   foreach ($userlist as $user) {
                   ?>
                     <tr>
+                      <!--User ID-->
                       <td>
                         <div class="main__table-text"><?php echo $user['uid'] ?></div>
                       </td>
                       <td>
                         <div class="main__user">
+                          <!--User Profile Pic-->
                           <div class="main__avatar">
                             <img src="<?php echo $user['profile_pic'] ?>" width="50px" height="40px" alt="">
                           </div>
+                          <!--Username and Email-->
                           <div class="main__meta">
                             <h3><?php echo $user['user_name'] ?></h3>
                             <span><?php echo $user['email'] ?></span>
                           </div>
                         </div>
                       </td>
+                      <!--Date of Joining-->
                       <td>
                         <div class="main__table-text"><?php echo printable_date($user['date']) ?></div>
                       </td>
+                      <!--User Verification Status (If 1, set text as Green otherwise set as Red-->
                       <td>
                         <?php
                         if ($user['verified'] == 1) {
@@ -461,6 +464,7 @@ $data = array(
                             ?>
                             </div>
                       </td>
+                      <!--User Active Status. If 1, show text as Green otherwise show text as Red.-->
                       <td>
                         <?php
                         if ($user['active'] == 1) {
@@ -483,13 +487,17 @@ $data = array(
                       </td>
 
                       <td>
+                        <!--BUTTONS-->
                         <div class="main__table-btns">
+                          <!--VIEW PROFILE-->
                           <a href="profile.php?user_name=<?php echo $user['user_name'] ?>" class="main__table-btn main__table-btn--banned">
                             <i class="fa-solid fa-user"></i>
                           </a>
+                          <!--VIEW STATS-->
                           <a href="stats.php?user_name=<?php echo $user['user_name'] ?>" class="main__table-btn main__table-btn--edit">
                             <i class="fa-solid fa-chart-simple"></i>
                           </a>
+                          <!--DELETE USER-->
                           <a href="#modal-delete" class="main__table-btn main__table-btn--delete open-modal">
                             <i class="fa-solid fa-trash"></i>
                           </a>
@@ -515,9 +523,7 @@ $data = array(
     <!-- modal delete -->
     <div id="modal-delete" class="zoom-anim-dialog mfp-hide modal">
       <h6 class="modal__title">User delete</h6>
-
       <p class="modal__text">Are you sure to permanently delete this user?</p>
-
       <div class="modal__btns">
         <button class="modal__btn modal__btn--apply" onclick=<?php echo "window.location.href='delete_user_confirm.php?user_name=" . $user['user_name'] . "'" ?> type="button">Delete</button>
         <button class="modal__btn modal__btn--dismiss" type="button">Dismiss</button>

@@ -67,6 +67,8 @@ $username = $user_data['user_name'];
     }
 
     $start_from = ($page - 1) * $per_page_record;
+    
+    //select records of users followed by the logged in user where at least one media is logged
     $sql = "SELECT `username`, `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`, `datetime`, `profile_pic` from `data` INNER JOIN `users` on `user_name` = `username` WHERE `username` in (SELECT `followed_username` from social where `follower_username`='$username') AND (`videogame` !='' OR `album`!='' OR `book`!='' OR `movie`!='' OR `tv`!='')  ORDER BY `datetime` DESC LIMIT $start_from, $per_page_record;";
     if ($query = mysqli_query($con, $sql)) {
         if (mysqli_num_rows($query) > 0) {
@@ -97,6 +99,9 @@ $username = $user_data['user_name'];
                     // echo "You are all caught up!";
 
                 } else {
+                    //if data is valid then we print the plx-card-gold
+
+                    //to convert the database dateimte object into a prinatable user-friendly format.
                     $mydate = date("j", strtotime($datetime));
                     $month = date("M", strtotime($datetime));
                     $time = date("g:i", strtotime($datetime));
@@ -106,10 +111,16 @@ $username = $user_data['user_name'];
     ?>
 
                     <div class="plx-card gold">
+                        <!--Background image-->
                         <div class="pxc-bg" style="background-image:url('<?php echo randomImage() ?>')"> </div>
+                        
+                        <!--User profile pic-->
                         <div class="pxc-avatar"><img src="<?php echo $profile_pic ?>" width="240px" height="240px" /></div>
                         <div class="pxc-stopper"> </div>
+                        <!--ACTUAL CARD CONTAINING DATA-->
                         <div class="pxc-subcard myrow">
+
+                            <!--COLUMN 1 CONTAINS LOGGED ACTIVITIES-->
                             <div class="mycolumn1">
                                 <div class="pxc-title"><a class="uname" href="<?php echo 'profile.php?user_name=' . $person ?>"><?php echo $person ?></a></div>
 
@@ -134,6 +145,7 @@ $username = $user_data['user_name'];
                                 <?php } ?>
 
                             </div>
+                            <!--COLUMN 2 SHOWS PRINTABLE DATE-->
                             <div class="mycolumn2">
                                 <div class="date">
                                     <p><?php echo $mydate ?><span><?php echo $month ?></span></p>
@@ -151,6 +163,7 @@ $username = $user_data['user_name'];
                 } //else ends
             }
         } else {
+            //MESSAGE TO BE SHOWN WHEN THE FEED IS EMPTY.
             echo "<center><p style='color:black; padding: 20px; width:fit-content; background-color:white;'> EMPTY FEED. YOU ARE SUCH A LONER!</p><br>
         <a href='search_users.php' style='color:white;padding: 10px; border-radius:5px;background-color:green; text-decoration:none; '>FOLLOW MORE PEOPLE</a></center>";
         }
@@ -205,10 +218,6 @@ $username = $user_data['user_name'];
         <!--END OF PAGINATION ROW -->
     </center>
 
-
-
 </body>
-
 </html>
-
 <?php mysqli_close($con); ?>

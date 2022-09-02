@@ -55,6 +55,7 @@ $username = $user_data['user_name'];
 
         if ($_GET['link'] == md5($user_data['user_name'])) {
             $sql = "UPDATE users SET `verified` = '1' WHERE user_name='$username'";
+            //succcess message
             if (mysqli_query($con, $sql)) {
                 echo "<div class='alert success-alert'><h3>Your account is now verified</h3>
             <a href='profile.php'>Click here</a> to visit your profile.
@@ -62,7 +63,9 @@ $username = $user_data['user_name'];
             } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($con);
             }
-        } else {
+        } 
+        //if user enters an invalid or missing link.
+        else {
             echo "<div class='alert danger-alert'><h3>Invalid Link. Your account remains unverified</h3>
         </div>";
         }

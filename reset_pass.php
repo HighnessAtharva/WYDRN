@@ -13,10 +13,12 @@
 
 require("connection.php");
 
+//page will only serve data when the key and reset parameters are set
 if (isset($_GET['key']) && isset($_GET['reset'])) {
   $email = $_GET['key'];
   $pass = $_GET['reset'];
 
+  //select the email and the passsword of the current user
   $select = mysqli_query($con, "select `email`, `password` from `users` where `email`='$email' and `password`='$pass'");
   if (mysqli_num_rows($select) == 1) {
 ?>
@@ -66,7 +68,7 @@ if (isset($_GET['key']) && isset($_GET['reset'])) {
 
                   <input type="hidden" class="sign__input" name="email" value="<?php echo $email; ?>">
 
-
+                  <!--INPUT FIELD TO ACCEPT THE NEW PASS FROM THE USER-->
                   <div class="sign__group">
                     <input type="password" id="pass" name='password' class="sign__input" placeholder="Enter new password" required>
                   </div>
@@ -92,6 +94,7 @@ if (isset($_GET['key']) && isset($_GET['reset'])) {
       <script src="js/utility.js"></script>
 
       <script>
+        //toggle password visibility.
         function showPass() {
           var x = document.getElementById("pass");
           if (x.type === "password") {
@@ -101,9 +104,8 @@ if (isset($_GET['key']) && isset($_GET['reset'])) {
           }
         }
 
-
+        //check if password is not empty or password is of valid length
         function validation() {
-
           var password = document.getElementById("pass").value;
           if (password.length < 8 || password.length > 30) {
             //sweet alert plugin to display error message. IT REPLACES the JS alert() function.

@@ -63,7 +63,8 @@ if (isset($_GET['userdate'])) {
                 if (!empty($date_selected)) {
                     echo " on " . printable_date($date_selected);
                 }
-                ?></h1>
+                ?>
+            </h1>
 
             <!--To Allow Users to Filter Date Wise -->
             <form method="get" name="dateselect" action="diary.php">
@@ -138,6 +139,7 @@ if (isset($_GET['userdate'])) {
                                                 <div class="timeline-date wow fadeInLeft" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInLeft;">
                                                     <p class='my-date'><?php echo $datetime; ?></p>
                                                 </div>
+                                                <!--ONE ENTIRE DIARY ENTRY TOWARDS THE RIGHT OF THE TIMELINE-->
                                                 <div class="row">
 
                                                     <?php
@@ -235,8 +237,6 @@ if (isset($_GET['userdate'])) {
                             }
                                 ?>
 
-
-
                             <!-- END OF Single Timeline Content and end of wrapper section-->
                         </div>
                     </div>
@@ -247,8 +247,7 @@ if (isset($_GET['userdate'])) {
 
 
         <?php
-        //PAGINATION FOR THE DIARY
-        
+        //PAGINATION FOR THE DIARY        
         //Only show the pagination if filtering is not done.
         if (empty($date_selected)) {
         ?>

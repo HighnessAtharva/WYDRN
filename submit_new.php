@@ -21,6 +21,7 @@ if(isset($_POST['email']) && $_POST['password'] && $_POST['submit_password']){
       die;
     }
   
+
     $pass=password_hash($pass, PASSWORD_DEFAULT);
   
     $result=mysqli_query($con, "update users set password='$pass' where email='$email'");
@@ -28,6 +29,7 @@ if(isset($_POST['email']) && $_POST['password'] && $_POST['submit_password']){
     if ($result){
     echo "Password Changed Successfully. Redirecting you to Login Page in 5 seconds";
     sleep(5);
+    //set logout=true which will be dealt with on the login page.
     header("Location: login.php?logout=true");
     }else{
       echo "Error in Changing Password";

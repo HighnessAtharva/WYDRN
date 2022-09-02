@@ -82,7 +82,6 @@ if (isset($_GET['book'])) {
 <?php
 /******************  
  * TO DISPLAY MOVIES LOGGED BY THE USER IN A SINGLE PAGE TABULAR FORM.
- * 
  * ******************/
 if (isset($_GET['movie'])) {
   $sql = "SELECT `movie`, `year`, `date` FROM `data` where movie != '' and username='$username' GROUP BY `movie`";
@@ -122,7 +121,6 @@ if (isset($_GET['movie'])) {
 <?php
 /******************  
  * TO DISPLAY TV SHOWS LOGGED BY THE USER IN A SINGLE PAGE TABULAR FORM.
- * 
  * ******************/
 if (isset($_GET['tv'])) {
   $sql = "SELECT `tv`, `streaming`, `date` FROM `data` where tv != '' and username='$username' GROUP BY `tv`";
@@ -163,7 +161,6 @@ if (isset($_GET['tv'])) {
 <?php
 /******************  
  * TO DISPLAY ALBUMS LOGGED BY THE USER IN A SINGLE PAGE TABULAR FORM.
- * 
  * ******************/
 if (isset($_GET['album'])) {
   $sql = "SELECT `album`, `artist`, `date` FROM `data` where album != '' and username='$username' GROUP BY `album`";
@@ -200,11 +197,9 @@ if (isset($_GET['album'])) {
 ?>
 
 
-
 <?php
 /******************  
- * TO DISPLAY Videogames LOGGED BY THE USER IN A SINGLE PAGE TABULAR FORM.
- * 
+ * TO DISPLAY Videogames LOGGED BY THE USER IN A SINGLE PAGE TABULAR FORM. 
  * ******************/
 if (isset($_GET['videogame'])) {
   $sql = "SELECT `videogame`, `platform`, `date` FROM `data` where videogame != '' and username='$username' GROUP BY `videogame`";

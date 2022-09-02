@@ -58,7 +58,6 @@ $count = $row[0];
       <ul class="follow-ul">
          
          <?php
-            
             $sql2="SELECT `follower_username`, `profile_pic` from `social` s LEFT JOIN `users` u ON s.follower_username=u.user_name where followed_username='$follower'";
             $result = mysqli_query($con, $sql2);
             if(mysqli_num_rows($result) > 0){
@@ -67,6 +66,7 @@ $count = $row[0];
    
                   <!-- DYNAMICALLY THE LIST OF ALL FOLLOWERS WITH PROFILE PIC AND LINK TO THEIR PROFILES -->
                   <li class='follow-li'>
+                     <!--USERNAME-->
                      <?php $profile_link="profile.php?user_name=".$row['follower_username'];?>
                      <a class="follow-a" href=<?php echo $profile_link; ?>>
                         <div class="flex-container" style="vertical-align:middle;">

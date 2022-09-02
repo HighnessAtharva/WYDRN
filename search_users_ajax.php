@@ -36,7 +36,7 @@ if (isset($_POST['search'])) {
                if ($result["user_name"]) {
                ?>
 
-
+                  
                   <a class="list-item" href=profile.php?user_name=<?php echo $result['user_name'] ?>>
                      <div class="list-item__avatar">
                         <img src="<?php echo $result['profile_pic'] ?>">

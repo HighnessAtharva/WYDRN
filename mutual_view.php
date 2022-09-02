@@ -23,7 +23,7 @@ if (isset($_GET['user_name'])) {
     $me = $user_data['user_name'];
 }
 
-
+//to show in the animated progress/color wheel
 function determineColor($value)
 {
     $color = "";
@@ -44,6 +44,7 @@ function determineColor($value)
     return $color;
 }
 
+//to get the number of rows returned by any query
 function SQLGetCount($con, $sql)
 {
     if ($query = mysqli_query($con, $sql)) {
@@ -54,7 +55,7 @@ function SQLGetCount($con, $sql)
 }
 
 
-
+//count of media items for the logged in user
 $videogamecount_me = SQLGetCount($con, "SELECT DISTINCT videogame FROM data WHERE username='$me' AND videogame != ''");
 $moviecount_me = SQLGetCount($con, "SELECT DISTINCT movie FROM data WHERE username='$me' AND movie != ''");
 $musiccount_me = SQLGetCount($con, "SELECT DISTINCT album FROM data WHERE username='$me' AND album != ''");
@@ -62,13 +63,12 @@ $bookcount_me = SQLGetCount($con, "SELECT DISTINCT book FROM data WHERE username
 $tvcount_me = SQLGetCount($con, "SELECT DISTINCT tv FROM data WHERE username='$me' AND tv != ''");
 
 
-
+//count of media items for the other user
 $videogamecount_other = SQLGetCount($con, "SELECT videogame FROM data WHERE username='$otheruser' AND videogame!=''");;
 $moviecount_other = SQLGetCount($con, "SELECT movie FROM data WHERE username='$otheruser' AND movie!=''");;
 $musiccount_other = SQLGetCount($con, "SELECT album FROM data WHERE username='$otheruser' AND album!=''");
 $bookcount_other = SQLGetCount($con, "SELECT book FROM data WHERE username='$otheruser' AND book!=''");;
 $tvcount_other = SQLGetCount($con, "SELECT tv FROM data WHERE username='$otheruser' AND tv!=''");;
-
 
 
 $videogamecount_mutual = SQLGetCount(
@@ -77,6 +77,7 @@ $videogamecount_mutual = SQLGetCount(
 INTERSECT
 SELECT LOWER(videogame) FROM data WHERE username='$otheruser'  AND videogame != ''"
 );
+
 
 $moviecount_mutual = SQLGetCount(
     $con,
@@ -130,7 +131,7 @@ if ($tvcount_other == 0) {
 }
 
 
-
+//calculate mutal media percentage
 $mutual_game_percentage = round(($videogamecount_mutual / $videogamecount_other) * 100);
 $mutual_movie_percentage = round(($moviecount_mutual / $moviecount_other) * 100);
 $mutual_music_percentage = round(($musiccount_mutual / $musiccount_other) * 100);
@@ -156,11 +157,9 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
     <!--Bootstrap Link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
-
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
 
-    
     <link href="css/mutual_view.css" rel="stylesheet">
 </head>
 
@@ -171,8 +170,6 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
     --------------------------------------------->
 
     <h1>Mutual View for <?php echo ($me . " & " . $otheruser) ?></h1>
-
-
     <div class="media-item-div" id="mutualGenericBtn">
         <h2 class="mutual-media-title">Total Mutual Media</h2><br>
         <h3 class="mutual-media-subtitle"><?php echo (get_mutual_media_count($me, $otheruser)[5]); ?></h3>

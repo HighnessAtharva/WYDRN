@@ -23,6 +23,7 @@ $user_data = check_login($con);
 $follower=$user_data['user_name']; // the person who is logged in
 $to_follow=$_GET['user_name'];  // the person who is being followed
 
+//AS LONG AS THE USERNAME TO FOLLOW IS NOT THE LOGGED IN USERS NAME.
 if($to_follow!=$follower){
  
       // query to check if the user to follow exists in user database.
@@ -57,7 +58,7 @@ if($to_follow!=$follower){
          header("Location: profile.php?user_name=".$to_follow);
    }
       else{
-      echo "Cannot follow yourself dummy";
+      // echo "Cannot follow yourself dummy";
       die; 
       }
 }
