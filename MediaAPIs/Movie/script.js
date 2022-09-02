@@ -131,7 +131,7 @@ function displayMovieDetails(details) {
             <div class="description">
                 <div class="column1">
                     <span class="tag">${genres}</span><br><br>
-                    <span class="tag">Language: ${languageNames.of(details['original_language'])}</span>
+                    <span class="tag">${languageNames.of(details['original_language'])}</span>
                 </div>
                 <!-- end column1 -->
 
