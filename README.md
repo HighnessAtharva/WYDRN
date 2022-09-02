@@ -46,4 +46,4 @@ The site is not deployed currently so you can't get a live preview but you can t
 - https://www.webfx.com/blog/web-design/20-html-best-practices-you-should-follow/
 - Use Descriptive Meta Tags
 - All image tags must be self-closed
-- 
+- Minify CSS files using https://www.cssportal.com/css-optimize/
