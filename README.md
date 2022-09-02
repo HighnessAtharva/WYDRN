@@ -39,3 +39,11 @@ The site is not deployed currently so you can't get a live preview but you can t
 - Diary and Export CSV pages will show a blank row when the last modified change done by the user is a clear profile page.
 - On Browse Movies and TV pages sometimes the movie details will not load after making a selection from the dropdown.
 - PDF exports are not UTF-8 safe.
+
+## ToDo Checks
+- All images must have alternate text
+- All HTML files must have responsive meta tag and html headers and titles
+- https://www.webfx.com/blog/web-design/20-html-best-practices-you-should-follow/
+- Use Descriptive Meta Tags
+- All image tags must be self-closed
+- 
