@@ -52,8 +52,7 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
        			                HTML PART
 ------------------------------------------------------------------------------------->
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

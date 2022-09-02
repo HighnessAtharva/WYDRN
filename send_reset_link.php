@@ -23,8 +23,8 @@ require("functions.php");
                              HTML PART
 ------------------------------------------------------------------------------------->
 
-<html>
-<!-- Head begins -->
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">

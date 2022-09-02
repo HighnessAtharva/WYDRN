@@ -22,7 +22,8 @@ $usermail = $user_data['email'];
 $username = $user_data['user_name'];
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <title>

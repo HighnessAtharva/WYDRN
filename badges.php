@@ -183,7 +183,7 @@ const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">

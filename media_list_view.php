@@ -21,7 +21,8 @@ $username = $user_data['user_name'];
 
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <link href="css/media_list_view.css" rel="stylesheet">

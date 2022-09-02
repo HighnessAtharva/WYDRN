@@ -10,7 +10,8 @@
 
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <title>Privacy Policy</title>
