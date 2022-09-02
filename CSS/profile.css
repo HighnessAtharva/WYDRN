@@ -1,39 +1,24 @@
-/*
-
-DESCRIPTION: CSS STYLING FOR THE PROFILE PAGE GOES HERE.
-
-*/
-
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 body,
 html {
     margin: 0;
-    padding: 0;
+    padding: 0
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 8px
 }
 
-
-/* Track */
-
- ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+::-webkit-scrollbar-track {
+    background: #f1f1f1
 }
 
-
-/* Handle */
-
- ::-webkit-scrollbar-thumb {
-    background: #888;
+::-webkit-scrollbar-thumb {
+    background: #888
 }
 
-
-/* Handle on hover */
-
- ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+::-webkit-scrollbar-thumb:hover {
+    background: #555
 }
 
 body {
@@ -45,62 +30,61 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* no selectable text */
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-    font-family: "Open Sans", Helvetica, sans-serif;
+    font-family: "Open Sans", Helvetica, sans-serif
 }
 
 .follow-icon {
     width: 1.5em;
     height: 1.5em;
     display: inline-block;
-    margin-left: 0.8em;
-    margin-bottom: 0.6em;
+    margin-left: .8em;
+    margin-bottom: .6em
 }
 
 .unfollow-icon {
     width: 1.5em;
     height: 1.5em;
     display: inline-block;
-    margin-left: 0.8em;
-    margin-bottom: 0.6em;
+    margin-left: .8em;
+    margin-bottom: .6em
 }
 
 .clear-icon {
     width: 1.5em;
     height: 1.5em;
     display: inline-block;
-    margin-left: 0.8em;
-    margin-bottom: 0.6em;
+    margin-left: .8em;
+    margin-bottom: .6em
 }
 
 a:link {
-    color: black;
-    text-decoration: none;
+    color: #000;
+    text-decoration: none
 }
 
 .top {
     position: fixed;
     top: 20px;
-    left: 20px;
+    left: 20px
 }
 
 .get-mutual {
-    color: #3399FF;
+    color: #39F;
     font-family: "Open Sans", Helvetica, sans-serif;
     font-size: 10pt;
-    background-color: #ffffff;
+    background-color: #fff;
     border: 1px solid;
-    border-color: #3399FF;
+    border-color: #39F;
     border-radius: 3px;
     width: 85px;
     height: 30px;
     position: absolute;
     top: 50px;
     left: 50px;
-    cursor: hand;
+    cursor: hand
 }
 
 #header {
@@ -110,22 +94,19 @@ a:link {
     height: 150px;
     background-size: cover;
     background-position: center center;
-    transition: all 0.08s linear;
+    transition: all .08s linear;
     z-index: -1;
-    position: relative;
+    position: relative
 }
 
 #profile {
-    /* width: 50vw;
-        max-width: 450px;
-        min-width: 300px; */
     width: clamp(300px, 50vw, 450px);
     min-height: 300px;
-    background: white;
+    background: #fff;
     position: relative;
     box-sizing: border-box;
     padding-top: 40px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif
 }
 
 #activity {
@@ -136,39 +117,39 @@ a:link {
     max-width: 500px;
     overflow: auto;
     padding-left: 25px;
-    padding-top: 0.5em;
+    padding-top: .5em
 }
 
 .follow-button {
-    color: #3399FF;
+    color: #39F;
     font-family: "Open Sans", Helvetica, sans-serif;
     font-size: 10pt;
-    background-color: #ffffff;
+    background-color: #fff;
     border: 1px solid;
-    border-color: #3399FF;
+    border-color: #39F;
     border-radius: 3px;
     width: 85px;
     height: 30px;
     position: absolute;
     top: 50px;
     left: 50px;
-    cursor: hand;
+    cursor: hand
 }
 
 .follow-button:hover {
-    background-color: rgb(30, 255, 0);
-    color: white;
+    background-color: #1eff00;
+    color: #fff
 }
 
 #profile .image {
     position: absolute;
-    border: 3px solid black;
+    border: 3px solid #000;
     top: -55px;
     left: 20px;
     height: 80px;
     width: 80px;
     border-radius: 10px;
-    background-color: black;
+    background-color: #000
 }
 
 #profile .image img {
@@ -178,112 +159,112 @@ a:link {
     overflow: auto;
     margin: auto;
     margin-left: -2px;
-    margin-top: -2px;
+    margin-top: -2px
 }
 
 #profile .name {
     font-size: 1.3rem;
     font-weight: 500;
-    color: #444;
+    color: #444
 }
 
 #profile .nickname {
     color: #888;
-    font-size: 0.9rem;
-    padding-bottom: 5px;
+    font-size: .9rem;
+    padding-bottom: 5px
 }
 
 #profile .location {
     color: #555;
-    font-size: 0.9rem;
-    padding-left: 0px;
+    font-size: .9rem;
+    padding-left: 0;
     position: relative;
-    left: -5px;
+    left: -5px
 }
 
 #profile .location .material-icons {
     position: relative;
     top: 3px;
-    font-size: 1rem;
+    font-size: 1rem
 }
 
 #logout {
-    color: black;
+    color: #000;
     position: fixed;
     top: 1em;
     right: 1em;
     padding: 10px;
-    background-color: white;
-    cursor: pointer;
+    background-color: #fff;
+    cursor: pointer
 }
 
 #add-data {
-    color: black;
+    color: #000;
     position: fixed;
     top: 1em;
     left: 1em;
     padding: 10px;
-    background-color: white;
-    cursor: pointer;
+    background-color: #fff;
+    cursor: pointer
 }
 
 #user-font {
     font-family: "Open Sans", Helvetica, sans-serif;
     font-size: 32px;
-    color: #000000;
+    color: #000;
     font-variant: small-caps;
     text-align: center;
-    font-weight: bold;
-    padding-left: 25px;
+    font-weight: 700;
+    padding-left: 25px
 }
 
 #following {
-    background-color: pink;
+    background-color: #ffc0cb;
     padding: 2px;
-    margin-bottom: 0px;
+    margin-bottom: 0
 }
 
 #following-count {
     padding-left: 30px;
-    background-color: pink;
+    background-color: #ffc0cb
 }
 
 #follower {
-    background-color: skyblue;
+    background-color: #87ceeb;
     padding: 2px;
-    margin-bottom: 0px;
+    margin-bottom: 0
 }
 
 #follower-count {
     padding-left: 30px;
-    background-color: skyblue;
+    background-color: #87ceeb
 }
 
 .shadow {
-    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 10px
 }
 
 .overflow {
-    overflow: hidden;
+    overflow: hidden
 }
 
 .bottom {
-    margin-top: 2px;
+    margin-top: 2px
 }
 
 .count {
-    color: black;
+    color: #000;
     font-family: 'Open Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
+    font-size: .9rem;
+    font-weight: 700
 }
 
 .data {
     margin-top: .7em;
     color: #81878b;
     margin-bottom: 2px;
-    border-bottom: 3px solid #f9dd94;
+    border-bottom: 3px solid #f9dd94
 }
 
 .data li {
@@ -292,11 +273,11 @@ a:link {
     display: inline-block;
     font-size: 1.5em;
     font-family: "Open Sans", Helvetica, sans-serif;
-    border-right: solid 1px #bdc3c7;
+    border-right: solid 1px #bdc3c7
 }
 
 .data li:last-child {
-    border: none;
+    border: none
 }
 
 .data li span {
@@ -305,5 +286,5 @@ a:link {
     font-family: "Open Sans", Helvetica, sans-serif;
     font-size: .5em;
     margin-top: .2em;
-    font-weight: 700;
+    font-weight: 700
 }

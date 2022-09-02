@@ -97,5 +97,3 @@ hr.image {
     grid-column: 2/-1;
     background: rgb(255, 198, 198)
 }
-
-.article:nth-child(2)::after {}

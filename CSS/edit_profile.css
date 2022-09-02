@@ -1,23 +1,23 @@
 fieldset {
-    background-color: #eeeeee;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    background-color: #eee;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 15px 12px
 }
 
 legend {
     background-color: gray;
-    color: white;
-    padding: 5px 10px;
+    color: #fff;
+    padding: 5px 10px
 }
 
 input {
-    margin: 5px;
+    margin: 5px
 }
 
 .font-weight-bold {
     margin-top: 10px;
     text-transform: uppercase;
     font-weight: bolder;
-    font-size: larger;
+    font-size: larger
 }
 
 body {
@@ -25,60 +25,51 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     font-family: "Open Sans", Helvetica, sans-serif;
-    background: rgb(99, 39, 120)
+    background: #632778
 }
 
 legend {
     font-size: 20px;
-    background-color: rgb(99, 39, 120);
-    color: white;
-    border-radius: 2px;
+    background-color: #632778;
+    color: #fff;
+    border-radius: 2px
 }
 
 .input-button-label {
     font-size: 12px;
-    border-radius: 2px;
+    border-radius: 2px
 }
 
 .text {
-    font-size: 15px;
+    font-size: 15px
 }
 
 input[type=text] {
-    background-color: white;
+    background-color: #fff
 }
 
 fieldset {
-    border: 1px solid rgb(202, 202, 202);
+    border: 1px solid #cacaca;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 5px;
-    background-color: #f5ebff;
+    background-color: #f5ebff
 }
 
-::-webkit-scrollbar {
-    width: 8px;
+ ::-webkit-scrollbar {
+    width: 8px
 }
-
-
-/* Track */
 
  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #f1f1f1
 }
-
-
-/* Handle */
 
  ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #888
 }
 
-
-/* Handle on hover */
-
  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #555
 }
 
 .form-control:focus {
@@ -87,7 +78,7 @@ fieldset {
 }
 
 .profile-button {
-    background: rgb(99, 39, 120);
+    background: #632778;
     box-shadow: none;
     border: none
 }
