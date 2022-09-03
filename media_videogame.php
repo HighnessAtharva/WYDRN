@@ -63,6 +63,8 @@ function getposterpath($name)
 
     <!--Custom Link-->
     <link rel="stylesheet" href="CSS/media_videogame.css">
+    <link href="css/backToTop.css" rel="stylesheet">
+
 
     <!--Preloader Links-->
     <link rel="stylesheet" href="css/preloader.css">
@@ -90,6 +92,7 @@ function getposterpath($name)
 </head>
 
 <body class="css-selector">
+<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <div>
         <!--PRELOADER-->
         <header class="entry-header">
@@ -305,6 +308,6 @@ if ($page < $total_pages) {
     </center>
 
     <body>
-
+    <script src="js/backToTop.js"></script>
 </html>
 <?php mysqli_close($con);?>

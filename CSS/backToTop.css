@@ -1,0 +1,28 @@
+#BackToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    font-size: 18px;
+    width: 50px;
+    border: none;
+    outline: none;
+    background-color: rgb(70, 0, 94);
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#BackToTopBtn:hover {
+    background-color: rgb(48, 0, 56);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}

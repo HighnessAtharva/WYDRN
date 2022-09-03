@@ -249,6 +249,8 @@ if (mysqli_num_rows($result) > 0) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Export Page where users can download a CSV file containing all their data stored in the WYDRN service." />
+    <meta name="keywords" content="WYDRN, CSV Export" />
     <title>Export Data for user <?php echo $username; ?></title>
 
     <!-- Bootstrap CSS File  -->

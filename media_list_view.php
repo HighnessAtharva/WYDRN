@@ -35,13 +35,14 @@ $username = $user_data['user_name'];
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
   <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
+  <link href="css/backToTop.css" rel="stylesheet">
 
 </head>
 
 
 <body>
-
+<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
 <?php
 /**************** 
  * TO DISPLAY BOOKS LOGGED BY THE USER IN A SINGLE PAGE TABULAR FORM.
@@ -284,6 +285,7 @@ if (isset($_GET['videogame'])) {
 
 
 </body>
+<script src="js/backToTop.js"></script>
 <script>
   $(function() {
     $('#keywords').tablesorter({ sortList: [[0,0], [1,0]] });

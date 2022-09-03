@@ -45,14 +45,16 @@ if (isset($_GET['userdate'])) {
     
     <!--Custom Link-->
     <link rel="stylesheet" href="css/diary.css">
+    <link href="css/backToTop.css" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
 
 </head>
 
-<body>
-    <br><br>
+<body>    <br><br>
+<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
+
 
     <div style="margin-left:50px;">
         <center>
@@ -340,7 +342,7 @@ if (isset($_GET['userdate'])) {
         }
     </script>
 </body>
-
+<script src="js/backToTop.js"></script>
 </html>
 <?php
 mysqli_close($con); ?>

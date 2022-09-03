@@ -66,6 +66,8 @@ function getposterpath($name, $author)
 
     <!--Preloader Links-->
     <link rel="stylesheet" href="css/preloader.css">
+    <link href="css/backToTop.css" rel="stylesheet">
+
 
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
@@ -94,6 +96,7 @@ function getposterpath($name, $author)
 </head>
 
 <body class="css-selector">
+<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
 
     <div>
         <!--PRELOADER-->
@@ -335,7 +338,7 @@ function getposterpath($name, $author)
 
 
     <body>
-
+    <script src="js/backToTop.js"></script>
 </html>
 
 <?php mysqli_close($con); ?>

@@ -22,10 +22,11 @@
     <link rel="stylesheet" type="text/css" href="css/privacy_policy.css">
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
-
+    <link href="css/backToTop.css" rel="stylesheet">
 </head>
 
 <body>
+<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <h1>Privacy Policy</h1>
     <p>Last updated August 2022
         <br><br>
@@ -95,5 +96,5 @@
         Email: westerospatriot@WYDRN.com
     </p>
 </body>
-
+<script src="js/backToTop.js"></script>
 </html>

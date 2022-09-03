@@ -39,6 +39,7 @@ $username = $user_data['user_name'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="CSS/feed.css">
+    <link href="css/backToTop.css" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
@@ -46,6 +47,7 @@ $username = $user_data['user_name'];
 </head>
 
 <body>
+<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <div class="heading">
         <h1>Social Feed<span>It's never too late to catch up with your friends.</span></h1>
     </div>
@@ -219,5 +221,6 @@ $username = $user_data['user_name'];
     </center>
 
 </body>
+<script src="js/backToTop.js"></script>
 </html>
 <?php mysqli_close($con); ?>

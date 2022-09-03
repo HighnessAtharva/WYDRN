@@ -62,6 +62,8 @@ function getposterpath($name, $artist)
 
     <!--Custom Link-->
     <link rel="stylesheet" href="CSS/media_music.css">
+    <link href="css/backToTop.css" rel="stylesheet">
+
 
     <!--Preloader Links-->
     <link rel="stylesheet" href="css/preloader.css">
@@ -89,6 +91,7 @@ function getposterpath($name, $artist)
 </head>
 
 <body class="css-selector">
+<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <div>
         <!--PRELOADER-->
         <header class="entry-header">
@@ -312,7 +315,7 @@ function getposterpath($name, $artist)
     </center>
 
 </body>
-
+<script src="js/backToTop.js"></script>
 </html>
 
 <?php mysqli_close($con); ?>

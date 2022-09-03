@@ -62,7 +62,7 @@ function getposterpath($name, $year)
 
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
-
+    <link href="css/backToTop.css" rel="stylesheet">
 
     <script src="js/modernizr-2.6.2.min.js"></script>
 
@@ -81,9 +81,11 @@ function getposterpath($name, $year)
 
         });
     </script>
+  
 </head>
 
 <body class="css-selector">
+<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <div>
         <!--PRELOADER-->
         <header class="entry-header">
@@ -309,7 +311,7 @@ function getposterpath($name, $year)
 
 
 </body>
-
+<script src="js/backToTop.js"></script>
 </html>
 
 <?php mysqli_close($con); ?>
