@@ -125,8 +125,9 @@ if (isset($_GET['userdate'])) {
 
                             <?php
                             if ($query = mysqli_query($con, $sql)) {
-                                if (mysqli_num_rows($query) > 0) {
-                                    for ($i = 1; $i <= mysqli_num_rows($query); $i++) {
+                                $totalcount=mysqli_num_rows($query);
+                                if ($totalcount > 0) {
+                                    for ($i = 1; $i <= $totalcount; $i++) {
                                         $row[$i] = mysqli_fetch_array($query);
                                         $videogame = $row[$i]['videogame'];
                                         $platform = $row[$i]['platform'];
@@ -309,10 +310,15 @@ if (isset($_GET['userdate'])) {
 
 
                 <!--MANUAL PAGINATION INPUT BOX-->
+
+                <?php
+                if ($totalcount > 0) {?>
                 <div class="inline grid-child">
                     <input id="page" type="number" min="1" max="<?php echo $unmodified_total_pages ?>" placeholder="<?php echo $page . "/" . $unmodified_total_pages; ?>" required>
                     <button onClick="go2Page();">Go</button>
                 </div>
+
+                <?php }?>
                 <!--END OF MANUAL PAGINATION INPUT BOX-->
 
                 <!--END OF GRID CONTAINER-->
