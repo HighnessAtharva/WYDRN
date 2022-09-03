@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 body {
     /* no selection */
     user-select: none;
@@ -157,7 +158,7 @@ body {
     grid-auto-rows: minmax(10px, auto);
     color: white;
     background-color: #000000;
-    padding: 20px 100px;
+    padding: 50px 50px;
 }
 
 .mediaContent {

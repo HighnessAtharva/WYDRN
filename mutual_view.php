@@ -233,7 +233,7 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
                             $videogame = $row['videogame'];
                 ?>
                             <div class="mediaContent">
-                                <?php echo $videogame; ?>
+                                <?php echo ucwords(strtolower($videogame)); ?>
                             </div>
                 <?php }
                     } else {
@@ -304,7 +304,7 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
 
                 ?>
                             <div class="mediaContent">
-                                <?php echo $album; ?>
+                                <?php echo ucwords(strtolower($album)); ?>
                             </div>
                 <?php
 
@@ -375,7 +375,7 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
                             $book = $row['book']; ?>
 
                             <div class="mediaContent">
-                                <?php echo $book; ?>
+                                <?php echo ucwords(strtolower($book)); ?>
                             </div>
 
                 <?php
@@ -448,7 +448,7 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
 
                 ?>
                             <div class="mediaContent">
-                                <?php echo $movie; ?>
+                                <?php echo ucwords(strtolower($movie)); ?>
                             </div>
 
                 <?php
@@ -520,7 +520,7 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
 
                 ?>
                             <div class="mediaContent">
-                                <?php echo $tv; ?>
+                                <?php echo ucwords(strtolower($tv)); ?>
                             </div>
                 <?php
                         }
