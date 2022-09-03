@@ -220,6 +220,20 @@ h1.moviename {
     margin-left: 1rem;
 }
 
+.active-filter {
+    position: absolute;
+    color: rgb(5, 0, 149);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #000;
+    border-radius: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 10px 0 50px 120px;
+    cursor: pointer;
+}
+
 .card:hover .logged-date {
     display: block;
     background-color: black;

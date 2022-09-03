@@ -130,6 +130,15 @@ function getposterpath($name)
             <button class="btn" onclick="window.location.href='media_list_view.php?videogame'"><img src="images/Icons/list-view.png"></button>
     </div>
 
+             <!--Display Active Filters-->
+             <?php if(isset($_GET['sortby'])){  ?>  
+                <span class="active-filter"> 
+                    
+                    <img src="images/Icons/sort.png" alt="filter" height="15px" width="10px" />    
+                    <?php echo $_GET['sortby']; ?>
+                </span>
+                <?php } ?>
+                
             <!-------------------------------------------------------------------------------------
                          DYNAMICALLY GENERATED PHP PART
 ------------------------------------------------------------------------------------->
@@ -241,7 +250,7 @@ if ($query = mysqli_query($con, $sql)) {
     } else {
         ?>
                      <!-- NO TV SHOWS LOGGED MESSAGE -->
-                     <div class="zero-media"><img src='images/Icons/Videogame.svg' width='15' height='15' class='media-icon'>No Videogames added to your account.</div>
+                     <div class="zero-media"><img src='images/Icons/Videogame.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp;  No Videogames added to your account.</div>
               <?php }
 }
 ?>

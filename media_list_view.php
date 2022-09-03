@@ -53,7 +53,16 @@ if (isset($_GET['book'])) {
   if ($query = mysqli_query($con, $sql)) {
     $totalcount = mysqli_num_rows($query);
     if ($totalcount > 0) {
-      $list = '<div id="wrapper">
+
+      ?>
+
+<div class="backToGrid">
+      <a href="media_book.php"><img src="images/Icons/grid.png" height="30px" width="30px"></a>
+</div>
+
+      <?php
+      $list = '
+      <div id="wrapper">
         <table id="keywords" cellspacing="0" cellpadding="0" class="tablesorter">';
       $list .= '<thead>
         <tr>
@@ -74,7 +83,7 @@ if (isset($_GET['book'])) {
       echo $list;
     } else {
       //NO BOOKS LOGGED MESSAGE
-      $BooksNotAdded = "<br><center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Book.svg' width='15' height='15' class='media-icon'>No books added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+      $BooksNotAdded = "<br><center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Book.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp;No books added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
       echo $BooksNotAdded;
     }
   }
@@ -93,6 +102,14 @@ if (isset($_GET['movie'])) {
   if ($query = mysqli_query($con, $sql)) {
     $totalcount = mysqli_num_rows($query);
     if ($totalcount > 0) {
+      ?>
+
+      <div class="backToGrid">
+            <a href="media_movie.php"><img src="images/Icons/grid.png" height="30px" width="30px"></a>
+      </div>
+      
+            <?php
+
       $list = '<div id="wrapper">
         <table id="keywords" cellspacing="0" cellpadding="0">';
       $list .= '<thead>
@@ -114,7 +131,7 @@ if (isset($_GET['movie'])) {
       echo $list;
     } else {
       //NO Movies LOGGED MESSAGE
-      $MovieNotAdded = "<br><center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Movie.svg' width='15' height='15' class='media-icon'>No Movies added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+      $MovieNotAdded = "<br><center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/Movie.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp;No Movies added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
       echo $MovieNotAdded;
     }
   }
@@ -132,6 +149,14 @@ if (isset($_GET['tv'])) {
   if ($query = mysqli_query($con, $sql)) {
     $totalcount = mysqli_num_rows($query);
     if ($totalcount > 0) {
+      ?>
+
+      <div class="backToGrid">
+            <a href="media_tv.php"><img src="images/Icons/grid.png" height="30px" width="30px"></a>
+      </div>
+      
+            <?php
+
       $list = '<div id="wrapper">
         <table id="keywords" cellspacing="0" cellpadding="0">';
       $list .= '<thead>
@@ -153,7 +178,7 @@ if (isset($_GET['tv'])) {
       echo $list;
     } else {
       //NO TV Shows LOGGED MESSAGE
-      $TVNotAdded = "<br><center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/TV.svg' width='15' height='15' class='media-icon'>No TV Shows  added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+      $TVNotAdded = "<br><center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/Icons/TV.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp;No TV Shows  added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
       echo $TVNotAdded;
     }
   }
@@ -172,6 +197,14 @@ if (isset($_GET['album'])) {
   if ($query = mysqli_query($con, $sql)) {
     $totalcount = mysqli_num_rows($query);
     if ($totalcount > 0) {
+      ?>
+
+      <div class="backToGrid">
+            <a href="media_music.php"><img src="images/Icons/grid.png" height="30px" width="30px"></a>
+      </div>
+      
+            <?php
+
       $list = '<div id="wrapper">
         <table id="keywords" cellspacing="0" cellpadding="0">';
       $list .= '<thead>
@@ -193,7 +226,7 @@ if (isset($_GET['album'])) {
       echo $list;
     } else {
       //NO Albums LOGGED MESSAGE
-      $AlbumNotAdded = "<br><center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/icons/Music.svg' width='15' height='15' class='media-icon'>No Albums added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+      $AlbumNotAdded = "<br><center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/icons/Music.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp;No Albums added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
       echo $AlbumNotAdded;
     }
   }
@@ -211,6 +244,14 @@ if (isset($_GET['videogame'])) {
   if ($query = mysqli_query($con, $sql)) {
     $totalcount = mysqli_num_rows($query);
     if ($totalcount > 0) {
+      ?>
+
+      <div class="backToGrid">
+            <a href="media_videogame.php"><img src="images/Icons/grid.png" height="30px" width="30px"></a>
+      </div>
+      
+            <?php
+
       $list = '<div id="wrapper">
         <table id="keywords" cellspacing="0" cellpadding="0">';
       $list .= '<thead>
@@ -232,7 +273,7 @@ if (isset($_GET['videogame'])) {
       echo $list;
     } else {
       //NO Videogame LOGGED MESSAGE
-      $VideogameNotAdded = "<br><center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/icons/Videogame.svg' width='15' height='15' class='media-icon'>No Videogames added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
+      $VideogameNotAdded = "<br><center><div class='alert alert-danger w-50 text-center alert-dismissible fade show' role='alert'><img src='images/icons/Videogame.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No Videogames added to your account.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div></center>";
       echo $VideogameNotAdded;
     }
   }

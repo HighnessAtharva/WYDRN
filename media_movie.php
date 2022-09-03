@@ -121,6 +121,20 @@ function getposterpath($name, $year)
                 <button class="btn" onclick="window.location.href='media_list_view.php?movie'"><img src="images/Icons/list-view.png"></button>
 
             </div>
+
+             <!--Display Active Filters-->
+             <?php if(isset($_GET['sortby'])){  ?>  
+                <span class="active-filter"> 
+                    
+                    <img src="images/Icons/sort.png" alt="filter" height="15px" width="10px" />    
+                    <?php echo $_GET['sortby']; ?>
+                </span>
+                <?php } ?>
+
+                   
+            <!-------------------------------------------------------------------------------------
+                                DYNAMICALLY GENERATED PHP PART
+        ------------------------------------------------------------------------------------->   
             <?php
             //set default sort order
             $sortby = "added-desc";
@@ -237,7 +251,7 @@ function getposterpath($name, $year)
                         }
                     } else {?>
                         <!-- NO MOVIES LOGGED MESSAGE -->
-                        <div class="zero-media"><img src='images/Icons/Movie.svg' width='15' height='15' class='media-icon'>No Movies added to your account.</div>
+                        <div class="zero-media"><img src='images/Icons/Movie.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp;  No Movies added to your account.</div>
                     <?php
                     }
                 }

@@ -14,6 +14,20 @@
     animation: AnimationName 4s ease infinite;
 }
 
+.active-filter {
+    position: absolute;
+    color: rgb(5, 0, 149);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #000;
+    border-radius: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 10px 0 50px 75px;
+    cursor: pointer;
+}
+
 @-webkit-keyframes AnimationName {
     0% {
         background-position: 58% 0%

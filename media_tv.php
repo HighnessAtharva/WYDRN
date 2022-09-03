@@ -134,6 +134,19 @@ function getposterpath($name)
 
                 <button class="btn" onclick="window.location.href='media_list_view.php?tv'"><img src="images/Icons/list-view.png"></button>
             </div>
+            
+             <!--Display Active Filters-->
+             <?php if(isset($_GET['sortby'])){  ?>  
+                <span class="active-filter"> 
+                    
+                    <img src="images/Icons/sort.png" alt="filter" height="15px" width="10px" />    
+                    <?php echo $_GET['sortby']; ?>
+                </span>
+                <?php } ?>
+
+                   
+        
+
             <!-------------------------------------------------------------------------------------
                                     DYNAMICALLY GENERATED PHP PART
             ------------------------------------------------------------------------------------->
@@ -249,7 +262,7 @@ function getposterpath($name)
                 } else {?>
                     
                     <!-- NO TV SHOWS LOGGED MESSAGE -->
-                    <div class="zero-media"><img src='images/Icons/TV.svg' width='15' height='15' class='media-icon'>No TV Shows added to your account.</div>
+                    <div class="zero-media"><img src='images/Icons/TV.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No TV Shows added to your account.</div>
                <?php }
             }
             ?>

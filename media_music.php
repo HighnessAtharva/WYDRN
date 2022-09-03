@@ -128,7 +128,18 @@ function getposterpath($name, $artist)
 
                 <button class="btn" onclick="window.location.href='media_list_view.php?album'"><img src="images/Icons/list-view.png"></button>
             </div>
+            
+             <!--Display Active Filters-->
+             <?php if(isset($_GET['sortby'])){  ?>  
+                <span class="active-filter"> 
+                    
+                    <img src="images/Icons/sort.png" alt="filter" height="15px" width="10px" />    
+                    <?php echo $_GET['sortby']; ?>
+                </span>
+                <?php } ?>
 
+                   
+       
             <!-------------------------------------------------------------------------------------
                          DYNAMICALLY GENERATED PHP PART 
 ------------------------------------------------------------------------------------->
@@ -245,7 +256,7 @@ function getposterpath($name, $artist)
                 } else {
                     ?>
                     <!-- NO MOVIES LOGGED MESSAGE -->
-                    <div class="zero-media"><img src='images/Icons/Music.svg' width='15' height='15' class='media-icon'>No Music added to your account.</div>
+                    <div class="zero-media"><img src='images/Icons/Music.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No Music added to your account.</div>
                 
                 <?php
                 }

@@ -119,7 +119,9 @@ function getposterpath($name, $author)
                 <!-- Sorting Functionality -->
                 <form method="get" action="" name="sort" id="filter-select">
                     <select name="sortby" id="sort-by-select" onchange="this.form.submit()">
-                        <option value="">Sort By</option>
+                        <option value="">
+                            Sort By
+                        </option>
 
                         <option value="added-desc">Added Date (Newest To Oldest)</option>
                         <option value="added-asc">Added Date (Oldest To Newest)</option>
@@ -133,11 +135,24 @@ function getposterpath($name, $author)
 
                     </select>
                 </form>
-
-
+                <!-- End of Sorting Functionality -->
+              
+               
+               
+        
+                <!--List View Button-->
                 <button class="btn" onclick="window.location.href='media_list_view.php?book'"><img src="images/Icons/list-view.png"></button>
-
             </div>
+          
+             <!--Display Active Filters-->
+             <?php if(isset($_GET['sortby'])){  ?>  
+                <span class="active-filter"> 
+                    
+                    <img src="images/Icons/sort.png" alt="filter" height="15px" width="10px" />    
+                    <?php echo $_GET['sortby']; ?>
+                </span>
+                <?php } ?>
+                
             <!-------------------------------------------------------------------------------------
                                 DYNAMICALLY GENERATED PHP PART
         ------------------------------------------------------------------------------------->
@@ -258,7 +273,7 @@ function getposterpath($name, $author)
                     } else { ?>
 
                         <!-- NO BOOKS LOGGED MESSAGE -->
-                        <div class="zero-media"><img src='images/Icons/Book.svg' width='15' height='15' class='media-icon'>No books added to your account.</div>
+                        <div class="zero-media"><img src='images/Icons/Book.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No books added to your account.</div>
 
                 <?php
                     }

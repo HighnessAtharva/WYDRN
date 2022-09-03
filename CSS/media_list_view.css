@@ -130,6 +130,21 @@ body {
     padding-bottom: 55px;
 }
 
+.backToGrid {
+    position: absolute;
+    margin-top: 100px;
+    right: 200px;
+    width: 100px;
+    height: 40px;
+    border-top: 1px solid #eee;
+    z-index: 999;
+}
+
+.backToGrid::after {
+    content: "Grid View";
+    font-size: 12px;
+}
+
  ::selection {
     background: #5f74a0;
     color: #fff;
@@ -228,6 +243,7 @@ h1 {
     padding: 10px 17px;
     -webkit-box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.35);
     font-size: 62.5%;
+    margin-top: 75px;
 }
 
 #keywords {

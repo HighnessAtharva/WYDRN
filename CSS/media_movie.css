@@ -285,6 +285,20 @@ a>span.neonText:hover {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
 }
 
+.active-filter {
+    position: absolute;
+    color: rgb(5, 0, 149);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #000;
+    border-radius: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 10px 0 50px 75px;
+    cursor: pointer;
+}
+
 
 /* MEDIA QUERIES */
 
