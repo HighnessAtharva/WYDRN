@@ -142,7 +142,7 @@ if (mysqli_num_rows($result) > 0) {
         $date = $row['date'];
 
         // this if conditional is added to ensure that blank records are not displayed
-        if (!empty($album)) {
+        if (!empty($movie)) {
             $moviedata .= '<tr><td>' . $movie . '</td><td>' . $year . '</td><td>' . $date . '</td>    </tr>';
         }
     }
@@ -231,7 +231,7 @@ if (mysqli_num_rows($result) > 0) {
         $date = $row['date'];
 
         // this if conditional is added to ensure that blank records are not displayed
-        if (!empty($tv)) {
+        if (!empty($book)) {
             $bookdata .= '<tr><td>' . $book . '</td><td>' . $author . '</td><td>' . $date . '</td>    </tr>';
         }
     }
@@ -270,7 +270,18 @@ if (mysqli_num_rows($result) > 0) {
             <div class="row">
                 <div class="col-md-12"><br><br>
                     <h2 class="heading">Export Data Requested by <u><?php echo $username; ?></u></h2>
+                
+                    <?php
+                     if( (!empty($movie)) || (!empty($tv)) || (!empty($book)) || (!empty($album)) || (!empty($videogame))){
+                     ?>
+                    
                     <input type="button" value="Download CSV" onclick="location.href='download_csv.php'">
+                    
+                    <?php
+                        }
+                    ?>
+
+
                 </div>
             </div>
         </center>

@@ -16,7 +16,7 @@ include("../functions.php");
 session_start();	
 if(empty($_SESSION))
 {
-  header("Location: login.php");
+  header("Location: ../login.php");
 }
 $user_data = check_login($con);
 $username=$user_data['user_name'];   
