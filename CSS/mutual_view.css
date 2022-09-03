@@ -31,6 +31,10 @@ body {
     background: #555;
 }
 
+.media {
+    height: max-content;
+}
+
 .media-item-div {
     justify-content: space-between;
     align-items: center;
@@ -56,23 +60,23 @@ body {
 }
 
 #mutualGameBtn {
-    background-image: url("../images/website/assets/games/2.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url("../images/website/assets/games/2.jpg");
 }
 
 #mutualMusicBtn {
-    background-image: url("../images/website/assets/music/3.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url("../images/website/assets/music/3.jpg");
 }
 
 #mutualBookBtn {
-    background-image: url("../images/website/assets/movies/9.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url("../images/website/assets/movies/9.jpg");
 }
 
 #mutualMovieBtn {
-    background-image: url("../images/website/assets/movies/5.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url("../images/website/assets/movies/5.jpg");
 }
 
 #mutualTVBtn {
-    background-image: url("../images/website/assets/movies/6.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url("../images/website/assets/movies/6.jpg");
 }
 
 #mutualGameBtn:hover {
@@ -100,10 +104,69 @@ body {
     cursor: pointer;
 }
 
-.media {
-    padding-left: 1.2rem;
-    border: 1px solid black;
-    padding-bottom: 1.2rem;
+
+/* #mutualGameDiv video {
+    filter: brightness(0.3);
+    width: 100%;
+    position: absolute;
+    z-index: -999;
+    left: 0;
+    object-fit: cover;
+}
+
+#mutualMusicDiv video {
+    filter: brightness(0.3);
+    width: 100%;
+    position: absolute;
+    z-index: -999;
+    left: 0;
+    object-fit: cover;
+}
+
+#mutualMovieDiv video {
+    filter: brightness(0.3);
+    width: 100%;
+    position: absolute;
+    z-index: -999;
+    left: 0;
+    object-fit: cover;
+}
+
+#mutualTVDiv video {
+    filter: brightness(0.3);
+    width: 100%;
+    position: absolute;
+    z-index: -999;
+    left: 0;
+    object-fit: cover;
+}
+
+#mutualBookDiv video {
+    filter: brightness(0.3);
+    width: 100%;
+    position: absolute;
+    z-index: -999;
+    left: 0;
+    object-fit: cover;
+} */
+
+.mediaGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 0.5rem 0.5rem;
+    grid-auto-rows: minmax(10px, auto);
+    color: white;
+    background-color: #000000;
+    padding: 20px 100px;
+}
+
+.mediaContent {
+    padding: 5px;
+    background-color: rgb(255 255 255 / 10%);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 
@@ -111,8 +174,8 @@ body {
 
 .flex-wrapper {
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
+    /* flex-flow: row nowrap; */
+    justify-content: space-evenly;
 }
 
 .single-chart {
@@ -174,14 +237,14 @@ body {
 }
 
 .mutual-items-count {
-    fill: #666;
+    fill: rgb(255, 255, 255);
     font-family: sans-serif;
     font-size: 0.5em;
     text-anchor: middle;
 }
 
 .percentage {
-    fill: #666;
+    fill: rgb(255, 248, 248);
     font-family: sans-serif;
     font-size: 0.5em;
     text-anchor: middle;

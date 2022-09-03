@@ -384,3 +384,11 @@ function randomImage()
     $rand_keys = array_rand($images, 1);
     return $images[$rand_keys];
 }
+
+
+function randomVideo(){
+    $videos=["images/website/assets/videos/Elden Ring.mp4"];
+    $rand_keys = array_rand($videos, 1);
+    return $videos[$rand_keys];
+
+}

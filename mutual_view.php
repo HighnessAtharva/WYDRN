@@ -180,66 +180,69 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
         VIDEO GAMES SECTION
         --------------------------------------------->
     <div class="media-item-div" id="mutualGameBtn">
-        <h2 class="mutual-media-title">VIDEOGAMES</h2><br>
-        <h3 class="mutual-media-subtitle"><?php echo (get_mutual_media_count($me, $otheruser)[0]); ?></h3>
+
+
+        <!-- CIRCULAR ANIMATION -->
+        <div class="flex-wrapper">
+            <!--DISPLAY WATCHED X/Y COUNT WHERE X = YOUR MEDIA AND Y=THEIR MEDIA-->
+            <div class="single-chart">
+                <svg viewBox="0 0 36 36" class="circular-chart black">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+
+                    <text x="18" y="20.35" class="mutual-items-count">
+                        <?php echo $videogamecount_mutual ?>/<?php echo $videogamecount_other ?>
+                    </text>
+
+                </svg>
+            </div>
+
+            <div class="single-chart">
+                <h2 class="mutual-media-title">VIDEOGAMES</h2>
+            </div>
+
+            <!--DISPLAY PERCENTAGE-->
+            <div class="single-chart">
+                <svg viewBox="0 0 36 36" class="circular-chart <?php echo determineColor($mutual_game_percentage) ?>">
+
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" stroke-dasharray="<?php echo $mutual_game_percentage ?>, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+
+                    <text x="18" y="20.35" class="percentage">
+                        <?php echo $mutual_game_percentage ?>%
+                    </text>
+                </svg>
+            </div>
+        </div>
     </div>
 
 
     <center>
         <div class="media" id="mutualGameDiv" style="display:none;">
-            <div>
-                <!-- <h2>Videogames</h2> -->
-            </div>
-
-
-            <!-- CIRCULAR ANIMATION -->
-            <div class="flex-wrapper">
-                <!--DISPLAY WATCHED X/Y COUNT WHERE X = YOUR MEDIA AND Y=THEIR MEDIA-->
-                <div class="single-chart">
-                    <svg viewBox="0 0 36 36" class="circular-chart black">
-                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-
-                        <text x="18" y="20.35" class="mutual-items-count">
-                            <?php echo $videogamecount_mutual ?>/<?php echo $videogamecount_other ?>
-                        </text>
-
-                    </svg>
-                </div>
-
-                <!--DISPLAY PERCENTAGE-->
-                <div class="single-chart">
-                    <svg viewBox="0 0 36 36" class="circular-chart <?php echo determineColor($mutual_game_percentage) ?>">
-
-                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="circle" stroke-dasharray="<?php echo $mutual_game_percentage ?>, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-
-                        <text x="18" y="20.35" class="percentage">
-                            <?php echo $mutual_game_percentage ?>%
-                        </text>
-                    </svg>
-                </div>
-            </div>
-
+            <!-- <video src="<?php echo randomVideo(); ?>" autoplay loop playsinline muted></video> -->
 
             <!--TO SHOW THE MEDIA ITEMS-->
-            <?php
-            $sql = "SELECT videogame FROM data WHERE username='$me'  AND videogame != ''
+            <div class="mediaGrid">
+                <?php
+                $sql = "SELECT videogame FROM data WHERE username='$me'  AND videogame != ''
                 INTERSECT
                 SELECT videogame FROM data WHERE username='$otheruser'  AND videogame != ''";
-            if ($query = mysqli_query($con, $sql)) {
-                if (mysqli_num_rows($query) > 0) {
-
-                    while ($row = mysqli_fetch_assoc($query)) {
-                        $videogame = $row['videogame'];
-                        echo $videogame;
-                        echo "<br>";
+                if ($query = mysqli_query($con, $sql)) {
+                    if (mysqli_num_rows($query) > 0) {
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            $videogame = $row['videogame'];
+                ?>
+                            <div class="mediaContent">
+                                <?php echo $videogame; ?>
+                            </div>
+                <?php }
+                    } else {
+                        echo ("There are no common videogames between you and $otheruser");
                     }
-                } else {
-                    echo ("There are no common videogames between you and $otheruser");
                 }
-            }
-            ?>
+                ?>
+            </div>
+
         </div>
     </center>
 
@@ -249,61 +252,70 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
     --------------------------------------------->
 
     <div class="media-item-div" id="mutualMusicBtn">
-        <h2 class="mutual-media-title">ALBUMS</h2><br>
-        <h3 class="mutual-media-subtitle"><?php echo (get_mutual_media_count($me, $otheruser)[1]); ?></h3>
+
+        <!-- CIRCULAR ANIMATION -->
+        <div class="flex-wrapper">
+
+            <!--DISPLAY WATCHED X/Y COUNT WHERE X = YOUR MEDIA AND Y=THEIR MEDIA-->
+            <div class="single-chart">
+                <svg viewBox="0 0 36 36" class="circular-chart black">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+
+                    <text x="18" y="20.35" class="mutual-items-count">
+                        <?php echo $musiccount_mutual ?>/<?php echo $musiccount_other ?>
+                    </text>
+
+                </svg>
+            </div>
+
+            <div class="single-chart">
+                <h2 class="mutual-media-title">ALBUMS</h2>
+            </div>
+
+            <!--DISPLAY PERCENTAGE-->
+            <div class="single-chart">
+                <svg viewBox="0 0 36 36" class="circular-chart <?php echo determineColor($mutual_music_percentage) ?>">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" stroke-dasharray="<?php echo $mutual_music_percentage ?>, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+
+                    <text x="18" y="20.35" class="percentage">
+                        <?php echo $mutual_music_percentage ?>%
+                    </text>
+                </svg>
+            </div>
+        </div>
     </div>
 
 
     <center>
         <div class="media" id="mutualMusicDiv" style="display:none;">
-            <div>
-                <!-- <h2>Music</h2> -->
-            </div>
-
-            <!-- CIRCULAR ANIMATION -->
-            <div class="flex-wrapper">
-                <!--DISPLAY WATCHED X/Y COUNT WHERE X = YOUR MEDIA AND Y=THEIR MEDIA-->
-                <div class="single-chart">
-                    <svg viewBox="0 0 36 36" class="circular-chart black">
-                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-
-                        <text x="18" y="20.35" class="mutual-items-count">
-                            <?php echo $musiccount_mutual ?>/<?php echo $musiccount_other ?>
-                        </text>
-
-                    </svg>
-                </div>
-
-                <!--DISPLAY PERCENTAGE-->
-                <div class="single-chart">
-                    <svg viewBox="0 0 36 36" class="circular-chart <?php echo determineColor($mutual_music_percentage) ?>">
-                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="circle" stroke-dasharray="<?php echo $mutual_music_percentage ?>, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-
-                        <text x="18" y="20.35" class="percentage">
-                            <?php echo $mutual_music_percentage ?>%
-                        </text>
-                    </svg>
-                </div>
-            </div>
-
-            <?php
-            $sql = "SELECT album, artist FROM data WHERE username='$me' AND album!='' AND artist!=''
+            <!-- <video src="<?php echo randomVideo(); ?>" autoplay loop playsinline muted></video> -->
+            <!--TO SHOW THE MEDIA ITEMS-->
+            <div class="mediaGrid">
+                <?php
+                $sql = "SELECT album, artist FROM data WHERE username='$me' AND album!='' AND artist!=''
                 INTERSECT
                 SELECT album, artist FROM data WHERE username='$otheruser' AND album!='' AND artist!=''";
-            if ($query = mysqli_query($con, $sql)) {
-                if (mysqli_num_rows($query) > 0) {
-                    while ($row = mysqli_fetch_assoc($query)) {
-                        $album = $row['album'];
-                        echo $album;
-                        echo "<br>";
+                if ($query = mysqli_query($con, $sql)) {
+                    if (mysqli_num_rows($query) > 0) {
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            $album = $row['album'];
+
+                ?>
+                            <div class="mediaContent">
+                                <?php echo $album; ?>
+                            </div>
+                <?php
+
+
+                        }
+                    } else {
+                        echo ("There are no common albums between you and $otheruser");
                     }
-                } else {
-                    echo ("There are no common albums between you and $otheruser");
                 }
-            }
-            ?>
+                ?>
+            </div>
         </div>
     </center>
 
@@ -312,61 +324,68 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
     --------------------------------------------->
 
     <div class="media-item-div" id="mutualBookBtn">
-        <h2 class="mutual-media-title">BOOKS</h2><br>
-        <h3 class="mutual-media-subtitle"><?php echo (get_mutual_media_count($me, $otheruser)[2]); ?>
+
+        <!-- CIRCULAR ANIMATION -->
+        <div class="flex-wrapper">
+            <!--DISPLAY WATCHED X/Y COUNT WHERE X = YOUR MEDIA AND Y=THEIR MEDIA-->
+            <div class="single-chart">
+                <svg viewBox="0 0 36 36" class="circular-chart black">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+
+                    <text x="18" y="20.35" class="mutual-items-count">
+                        <?php echo $bookcount_mutual ?>/<?php echo $bookcount_other ?>
+                    </text>
+
+                </svg>
+            </div>
+
+            <div class="single-chart">
+                <h2 class="mutual-media-title">BOOKS</h2>
+            </div>
+
+            <!--DISPLAY PERCENTAGE-->
+            <div class="single-chart">
+                <svg viewBox="0 0 36 36" class="circular-chart <?php echo determineColor($mutual_book_percentage) ?>">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" stroke-dasharray="<?php echo $mutual_book_percentage ?>, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+
+                    <text x="18" y="20.35" class="percentage">
+                        <?php echo $mutual_book_percentage ?>%
+                    </text>
+                </svg>
+            </div>
+        </div>
     </div>
 
     <center>
         <div class="media" id="mutualBookDiv" style="display:none;">
-            <div>
-                <!-- <h2>Books</h2> -->
-            </div>
 
-            <!-- CIRCULAR ANIMATION -->
-            <div class="flex-wrapper">
-                <!--DISPLAY WATCHED X/Y COUNT WHERE X = YOUR MEDIA AND Y=THEIR MEDIA-->
-                <div class="single-chart">
-                    <svg viewBox="0 0 36 36" class="circular-chart black">
-                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <!-- <video src="<?php echo randomVideo(); ?>" autoplay loop playsinline muted></video> -->
+            <!--TO SHOW THE MEDIA ITEMS-->
+            <div class="mediaGrid">
 
-                        <text x="18" y="20.35" class="mutual-items-count">
-                            <?php echo $bookcount_mutual ?>/<?php echo $bookcount_other ?>
-                        </text>
-
-                    </svg>
-                </div>
-
-
-                <!--DISPLAY PERCENTAGE-->
-                <div class="single-chart">
-                    <svg viewBox="0 0 36 36" class="circular-chart <?php echo determineColor($mutual_book_percentage) ?>">
-                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="circle" stroke-dasharray="<?php echo $mutual_book_percentage ?>, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-
-                        <text x="18" y="20.35" class="percentage">
-                            <?php echo $mutual_book_percentage ?>%
-                        </text>
-                    </svg>
-                </div>
-            </div>
-
-            <?php
-            $sql = "SELECT book, author FROM data WHERE username='$me'  AND book!='' AND author!=''
+                <?php
+                $sql = "SELECT book, author FROM data WHERE username='$me'  AND book!='' AND author!=''
                 INTERSECT
                 SELECT book, author FROM data WHERE username='$otheruser'  AND book!='' AND author!=''";
-            if ($query = mysqli_query($con, $sql)) {
-                if (mysqli_num_rows($query) > 0) {
-                    while ($row = mysqli_fetch_assoc($query)) {
-                        $book = $row['book'];
-                        echo $book;
-                        echo "<br>";
+                if ($query = mysqli_query($con, $sql)) {
+                    if (mysqli_num_rows($query) > 0) {
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            $book = $row['book']; ?>
+
+                            <div class="mediaContent">
+                                <?php echo $book; ?>
+                            </div>
+
+                <?php
+                        }
+                    } else {
+                        echo ("There are no common books between you and $otheruser");
                     }
-                } else {
-                    echo ("There are no common books between you and $otheruser");
                 }
-            }
-            ?>
+                ?>
+            </div>
         </div>
     </center>
 
@@ -377,61 +396,69 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
     --------------------------------------------->
 
     <div class="media-item-div" id="mutualMovieBtn">
-        <h2 class="mutual-media-title">MOVIES</h2><br>
-        <h3 class="mutual-media-subtitle"><?php echo (get_mutual_media_count($me, $otheruser)[3]); ?></h3>
+
+        <!-- CIRCULAR ANIMATION -->
+        <div class="flex-wrapper">
+            <!--DISPLAY WATCHED X/Y COUNT WHERE X = YOUR MEDIA AND Y=THEIR MEDIA-->
+            <div class="single-chart">
+                <svg viewBox="0 0 36 36" class="circular-chart black">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+
+                    <text x="18" y="20.35" class="mutual-items-count">
+                        <?php echo $moviecount_mutual ?>/<?php echo $moviecount_other ?>
+                    </text>
+
+                </svg>
+            </div>
+
+            <div class="single-chart">
+                <h2 class="mutual-media-title">MOVIES</h2>
+            </div>
+            <!--DISPLAY PERCENTAGE-->
+            <div class="single-chart">
+                <svg viewBox="0 0 36 36" class="circular-chart <?php echo determineColor($mutual_movie_percentage) ?>">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" stroke-dasharray="<?php echo $mutual_movie_percentage ?>, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+
+                    <text x="18" y="20.35" class="percentage">
+                        <?php echo $mutual_movie_percentage ?>%
+                    </text>
+                </svg>
+            </div>
+        </div>
     </div>
 
     <center>
 
         <div class="media" id="mutualMovieDiv" style="display:none;">
-            <div>
-                <!-- <h2>Movies</h2> -->
-            </div>
 
-            <!-- CIRCULAR ANIMATION -->
-            <div class="flex-wrapper">
-                <!--DISPLAY WATCHED X/Y COUNT WHERE X = YOUR MEDIA AND Y=THEIR MEDIA-->
-                <div class="single-chart">
-                    <svg viewBox="0 0 36 36" class="circular-chart black">
-                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <!-- <video src="<?php echo randomVideo(); ?>" autoplay loop playsinline muted></video> -->
+            <!--TO SHOW THE MEDIA ITEMS-->
+            <div class="mediaGrid">
 
-                        <text x="18" y="20.35" class="mutual-items-count">
-                            <?php echo $moviecount_mutual ?>/<?php echo $moviecount_other ?>
-                        </text>
-
-                    </svg>
-                </div>
-
-                <!--DISPLAY PERCENTAGE-->
-                <div class="single-chart">
-                    <svg viewBox="0 0 36 36" class="circular-chart <?php echo determineColor($mutual_movie_percentage) ?>">
-                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="circle" stroke-dasharray="<?php echo $mutual_movie_percentage ?>, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-
-                        <text x="18" y="20.35" class="percentage">
-                            <?php echo $mutual_movie_percentage ?>%
-                        </text>
-                    </svg>
-                </div>
-            </div>
-
-            <?php
-            $sql = "SELECT movie, year FROM data WHERE username='$me' AND movie!='' AND year!=''
+                <?php
+                $sql = "SELECT movie, year FROM data WHERE username='$me' AND movie!='' AND year!=''
                 INTERSECT
                 SELECT movie, year FROM data WHERE username='$otheruser' AND movie!='' AND year!=''";
-            if ($query = mysqli_query($con, $sql)) {
-                if (mysqli_num_rows($query) > 0) {
-                    while ($row = mysqli_fetch_assoc($query)) {
-                        $movie = $row['movie'];
-                        echo $movie;
-                        echo "<br>";
+                if ($query = mysqli_query($con, $sql)) {
+                    if (mysqli_num_rows($query) > 0) {
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            $movie = $row['movie'];
+
+                ?>
+                            <div class="mediaContent">
+                                <?php echo $movie; ?>
+                            </div>
+
+                <?php
+                        }
+                    } else {
+                        echo ("There are no common movies between you and $otheruser");
                     }
-                } else {
-                    echo ("There are no common movies between you and $otheruser");
                 }
-            }
-            ?>
+                ?>
+            </div>
         </div>
     </center>
 
@@ -440,60 +467,70 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
     --------------------------------------------->
 
     <div class="media-item-div" id="mutualTVBtn">
-        <h2 class="mutual-media-title">TV</h2><br>
-        <h3 class="mutual-media-subtitle"><?php echo (get_mutual_media_count($me, $otheruser)[4]); ?></h3>
+
+        <!-- CIRCULAR ANIMATION -->
+        <div class="flex-wrapper">
+            <!--DISPLAY WATCHED X/Y COUNT WHERE X = YOUR MEDIA AND Y=THEIR MEDIA-->
+            <div class="single-chart">
+                <svg viewBox="0 0 36 36" class="circular-chart black">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <text x="18" y="20.35" class="mutual-items-count">
+                        <?php echo $tvcount_mutual ?>/<?php echo $tvcount_other ?>
+                    </text>
+
+                </svg>
+            </div>
+
+            <div class="single-chart">
+                <h2 class="mutual-media-title">TV</h2>
+            </div>
+
+            <!--DISPLAY PERCENTAGE-->
+            <div class="single-chart">
+                <svg viewBox="0 0 36 36" class="circular-chart <?php echo determineColor($mutual_tv_percentage) ?>">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" stroke-dasharray="<?php echo $mutual_tv_percentage ?>, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+
+                    <text x="18" y="20.35" class="percentage">
+                        <?php echo $mutual_tv_percentage ?>%
+                    </text>
+                </svg>
+            </div>
+        </div>
     </div>
 
     <center>
         <div class="media" id="mutualTVDiv" style="display:none;">
-            <div>
-                <!-- <h2>TV</h2> -->
-            </div>
 
-            <!-- CIRCULAR ANIMATION -->
-            <div class="flex-wrapper">
-                <!--DISPLAY WATCHED X/Y COUNT WHERE X = YOUR MEDIA AND Y=THEIR MEDIA-->
-                <div class="single-chart">
-                    <svg viewBox="0 0 36 36" class="circular-chart black">
-                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <text x="18" y="20.35" class="mutual-items-count">
-                            <?php echo $tvcount_mutual ?>/<?php echo $tvcount_other ?>
-                        </text>
 
-                    </svg>
-                </div>
 
-                <!--DISPLAY PERCENTAGE-->
-                <div class="single-chart">
-                    <svg viewBox="0 0 36 36" class="circular-chart <?php echo determineColor($mutual_tv_percentage) ?>">
-                        <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="circle" stroke-dasharray="<?php echo $mutual_tv_percentage ?>, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <!-- <video src="<?php echo randomVideo(); ?>" autoplay loop playsinline muted></video> -->
+            <!--TO SHOW THE MEDIA ITEMS-->
+            <div class="mediaGrid">
 
-                        <text x="18" y="20.35" class="percentage">
-                            <?php echo $mutual_tv_percentage ?>%
-                        </text>
-                    </svg>
-                </div>
-            </div>
-
-            <?php
-            $sql = "SELECT tv FROM data WHERE username='$me' AND tv != ''
+                <?php
+                $sql = "SELECT tv FROM data WHERE username='$me' AND tv != ''
                 INTERSECT
                 SELECT tv FROM data WHERE username='$otheruser' AND tv != ''";
-            if ($query = mysqli_query($con, $sql)) {
-                if (mysqli_num_rows($query) > 0) {
-                    while ($row = mysqli_fetch_assoc($query)) {
-                        $tv = $row['tv'];
-                        echo $tv;
-                        echo "<br>";
+                if ($query = mysqli_query($con, $sql)) {
+                    if (mysqli_num_rows($query) > 0) {
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            $tv = $row['tv'];
+
+                ?>
+                            <div class="mediaContent">
+                                <?php echo $tv; ?>
+                            </div>
+                <?php
+                        }
+                    } else {
+                        echo ("There are no common Television Shows between you and $otheruser");
                     }
-                } else {
-                    echo ("There are no common Television Shows between you and $otheruser");
                 }
-            }
-            mysqli_close($con);
-            ?>
+                mysqli_close($con);
+                ?>
+            </div>
         </div>
     </center>
 

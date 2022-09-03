@@ -135,8 +135,9 @@ mysqli_close($con);
 </head>
 
 
-<body style="background-image: url(images/website/login.png); background-size: cover;" onload="getcookiedata()">
+<body onload="getcookiedata()">
 
+<video src="<?php echo randomVideo(); ?>" autoplay loop playsinline muted></video>
 <!-----------------------
 Container for Two Forms
 -------------------------->
