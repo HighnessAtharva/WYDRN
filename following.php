@@ -46,6 +46,7 @@ $username = $user_data['user_name'];
 <body>
 
 <?php
+if(isset($_GET['user_name'])){
 $follower=$_GET['user_name'];
 $sql="SELECT count(*) from `social` s LEFT JOIN `users` u ON s.followed_username=u.user_name where follower_username='$follower'";
 $result = mysqli_query($con, $sql);
@@ -82,7 +83,15 @@ $count = $row[0];
          <?php  
                }
             }  
-         ?>
+         }else{
+            //to handle when users land on this page wihtout a proper get request.
+            
+            ?>
+            <div class="container">
+             <div class="zero-media">You must provide a valid username</div>
+            </div>
+            <?php } 
+            ?>
            
       </ul>     
 </div> <!--Container DIV end.-->

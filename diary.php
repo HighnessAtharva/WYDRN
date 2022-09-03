@@ -69,11 +69,21 @@ if (isset($_GET['userdate'])) {
 
             <!--To Allow Users to Filter Date Wise -->
             <form method="get" name="dateselect" action="diary.php">
-                <input type="date" name="userdate" id="userdate">
+               
                 <!--Change button text value depending on if the date is selcted or not-->
-                <input type="submit" value=<?php if (!empty($date_selected)) echo "All"; else echo "Filter by Date;" ?> class="btn btn-primary" style="margin-bottom:5px;">
+                <?php if(empty($date_selected)){?>
+                    <input type="date" name="userdate" id="userdate">
+                <input type="submit" value="Filter" id="submitBtn" class="btn btn-primary" style="margin-bottom:5px;">
+                <?php }?>
+                <?php if(!empty($date_selected)){?>
+                <input type="submit" value="Show All" id="submitBtn2" class="btn btn-primary" style="margin-bottom:5px;">
+                <?php }?>
+
                 <button type="button" onclick="window.location.href='stats.php'" class="btn btn-success" style="margin-bottom:5px;">View Stats</button>
+                    
             </form>
+
+      
 
         </center>
         <hr>

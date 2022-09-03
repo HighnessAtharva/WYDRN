@@ -40,6 +40,16 @@ body {
     background: #555;
 }
 
+.zero-media {
+    background-color: rgb(255, 122, 122);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 25px rgb(0 0 0 / 8%);
+    border-color: black;
+    width: 336px;
+    font-size: x-large;
+}
+
 .container {
     /* width: 100vw; */
     min-width: 99.5vw;
