@@ -52,10 +52,10 @@ if (isset($_POST['signin'])) {
 		}
 	}
 
-	$invalid_login = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute; top: 20px; left: 570px;' role='alert'>
-			    	Username or Password does not match. Retry!
-				    </div></center>";
+	$invalid_login = "<center><div class='alert alert-danger w-50 text-center' style='position: absolute; top: 20px; left: 390px; z-index:500;' role='alert'>Username or Password does not match. Retry!
+	</div></center>";
 	echo $invalid_login;
+
 }
 
 /*********
@@ -85,7 +85,7 @@ if (isset($_POST['signup'])) {
 	/*---------------------------------------------------------------------------------------------------------------------- IF THE USERNAME IS ALREADY TAKEN, DISPLAY BOOTSTRAP ERROR. SEND AN EMAIL AND REDIRECT TO LOGIN PAGE. ALSO DISPLAY AND ERROR IF THE EMAIL IS NOT SENT.
     -----------------------------------------------------------------------------------------------------------------------*/
 	if (!mysqli_query($con, $query)) {
-		$invalid_signup = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute; top: 20px; left: 570px;' 		 role='alert'>
+		$invalid_signup = "<center><div class='alert alert-danger w-25 text-center' style='position: absolute; top: 20px; left: 570px;z-index:500;' role='alert'>
   		That username or email is already taken!
 		</div></center>";
 		echo $invalid_signup;
@@ -121,7 +121,7 @@ mysqli_close($con);
 
 	<!-- Add icon library -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+	
 	<link rel="stylesheet" href="CSS/login.css">
 	
 	<link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
@@ -129,6 +129,7 @@ mysqli_close($con);
 
 	<!-- Sweet Alert (Beautiful looking alert plugin-->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 	<!-- Google OAuth Sign In -->
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
