@@ -70,6 +70,17 @@ body {
     animation: flicker steps(100) var(--interval) 1s infinite;
 }
 
+.zero-media {
+    margin-left: 450px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+    border-color: black;
+    min-width: max-content;
+    color: black
+}
+
 @keyframes flicker {
     50% {
         color: white;

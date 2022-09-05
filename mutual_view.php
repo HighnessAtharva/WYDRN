@@ -137,7 +137,7 @@ $mutual_movie_percentage = round(($moviecount_mutual / $moviecount_other) * 100)
 $mutual_music_percentage = round(($musiccount_mutual / $musiccount_other) * 100);
 $mutual_book_percentage = round(($bookcount_mutual / $bookcount_other) * 100);
 $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
-
+$total_mutual_media_count=get_mutual_media_count($me, $otheruser)[5];
 ?>
 
 
@@ -176,7 +176,9 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
     --------------------------------------------->
 
     <div class="media-item-div" id="mutualGenericBtn">
-        <h2 class="mutual-media-title"><?php echo (get_mutual_media_count($me, $otheruser)[5]); ?> Total Mutual Medias
+        <h2 class="mutual-media-title"><?php echo ($total_mutual_media_count); ?> 
+        
+        <?php if($total_mutual_media_count>1) echo "Mutual Medias"; else echo "Mutual Media";?>
         </h2><br>
         <p style="font-size:150px;">&#127918
             &#127911
@@ -247,10 +249,12 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
                             <div class="mediaContent">
                                 <?php echo ucwords(strtolower($videogame)); ?>
                             </div>
-                <?php }
+                        <?php }
                     } else {
-                        echo ("There are no common videogames between you and $otheruser");
-                    }
+                        ?>
+
+                        <div class="zero-media"><img src='images/Icons/Videogame.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No common videogames between <b>you</b> and <b><?php echo $otheruser; ?></b></div>
+                <?php }
                 }
                 ?>
             </div>
@@ -319,12 +323,13 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
                             <div class="mediaContent">
                                 <?php echo ucwords(strtolower($album)); ?>
                             </div>
-                <?php
-
-
+                        <?php
                         }
                     } else {
-                        echo ("There are no common albums between you and $otheruser");
+                        ?>
+
+                        <div class="zero-media"><img src='images/Icons/Music.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No common music between <b>you</b> and <b><?php echo $otheruser; ?></b></div>
+                <?php
                     }
                 }
                 ?>
@@ -395,7 +400,10 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
                 <?php
                         }
                     } else {
-                        echo ("There are no common books between you and $otheruser");
+                        ?>
+
+                        <div class="zero-media"><img src='images/Icons/Book.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No common books between <b>you</b> and <b><?php echo $otheruser; ?></b></div>
+                <?php
                     }
                 }
                 ?>
@@ -469,7 +477,10 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
                 <?php
                         }
                     } else {
-                        echo ("There are no common movies between you and $otheruser");
+                        ?>
+
+                        <div class="zero-media"><img src='images/Icons/Movie.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No common movies between <b>you</b> and <b><?php echo $otheruser; ?></b></div>
+                <?php
                     }
                 }
                 ?>
@@ -541,7 +552,10 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
                 <?php
                         }
                     } else {
-                        echo ("There are no common Television Shows between you and $otheruser");
+                        ?>
+
+                        <div class="zero-media"><img src='images/Icons/TV.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No common TV Shows between <b>you</b> and <b><?php echo $otheruser; ?></b></div>
+                <?php
                     }
                 }
                 mysqli_close($con);
@@ -571,12 +585,12 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
         // const tvDiv = document.getElementById('mutualTVDiv');
 
         $(document).ready(function() {
-           
+
             //sliding animation toggle
             $("#mutualGameBtn").click(function() {
                 $("#mutualGameDiv").slideToggle("slow");
             });
-        
+
             $("#mutualMusicBtn").click(function() {
                 $("#mutualMusicDiv").slideToggle("slow");
             });
@@ -594,7 +608,6 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
             });
 
         });
-
     </script>
     <script src="js/backToTop.js"></script>
 </body>

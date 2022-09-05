@@ -64,31 +64,47 @@ button {
 /*PAGINATION STYLES*/
 
 .pagination {
-    display: inline-block;
+    display: inline-block
 }
 
 .pagination a {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 18px;
-    color: rgb(249, 249, 249);
+    color: #f9f9f9;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
-    background-color: rgb(0, 0, 0);
+    background-color: #000;
     margin-right: 5px;
     margin-left: 5px;
     margin-bottom: 50px;
     border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    outline: 0;
+}
+
+.pagination a.active:focus {
+    color: #171e29;
 }
 
 .pagination a.active {
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
+    border-color: #06f;
+    color: rgb(255, 255, 255);
+    background-color: #06f;
 }
 
 .pagination a:hover {
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
+    border-color: #06f;
+    color: #06f;
+    background-color: rgb(249, 249, 249);
+    border: 2px solid #06f;
 }
 
 a>span.neonText {
@@ -103,8 +119,13 @@ a>span.neonText:hover {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 6fr 1fr;
     grid-gap: 20px;
+}
+
+.grid-child.pagination {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .timeline_area {
@@ -199,6 +220,7 @@ a>span.neonText:hover {
 
 .single-timeline-area .single-timeline-content:hover {
     border: 1px solid #f1c40f;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 575px) {

@@ -27,9 +27,17 @@ function Header()
 {   
     global $username;
     // Title
-    $this->SetFont('Arial','',15);
-    $this->Cell(0,6,'Data Export --'.$username.'-- '.date("Y-m-d"),0,1,'C');
-    $this->Ln(10);
+    $this->SetFont('Courier','B',40);
+    $this->Cell(0,6,'Data Export for '.strtoupper($username),0,1,'C');
+    $this->Ln(15);
+
+    $this->SetFont('Courier','B',15);
+    $this->Cell(0,6,'Generated On: '. printable_date(date("Y-m-d")) ,0,1,'C');
+    $this->Ln(2);
+
+    $this->SetFont('Courier','I',15);
+    $this->Cell(0,6,'Prepared for you by your friends at WYDRN. Happy Logging!',2,1,'C');
+    $this->Ln(20);
     // Ensure table header is printed
     parent::Header();
 }
@@ -55,13 +63,14 @@ $prop = array('HeaderColor'=>array(255,150,100),
 VIDEOGAMES
 *********/
 $pdf->AddPage();
-$sql = "SELECT DATE_FORMAT(datetime, '%D %b %Y | %H:%i') AS DATE, CONCAT_WS(' - ', videogame, platform) AS VIDEOGAMES from data where username='$username' AND videogame != ''";
+$sql = "SELECT DATE_FORMAT(datetime, '%D %b %Y | %H:%i') AS DATE, CONCAT_WS(' on ', videogame, platform) AS VIDEOGAMES from data where username='$username' AND videogame != ''";
 
 $pdf->Cell(50,10,'Video Games',1,2,'C');
 
 //empty transparent cell to keep margin between heading and table
 $pdf->Cell(50,10,'',0,2,'C');
-
+$pdf->AddCol('DATE',40,'','C');
+$pdf->AddCol('VIDEOGAMES',370,'','C');
 $pdf->Table($con,$sql, $prop);
 
 
@@ -69,41 +78,44 @@ $pdf->Table($con,$sql, $prop);
 ALBUMS
 *********/
 $pdf->AddPage();
-$sql = "SELECT DATE_FORMAT(datetime, '%D %b %Y | %H:%i') AS DATE, CONCAT_WS(' - ', album, artist) AS ALBUMS from data where username='$username' AND album != ''";
+$sql = "SELECT DATE_FORMAT(datetime, '%D %b %Y | %H:%i') AS DATE, CONCAT_WS(' by ', album, artist) AS ALBUMS from data where username='$username' AND album != ''";
 
 $pdf->Cell(50,10,'Albums',1,2,'C');
 
 //empty transparent cell to keep margin between heading and table
 $pdf->Cell(50,10,'',0,2,'C');
-
+$pdf->AddCol('DATE',40,'','C');
+$pdf->AddCol('ALBUMS',370,'','C');
 $pdf->Table($con,$sql, $prop);
 
 /*********
 BOOKS
 *********/
 $pdf->AddPage();
-$sql = "SELECT DATE_FORMAT(datetime, '%D %b %Y | %H:%i') AS DATE, CONCAT_WS(' - ', book, author) AS BOOKS from data where username='$username' AND book != ''";
+$sql = "SELECT DATE_FORMAT(datetime, '%D %b %Y | %H:%i') AS DATE, CONCAT_WS(' by ', book, author) AS BOOKS from data where username='$username' AND book != ''";
 
 
 $pdf->Cell(50,10,'Books',1,2,'C');
 
 //empty transparent cell to keep margin between heading and table
 $pdf->Cell(50,10,'',0,2,'C');
-
+$pdf->AddCol('DATE',40,'','C');
+$pdf->AddCol('BOOKS',370,'','C');
 $pdf->Table($con,$sql, $prop);
 
 /*********
 TV
 *********/
 $pdf->AddPage();
-$sql = "SELECT DATE_FORMAT(datetime, '%D %b %Y | %H:%i') AS DATE, CONCAT_WS(' - ', tv, streaming) AS SHOWS from data where username='$username' AND tv != ''";
+$sql = "SELECT DATE_FORMAT(datetime, '%D %b %Y | %H:%i') AS DATE, CONCAT_WS(' on ', tv, streaming) AS SHOWS from data where username='$username' AND tv != ''";
 
 
 $pdf->Cell(50,10,'TV',1,2,'C');
 
 //empty transparent cell to keep margin between heading and table
 $pdf->Cell(50,10,'',0,2,'C');
-
+$pdf->AddCol('DATE',40,'','C');
+$pdf->AddCol('SHOWS',370,'','C');
 $pdf->Table($con,$sql, $prop);
 
 
@@ -118,7 +130,8 @@ $pdf->Cell(50,10,'Movies',1,2,'C');
 
 //empty transparent cell to keep margin between heading and table
 $pdf->Cell(50,10,'',0,2,'C');
-
+$pdf->AddCol('DATE',40,'','C');
+$pdf->AddCol('MOVIES',370,'','C');
 $pdf->Table($con,$sql, $prop);
 
 // ob_end_clean() will clear all the echoed output. REMEDY AGAINST  FPDF error: Some data has already been output, can't send PDF file in C:\xampp\htdocs\

@@ -128,17 +128,33 @@ body {
     margin-right: 5px;
     margin-left: 5px;
     margin-bottom: 50px;
-    border-radius: 10px
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    outline: 0;
+}
+
+.pagination a.active:focus {
+    color: #171e29;
 }
 
 .pagination a.active {
-    background-color: #fff;
-    color: #000
+    border-color: #06f;
+    color: rgb(255, 255, 255);
+    background-color: #06f;
 }
 
 .pagination a:hover {
-    background-color: #fff;
-    color: #000
+    border-color: #06f;
+    color: #06f;
+    background-color: rgb(249, 249, 249);
+    border: 2px solid #06f;
 }
 
 a>span.neonText {
