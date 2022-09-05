@@ -2,78 +2,23 @@
     box-sizing: border-box;
 }
 
+select {
+    word-wrap: normal;
+    box-shadow: rgb(179 220 255) 3px 3px 6px 0px inset, rgb(162 204 255 / 50%) -3px -3px 6px 1px inset;
+    /* border: 1px solid white; */
+    border-radius: 5px;
+}
+
 
 /* Responsible for animated gradient background*/
 
 .css-selector {
-    background: linear-gradient(200deg, #bd88fb, #485bf1);
-    background-size: 400% 400%;
-    -webkit-animation: AnimationName 4s ease infinite;
-    -moz-animation: AnimationName 4s ease infinite;
-    -o-animation: AnimationName 4s ease infinite;
-    animation: AnimationName 4s ease infinite;
-}
-
-.active-filter {
-    position: absolute;
-    color: rgb(5, 0, 149);
-    background-color: rgb(255, 255, 255);
-    border: 1px solid #000;
-    border-radius: 25px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin: 10px 0 50px 75px;
-    cursor: pointer;
-}
-
-@-webkit-keyframes AnimationName {
-    0% {
-        background-position: 58% 0%
-    }
-    50% {
-        background-position: 43% 100%
-    }
-    100% {
-        background-position: 58% 0%
-    }
-}
-
-@-moz-keyframes AnimationName {
-    0% {
-        background-position: 58% 0%
-    }
-    50% {
-        background-position: 43% 100%
-    }
-    100% {
-        background-position: 58% 0%
-    }
-}
-
-@-o-keyframes AnimationName {
-    0% {
-        background-position: 58% 0%
-    }
-    50% {
-        background-position: 43% 100%
-    }
-    100% {
-        background-position: 58% 0%
-    }
-}
-
-@keyframes AnimationName {
-    0% {
-        background-position: 58% 0%
-    }
-    50% {
-        background-position: 43% 100%
-    }
-    100% {
-        background-position: 58% 0%
-    }
+    background-image: linear-gradient(to left, rgba(10, 10, 10, 0.5), rgb(21, 21, 21)), url("../images/website/assets/wallpaper/carti.png");
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body {
@@ -81,6 +26,7 @@ body {
     min-height: 100vh;
     font-family: "Open Sans", Helvetica, sans-serif;
     background: #fafafa;
+    color: white !important;
     /* no selection */
     user-select: none;
     -moz-user-select: none;
@@ -112,6 +58,25 @@ body {
     background: #555;
 }
 
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.zero-media {
+    margin-left: 620px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+    border-color: black;
+    min-width: max-content;
+}
+
 
 /* For Stylish Heading*/
 
@@ -119,7 +84,7 @@ body {
     text-align: center;
     font-size: 50px;
     text-transform: uppercase;
-    color: #222;
+    color: white !important;
     letter-spacing: 1px;
     font-family: "Playfair Display", serif;
     font-weight: 400;
@@ -131,7 +96,7 @@ body {
 .heading h1 span {
     margin-top: 5px;
     font-size: 15px;
-    color: #444;
+    color: rgb(229, 229, 229);
     word-spacing: 1px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -154,13 +119,25 @@ body {
     background-color: #f8f8f8;
 }
 
+.btn {
+    background-color: white;
+    color: black;
+    border: none;
+}
+
+.btn:hover {
+    border: none;
+    background-color: rgb(198, 198, 198);
+    color: black;
+}
+
 .cards-wrapper {
     display: grid;
     justify-content: center;
     align-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     row-gap: 5rem;
-    padding: 2rem;
+    padding: 5rem 2rem;
     margin: 0 auto;
     width: 100%;
     justify-items: center;
@@ -183,7 +160,8 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: 0 0 3em -1em black;
-    border: 5px solid rgb(0, 0, 0);
+    border: 2px solid white;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px;
     color: white;
 }
 
@@ -194,25 +172,6 @@ body {
     box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px;
 }
 
-.flex {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 3rem;
-    margin-right: 3rem;
-}
-
-.zero-media {
-    margin-left: 620px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
-    border-color: black;
-    min-width: max-content;
-}
-
 h1.moviename {
     font-size: 1em;
     line-height: 1em;
@@ -221,6 +180,7 @@ h1.moviename {
     margin-top: 1em;
     font-weight: bolder;
     text-align: center;
+    color: white !important;
 }
 
 .tags {
@@ -234,6 +194,7 @@ h1.moviename {
     padding: 0 0.5em;
     margin: 0 auto;
     margin-top: 0.5em;
+    color: white;
 }
 
 .card .logged-date {
@@ -313,6 +274,20 @@ a>span.neonText {
 a>span.neonText:hover {
     color: rgb(0, 0, 0);
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+}
+
+.active-filter {
+    position: absolute;
+    color: rgb(5, 0, 149);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #000;
+    border-radius: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 10px 0 50px 75px;
+    cursor: pointer;
 }
 
 

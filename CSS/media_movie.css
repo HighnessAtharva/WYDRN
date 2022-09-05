@@ -6,60 +6,12 @@
 /* Responsible for animated gradient background*/
 
 .css-selector {
-    background: linear-gradient(200deg, #bd88fb, #485bf1);
-    background-size: 400% 400%;
-    -webkit-animation: AnimationName 4s ease infinite;
-    -moz-animation: AnimationName 4s ease infinite;
-    -o-animation: AnimationName 4s ease infinite;
-    animation: AnimationName 4s ease infinite;
-}
-
-@-webkit-keyframes AnimationName {
-    0% {
-        background-position: 58% 0%
-    }
-    50% {
-        background-position: 43% 100%
-    }
-    100% {
-        background-position: 58% 0%
-    }
-}
-
-@-moz-keyframes AnimationName {
-    0% {
-        background-position: 58% 0%
-    }
-    50% {
-        background-position: 43% 100%
-    }
-    100% {
-        background-position: 58% 0%
-    }
-}
-
-@-o-keyframes AnimationName {
-    0% {
-        background-position: 58% 0%
-    }
-    50% {
-        background-position: 43% 100%
-    }
-    100% {
-        background-position: 58% 0%
-    }
-}
-
-@keyframes AnimationName {
-    0% {
-        background-position: 58% 0%
-    }
-    50% {
-        background-position: 43% 100%
-    }
-    100% {
-        background-position: 58% 0%
-    }
+    background-image: linear-gradient(to left, rgba(10, 10, 10, 0.5), rgb(21, 21, 21)), url("../images/website/assets/wallpaper/movie.jpg");
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body {
@@ -67,6 +19,7 @@ body {
     min-height: 100vh;
     font-family: "Open Sans", Helvetica, sans-serif;
     background: #fafafa;
+    color: white !important;
     /* no selection */
     user-select: none;
     -moz-user-select: none;
@@ -124,7 +77,7 @@ body {
     text-align: center;
     font-size: 50px;
     text-transform: uppercase;
-    color: #222;
+    color: white !important;
     letter-spacing: 1px;
     font-family: "Playfair Display", serif;
     font-weight: 400;
@@ -136,7 +89,7 @@ body {
 .heading h1 span {
     margin-top: 5px;
     font-size: 15px;
-    color: #444;
+    color: rgb(229, 229, 229);
     word-spacing: 1px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -159,13 +112,32 @@ body {
     background-color: #f8f8f8;
 }
 
+select {
+    word-wrap: normal;
+    box-shadow: rgb(179 220 255) 3px 3px 6px 0px inset, rgb(162 204 255 / 50%) -3px -3px 6px 1px inset;
+    /* border: 1px solid white; */
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: white;
+    color: black;
+    border: none;
+}
+
+.btn:hover {
+    border: none;
+    background-color: rgb(198, 198, 198);
+    color: black;
+}
+
 .cards-wrapper {
     display: grid;
     justify-content: center;
     align-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     row-gap: 5rem;
-    padding: 2rem;
+    padding: 5rem 2rem;
     margin: 0 auto;
     width: 100%;
     justify-items: center;
@@ -188,7 +160,8 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: 0 0 3em -1em black;
-    border: 5px solid rgb(0, 0, 0);
+    border: 2px solid white;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px;
     color: white;
 }
 
@@ -207,6 +180,7 @@ h1.moviename {
     margin-top: 1em;
     font-weight: bolder;
     text-align: center;
+    color: white !important;
 }
 
 .tags {
@@ -220,6 +194,7 @@ h1.moviename {
     padding: 0 0.5em;
     margin: 0 auto;
     margin-top: 0.5em;
+    color: white;
 }
 
 .card .logged-date {
