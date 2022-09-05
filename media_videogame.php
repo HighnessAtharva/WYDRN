@@ -15,7 +15,6 @@ if (empty($_SESSION)) {
 require "header.php";
 require "connection.php";
 require "functions.php";
-require "quotes.php"; //to get a random quote
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 
