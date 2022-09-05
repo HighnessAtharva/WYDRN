@@ -157,22 +157,33 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
     <!--Bootstrap Link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
 
     <link href="css/mutual_view.css" rel="stylesheet">
+    <link href="css/backToTop.css" rel="stylesheet">
 </head>
 
-<body>
+<body><button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
+    <div class="heading">
+        <h1>Mutual View<span>Media items you<?php echo (" & " . $otheruser) ?> have in common</span></h1>
+    </div>
 
     <!------------------------------------------
             SHOWING BUTTONS
     --------------------------------------------->
 
-    <h1>Mutual View for <?php echo ($me . " & " . $otheruser) ?></h1>
     <div class="media-item-div" id="mutualGenericBtn">
-        <h2 class="mutual-media-title">Total Mutual Media</h2><br>
-        <h3 class="mutual-media-subtitle"><?php echo (get_mutual_media_count($me, $otheruser)[5]); ?></h3>
+        <h2 class="mutual-media-title"><?php echo (get_mutual_media_count($me, $otheruser)[5]); ?> Total Mutual Medias
+        </h2><br>
+        <p style="font-size:150px;">&#127918
+            &#127911
+            &#128213
+            &#128191
+            &#128250</p>
+        <h3 class="mutual-media-subtitle"></h3>
     </div>
 
 
@@ -198,7 +209,8 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
             </div>
 
             <div class="single-chart">
-                <h2 class="mutual-media-title">VIDEOGAMES</h2>
+                <h2 class="mutual-media-title">GAMES</h2>
+                <p class="emoji">&#127918 </p>
             </div>
 
             <!--DISPLAY PERCENTAGE-->
@@ -271,6 +283,7 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
 
             <div class="single-chart">
                 <h2 class="mutual-media-title">ALBUMS</h2>
+                <p class="emoji">&#127911</p>
             </div>
 
             <!--DISPLAY PERCENTAGE-->
@@ -342,6 +355,7 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
 
             <div class="single-chart">
                 <h2 class="mutual-media-title">BOOKS</h2>
+                <p class="emoji">&#128213</p>
             </div>
 
             <!--DISPLAY PERCENTAGE-->
@@ -414,6 +428,7 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
 
             <div class="single-chart">
                 <h2 class="mutual-media-title">MOVIES</h2>
+                <p class="emoji">&#128191</p>
             </div>
             <!--DISPLAY PERCENTAGE-->
             <div class="single-chart">
@@ -484,6 +499,7 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
 
             <div class="single-chart">
                 <h2 class="mutual-media-title">TV</h2>
+                <p class="emoji">&#128250 </p>
             </div>
 
             <!--DISPLAY PERCENTAGE-->
@@ -539,105 +555,48 @@ $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
                        JAVASCRIPT PART
 ------------------------------------------------------------------------>
     <script>
-        const gameBtn = document.getElementById('mutualGameBtn');
-        const gameDiv = document.getElementById('mutualGameDiv');
+        // const gameBtn = document.getElementById('mutualGameBtn');
+        // const gameDiv = document.getElementById('mutualGameDiv');
 
-        const musicBtn = document.getElementById('mutualMusicBtn');
-        const musicDiv = document.getElementById('mutualMusicDiv');
+        // const musicBtn = document.getElementById('mutualMusicBtn');
+        // const musicDiv = document.getElementById('mutualMusicDiv');
 
-        const bookBtn = document.getElementById('mutualBookBtn');
-        const bookDiv = document.getElementById('mutualBookDiv');
+        // const bookBtn = document.getElementById('mutualBookBtn');
+        // const bookDiv = document.getElementById('mutualBookDiv');
 
-        const movieBtn = document.getElementById('mutualMovieBtn');
-        const movieDiv = document.getElementById('mutualMovieDiv');
+        // const movieBtn = document.getElementById('mutualMovieBtn');
+        // const movieDiv = document.getElementById('mutualMovieDiv');
 
-        const tvBtn = document.getElementById('mutualTVBtn');
-        const tvDiv = document.getElementById('mutualTVDiv');
+        // const tvBtn = document.getElementById('mutualTVBtn');
+        // const tvDiv = document.getElementById('mutualTVDiv');
 
-        //TOGGLE VISIBILITY FOR VIDEOGAME BUTTON
-        gameBtn.onclick = function() {
-            if (gameDiv.style.display !== "none") {
-                gameDiv.style.display = "none";
-            } else {
-                //set other divs to none
-                musicDiv.style.display = "none";
-                bookDiv.style.display = "none";
-                movieDiv.style.display = "none";
-                tvDiv.style.display = "none";
+        $(document).ready(function() {
+           
+            //sliding animation toggle
+            $("#mutualGameBtn").click(function() {
+                $("#mutualGameDiv").slideToggle("slow");
+            });
+        
+            $("#mutualMusicBtn").click(function() {
+                $("#mutualMusicDiv").slideToggle("slow");
+            });
 
-                //set game div to block
-                gameDiv.style.display = "block";
-            }
-        };
+            $("#mutualBookBtn").click(function() {
+                $("#mutualBookDiv").slideToggle("slow");
+            });
 
+            $("#mutualMovieBtn").click(function() {
+                $("#mutualMovieDiv").slideToggle("slow");
+            });
 
-        //TOGGLE VISIBILITY FOR MUSIC BUTTON
-        musicBtn.onclick = function() {
-            if (musicDiv.style.display !== "none") {
-                musicDiv.style.display = "none";
-            } else {
-                //set other divs to none
-                gameDiv.style.display = "none";
-                bookDiv.style.display = "none";
-                movieDiv.style.display = "none";
-                tvDiv.style.display = "none";
+            $("#mutualTVBtn").click(function() {
+                $("#mutualTVDiv").slideToggle("slow");
+            });
 
-                //set music div to block
-                musicDiv.style.display = "block";
-            }
-        };
+        });
 
-
-        //TOGGLE VISIBILITY FOR Books BUTTON
-        bookBtn.onclick = function() {
-            if (bookDiv.style.display !== "none") {
-                bookDiv.style.display = "none";
-            } else {
-                //set other divs to none
-                gameDiv.style.display = "none";
-                musicDiv.style.display = "none";
-                movieDiv.style.display = "none";
-                tvDiv.style.display = "none";
-
-                //set book div to block
-                bookDiv.style.display = "block";
-            }
-        };
-
-
-        //TOGGLE VISIBILITY FOR Movie BUTTON
-        movieBtn.onclick = function() {
-            if (movieDiv.style.display !== "none") {
-                movieDiv.style.display = "none";
-            } else {
-                //set other divs to none
-                gameDiv.style.display = "none";
-                musicDiv.style.display = "none";
-                bookDiv.style.display = "none";
-                tvDiv.style.display = "none";
-
-                //set movie div to block
-                movieDiv.style.display = "block";
-            }
-        };
-
-
-        //TOGGLE VISIBILITY FOR TV BUTTON
-        tvBtn.onclick = function() {
-            if (tvDiv.style.display !== "none") {
-                tvDiv.style.display = "none";
-            } else {
-                //set other divs to none
-                gameDiv.style.display = "none";
-                musicDiv.style.display = "none";
-                bookDiv.style.display = "none";
-                movieDiv.style.display = "none";
-
-                //set tv div to block
-                tvDiv.style.display = "block";
-            }
-        };
     </script>
+    <script src="js/backToTop.js"></script>
 </body>
 
 </html>

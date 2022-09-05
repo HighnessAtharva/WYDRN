@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 body {
     /* no selection */
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     font-family: "Open Sans", Helvetica, sans-serif;
+    background-color: black;
 }
 
 ::-webkit-scrollbar {
@@ -34,6 +36,7 @@ body {
 
 .media {
     height: max-content;
+    transition: all .2s ease-out;
 }
 
 .media-item-div {
@@ -47,8 +50,31 @@ body {
 }
 
 .mutual-media-title {
-    text-align: center;
-    color: white;
+    --color1: goldenrod;
+    --color2: orangered;
+    --color3: mediumblue;
+    --color4: purple;
+    --interval: 1s;
+    padding: 5px;
+    font-size: 5em;
+    font-weight: 100;
+    margin-top: 30px;
+    margin-bottom: -30px;
+    font-family: fantasy;
+    color: rgb(255, 255, 255);
+    word-spacing: 20px;
+    font-style: italic;
+    text-shadow: 0 0 10px var(--color1), 0 0 20px var(--color2), 0 0 30px var(--color3), 0 0 40px var(--color4);
+    will-change: filter, color;
+    filter: saturate(60%);
+    animation: flicker steps(100) var(--interval) 1s infinite;
+}
+
+@keyframes flicker {
+    50% {
+        color: white;
+        filter: saturate(200%) hue-rotate(20deg);
+    }
 }
 
 .mutual-media-subtitle {
@@ -57,108 +83,62 @@ body {
 }
 
 #mutualGenericBtn {
-    background-image: url("../images/website/assets/abstract/1.jpg");
+    margin-bottom: 100px;
 }
 
 #mutualGameBtn {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url("../images/website/assets/games/2.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url("../images/website/assets/wallpaper/game2.jpg");
 }
 
 #mutualMusicBtn {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url("../images/website/assets/music/3.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url("../images/website/assets/wallpaper/music.jpg");
 }
 
 #mutualBookBtn {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url("../images/website/assets/movies/9.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url("../images/website/assets/wallpaper/book2.jpg");
 }
 
 #mutualMovieBtn {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url("../images/website/assets/movies/5.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url("../images/website/assets/wallpaper/movie4.jpg");
 }
 
 #mutualTVBtn {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url("../images/website/assets/movies/6.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url("../images/website/assets/wallpaper/movie1.jpg");
 }
 
 #mutualGameBtn:hover {
-    opacity: 85%;
+    filter: brightness(1.5);
     cursor: pointer;
 }
 
 #mutualMusicBtn:hover {
-    opacity: 85%;
+    filter: brightness(1.5);
     cursor: pointer;
 }
 
 #mutualBookBtn:hover {
-    opacity: 85%;
+    filter: brightness(1.5);
     cursor: pointer;
 }
 
 #mutualMovieBtn:hover {
-    opacity: 85%;
+    filter: brightness(1.5);
     cursor: pointer;
 }
 
 #mutualTVBtn:hover {
-    opacity: 85%;
+    filter: brightness(1.5);
     cursor: pointer;
 }
-
-
-/* #mutualGameDiv video {
-    filter: brightness(0.3);
-    width: 100%;
-    position: absolute;
-    z-index: -999;
-    left: 0;
-    object-fit: cover;
-}
-
-#mutualMusicDiv video {
-    filter: brightness(0.3);
-    width: 100%;
-    position: absolute;
-    z-index: -999;
-    left: 0;
-    object-fit: cover;
-}
-
-#mutualMovieDiv video {
-    filter: brightness(0.3);
-    width: 100%;
-    position: absolute;
-    z-index: -999;
-    left: 0;
-    object-fit: cover;
-}
-
-#mutualTVDiv video {
-    filter: brightness(0.3);
-    width: 100%;
-    position: absolute;
-    z-index: -999;
-    left: 0;
-    object-fit: cover;
-}
-
-#mutualBookDiv video {
-    filter: brightness(0.3);
-    width: 100%;
-    position: absolute;
-    z-index: -999;
-    left: 0;
-    object-fit: cover;
-} */
 
 .mediaGrid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 0.5rem 0.5rem;
-    grid-auto-rows: minmax(10px, auto);
-    color: white;
+    color: #dbe4fcc4;
     background-color: #000000;
     padding: 50px 50px;
+    grid-auto-rows: 1fr;
 }
 
 .mediaContent {
@@ -168,6 +148,59 @@ body {
     text-align: center;
     font-size: 1rem;
     font-weight: bold;
+}
+
+.mediaContent:hover {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+
+/* For Stylish Heading*/
+
+.heading h1 {
+    text-align: center;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    letter-spacing: 1px;
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    margin: auto;
+    margin-top: 50px;
+    min-width: 1000px;
+}
+
+.heading {
+    margin-bottom: 100px;
+}
+
+.heading h1 span {
+    margin-top: 5px;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    word-spacing: 1px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.heading h1 span:after,
+.heading h1 span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+    background-color: #f8f8f8;
 }
 
 
@@ -181,6 +214,8 @@ body {
 
 .single-chart {
     width: 20%;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .circular-chart {
@@ -196,8 +231,12 @@ body {
     stroke-width: 3.8;
 }
 
+.emoji {
+    font-size: 10rem;
+}
+
 .circle {
-    fill: none;
+    /* fill: none; */
     stroke-width: 2.8;
     stroke-linecap: round;
     animation: progress 1s ease-out forwards;
@@ -239,14 +278,14 @@ body {
 
 .mutual-items-count {
     fill: rgb(255, 255, 255);
-    font-family: sans-serif;
+    font-family: 'Crimson Text', serif;
     font-size: 0.5em;
     text-anchor: middle;
 }
 
 .percentage {
     fill: rgb(255, 248, 248);
-    font-family: sans-serif;
-    font-size: 0.5em;
+    font-family: 'Crimson Text', serif;
+    font-size: 0.4em;
     text-anchor: middle;
 }
