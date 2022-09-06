@@ -180,11 +180,13 @@ $total_mutual_media_count=get_mutual_media_count($me, $otheruser)[5];
         
         <?php if($total_mutual_media_count>1) echo "Mutual Medias"; else echo "Mutual Media";?>
         </h2><br>
-        <p style="font-size:150px;">&#127918
-            &#127911
-            &#128213
-            &#128191
-            &#128250</p>
+        <p style="font-size:150px;">
+            <a class="emoji-link" href="#mutualGameBtn">&#127918</a>
+            <a class="emoji-link" href="#mutualMusicBtn">&#127911</a>
+            <a class="emoji-link" href="#mutualBookBtn">&#128213</a>
+            <a class="emoji-link" href="#mutualMusicBtn">&#128191</a>
+            <a class="emoji-link" href="#mutualTVBtn">&#128250</a>
+        </p>
         <h3 class="mutual-media-subtitle"></h3>
     </div>
 

@@ -21,7 +21,7 @@ $username = $user_data['user_name'];
 
 
 if (isset($_POST['search'])) {
-   $name = $_POST['search'];
+   $name = mysqli_real_escape_string($con,$_POST['search']);
    //filter out logged in users username.
    $query = "SELECT `user_name`, `profile_pic` FROM `users` WHERE `user_name` LIKE '%$name%' and `user_name`!='$username' LIMIT 5";
    $exec = mysqli_query($con, $query);
