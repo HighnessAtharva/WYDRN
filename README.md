@@ -45,3 +45,4 @@ The site is not deployed currently so you can't get a live preview but you can t
 - Add Meta Description, Meta Keyword to all files. (https://www.webfx.com/blog/web-design/20-html-best-practices-you-should-follow)
 - All image tags must be self-closed
 - Minify CSS files using https://www.cssportal.com/css-optimize/
+- add mysqli_real_escape_string() at all the places where data is being stored from forms or from GET/POST request methods.
