@@ -22,7 +22,7 @@ require "functions.php";
 
 $user_data = check_login($con);
 if (isset($_GET['user_name'])) {
-    $username = $_GET['user_name'];
+    $username = mysqli_real_escape_string($con, $_GET['user_name']);
 } else {
     $username = $user_data['user_name'];
     set_active($username);
@@ -36,7 +36,7 @@ if ($query = mysqli_query($con, $sql)) {
         $profile_pic = $row['profile_pic'];
         $background_pic = $row['background_pic'];
     } else {
-        die('That user does not exist' . mysqli_error($con));
+        header('Location: http://localhost/WYDRN/ErrorPages/404.html');
     }
 }
 
@@ -153,11 +153,11 @@ if ($query = mysqli_query($con, $sql2)) {
             <span data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <!-- Hide this if a GET request is made but username is not matching to logged in person-->
                 <span <?php
-                    if (isset($_GET['user_name'])) {
-                        if ($_GET['user_name'] != $user_data['user_name']) {
-                            echo "hidden";
-                        }
-                    } ?>><img src="images/icons/clear.svg" title="Clear Profile" class="clear-icon"></span>
+                        if (isset($_GET['user_name'])) {
+                            if ($_GET['user_name'] != $user_data['user_name']) {
+                                echo "hidden";
+                            }
+                        } ?>><img src="images/icons/clear.svg" title="Clear Profile" class="clear-icon"></span>
             </span>
 
             <!-- Modal for Clear Activity Confirmation-->
@@ -199,20 +199,20 @@ if ($query = mysqli_query($con, $sql2)) {
                                                                         }
                                                                     }
                                                                     ?>" <?php
-                if (!isset($_GET['user_name'])) {
-                    echo 'hidden';
-                }
+                                                                        if (!isset($_GET['user_name'])) {
+                                                                            echo 'hidden';
+                                                                        }
 
-                if (isset($_GET['user_name'])) {
-                    if ($_GET['user_name'] == $user_data['user_name']) {
-                        echo 'hidden';
-                    }
-                }
+                                                                        if (isset($_GET['user_name'])) {
+                                                                            if ($_GET['user_name'] == $user_data['user_name']) {
+                                                                                echo 'hidden';
+                                                                            }
+                                                                        }
 
-                if (!isset($_POST)) {
-                    echo 'hidden';
-                }
-                ?>>
+                                                                        if (!isset($_POST)) {
+                                                                            echo 'hidden';
+                                                                        }
+                                                                        ?>>
                     <!--THE CONTENT OF THE A TAG GOES HERE [FOLLOW/UNFOLLOW] DEPENDING ON WHETHER A USER IS ALREADY FOLLOWING A PERSON OR NOT.-->
                     <?php
                     $user_data = check_login($con);

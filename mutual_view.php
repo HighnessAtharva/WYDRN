@@ -1,3 +1,16 @@
+<style>
+    .danger {
+        background-color: #f7a7a3;
+        border-left: 5px solid #8f130c;
+        width: 50%;
+        margin: 20px auto;
+        padding: 30px;
+        position: relative;
+        border-radius: 5px;
+        box-shadow: 0 0 15px 5px #ccc;
+    }
+</style>
+
 <?php
 
 /**
@@ -18,9 +31,36 @@ require "functions.php";
 require "header.php";
 
 $user_data = check_login($con);
+
+
 if (isset($_GET['user_name'])) {
-    $otheruser = $_GET['user_name'];
+    $otheruser = mysqli_real_escape_string($con, $_GET['user_name']);
     $me = $user_data['user_name'];
+
+
+    // if otheruser name is passed as the logged in username show error
+    if ($otheruser == $me) {
+        echo "<div class='danger'><h3>You cannot view your own mutual media</h3></div>";
+        die();
+    }
+
+
+    // to check whether the other username exists or not
+    $query = "select * from `users` where `user_name`='$otheruser'";
+    $result = mysqli_query($con, $query);
+    $rowcount = mysqli_num_rows($result);
+    //echo error if does not exist
+    if ($rowcount != 1) {
+        echo ("<div class='danger'><h3>No Such User Exists</h3></div>");
+        die();
+    }
+}
+
+
+//echo error if NO username is passed
+else {
+    echo ("<div class='danger'><h3>You must mention a username</h3></div>");
+    die();
 }
 
 //to show in the animated progress/color wheel
@@ -64,11 +104,11 @@ $tvcount_me = SQLGetCount($con, "SELECT DISTINCT tv FROM data WHERE username='$m
 
 
 //count of media items for the other user
-$videogamecount_other = SQLGetCount($con, "SELECT videogame FROM data WHERE username='$otheruser' AND videogame!=''");;
-$moviecount_other = SQLGetCount($con, "SELECT movie FROM data WHERE username='$otheruser' AND movie!=''");;
-$musiccount_other = SQLGetCount($con, "SELECT album FROM data WHERE username='$otheruser' AND album!=''");
-$bookcount_other = SQLGetCount($con, "SELECT book FROM data WHERE username='$otheruser' AND book!=''");;
-$tvcount_other = SQLGetCount($con, "SELECT tv FROM data WHERE username='$otheruser' AND tv!=''");;
+$videogamecount_other = SQLGetCount($con, "SELECT DISTINCT videogame FROM data WHERE username='$otheruser' AND videogame!=''");;
+$moviecount_other = SQLGetCount($con, "SELECT DISTINCT movie FROM data WHERE username='$otheruser' AND movie!=''");;
+$musiccount_other = SQLGetCount($con, "SELECT DISTINCT album FROM data WHERE username='$otheruser' AND album!=''");
+$bookcount_other = SQLGetCount($con, "SELECT DISTINCT book FROM data WHERE username='$otheruser' AND book!=''");;
+$tvcount_other = SQLGetCount($con, "SELECT DISTINCT tv FROM data WHERE username='$otheruser' AND tv!=''");;
 
 
 $videogamecount_mutual = SQLGetCount(
@@ -137,7 +177,7 @@ $mutual_movie_percentage = round(($moviecount_mutual / $moviecount_other) * 100)
 $mutual_music_percentage = round(($musiccount_mutual / $musiccount_other) * 100);
 $mutual_book_percentage = round(($bookcount_mutual / $bookcount_other) * 100);
 $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
-$total_mutual_media_count=get_mutual_media_count($me, $otheruser)[5];
+$total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
 ?>
 
 
@@ -166,6 +206,9 @@ $total_mutual_media_count=get_mutual_media_count($me, $otheruser)[5];
     <link href="css/backToTop.css" rel="stylesheet">
 </head>
 
+
+
+
 <body><button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <div class="heading">
         <h1>Mutual View<span>Media items you<?php echo (" & " . $otheruser) ?> have in common</span></h1>
@@ -176,15 +219,16 @@ $total_mutual_media_count=get_mutual_media_count($me, $otheruser)[5];
     --------------------------------------------->
 
     <div class="media-item-div" id="mutualGenericBtn">
-        <h2 class="mutual-media-title"><?php echo ($total_mutual_media_count); ?> 
-        
-        <?php if($total_mutual_media_count>1) echo "Mutual Medias"; else echo "Mutual Media";?>
+        <h2 class="mutual-media-title"><?php echo ($total_mutual_media_count); ?>
+
+            <?php if ($total_mutual_media_count > 1) echo "Mutual Medias";
+            else echo "Mutual Media"; ?>
         </h2><br>
         <p style="font-size:150px;">
             <a class="emoji-link" href="#mutualGameBtn">&#127918</a>
             <a class="emoji-link" href="#mutualMusicBtn">&#127911</a>
             <a class="emoji-link" href="#mutualBookBtn">&#128213</a>
-            <a class="emoji-link" href="#mutualMusicBtn">&#128191</a>
+            <a class="emoji-link" href="#mutualMovieBtn">&#128191</a>
             <a class="emoji-link" href="#mutualTVBtn">&#128250</a>
         </p>
         <h3 class="mutual-media-subtitle"></h3>
@@ -399,7 +443,7 @@ $total_mutual_media_count=get_mutual_media_count($me, $otheruser)[5];
                                 <?php echo ucwords(strtolower($book)); ?>
                             </div>
 
-                <?php
+                        <?php
                         }
                     } else {
                         ?>
@@ -476,7 +520,7 @@ $total_mutual_media_count=get_mutual_media_count($me, $otheruser)[5];
                                 <?php echo ucwords(strtolower($movie)); ?>
                             </div>
 
-                <?php
+                        <?php
                         }
                     } else {
                         ?>
@@ -551,7 +595,7 @@ $total_mutual_media_count=get_mutual_media_count($me, $otheruser)[5];
                             <div class="mediaContent">
                                 <?php echo ucwords(strtolower($tv)); ?>
                             </div>
-                <?php
+                        <?php
                         }
                     } else {
                         ?>

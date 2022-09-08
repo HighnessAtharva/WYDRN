@@ -15,8 +15,8 @@ require("connection.php");
 
 //page will only serve data when the key and reset parameters are set
 if (isset($_GET['key']) && isset($_GET['reset'])) {
-  $email = $_GET['key'];
-  $pass = $_GET['reset'];
+  $email = mysqli_real_escape_string($con, $_GET['key']);
+  $pass = mysqli_real_escape_string($con,$_GET['reset']);
 
   //select the email and the passsword of the current user
   $select = mysqli_query($con, "select `email`, `password` from `users` where `email`='$email' and `password`='$pass'");

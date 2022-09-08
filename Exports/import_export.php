@@ -50,7 +50,7 @@ if (empty($_SESSION)) {
         <div class="description">
             <p>At WYDRN, we strongly believe that the data you share with us is valuable to you. We value your privacy and want to make sure that your data is safe and secure. We also believe that users should have complete control over their data and should be able to easily import and export it as and when they want it instaneously. </p>
             <hr>
-            <p>This is why we have created an Import/Export feature. You can use this feature to import your data from a CSV file and export it to a CSV file. You can also export your data to a PDF file for a more portable and easy to use format. If you wish to wipe your data, you can delete your account <a href='../delete_user.php'>here.</a></p>
+            <p>This is why we have created an Import/Export feature. You can use this feature to import your data from a CSV file and export it to a CSV file. You can also export your data to a PDF file for a more portable and easy to use format. If you wish to wipe your data, you can delete your account <a href='../edit_profile.php'>here.</a></p>
             <hr>
             <p> Please ensure that you export your data first before deleting your account so that you can import it back later. Cheers and keep adding your favourite medias to WYDRN.</p>
         </div>

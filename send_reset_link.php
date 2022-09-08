@@ -146,8 +146,9 @@ require("functions.php");
 <?php
 
 if (isset($_POST['submit_email']) && $_POST['email']) {
-  $email = $_POST['email'];
-  // Check if the email is registered with WYDRN Service
+  
+  $email = mysqli_real_escape_string($con, $_POST['email']);
+  // Check if the email is registered with WYDRN 
   $select = mysqli_query($con, "SELECT `email`, `password` FROM `users` WHERE `email`='$email'");
   if (mysqli_num_rows($select) == 1) {
     while ($row = mysqli_fetch_array($select)) {

@@ -34,6 +34,9 @@ if (isset($_POST['signin'])) {
 	$user_name = strip_tags(trim($_POST['user_name']));
 	$password = strip_tags(trim($_POST['password']));
 
+	$user_name= mysqli_real_escape_string($con, $user_name);
+	$password = mysqli_real_escape_string($con, $password);
+
 	$query = "select * from users where user_name = '$user_name' limit 1";
 	$result = mysqli_query($con, $query);
 	if ($result) {
@@ -65,10 +68,17 @@ if (isset($_POST['signup'])) {
 	/*------------------------------------------------------------------------------------------------------------------ 
 	GRAB THE POSTED DATA FROM THE SIGNUP FORM AND STORE IT INSIDE VARIABLES AND PROCESS IT.
 	------------------------------------------------------------------------------------------------------------------*/
-	$user_name = mysqli_real_escape_string($con, $_POST['user_name']);
-	$email = mysqli_real_escape_string($con, $_POST['email']);
-	$password = mysqli_real_escape_string($con, $_POST['password']);
-	$confirm_password = mysqli_real_escape_string($con, $_POST['confirm_password']);
+	$user_name = strip_tags(trim($_POST['user_name']));
+	$user_name = mysqli_real_escape_string($con, $user_name);
+	
+	$email = strip_tags(trim($_POST['email']));
+	$email = mysqli_real_escape_string($con, $email);
+	
+	$password = strip_tags(trim($_POST['password']));
+	$password = mysqli_real_escape_string($con, $password);
+	
+	$confirm_password = strip_tags(trim($_POST['confirm_password']));
+	$confirm_password = mysqli_real_escape_string($con, $confirm_password);
 
 	// hash the password
 	$hashed_pass = password_hash($password, PASSWORD_DEFAULT);

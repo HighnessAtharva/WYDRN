@@ -303,3 +303,23 @@ body {
     font-size: 0.4em;
     text-anchor: middle;
 }
+
+.close {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    opacity: 0.5;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 50%;
+    right: 15px;
+    top: 25px;
+    text-align: center;
+    font-size: 1.6em;
+    cursor: pointer;
+}
+
+.success-alert {
+    background-color: #a8f0c6;
+    border-left: 5px solid #178344;
+}
