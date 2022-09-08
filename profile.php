@@ -121,6 +121,8 @@ if ($query = mysqli_query($con, $sql2)) {
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
 
     <link href="CSS/profile.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -131,7 +133,8 @@ if ($query = mysqli_query($con, $sql2)) {
         <!----------------
 	Background Image
 	------------------>
-        <div id="header" style="background-image:url(<?php echo $background_pic ?>)" alt="Background Image"></div>
+        <div id="header" style="background-image:url(<?php echo $background_pic ?>)" alt="Background Image">
+        </div>
 
         <div id="profile">
 
@@ -159,6 +162,29 @@ if ($query = mysqli_query($con, $sql2)) {
                             }
                         } ?>><img src="images/icons/clear.svg" title="Clear Profile" class="clear-icon"></span>
             </span>
+
+            <!----------------
+			Badge Icon
+			------------------>
+            <?php 
+            //when visiting other users profile display badge icon with link to THEIR badge page (badge.php?user_name=xyz)
+            if (isset($_GET['user_name'])) {
+                $badgefor = $_GET['user_name'];
+            ?>
+
+                <a href="badges.php?user_name=<?php echo $badgefor; ?>">
+                    <img src="images/Icons/badges.gif" class="badge-gif" alt="Badges">
+                </a>
+
+            <?php } 
+            
+            // by default when user_name GET request is not set display badge icon with link to standard badges.php page 
+            else { ?>
+                <a href="badges.php">
+                    <img src="images/Icons/badges.gif" class="badge-gif" alt="Badges">
+                </a>
+            <?php }
+            ?>
 
             <!-- Modal for Clear Activity Confirmation-->
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

@@ -36,6 +36,15 @@ body {
     font-family: "Open Sans", Helvetica, sans-serif
 }
 
+.badge-gif {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 75px;
+    height: 75px;
+}
+
 .follow-icon {
     width: 1.5em;
     height: 1.5em;
@@ -57,7 +66,8 @@ body {
     height: 1.5em;
     display: inline-block;
     margin-left: .8em;
-    margin-bottom: .6em
+    margin-bottom: .6em;
+    cursor: pointer;
 }
 
 a:link {
