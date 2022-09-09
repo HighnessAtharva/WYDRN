@@ -1,3 +1,18 @@
+<style>
+  .danger {
+    background-color: #f7a7a3;
+    border-left: 5px solid #8f130c;
+    width: 50%;
+    margin: 20px auto;
+    padding: 30px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 5px #ccc;
+}
+
+  </style>
+
+
 <?php
 
 /**
@@ -34,11 +49,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' and isset($_GET['user_name'])) {
     if ($row[0] == $_GET['user_name']) {
       $username = mysqli_real_escape_string($con,$_GET['user_name']);
     }
-   } else {
-      die("<h1> User not found! </h1>");
+   } 
+   
+   //if the username is not passed or a faulty username is passed in the get Request this error message will be displayed
+   else {
+      die("<div class='danger'><h3>Cannot display stats for a non-existent user</h3></div>");
     }
   }
 }
+
+
 
 // BY DEFAULT SHOW THE STATS OF THE LOGGED IN USER.
 else {
@@ -325,9 +345,15 @@ $media_array=array("Books"=>$total_book_count,
                   "Video Games"=>$total_videogame_count,
                   "Albums"=>$total_album_count,
                   );
+
+if($total_album_count==0 && $total_videogame_count==0 && $total_tv_count==0 && $total_movie_count==0 && $total_book_count==0){
+  $fav_media_val="0";
+  $fav_media="None";
+}
+else{
 $fav_media_val = max($media_array); //gets the highest value in the array
 $fav_media = array_search($fav_media_val, $media_array); //gets the key of the highest value in the array. Key is the media type.
-
+}
 
 
 /*************

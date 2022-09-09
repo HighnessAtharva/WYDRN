@@ -81,7 +81,7 @@ if (isset($_GET['userdate'])) {
                 <input type="submit" value="Show All" id="submitBtn2" class="btn btn-primary" style="margin-bottom:5px;">
                 <?php }?>
 
-                <button type="button" onclick="window.location.href='stats.php'" class="btn btn-success" style="margin-bottom:5px;">View Stats</button>
+               
                     
             </form>
 

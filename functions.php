@@ -487,3 +487,9 @@ function getRandomAlbumQuote()
     ];
     return $albumquotes[array_rand($albumquotes)];
 }
+
+function getDateofJoining($con, $username){
+$date_joined = executeSQL($con, "SELECT `date` FROM `users` where `user_name`='$username'");
+$date_joined = strtotime($date_joined);
+return date("M jS, Y", $date_joined);
+}

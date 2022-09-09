@@ -134,6 +134,23 @@ if ($query = mysqli_query($con, $sql2)) {
 	Background Image
 	------------------>
         <div id="header" style="background-image:url(<?php echo $background_pic ?>)" alt="Background Image">
+            <div class="hide">
+            
+            <!--MEMBER SINCE-->
+                <div class="join-date">
+                    <img src="images/Icons/since.png" class="since-icon" title="Member Since">
+                    <span><?php echo getDateofJoining($con, $username); ?> </span>
+                </div>
+
+            <!--VIEW STATS-->
+                <div class="stats-text">
+                    <a href="stats.php?user_name=<?php echo $username?>">    
+                        <span>Stats</span>
+                        <img src="images/Icons/stats.png" class="stats-icon" title="View Stats">
+                    </a>
+                </div>
+            
+            </div>
         </div>
 
         <div id="profile">
@@ -173,7 +190,7 @@ if ($query = mysqli_query($con, $sql2)) {
             ?>
 
                 <a href="badges.php?user_name=<?php echo $badgefor; ?>">
-                    <img src="images/Icons/badges.gif" class="badge-gif" alt="Badges">
+                    <img src="images/Icons/badges.gif" class="badge-gif" alt="Badges" title="Badges">
                 </a>
 
             <?php } 

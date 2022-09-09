@@ -40,7 +40,7 @@ $username = $user_data['user_name'];
     <?php
     if (check_verified_status($username) == 0) {
         if (mailer_verify_email($usermail)) {
-            echo "<div class='alert success-alert'><h3>Verification Email Sent</h3></div>";
+            echo "<div class='alert success-alert'><h3>Verification Email Sent To <small><u>". $usermail."</u></small></h3></div>";
         } else {
             $email_error = "<div class='alert danger-alert'><h3>Could not send the E-mail</h3></div>";
             echo $email_error;
