@@ -23,6 +23,7 @@ body {
     border-color: black;
     width: 336px;
     font-size: x-large;
+    color: black;
 }
 
 ::-webkit-scrollbar {
