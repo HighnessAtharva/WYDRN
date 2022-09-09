@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 body {
     /* no selection */
     user-select: none;
@@ -113,10 +114,11 @@ body {
     height: 60px;
 }
 
-.search label,
+
+/* .search label,
 .search input {
     display: block;
-}
+} */
 
 .search label {
     font-weight: 700;
@@ -124,7 +126,7 @@ body {
 }
 
 .search input {
-    width: 100%;
+    width: 60%;
     padding: 1rem;
     border-radius: 5px;
     border: 1px solid #cacfd9;
@@ -138,7 +140,7 @@ body {
 }
 
 #display {
-    max-width: max-content;
+    width: 100%;
     margin: 0 auto;
     background-color: inherit;
 }
@@ -294,4 +296,74 @@ body {
         width: 150px;
         padding: 0 6px;
     }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+.profile-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: inline;
+}
+
+.search-result-area {
+    padding: 5px;
+    background-color: skyblue;
+}
+
+body {
+    /* no selection */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    font-family: "Open Sans", Helvetica, sans-serif;
+}
+
+.my-list-item {
+    width: 60%;
+    margin: 0 auto;
+    padding: 1rem;
+    border: 1px solid #696969;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: #002b5d;
+    text-decoration: none;
+}
+
+.my-list-item:hover {
+    border: 1px solid #000000;
+    color: #2f00ff;
+    background: #f6f7f9;
+}
+
+.list-item__avatar {
+    margin-right: 1rem;
+    width: 40px;
+    height: 40px;
+}
+
+.list-item__avatar img {
+    border: 1px solid #cacfd9;
+    border-radius: 5px;
+    background-color: #e1e4ea;
+    width: 40px;
+    height: 40px;
+}
+
+.list-item__name {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: midnightblue;
+    font-family: 'Open Sans';
+    padding: 10px;
+    background: #e0f0ff;
+    border-radius: 10px;
+}
+
+.list-item__info {
+    font-size: 0.85em;
+    color: #91a1bb;
 }
