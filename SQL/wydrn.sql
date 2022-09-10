@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2022 at 06:46 PM
+-- Generation Time: Sep 10, 2022 at 05:28 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -5198,7 +5198,8 @@ INSERT INTO `data` (`log_id`, `username`, `videogame`, `platform`, `album`, `art
 (12535, 'HighnessAtharva', '', '', 'Praise The Lord (Da Shine) (feat. Skepta)', 'A$AP Rocky', '', '', '', '', '', '', '2022-08-29 17:47:10', '2022-08-29'),
 (12538, 'anay', '', '', '', '', '', '', '', '', '', '', '2022-09-06 11:51:10', '2022-09-06'),
 (12559, 'HighnessAtharva', '', '', 'Moonlight Sonata', 'Maximilian Oberroither', 'Vinland Saga 1', 'Makoto Yukimura', '', '', '呪術廻戦', 'HBO Max', '2022-09-07 19:25:17', '2022-09-07'),
-(12560, 'HighnessAtharva', '', '', '', '', '', '', '', '', '', '', '2022-09-07 19:25:32', '2022-09-07');
+(12560, 'HighnessAtharva', '', '', '', '', '', '', '', '', '', '', '2022-09-07 19:25:32', '2022-09-07'),
+(12565, 'HighnessAtharva', '', '', '', '', '', '', '', '', '呪術廻戦', 'Tencent Video', '2022-09-09 18:28:13', '2022-09-09');
 
 -- --------------------------------------------------------
 
@@ -5219,20 +5220,31 @@ CREATE TABLE `social` (
 
 INSERT INTO `social` (`social_id`, `follower_username`, `followed_username`, `followed_time`) VALUES
 (68, 'admin', 'dev', '2022-08-30 12:53:02'),
+(85, 'admin', 'musicbot', '2022-09-07 22:45:18'),
 (79, 'admin', 'spammer', '2022-09-03 01:13:20'),
 (75, 'admin', 'susujpeg', '2022-09-01 18:09:08'),
 (76, 'admin', 'weebshooter', '2022-09-01 18:09:12'),
 (1, 'anay', 'HighnessAtharva', '2022-07-28 23:43:39'),
 (25, 'anay', 'iamnikhilhaswani', '2022-08-04 23:21:27'),
 (82, 'anay', 'musicbot', '2022-09-06 11:51:53'),
+(89, 'deleteinstantly', 'weebshooter', '2022-09-10 20:52:58'),
 (3, 'dev', 'HighnessAtharva', '2022-07-23 21:36:00'),
+(98, 'HighnessAtharva', 'admin', '2022-09-10 20:57:59'),
+(99, 'HighnessAtharva', 'anay', '2022-09-10 20:58:05'),
 (66, 'HighnessAtharva', 'dev', '2022-08-26 19:34:40'),
 (80, 'HighnessAtharva', 'iamnikhilhaswani', '2022-09-05 15:55:11'),
+(86, 'HighnessAtharva', 'musicbot', '2022-09-09 18:40:54'),
 (47, 'HighnessAtharva', 'susujpeg', '2022-08-09 18:33:10'),
 (51, 'HighnessAtharva', 'weebshooter', '2022-08-09 22:04:43'),
 (41, 'iamnikhilhaswani', 'HighnessAtharva', '2022-08-06 21:08:56'),
 (62, 'iamnikhilhaswani', 'susujpeg', '2022-08-22 11:39:44'),
 (45, 'iamnikhilhaswani', 'weebshooter', '2022-08-08 09:43:05'),
+(97, 'newtrial', 'admin', '2022-09-10 20:57:46'),
+(91, 'newtrial', 'dev', '2022-09-10 20:57:09'),
+(95, 'newtrial', 'iamnikhilhaswani', '2022-09-10 20:57:39'),
+(92, 'newtrial', 'icameisaw', '2022-09-10 20:57:13'),
+(93, 'newtrial', 'musicbot', '2022-09-10 20:57:22'),
+(94, 'newtrial', 'weebshooter', '2022-09-10 20:57:31'),
 (53, 'spammer', 'dev', '2022-08-10 22:14:41'),
 (52, 'spammer', 'HighnessAtharva', '2022-08-10 22:14:06'),
 (9, 'susujpeg', 'highnessatharva', '2022-05-26 18:05:58');
@@ -5262,18 +5274,19 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `user_id`, `user_name`, `email`, `password`, `date`, `profile_pic`, `background_pic`, `active`, `verified`) VALUES
 (71, 862114561492, 'susujpeg', 'darlingjamiesooo@gmail.com', '$2y$10$v/ZcsYOjV7xaJKJNViD4wOyyY4ntPCPcBPRswBOAUh5y7aZbBZPYS', '2022-07-29', 'images/users/110321yeeeee.JPG', 'images/website/defaultBackground.jpg', 0, 0),
-(114, 32726220398725619, 'HighnessAtharva', 'HighnessAtharva@gmail.com', '$2y$10$7UK0BemGC32ClubB9DvGHuFy2gyBnZc/ZXVrLznpGxXEjPWEFtbDe', '2022-07-29', 'images/users/010305atharva-shah.jpg', 'images/users/05160702_post_4x.png', 0, 1),
+(114, 32726220398725619, 'HighnessAtharva', 'HighnessAtharva@gmail.com', '$2y$10$ZeP9Q74TiPysJ.LnGiBMk.z99iamuzQXIUrCZXQyX7SyriWz7.2X6', '2022-07-29', 'images/users/025224header_button.gif', 'images/users/025636giphy.gif', 1, 1),
 (119, 74383560500, 'weebshooter', 'abcdefg@gmail.com', '$2y$10$k.Av6PfUY3W2U3VVqWix6.Pnl20agyynHFpigOtz/O5kjRUFgcLSy', '2022-07-27', 'images/users/095843atharva.png', 'images/website/defaultBackground.jpg', 0, 0),
 (120, 43960315659, 'musicbot', 'mycloudbackupmusic@gmail.com', '$2y$10$743rMLwA7DoSe.SoMkt1/OHx7CLKyY.8kaZDAsJBTb71c/yE1V.fa', '2022-07-29', 'images/users/031519tmp_1608820741507.jpg', 'images/users/a0127997326_10.jpg', 0, 1),
 (121, 36627543520, 'anay', 'anaydesh1234@gmail.com', '$2y$10$R0cvJsbAK8w9AuqsUWuC8ONh0J9x/wWOzfPubwHkBxClv/KDGYz2a', '2022-07-29', 'images/users/074309atharva.png', 'images/users/074427ksdkkasd.JPG', 0, 1),
 (122, 5784303861, 'dev', 'dummymail2069@gmail.com', '$2y$10$V/cOlDorenUUcbJyn8p0qO1NO4hE019f/f7LF0hvufhahCaWszZMK', '2022-07-29', 'images/users/070935pexelsabstract992.jpg', 'images/users/070935hm.JPG', 0, 0),
-(129, 144524083361, 'spammer', 'westerospatriot@gmail.com', '$2y$10$BqHXFQXNuN1eXu305hy.IOMTrq6mpl74etlnBsKIEMXzuhI95K4aa', '2022-07-29', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 1),
+(129, 144524083361, 'spammer', 'westerospatriot@gmail.com', '$2y$10$.hKTqLDk6sqIyW2bjrjPKuy1M3iQFPkNPbZjv1J/V/TU1LLqFB5Dm', '2022-07-29', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 1),
 (132, 52299518413, 'iamnikhilhaswani', 'whonikhilhaswani@gmail.com', '$2y$10$22Me5uF9WrkVmpFjBbodS.muSeeEUYj4j/fytrPvxFgX8kXq9DQye', '2022-08-01', 'images/users/0330362367_getpng.png', 'images/users/032845asasd.JPG', 0, 0),
-(135, 9567113, 'admin', 'wydrnapp@gmail.com', '$2y$10$22Me5uF9WrkVmpFjBbodS.muSeeEUYj4j/fytrPvxFgX8kXq9DQye', '2022-08-06', 'images/users/094534Capture.JPG', 'images/users/103820tumblr_18462b8c2f1df9acb6d8e44fe3a3828c_99520da1_1280.jpg', 0, 0),
+(135, 9567113, 'admin', 'appwydrn@gmail.com', '$2y$10$22Me5uF9WrkVmpFjBbodS.muSeeEUYj4j/fytrPvxFgX8kXq9DQye', '2022-08-06', 'images/users/08552481caed87385279ab0607bf1c82510789.png', 'images/users/085551giphy.gif', 0, 0),
 (175, 3903035397, 'icameisaw', 'ipraissdsethelord@gmail.com', '$2y$10$wsgD6nxsf6G8JpMf/X/8UutFHyHsQvmGc9xq5UAT0pUf2ICyEKTpO', '2022-08-28', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
 (179, 5552355716351, 'deletemesoon', 'shdjkhasjdkhK@gmail.com', '$2y$10$JmBQqBUE1Q/QUQ6vk7Y86eKdMqraVYqLbXP84mNhLp9P8oS9WV5lW', '2022-08-29', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
 (180, 438964, 'blankacc', 'doomslayer99@gmail.com', '$2y$10$avthwRqPQB1kNyxZSxbCiOcy37/QUMT1qo5k0nhkg44Ftqd7SxDFa', '2022-08-31', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
-(181, 451754014418306, 'deleteinstantly', 'hitherehello@mail.com', '$2y$10$AjSEnSZXkeWdqVHxds2dtOifxa5NwOYGRRV3NdCqYd0SJMKhRX3Tq', '2022-09-03', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 1, 0);
+(181, 451754014418306, 'deleteinstantly', 'hitherehello@mail.com', '$2y$10$AjSEnSZXkeWdqVHxds2dtOifxa5NwOYGRRV3NdCqYd0SJMKhRX3Tq', '2022-09-03', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
+(183, 9223372036854775807, 'newtrial', 'iasjdkasdasd@gmail.com', '$2y$10$iHTaeL6kuyCPK5I4A4QOZu7QEmZvPzGT6i6YVxEy75fQ9vkX723ii', '2022-09-10', 'images/users/052637twrske0akyf81.png', 'images/users/0526483.png', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -5291,7 +5304,6 @@ ALTER TABLE `data`
 --
 ALTER TABLE `social`
   ADD PRIMARY KEY (`follower_username`,`followed_username`),
-  ADD UNIQUE KEY `followed_time` (`followed_time`),
   ADD UNIQUE KEY `social_id` (`social_id`);
 
 --
@@ -5300,9 +5312,6 @@ ALTER TABLE `social`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `user_name_2` (`user_name`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `date` (`date`),
   ADD KEY `user_name` (`user_name`);
 
 --
@@ -5313,19 +5322,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `data`
 --
 ALTER TABLE `data`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12565;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12566;
 
 --
 -- AUTO_INCREMENT for table `social`
 --
 ALTER TABLE `social`
-  MODIFY `social_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `social_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -134,6 +134,8 @@ if ($query = mysqli_query($con, $sql2)) {
 	Background Image
 	------------------>
         <div id="header" style="background-image:url(<?php echo $background_pic ?>)" alt="Background Image">
+            
+        <!--Content that appears on hovering on the banner pic-->
             <div class="hide">
             
             <!--MEMBER SINCE-->
