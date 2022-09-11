@@ -135,19 +135,19 @@ if(isset($_SESSION['user_id']))
                         <ul class="dropdown-menu dropdown-menu-end" id="your-account">
                             
                             <li><a class="dropdown-item" href="profile.php"> 
-                            <span><img src="images/Icons/profile.svg" class='header-icon'>Profile</span>
+                            <span><img src="images/Icons/profile.png" class='header-icon'>Profile</span>
                             </a></li>
                             
                             <li><a class="dropdown-item" href="edit_profile.php"> 
-                            <span><img src="images/Icons/settings.svg" class='header-icon'>Settings</span>
+                            <span><img src="images/Icons/settings.png" class='header-icon'>Settings</span>
                             </a></li>
                             
                             <li><a class="dropdown-item" href="Exports/import_export.php"> 
-                            <span><img src="images/Icons/backup.svg" class='header-icon'>Import/Export</span>
+                            <span><img src="images/Icons/importexport.png" class='header-icon'>Import/Export</span>
                             </a></li>
                             
                             <li><a class="dropdown-item" href="logout.php"> 
-                            <span><img src="images/Icons/logout.svg" class='header-icon'>Logout</span>
+                            <span><img src="images/Icons/logout.png" class='header-icon'>Logout</span>
                             </a></li>
 
                         </ul>
