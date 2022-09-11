@@ -257,14 +257,15 @@ if (mysqli_num_rows($result) > 0) {
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
 
     <link rel="stylesheet" type="text/css" href="../CSS/csv_export.css" />
+    <link  rel="stylesheet" href="../css/backToTop.css">
 
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="../images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="../images/website/favicons/apple-touch-icon.png">
 </head>
 
-<body><br><br>
-
+<body><br><br>  
+<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <div class="container">
 
         <!--  Header  -->
@@ -368,6 +369,7 @@ if (mysqli_num_rows($result) > 0) {
 
     </div>
     <!--End of container-->
+    <script src="../js/backToTop.js"></script>
 </body>
 
 </html>

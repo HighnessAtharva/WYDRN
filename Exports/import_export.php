@@ -35,12 +35,14 @@ if (empty($_SESSION)) {
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,700'>
     <link rel="stylesheet" href="../css/import_export.css">
+    <link  rel="stylesheet" href="../css/backToTop.css">
 
 
 
 </head>
 
 <body>
+<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <div class="container">
         <div class="heading">
             <h1>Import & Export<span>Seamless Backup & Recovery. Instantaneous and Absolute.</span></h1>
@@ -289,6 +291,7 @@ if (empty($_SESSION)) {
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
     <script src="./script.js"></script>
+    <script src="../js/backToTop.js"></script>
 </body>
 
 </html>

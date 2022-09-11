@@ -197,13 +197,15 @@ const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
   <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
 
+  <link href="css/backToTop.css" rel="stylesheet">
   <link href="CSS/badges.css" rel="stylesheet">
 </head>
 
 <body>
 
+
   <div class="page">
-   
+  <button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
 
     <!--BOOK DIV-->
     <div class="archive">
@@ -803,6 +805,7 @@ const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
   </div>
   <!--END OF PAGE-->
 
+  <script src="js/backToTop.js"></script>
 </body>
 
 </html>

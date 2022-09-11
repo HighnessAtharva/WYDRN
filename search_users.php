@@ -207,5 +207,6 @@ require "header.php";
     });
     });
 </script>
+<script src="js/headerResize.js"></script>
 </body>
 </html>

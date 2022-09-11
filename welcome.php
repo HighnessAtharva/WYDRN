@@ -40,13 +40,14 @@ $user_data = check_login($con);
     <link rel="stylesheet" href="SearchBoxAPIs/Movie/main.css">
     <link rel="stylesheet" href="SearchBoxAPIs/Book/main.css">
     <link rel="stylesheet" href="SearchBoxAPIs/Music/main.css">
+    <link href="css/backToTop.css" rel="stylesheet">
 
     <!-- Sweet Alert (Beautiful looking alert plugin-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 
-<body>
+<body><button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
 
     <div class="page-wrapper p-t-180 p-b-100 font-poppins">
         <div class="mywrapper mywrapper--w1200">
@@ -241,8 +242,9 @@ $user_data = check_login($con);
 
 
     </script>
-
+    <script src="js/backToTop.js"></script>
     <?php mysqli_close($con); ?>
+
 </body>
 
 </html>

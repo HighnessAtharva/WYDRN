@@ -57,3 +57,8 @@ nav.navbar {
     width: 100%;
     z-index: 10000;
 }
+
+#myHeader {
+    font-size: 16px;
+    transition: 0.5s;
+}

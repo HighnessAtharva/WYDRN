@@ -58,7 +58,7 @@ if(isset($_SESSION['user_id']))
 
     <!-- <div class="container"> -->
     <!-- ============= COMPONENT ============== -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="myHeader">
         <div class="container-fluid">
             <a class="navbar-brand" href="welcome.php"><img src="images/website/logo.png" height="50" width="50"/></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">

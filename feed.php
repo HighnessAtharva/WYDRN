@@ -221,6 +221,9 @@ $username = $user_data['user_name'];
     </center>
 
 </body>
+
 <script src="js/backToTop.js"></script>
+
+
 </html>
 <?php mysqli_close($con); ?>

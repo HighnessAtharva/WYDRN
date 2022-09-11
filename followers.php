@@ -40,9 +40,11 @@ $username = $user_data['user_name'];
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
     
       <link href="CSS/followers.css" rel="stylesheet">
+      <link href="css/backToTop.css" rel="stylesheet">
    </head>
 
 <body>
+<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
 
 <?php
 
@@ -94,6 +96,9 @@ $count = $row[0];
            
       </ul>        
 </div> <!--Container DIV end.-->
+
+
+<script src="js/backToTop.js"></script>
 </body>
 </html>
 <?php 

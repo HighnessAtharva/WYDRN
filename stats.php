@@ -398,9 +398,10 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
 
     
   <link rel="stylesheet" href="CSS/stats.css">
+  <link href="css/backToTop.css" rel="stylesheet">
 </head>
 
-<body>
+<body><button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
 
 
   <h1 class="heading">Stats for <?php echo $username?></h1>
@@ -647,5 +648,8 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
   </div>
 
   </div>
+
+  
+<script src="js/backToTop.js"></script>
 </body>
 </html>

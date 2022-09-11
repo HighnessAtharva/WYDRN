@@ -41,10 +41,11 @@ $username = $user_data['user_name'];
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
             <link href="CSS/following.css" rel="stylesheet">
+            <link href="css/backToTop.css" rel="stylesheet">
       </head>
 
 <body>
-
+<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
 <?php
 if(isset($_GET['user_name'])){
 $follower=$_GET['user_name'];
@@ -90,6 +91,7 @@ $count = $row[0];
            
       </ul>     
 </div> <!--Container DIV end.-->
+<script src="js/backToTop.js"></script>
 </body>
 </html>
 <?php 

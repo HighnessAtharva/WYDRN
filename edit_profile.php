@@ -239,6 +239,7 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
             });
         }
     </script>
+    <script src="js/headerResize.js"></script>
 </body>
 
 </html>
