@@ -249,9 +249,14 @@ function getposterpath($name)
                                   <div class='card-grid-space'>
                                 <!-- // image tag for the movie -->
                                 <div class='card' style='background-image:url(<?php echo $posterpath; ?>);'>
-                                    <div>
-                                        <div class='logged-date'><?php echo $tv_logged; ?></div>
+                                        
+                                        <!--Delete item on hover-->
+                                    <div class='delete-item' title="Delete TV">
+                                        <img class="delete-icon" src="images/icons/delete.png" alt="Delete">
                                     </div>
+
+                                        <div class='logged-date'><?php echo $tv_logged; ?></div>
+                                    
                                 </div>
                                 <h1 class='moviename'><?php echo $tvname; ?></h1>
                                 <div class='tags'>
@@ -322,5 +327,28 @@ function getposterpath($name)
 
 </body>
 <script src="js/backToTop.js"></script>
+
+<script>
+            //Delete item on click
+            $('.delete-item').click(function() {
+                var tvName = $(this).closest('.card-grid-space').find('.moviename').text();
+                var parent = $(this).parent("div").parent("div");
+                // console.log(tvName);
+
+                $.ajax({
+                    type: "GET",
+                    url: "delete_item.php",
+                    data: 'tv=' + tvName,
+                    success: function() {
+                        parent.fadeOut('slow', function() {
+                            $(this).remove();
+                        });
+                    },
+                    error: function() {
+                        alert('This TV Show could not be deleted!');
+                    }
+                });
+            });
+        </script>
 </html>
 <?php mysqli_close($con); ?>

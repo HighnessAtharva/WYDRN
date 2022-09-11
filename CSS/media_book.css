@@ -232,15 +232,35 @@ h1.moviename {
     opacity: .8;
 }
 
+.card:hover .logged-date {
+    display: block;
+    background-color: black;
+}
+
+.card .delete-item {
+    display: none;
+    position: absolute;
+    margin-top: -2px;
+    left: 0;
+    font-size: 0.5em;
+    padding: 0.5em;
+    line-height: 1em;
+}
+
+.delete-icon {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.card:hover .delete-item {
+    display: block;
+}
+
 .card-grid-space .num {
     font-size: 3em;
     margin-bottom: 1.2rem;
     margin-left: 1rem;
-}
-
-.card:hover .logged-date {
-    display: block;
-    background-color: black;
 }
 
 

@@ -67,6 +67,8 @@ function getposterpath($name, $author)
     <link rel="stylesheet" href="css/preloader.css">
     <link href="css/backToTop.css" rel="stylesheet">
 
+    <!-- Sweet Alert (Beautiful looking alert plugin-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
@@ -95,7 +97,7 @@ function getposterpath($name, $author)
 </head>
 
 <body class="css-selector">
-<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
+    <button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
 
     <div>
         <!--PRELOADER-->
@@ -116,7 +118,7 @@ function getposterpath($name, $author)
             </div>
 
 
-            
+
             <div class="flex">
                 <!-- Sorting Functionality -->
                 <form method="get" action="" name="sort" id="filter-select">
@@ -138,23 +140,23 @@ function getposterpath($name, $author)
                     </select>
                 </form>
                 <!-- End of Sorting Functionality -->
-              
-               
-               
-        
+
+
+
+
                 <!--List View Button-->
                 <button class="btn" onclick="window.location.href='media_list_view.php?book'"><img src="images/Icons/list-view.png"></button>
             </div>
-          
-             <!--Display Active Filters-->
-             <?php if(isset($_GET['sortby'])){  ?>  
-                <span class="active-filter"> 
-                    
-                    <img src="images/Icons/sort.png" alt="filter" height="15px" width="10px" />    
+
+            <!--Display Active Filters-->
+            <?php if (isset($_GET['sortby'])) {  ?>
+                <span class="active-filter">
+
+                    <img src="images/Icons/sort.png" alt="filter" height="15px" width="10px" />
                     <?php echo $_GET['sortby']; ?>
                 </span>
-                <?php } ?>
-                
+            <?php } ?>
+
             <!-------------------------------------------------------------------------------------
                                 DYNAMICALLY GENERATED PHP PART
         ------------------------------------------------------------------------------------->
@@ -234,7 +236,7 @@ function getposterpath($name, $author)
                             $book_name = $row['book'];
                             $book_author = $row['author'];
                             $book_logged = date("F jS, Y", strtotime($row['date']));
-
+                            
                             $stripnamebook = $stripped = str_replace(' ', '+', $book_name);
                             $stripnameauthor = $stripped = str_replace(' ', '+', $book_author);
 
@@ -256,18 +258,25 @@ function getposterpath($name, $author)
 
                             <!-- // one single div tag for each movie -->
                             <div class='card-grid-space'>
+
                                 <!-- // image tag for the movie -->
                                 <div class='card' style='background-image:url(<?php echo $posterpath; ?>);'>
-                                    <div>
-                                        <div class='logged-date'><?php echo $book_logged ?></div>
+
+                                    <!--Delete item on hover-->
+                                    <div class='delete-item' title="Delete Book">
+                                        <img class="delete-icon" src="images/icons/delete.png" alt="Delete">
                                     </div>
+
+                                    <!---Show Logged Date on Hover-->
+                                    <div class='logged-date'><?php echo $book_logged ?></div>
+
                                 </div>
+
                                 <h1 class='moviename'><?php echo $book_name; ?></h1>
                                 <div class='tags'>
                                     <div class='tag'><?php echo $book_author ?></div>
                                 </div>
                             </div>
-
 
 
                         <?php
@@ -281,6 +290,10 @@ function getposterpath($name, $author)
                     }
                 }
                 ?>
+
+
+
+
             </section>
 
 
@@ -336,8 +349,31 @@ function getposterpath($name, $author)
 
 
 
-    <body>
-    <script src="js/backToTop.js"></script>
+                </body>
+        <script src="js/backToTop.js"></script>
+        <script>
+            //Delete item on click
+            $('.delete-item').click(function() {
+                var bookName = $(this).closest('.card-grid-space').find('.moviename').text();
+                var parent = $(this).parent("div").parent("div");
+                // console.log(bookName);
+
+                $.ajax({
+                    type: "GET",
+                    url: "delete_item.php",
+                    data: 'book=' + bookName,
+                    success: function() {
+                        parent.fadeOut('slow', function() {
+                            $(this).remove();
+                        });
+                    },
+                    error: function() {
+                        alert('This book could not be deleted!');
+                    }
+                });
+            });
+        </script>
+
 </html>
 
 <?php mysqli_close($con); ?>

@@ -14,6 +14,26 @@
     background-size: cover;
 }
 
+.card .delete-item {
+    display: none;
+    position: absolute;
+    margin-top: -2px;
+    left: 0;
+    font-size: 0.5em;
+    padding: 0.5em;
+    line-height: 1em;
+}
+
+.delete-icon {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.card:hover .delete-item {
+    display: block;
+}
+
 select {
     word-wrap: normal;
     box-shadow: rgb(179 220 255) 3px 3px 6px 0px inset, rgb(162 204 255 / 50%) -3px -3px 6px 1px inset;

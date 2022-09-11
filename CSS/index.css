@@ -259,13 +259,6 @@ a:focus {
     --title-font-size: 9vw;
 }
 
-.intro .menu__item--current::before {
-    content: '01';
-    position: absolute;
-    bottom: 110%;
-    color: var(--color-title);
-}
-
 .intro .menu__item--current:hover {
     --color-title: #fff;
     --color-subtitle: #88524a;

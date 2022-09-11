@@ -222,7 +222,9 @@ $user_data = check_login($con);
 
             //If all of the inputs are empty or some media types are filled partially, then the user will be alerted that they must fill in all the fields.
             if ((musicInput && artistInput) || (bookInput && authorInput) || (movieInput && movieReleaseInput) || (tvInput && tvNetworkInput) || (gameInput && gamePlatformInput)) {
+             //add an alert here as well saying that profile is updated
                 return true;
+                
             } else {
                 //sweet alert plugin to display error message. IT REPLACES the JS alert() function.
                 swal({
@@ -236,6 +238,8 @@ $user_data = check_login($con);
 
 
         }
+
+
     </script>
 
     <?php mysqli_close($con); ?>
