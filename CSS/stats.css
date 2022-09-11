@@ -23,7 +23,8 @@ body {
     background: rgba(71, 147, 227, 1);
     user-select: none;
     -moz-user-select: none;
-    -webkit-user-select: none
+    -webkit-user-select: none;
+    margin-top: 150px;
 }
 
  ::-webkit-scrollbar {
