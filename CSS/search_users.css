@@ -6,6 +6,7 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     font-family: "Open Sans", Helvetica, sans-serif;
+    margin-top: 150px;
 }
 
 .profilepic {

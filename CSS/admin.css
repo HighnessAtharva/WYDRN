@@ -12,6 +12,7 @@ body {
     font-family: "Open Sans", sans-serif;
     background-color: #1a191f;
     /* color: #9b9ca7; */
+    margin-top: 50px;
 }
 
 ::-webkit-scrollbar {

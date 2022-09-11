@@ -50,6 +50,7 @@ body {
     /* no selection */
     user-select: none;
     -moz-user-select: none;
+    margin-top: 150px;
     -webkit-user-select: none;
 }
 

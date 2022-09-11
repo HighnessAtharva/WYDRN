@@ -25,7 +25,9 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     font-family: "Open Sans", Helvetica, sans-serif;
-    background: #632778
+    background: #632778;
+    margin-top: 180px;
+    margin-bottom: 150px;
 }
 
 legend {

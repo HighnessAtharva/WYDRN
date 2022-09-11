@@ -42,3 +42,7 @@ h3 {
     background-color: #a8f0c6;
     border-left: 5px solid #178344;
 }
+
+body {
+    margin-top: 150px;
+}

@@ -4,6 +4,7 @@ FEATURES SECTION
 
 body {
     background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+    margin-top: 50px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');

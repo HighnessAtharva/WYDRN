@@ -4,7 +4,8 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     background: #f0f8ff;
-    font-family: "Open Sans", Helvetica, sans-serif
+    font-family: "Open Sans", Helvetica, sans-serif;
+    margin-top: 50px;
 }
 
  ::-webkit-scrollbar {

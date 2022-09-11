@@ -7,6 +7,7 @@ body {
     -webkit-user-select: none;
     font-family: "Open Sans", Helvetica, sans-serif;
     background-color: black;
+    margin-top: 150px;
 }
 
 ::-webkit-scrollbar {

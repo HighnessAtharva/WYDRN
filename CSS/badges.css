@@ -1,3 +1,7 @@
+body {
+    margin-top: 50px;
+}
+
 hr {
     /*dummy content*/
     height: 6px;

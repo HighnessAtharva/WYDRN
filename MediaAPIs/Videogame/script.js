@@ -44,16 +44,21 @@ function displaygameList(game) {
             gamePoster = game[idx]['background_image'];
         else
             gamePoster = "../../images/API/WYDRNgame.png";
-        let year = game[idx]['released'];
-        year = year.split("-");
-        year = year[0];
+        // let year = null;
+        // if ('released' in game[idx]) {
+        //     year = game[idx]['released'];
+        //     year = year[0];
+        // } else {
+        //     year = "NA";
+        // }
+
         gameListItem.innerHTML = `
         <div class = "search-item-thumbnail">
             <img src = "${gamePoster}">
         </div>
         <div class = "search-item-info">
             <h3>${game[idx]['name']}</h3>
-            <p>${year}</p>
+            <p>&nbsp;</p>
         </div>`;
         searchList.appendChild(gameListItem);
     }
@@ -81,9 +86,14 @@ function displaygameDetails(details) {
     }
     console.log(details)
 
-    let year = details['released'];
-    year = year.split("-");
-    year = year[0];
+    let year = null;
+    if ('released' in details) {
+        year = details['released'].split("-");
+        year = year[0];
+    } else {
+        year = "NA";
+    }
+
 
     var genres = null;
     if ('genres' in details) {

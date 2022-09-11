@@ -12,6 +12,7 @@ body {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
+    margin-top: 50px;
 }
 
 ::-webkit-scrollbar {
