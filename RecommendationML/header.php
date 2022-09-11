@@ -78,23 +78,23 @@ if(isset($_SESSION['user_id']))
                         <li class="nav-link" href="#" data-bs-toggle="dropdown">Browse</li>
                         <ul class="dropdown-menu dropdown-menu-right" style="right: 290px; left: auto; margin-top:-20px">
                         <li><a class="dropdown-item" href="../MediaAPIs/Book/index.php">
-                            <span><img src="../images/Icons/book.svg" class='header-icon'>Book</span>
+                            <span>&#128213 Book</span>
                             </a></li>
 
                             <li><a class="dropdown-item" href="../MediaAPIs/Movie/index.php">
-                            <span><img src="../images/Icons/movie.svg" class='header-icon'>Movie</span> 
+                            <span>&#128253 Movie</span> 
                             </a></li>
 
                             <li><a class="dropdown-item" href="../MediaAPIs/Music/index.php">
-                            <span><img src="../images/Icons/music.svg" class='header-icon'>Music</span>
+                            <span>&#127911 Music</span>
                             </a></li>
 
                             <li><a class="dropdown-item" href="../MediaAPIs/TV/index.php">
-                            <span><img src="../images/Icons/tv.svg" class='header-icon'>TV</span>
+                            <span>&#128250 TV</span>
                             </a></li>
 
                             <li><a class="dropdown-item" href="../MediaAPIs/Videogame/index.php">
-                            <span><img src="../images/Icons/videogame.svg" class='header-icon'>Videogame</span>
+                            <span>&#127918 Videogame</span>
                             </a></li>
                     </ul>
                     </li>
@@ -109,23 +109,23 @@ if(isset($_SESSION['user_id']))
                         <li class="nav-link" href="#" data-bs-toggle="dropdown">Media</li>
                         <ul class="dropdown-menu dropdown-menu-end" style="right: 0px; left: auto; margin-top:-20px">
                         <li><a class="dropdown-item" href="../media_book.php">
-                            <span><img src="../images/Icons/book.svg" class='header-icon'>Book</span>
+                            <span>&#128213 Book</span>
                             </a></li>
 
                             <li><a class="dropdown-item" href="../media_movie.php">
-                            <span><img src="../images/Icons/movie.svg" class='header-icon'>Movie</span>
+                            <span>&#128253 Movie</span>
                             </a></li>
 
                             <li><a class="dropdown-item" href="../media_music.php">
-                            <span><img src="../images/Icons/music.svg" class='header-icon'>Music</span>
+                            <span>&#127911 Music</span>
                             </a></li>
 
                             <li><a class="dropdown-item" href="../media_tv.php">
-                            <span><img src="../images/Icons/tv.svg" class='header-icon'>TV</span>
+                            <span>&#128250 TV</span>
                             </a></li>
 
                             <li><a class="dropdown-item" href="../media_videogame.php">
-                            <span><img src="../images/Icons/videogame.svg" class='header-icon'>Videogame</span>
+                            <span>&#127918 Videogame</span>
                             </a></li>
 
                         </ul>
