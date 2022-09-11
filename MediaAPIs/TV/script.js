@@ -19,8 +19,8 @@ async function loadTV(searchTerm) {
     const URL = `https://api.themoviedb.org/3/search/tv?api_key=${tvKey}&language=en-US&page=1&query=${searchTerm}&include_adult=true`;
     const res = await fetch(`${URL}`);
     const data = await res.json();
-    var results = data['results']
-    console.log(results);
+    let results = data['results']
+        // console.log(results);
     if (data) displayTVList(results);
 }
 
@@ -49,9 +49,15 @@ function displayTVList(tvseries) {
         else
             tvPoster = "../../images/API/WYDRNtv.png";
 
-        let year = tvseries[idx]['first_air_date'];
-        year = year.split("-");
-        year = year[0];
+        let year = null;
+        if ('first_air_date' in tvseries[idx]) {
+            year = tvseries[idx]['first_air_date'].split("-");
+            year = year[0];
+        } else {
+            year = "N/A";
+        }
+
+
 
 
         TVListItem.innerHTML = `
@@ -76,7 +82,7 @@ function loadtvDetails() {
             tvSearchBox.value = "";
             const result = await fetch(`https://api.themoviedb.org/3/tv/${tv.dataset.id}?api_key=${tvKey}&language=en-US`);
             const tvDetails = await result.json();
-            console.log(tvDetails);
+            // console.log(tvDetails);
             displaytvDetails(tvDetails);
         });
     });
@@ -84,11 +90,12 @@ function loadtvDetails() {
 
 function displaytvDetails(details) {
 
+    console.log(details);
+
     // to handle missing first air date
-    var year = null;
+    let year = null;
     if ('first_air_date' in details) {
-        var year = details['first_air_date'];
-        year = year.split("-");
+        year = details['first_air_date'].split("-");
         year = year[0];
     } else {
         year = "N/A";
@@ -99,7 +106,7 @@ function displaytvDetails(details) {
     }
 
     // TO HANDLE MISSING GENRES
-    var genres = null;
+    let genres = null;
     if ('genres' in details) {
         if (details['genres'].length == 0) {
             genres = "N/A";
@@ -112,7 +119,7 @@ function displaytvDetails(details) {
     }
 
     // TO HANDLE MISSING OVERVIEW
-    var overview = null;
+    let overview = null;
     if ('overview' in details) {
         if (details['overview'].length == 0) {
             overview = "N/A";
@@ -121,7 +128,7 @@ function displaytvDetails(details) {
         }
     }
 
-    var episodes = null;
+    let episodes = null;
     if ('number_of_episodes' in details) {
         episodes = details['number_of_episodes'];
     } else {
@@ -131,6 +138,13 @@ function displaytvDetails(details) {
     // TO CONVERT ISO LANGUAGE FORMAT TO FULL NAME. EX: EN -> ENGLISH 
     let languageNames = new Intl.DisplayNames(['en'], { type: 'language' });
 
+
+    let tmdbLink = null;
+    if ('id' in details) {
+        tmdbLink = 'https://www.themoviedb.org/tv/' + details['id'];
+    } else {
+        tmdbLink = '#';
+    }
 
     resultGrid.innerHTML = `<div class="movie-card">
 
@@ -155,7 +169,8 @@ function displaytvDetails(details) {
 
             <div class="column2">
             <p class="plot-summary">Summary</p>
-                <p> ${overview}</p>
+                <p> ${overview}</p><br><br>
+                <b>Read more about this TV show on <a href="${tmdbLink}" target="_blank">TMDB</a></b>
             </div>    <!-- end column2 -->
         </div>   <!-- end description -->
     </div>

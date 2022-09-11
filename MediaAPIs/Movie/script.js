@@ -18,8 +18,8 @@ async function loadMovies(searchTerm) {
     const URL = `https://api.themoviedb.org/3/search/movie?api_key=${movieKey}&language=en-US&query=${searchTerm}&page=1&include_adult=true`;
     const res = await fetch(`${URL}`);
     const data = await res.json();
-    var results = data['results']
-    console.log(results);
+    let results = data['results']
+        // console.log(results);
     if (data) displayMovieList(results);
 }
 
@@ -45,9 +45,9 @@ function displayMovieList(movies) {
         else
             moviePoster = "../../images/API/WYDRNmovie.png";
 
-        let year = movies[idx]['release_date'];
-        year = year.split("-");
+        let year = movies[idx]['release_date'].split("-");
         year = year[0];
+
         movieListItem.innerHTML = `
         <div class = "search-item-thumbnail">
             <img src = "${moviePoster}">
@@ -95,7 +95,7 @@ function displayMovieDetails(details) {
     }
 
     // TO HANDLE MISSING OVERVIEW
-    var overview = null;
+    let overview = null;
     if ('overview' in details) {
         if (details['overview'].length == 0) {
             overview = "N/A";
@@ -113,6 +113,12 @@ function displayMovieDetails(details) {
     // TO CONVERT ISO LANGUAGE FORMAT TO FULL NAME. EX: EN -> ENGLISH 
     let languageNames = new Intl.DisplayNames(['en'], { type: 'language' });
 
+    let imdbLink = null;
+    if ('imdb_id' in details) {
+        imdbLink = 'https://www.imdb.com/title/' + details['imdb_id'];
+    } else {
+        imdbLink = '#';
+    }
 
     resultGrid.innerHTML = `<div class="movie-card">
 
@@ -137,7 +143,9 @@ function displayMovieDetails(details) {
 
                 <div class="column2">
                 <p class="plot-summary">Summary</p>
-                    <p> ${overview}</p>
+                    <p> ${overview}<br><br>
+                    <b>Read more about this movie on <a href="${imdbLink}" target="_blank">IMDB</a></b>
+                    </p>
                 </div><!-- end column2 -->
             </div><!-- end description -->
             

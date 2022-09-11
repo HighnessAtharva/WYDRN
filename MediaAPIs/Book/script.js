@@ -17,7 +17,7 @@ async function loadBooks(searchTerm) {
     const URL = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&orderBy=relevance`;
     const res = await fetch(`${URL}`);
     const data = await res.json();
-    var results = data['items']
+    let results = data['items']
     if (data) displayBookList(results);
 }
 
@@ -57,15 +57,16 @@ function loadBookDetails() {
             BooksearchBox.value = "";
             const result = await fetch(`https://www.googleapis.com/books/v1/volumes/${Book.dataset.id}`);
             const BookDetails = await result.json();
-            console.log(BookDetails['volumeInfo']);
+            // console.log(BookDetails['volumeInfo']);
             displayBookDetails(BookDetails['volumeInfo']);
         });
     });
 }
 
 function displayBookDetails(details) {
+    console.log(details);
 
-    var description = null;
+    let description = null;
     if ('description' in details) {
         description = details['description'];
     } else {
@@ -76,7 +77,7 @@ function displayBookDetails(details) {
     pub_date = pub_date.split("-");
     pub_date = pub_date[0];
 
-    console.log(details);
+    let googleBooks = details['infoLink'];
 
     resultGrid.innerHTML = `<div class="movie-card">
 
@@ -101,7 +102,9 @@ function displayBookDetails(details) {
 
             <div class="column2">
             <p class="plot-summary">Summary</p>
-                <p> ${description}</p>
+                <p> ${description}<br><br>
+                <b>Read more about this book on <a href="${googleBooks}" target="_blank">Google Books</a></b>
+                </p>
             </div> <!-- end column2 -->
            
         </div><!-- end description -->

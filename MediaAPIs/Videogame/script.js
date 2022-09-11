@@ -112,6 +112,14 @@ function displaygameDetails(details) {
     }
 
 
+    let gameLink = null;
+    if ('id' in details) {
+        gameLink = 'https://rawg.io/games/' + details['id'];
+    } else {
+        gameLink = '#';
+    }
+
+
     resultGrid.innerHTML = `<div class="movie-card">
 
     <div class="container2">
@@ -136,7 +144,8 @@ function displaygameDetails(details) {
 
             <div class="column2">
             <p class="plot-summary">Summary</p>
-                <p> ${details['description']}</p>
+                <p> ${details['description']}<br><br>
+                <b>Read more about about this game on <a href="${gameLink}" target="_blank">RAWG</a></b></p>
             </div> <!-- end column2 -->
         </div> <!-- end description -->
     </div><!-- end container -->
