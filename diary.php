@@ -107,12 +107,12 @@ if (isset($_GET['userdate'])) {
 
         // if date is selected and get query is passed show the entries of the user on the selected date
         if (!empty($date_selected)) {
-            $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' AND `date`= '$date_selected' ORDER BY `datetime` DESC";
+            $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' AND `date`= '$date_selected' AND (videogame!='' OR album!='' OR tv!='' OR movie!='' OR book!='') ORDER BY `datetime` DESC";
         }
 
         // otherwise show all the entries of the user.
         else {
-            $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' ORDER BY `datetime` DESC LIMIT $start_from, $per_page_record;";
+            $sql = "SELECT `videogame`,`platform`,`album`,`artist`,`book`,`author`,`movie`,`year`,`tv`,`streaming`,`date`, `datetime` from `data` WHERE `username`= '$username' AND (videogame!='' OR album!='' OR tv!='' OR movie!='' OR book!='') ORDER BY `datetime` DESC LIMIT $start_from, $per_page_record;";
         }
 
         ?>
@@ -255,7 +255,7 @@ if (isset($_GET['userdate'])) {
         <?php
         //PAGINATION FOR THE DIARY        
         //Only show the pagination if filtering is not done.
-        if (empty($date_selected)) {
+        if (empty($date_selected) && ($totalcount > 0)) {
         ?>
 
             <!--USING GRID CONTAINER TO SHOW PAGINATION ROW AND MANUAL INPUT BOX ADJACENT/NEXT TO EACH OTHER -->
