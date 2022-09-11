@@ -87,6 +87,7 @@ $username = $user_data['user_name'];
     </div> <!-- end of wrapper -->
 
 <script src="script.js"></script>
+<script src="../../js/headerResize.js"></script>
 </body>
 </body>
 </html>
