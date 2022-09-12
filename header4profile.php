@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Header Navbar for all the pages.
+ * Header Navbar only for the profile page that uses the header4profile.css where the header is not sticky and occupies only width equal to the profile div content. 
  *
  * @version    PHP 8.0.12 
  * @since      June 2022

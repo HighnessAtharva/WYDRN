@@ -34,6 +34,8 @@ function findgame() {
     }
 }
 
+
+//dropdown list that appears right below the search box.
 function displaygameList(game) {
     searchList.innerHTML = "";
     for (let idx = 0; idx < 3; idx++) {
@@ -80,6 +82,7 @@ function loadgameDetails() {
     });
 }
 
+//print out the actual content fetched from the API
 function displaygameDetails(details) {
     if (details === undefined) {
         resultGrid.innerHTML += "NO DATA AVAILABLE FOR THIS VIDEOGAME";

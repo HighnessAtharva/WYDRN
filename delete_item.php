@@ -9,8 +9,6 @@
  * @author     AtharvaShah
  */
 
-
-
 session_start();
 if (empty($_SESSION)) {
     header("Location: login.php");
@@ -36,8 +34,6 @@ if(isset($_GET['book'])){
         echo "Error deleting record: " . mysqli_error($con);
     }
 }
-
-
 
 
 // When user clicks on delete button on media_movie.php

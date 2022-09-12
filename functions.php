@@ -124,6 +124,7 @@ function send_reset_link($recipient, $link)
 
 /*
 Returns whether a user account is verified or not (1 - Verified  ||  0 -  Not Verified)
+Used in Edit Profile page to determine 
  */
 function check_verified_status($username)
 {
@@ -141,7 +142,7 @@ function check_verified_status($username)
 }
 
 /*
-Sets a user account is verified or not (1 - Verified  ||  0 -  Not Verified)
+Sets a user account is verified or not (1 - Verified  ||  0 -  Not Verified). 
  */
 function set_verified($username)
 {
@@ -175,6 +176,7 @@ function check_active_status($username)
 
 /*
 Sets a user account status as active (Returns 1 - Set Active Successfully  ||  0 -  Error in Setting Active)
+Called when user logins
  */
 function set_active($username)
 {
@@ -190,7 +192,8 @@ function set_active($username)
 
 /*
 Sets a user account status as inactive (Returns 1 - Set inactive Successfully  ||  0 -  Error in Setting inactive)
- */
+Called when user logouts 
+*/
 function set_inactive($username)
 {
     require "connection.php";
@@ -311,7 +314,7 @@ function get_mutual_media_count($user1, $user2)
 
 
 
-// executes the query and returns the first row of the result set.
+/*executes any given SQL query and returns the first row of the result set.*/
 function executeSQL($con, $sql)
 {
     if ($query = mysqli_query($con, $sql)) {
@@ -326,7 +329,9 @@ function executeSQL($con, $sql)
     }
 }
 
-//SERVE A RANDOM IMAGE TO THE USER FROM THE ASSETS/ABSTRACT FOLDER 
+
+
+/*Return a random image from the assets/abstract folder - to be used in feed.php*/
 function randomImage()
 {
     $images = [
@@ -386,6 +391,9 @@ function randomImage()
 }
 
 
+
+/*Return a random video that will be used on login page as background*/
+
 function randomVideo(){
     $videos=["images/website/assets/videos/1.mp4",
     "images/website/assets/videos/2.mp4",
@@ -404,6 +412,9 @@ function randomVideo(){
 
 }
 
+
+/*Return a random quote to be used on media_book.php*/
+
 function getRandomBookQuote()
 {
     $bookquotes = [
@@ -420,6 +431,9 @@ function getRandomBookQuote()
     return $bookquotes[array_rand($bookquotes)];
 }
 
+
+/*Return a random quote to be used on media_movie.php*/
+
 function getRandomMovieQuote()
 {
     $moviequotes = [
@@ -435,6 +449,9 @@ function getRandomMovieQuote()
     ];
     return $moviequotes[array_rand($moviequotes)];
 }
+
+
+/*Return a random quote to be used on media_tv.php*/
 
 function getRandomTvQuote()
 {
@@ -457,6 +474,8 @@ function getRandomTvQuote()
     return $tvquotes[array_rand($tvquotes)];
 }
 
+/*Return a random quote to be used on media_videogame.php*/
+
 function getRandomVideoGameQuote()
 {
     $videogamequotes = [
@@ -470,6 +489,9 @@ function getRandomVideoGameQuote()
 
     return $videogamequotes[array_rand($videogamequotes)];
 }
+
+
+/*Return a random quote to be used on media_music.php*/
 
 function getRandomAlbumQuote()
 {
@@ -488,6 +510,8 @@ function getRandomAlbumQuote()
     return $albumquotes[array_rand($albumquotes)];
 }
 
+
+/*Return a prinatable date of member joining to display it on their respective profiles*/
 function getDateofJoining($con, $username){
 $date_joined = executeSQL($con, "SELECT `date` FROM `users` where `user_name`='$username'");
 $date_joined = strtotime($date_joined);
