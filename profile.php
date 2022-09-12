@@ -282,7 +282,7 @@ if ($query = mysqli_query($con, $sql2)) {
                 <div class="data">
                     <ul>
                         <!--Total Media Added (on logged in user profile)/Mutual Count (on other users profile)-->
-                        <li>
+                        <li id="myCount">
 
                             <!----------------
 			Total Media Count

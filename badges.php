@@ -206,7 +206,7 @@ const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
 
 
   <div class="page">
-  <button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
+    <button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
 
     <!--BOOK DIV-->
     <div class="archive">
@@ -220,16 +220,20 @@ const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
 
       <?php if ($total_book_count >= BOOK_BRONZE_1[2]) {
       ?>
-        <article class="article">
+
+        <article class="article" data-title="<?php echo BOOK_BRONZE_1[2]; ?> book milestone">
+          
           <p class="badge-name"> <?php echo BOOK_BRONZE_1[1]; ?></p>
           <img class="mybadge" src="<?php echo BOOK_BRONZE_1[0]; ?>" alt="<?php echo BOOK_BRONZE_1[1]; ?>">
+
         </article>
+  
       <?php
       } ?>
 
       <?php if ($total_book_count >= BOOK_BRONZE_2[2]) {
       ?>
-        <article class="article">
+        <article class="article" data-title="<?php echo BOOK_BRONZE_2[2]; ?> book milestone">
           <p class="badge-name"> <?php echo BOOK_BRONZE_2[1]; ?></p>
           <img class="mybadge" src="<?php echo BOOK_BRONZE_2[0]; ?>" alt="<?php echo BOOK_BRONZE_2[1]; ?>">
         </article>
@@ -807,6 +811,7 @@ const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
   <!--END OF PAGE-->
 
   <script src="js/backToTop.js"></script>
+
 </body>
 
 </html>
