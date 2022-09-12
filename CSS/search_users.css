@@ -96,7 +96,7 @@ body {
     flex-wrap: wrap;
     width: 100%;
     margin-top: 50px;
-    background-image: radial-gradient(#8276ff 2px, #fcfcff 2px);
+    background-image: radial-gradient(#9c93ffd4 2px, #fcfcff 2px);
     background-size: 40px 40px;
 }
 
@@ -105,7 +105,7 @@ body {
     padding-left: 10px;
     padding-right: 10px;
     background-color: white;
-    background-image: radial-gradient(#8276ff 2px, #fcfcff 2px);
+    background-image: radial-gradient(#b7b0ff 2px, #fcfcff 2px);
     background-size: 40px 40px;
 }
 

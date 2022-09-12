@@ -267,10 +267,10 @@ STORE STATS DATA.
 */
 
 $data = array(
-  array("Media Count", $total_media_count, "images/Icons/trophy.svg"),
-  array("Users On Site Currently", $current_active_users, "images/Icons/profile.svg"),
+  array("Media Count <br><br>", $total_media_count, "images/Icons/trophy.svg"),
+  array("Current Active Users", $current_active_users, "images/Icons/profile.svg"),
   array("Registered Users", $total_users_count, "images/Icons/profile.svg"),
-  array("Books Logged", $total_book_count, "images/Icons/Book.svg"),
+  array("Books Logged<br><br>", $total_book_count, "images/Icons/Book.svg"),
   array("Movies Logged", $total_movie_count, "images/Icons/Movie.svg"),
   array("TV Shows Logged", $total_tv_count, "images/Icons/TV.svg"),
   array("Videogames Logged", $total_videogame_count, "images/Icons/Videogame.svg"),
@@ -283,9 +283,9 @@ $data = array(
   array("Logged Items (Last Month)", $total_media_added_last_month, "images/Icons/trophy.svg"),
   array("Logged Items (Last Year)", $total_media_added_last_year, "images/Icons/trophy.svg"),
   array("Average Media Per User", $avg_media_per_user, "images/Icons/trophy.svg"),
-  array("Most Logged Book", $top_books, "images/Icons/Book.svg"),
+  array("Most Logged Book", $top_books , "images/Icons/Book.svg"),
   array("Most Logged Album", $top_albums, "images/Icons/Music.svg"),
-  array("Most Logged TV Show", $top_tv, "images/Icons/TV.svg"),
+  array("Most Logged TV Show",$top_tv,"images/Icons/TV.svg"),
   array("Most Logged Videogame", $top_games, "images/Icons/Videogame.svg"),
   array("Most Logged Movie", $top_movies, "images/Icons/Movie.svg"),
   array("Most followed user", $popular_users, "images/Icons/Trophy.svg"),
@@ -361,7 +361,7 @@ $data = array(
 
                 <!--Circle -->
                 <div class="circle">
-                  <div class="counter"><?php echo $row[1] ?></div>
+                  <div class="counter" title="<?php echo $row[1] ?>"><?php echo mb_strimwidth($row[1], 0, 15, "...") ?></div>
                 </div>
 
               </div>
