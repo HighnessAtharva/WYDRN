@@ -28,11 +28,12 @@ body {
     text-transform: uppercase;
     color: rgb(0, 0, 0);
     letter-spacing: 1px;
-    font-family: "Playfair Display", serif;
+    font-family: "Open Sans", serif;
     font-weight: 400;
     margin: auto;
     margin-top: 50px;
     min-width: 1000px;
+    background: #ffffffba;
 }
 
 ::-webkit-scrollbar {
