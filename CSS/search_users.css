@@ -7,6 +7,10 @@ body {
     -webkit-user-select: none;
     font-family: "Open Sans", Helvetica, sans-serif;
     margin-top: 150px;
+    background-color: #fcfcff;
+    opacity: 1;
+    background-image: radial-gradient(#8276ff 2px, #fcfcff 2px);
+    background-size: 40px 40px;
 }
 
 .profilepic {
@@ -91,6 +95,8 @@ body {
     flex-wrap: wrap;
     width: 100%;
     margin-top: 50px;
+    background-image: radial-gradient(#8276ff 2px, #fcfcff 2px);
+    background-size: 40px 40px;
 }
 
 .column {
@@ -98,6 +104,8 @@ body {
     padding-left: 10px;
     padding-right: 10px;
     background-color: white;
+    background-image: radial-gradient(#8276ff 2px, #fcfcff 2px);
+    background-size: 40px 40px;
 }
 
 .column.big {
@@ -313,14 +321,6 @@ body {
     background-color: skyblue;
 }
 
-body {
-    /* no selection */
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    font-family: "Open Sans", Helvetica, sans-serif;
-}
-
 .my-list-item {
     width: 60%;
     margin: 0 auto;
@@ -331,12 +331,13 @@ body {
     position: relative;
     color: #002b5d;
     text-decoration: none;
+    background: white;
 }
 
 .my-list-item:hover {
     border: 1px solid #000000;
     color: #2f00ff;
-    background: #f6f7f9;
+    background: #c9dbff;
 }
 
 .list-item__avatar {

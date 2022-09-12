@@ -112,9 +112,9 @@ hr.image {
     font-size: 15px;
     position: absolute;
     font-family: 'Open Sans';
-    padding: 5px;
-    bottom: -3em;
-    margin-left: -4.5em;
+    padding: 15px;
+    bottom: -2.5em;
+    margin-left: -5em;
     white-space: nowrap;
     box-shadow: 1px 1px 3px #222222;
     opacity: 0;

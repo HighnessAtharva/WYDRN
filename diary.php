@@ -53,7 +53,7 @@ if (isset($_GET['userdate'])) {
 
 </head>
 
-<body> <br><br>
+<body> 
     <button onclick="topFunction()" id="BackToTopBtn" title="Go to top" style="height: fit-content;">&#8657;</button>
 
 
