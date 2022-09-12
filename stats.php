@@ -65,274 +65,45 @@ else {
   $username = $user_data['user_name'];
 }
 
-
-/*************
-  TOTAL MEDIA COUNT
- *************/
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
-    (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='')
-    UNION ALL
-    (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='')
-    UNION ALL
-    (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='')
-    UNION ALL
-    (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='')
-    UNION ALL
-    (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='')
-)t";
-
-
-$total_media_count = executeSQL($con, $sql);
-
-
-/*************
-  TOTAL MEDIA COUNT UNIQUE
- *************/
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
-    (SELECT count(DISTINCT `videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='')
-    UNION ALL
-    (SELECT count(DISTINCT `album`) AS allcount FROM `data` where `username`='$username' AND album!='')
-    UNION ALL
-    (SELECT count(DISTINCT `book`) AS allcount FROM `data` where `username`='$username' AND book!='')
-    UNION ALL
-    (SELECT count(DISTINCT `movie`) AS allcount FROM `data` where `username`='$username' AND movie!='')
-    UNION ALL
-    (SELECT count(DISTINCT `tv`) AS allcount FROM `data` where `username`='$username' AND tv!='')
-)t";
-
-$total_media_count_unique = executeSQL($con, $sql);
-
-
-
-/*************
-  TOTAL MEDIA ADDED LAST WEEK
- *************/
-
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
-  (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 7 DAY)
-  UNION ALL
-  (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 7 DAY)
-  UNION ALL
-  (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='' AND DATE(date) >= CURDATE() - INTERVAL 7 DAY)
-  UNION ALL
-  (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='' AND DATE(date) >= CURDATE() - INTERVAL 7 DAY)
-  UNION ALL
-  (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 7 DAY)
-)t ";
-$total_media_added_last_week = executeSQL($con, $sql);
-
-
-/*************
-  TOTAL MEDIA ADDED LAST MONTH
- *************/
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
-  (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 30 DAY)
-  UNION ALL
-  (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 30 DAY)
-  UNION ALL
-  (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='' AND DATE(date) >= CURDATE() - INTERVAL 30 DAY)
-  UNION ALL
-  (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='' AND DATE(date) >= CURDATE() - INTERVAL 30 DAY)
-  UNION ALL
-  (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 30 DAY)
-)t ";
-$total_media_added_last_month = executeSQL($con, $sql);
-
-
-
-/*************
-  TOTAL MEDIA ADDED LAST 3 MONTHS
- *************/
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
-  (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 90 DAY)
-  UNION ALL
-  (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 90 DAY)
-  UNION ALL
-  (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='' AND DATE(date) >= CURDATE() - INTERVAL 90 DAY)
-  UNION ALL
-  (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='' AND DATE(date) >= CURDATE() - INTERVAL 90 DAY)
-  UNION ALL
-  (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 90 DAY)
-)t ";
-$total_media_added_last_3months = executeSQL($con, $sql);
-
-
-/*************
-  TOTAL MEDIA ADDED LAST 6 MONTHS
- *************/
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
-  (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 180 DAY)
-  UNION ALL
-  (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 180 DAY)
-  UNION ALL
-  (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='' AND DATE(date) >= CURDATE() - INTERVAL 180 DAY)
-  UNION ALL
-  (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='' AND DATE(date) >= CURDATE() - INTERVAL 180 DAY)
-  UNION ALL
-  (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 180 DAY)
-)t ";
-$total_media_added_last_6months = executeSQL($con, $sql);
-
-
-/*************
-  TOTAL MEDIA ADDED LAST YEAR
- *************/
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
-  (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 365 DAY)
-  UNION ALL
-  (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 365 DAY)
-  UNION ALL
-  (SELECT count(book) AS allcount FROM `data` where `username`='$username' AND book!='' AND DATE(date) >= CURDATE() - INTERVAL 365 DAY)
-  UNION ALL
-  (SELECT count(movie) AS allcount FROM `data` where `username`='$username' AND movie!='' AND DATE(date) >= CURDATE() - INTERVAL 365 DAY)
-  UNION ALL
-  (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 365 DAY)
-)t ";
-$total_media_added_last_year = executeSQL($con, $sql);
-
-
-/*************
-  TOTAL BOOKS COUNT 
- *************/
-$sql = "SELECT count(book) AS Total_Count FROM `data` where `username`='$username' AND book!=''";
-$total_book_count = executeSQL($con, $sql);
-
-
-/*************
-  TOTAL BOOKS COUNT UNIQUE
- *************/
-$sql = "SELECT count(DISTINCT `book`) AS Total_Count FROM `data` where `username`='$username' AND book!=''";
-$total_book_count_unique = executeSQL($con, $sql);
-
-
-/*************
-  Favorite BOOKS -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
- *************/
-$sql = "SELECT book, count(book) as favorites FROM `data` where username='$username' and book!='' GROUP BY book HAVING count(book)>1 ORDER BY count(book) DESC LIMIT 5";
-
-$top_books = executeSQL($con, $sql);
-
-
-/*************
-  Favorite AUTHORS -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
- *************/
-$sql = "SELECT author, count(author) as favorites FROM `data` where username='$username' and author!='' GROUP BY book HAVING count(author)>1 ORDER BY count(author) DESC LIMIT 5";
-
-$top_authors = executeSQL($con, $sql);
-
-/*************
-  TOTAL MOVIE COUNT
- *************/
-$sql = "SELECT count(`movie`) AS Total_Count FROM `data` where `username`='$username' AND movie!=''";
-$total_movie_count = executeSQL($con, $sql);
-
-
-/*************
-  TOTAL MOVIE COUNT UNIQUE
- *************/
-$sql = "SELECT count(DISTINCT `movie`) AS Total_Count FROM `data` where `username`='$username' AND movie!=''";
-$total_movie_count_unique = executeSQL($con, $sql);
-
-
-
-/*************
-  Favorite MOVIE 
- *************/
-$sql = "SELECT movie, count(movie) as favorites FROM `data` where username='$username' and movie!='' GROUP BY movie HAVING count(movie)>1 ORDER BY count(movie) DESC LIMIT 5";
-
-$top_movies = executeSQL($con, $sql);
-
-
-/*************
-  TOTAL TV SHOW COUNT 
- *************/
-$sql = "SELECT count(`tv`) AS Total_Count FROM `data` where `username`='$username' AND tv!=''";
-$total_tv_count = executeSQL($con, $sql);
-
-
-/*************
-  TOTAL TV SHOW COUNT UNIQUE
- *************/
-$sql = "SELECT count(DISTINCT `tv`) AS Total_Count FROM `data` where `username`='$username' AND tv!=''";
-$total_tv_count_unique = executeSQL($con, $sql);
-
-
-
-/*************
-  Favorite TV SHOW 
- *************/
-$sql = "SELECT tv, count(tv) as favorites FROM `data` where username='$username' and tv!='' GROUP BY tv HAVING count(tv)>1 ORDER BY count(tv) DESC LIMIT 5";
-
-$top_tv = executeSQL($con, $sql);
-
-
-/*************
-  Favorite STREAMING PLATFORM 
- *************/
-$sql = "SELECT streaming, count(streaming) as favorites FROM `data` where username='$username' and streaming!='' GROUP BY streaming HAVING count(streaming)>1 ORDER BY count(streaming) DESC LIMIT 5";
-
-$top_streaming = executeSQL($con, $sql);
-
-
-/*************
-  TOTAL VIDEOGAME COUNT 
- *************/
-$sql = "SELECT count(`videogame`) AS Total_Count FROM `data` where `username`='$username' AND videogame!=''";
-$total_videogame_count = executeSQL($con, $sql);
-
-
-/*************
-  TOTAL VIDEOGAME COUNT UNIQUE
- *************/
-$sql = "SELECT count(DISTINCT `videogame`) AS Total_Count FROM `data` where `username`='$username' AND videogame!=''";
-$total_videogame_count_unique = executeSQL($con, $sql);
-
-
-
-/*************
-  Favorite GAMING PLATFORM -> MOST REPEATEDLY LOGGED 
- *************/
-$sql = "SELECT platform, count(platform) as favorites FROM `data` where username='$username' and platform!='' GROUP BY platform HAVING count(platform)>1 ORDER BY count(platform) DESC LIMIT 5";
-
-$top_platform = executeSQL($con, $sql);
-
-/*************
-  Favorite VIDEOGAME -> MOST REPEATEDLY LOGGED 
- *************/
-$sql = "SELECT videogame, count(videogame) as favorites FROM `data` where username='$username' and videogame!='' GROUP BY videogame HAVING count(videogame)>1 ORDER BY count(videogame) DESC LIMIT 5";
-
-$top_videogames = executeSQL($con, $sql);
-
-
-/*************
-  TOTAL ALBUM COUNT 
- *************/
-$sql = "SELECT count(`album`) AS Total_Count FROM `data` where `username`='$username' AND album!=''";
-$total_album_count = executeSQL($con, $sql);
-
-
-/*************
-  TOTAL ALBUM COUNT UNIQUE
- *************/
-$sql = "SELECT count(DISTINCT `album`) AS Total_Count FROM `data` where `username`='$username' AND album!=''";
-$total_album_count_unique = executeSQL($con, $sql);
-
-
-
-/*************
-  Favorite ALBUMS -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
- *************/
-$sql = "SELECT album, count(album) as favorites FROM `data` where username='$username' and album!='' GROUP BY album HAVING count(album)>1 ORDER BY count(album) DESC LIMIT 5";
-
-$top_albums = executeSQL($con, $sql);
-
-
-/*************
-  Favorite ARTIST/SINGER/SONGWRITER -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
- *************/
-$sql = "SELECT artist, count(artist) as favorites FROM `data` where username='$username' and artist!='' GROUP BY artist HAVING count(artist)>1 ORDER BY count(artist) DESC LIMIT 5";
-
-$top_artists = executeSQL($con, $sql);
+//general stats
+$total_media_count=getTotalMediaCount($con, $username);
+$total_media_count_unique = getTotalMediaCountUnique($con, $username);
+$total_media_added_last_week = getTotalMediaAddedLastWeek($con, $username);
+$total_media_added_last_month = getTotalMediaAddedLastMonth($con, $username);
+$total_media_added_last_3months = getTotalMediaAddedLast3Months($con, $username);
+$total_media_added_last_6months = getTotalMediaAddedLast6Months($con, $username);
+$total_media_added_last_year = getTotalMediaAddedLastYear($con, $username);
+
+
+//book stats
+$total_book_count=getTotalBooksCount($con, $username);
+$total_book_count_unique = getTotalBooksCountUnique($con, $username);
+$top_book = getFavoriteBook($con, $username);
+$top_author = getFavoriteAuthor($con, $username);
+
+
+//movie stats
+$total_movie_count = getTotalMoviesCount($con, $username);
+$total_movie_count_unique = getTotalMoviesCountUnique($con, $username);
+$top_movie = getFavoriteMovie($con, $username);
+
+//tv stats
+$total_tv_count = getTotalTVCount($con, $username);
+$total_tv_count_unique = getTotalTVCountUnique($con, $username);
+$top_tv = getFavoriteTV($con, $username);
+$top_streaming = getFavoriteStreamingPlatform($con, $username);
+
+//videogame stats
+$total_videogame_count = getTotalVideoGameCount($con, $username);
+$total_videogame_count_unique = getTotalVideoGameCountUnique($con, $username);
+$top_platform = getFavoriteGamingPlatform($con, $username);
+$top_videogames = getFavoriteVideoGame($con, $username);
+
+//music stats
+$total_album_count =  getTotalAlbumCount($con, $username);
+$total_album_count_unique =  getTotalAlbumCountUnique($con, $username);
+$top_album = getFavoriteAlbum($con, $username);
+$top_artist = getFavoriteArtist($con, $username);
 
 
 /*************
@@ -489,12 +260,12 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
 
         <tr>
           <td>Favorite Book</td>
-          <td> <?php echo $top_books; ?></td>
+          <td> <?php echo $top_book; ?></td>
         </tr>
 
         <tr>
           <td>Favorite Author</td>
-          <td> <?php echo $top_authors; ?></td>
+          <td> <?php echo $top_author; ?></td>
         </tr>
 
       </tbody>
@@ -527,7 +298,7 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
 
         <tr>
           <td>Favorite Movie</td>
-          <td> <?php echo $top_movies; ?></td>
+          <td> <?php echo $top_movie; ?></td>
         </tr>
 
       </tbody>
@@ -636,12 +407,12 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
 
         <tr>
           <td>Favorite Album</td>
-          <td> <?php echo $top_albums; ?></td>
+          <td> <?php echo $top_album; ?></td>
         </tr>
 
         <tr>
           <td>Favorite Artist</td>
-          <td> <?php echo $top_artists; ?></td>
+          <td> <?php echo $top_artist; ?></td>
         </tr>
 
       </tbody>
