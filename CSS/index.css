@@ -365,3 +365,248 @@ a:focus {
         stroke-width: var(--cursor-stroke-width);
     }
 }
+
+video {
+    object-fit: cover;
+    filter: brightness(0.2);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    z-index: -999;
+}
+
+.shake:hover {
+    animation: shake 0.3s;
+    animation-iteration-count: 2;
+    cursor: pointer;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(5px, 5px) rotate(5deg);
+    }
+    50% {
+        transform: translate(0, 0) rotate(0eg);
+    }
+    75% {
+        transform: translate(-5px, 5px) rotate(-5deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+.myHeading {
+    font-family: Poppins, 'sans-serif';
+    font-size: 80px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 40px;
+}
+
+#movieBox {
+    background: linear-gradient(171deg, #2b00b2, #7900bf);
+    background-size: 400% 400%;
+    -webkit-animation: AnimationName 2s ease infinite;
+    animation: AnimationName 2s ease infinite;
+    box-shadow: rgb(26, 56, 132) 3px 3px 6px 0px inset, rgba(80, 0, 142, 0.592) -3px -3px 6px 1px inset;
+}
+
+#bookBox {
+    background: linear-gradient(270deg, #ff3c3c, #bf6802);
+    background-size: 400% 400%;
+    -webkit-animation: AnimationName 2s ease infinite;
+    -moz-animation: AnimationName 2s ease infinite;
+    animation: AnimationName 2s ease infinite;
+    box-shadow: rgb(255, 77, 0) 3px 3px 6px 0px inset, rgba(255, 145, 0, 0.592) -3px -3px 6px 1px inset;
+}
+
+#musicBox {
+    background: linear-gradient(270deg, #00bb51, #006708);
+    background-size: 400% 400%;
+    -webkit-animation: AnimationName 2s ease infinite;
+    -moz-animation: AnimationName 2s ease infinite;
+    animation: AnimationName 2s ease infinite;
+    box-shadow: rgb(0, 255, 47) 3px 3px 6px 0px inset, rgba(0, 61, 13, 0.592) -3px -3px 6px 1px inset;
+}
+
+#gameBox {
+    background: linear-gradient(270deg, #ab0178, #4d0043);
+    background-size: 400% 400%;
+    -webkit-animation: AnimationName 2s ease infinite;
+    -moz-animation: AnimationName 2s ease infinite;
+    animation: AnimationName 2s ease infinite;
+    box-shadow: rgb(255, 1, 136) 3px 3px 6px 0px inset, rgba(92, 0, 129, 0.5) -3px -3px 6px 1px inset;
+}
+
+#tvBox {
+    background: linear-gradient(270deg, #bba700, #467001);
+    background-size: 400% 400%;
+    -webkit-animation: AnimationName 2s ease infinite;
+    -moz-animation: AnimationName 2s ease infinite;
+    animation: AnimationName 2s ease infinite;
+    box-shadow: rgb(251, 255, 0) 3px 3px 6px 0px inset, rgba(105, 128, 0, 0.5) -3px -3px 6px 1px inset;
+}
+
+.movieHeading {
+    color: #c6aadb;
+}
+
+.movieHeading:after {
+    color: #c6aadb;
+    content: '';
+    position: absolute;
+    left: 13%;
+    display: inline-block;
+    height: 1em;
+    width: 240px;
+    border-bottom: 5px solid;
+    margin-top: 10px;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+}
+
+.movieHeading:hover:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.bookHeading {
+    color: #ffbe90;
+}
+
+.bookHeading:after {
+    color: #ffbe90;
+    content: '';
+    position: absolute;
+    right: 13%;
+    display: inline-block;
+    height: 1em;
+    width: 240px;
+    border-bottom: 5px solid;
+    margin-top: 10px;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+}
+
+.bookHeading:hover:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.musicHeading {
+    color: #74ff5e;
+}
+
+.musicHeading:after {
+    color: #74ff5e;
+    content: '';
+    position: absolute;
+    left: 13%;
+    display: inline-block;
+    height: 1em;
+    width: 230px;
+    border-bottom: 5px solid;
+    margin-top: 10px;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+}
+
+.musicHeading:hover:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.gameHeading {
+    color: #ff81dd;
+}
+
+.gameHeading:after {
+    color: #ff81dd;
+    content: '';
+    position: absolute;
+    right: 13%;
+    display: inline-block;
+    height: 1em;
+    width: 480px;
+    border-bottom: 5px solid;
+    margin-top: 10px;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+}
+
+.gameHeading:hover:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.tvHeading {
+    color: #fffa6a;
+}
+
+.tvHeading:after {
+    color: #fffa6a;
+    content: '';
+    position: absolute;
+    left: 14%;
+    display: inline-block;
+    height: 1em;
+    width: 350px;
+    border-bottom: 5px solid;
+    margin-top: 10px;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+}
+
+.tvHeading:hover:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 23% 0%
+    }
+    50% {
+        background-position: 78% 100%
+    }
+    100% {
+        background-position: 23% 0%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 23% 0%
+    }
+    50% {
+        background-position: 78% 100%
+    }
+    100% {
+        background-position: 23% 0%
+    }
+}
