@@ -288,7 +288,7 @@ $total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
 
     <center>
         <div class="media" id="mutualGameDiv" style="display:none;">
-            <!-- <video src="<?php echo randomVideo(); ?>" autoplay loop playsinline muted></video> -->
+           
 
             <!--TO SHOW THE MEDIA ITEMS-->
             <div class="mediaGrid">
@@ -364,7 +364,7 @@ $total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
 
     <center>
         <div class="media" id="mutualMusicDiv" style="display:none;">
-            <!-- <video src="<?php echo randomVideo(); ?>" autoplay loop playsinline muted></video> -->
+           
             <!--TO SHOW THE MEDIA ITEMS-->
             <div class="mediaGrid">
                 <?php
@@ -439,7 +439,7 @@ $total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
     <center>
         <div class="media" id="mutualBookDiv" style="display:none;">
 
-            <!-- <video src="<?php echo randomVideo(); ?>" autoplay loop playsinline muted></video> -->
+           
             <!--TO SHOW THE MEDIA ITEMS-->
             <div class="mediaGrid">
 
@@ -517,7 +517,7 @@ $total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
 
         <div class="media" id="mutualMovieDiv" style="display:none;">
 
-            <!-- <video src="<?php echo randomVideo(); ?>" autoplay loop playsinline muted></video> -->
+           
             <!--TO SHOW THE MEDIA ITEMS-->
             <div class="mediaGrid">
 
@@ -595,7 +595,7 @@ $total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
 
 
 
-            <!-- <video src="<?php echo randomVideo(); ?>" autoplay loop playsinline muted></video> -->
+           
             <!--TO SHOW THE MEDIA ITEMS-->
             <div class="mediaGrid">
 

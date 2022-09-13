@@ -143,19 +143,44 @@ body {
     cursor: pointer;
 }
 
+#mutualGameDiv {
+    background-color: #50E3C2;
+    background-image: radial-gradient(at 47% 33%, hsl(162.00, 77%, 40%) 0, transparent 59%), radial-gradient(at 82% 65%, hsl(198.00, 100%, 50%) 0, transparent 55%);
+}
+
+#mutualBookDiv {
+    background-color: #5e70f8;
+    background-image: radial-gradient(at 47% 33%, rgb(78, 62, 255) 0, transparent 59%), radial-gradient(at 82% 65%, hsl(197.91, 100%, 42%) 0, transparent 55%);
+}
+
+#mutualMusicDiv {
+    background-color: #5f00b1;
+    background-image: radial-gradient(at 47% 33%, hsl(335.03, 100%, 34%) 0, transparent 59%), radial-gradient(at 82% 65%, hsl(323.32, 100%, 59%) 0, transparent 55%);
+}
+
+#mutualMovieDiv {
+    background-color: #ff7203;
+    background-image: radial-gradient(at 47% 33%, hsl(36.43, 100%, 39%) 0, transparent 59%), radial-gradient(at 82% 65%, hsl(64.58, 54%, 52%) 0, transparent 55%);
+}
+
+#mutualTVDiv {
+    background-color: #298129;
+    background-image: radial-gradient(at 47% 33%, hsl(146.88, 97%, 19%) 0, transparent 59%), radial-gradient(at 82% 65%, hsl(99.45, 61%, 48%) 0, transparent 55%);
+}
+
 .mediaGrid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 0.5rem 0.5rem;
-    color: #dbe4fcc4;
-    background-color: #000000;
+    color: #000000c4;
+    /* background-color: #000000; */
     padding: 50px 50px;
     grid-auto-rows: 1fr;
 }
 
 .mediaContent {
     padding: 5px;
-    background-color: rgb(255 255 255 / 10%);
+    background-color: rgba(255, 255, 255, 0.319);
     border-radius: 5px;
     text-align: center;
     font-size: 1rem;
