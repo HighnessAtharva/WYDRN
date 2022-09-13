@@ -115,7 +115,7 @@ $username = $user_data['user_name'];
 
                     <div class="plx-card gold">
                         <!--Background image-->
-                        <div class="pxc-bg" style="background-image:url('<?php echo randomImage() ?>')"> </div>
+                        <div class="pxc-bg" style="background:<?php echo getRandomGradient() ?>"> </div>
                         
                         <!--User profile pic-->
                         <div class="pxc-avatar"><img src="<?php echo $profile_pic ?>" width="240px" height="240px" /></div>

@@ -8,7 +8,6 @@
  * @author     AtharvaShah
  */
 
-
 /*
 Checks if a user is logged in and is valid. If yes, redirects to the login page. Important to start the session in order to perform the check_login function. Use session_start(); in pages that you wish to use this function.
  */
@@ -124,7 +123,7 @@ function send_reset_link($recipient, $link)
 
 /*
 Returns whether a user account is verified or not (1 - Verified  ||  0 -  Not Verified)
-Used in Edit Profile page to determine 
+Used in Edit Profile page to determine
  */
 function check_verified_status($username)
 {
@@ -142,7 +141,7 @@ function check_verified_status($username)
 }
 
 /*
-Sets a user account is verified or not (1 - Verified  ||  0 -  Not Verified). 
+Sets a user account is verified or not (1 - Verified  ||  0 -  Not Verified).
  */
 function set_verified($username)
 {
@@ -192,8 +191,8 @@ function set_active($username)
 
 /*
 Sets a user account status as inactive (Returns 1 - Set inactive Successfully  ||  0 -  Error in Setting inactive)
-Called when user logouts 
-*/
+Called when user logouts
+ */
 function set_inactive($username)
 {
     require "connection.php";
@@ -311,9 +310,6 @@ function get_mutual_media_count($user1, $user2)
     return $array;
 }
 
-
-
-
 /*executes any given SQL query and returns the first row of the result set.*/
 function executeSQL($con, $sql)
 {
@@ -328,8 +324,6 @@ function executeSQL($con, $sql)
         echo mysqli_error($con);
     }
 }
-
-
 
 /*Return a random image from the assets/abstract folder - to be used in feed.php*/
 function randomImage()
@@ -390,28 +384,52 @@ function randomImage()
     return $images[$rand_keys];
 }
 
-
-
 /*Return a random video that will be used on login page as background*/
 
-function randomVideo(){
-    $videos=["images/website/assets/videos/1.mp4",
-    "images/website/assets/videos/2.mp4",
-    "images/website/assets/videos/3.mp4",
-    "images/website/assets/videos/4.mp4",
-    "images/website/assets/videos/5.mp4",
-    "images/website/assets/videos/6.mp4",
-    "images/website/assets/videos/7.mp4",
-    "images/website/assets/videos/8.mp4",
-    "images/website/assets/videos/9.mp4",
-    "images/website/assets/videos/10.mp4",
-    "images/website/assets/videos/11.mp4",
-    "images/website/assets/videos/12.mp4"];
+function randomVideo()
+{
+    $videos = [
+        "images/website/assets/videos/1.mp4",
+        "images/website/assets/videos/2.mp4",
+        "images/website/assets/videos/3.mp4",
+        "images/website/assets/videos/4.mp4",
+        "images/website/assets/videos/5.mp4",
+        "images/website/assets/videos/6.mp4",
+        "images/website/assets/videos/7.mp4",
+        "images/website/assets/videos/8.mp4",
+        "images/website/assets/videos/9.mp4",
+        "images/website/assets/videos/10.mp4",
+        "images/website/assets/videos/11.mp4",
+        "images/website/assets/videos/12.mp4",
+    ];
     $rand_keys = array_rand($videos, 1);
     return $videos[$rand_keys];
-
 }
 
+function getRandomGradient()
+{
+    $gradients = [
+        "linear-gradient(90deg, #1CB5E0 0%, #000851 100%);",
+        "linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%)",
+        "linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%)",
+        "linear-gradient(90deg, #FDBB2D 0%, #22C1C3 100%)",
+        "linear-gradient(90deg, #9ebd13 0%, #008552 100%)",
+        "linear-gradient(90deg, #0700b8 0%, #00ff88 100%)",
+        "linear-gradient(90deg, #d53369 0%, #daae51 100%)",
+        "linear-gradient(90deg, #efd5ff 0%, #515ada 100%)",
+        "linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%)",
+        "linear-gradient(90deg, #f8ff00 0%, #3ad59f 100%)",
+        "linear-gradient(90deg, #fcff9e 0%, #c67700 100%)",
+        "linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%)",
+        "linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%)",
+        "linear-gradient(147deg, #FFE53B 0%, #FF2525 74%)",
+        "linear-gradient(0deg, #08AEEA 0%, #2AF598 100%)",
+        "linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%)",
+        "linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%)",
+
+    ];
+    return $gradients[array_rand($gradients)];
+}
 
 /*Return a random quote to be used on media_book.php*/
 
@@ -431,7 +449,6 @@ function getRandomBookQuote()
     return $bookquotes[array_rand($bookquotes)];
 }
 
-
 /*Return a random quote to be used on media_movie.php*/
 
 function getRandomMovieQuote()
@@ -449,7 +466,6 @@ function getRandomMovieQuote()
     ];
     return $moviequotes[array_rand($moviequotes)];
 }
-
 
 /*Return a random quote to be used on media_tv.php*/
 
@@ -490,7 +506,6 @@ function getRandomVideoGameQuote()
     return $videogamequotes[array_rand($videogamequotes)];
 }
 
-
 /*Return a random quote to be used on media_music.php*/
 
 function getRandomAlbumQuote()
@@ -510,23 +525,21 @@ function getRandomAlbumQuote()
     return $albumquotes[array_rand($albumquotes)];
 }
 
-
 /*Return a prinatable date of member joining to display it on their respective profiles*/
-function getDateofJoining($con, $username){
-$date_joined = executeSQL($con, "SELECT `date` FROM `users` where `user_name`='$username'");
-$date_joined = strtotime($date_joined);
-return date("M jS, Y", $date_joined);
+function getDateofJoining($con, $username)
+{
+    $date_joined = executeSQL($con, "SELECT `date` FROM `users` where `user_name`='$username'");
+    $date_joined = strtotime($date_joined);
+    return date("M jS, Y", $date_joined);
 }
 
-
-
-
 /*************
-  TOTAL MEDIA COUNT
+TOTAL MEDIA COUNT
  *************/
-function getTotalMediaCount($con, $username){
+function getTotalMediaCount($con, $username)
+{
 
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
+    $sql = "SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='')
     UNION ALL
     (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='')
@@ -537,17 +550,17 @@ $sql = "SELECT sum(allcount) AS Total_Count FROM(
     UNION ALL
     (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='')
 )t";
- 
- return executeSQL($con, $sql);
+
+    return executeSQL($con, $sql);
 }
 
-
 /*************
-  TOTAL MEDIA COUNT UNIQUE
+TOTAL MEDIA COUNT UNIQUE
  *************/
 
-function getTotalMediaCountUnique($con, $username){
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
+function getTotalMediaCountUnique($con, $username)
+{
+    $sql = "SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(DISTINCT `videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='')
     UNION ALL
     (SELECT count(DISTINCT `album`) AS allcount FROM `data` where `username`='$username' AND album!='')
@@ -559,17 +572,16 @@ $sql = "SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(DISTINCT `tv`) AS allcount FROM `data` where `username`='$username' AND tv!='')
 )t";
 
-return executeSQL($con, $sql);
+    return executeSQL($con, $sql);
 }
 
-
-
 /*************
-  TOTAL MEDIA ADDED LAST WEEK
+TOTAL MEDIA ADDED LAST WEEK
  *************/
 
-function getTotalMediaAddedLastWeek($con, $username){
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
+function getTotalMediaAddedLastWeek($con, $username)
+{
+    $sql = "SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 7 DAY)
     UNION ALL
     (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 7 DAY)
@@ -581,15 +593,15 @@ $sql = "SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 7 DAY)
   )t ";
 
-return executeSQL($con, $sql);
+    return executeSQL($con, $sql);
 }
 
-
 /*************
-  TOTAL MEDIA ADDED LAST MONTH
+TOTAL MEDIA ADDED LAST MONTH
  *************/
-function getTotalMediaAddedLastMonth($con, $username){
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
+function getTotalMediaAddedLastMonth($con, $username)
+{
+    $sql = "SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 30 DAY)
     UNION ALL
     (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 30 DAY)
@@ -601,15 +613,15 @@ $sql = "SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 30 DAY)
   )t ";
 
-return executeSQL($con, $sql);
+    return executeSQL($con, $sql);
 }
 
-
 /*************
-  TOTAL MEDIA ADDED LAST 3 MONTHS
+TOTAL MEDIA ADDED LAST 3 MONTHS
  *************/
-function getTotalMediaAddedLast3Months($con, $username){
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
+function getTotalMediaAddedLast3Months($con, $username)
+{
+    $sql = "SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 90 DAY)
     UNION ALL
     (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 90 DAY)
@@ -621,17 +633,16 @@ $sql = "SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 90 DAY)
   )t ";
 
-return executeSQL($con, $sql);
+    return executeSQL($con, $sql);
 }
 
-
-
 /*************
-  TOTAL MEDIA ADDED LAST 6 MONTHS
+TOTAL MEDIA ADDED LAST 6 MONTHS
  *************/
 
-function getTotalMediaAddedLast6Months($con, $username){
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
+function getTotalMediaAddedLast6Months($con, $username)
+{
+    $sql = "SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 180 DAY)
     UNION ALL
     (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 180 DAY)
@@ -643,15 +654,15 @@ $sql = "SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 180 DAY)
   )t ";
 
-return executeSQL($con, $sql);
+    return executeSQL($con, $sql);
 }
 
-
 /*************
-  TOTAL MEDIA ADDED LAST YEAR
+TOTAL MEDIA ADDED LAST YEAR
  *************/
-function getTotalMediaAddedLastYear($con, $username){
-$sql = "SELECT sum(allcount) AS Total_Count FROM(
+function getTotalMediaAddedLastYear($con, $username)
+{
+    $sql = "SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(`videogame`) as allcount FROM `data` where `username`='$username' AND videogame!='' AND DATE(date) >= CURDATE() - INTERVAL 365 DAY)
     UNION ALL
     (SELECT count(album) AS allcount FROM `data` where `username`='$username' AND album!='' AND DATE(date) >= CURDATE() - INTERVAL 365 DAY)
@@ -663,171 +674,176 @@ $sql = "SELECT sum(allcount) AS Total_Count FROM(
     (SELECT count(tv) AS allcount FROM `data` where `username`='$username' AND tv!='' AND DATE(date) >= CURDATE() - INTERVAL 365 DAY)
   )t ";
 
-return executeSQL($con, $sql);
-
-}
-
-
-/*************
-  TOTAL BOOKS COUNT 
- *************/
-function getTotalBooksCount($con, $username){
-$sql = "SELECT count(book) AS Total_Count FROM `data` where `username`='$username' AND book!=''";
- return executeSQL($con, $sql);
-}
-
-
-/*************
-  TOTAL BOOKS COUNT UNIQUE
- *************/
-function getTotalBooksCountUnique($con, $username){
-$sql = "SELECT count(DISTINCT `book`) AS Total_Count FROM `data` where `username`='$username' AND book!=''";
-return executeSQL($con, $sql);
-}
-
-/*************
-  Favorite BOOK -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
- *************/
-function getFavoriteBook($con, $username){
- $sql = "SELECT book, count(book) as favorites FROM `data` where username='$username' and book!='' GROUP BY book HAVING count(book)>1 ORDER BY count(book) DESC LIMIT 5";
     return executeSQL($con, $sql);
 }
 
-
 /*************
-  Favorite AUTHOR -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
+TOTAL BOOKS COUNT
  *************/
-function getFavoriteAuthor($con, $username){
-$sql = "SELECT author, count(author) as favorites FROM `data` where username='$username' and author!='' GROUP BY book HAVING count(author)>1 ORDER BY count(author) DESC LIMIT 5";
-return executeSQL($con, $sql);
-}
-
-
-/*************
-  TOTAL MOVIE COUNT
- *************/
-function getTotalMoviesCount($con, $username){
- $sql = "SELECT count(`movie`) AS Total_Count FROM `data` where `username`='$username' AND movie!=''";
-return executeSQL($con, $sql);
+function getTotalBooksCount($con, $username)
+{
+    $sql = "SELECT count(book) AS Total_Count FROM `data` where `username`='$username' AND book!=''";
+    return executeSQL($con, $sql);
 }
 
 /*************
-  TOTAL MOVIE COUNT UNIQUE
+TOTAL BOOKS COUNT UNIQUE
  *************/
-function getTotalMoviesCountUnique($con, $username){
- $sql = "SELECT count(DISTINCT `movie`) AS Total_Count FROM `data` where `username`='$username' AND movie!=''";
-return executeSQL($con, $sql);
-}
-
-
-/*************
-  Favorite MOVIE 
- *************/
-function getFavoriteMovie($con, $username){
- $sql = "SELECT movie, count(movie) as favorites FROM `data` where username='$username' and movie!='' GROUP BY movie HAVING count(movie)>1 ORDER BY count(movie) DESC LIMIT 5";
-return executeSQL($con, $sql);
-}
-
-
-
-/*************
-  TOTAL TV SHOW COUNT 
- *************/
-function getTotalTVCount($con, $username){
-$sql = "SELECT count(`tv`) AS Total_Count FROM `data` where `username`='$username' AND tv!=''";
-return executeSQL($con, $sql);
-}
-
-
-/*************
-  TOTAL TV SHOW COUNT UNIQUE
- *************/
-function getTotalTVCountUnique($con, $username){
-$sql = "SELECT count(DISTINCT `tv`) AS Total_Count FROM `data` where `username`='$username' AND tv!=''";
-return executeSQL($con, $sql);
-}
-
-
-/*************
-  Favorite TV SHOW 
- *************/
-function getFavoriteTV($con, $username){
- $sql = "SELECT tv, count(tv) as favorites FROM `data` where username='$username' and tv!='' GROUP BY tv HAVING count(tv)>1 ORDER BY count(tv) DESC LIMIT 5";
-return executeSQL($con, $sql);
-}
-
-
-/*************
-  Favorite STREAMING PLATFORM 
- *************/
-function getFavoriteStreamingPlatform($con, $username){
-$sql = "SELECT streaming, count(streaming) as favorites FROM `data` where username='$username' and streaming!='' GROUP BY streaming HAVING count(streaming)>1 ORDER BY count(streaming) DESC LIMIT 5";
-return executeSQL($con, $sql);
+function getTotalBooksCountUnique($con, $username)
+{
+    $sql = "SELECT count(DISTINCT `book`) AS Total_Count FROM `data` where `username`='$username' AND book!=''";
+    return executeSQL($con, $sql);
 }
 
 /*************
-  TOTAL VIDEOGAME COUNT 
+Favorite BOOK -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
  *************/
-function getTotalVideoGameCount($con, $username){
-$sql = "SELECT count(`videogame`) AS Total_Count FROM `data` where `username`='$username' AND videogame!=''";
-return executeSQL($con, $sql);
+function getFavoriteBook($con, $username)
+{
+    $sql = "SELECT book, count(book) as favorites FROM `data` where username='$username' and book!='' GROUP BY book HAVING count(book)>1 ORDER BY count(book) DESC LIMIT 5";
+    return executeSQL($con, $sql);
 }
 
 /*************
-  TOTAL VIDEOGAME COUNT UNIQUE
+Favorite AUTHOR -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
  *************/
-function getTotalVideoGameCountUnique($con, $username){
-$sql = "SELECT count(DISTINCT `videogame`) AS Total_Count FROM `data` where `username`='$username' AND videogame!=''";
-return executeSQL($con, $sql);
-}
-
-
-/*************
-  Favorite GAMING PLATFORM -> MOST REPEATEDLY LOGGED 
- *************/
-function getFavoriteGamingPlatform($con, $username){
-$sql = "SELECT platform, count(platform) as favorites FROM `data` where username='$username' and platform!='' GROUP BY platform HAVING count(platform)>1 ORDER BY count(platform) DESC LIMIT 5";
-return executeSQL($con, $sql);
-}
-
-
-/*************
-  Favorite VIDEOGAME -> MOST REPEATEDLY LOGGED 
- *************/
-function getFavoriteVideoGame($con, $username){
-$sql = "SELECT videogame, count(videogame) as favorites FROM `data` where username='$username' and videogame!='' GROUP BY videogame HAVING count(videogame)>1 ORDER BY count(videogame) DESC LIMIT 5";
-return executeSQL($con, $sql);
-}
-
-
-/*************
-  TOTAL ALBUM COUNT 
- *************/
-function getTotalAlbumCount($con, $username){
-$sql = "SELECT count(`album`) AS Total_Count FROM `data` where `username`='$username' AND album!=''";
-return executeSQL($con, $sql);
+function getFavoriteAuthor($con, $username)
+{
+    $sql = "SELECT author, count(author) as favorites FROM `data` where username='$username' and author!='' GROUP BY book HAVING count(author)>1 ORDER BY count(author) DESC LIMIT 5";
+    return executeSQL($con, $sql);
 }
 
 /*************
-  TOTAL ALBUM COUNT UNIQUE
+TOTAL MOVIE COUNT
  *************/
-function getTotalAlbumCountUnique($con, $username){
-$sql = "SELECT count(DISTINCT `album`) AS Total_Count FROM `data` where `username`='$username' AND album!=''";
-return executeSQL($con, $sql);
+function getTotalMoviesCount($con, $username)
+{
+    $sql = "SELECT count(`movie`) AS Total_Count FROM `data` where `username`='$username' AND movie!=''";
+    return executeSQL($con, $sql);
 }
 
 /*************
-  Favorite ALBUM -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
+TOTAL MOVIE COUNT UNIQUE
  *************/
-function getFavoriteAlbum($con, $username){
-$sql = "SELECT album, count(album) as favorites FROM `data` where username='$username' and album!='' GROUP BY album HAVING count(album)>1 ORDER BY count(album) DESC LIMIT 5";
-return executeSQL($con, $sql);
+function getTotalMoviesCountUnique($con, $username)
+{
+    $sql = "SELECT count(DISTINCT `movie`) AS Total_Count FROM `data` where `username`='$username' AND movie!=''";
+    return executeSQL($con, $sql);
 }
 
 /*************
-  Favorite ARTIST/SINGER/SONGWRITER -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
+Favorite MOVIE
  *************/
-function getFavoriteArtist($con, $username){
-$sql = "SELECT artist, count(artist) as favorites FROM `data` where username='$username' and artist!='' GROUP BY artist HAVING count(artist)>1 ORDER BY count(artist) DESC LIMIT 5";
-return executeSQL($con, $sql);
+function getFavoriteMovie($con, $username)
+{
+    $sql = "SELECT movie, count(movie) as favorites FROM `data` where username='$username' and movie!='' GROUP BY movie HAVING count(movie)>1 ORDER BY count(movie) DESC LIMIT 5";
+    return executeSQL($con, $sql);
+}
+
+/*************
+TOTAL TV SHOW COUNT
+ *************/
+function getTotalTVCount($con, $username)
+{
+    $sql = "SELECT count(`tv`) AS Total_Count FROM `data` where `username`='$username' AND tv!=''";
+    return executeSQL($con, $sql);
+}
+
+/*************
+TOTAL TV SHOW COUNT UNIQUE
+ *************/
+function getTotalTVCountUnique($con, $username)
+{
+    $sql = "SELECT count(DISTINCT `tv`) AS Total_Count FROM `data` where `username`='$username' AND tv!=''";
+    return executeSQL($con, $sql);
+}
+
+/*************
+Favorite TV SHOW
+ *************/
+function getFavoriteTV($con, $username)
+{
+    $sql = "SELECT tv, count(tv) as favorites FROM `data` where username='$username' and tv!='' GROUP BY tv HAVING count(tv)>1 ORDER BY count(tv) DESC LIMIT 5";
+    return executeSQL($con, $sql);
+}
+
+/*************
+Favorite STREAMING PLATFORM
+ *************/
+function getFavoriteStreamingPlatform($con, $username)
+{
+    $sql = "SELECT streaming, count(streaming) as favorites FROM `data` where username='$username' and streaming!='' GROUP BY streaming HAVING count(streaming)>1 ORDER BY count(streaming) DESC LIMIT 5";
+    return executeSQL($con, $sql);
+}
+
+/*************
+TOTAL VIDEOGAME COUNT
+ *************/
+function getTotalVideoGameCount($con, $username)
+{
+    $sql = "SELECT count(`videogame`) AS Total_Count FROM `data` where `username`='$username' AND videogame!=''";
+    return executeSQL($con, $sql);
+}
+
+/*************
+TOTAL VIDEOGAME COUNT UNIQUE
+ *************/
+function getTotalVideoGameCountUnique($con, $username)
+{
+    $sql = "SELECT count(DISTINCT `videogame`) AS Total_Count FROM `data` where `username`='$username' AND videogame!=''";
+    return executeSQL($con, $sql);
+}
+
+/*************
+Favorite GAMING PLATFORM -> MOST REPEATEDLY LOGGED
+ *************/
+function getFavoriteGamingPlatform($con, $username)
+{
+    $sql = "SELECT platform, count(platform) as favorites FROM `data` where username='$username' and platform!='' GROUP BY platform HAVING count(platform)>1 ORDER BY count(platform) DESC LIMIT 5";
+    return executeSQL($con, $sql);
+}
+
+/*************
+Favorite VIDEOGAME -> MOST REPEATEDLY LOGGED
+ *************/
+function getFavoriteVideoGame($con, $username)
+{
+    $sql = "SELECT videogame, count(videogame) as favorites FROM `data` where username='$username' and videogame!='' GROUP BY videogame HAVING count(videogame)>1 ORDER BY count(videogame) DESC LIMIT 5";
+    return executeSQL($con, $sql);
+}
+
+/*************
+TOTAL ALBUM COUNT
+ *************/
+function getTotalAlbumCount($con, $username)
+{
+    $sql = "SELECT count(`album`) AS Total_Count FROM `data` where `username`='$username' AND album!=''";
+    return executeSQL($con, $sql);
+}
+
+/*************
+TOTAL ALBUM COUNT UNIQUE
+ *************/
+function getTotalAlbumCountUnique($con, $username)
+{
+    $sql = "SELECT count(DISTINCT `album`) AS Total_Count FROM `data` where `username`='$username' AND album!=''";
+    return executeSQL($con, $sql);
+}
+
+/*************
+Favorite ALBUM -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
+ *************/
+function getFavoriteAlbum($con, $username)
+{
+    $sql = "SELECT album, count(album) as favorites FROM `data` where username='$username' and album!='' GROUP BY album HAVING count(album)>1 ORDER BY count(album) DESC LIMIT 5";
+    return executeSQL($con, $sql);
+}
+
+/*************
+Favorite ARTIST/SINGER/SONGWRITER -> MOST REPEATEDLY LOGGED (IF NO DUPLICATES AT ALL, THEN SAY 'NONE')
+ *************/
+function getFavoriteArtist($con, $username)
+{
+    $sql = "SELECT artist, count(artist) as favorites FROM `data` where username='$username' and artist!='' GROUP BY artist HAVING count(artist)>1 ORDER BY count(artist) DESC LIMIT 5";
+    return executeSQL($con, $sql);
 }

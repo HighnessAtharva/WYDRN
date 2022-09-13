@@ -83,13 +83,13 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
 </head>
 
 <body className='snippet-body'>
-    <div class="container rounded bg-white mt-5 mb-5" style="box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;">
-        <div class="row">
+    <div class="container rounded mt-5 mb-5">
+        <div class="row" id="myRow">
             
         
             <!-- LEFTMOST SIDE COLUMN FOR AVATAR, USERNAME, EMAIL AND VERIFY BUTTON  -->
-            <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-2"><img class="rounded-circle mt-5" width="150px" height="150px" src="<?php echo $profile_pic ?>">
+            <div class="col-md-3 glass py-5" id="pfpDiv">
+                <div class="d-flex flex-column align-items-center text-center p-3"><img class="rounded-circle" width="150px" height="150px" src="<?php echo $profile_pic ?>">
                     <span class="font-weight-bold"><?php echo $username; ?></span>
                     <span class="text-black-50"><?php echo $email ?></span><span> </span>
                 </div>
@@ -104,9 +104,9 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
             </div>
 
             <!-- CENTER COLUMN FOR DISABLED INPUT FIELDS - EDIT PROFILE OPTIONS -->
-            <div class="col-md-5 border-right">
-                <div class="p-3 py-5">
-                <fieldset>    
+            <div class="col-md-5">
+                <div class="pt-5">
+                <fieldset class="glass">    
                 <div class="d-flex justify-content-between align-items-center mb-3">
                 <legend><h4 class="text-right">Profile Settings</h4></legend>
                     </div>
@@ -130,12 +130,12 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
 
             <!-- RIGHTMOST SIDE COLUMN FOR EDIT PICTURES AND DELETE ACCOUNT OPTIONS -->
             <div class="col-md-4">
-                <div class="p-3 py-5">
+                <div class="py-5">
 
                     <!-- CHANGE AVATAR AND BANNER -->
                     <form action="" method="POST" name="ImageUploads" enctype="multipart/form-data" onsubmit="return Validation();">
 
-                        <fieldset>
+                        <fieldset class="glass">
                             <legend> Customize Profile</legend>
                             <br><br>
                             <!--CHANGE PROFILE PIC-->
@@ -153,7 +153,7 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
                     <br><br>
 
                     <!-- TO DELETE ACCOUNT PERMANENTLY -->
-                    <fieldset>
+                    <fieldset  class="glass">
                         <legend> Delete Account</legend>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Wipe my data</button>
                     </fieldset>

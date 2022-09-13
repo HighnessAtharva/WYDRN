@@ -178,8 +178,8 @@ a>span.neonText:hover {
     position: relative;
     overflow: hidden;
     margin: 30px 0;
-    filter: drop-shadow(0 2px 1rem #112);
-    border-radius: 4px
+    filter: drop-shadow(5px 5px 2px black);
+    border-radius: 4px;
 }
 
 @media screen and (min-width: 700px) {
@@ -278,15 +278,17 @@ a>span.neonText:hover {
 .pxc-subcard {
     transition: all 600ms ease;
     border-radius: 3px;
-    background: #1D1D2B;
     width: 770px;
-    margin: 25px 200px 25px -25px;
+    margin: 50px;
     z-index: 0;
-    padding: 15px 0 15px 50px;
+    padding: 30px 0px 10px 50px;
     position: relative;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 1px 1rem #1a0000
+    box-shadow: 0 1px 1px #1a0000;
+    /* backdrop-filter: blur(10px) saturate(100%); */
+    background-color: rgba(255, 255, 255, 0.24);
+    border-radius: 12px;
 }
 
 @media screen and (max-width: 900px) {
@@ -311,7 +313,6 @@ a>span.neonText:hover {
     transition: all 500ms ease;
     height: 100%;
     width: calc(100%);
-    background: #ffffff2b;
     display: block;
     position: absolute;
     z-index: 0;
@@ -401,7 +402,7 @@ a>span.neonText:hover {
     margin-bottom: 20px;
     flex: 1 1 auto;
     -webkit-mask-image: linear-gradient(black 80%, transparent 100%);
-    color: #a6aad1
+    color: rgb(0, 0, 0);
 }
 
 @media screen and (max-width: 700px) {
@@ -464,9 +465,7 @@ a>span.neonText:hover {
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    box-shadow: 0 0 15px #000;
-    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow: 0 0 15px #000
+    box-shadow: 0 1px 1px #1a0000;
 }
 
 .date p {
@@ -512,9 +511,12 @@ a>span.neonText:hover {
 }
 
 a.uname {
-    color: #fff;
+    color: rgb(0, 0, 0);
     text-decoration: none;
-    text-transform: uppercase
+    text-transform: uppercase;
+    transition: 0.2s;
+    font-family: monospace;
+    font-weight: bolder;
 }
 
 a.uname:hover {

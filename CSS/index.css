@@ -588,15 +588,19 @@ video {
 }
 
 p.text-start b {
-    background-color: rgba(0, 0, 0, 0.244);
+    background-color: rgba(0, 0, 0, 0.138);
     padding: 1px 10px;
     color: white;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 p.text-end b {
-    background-color: rgba(0, 0, 0, 0.244);
+    background-color: rgba(0, 0, 0, 0.138);
     padding: 1px 10px;
     color: white;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 @-webkit-keyframes AnimationName {
