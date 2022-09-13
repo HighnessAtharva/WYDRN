@@ -35,7 +35,8 @@ if (isset($_GET['userdate'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="description" content="" />
+  <meta name="keywords" content="" />
     <title>WYDRN - Diary</title>
 
     <!--Bootstrap Link-->
@@ -52,7 +53,7 @@ if (isset($_GET['userdate'])) {
 
 </head>
 
-<body> <br><br>
+<body> 
     <button onclick="topFunction()" id="BackToTopBtn" title="Go to top" style="height: fit-content;">&#8657;</button>
 
 

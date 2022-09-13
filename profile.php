@@ -119,7 +119,8 @@ if ($query = mysqli_query($con, $sql2)) {
 
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
-
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
     <link href="CSS/profile.css" rel="stylesheet">
 
 
@@ -134,24 +135,24 @@ if ($query = mysqli_query($con, $sql2)) {
 	Background Image
 	------------------>
         <div id="header" style="background-image:url(<?php echo $background_pic ?>)" alt="Background Image">
-            
-        <!--Content that appears on hovering on the banner pic-->
+
+            <!--Content that appears on hovering on the banner pic-->
             <div class="hide">
-            
-            <!--MEMBER SINCE-->
+
+                <!--MEMBER SINCE-->
                 <div class="join-date">
                     <img src="images/Icons/since.png" class="since-icon" title="Member Since">
                     <span><?php echo getDateofJoining($con, $username); ?> </span>
                 </div>
 
-            <!--VIEW STATS-->
+                <!--VIEW STATS-->
                 <div class="stats-text">
-                    <a href="stats.php?user_name=<?php echo $username?>">    
+                    <a href="stats.php?user_name=<?php echo $username ?>">
                         <span>Stats</span>
                         <img src="images/Icons/stats.png" class="stats-icon" title="View Stats">
                     </a>
                 </div>
-            
+
             </div>
         </div>
 
@@ -185,7 +186,7 @@ if ($query = mysqli_query($con, $sql2)) {
             <!----------------
 			Badge Icon
 			------------------>
-            <?php 
+            <?php
             //when visiting other users profile display badge icon with link to THEIR badge page (badge.php?user_name=xyz)
             if (isset($_GET['user_name'])) {
                 $badgefor = $_GET['user_name'];
@@ -195,8 +196,8 @@ if ($query = mysqli_query($con, $sql2)) {
                     <img src="images/Icons/badges.gif" class="badge-gif" alt="Badges" title="Badges">
                 </a>
 
-            <?php } 
-            
+            <?php }
+
             // by default when user_name GET request is not set display badge icon with link to standard badges.php page 
             else { ?>
                 <a href="badges.php">
@@ -281,7 +282,7 @@ if ($query = mysqli_query($con, $sql2)) {
                 <div class="data">
                     <ul>
                         <!--Total Media Added (on logged in user profile)/Mutual Count (on other users profile)-->
-                        <li>
+                        <li id="myCount">
 
                             <!----------------
 			Total Media Count

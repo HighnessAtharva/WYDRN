@@ -111,6 +111,8 @@ $bookcount_other = SQLGetCount($con, "SELECT DISTINCT book FROM data WHERE usern
 $tvcount_other = SQLGetCount($con, "SELECT DISTINCT tv FROM data WHERE username='$otheruser' AND tv!=''");;
 
 
+
+//MUTUAL VIDDEOGAMES
 $videogamecount_mutual = SQLGetCount(
     $con,
     "SELECT LOWER(videogame) FROM data WHERE username='$me'  AND videogame != ''
@@ -119,6 +121,7 @@ SELECT LOWER(videogame) FROM data WHERE username='$otheruser'  AND videogame != 
 );
 
 
+//MUTUAL MOVIES
 $moviecount_mutual = SQLGetCount(
     $con,
     "SELECT LOWER(movie) , year FROM data WHERE username='$me' AND movie!='' 
@@ -126,6 +129,7 @@ INTERSECT
 SELECT LOWER(movie) , year FROM data WHERE username='$otheruser' AND movie!=''"
 );
 
+//MUTUAL MUSIC
 $musiccount_mutual = SQLGetCount(
     $con,
     "SELECT LOWER(album) , artist FROM data WHERE username='$me' AND album!='' AND artist!=''
@@ -133,6 +137,8 @@ INTERSECT
 SELECT LOWER(album), artist FROM data WHERE username='$otheruser' AND album!='' AND artist!=''"
 );
 
+
+//MUTUAL BOOK
 $bookcount_mutual = SQLGetCount(
     $con,
     "SELECT LOWER(book), author FROM data WHERE username='$me'  AND book!='' AND author!=''
@@ -141,6 +147,7 @@ SELECT LOWER(book), author FROM data WHERE username='$otheruser'  AND book!='' A
 );
 
 
+//MUTUAL TV
 $tvcount_mutual = SQLGetCount(
     $con,
     "SELECT tv FROM data WHERE username='$me' AND tv != ''
@@ -177,6 +184,8 @@ $mutual_movie_percentage = round(($moviecount_mutual / $moviecount_other) * 100)
 $mutual_music_percentage = round(($musiccount_mutual / $musiccount_other) * 100);
 $mutual_book_percentage = round(($bookcount_mutual / $bookcount_other) * 100);
 $mutual_tv_percentage = round(($tvcount_mutual / $tvcount_other) * 100);
+
+//5th index stores the sum of total mutual medias
 $total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
 ?>
 
@@ -299,6 +308,8 @@ $total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
                     } else {
                         ?>
 
+
+<!--NO COMMON VIDEOGAMES MESSAGE-->
                         <div class="zero-media"><img src='images/Icons/Videogame.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No common videogames between <b>you</b> and <b><?php echo $otheruser; ?></b></div>
                 <?php }
                 }
@@ -374,6 +385,8 @@ $total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
                     } else {
                         ?>
 
+                    <!--NO COMMON ALBUMS MESSAGE-->
+
                         <div class="zero-media"><img src='images/Icons/Music.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No common music between <b>you</b> and <b><?php echo $otheruser; ?></b></div>
                 <?php
                     }
@@ -447,6 +460,8 @@ $total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
                         }
                     } else {
                         ?>
+                        
+                        <!--NO COMMON BOOKS MESSAGE-->
 
                         <div class="zero-media"><img src='images/Icons/Book.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No common books between <b>you</b> and <b><?php echo $otheruser; ?></b></div>
                 <?php
@@ -525,6 +540,8 @@ $total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
                     } else {
                         ?>
 
+                        <!--NO COMMON MOVIES MESSAGE-->
+
                         <div class="zero-media"><img src='images/Icons/Movie.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No common movies between <b>you</b> and <b><?php echo $otheruser; ?></b></div>
                 <?php
                     }
@@ -600,6 +617,8 @@ $total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
                     } else {
                         ?>
 
+                        <!--NO COMMON TV SHOWS MESSAGE-->
+
                         <div class="zero-media"><img src='images/Icons/TV.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No common TV Shows between <b>you</b> and <b><?php echo $otheruser; ?></b></div>
                 <?php
                     }
@@ -615,24 +634,11 @@ $total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
                        JAVASCRIPT PART
 ------------------------------------------------------------------------>
     <script>
-        // const gameBtn = document.getElementById('mutualGameBtn');
-        // const gameDiv = document.getElementById('mutualGameDiv');
 
-        // const musicBtn = document.getElementById('mutualMusicBtn');
-        // const musicDiv = document.getElementById('mutualMusicDiv');
+//USING JQUERY, SELECT 
+$(document).ready(function() {
 
-        // const bookBtn = document.getElementById('mutualBookBtn');
-        // const bookDiv = document.getElementById('mutualBookDiv');
-
-        // const movieBtn = document.getElementById('mutualMovieBtn');
-        // const movieDiv = document.getElementById('mutualMovieDiv');
-
-        // const tvBtn = document.getElementById('mutualTVBtn');
-        // const tvDiv = document.getElementById('mutualTVDiv');
-
-        $(document).ready(function() {
-
-            //sliding animation toggle
+            //clicking the media div will toggle the associated div with a slide animation.
             $("#mutualGameBtn").click(function() {
                 $("#mutualGameDiv").slideToggle("slow");
             });

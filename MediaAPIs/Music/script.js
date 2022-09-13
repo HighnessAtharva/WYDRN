@@ -36,6 +36,9 @@ function findAlbum() {
     }
 }
 
+
+
+//dropdown list that appears right below the search box.
 function displayAlbumList(albums) {
     searchList.innerHTML = "";
     //NOTE: TRY TO REDUCE THE LENGTH OF THE LOOP. USE AT MOST 3 TO REDUCE API CALLS.
@@ -83,6 +86,9 @@ function loadalbumDetails() {
     });
 }
 
+
+
+//print out the actual content fetched from the API
 function displayalbumDetails(details) {
     // need to figure out a way to add images here!
     console.log(details);

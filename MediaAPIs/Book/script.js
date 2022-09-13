@@ -31,6 +31,8 @@ function findBook() {
     }
 }
 
+
+//dropdown list that appears right below the search box.
 function displayBookList(Books) {
     searchList.innerHTML = "";
     //NOTE: TRY TO REDUCE THE LENGTH OF THE LOOP. USE AT MOST 3 TO REDUCE API CALLS.
@@ -63,6 +65,8 @@ function loadBookDetails() {
     });
 }
 
+
+//print out the actual content fetched from the API
 function displayBookDetails(details) {
     console.log(details);
 

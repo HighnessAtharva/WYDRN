@@ -24,6 +24,8 @@ $username = $user_data['user_name'];
 <html lang="en">
 
 <head>
+<meta name="description" content="" />
+  <meta name="keywords" content="" />
     <title>
         WYDRN - Verification
     </title>

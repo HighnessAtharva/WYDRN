@@ -6,6 +6,9 @@ body {
     background: #f0f8ff;
     font-family: "Open Sans", Helvetica, sans-serif;
     margin-top: 50px;
+    background-color: #e5e5f7;
+    background-image: radial-gradient(#45f752 1.1500000000000001px, #e5e5f7 1.1500000000000001px);
+    background-size: 23px 23px;
 }
 
  ::-webkit-scrollbar {

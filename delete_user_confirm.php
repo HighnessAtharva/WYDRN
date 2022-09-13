@@ -78,11 +78,4 @@ if ($result = mysqli_query($con, $sql4)) {
 } else {
     die('Unable to delete User Data in Social "SQL4"' . mysqli_error($con));
 }
-
-
-
 ?>
-
-<!-------------------------------------------------------------------------------------
-       			 NO HTML OR JAVASCRIPT IS REQUIRED FOR THIS PAGE
-------------------------------------------------------------------------------------->

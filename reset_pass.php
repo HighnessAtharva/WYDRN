@@ -41,6 +41,9 @@ if (isset($_GET['key']) && isset($_GET['reset'])) {
       <link rel="stylesheet" href="css/others/ionicons.min.css">
       <link rel="stylesheet" href="css/utility.css">
 
+      <meta name="description" content="" />
+  <meta name="keywords" content="" />
+
       <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
       <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
 

@@ -34,6 +34,9 @@ function findTV() {
     }
 }
 
+
+
+//dropdown list that appears right below the search box.
 function displayTVList(tvseries) {
 
     searchList.innerHTML = "";
@@ -88,8 +91,11 @@ function loadtvDetails() {
     });
 }
 
-function displaytvDetails(details) {
 
+
+
+//print out the actual content fetched from the API
+function displaytvDetails(details) {
     console.log(details);
 
     // to handle missing first air date

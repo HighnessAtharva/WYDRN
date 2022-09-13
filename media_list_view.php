@@ -26,6 +26,8 @@ $username = $user_data['user_name'];
 <head>
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
   <title>WYDRN -  Media List View</title>
   <link href="css/media_list_view.css" rel="stylesheet">
 

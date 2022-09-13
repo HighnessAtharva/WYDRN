@@ -31,7 +31,8 @@ $username = $user_data['user_name'];
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            
+            <meta name="description" content="" />
+  <meta name="keywords" content="" />
             <title>WYDRN - Following</title>
 
             <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
@@ -52,6 +53,9 @@ $follower=$_GET['user_name'];
 }else{
    $follower=$username;
 }
+
+
+//join query for social and user table where the matching criteria is follower_username and username
 $sql="SELECT count(*) from `social` s LEFT JOIN `users` u ON s.followed_username=u.user_name where follower_username='$follower'";
 $result = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($result);
