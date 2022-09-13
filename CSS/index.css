@@ -587,6 +587,18 @@ video {
     transform: scale(1);
 }
 
+p.text-start b {
+    background-color: rgba(0, 0, 0, 0.244);
+    padding: 1px 10px;
+    color: white;
+}
+
+p.text-end b {
+    background-color: rgba(0, 0, 0, 0.244);
+    padding: 1px 10px;
+    color: white;
+}
+
 @-webkit-keyframes AnimationName {
     0% {
         background-position: 23% 0%
