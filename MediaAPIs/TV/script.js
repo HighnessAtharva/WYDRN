@@ -16,7 +16,7 @@ const resultGrid = document.getElementById('result-grid');
 // load movies from API
 async function loadTV(searchTerm) {
     //https: //api.themoviedb.org/3/search/tv?api_key=e446bc89015229cf337e16b0849d506c&language=en-US&page=1&query=${searchTerm}&include_adult=true
-    const URL = `https://api.themoviedb.org/3/search/tv?api_key=${tvKey}&language=en-US&page=1&query=${searchTerm}&include_adult=true`;
+    const URL = `https://api.themoviedb.org/3/search/tv?api_key=${tvKey}&language=en-US&page=1&query=${searchTerm}&include_adult=false`;
     const res = await fetch(`${URL}`);
     const data = await res.json();
     let results = data['results']

@@ -25,7 +25,7 @@ function MovieRecommendations($username)
 function getMoviePosterPath($name)
 {
     $api_key = "e446bc89015229cf337e16b0849d506c";
-    $url = 'https://api.themoviedb.org/3/search/movie?api_key=' . $api_key . '&query=' . $name . '&include_adult=true';
+    $url = 'https://api.themoviedb.org/3/search/movie?api_key=' . $api_key . '&query=' . $name . '&include_adult=false';
     // echo $url . "<br>";
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -83,7 +83,7 @@ function TVRecommendations($username)
 function getTvPosterPath($name)
 {
     $api_key = "e446bc89015229cf337e16b0849d506c";
-    $url = 'https://api.themoviedb.org/3/search/tv?api_key=' . $api_key . '&query=' . $name . '&include_adult=true';
+    $url = 'https://api.themoviedb.org/3/search/tv?api_key=' . $api_key . '&query=' . $name . '&include_adult=false';
 
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

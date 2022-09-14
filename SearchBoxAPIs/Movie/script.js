@@ -26,7 +26,7 @@ function findMovies() {
 
 // load movies from API and call the displayMovieList function
 async function loadMovies(searchTerm) {
-    const URL = `https://api.themoviedb.org/3/search/movie?api_key=${TDMBApiKey}&language=en-US&query=${searchTerm}&page=1&include_adult=true`;
+    const URL = `https://api.themoviedb.org/3/search/movie?api_key=${TDMBApiKey}&language=en-US&query=${searchTerm}&page=1&include_adult=false`;
     const res = await fetch(`${URL}`);
     const data = await res.json();
     var results = data['results']

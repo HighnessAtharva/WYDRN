@@ -24,7 +24,7 @@ function findTV() {
 
 // load movies from API
 async function loadTV(searchTerm) {
-    const URL = `https://api.themoviedb.org/3/search/tv?api_key=${TDMBApiKey2}&language=en-US&page=1&query=${searchTerm}&include_adult=true`;
+    const URL = `https://api.themoviedb.org/3/search/tv?api_key=${TDMBApiKey2}&language=en-US&page=1&query=${searchTerm}&include_adult=false`;
     const res = await fetch(`${URL}`);
     const data = await res.json();
     var results = data['results']
