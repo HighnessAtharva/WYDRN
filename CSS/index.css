@@ -101,6 +101,15 @@ span.full-form {
     background-color: rgb(231, 231, 231);
     color: black;
     border-radius: 5px;
+    transition: 0.5s;
+}
+
+span.full-form:hover {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    padding: 5px 15px 5px 15px;
+    font-size: 14px;
+    border: 1px solid white;
 }
 
 a:hover,
@@ -238,6 +247,20 @@ a:focus {
     margin-right: 120px;
     margin-bottom: 20px;
     display: var(--title-display);
+    animation: flicker 1.5s infinite alternate;
+    color: #fff;
+}
+
+
+/* Flickering animation */
+
+@keyframes flicker {
+    from {
+        text-shadow: 0 0 5px #00dcff, 0 0 10px #00dcff, 0 0 15px #00dcff, 0 0 20px #00dcff;
+    }
+    to {
+        text-shadow: 0 0 5px #09889c, 0 0 10px #09889c, 0 0 15px #09889c, 0 0 20px #09889c;
+    }
 }
 
 .menu__item-subtitle {
