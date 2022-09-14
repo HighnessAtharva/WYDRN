@@ -106,7 +106,7 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
             <!-- CENTER COLUMN FOR DISABLED INPUT FIELDS - EDIT PROFILE OPTIONS -->
             <div class="col-md-5">
                 <div class="pt-5">
-                <fieldset class="glass">    
+                <fieldset class="glass" id="profileSettings">    
                 <div class="d-flex justify-content-between align-items-center mb-3">
                 <legend><h4 class="text-right">Profile Settings</h4></legend>
                     </div>
@@ -153,7 +153,7 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
                     <br><br>
 
                     <!-- TO DELETE ACCOUNT PERMANENTLY -->
-                    <fieldset  class="glass">
+                    <fieldset  class="glass" id="delDiv">
                         <legend> Delete Account</legend>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Wipe my data</button>
                     </fieldset>

@@ -14,10 +14,12 @@ from sklearn.metrics.pairwise import linear_kernel
 from sklearn.metrics.pairwise import cosine_similarity
 from ast import literal_eval
 
-def getUserTV(user_name:str) -> list[str]:
-    userTV=[]
+
+def getUserTV(user_name: str) -> list[str]:
+    userTV = []
     try:
-        connection = mysql.connector.connect(host='localhost', database='wydrn', user='root', password='')
+        connection = mysql.connector.connect(
+            host='localhost', database='wydrn', user='root', password='')
 
         sql_select_Query = f"select DISTINCT `tv` from `data` where `username`='{user_name}' and tv!='';"
         cursor = connection.cursor()
@@ -40,17 +42,51 @@ def getUserTV(user_name:str) -> list[str]:
             # print("MySQL connection is closed")
 
 
-
-
 def recommend(username):
-    RecList=[]
-    userTV=getUserTV(username)
-    userTV=[string.title() for string in userTV]
+    RecList = []
+    userTV = getUserTV(username)
+    userTV = [string.title() for string in userTV]
     # print(userTV)
     # weightedDict = dict(dict(weightedList))
+    tvList = [
+        "The Halloween Candy Magic Pet",
+        "The Next Thing You Eat",
+        "Queens",
+        "The Bachelorette",
+        "Westworld",
+        "Wakefield",
+        "Home Sweet Home",
+        "Game of Thrones",
+        "Beyond Oak Island",
+        "Beyond Scared Straight",
+        "Hoarders",
+        "Little Women: Atlanta",
+        "Marrying Millions",
+        "Nightwatcher's",
+        "Seven Year Switch",
+        "Swamp People",
+        "Unsolved",
+        "Acapulco Shore",
+        "Dani Who?",
+        "Watchmen",
+        "Why Not Us",
+        "Dope'sick",
+        "Champaign, Ill",
+        "Buried",
+        "Demon Slayer Kimetsu No Yaiba",
+        "True Detective",
+        "Neon Genesis Evangelion",
+        "The Mandalorian",
+        "Castle O'reily"]
 
+    # get a random book from the array above
+    randomTV = random.choices(tvList, k=10)
 
-    weightedDict={"After Hours": 4, "EMOTION":2, "Twenty Something Nightmare":1, "Dummy4":1,"Dummy5":1,"Dummy6":1,"Dummy7":1, "Dummy8":1, "Dummy9":1, "Dummy10":1}
+    # key = book name, value = weighted score from 1 to 10 randomly
+    weightedDict = dict(
+        zip(randomTV, [random.randint(1, 10) for i in range(10)]))
+
     print(json.dumps(weightedDict))
+
 
 recommend(username=sys.argv[1])

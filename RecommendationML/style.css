@@ -4,32 +4,56 @@
 }
 
 body {
-    background: rgb(255, 255, 255) repeat center center;
+    /* background: rgb(255, 255, 255) repeat center center; */
     font-family: "Myriad Pro", "Trebuchet MS", Helvetica, sans-serif;
     color: #fff;
     overflow: hidden;
-    margin-top: 70px;
+    margin-top: 100px;
+    background: linear-gradient(150deg, #457aff, #da6aff, #ff90a8);
+    background-size: 100% 300%;
 }
 
 
 /* For Stylish Heading*/
 
-.heading {
-    background-color: black;
-}
-
 .heading h1 {
     text-align: center;
     font-size: 50px;
     text-transform: uppercase;
-    color: rgb(255, 245, 245);
+    color: #000;
     letter-spacing: 1px;
-    font-family: "Playfair Display", serif;
+    font-family: "Open Sans", serif;
     font-weight: 400;
     margin: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    min-width: 1000px;
+    margin-top: 50px;
+    min-width: 1000px
+}
+
+.heading h1 span {
+    margin-top: 5px;
+    font-size: 15px;
+    color: #000;
+    word-spacing: 1px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: 27px 0;
+    grid-gap: 20px;
+    align-items: center;
+    margin-bottom: 60px
+}
+
+.heading h1 span:after,
+.heading h1 span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+    background-color: #f8f8f8
 }
 
 .pp_loading {
@@ -152,7 +176,7 @@ body {
 
 .pp_name {
     height: 45px;
-    line-height: 1.6;
+    line-height: 0.9;
     font-size: 20px;
     width: 100%;
     bottom: 0px;

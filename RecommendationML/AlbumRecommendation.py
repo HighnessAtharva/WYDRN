@@ -15,10 +15,11 @@ from sklearn.metrics.pairwise import cosine_similarity
 from ast import literal_eval
 
 
-def getuserAlbums(user_name:str) -> list[str]:
-    userAlbums=[]
+def getuserAlbums(user_name: str) -> list[str]:
+    userAlbums = []
     try:
-        connection = mysql.connector.connect(host='localhost', database='wydrn', user='root', password='')
+        connection = mysql.connector.connect(
+            host='localhost', database='wydrn', user='root', password='')
 
         sql_select_Query = f"select DISTINCT `album`, `artist` from `data` where `username`='{user_name}' and album!='';"
         cursor = connection.cursor()
@@ -29,7 +30,6 @@ def getuserAlbums(user_name:str) -> list[str]:
 
         for row in records:
             userAlbums.append(row[0])
-
 
         return userAlbums
 
@@ -42,18 +42,86 @@ def getuserAlbums(user_name:str) -> list[str]:
             # print("MySQL connection is closed")
 
 
-
-
-
-
 def recommend(username):
-    RecList=[]
-    userAlbums=getuserAlbums(username)
-    userAlbums=[string.title() for string in userAlbums]
+    RecList = []
+    userAlbums = getuserAlbums(username)
+    userAlbums = [string.title() for string in userAlbums]
     # print(userAlbums)
     # weightedDict = dict(dict(weightedList))
-    
-    weightedDict={"After Hours": 4, "EMOTION":2, "Twenty Something Nightmare":1, "Dummy4":1,"Dummy5":1,"Dummy6":1,"Dummy7":1, "Dummy8":1, "Dummy9":1, "Dummy10":1}
+
+    albumList = ["Sgt. Pepper's Lonely Hearts Club Band",
+                 "Pet Sounds",
+                 "Revolver",
+                 "Highway 61 Revisited",
+                 "Rubber Soul",
+                 "What's Going On",
+                 "Exile on Main St.",
+                 "London Calling",
+                 "Blonde on Blonde",
+                 "The Sun Sessions",
+                 "Kind of Blue",
+                 "Legend: The Best of Bob Marley and The Wailers",
+                 "A Love Supreme",
+                 "It Takes a Nation of Millions to Hold Us Back",
+                 "At Fillmore East",
+                 "Here's Little Richard",
+                 "Bridge Over Troubled Water",
+                 "Greatest Hits",
+                 "Meet The Beatles!",
+                 "The Birth of Soul",
+                 "Electric Ladyland",
+                 "Elvis Presley",
+                 "Songs in the Key of Life",
+                 "Beggars Banquet",
+                 "Chronicle: The 20 Greatest Hits",
+                 "Trout Mask Replica",
+                 "Greatest Hits",
+                 "Appetite for Destruction",
+                 "Achtung Baby",
+                 "Sticky Fingers",
+                 "Back to Mono (1958-1969)",
+                 "Moondance",
+                 "Kid A",
+                 "Off the Wall",
+                 "[Led Zeppelin IV]",
+                 "The Stranger",
+                 "Graceland",
+                 "Superfly",
+                 "Physical Graffiti",
+                 "After the Gold Rush",
+                 "Star Time",
+                 "Purple Rain",
+                 "Back in Black",
+                 "Otis Blue: Otis Redding Sings Soul",
+                 "Led Zeppelin II",
+                 "Imagine",
+                 "The Clash",
+                 "Harvest",
+                 "Axis: Bold as Love",
+                 "I Never Loved a Man the Way I Love You",
+                 "Lady Soul",
+                 "Born in the U.S.A.",
+                 "The Wall",
+                 "At Folsom Prison",
+                 "Dusty in Memphis",
+                 "Talking Book",
+                 "Goodbye Yellow Brick Road",
+                 "20 Golden Greats",
+                 "40 Greatest Hits",
+                 "Bitches Brew",
+                 "Tommy",
+                 "The Freewheelin' Bob Dylan",
+                 "This Year's Model",
+                 "There's a Riot Goin' On"
+                 ]
+
+    # get a random book from the array above
+    albumList = random.choices(albumList, k=10)
+
+    # key = book name, value = weighted score from 1 to 10 randomly
+    weightedDict = dict(
+        zip(albumList, [random.randint(1, 10) for i in range(10)]))
     print(json.dumps(weightedDict))
+
 
 recommend(username=sys.argv[1])

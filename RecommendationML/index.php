@@ -201,9 +201,26 @@ function getGamePosterPath($name)
 -------------------------------------->
 
 <body>
-    <div class="heading">
-        <h1>Recommendations</h1>
-    </div><br><br>
+
+<?php
+$mediaType='';            
+if (isset($_GET['movie'])) {
+$mediaType='movie';
+} else if (isset($_GET['tv'])) {
+$mediaType='tv';
+} else if (isset($_GET['album'])) {
+$mediaType='album';
+} else if (isset($_GET['videogame'])) {
+$mediaType='game';
+}else if (isset($_GET['book'])) {
+$mediaType='book';
+}
+?>
+
+<div class="heading">
+        <h1><?php echo strtoupper($mediaType);?> Recommendations<span>Curated Media Items Just For You!</span></h1>
+    </div>
+ 
 
 
     <div id="pp_gallery" class="pp_gallery">
@@ -368,7 +385,7 @@ function getGamePosterPath($name)
                         <!--Priting out the image, name and summary for the user.-->
                         <div class="content">
                             <!--BUG: echoing the $gamePoster in image tag breaks the entire page. -->
-                            <img src="<?php echo '../images/API/WYDRNgame.png' ?>" alt="<?php echo '../images/API/WYDRNgame.png' ?>" />
+                            <img src="<?php echo $gamePoster; ?>" alt="<?php echo  $gamePoster; ?>" />
                             <span><?php echo $game ?></span>
                         </div>
 

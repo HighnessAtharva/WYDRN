@@ -15,10 +15,11 @@ from sklearn.metrics.pairwise import cosine_similarity
 from ast import literal_eval
 
 
-def getUserBooks(user_name:str) -> list[str]:
-    userBooks=[]
+def getUserBooks(user_name: str) -> list[str]:
+    userBooks = []
     try:
-        connection = mysql.connector.connect(host='localhost', database='wydrn', user='root', password='')
+        connection = mysql.connector.connect(
+            host='localhost', database='wydrn', user='root', password='')
 
         sql_select_Query = f"select DISTINCT `book` from `data` where `username`='{user_name}' and book!='';"
         cursor = connection.cursor()
@@ -41,18 +42,61 @@ def getUserBooks(user_name:str) -> list[str]:
             # print("MySQL connection is closed")
 
 
-
-
 def recommend(username):
-    RecList=[]
-    userBooks=getUserBooks(username)
-    userBooks=[string.title() for string in userBooks]
+    RecList = []
+    userBooks = getUserBooks(username)
+    userBooks = [string.title() for string in userBooks]
     # print(userBooks)
     # weightedDict = dict(dict(weightedList))
+    bookList = ["Things Fall Apart",
+                "Fairy tales",
+                "The Divine Comedy",
+                "The Epic Of Gilgamesh",
+                "The Book Of Job",
+                "One Thousand and One Nights",
+                "Njál's Saga",
+                "Pride and Prejudice",
+                "Le Père Goriot",
+                "Molloy, Malone Dies, The Unnamable, the trilogy",
+                "The Decameron",
+                "Ficciones",
+                "Wuthering Heights",
+                "The Stranger",
+                "Poems",
+                "Journey to the End of the Night",
+                "Don Quijote De La Mancha",
+                "The Canterbury Tales",
+                "Stories",
+                "Nostromo",
+                "Great Expectations",
+                "Jacques the Fatalist",
+                "Berlin Alexanderplatz",
+                "Crime and Punishment",
+                "The Idiot",
+                "The Possessed",
+                "The Brothers Karamazov",
+                "Middlemarch",
+                "Invisible Man",
+                "Medea",
+                "Absalom, Absalom!",
+                "The Sound and the Fury",
+                "Madame Bovary",
+                "Sentimental Education",
+                "Gypsy Ballads",
+                "One Hundred Years of Solitude",
+                "Love in the Time of Cholera",
+                "Faust",
+                "Dead Souls",
+                "The Tin Drum"]
 
-    
-    weightedDict={"After Hours": 4, "EMOTION":2, "Twenty Something Nightmare":1, "Dummy4":1,"Dummy5":1,"Dummy6":1,"Dummy7":1, "Dummy8":1, "Dummy9":1, "Dummy10":1}
+    #get a random book from the array above
+    randomBook = random.choices(bookList, k=10)
+
+    #key = book name, value = weighted score from 1 to 10 randomly
+    weightedDict = dict(zip(randomBook, [random.randint(1, 10) for i in range(10)]))
     print(json.dumps(weightedDict))
 
 
 recommend(username=sys.argv[1])
+
+

@@ -14,10 +14,12 @@ from sklearn.metrics.pairwise import linear_kernel
 from sklearn.metrics.pairwise import cosine_similarity
 from ast import literal_eval
 
-def getUsergames(user_name:str) -> list[str]:
-    usergames=[]
+
+def getUsergames(user_name: str) -> list[str]:
+    usergames = []
     try:
-        connection = mysql.connector.connect(host='localhost', database='wydrn', user='root', password='')
+        connection = mysql.connector.connect(
+            host='localhost', database='wydrn', user='root', password='')
 
         sql_select_Query = f"select DISTINCT `videogame` from `data` where `username`='{user_name}' and videogame!='';"
         cursor = connection.cursor()
@@ -40,18 +42,50 @@ def getUsergames(user_name:str) -> list[str]:
             # print("MySQL connection is closed")
 
 
-
-
-
 def recommend(username):
-    RecList=[]
-    usergames=getUsergames(username)
-    usergames=[string.title() for string in usergames]
+    RecList = []
+    usergames = getUsergames(username)
+    usergames = [string.title() for string in usergames]
     # print(usergames)
     # weightedDict = dict(dict(weightedList))
 
-    
-    weightedDict={"After Hours": 4, "EMOTION":2, "Twenty Something Nightmare":1, "Dummy4":1,"Dummy5":1,"Dummy6":1,"Dummy7":1, "Dummy8":1, "Dummy9":1, "Dummy10":1}
+    gameList = [
+        "Scooby-Doo! Unmasked",
+        "Viewtiful Joe: Double Trouble!",
+        "The Legend of Heroes: A Tear of Vermillion",
+        "PQ: Practical Intelligence Quotient",
+        "Lost in Blue's",
+        "Ghost in the Shell: Stand Alone Complex",
+        "Dig Dug: Digging Strike",
+        "Frogger: Helmet Chaos",
+        "Mega Man Battle Network 5: Double Team DS",
+        "Nanostray",
+        "Sega Casino",
+        "Teenage Mutant Ninja Turtles 3: Mutant Nightmare",
+        "Pac-Man World 3",
+        "Tokobot",
+        "Fullmetal Alchemist: Dual Sympathy",
+        "Exit's",
+        "Bubble Bobble Revolution",
+        "The Rub Rabbits!",
+        "Electroplankton",
+        "LifeSigns: Surgical Unit",
+        "Space Invaders Revolution",
+        "Wii's Play",
+        "New Super Mario Bros.",
+        "Pokmon Diamond",
+        "Pokmon Pearl",
+        "Gears of War",
+        "The Legend of Zelda: Twilight Princess",
+        "Cooking Mama"
+    ]
+
+    # get a random book from the array above
+    randomGame = random.choices(gameList, k=10)
+
+    # key = book name, value = weighted score from 1 to 10 randomly
+    weightedDict = dict(
+        zip(randomGame, [random.randint(1, 10) for i in range(10)]))
     print(json.dumps(weightedDict))
 
 
