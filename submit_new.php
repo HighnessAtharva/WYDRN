@@ -16,7 +16,7 @@ if(isset($_POST['email']) && $_POST['password'] && $_POST['submit_password']){
     $email=mysqli_real_escape_string($con,$_POST['email']);
     $pass=mysqli_real_escape_string($con,$_POST['password']);
 
-    if (strlen($pass)<=8){
+    if (strlen($pass)<8){
       echo "<center><div class='alert alert-danger w-25 text-center' style='position: absolute; top: 50px; left: 570px;' role='alert'>Password must be atleast 8 characters long!</div></center>";
       die;
     }
