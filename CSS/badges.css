@@ -50,7 +50,7 @@ hr.image {
 .archive {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    grid-gap: 1em;
+    grid-gap: 5em 1em;
     grid-auto-flow: dense;
     margin-bottom: 100px;
 }
@@ -80,7 +80,7 @@ hr.image {
 
 .article.heading-text {
     padding: 25px;
-    font-size: 6.8em;
+    font-size: 6.1em;
     font-weight: 900;
     font-family: fantasy;
     color: black;
@@ -114,7 +114,7 @@ hr.image {
     font-family: 'Open Sans';
     padding: 15px;
     bottom: -2.5em;
-    margin-left: -5em;
+    margin-left: -6.5em;
     white-space: nowrap;
     box-shadow: 1px 1px 3px #222222;
     opacity: 0;

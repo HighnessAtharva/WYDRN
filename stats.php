@@ -3,7 +3,7 @@
     background-color: #f7a7a3;
     border-left: 5px solid #8f130c;
     width: 50%;
-    margin: 20px auto;
+    margin: 150px auto 0px auto;
     padding: 30px;
     position: relative;
     border-radius: 5px;
