@@ -121,6 +121,7 @@ hr.image {
     z-index: 99999;
     visibility: hidden;
     transition: 0.5s;
+    min-width: 195px;
 }
 
 [data-title] {
