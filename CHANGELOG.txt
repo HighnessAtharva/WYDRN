@@ -1,8 +1,813 @@
-RUN THIS COMMAND TO GENERATE A COMMIT LOG->
-git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
-
+* commit a1e5e9d7fc4b7813086ba0d946c288cdb009707b
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-15
+| 
+|     badges css fixed
+| 
+* commit e4576621d723a0ed926833978094396086a7d98c
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-15
+| 
+|     badges tooltip added
+| 
+* commit 0370bba53bb6d4b0e7d3a8db5c255417653a9e5f
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-15
+| 
+|     diagrams updated, include adult is now false
+| 
+* commit ed0c412f0ddb7f11ac175a83410cfd6070d9679b
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-14
+| 
+|     Update submit_new.php
+| 
+* commit 4a2389e1c2b3897764565695816820ba0ca58065
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-14
+| 
+|     Glow CSS added to Landing Page
+| 
+* commit afbd101c4cfe642e89612681e0413d9a2f37997e
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-14
+| 
+|     Recommendation ML Pages improved. Dummy data added to other 4 media items
+| 
+* commit 3f52659de2da2c364c5ba6f50e96c497de3fd755
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-14
+| 
+|     home page music div image changed
+| 
+* commit 60715a103f6ca0a6241dae00337fb32160f115ce
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-14
+| 
+|     mutual view gradient backdrops added
+| 
+* commit d70bb6e3bbfaeea8f48cff21a0403638e38f8903
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-14
+| 
+|     feed, diary and edit profile improved. Homepage content added
+| 
+* commit f59e1575523a31f596d5984a9e9d07092b9f0c0c
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-13
+| 
+|     Content added to the first two sections on home page
+| 
+* commit 4b8c1f0a272aa0772599211b4b35d43bb0f956c4
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-13
+| 
+|     home page section added
+|   
+*   commit 7904375e9c3bfb8d8e3a52de23e528ce89e6125d
+|\  Merge: f1cc54fd cc2fdade
+| | Author: Om Khulbe <omkhulbe3@gmail.com>
+| | Date:   2022-09-13
+| | 
+| |     Merge branch 'main' of https://github.com/HighnessAtharva/WYDRN
+| | 
+| * commit cc2fdade748fdca570c1fb52b8d0447311c8e4d6
+| | Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| | Date:   2022-09-12
+| | 
+| |     admin page grid aligned
+| | 
+| * commit e1f06beaf2b5372e80c97f98edd72e8725a81074
+| | Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| | Date:   2022-09-12
+| | 
+| |     Update search_users.css
+| | 
+| * commit c477bbd9ac6a654fe4482592eb80ca163303575a
+| | Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| | Date:   2022-09-12
+| | 
+| |     css pattern backgrounded added to diary, feed and search pages
+| | 
+| * commit 97a58d5f1aab58217f384d03ec93330607c5c70d
+| | Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| | Date:   2022-09-12
+| | 
+| |     badges tooltip added
+| | 
+| * commit ce61a8fd291ab47346880329529c36e1d1404bd6
+| | Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| | Date:   2022-09-12
+| | 
+| |     major stat queries converted to functions and moved to functions.php
+| | 
+| * commit 960d2693ee534377024dd984a7e750bea5e5846d
+| | Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| | Date:   2022-09-12
+| | 
+| |     comments improved
+| | 
+* | commit f1cc54fd70ab3ba7a61a24a398b46988a60947cd
+|/  Author: Om Khulbe <omkhulbe3@gmail.com>
+|   Date:   2022-09-13
+|   
+|       Added Newsletter Section
+|       
+|       Added updated section
+| 
+* commit cf344532c93f5b6027c8f1e88aa0ddf1fa7491be
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-12
+| 
+|     animated header resize on scroll added to all pages with vertical align
+| 
+* commit 179fda0ceeb9784640dd2805b2adb03ce1c9cd96
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-12
+| 
+|     header resized with animation. back to top button added on few more pages
+| 
+* commit a83a9c886e8e38eecadc2f6843e64e63c2e0e50c
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-12
+| 
+|     badges top padding fixed
+| 
+* commit e003a8e9657a5072005ed41001be85c3677d0906
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-12
+| 
+|     size improved for icons
+| 
+* commit 4b737206d31ba0bffbff1da9b367d04847126718
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-12
+| 
+|     Update stats.css
+| 
+* commit e198aa1d3edfebf0306c7e5128eb9ffd3918a4e3
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-12
+| 
+|     sticky header, alternate header for profile and body margin top set
+| 
+* commit d1d17d7e79eedb498e72e61f29c2c76a918419c8
+| Author: Anay Deshpande <anaydesh1234@gmail.com>
+| Date:   2022-09-11
+| 
+|     changed icons
+| 
+* commit 397f3b76d4d9db512c56bb242972df5178f793ff
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-11
+| 
+|     empty diary will have no pagination
+| 
+* commit 57263b177493e27ca37a239fbd8009023224e5ba
+| Author: Anay Deshpande <anaydesh1234@gmail.com>
+| Date:   2022-09-11
+| 
+|     Changed icons to emojis
+| 
+* commit 7b779b24d5f0bc6cacc9167fcc3e709d37eb22f4
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-11
+| 
+|     links to imdb, googleBooks, TMDB and RAWG added for each browsed media item
+| 
+* commit f704bcf882d8dd6604809898f55af7006eec2a8d
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-11
+| 
+|     item delete feature added with AJAX animation
+| 
+* commit e23521fb96d8046ca7e96a8b1a31c410aaaf03fb
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-10
+| 
+|     diary page improved, unnecessary indexes dropped
+| 
+* commit a4341a60899aacd75a1d4a466145de014663e64a
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-10
+| 
+|     view stats moved from diary to profile
+| 
+* commit 2689938bc40271e1a9bcbf06e84011f973437c93
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-09
+| 
+|     CSS background color fix
+| 
+* commit 68f00480fab924e41f946196435431187fe2b758
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-09
+| 
+|     user search box improved
+| 
+* commit 53f596ff60bc8604f2b73fa3c3a1196f6538d114
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-08
+| 
+|     badge icon added to user profile with link to badges.php
+| 
+* commit 8e0d49febaf1f0d410932d3f007fd47daeb4857d
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-08
+| 
+|     data sanitized, edge cases errors added and some broken links fixed
+| 
+* commit a1b0b599198326496bf6fc74faed7e391e0e9b40
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-07
+| 
+|     Update wydrn.sql
+| 
+* commit 3bf5fb249f87b54694e7561c278389106432e3c5
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-07
+| 
+|     confirmation modal added while clearing profile activity
+|   
+*   commit b331ec451079d4e208184de2dab5b681cc13489d
+|\  Merge: 9854fd87 c53f0ec7
+| | Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| | Date:   2022-09-06
+| | 
+| |     Merge branch 'main' of https://github.com/HighnessAtharva/WYDRN
+| | 
+| * commit c53f0ec74bb8a8c788ac2db5a9843f02b2c3404c
+| | Author: Atharva Shah <68660002+HighnessAtharva@users.noreply.github.com>
+| | Date:   2022-09-06
+| | 
+| |     Update README.md
+| | 
+* | commit 9854fd87a12fbab6d537143acb9cf780c425098e
+|/  Author: HighnessAtharva <HighnessAtharva@gmail.com>
+|   Date:   2022-09-06
+|   
+|       SQL injection prevented in search users and div links added to mutual media emojis
+| 
+* commit 0d6c01c144e79e893a369b8d25ecd69f7955b9f7
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-06
+| 
+|     videos randomized using a function for login page
+| 
+* commit 71c6fb2e5b785d248135a13441168a485c19c00c
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-06
+| 
+|     Create movie-NIGHTMAREALLEY.jpg
+| 
+* commit 1d38c2ed099ad41df014615162081faafd6a7d98
+| Author: Anay Deshpande <anaydesh1234@gmail.com>
+| Date:   2022-09-06
+| 
+|     background video assets added
+| 
+* commit 29a22e8aaef62c78022b64bde772a5e8da0e3699
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-05
+| 
+|     your media pages redesigned
+| 
+* commit c5d8c2f6e50ca0becedffc2b58352006aa007d78
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-05
+| 
+|     pagination and pdf improved
+| 
+* commit 135271a09ec883941bf7b0ced463c353382d36f1
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-05
+| 
+|     mutual view page redesigned
+| 
+* commit f7ca4e7d741abb59a9a6b8e71e44afb741e9d36b
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-05
+| 
+|     quotes.php file moved to functions.php
+| 
+* commit 1c61fe8fd7b17b8ca1aa03d1c04fabdcf148a8ae
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-04
+| 
+|     Update login.php
+| 
+* commit 8765ffa2ec660156b22b514d20638fa3d8337565
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-03
+| 
+|     ..
+| 
+* commit 9e8269d4e76f1bbfc5835973d30a0cd3054198a3
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-03
+| 
+|     mutual_view improved
+| 
+* commit 3d7a4f13913a48b3f1af53cb701eec7f8e313142
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-03
+| 
+|     back to top button added
+| 
+* commit 239323ce879e2cc1abfe7889c52cf9a367de83ab
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-03
+| 
+|     bug fixes
+| 
+* commit 7de29aca1865d773c914d6ca1c31c45a1dd4c650
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-03
+| 
+|     diary page will not show input page box when zero medias added
+| 
+* commit 91dc573d4584dcb23c854f3f7fdaad4e95f792d3
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-03
+| 
+|     sort filter active enabled and
+| 
+* commit a9128e3969b094f50d48bb2030d89049ac940f77
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-03
+| 
+|     show current users following and followers when no request is passed
+| 
+* commit b3ddb06c6e72a0d5b4e2ed91f50443d56b1122fb
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-03
+| 
+|     following, followers and diary fixes
+| 
+* commit dbe6f7279a4344209eff633ef034dce6d29c1c24
+| Author: Atharva Shah <68660002+HighnessAtharva@users.noreply.github.com>
+| Date:   2022-09-03
+| 
+|     Update README.md
+| 
+* commit 26092c987a46f45ed3dd5da3d38043051af0c027
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-03
+| 
+|     meta charset and view tag added wherever missing
+| 
+* commit dae3f1a8f78773008b0ebaa064ac329857d00eb5
+| Author: Atharva Shah <68660002+HighnessAtharva@users.noreply.github.com>
+| Date:   2022-09-03
+| 
+|     Update README.md
+| 
+* commit 3b763a0f5bc1e470df67ebd8c00f91a113bc582a
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-03
+| 
+|     language attribute added to html tags
+| 
+* commit 135d1658ae6ca3c1428db732cdf74d5913eb9a3c
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-03
+| 
+|     redirect fixed when no login for browse pages
+| 
+* commit f298250a2e6ddd8ad6fe31653dce6bc793a7dab0
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-03
+| 
+|     some css minified
+| 
+* commit b003e38859ac9d79e5b9468bc35261c65722855b
+| Author: Atharva Shah <68660002+HighnessAtharva@users.noreply.github.com>
+| Date:   2022-09-03
+| 
+|     Update README.md
+| 
+* commit bffbeb3a71d1878dbf7d0f6daeda93ccb84c5837
+| Author: Atharva Shah <68660002+HighnessAtharva@users.noreply.github.com>
+| Date:   2022-09-03
+| 
+|     Update README.md
+| 
+* commit fc39e638454e32db97db54981695ca14c7d55c9f
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-02
+| 
+|     CSS lang break fixed
+| 
+* commit 688cb4c3f8ee6ae50f25a6241d6e1e6e45017cc5
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-02
+| 
+|     comments improved
+| 
+* commit 6ca961ae23ad7cf7e8eaf7c15d9bb3a4b2164789
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-09-01
+| 
+|     feed page redesigned
+| 
+* commit 4e7a48b6afd666cd12cc35c70bbfb9a812a90ffc
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-31
+| 
+|     comments improved for files in folders
+| 
+* commit d9ea6687f6aaf14341b2fe8ad35b813096e95ee8
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-31
+| 
+|     book assets added
+| 
+* commit cf7bf8553a691313ac5947c8744df3f2c11929c8
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-31
+| 
+|     minor media_list_view bug fixed
+| 
+* commit 1a6e369d3a53cd3c1de73f1c1505a00ac4c983ae
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-31
+| 
+|     badges art added
+| 
+* commit 4e675a01e79e467c203ebc4f55579500fde4b904
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-31
+| 
+|     browse media pages finalized
+| 
+* commit 644a9c55ba5650e170baa7c586f54b978b9c0145
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-31
+| 
+|     Update script.js
+| 
+* commit f3fd406735cbed22afea6aabbb96ef5b46065621
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-31
+| 
+|     index renamed to home
+| 
+* commit 638c28387af452704f69060609015e89d431b7fc
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-31
+| 
+|     landing page fixes, added links and animation
+|   
+*   commit bd1ca749df3b040ec097585b25c2e50e20704e27
+|\  Merge: ef3b6743 0cbb28d6
+| | Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| | Date:   2022-08-30
+| | 
+| |     Merge branch 'main' of https://github.com/HighnessAtharva/WYDRN
+| | 
+| * commit 0cbb28d68028a5b349d37ecd65c515f19aa6de0b
+| | Author: Om Khulbe <omkhulbe3@gmail.com>
+| | Date:   2022-08-30
+| | 
+| |     Added Homepage
+| |     
+| |     Added Basic Homepage (Working on Improvements)
+| | 
+* | commit ef3b6743a81424aab0f011bc4774488e09f9ccd4
+|/  Author: HighnessAtharva <HighnessAtharva@gmail.com>
+|   Date:   2022-08-30
+|   
+|       browse media pages improved
+| 
+* commit a810fa66e99c56c54bb8b9dd128787585ccf9484
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-30
+| 
+|     browse book page improved
+| 
+* commit 8c79c9def9c8b1db4b97cdd5444c385e0ffd2825
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-30
+| 
+|     Browse Movies Page improved
+| 
+* commit ec06195076b2c0427df782cb0a42c3d3aa30ccfa
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-30
+| 
+|     import export page redesigned
+| 
+* commit a85a766f70eb2142445cc9e6732e5f6de3452710
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-30
+| 
+|     landing page animation cleaned up
+| 
+* commit 5d627f8f6c6e0a1a5762acc3681d4ab1581e3b48
+| Author: Anay Deshpande <anaydesh1234@gmail.com>
+| Date:   2022-08-30
+| 
+|     landing page added
+| 
+* commit 4897c08a68ebd93413715811ad96b946faabbd54
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-30
+| 
+|     Update google.php
+| 
+* commit 7183943349a01fe726ca493e744894c9c8f38731
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-30
+| 
+|     Google Login Added
+|     
+|     Demo only. Detached from the main site.
+| 
+* commit a92a730d61fc469af0ef251c295ec0b38b8eb1bd
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-29
+| 
+|     executeSQL migrated to functions.php
+| 
+* commit 94ef48de529c35038b7e9382a7db928f0163825a
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-29
+| 
+|     badges finalized
+| 
+* commit 7c2d934c1af1226fb0da68eddd6a8fdab5c379b9
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-29
+| 
+|     search users page CSS improved
+| 
+* commit cb2344885e8ebbbd5212f3dff66c0a3cdaf74327
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-29
+| 
+|     Update badges.php
+| 
+* commit 822faa5ec07d706a2eab9b62f081878382e7b246
+| Author: Anay Deshpande <anaydesh1234@gmail.com>
+| Date:   2022-08-29
+| 
+|     badges
+| 
+* commit 263684c3663f6de4803ce84d5059b2ff2ae3d035
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-29
+| 
+|     ..
+| 
+* commit 3357366e4fba3d84927c3287f887c0744aa4f779
+| Author: Anay Deshpande <anaydesh1234@gmail.com>
+| Date:   2022-08-29
+| 
+|     Youtube videos embedded
+| 
+* commit 2bc8a047acc7d59562a7a38bc40d5263e230f951
+| Author: Anay Deshpande <anaydesh1234@gmail.com>
+| Date:   2022-08-29
+| 
+|     updated icon
+| 
+* commit e0d6bc34c1847e397f9c1dc0e29d9297b01723e2
+| Author: Anay Deshpande <anaydesh1234@gmail.com>
+| Date:   2022-08-29
+| 
+|     Diagram Updated
+| 
+* commit 555edf2852582d199c8c906718d7eab1860c2807
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-28
+| 
+|     badges page improved
+| 
+* commit cff686c4a0d6be2de1a1925b331cc85c5b85ff88
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-28
+| 
+|     Update badges.php
+|   
+*   commit ca1b4d5e2148652522bee877c5a0fe3138f45326
+|\  Merge: a4e75a2c 34b2865d
+| | Author: Anay Deshpande <anaydesh1234@gmail.com>
+| | Date:   2022-08-28
+| | 
+| |     Merge branch 'main' of https://github.com/HighnessAtharva/WYDRN
+| |   
+| *   commit 34b2865d1498a1f89f17d72a8e7a8ea3b9fe2d4a
+| |\  Merge: 80c9d584 2f3cab01
+| | | Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| | | Date:   2022-08-28
+| | | 
+| | |     Merge branch 'main' of https://github.com/HighnessAtharva/WYDRN
+| | | 
+| * | commit 80c9d584dd487f2199a6c894a6c2b80ac17c58ad
+| | | Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| | | Date:   2022-08-28
+| | | 
+| | |     badge skeleton page added
+| | | 
+* | | commit a4e75a2c46a26758d786378a1973ee0a46f1cb04
+| |/  Author: Anay Deshpande <anaydesh1234@gmail.com>
+|/|   Date:   2022-08-28
+| |   
+| |       diagram updated
+| | 
+* | commit 2f3cab018f22dfbd5e8a5e869a5f90f3434ede33
+|/  Author: Anay Deshpande <anaydesh1234@gmail.com>
+|   Date:   2022-08-28
+|   
+|       Create FlowDiagram.png
+| 
+* commit df9bd938e21a710489a7f183c84f88b87f8e3073
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-28
+| 
+|     Update admin.php
+| 
+* commit e393b86c7650d38cb1a52888b5b53c9fe1d237bf
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-28
+| 
+|     admin page redesinged
+| 
+* commit f5b4675b0354a79836d9cc7bc515926ed8a43f92
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-28
+| 
+|     verify page improved
+| 
+* commit c41c2e96e5314c4cb3f1372928e38440fde41d09
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-27
+| 
+|     about us partially updated
+| 
+* commit 6ab4d15ca4f4cc2a4a8685af6b566fb59e8b3b17
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-27
+| 
+|     media pages refactored
+| 
+* commit f46a6e291a7921a397d70f95ff663625d22cb2f1
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-27
+| 
+|     password reset pages client side alerts added
+| 
+* commit 14a745fb3c0b9e9bf4b3353a5ee0fb3d3af7a9e6
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-27
+| 
+|     forgot password page redesigned
+| 
+* commit c04e6e20fd3eb142994875d8296097ff79643331
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-27
+| 
+|     favicons added
+|   
+*   commit a3e38c68bbd63e5137b47a93b85b8cb36b043ca4
+|\  Merge: 026c744e d9482952
+| | Author: Anay Deshpande <anaydesh1234@gmail.com>
+| | Date:   2022-08-27
+| | 
+| |     Merge branch 'main' of https://github.com/HighnessAtharva/WYDRN
+| | 
+| * commit d9482952e630e5e036028609fe19596fb59a31fd
+| | Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| | Date:   2022-08-27
+| | 
+| |     comments improved
+| | 
+* | commit 026c744e87776e1446d30a6621097529378ece3b
+|/  Author: Anay Deshpande <anaydesh1234@gmail.com>
+|   Date:   2022-08-27
+|   
+|       Update import_export.php
+| 
+* commit 8d6784187924b243636080de894545bdb5d1b9b7
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-27
+| 
+|     Update diary.css
+| 
+* commit 2cd1cfa4d1494853709448048b5da0de924b8776
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-27
+| 
+|     diary page redesigned
+| 
+* commit 26eac6c8a4eda462a4f6c05e6af45bff23e9bd4c
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-26
+| 
+|     More minor css fixes
+|   
+*   commit f22ac21d690ff07da973efba6607d1d024909ea5
+|\  Merge: 9a18c758 07a541f0
+| | Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| | Date:   2022-08-26
+| | 
+| |     Merge branch 'main' of https://github.com/HighnessAtharva/WYDRN
+| | 
+| * commit 07a541f065ad59b1f5c393f2c887818fc906528b
+| | Author: Anay Deshpande <anaydesh1234@gmail.com>
+| | Date:   2022-08-26
+| | 
+| |     number icons changed
+| | 
+* | commit 9a18c758ccaaa933d9a8909512a16b308b9e9b8e
+|/  Author: HighnessAtharva <HighnessAtharva@gmail.com>
+|   Date:   2022-08-26
+|   
+|       add activity page redesigned
+| 
+* commit fbe18164f987095fd80dbe24af1d54a1a6bce197
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-26
+| 
+|     PHP Google OAuth SDK added
+| 
+* commit 5bd94d234a5e13f9fb69a0818adc88219041d6fa
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-26
+| 
+|     Update login.php
+| 
+* commit 6f4614235b4ab6f39cb38f0488d86510c4851eb4
+| Author: Om Khulbe <omkhulbe3@gmail.com>
+| Date:   2022-08-26
+| 
+|     Added Google Sign In
+|     
+|     Implemented Google OAuth
+| 
+* commit 9663e8a055093001acb8af2cb1c7fc85180e890f
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-26
+| 
+|     ..
+| 
+* commit 2bb5f2b86f0c6b598658d5b424fda22c6ced9d99
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-26
+| 
+|     media pages look customized
+| 
+* commit 3cb10dfa1bb5e045f58e5277d5320776991eb9bc
+| Author: Atharva Shah <68660002+HighnessAtharva@users.noreply.github.com>
+| Date:   2022-08-25
+| 
+|     Update README.md
+| 
+* commit e5fc65f74fcfc4cbe648a57002443f36a9beabb0
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-25
+| 
+|     more effects added
+| 
+* commit fd04878931007c965710f699ac905b3d61245fdc
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-25
+| 
+|     scrollbar updated. Edit Profile improved
+| 
+* commit cfe6844bfd0b411a160565fa9b7d6e68404a8b84
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-25
+| 
+|     edit profile page redesigned
+| 
+* commit 9b05d1fedfa9d148e2e48d05274024e4af57748e
+| Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| Date:   2022-08-25
+| 
+|     login page redesigned. Signup page merged with login
+|   
+*   commit 8fdbb9bed31ce880a679cc8a1cc569b00e9f7ebf
+|\  Merge: edc1241a e144656d
+| | Author: HighnessAtharva <HighnessAtharva@gmail.com>
+| | Date:   2022-08-25
+| | 
+| |     Merge branch 'main' of https://github.com/HighnessAtharva/WYDRN
+| | 
+| * commit e144656db6b457f7ddeb08734eba728cea2888e7
+| | Author: Atharva Shah <68660002+HighnessAtharva@users.noreply.github.com>
+| | Date:   2022-08-25
+| | 
+| |     Delete changelog.yml
+| | 
+* | commit edc1241a62b9c0c2c2b3e184dfeb38c31064bc84
+|/  Author: HighnessAtharva <HighnessAtharva@gmail.com>
+|   Date:   2022-08-25
+|   
+|       Changelog File added
+|   
 *   commit 0820d908d04344db22e4b91bba4ed05c5b9e8453
-|\  Merge: e724be2 05e0df8
+|\  Merge: e724be2f 05e0df80
 | | Author: HighnessAtharva <HighnessAtharva@gmail.com>
 | | Date:   2022-08-25
 | | 
@@ -93,7 +898,7 @@ git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
 |     Update README.md
 |   
 *   commit 147cd3263cc30ea6974f34e0dacf0ff4945e954c
-|\  Merge: a426a89 9d8d163
+|\  Merge: a426a896 9d8d1630
 | | Author: HighnessAtharva <HighnessAtharva@gmail.com>
 | | Date:   2022-08-22
 | | 
@@ -160,7 +965,7 @@ git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
 |     ..
 |   
 *   commit bc9d23a26c2071fc5840cca91adb195c70ece7cb
-|\  Merge: a8ad6bf 6cbe0a2
+|\  Merge: a8ad6bf3 6cbe0a28
 | | Author: HighnessAtharva <HighnessAtharva@gmail.com>
 | | Date:   2022-08-18
 | | 
@@ -419,7 +1224,7 @@ git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
 |     randomized quotes added to media pages
 |   
 *   commit 36b563b4e985c2c66aebe925791627ba946dbbdb
-|\  Merge: fa5f79b 2bc2101
+|\  Merge: fa5f79bf 2bc21015
 | | Author: Atharva Shah <68660002+HighnessAtharva@users.noreply.github.com>
 | | Date:   2022-08-10
 | | 
@@ -494,7 +1299,7 @@ git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
 |     searchbox fallback images added
 |   
 *   commit 075b2f6424dbceda7a1d943db67ae3dae2889d89
-|\  Merge: b4e353f cac8fb2
+|\  Merge: b4e353f2 cac8fb2c
 | | Author: HighnessAtharva <HighnessAtharva@gmail.com>
 | | Date:   2022-08-08
 | | 
@@ -569,7 +1374,7 @@ git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
 |     bug fixes
 |   
 *   commit 4b54aa71c9d7121daea2a90682a6e8b79bd795fb
-|\  Merge: 5f8e7d8 0afc1cc
+|\  Merge: 5f8e7d8a 0afc1cc5
 | | Author: HighnessAtharva <HighnessAtharva@gmail.com>
 | | Date:   2022-08-06
 | | 
@@ -642,14 +1447,14 @@ git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
 |     Update admin.php
 |   
 *   commit 3f5a4cd7266ca3c3fa649c46fe6b5ac117d5ab4e
-|\  Merge: 79876c8 4db00b1
+|\  Merge: 79876c85 4db00b1f
 | | Author: HighnessAtharva <HighnessAtharva@gmail.com>
 | | Date:   2022-08-05
 | | 
 | |     Merge branch 'main' of https://github.com/HighnessAtharva/WYDRN
 | |   
 | *   commit 4db00b1fe387ebcf3cbd5ff80feea1744bd4f4c1
-| |\  Merge: c2ebd4d c78d59e
+| |\  Merge: c2ebd4d8 c78d59e4
 | | | Author: Anay Deshpande <anaydesh1234@gmail.com>
 | | | Date:   2022-08-04
 | | | 
@@ -668,7 +1473,7 @@ git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
 | |       styling added
 | | 
 * | commit c78d59e4615fb8527f6df9c085896d70d3238fd1
-|\| Merge: 27837a8 caa8398
+|\| Merge: 27837a83 caa8398f
 | | Author: HighnessAtharva <HighnessAtharva@gmail.com>
 | | Date:   2022-08-04
 | | 
@@ -759,7 +1564,7 @@ git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
 |     ..
 |   
 *   commit a5a343fc96b795d5a8d8a6479a737c48bea55526
-|\  Merge: 368944c b105151
+|\  Merge: 368944c1 b105151b
 | | Author: HighnessAtharva <HighnessAtharva@gmail.com>
 | | Date:   2022-08-01
 | | 
@@ -918,7 +1723,7 @@ git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
 |     added logo in images/website/logo.png
 |   
 *   commit 3db0c0eb041b19320f4622632aaf02124606001f
-|\  Merge: 7056eb2 8fee6e3
+|\  Merge: 7056eb29 8fee6e39
 | | Author: Om Khulbe <omkhulbe3@gmail.com>
 | | Date:   2022-07-28
 | | 
@@ -959,7 +1764,7 @@ git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
 |     author header added to all files
 |   
 *   commit 0970ae1c0b3cf75517ccb4fd7d1b4645951750b0
-|\  Merge: 5d3fe1d 74e8484
+|\  Merge: 5d3fe1d8 74e84845
 | | Author: HighnessAtharva <HighnessAtharva@gmail.com>
 | | Date:   2022-07-26
 | | 
@@ -990,7 +1795,7 @@ git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
 |     new styles added
 |   
 *   commit 45176917fe566509627964e5de903c2ad862291f
-|\  Merge: 0b4b43b b386f6e
+|\  Merge: 0b4b43b1 b386f6eb
 | | Author: HighnessAtharva <HighnessAtharva@gmail.com>
 | | Date:   2022-07-25
 | | 
@@ -1243,14 +2048,14 @@ git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
 |     Update ignore-frequently-used-queries.sql
 |   
 *   commit 122752a766df593c88aca201df223d2471546360
-|\  Merge: 0013148 b02bade
+|\  Merge: 00131488 b02badea
 | | Author: Atharva Shah <68660002+HighnessAtharva@users.noreply.github.com>
 | | Date:   2022-06-09
 | | 
 | |     Merge branch 'main' of https://github.com/HighnessAtharva/WYDRN
 | |   
 | *   commit b02badeae520fb138d3bbb842f2ba932d09a0a6e
-| |\  Merge: 61593df c73e5a6
+| |\  Merge: 61593df6 c73e5a68
 | | | Author: Atharva Shah <68660002+HighnessAtharva@users.noreply.github.com>
 | | | Date:   2022-06-09
 | | | 
@@ -1653,7 +2458,7 @@ git log --graph --all --pretty=medium --date=short > CHANGELOG.txt
 |     code cleanup
 |   
 *   commit 05411b11c6a371cb93c3e3ac35ba0003f272ac9b
-|\  Merge: 571cb08 f6fc0e6
+|\  Merge: 571cb082 f6fc0e6d
 | | Author: Atharva Shah <68660002+HighnessAtharva@users.noreply.github.com>
 | | Date:   2022-03-17
 | | 

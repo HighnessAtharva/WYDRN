@@ -190,8 +190,9 @@ Container for Two Forms
 
 				<!--Uncomment For Google Account Button-->
 				<!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-
+				
 			</form>
+			
 		</div>
 		<!------------------
 	END OF Sign In Form
@@ -249,22 +250,24 @@ Container for Two Forms
 			<div class="overlay">
 				
 				<div class="overlay-panel overlay-left">
-					<img src="images/website/logo.png" alt="WYDRN" class="logo"/>
+					<a href="home.html"><img src="images/website/logo.png" alt="WYDRN" class="logo"/></a>
 					<h1>Welcome Back!</h1>
 					<p>Stay updated with your entertainment and see what your friends are up to.</p>
 					<button class="ghost" id="signIn">Sign In</button>
+					
 				</div>
 				
 				<div class="overlay-panel overlay-right">
-					<img src="images/website/logo.png" alt="WYDRN" class="logo"/>
+				<a href="home.html"><img src="images/website/logo.png" alt="WYDRN" class="logo"/></a>
 					<h1>Hello, Friend!</h1>
 					<p>Want to join the fun? Start adding your favorite Movies, Shows, Music, Books and Videogames and show off your incredible taste. </p>
 					<button class="ghost" id="signUp">Sign Up</button>
 				</div>
 			</div>
 		</div>
-
 	</div>
+
+
 
 
 

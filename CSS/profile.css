@@ -226,7 +226,8 @@ a:link {
     height: 80px;
     width: 80px;
     border-radius: 10px;
-    background-color: #000
+    background-color: #000;
+    box-shadow: rgb(0 0 0 / 29%) 0px 0px 0px 2px, rgb(0 0 0 / 70%) 0px 4px 6px -1px, rgb(0 0 0) 0px 1px 0px inset;
 }
 
 #profile .image img {
@@ -274,6 +275,10 @@ a:link {
     padding: 10px;
     background-color: #fff;
     cursor: pointer
+}
+
+#myCount {
+    color: black;
 }
 
 #add-data {

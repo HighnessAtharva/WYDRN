@@ -344,28 +344,28 @@ if ($query = mysqli_query($con, $sql2)) {
                         <!----------------
 			FOLLOWERS COUNT
 			------------------>
-                        <li>
-                            <?php echo $total_followers; ?>
-                            <span><a href="followers.php?user_name=<?php
+                        <li> <a href="followers.php?user_name=<?php
                                                                     if (isset($_GET['user_name'])) {
                                                                         echo $_GET['user_name'];
                                                                     } else {
                                                                         echo $username;
                                                                     }
-                                                                    ?>" style="color:black">Followers</a></span>
+                                                                    ?>" style="color:black">
+                            <?php echo $total_followers; ?>
+                           <span>Followers</span></a>
                         </li>
 
                         <!----------------
 			FOLLOWING COUNT
 			------------------>
                         <li>
-                            <?php echo $total_following; ?>
-                            <span><a href="following.php?user_name=<?php
+                        <a href="following.php?user_name=<?php
                                                                     if (isset($_GET['user_name'])) {
                                                                         echo $_GET['user_name'];
                                                                     } else {
                                                                         echo $username;
-                                                                    } ?>" style="color:black">Following</a></span>
+                                                                    } ?>" style="color:black"><?php echo $total_following; ?>
+                            <span>Following</span></a>
                         </li>
 
                     </ul>
@@ -373,11 +373,11 @@ if ($query = mysqli_query($con, $sql2)) {
 
 
 
-
+                    </div>
+            <!--End of content-->
                 </div>
                 <!--End of data-->
-            </div>
-            <!--End of content-->
+           
 
 
             <!----------------------------------------------------------------
@@ -386,6 +386,8 @@ if ($query = mysqli_query($con, $sql2)) {
             <div name="activity" id="activity">
                 <?php require "WYDRN.php"; ?>
             </div>
+
+          
 
         </div> <!-- This DIV is the end of the bottom half of the card. White Section-->
     </div> <!-- This DIV is the end of the entire card-->

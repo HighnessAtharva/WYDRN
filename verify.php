@@ -40,16 +40,6 @@ $username = $user_data['user_name'];
 <body>
 
     <?php
-    if (check_verified_status($username) == 0) {
-        if (mailer_verify_email($usermail)) {
-            echo "<div class='alert success-alert'><h3>Verification Email Sent To <small><u>". $usermail."</u></small></h3></div>";
-        } else {
-            $email_error = "<div class='alert danger-alert'><h3>Could not send the E-mail</h3></div>";
-            echo $email_error;
-        }
-    } else {
-        echo "<div class='alert danger-alert'><h3>User is already verified</h3></div>";
-    }
 
     if (isset($_GET['link'])) {
         $user_data = check_login($con);
@@ -73,6 +63,18 @@ $username = $user_data['user_name'];
             echo "<div class='alert danger-alert'><h3>Invalid Link. Your account remains unverified</h3>
         </div>";
         }
+    }else{
+        if (check_verified_status($username) == 0) {
+            if (mailer_verify_email($usermail)) {
+                echo "<div class='alert success-alert'><h3>Verification Email Sent To <small><u>". $usermail."</u></small></h3></div>";
+            } else {
+                $email_error = "<div class='alert danger-alert'><h3>Could not send the E-mail</h3></div>";
+                echo $email_error;
+            }
+        } else {
+            echo "<div class='alert danger-alert'><h3>User is already verified</h3></div>";
+        }
+    
     }
     mysqli_close($con);
     ?>
