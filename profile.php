@@ -129,7 +129,7 @@ if ($query = mysqli_query($con, $sql2)) {
 <body>
 
     <div class="shadow overflow" style="position:relative;">
-        <?php require "header4profile.php"; ?>
+    <?php require "header4profile.php"; ?>
 
         <!----------------
 	Background Image

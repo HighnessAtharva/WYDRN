@@ -53,17 +53,18 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
 ------------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
-  <meta name="keywords" content="" />
+    <meta name="keywords" content="" />
     <title>WYDRN - Edit Profile</title>
 
     <link rel="icon" type="image/x-icon" href="images/website/favicons/favicon.ico">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
-    
+
     <!--Bootstrap Link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
@@ -85,8 +86,8 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
 <body className='snippet-body'>
     <div class="container rounded mt-5 mb-5">
         <div class="row" id="myRow">
-            
-        
+
+
             <!-- LEFTMOST SIDE COLUMN FOR AVATAR, USERNAME, EMAIL AND VERIFY BUTTON  -->
             <div class="col-md-3 glass py-5" id="pfpDiv">
                 <div class="d-flex flex-column align-items-center text-center p-3"><img class="rounded-circle" width="150px" height="150px" src="<?php echo $profile_pic ?>">
@@ -106,25 +107,27 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
             <!-- CENTER COLUMN FOR DISABLED INPUT FIELDS - EDIT PROFILE OPTIONS -->
             <div class="col-md-5">
                 <div class="pt-5">
-                <fieldset class="glass" id="profileSettings">    
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                <legend><h4 class="text-right">Profile Settings</h4></legend>
-                    </div>
-                    <!--USERNAME-->
-                    <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" value="<?php echo strtoupper($username); ?>" readonly></div>
+                    <fieldset class="glass" id="profileSettings">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <legend>
+                                <h4 class="text-right">Profile Settings</h4>
+                            </legend>
+                        </div>
+                        <!--USERNAME-->
+                        <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" value="<?php echo strtoupper($username); ?>" readonly></div>
 
-                    <!--ACTIVE OR NOT-->
-                    <div class="col-md-12"><label class="labels">User Status</label><input type="text" class="form-control" value="<?php echo $active_or_not; ?>" readonly></div>
+                        <!--ACTIVE OR NOT-->
+                        <div class="col-md-12"><label class="labels">User Status</label><input type="text" class="form-control" value="<?php echo $active_or_not; ?>" readonly></div>
 
-                    <!--VERIFIED OR NOT-->
-                    <div class="col-md-12"><label class="labels">Verified Status</label><input type="text" class="form-control" value="<?php echo $verified_or_not; ?>" readonly></div>
+                        <!--VERIFIED OR NOT-->
+                        <div class="col-md-12"><label class="labels">Verified Status</label><input type="text" class="form-control" value="<?php echo $verified_or_not; ?>" readonly></div>
 
-                    <!--MEMBER SINCEE-->
-                    <div class="col-md-12"><label class="labels">Member Since</label><input type="text" class="form-control" value="<?php echo $account_birthday; ?>" readonly></div>
+                        <!--MEMBER SINCEE-->
+                        <div class="col-md-12"><label class="labels">Member Since</label><input type="text" class="form-control" value="<?php echo $account_birthday; ?>" readonly></div>
 
-                    <!--PUBLIC PROFILE URL-->
-                    <div class="col-md-12"><label class="labels">Public Profile Link</label><input type="text" class="form-control" value="<?php echo $public_profile_link; ?>" readonly></div>
-                </fieldset>
+                        <!--PUBLIC PROFILE URL-->
+                        <div class="col-md-12"><label class="labels">Public Profile Link</label><input type="text" class="form-control" value="<?php echo $public_profile_link; ?>" readonly></div>
+                    </fieldset>
                 </div>
             </div>
 
@@ -153,7 +156,7 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
                     <br><br>
 
                     <!-- TO DELETE ACCOUNT PERMANENTLY -->
-                    <fieldset  class="glass" id="delDiv">
+                    <fieldset class="glass" id="delDiv">
                         <legend> Delete Account</legend>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Wipe my data</button>
                     </fieldset>
@@ -262,6 +265,7 @@ if (isset($_POST['save_profile'])) {
 
         $PFPName = date("his") . $_FILES["PFP"]["name"]; //profile picture with prefixed current timestamp
         $PFPName = str_replace(' ', '', $PFPName); //remove any whitespaces
+        $PFPName = preg_replace('/[^a-z0-9]+/', '-', strtolower($PFPName)); //remove any special characters
         $target_file = $target_dir . basename($PFPName); //path to store
 
         $file_type = $_FILES['PFP']['type']; //returns the mimetype
@@ -337,6 +341,7 @@ if (isset($_POST['save_profile'])) {
     if (is_uploaded_file($_FILES['BgImage']['tmp_name'])) {
         $BGName = date("his") . $_FILES["BgImage"]["name"]; //background image with prefixed current timestamp
         $BGName = str_replace(' ', '', $BGName); //remove any whitespaces
+        $BGName = preg_replace('/[^a-z0-9]+/', '-', strtolower($BGName)); //remove any special characters
         $target_file2 = $target_dir . basename($BGName);
 
         $file_type2 = $_FILES['BgImage']['type']; //returns the mimetype

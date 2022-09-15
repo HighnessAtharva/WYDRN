@@ -1,373 +1,383 @@
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-body,
-html {
-    margin: 0;
-    padding: 0
-}
-
-::-webkit-scrollbar {
-    width: 8px
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1
-}
-
-::-webkit-scrollbar-thumb {
-    background: #888
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555
-}
-
-body {
-    min-height: 100vh;
-    min-width: 100vw;
-    background-image: linear-gradient(-225deg, #FF3CAC 0%, #562B7C 52%, #2B86C5 100%);
-    background-size: cover;
-    background-position: center center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    font-family: "Open Sans", Helvetica, sans-serif
-}
-
-.badge-gif {
-    z-index: 100;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 75px;
-    height: 75px;
-}
-
-.follow-icon {
-    width: 1.5em;
-    height: 1.5em;
-    display: inline-block;
-    margin-left: .8em;
-    margin-bottom: .6em
-}
-
-.unfollow-icon {
-    width: 1.5em;
-    height: 1.5em;
-    display: inline-block;
-    margin-left: .8em;
-    margin-bottom: .6em
-}
-
-.clear-icon {
-    width: 1.5em;
-    height: 1.5em;
-    display: inline-block;
-    margin-left: .8em;
-    margin-bottom: .6em;
-    cursor: pointer;
-}
-
-a:link {
-    color: #000;
-    text-decoration: none
-}
-
-.top {
-    position: fixed;
-    top: 20px;
-    left: 20px
-}
-
-.get-mutual {
-    color: #39F;
-    font-family: "Open Sans", Helvetica, sans-serif;
-    font-size: 10pt;
-    background-color: #fff;
-    border: 1px solid;
-    border-color: #39F;
-    border-radius: 3px;
-    width: 85px;
-    height: 30px;
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    cursor: hand
-}
-
-#header {
-    width: 50vw;
+    @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+    body,
+    html {
+        margin: 0;
+        padding: 0
+    }
+    
+     ::-webkit-scrollbar {
+        width: 8px
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: #f1f1f1
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #888
+    }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: #555
+    }
+    
+    body {
+        min-height: 100vh;
+        min-width: 100vw;
+        background-image: linear-gradient(-225deg, #FF3CAC 0%, #562B7C 52%, #2B86C5 100%);
+        background-size: cover;
+        background-position: center center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        font-family: "Open Sans", Helvetica, sans-serif
+    }
+    
+    .badge-gif {
+        z-index: 100;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 75px;
+        height: 75px;
+    }
+    
+    .follow-icon {
+        width: 1.5em;
+        height: 1.5em;
+        display: inline-block;
+        margin-left: .8em;
+        margin-bottom: .6em
+    }
+    
+    .unfollow-icon {
+        width: 1.5em;
+        height: 1.5em;
+        display: inline-block;
+        margin-left: .8em;
+        margin-bottom: .6em
+    }
+    
+    .clear-icon {
+        width: 1.5em;
+        height: 1.5em;
+        display: inline-block;
+        margin-left: .8em;
+        margin-bottom: .6em;
+        cursor: pointer;
+    }
+    
+    a:link {
+        color: #000;
+        text-decoration: none
+    }
+    
+    .top {
+        position: fixed;
+        top: 20px;
+        left: 20px
+    }
+    
+    .get-mutual {
+        color: #39F;
+        font-family: "Open Sans", Helvetica, sans-serif;
+        font-size: 10pt;
+        background-color: #fff;
+        border: 1px solid;
+        border-color: #39F;
+        border-radius: 3px;
+        width: 85px;
+        height: 30px;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        cursor: hand
+    }
+    
+    #header {
+        /* width: 95vw;
     max-width: 450px;
-    min-width: 300px;
-    height: 150px;
-    background-size: cover;
-    background-position: center center;
-    transition: all .08s linear;
-    position: relative;
-    z-index: 0;
-}
-
-.hide {
-    display: none;
-    z-index: 5;
-}
-
-#header:hover {
-    cursor: pointer;
-}
-
-#header:hover .hide {
-    display: block;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.478);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    font-size: 20pt;
-    padding-top: 50px;
-}
-
-.join-date {
-    display: inline-block;
-    top: 10px;
-    left: 10px;
-    cursor: pointer;
-    position: absolute;
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 10pt;
-    margin-left: 5px;
-}
-
-.since-icon {
-    width: 2em;
-    height: 2em;
-    display: inline-block;
-    cursor: pointer;
-    margin-right: 5px;
-}
-
-.stats-text {
-    display: inline-block;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    position: absolute;
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 10pt;
-}
-
-.stats-icon {
-    width: 1.8em;
-    height: 1.8em;
-    display: inline-block;
-    cursor: pointer;
-    margin-left: 5px;
-}
-
-#profile {
-    width: clamp(300px, 50vw, 450px);
-    min-height: 300px;
-    background: #fff;
-    position: relative;
-    box-sizing: border-box;
-    padding-top: 40px;
-    font-family: 'Open Sans', sans-serif;
-}
-
-#activity {
-    margin-right: 30px;
-    word-wrap: break-word;
-    min-height: auto;
-    max-height: 900px;
-    max-width: 500px;
-    overflow: auto;
-    padding-left: 25px;
-    padding-top: .5em
-}
-
-.follow-button {
-    color: #39F;
-    font-family: "Open Sans", Helvetica, sans-serif;
-    font-size: 10pt;
-    background-color: #fff;
-    border: 1px solid;
-    border-color: #39F;
-    border-radius: 3px;
-    width: 85px;
-    height: 30px;
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    cursor: hand
-}
-
-.follow-button:hover {
-    background-color: #1eff00;
-    color: #fff
-}
-
-#profile .image {
-    position: absolute;
-    border: 3px solid #000;
-    top: -55px;
-    left: 20px;
-    height: 80px;
-    width: 80px;
-    border-radius: 10px;
-    background-color: #000;
-    box-shadow: rgb(0 0 0 / 29%) 0px 0px 0px 2px, rgb(0 0 0 / 70%) 0px 4px 6px -1px, rgb(0 0 0) 0px 1px 0px inset;
-}
-
-#profile .image img {
-    width: inherit;
-    height: inherit;
-    border-radius: 8px;
-    overflow: auto;
-    margin: auto;
-    margin-left: -2px;
-    margin-top: -2px;
-    z-index: 500;
-}
-
-#profile .name {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #444
-}
-
-#profile .nickname {
-    color: #888;
-    font-size: .9rem;
-    padding-bottom: 5px
-}
-
-#profile .location {
-    color: #555;
-    font-size: .9rem;
-    padding-left: 0;
-    position: relative;
-    left: -5px
-}
-
-#profile .location .material-icons {
-    position: relative;
-    top: 3px;
-    font-size: 1rem
-}
-
-#logout {
-    color: #000;
-    position: fixed;
-    top: 1em;
-    right: 1em;
-    padding: 10px;
-    background-color: #fff;
-    cursor: pointer
-}
-
-#myCount {
-    color: black;
-}
-
-#add-data {
-    color: #000;
-    position: fixed;
-    top: 1em;
-    left: 1em;
-    padding: 10px;
-    background-color: #fff;
-    cursor: pointer
-}
-
-#user-font {
-    font-family: "Open Sans", Helvetica, sans-serif;
-    font-size: 32px;
-    color: #000;
-    font-variant: small-caps;
-    text-align: center;
-    font-weight: 700;
-    padding-left: 25px
-}
-
-#following {
-    background-color: #ffc0cb;
-    padding: 2px;
-    margin-bottom: 0
-}
-
-#following-count {
-    padding-left: 30px;
-    background-color: #ffc0cb
-}
-
-#follower {
-    background-color: #87ceeb;
-    padding: 2px;
-    margin-bottom: 0
-}
-
-#follower-count {
-    padding-left: 30px;
-    background-color: #87ceeb
-}
-
-.shadow {
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
-    border-radius: 10px
-}
-
-.overflow {
-    overflow: hidden
-}
-
-.bottom {
-    margin-top: 2px
-}
-
-.count {
-    color: #000;
-    font-family: 'Open Sans', sans-serif;
-    font-size: .9rem;
-    font-weight: 700
-}
-
-.data {
-    margin-top: .7em;
-    color: #81878b;
-    margin-bottom: 2px;
-    border-bottom: 3px solid #f9dd94
-}
-
-.data li {
-    width: 32%;
-    text-align: center;
-    display: inline-block;
-    font-size: 1.5em;
-    font-family: "Open Sans", Helvetica, sans-serif;
-    border-right: solid 1px #bdc3c7
-}
-
-.data li:last-child {
-    border: none
-}
-
-.data li span {
-    display: block;
-    text-transform: uppercase;
-    font-family: "Open Sans", Helvetica, sans-serif;
-    font-size: .5em;
-    margin-top: .2em;
-    font-weight: 700
-}
+    min-width: 382px; */
+        height: 200px;
+        background-size: cover;
+        background-position: center center;
+        transition: all .08s linear;
+        position: relative;
+        z-index: 0;
+    }
+    
+    .hide {
+        display: none;
+        z-index: 5;
+    }
+    
+    #header:hover {
+        cursor: pointer;
+    }
+    
+    #header:hover .hide {
+        display: block;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.478);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 20pt;
+        padding-top: 50px;
+    }
+    
+    .join-date {
+        display: inline-block;
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+        position: absolute;
+        color: rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 10pt;
+        margin-left: 5px;
+    }
+    
+    .since-icon {
+        width: 2em;
+        height: 2em;
+        display: inline-block;
+        cursor: pointer;
+        margin-right: 5px;
+    }
+    
+    .stats-text {
+        display: inline-block;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        position: absolute;
+        color: rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 10pt;
+    }
+    
+    .stats-icon {
+        width: 1.8em;
+        height: 1.8em;
+        display: inline-block;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+    
+    #profile {
+        width: 700px;
+        min-height: 300px;
+        background: #fff;
+        position: relative;
+        box-sizing: border-box;
+        /* padding-top: 40px; */
+        font-family: 'Open Sans', sans-serif;
+    }
+    
+    #activity {
+        /* margin-right: 30px; */
+        word-wrap: break-word;
+        min-height: auto;
+        max-height: 900px;
+        /* max-width: 500px; */
+        overflow: auto;
+        /* padding-left: 25px; */
+        display: flex;
+        align-items: center;
+        align-content: space-between;
+        justify-content: space-around;
+        flex-direction: column;
+        padding-top: 1em;
+    }
+    
+    .follow-button {
+        color: #39F;
+        font-family: "Open Sans", Helvetica, sans-serif;
+        font-size: 10pt;
+        background-color: #fff;
+        border: 1px solid;
+        border-color: #39F;
+        border-radius: 3px;
+        width: 85px;
+        height: 30px;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        cursor: hand
+    }
+    
+    .follow-button:hover {
+        background-color: #1eff00;
+        color: #fff
+    }
+    
+    #profile .image {
+        position: absolute;
+        border: 3px solid #000;
+        top: -35px;
+        left: 20px;
+        height: 80px;
+        width: 80px;
+        border-radius: 10px;
+        background-color: #000;
+        box-shadow: rgb(0 0 0 / 29%) 0px 0px 0px 2px, rgb(0 0 0 / 70%) 0px 4px 6px -1px, rgb(0 0 0) 0px 1px 0px inset;
+    }
+    
+    #profile .image img {
+        width: inherit;
+        height: inherit;
+        border-radius: 8px;
+        overflow: auto;
+        margin: auto;
+        margin-left: -2px;
+        margin-top: -2px;
+        z-index: 500;
+    }
+    
+    #profile .name {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #444
+    }
+    
+    #profile .nickname {
+        color: #888;
+        font-size: .9rem;
+        padding-bottom: 5px
+    }
+    
+    #profile .location {
+        color: #555;
+        font-size: .9rem;
+        padding-left: 0;
+        position: relative;
+        left: -5px
+    }
+    
+    #profile .location .material-icons {
+        position: relative;
+        top: 3px;
+        font-size: 1rem
+    }
+    
+    #logout {
+        color: #000;
+        position: fixed;
+        top: 1em;
+        right: 1em;
+        padding: 10px;
+        background-color: #fff;
+        cursor: pointer
+    }
+    
+    #myCount {
+        color: black;
+    }
+    
+    #add-data {
+        color: #000;
+        position: fixed;
+        top: 1em;
+        left: 1em;
+        padding: 10px;
+        background-color: #fff;
+        cursor: pointer
+    }
+    
+    #user-font {
+        font-family: "Open Sans", Helvetica, sans-serif;
+        font-size: 32px;
+        color: #000;
+        font-variant: small-caps;
+        text-align: center;
+        font-weight: 900;
+        padding-left: 115px;
+    }
+    
+    #following {
+        background-color: #ffc0cb;
+        padding: 2px;
+        margin-bottom: 0
+    }
+    
+    #following-count {
+        padding-left: 30px;
+        background-color: #ffc0cb
+    }
+    
+    #follower {
+        background-color: #87ceeb;
+        padding: 2px;
+        margin-bottom: 0
+    }
+    
+    #follower-count {
+        padding-left: 30px;
+        background-color: #87ceeb
+    }
+    
+    .shadow {
+        box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+        border-radius: 10px
+    }
+    
+    .overflow {
+        overflow: hidden
+    }
+    
+    .bottom {
+        margin-top: 2px
+    }
+    
+    .count {
+        color: #000;
+        font-family: 'Open Sans', sans-serif;
+        font-size: .9rem;
+        font-weight: 700
+    }
+    
+    .content {
+        border-bottom: 3px solid #f9dd94;
+    }
+    
+    .data {
+        width: 60%;
+        margin: 1rem auto;
+        /* color: #81878b; */
+        /* margin-bottom: 2px; */
+        /* border-bottom: 3px solid #f9dd94;*/
+    }
+    
+    .data li {
+        width: 32%;
+        text-align: center;
+        display: inline-block;
+        font-size: 1.5em;
+        font-family: "Open Sans", Helvetica, sans-serif;
+        border-right: solid 1px #bdc3c7
+    }
+    
+    .data li:last-child {
+        border: none
+    }
+    
+    .data li span {
+        display: block;
+        text-transform: uppercase;
+        font-family: "Open Sans", Helvetica, sans-serif;
+        font-size: .5em;
+        margin-top: .2em;
+        font-weight: 700
+    }
