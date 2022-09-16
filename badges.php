@@ -46,24 +46,19 @@ else {
 /*********SETTING COUNTERS FOR BADGES***************/
 
 // BOOK COUNT
-$sql = "SELECT count(book) AS Total_Count FROM `data` where `username`='$username' AND book!=''";
-$total_book_count = executeSQL($con, $sql);
+$total_book_count = getTotalBooksCount($con, $username);
 
 // MOVIE COUNT
-$sql = "SELECT count(movie) AS Total_Count FROM `data` where `username`='$username' AND movie!=''";
-$total_movie_count = executeSQL($con, $sql);
+$total_movie_count = getTotalMoviesCount($con, $username);
 
 // TV COUNT
-$sql = "SELECT count(tv) AS Total_Count FROM `data` where `username`='$username' AND tv!=''";
-$total_tv_count = executeSQL($con, $sql);
+$total_tv_count = getTotalTVCount($con, $username);
 
 // MUSIC COUNT
-$sql = "SELECT count(album) AS Total_Count FROM `data` where `username`='$username' AND album!=''";
-$total_album_count = executeSQL($con, $sql);
+$total_album_count = getTotalAlbumCount($con, $username);
 
 // VIDEOGAME COUNT
-$sql = "SELECT count(videogame) AS Total_Count FROM `data` where `username`='$username' AND videogame!=''";
-$total_videogame_count = executeSQL($con, $sql);
+$total_videogame_count = getTotalVideoGameCount($con, $username);
 
 // FOLLOWER COUNT
 $sql = "SELECT COUNT(follower_username) FROM `social` where `followed_username`='$username'";
@@ -84,14 +79,6 @@ if ($days_since_member == 0) {
   $days_since_member = 1;
 }
 
-
-// echo $total_book_count; echo "<br>";
-// echo $total_videogame_count;  echo "<br>";
-// echo $total_movie_count;  echo "<br>";
-// echo $total_album_count;  echo "<br>";
-// echo $total_tv_count;  echo "<br>";
-// echo $total_followers;  echo "<br>";
-// echo $days_since_member;  echo "<br>";
 
 /*********BADGE IMAGE PATHS***************/
 
