@@ -189,7 +189,7 @@ require "header.php";
     $("#search").keyup(function() {
         var name = $('#search').val();
         if (name == "") {
-            $("#display").html("No Results Found");
+            $("#display").html("<div class='no-res'>No Results Found</div>");
         }
 
         else {
@@ -203,6 +203,7 @@ require "header.php";
                 success: function(html) {
                     $("#display").html(html).show();
                 }
+                
             });
         }
     });
