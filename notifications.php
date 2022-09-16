@@ -44,36 +44,48 @@ $username = $user_data['user_name'];
 </head>
 
 <body>
-    <button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
-    <div class="notif-group">
-    <?php
+<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
 
-$sql="SELECT `follower_username`, `followed_time` FROM `social` WHERE `followed_username` = '$username' ORDER BY `followed_time` DESC";
+<h1 class="heading">
+  <img src="images/website/bell.gif" height="50px" width="50px" class="bell">Notifications
+</h1>
+<hr>
+
+<!--Container for actual follower update notifications-->
+<div class="notif-group">
+<?php
+
+//looping through all the follower updates of the user from the social table
+$sql="SELECT `follower_username`, `followed_time` FROM `social` WHERE `followed_username` = '$username' ORDER BY `followed_time` DESC LIMIT 100;";
 $result = mysqli_query($con, $sql);
  while($followers=mysqli_fetch_assoc($result)){
    $follower_username = $followers['follower_username'];
    $followed_time = $followers['followed_time'];
-  
+
+   //grabbing their pfp from the users table
    $sql="SELECT `user_name`, `profile_pic` FROM `users` WHERE `user_name` = '$follower_username'";
    $result2 = mysqli_query($con, $sql);
    $follower=mysqli_fetch_assoc($result2);
    $follower_image = $follower['profile_pic']; 
 ?>
-    
+    <!--Printing out each notification one by one-->
     <div class='notification'>
+        <!--PFP-->
         <img src='<?php echo $follower_image?>' class='profile_pic'>
         
+        <!--Follower Username-->
         <a href='profile.php?user_name=<?php echo $follower_username?>'>
         <span class="followerUname"><?php echo $follower_username?></span>
         </a> started followed you on 
 
+        <!--Followed Time-->
         <span class="followedTimestamp"><?php echo date('M j, \'y, g:ia ',strtotime($followed_time)); ?></span>
     </div>
 
-
     <?php }
     ?>
-     </div>
+</div><!--END OF Container for actual follower update notifications-->
+
 <script src="js/backToTop.js"></script>
 </body>
 </html>

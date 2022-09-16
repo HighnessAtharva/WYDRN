@@ -38,7 +38,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    margin: 50px 0px 50px 100px;
+    margin: 50px auto 50px auto;
     align-items: flex-start;
     justify-content: flex-start;
 }
@@ -78,4 +78,22 @@ body {
 .followedTimestamp {
     font-size: 0.8em;
     color: rgb(56, 56, 56);
+}
+
+h1.heading {
+    text-align: center;
+    font-size: 50px;
+    text-transform: uppercase;
+    color: rgb(0, 0, 0) !important;
+    letter-spacing: 1px;
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    margin: auto;
+    min-width: 1000px;
+    margin-bottom: 50px;
+}
+
+.bell {
+    margin-top: -10px;
+    margin-right: 20px;
 }
