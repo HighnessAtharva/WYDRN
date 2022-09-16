@@ -62,7 +62,12 @@ $result = mysqli_query($con, $sql);
     
     <div class='notification'>
         <img src='<?php echo $follower_image?>' class='profile_pic'>
-        <a href='profile.php?username=<?php echo $follower_username?>'><?php echo $follower_username?></a> started followed you on <?php echo date('M j, \'y, g:ia ',strtotime($followed_time)); ?>
+        
+        <a href='profile.php?user_name=<?php echo $follower_username?>'>
+        <span class="followerUname"><?php echo $follower_username?></span>
+        </a> started followed you on 
+
+        <span class="followedTimestamp"><?php echo date('M j, \'y, g:ia ',strtotime($followed_time)); ?></span>
     </div>
 
 
