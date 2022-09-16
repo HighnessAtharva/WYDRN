@@ -99,8 +99,8 @@ h2 {
 }
 
 .fl-table thead th:nth-child(odd) {
-    color: #fff;
-    background: #324960
+    color: rgb(0, 0, 0);
+    background: #ffffff
 }
 
 .fl-table tr:nth-child(even) {

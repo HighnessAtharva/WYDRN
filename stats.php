@@ -186,7 +186,7 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
     <table class="fl-table">
       <thead>
         <tr>
-          <th colspan="2" class="heading2">General</th>
+          <th colspan="2" class="heading2"><img src="images/Icons/StatsPage/general.gif" class='header-icon'> General</th>
         </tr>
       </thead>
       <tbody>
@@ -244,7 +244,7 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
     <table class="fl-table">
       <thead>
         <tr>
-          <th colspan="2" class="heading2">Book Stats</th>
+          <th colspan="2" class="heading2"><img src="images/Icons/StatsPage/book.gif" class='header-icon'> Book Stats</th>
         </tr>
       </thead>
       <tbody>
@@ -282,7 +282,7 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
     <table class="fl-table">
       <thead>
         <tr>
-          <th colspan="2" class="heading2">Movie Stats</th>
+          <th colspan="2" class="heading2"><img src="images/Icons/StatsPage/movie.gif" class='header-icon'> Movie Stats</th>
         </tr>
       </thead>
       <tbody>
@@ -314,7 +314,7 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
     <table class="fl-table">
       <thead>
         <tr>
-          <th colspan="2" class="heading2">TV Stats</th>
+          <th colspan="2" class="heading2"><img src="images/Icons/StatsPage/tv.gif" class='header-icon'> TV Stats</th>
         </tr>
       </thead>
       <tbody>
@@ -352,7 +352,7 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
     <table class="fl-table">
       <thead>
         <tr>
-          <th colspan="2" class="heading2">VideoGame Stats</th>
+          <th colspan="2" class="heading2"><img src="images/Icons/StatsPage/videogame.gif" class='header-icon'> VideoGame Stats</th>
         </tr>
       </thead>
       <tbody>
@@ -391,7 +391,7 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
     <table class="fl-table">
       <thead>
         <tr>
-          <th colspan="2" class="heading2">Music Stats</th>
+          <th colspan="2" class="heading2"><img src="images/Icons/StatsPage/music.gif" class='header-icon'> Music Stats</th>
         </tr>
       </thead>
       <tbody>
