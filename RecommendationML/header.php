@@ -71,13 +71,13 @@ if(isset($_SESSION['user_id']))
       <span class="navbar-toggler-icon"></span>
     </button>
             <div class="collapse navbar-collapse" id="main_nav">
-                <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav" id="centerHeader">
 
                         
                      <!-- Browse Media Dropdown-->
                      <li class="nav-item dropdown">
                         <li class="nav-link" href="#" data-bs-toggle="dropdown">Browse</li>
-                        <ul class="dropdown-menu dropdown-menu-right" style="right: 290px; left: auto; margin-top:-20px">
+                        <ul class="dropdown-menu dropdown-menu-right" id="browse">
                         <li><a class="dropdown-item" href="../MediaAPIs/Book/index.php">
                             <span>&#128213 Book</span>
                             </a></li>
@@ -101,14 +101,14 @@ if(isset($_SESSION['user_id']))
                     </li>
 
                     <!-- DIARY, FEED AND SEARHC USERS -->
-                    <li class="nav-item"><a class="nav-link" href="../diary.php"> Diary </a></li>
-                    <li class="nav-item"><a class="nav-link" href="../feed.php"> Social Feed </a></li>
-                    <li class="nav-item"><a class="nav-link" href="../search_users.php"> Search Users </a></li>
+                    <li class="custom-item"><a class="nav-link" href="../diary.php"> Diary </a></li>
+                    <li class="custom-item"><a class="nav-link" href="../feed.php"> Feed </a></li>
+                    <li class="custom-item"><a class="nav-link" href="../search_users.php"> Search Users </a></li>
 
                     <!-- Your Media Dropdown -->
                     <li class="nav-item dropdown">
                         <li class="nav-link" href="#" data-bs-toggle="dropdown">Media</li>
-                        <ul class="dropdown-menu dropdown-menu-end" style="right: 0px; left: auto; margin-top:-20px">
+                        <ul class="dropdown-menu dropdown-menu-end" id="media">
                         <li><a class="dropdown-item" href="../media_book.php">
                             <span>&#128213 Book</span>
                             </a></li>
@@ -131,11 +131,15 @@ if(isset($_SESSION['user_id']))
 
                         </ul>
                     </li>
-
+                    </ul>
+    
+    
+    
+    <ul class="navbar-nav ms-auto">
 
 
                     <li class="nav-item dropdown">
-                        <li class="nav-link" href="#" data-bs-toggle="dropdown"> <img src="<?php echo $pfp;?>" class="h-10 w-10 rounded-circle" style="height:25px; width:25px;"> </li>
+                        <li class="nav-link" href="#" data-bs-toggle="dropdown" id="profile_link"> <img src="<?php echo $pfp;?>" class="h-10 w-10 rounded-circle" style="height:25px; width:25px;"> </li>
                         <ul class="dropdown-menu dropdown-menu-end" style="right: 0px; left: auto; margin-top:-20px">
                         <li><a class="dropdown-item" href="../profile.php"> 
                             <span><img src="../images/Icons/profile.png" class='header-icon'>Profile</span>
