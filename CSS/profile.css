@@ -63,11 +63,11 @@
     }
     
     .clear-icon {
-        width: 1.5em;
-        height: 1.5em;
+        width: 5em;
+        height: 5em;
         display: inline-block;
         margin-left: .8em;
-        margin-bottom: .6em;
+        margin-bottom: .651em;
         cursor: pointer;
     }
     

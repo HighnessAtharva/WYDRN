@@ -180,7 +180,7 @@ if ($query = mysqli_query($con, $sql2)) {
                             if ($_GET['user_name'] != $user_data['user_name']) {
                                 echo "hidden";
                             }
-                        } ?>><img src="images/icons/clear.svg" title="Clear Profile" class="clear-icon"></span>
+                        } ?>><img src="images/icons/clear.png" title="Clear Profile" class="clear-icon"></span>
             </span>
 
             <!----------------
