@@ -319,14 +319,17 @@ $data = array(
   <link rel="stylesheet" href="css/utility.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
   
+  <!--JQUERY CDN Link-->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  
 </head>
 
 <body>
 
   <!-- BUTTON GROUPS SERVING VARIETY OF FUNCTIONS -->
   <div class="text-center" id="btn-group"><br>
-    <button id='site-stats-btn' class='btn btn-primary'>Site Stats</button>
-    <button id='user-management-btn' class='btn btn-primary'>Manage Users</button>
+    <button id='site-stats-btn' class='button-5'>Site Stats</button>
+    <button id='user-management-btn' class='button-5'>Manage Users</button>
   </div>
 
 
@@ -545,33 +548,25 @@ $data = array(
 JAVASCRIPT 
 ------------------------------------------------------------------------------------->
   <script>
-    // TOGGLE VISIBILITY FOR BUTTON SITEWIDE STATS
-    const btnSiteStats = document.getElementById('site-stats-btn');
-    const siteStatsDiv = document.getElementById('site-stats-table');
+    
 
-    btnSiteStats.onclick = function() {
-      if (siteStatsDiv.style.display !== "none") {
-        siteStatsDiv.style.display = "none";
-      } else {
-        //set other divs to none
-        userMgmtDiv.style.display = "none";
-        siteStatsDiv.style.display = "block";
-      }
-    };
+ 
+$(document).ready(function(){
+  $("#site-stats-btn").click(function(){
+    $("#user-mgmt-table").slideUp("slow");
+    $("#site-stats-table").slideDown("slow");
+   
+  });
 
+  $("#user-management-btn").click(function(){
+    $("#site-stats-table").slideUp("slow");
+    $("#user-mgmt-table").slideDown("slow");
+ 
+ 
+  });
+});
 
-    // TOGGLE VISIBILITY FOR BUTTON USER MANAGEMENT
-    const btnUserMgmt = document.getElementById('user-management-btn');
-    const userMgmtDiv = document.getElementById('user-mgmt-table');
-    btnUserMgmt.onclick = function() {
-      if (userMgmtDiv.style.display !== "none") {
-        userMgmtDiv.style.display = "none";
-      } else {
-        //set other divs to none
-        siteStatsDiv.style.display = "none";
-        userMgmtDiv.style.display = "block";
-      }
-    };
+    
   </script>
 
 
