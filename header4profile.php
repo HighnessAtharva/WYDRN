@@ -65,7 +65,7 @@ if(isset($_SESSION['user_id']))
       <span class="navbar-toggler-icon"></span>
     </button>
             <div class="collapse navbar-collapse" id="main_nav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav" id="centerHeader">
                     
                      <!-- Browse Media Dropdown-->
                      <li class="nav-item dropdown">
@@ -128,10 +128,14 @@ if(isset($_SESSION['user_id']))
                         </ul>
                     </li>
 
-
+                    </ul>
+    
+    
+    
+    <ul class="navbar-nav ms-auto">
                     <!-- Your Account Dropdown -->
                     <li class="nav-item dropdown">
-                        <li class="nav-link" href="#" data-bs-toggle="dropdown"> <img src="<?php echo $pfp;?>" class="h-10 w-10 rounded-circle" width="25" height="25"> </li>
+                        <li class="nav-link" href="#" data-bs-toggle="dropdown"> <img src="<?php echo $pfp;?>" id="myProfilePic"> </li>
                         <ul class="dropdown-menu dropdown-menu-end" id="your-account">
                             
                             <li><a class="dropdown-item" href="profile.php"> 
@@ -151,6 +155,7 @@ if(isset($_SESSION['user_id']))
                             </a></li>
 
                         </ul>
+                        <li><a href="notifications.php"><img src="images/Icons/notification.png" id="notif-bellcon" alt="notifications"></a></li>
                     </li>
                 </ul>
             </div>

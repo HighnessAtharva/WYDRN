@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap');
 body {
     /* no selection */
     user-select: none;
@@ -34,13 +35,13 @@ body {
 }
 
 #browse {
-    right: 230px;
-    left: auto;
+    right: auto;
+    left: 90px;
     margin-top: -20px
 }
 
 #media {
-    right: 0px;
+    right: 110px;
     left: auto;
     margin-top: -20px
 }
@@ -49,4 +50,43 @@ body {
     right: 0px;
     left: auto;
     margin-top: -20px
+}
+
+#centerHeader {
+    margin-left: 50px;
+    -webkit-font-smoothing: antialiased;
+}
+
+#centerHeader>li.nav-link {
+    font-size: 18px;
+    font-family: 'Reem Kufi Ink', sans-serif;
+    transition: 0.2s;
+    margin: 0px 5px 0px 5px;
+}
+
+a.nav-link {
+    font-size: 18px;
+    font-family: 'Reem Kufi Ink', sans-serif;
+    transition: 0.2s;
+    margin: 0px 5px 0px 5px;
+}
+
+.custom-item {
+    font-family: 'Reem Kufi Ink', sans-serif;
+    transition: 0.2s;
+    color: white;
+}
+
+#notif-bellcon {
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+#myProfilePic {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    border-radius: 50%;
 }
