@@ -1,6 +1,6 @@
 /*********************************
 
-API DETAILS FOR ALBUM SEARCH
+CURRENTLY USED API DETAILS FOR ALBUM SEARCH
 
 API USED: LastFM (https://www.last.fm/api)
 Application name: WYDRN
@@ -9,6 +9,20 @@ Shared-secret: c953036f143092a6f452413b1a13d8ea
 Registered to: HighnessAtharva
 
 *********************************/
+
+/*********************************
+
+FALLBACK API DETAILS FOR ALBUM SEARCH
+
+API USED: LastFM (https://www.last.fm/api)
+Application name: WYDRN
+API Key: b1d382fb9bb938f4d5f22dd0dfe525b3
+Shared Secret: fc53ba817d4d188932fbd24b066a55f9
+Registered to: appwydrn@gmail.com
+
+*********************************/
+
+
 
 const musicKey = "6a4eb1d0536cfe3583784a65332ee179";
 const albumSearchBox = document.getElementById('movie-search-box');

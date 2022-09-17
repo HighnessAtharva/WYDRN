@@ -1,5 +1,5 @@
 /*******************************
-API DETAILS FOR VIDEOGAME SEARCH
+CURRENT API DETAILS FOR VIDEOGAME SEARCH
 
 API USED: RAWG API (https://rawg.io/apidocs)
 Application name: WYDRN
@@ -8,6 +8,22 @@ Registered to: HighnessAtharva
 Rate Limit: 20000 requests per month. Renews on 12th of every month
 
 ********************************/
+
+
+/*******************************
+FALLBACK API DETAILS FOR VIDEOGAME SEARCH
+
+API USED: RAWG API (https://rawg.io/apidocs)
+Application name: WYDRN
+API key: 132838f63ea84c3491bb7448859b8fac
+Registered to: appwydrn@gmail.com
+Rate Limit: 20000 requests per month. Renews on 17th of every month
+
+********************************/
+
+
+
+
 const gameKey = "fe197746ce494b4791441d9a9161c1be";
 const gameSearchBox = document.getElementById('movie-search-box');
 const searchList = document.getElementById('search-list');
