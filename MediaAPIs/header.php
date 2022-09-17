@@ -136,7 +136,7 @@ if(isset($_SESSION['user_id']))
 
                     <!-- Your Account Dropdown -->
                     <li class="nav-item dropdown">
-                        <li class="nav-link" href="#" data-bs-toggle="dropdown" id="profile_link"> <img src="../../<?php echo $pfp;?>" class="h-10 w-10 rounded-circle" style="height:25px; width:25px;"> </li>
+                        <li class="nav-link" href="#" data-bs-toggle="dropdown" id="profile_link"> <img src="../../<?php echo $pfp;?>" id="myProfilePic"> </li>
                         <ul class="dropdown-menu dropdown-menu-end" style="right: 0px; left: auto; margin-top:-20px">
                             
                             <li><a class="dropdown-item" href="../../profile.php"> 
@@ -156,6 +156,7 @@ if(isset($_SESSION['user_id']))
                             </a></li>
 
                         </ul>
+                        <li><a href="../../notifications.php"><img src="../../images/Icons/notification.png" id="notif-bellcon" alt="notifications"></a></li>
                     </li>
                 </ul>
             </div>

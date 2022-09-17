@@ -108,3 +108,17 @@ a.nav-link {
     transition: 0.2s;
     color: white;
 }
+
+#notif-bellcon {
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+#myProfilePic {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    border-radius: 50%;
+}
