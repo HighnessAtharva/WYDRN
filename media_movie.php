@@ -103,7 +103,7 @@ function getposterpath($name, $year)
         <!--ALL MEDIA ITEMS THAT WILL APPEAR AFTER PRELOADER-->
         <div id="content">
             <div class="heading">
-                <h1>Your Movies<span><?php echo getRandomMovieQuote() ?></span></h1>
+                <h1><img src="images/Icons/PageHeadings/movie.png" class='header-icon'> Your Movies<span><?php echo getRandomMovieQuote() ?></span></h1>
             </div>
 
             <div class="flex">

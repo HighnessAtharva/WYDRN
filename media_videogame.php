@@ -108,7 +108,7 @@ function getposterpath($name)
         <!--ALL MEDIA ITEMS THAT WILL APPEAR AFTER PRELOADER-->
         <div id="content">
             <div class="heading">
-                <h1>Your Video Games<span><?php echo getRandomVideoGameQuote(); ?> </span></h1>
+                <h1><img src="images/Icons/PageHeadings/videogame.png" class='header-icon'> Your Video Games<span><?php echo getRandomVideoGameQuote(); ?> </span></h1>
             </div>
 
             <div class="flex">

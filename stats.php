@@ -176,7 +176,7 @@ $avg_media_per_day = round($total_media_count/$interval_in_days);
 <body><button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
 
 
-  <h1 class="heading">Stats for <?php echo $username?></h1>
+  <h1 class="heading"><img src="images/Icons/PageHeadings/stats.png" class='header-icon'> Stats for <?php echo $username?></h1>
   <br>
 
 <!-----------------------------

@@ -107,7 +107,7 @@ function getposterpath($name, $artist)
         <!--ALL MEDIA ITEMS THAT WILL APPEAR AFTER PRELOADER-->
         <div id="content">
             <div class="heading">
-                <h1>Your Albums<span><?php echo getRandomAlbumQuote() ?></span></h1>
+                <h1><img src="images/Icons/PageHeadings/music.png" class='header-icon'> Your Albums<span><?php echo getRandomAlbumQuote() ?></span></h1>
             </div>
 
             <div class="flex">

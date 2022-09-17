@@ -116,7 +116,7 @@ function getposterpath($name, $author)
         <!--ALL MEDIA ITEMS THAT WILL APPEAR AFTER PRELOADER-->
         <div id="content">
             <div class="heading">
-                <h1>Your Books<span><?php echo getRandomBookQuote() ?></span></h1>
+                <h1><img src="images/Icons/PageHeadings/book.png" class='header-icon'> Your Books<span><?php echo getRandomBookQuote() ?></span></h1>
             </div>
 
 

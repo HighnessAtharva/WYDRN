@@ -50,7 +50,7 @@ $username = $user_data['user_name'];
 <body>
 <button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <div class="heading">
-        <h1>Social Feed<span>It's never too late to catch up with your friends.</span></h1>
+        <h1><img src="images/Icons/PageHeadings/feed.png" class='header-icon'> Social Feed<span>It's never too late to catch up with your friends.</span></h1>
     </div>
     <!-- 
 <div class="container"> -->

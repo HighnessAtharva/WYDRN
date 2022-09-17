@@ -45,7 +45,7 @@ require "header.php";
 
 <!--title-->
 <div class="heading">
-  <h1>Search Users<span>Find friendlies with the best tastes.</span></h1>
+  <h1><img src="images/Icons/PageHeadings/search.png" class='header-icon'> Search Users<span>Find friendlies with the best tastes.</span></h1>
 </div>
 
 <!----------------------------

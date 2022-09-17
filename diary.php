@@ -61,7 +61,7 @@ if (isset($_GET['userdate'])) {
         <center>
 
             <!-- Heading -->
-            <h1> Diary Entries For
+            <h1> <img src="images/Icons/PageHeadings/diary.png" class='header-icon'> Diary Entries For
                 <?php
                 echo $username;
                 if (!empty($date_selected)) {

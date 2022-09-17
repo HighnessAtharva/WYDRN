@@ -113,7 +113,7 @@ function getposterpath($name)
         <!--ALL MEDIA ITEMS THAT WILL APPEAR AFTER PRELOADER-->
         <div id="content">
             <div class="heading">
-                <h1>Your TV Shows<span><?php echo getRandomTvQuote() ?></span></h1>
+                <h1><img src="images/Icons/PageHeadings/tv.png" class='header-icon'> Your TV Shows<span><?php echo getRandomTvQuote() ?></span></h1>
             </div>
 
             <div class="flex">
