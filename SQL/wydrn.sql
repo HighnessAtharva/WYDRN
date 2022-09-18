@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 10, 2022 at 05:28 PM
+-- Generation Time: Sep 18, 2022 at 12:59 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -4683,7 +4683,6 @@ INSERT INTO `data` (`log_id`, `username`, `videogame`, `platform`, `album`, `art
 (12021, 'admin', 'Marvel\'s Spider-Man: Miles Morales', 'PC', 'Beethoven Greatest Hits', 'Ludwig van Beethoven', 'The Silmarillion', 'John Ronald Reuel Tolkien', 'The World of Dragon Ball Z', '2000', 'The Lord of the Rings: The Rings of Power', 'HBO Max', '2022-09-03 02:07:59', '2022-09-03'),
 (12022, 'blankacc', '', '', 'AM', 'Arctic Monkeys', '', '', '', '', '', '', '2022-09-03 15:34:09', '2022-09-03'),
 (12023, 'admin', '', '', 'System of a Down', 'System of a Down', 'AUTISM - A HANDBOOK OF DIAGNOSIS & TREATMENT OF ASD', 'Sumita Bose', '', '', '', '', '2022-09-05 14:47:00', '2022-09-05'),
-(12024, 'admin', '', '', '', '', '', '', '', '', '', '', '2022-09-05 20:55:56', '2022-09-05'),
 (12025, 'HighnessAtharva', '', '', '', '', '', '', 'Imagine Me & You', '2005', '', '', '2022-08-17 15:11:24', '2022-08-17'),
 (12026, 'HighnessAtharva', '', '', '', '', '', '', 'Dating Amber', '2020', '', '', '2022-08-17 15:11:24', '2022-08-17'),
 (12027, 'HighnessAtharva', '', '', '', '', '', '', 'Hannah Gadsby: Nanette', '2018', '', '', '2022-08-17 15:11:24', '2022-08-17'),
@@ -4902,9 +4901,9 @@ INSERT INTO `data` (`log_id`, `username`, `videogame`, `platform`, `album`, `art
 (12240, 'HighnessAtharva', 'Bubble Bobble Revolution', 'XBOX', '', '', '', '', '', '', '', '', '2022-08-17 15:11:24', '2022-08-17'),
 (12241, 'HighnessAtharva', 'The Rub Rabbits!', 'XBOX', '', '', '', '', '', '', '', '', '2022-08-17 15:11:24', '2022-08-17'),
 (12242, 'HighnessAtharva', 'Electroplankton', 'XBOX', '', '', '', '', '', '', '', '', '2022-08-17 15:11:24', '2022-08-17'),
-(12243, 'HighnessAtharva', 'LifeSigns: Surgical Unit', 'XBOX', '', '', '', '', '', '', '', '', '2022-08-17 15:11:24', '2022-08-17');
+(12243, 'HighnessAtharva', 'LifeSigns: Surgical Unit', 'XBOX', '', '', '', '', '', '', '', '', '2022-08-17 15:11:24', '2022-08-17'),
+(12244, 'HighnessAtharva', 'Space Invaders Revolution', 'XBOX', '', '', '', '', '', '', '', '', '2022-08-17 15:11:24', '2022-08-17');
 INSERT INTO `data` (`log_id`, `username`, `videogame`, `platform`, `album`, `artist`, `book`, `author`, `movie`, `year`, `tv`, `streaming`, `datetime`, `date`) VALUES
-(12244, 'HighnessAtharva', 'Space Invaders Revolution', 'XBOX', '', '', '', '', '', '', '', '', '2022-08-17 15:11:24', '2022-08-17'),
 (12245, 'HighnessAtharva', 'Wii\'s Play', 'XBOX', '', '', '', '', '', '', '', '', '2022-08-17 15:11:24', '2022-08-17'),
 (12246, 'HighnessAtharva', 'New Super Mario Bros.', 'XBOX', '', '', '', '', '', '', '', '', '2022-08-17 15:11:24', '2022-08-17'),
 (12247, 'HighnessAtharva', 'Pokmon Diamond', 'XBOX', '', '', '', '', '', '', '', '', '2022-08-17 15:11:24', '2022-08-17'),
@@ -5199,7 +5198,9 @@ INSERT INTO `data` (`log_id`, `username`, `videogame`, `platform`, `album`, `art
 (12538, 'anay', '', '', '', '', '', '', '', '', '', '', '2022-09-06 11:51:10', '2022-09-06'),
 (12559, 'HighnessAtharva', '', '', 'Moonlight Sonata', 'Maximilian Oberroither', 'Vinland Saga 1', 'Makoto Yukimura', '', '', '呪術廻戦', 'HBO Max', '2022-09-07 19:25:17', '2022-09-07'),
 (12560, 'HighnessAtharva', '', '', '', '', '', '', '', '', '', '', '2022-09-07 19:25:32', '2022-09-07'),
-(12565, 'HighnessAtharva', '', '', '', '', '', '', '', '', '呪術廻戦', 'Tencent Video', '2022-09-09 18:28:13', '2022-09-09');
+(12565, 'HighnessAtharva', '', '', '', '', '', '', '', '', '呪術廻戦', 'Tencent Video', '2022-09-09 18:28:13', '2022-09-09'),
+(12566, 'dev', 'aa', 'Playstation', 'ASTROWORLD', 'Travis Scott', 'DS-NELL', 'undefined', 'Nidahase Piya DS', '2018', 'Dev DD', 'Amazon Prime', '2022-09-15 22:07:55', '2022-09-15'),
+(12567, 'admin', '', '', '', '', '', '', '', '', '', '', '2022-09-17 22:38:13', '2022-09-17');
 
 -- --------------------------------------------------------
 
@@ -5219,16 +5220,19 @@ CREATE TABLE `social` (
 --
 
 INSERT INTO `social` (`social_id`, `follower_username`, `followed_username`, `followed_time`) VALUES
-(68, 'admin', 'dev', '2022-08-30 12:53:02'),
+(124, 'admin', 'anay', '2022-09-15 22:18:17'),
+(125, 'admin', 'dev', '2022-09-15 22:24:36'),
 (85, 'admin', 'musicbot', '2022-09-07 22:45:18'),
+(100, 'admin', 'newtrial', '2022-09-15 21:13:16'),
 (79, 'admin', 'spammer', '2022-09-03 01:13:20'),
-(75, 'admin', 'susujpeg', '2022-09-01 18:09:08'),
-(76, 'admin', 'weebshooter', '2022-09-01 18:09:12'),
+(116, 'admin', 'susujpeg', '2022-09-15 21:35:27'),
+(102, 'admin', 'weebshooter', '2022-09-15 21:19:34'),
 (1, 'anay', 'HighnessAtharva', '2022-07-28 23:43:39'),
 (25, 'anay', 'iamnikhilhaswani', '2022-08-04 23:21:27'),
 (82, 'anay', 'musicbot', '2022-09-06 11:51:53'),
 (89, 'deleteinstantly', 'weebshooter', '2022-09-10 20:52:58'),
 (3, 'dev', 'HighnessAtharva', '2022-07-23 21:36:00'),
+(126, 'dev', 'newtrial', '2022-09-16 18:21:32'),
 (98, 'HighnessAtharva', 'admin', '2022-09-10 20:57:59'),
 (99, 'HighnessAtharva', 'anay', '2022-09-10 20:58:05'),
 (66, 'HighnessAtharva', 'dev', '2022-08-26 19:34:40'),
@@ -5274,18 +5278,18 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `user_id`, `user_name`, `email`, `password`, `date`, `profile_pic`, `background_pic`, `active`, `verified`) VALUES
 (71, 862114561492, 'susujpeg', 'darlingjamiesooo@gmail.com', '$2y$10$v/ZcsYOjV7xaJKJNViD4wOyyY4ntPCPcBPRswBOAUh5y7aZbBZPYS', '2022-07-29', 'images/users/110321yeeeee.JPG', 'images/website/defaultBackground.jpg', 0, 0),
-(114, 32726220398725619, 'HighnessAtharva', 'HighnessAtharva@gmail.com', '$2y$10$ZeP9Q74TiPysJ.LnGiBMk.z99iamuzQXIUrCZXQyX7SyriWz7.2X6', '2022-07-29', 'images/users/025224header_button.gif', 'images/users/025636giphy.gif', 1, 1),
+(114, 32726220398725619, 'HighnessAtharva', 'HighnessAtharva@gmail.com', '$2y$10$22Me5uF9WrkVmpFjBbodS.muSeeEUYj4j/fytrPvxFgX8kXq9DQye', '2022-07-29', 'images/users/025224header_button.gif', 'images/users/025636giphy.gif', 0, 1),
 (119, 74383560500, 'weebshooter', 'abcdefg@gmail.com', '$2y$10$k.Av6PfUY3W2U3VVqWix6.Pnl20agyynHFpigOtz/O5kjRUFgcLSy', '2022-07-27', 'images/users/095843atharva.png', 'images/website/defaultBackground.jpg', 0, 0),
 (120, 43960315659, 'musicbot', 'mycloudbackupmusic@gmail.com', '$2y$10$743rMLwA7DoSe.SoMkt1/OHx7CLKyY.8kaZDAsJBTb71c/yE1V.fa', '2022-07-29', 'images/users/031519tmp_1608820741507.jpg', 'images/users/a0127997326_10.jpg', 0, 1),
 (121, 36627543520, 'anay', 'anaydesh1234@gmail.com', '$2y$10$R0cvJsbAK8w9AuqsUWuC8ONh0J9x/wWOzfPubwHkBxClv/KDGYz2a', '2022-07-29', 'images/users/074309atharva.png', 'images/users/074427ksdkkasd.JPG', 0, 1),
-(122, 5784303861, 'dev', 'dummymail2069@gmail.com', '$2y$10$V/cOlDorenUUcbJyn8p0qO1NO4hE019f/f7LF0hvufhahCaWszZMK', '2022-07-29', 'images/users/070935pexelsabstract992.jpg', 'images/users/070935hm.JPG', 0, 0),
+(122, 5784303861, 'dev', 'dummymail2069@gmail.com', '$2y$10$V/cOlDorenUUcbJyn8p0qO1NO4hE019f/f7LF0hvufhahCaWszZMK', '2022-07-29', 'images/users/063053griffith-2-gif', 'images/users/063039elden-ring-eternal-queen-sdo2qgcc593i6l6l-sdo2qgcc593i6l6l-jpg', 0, 0),
 (129, 144524083361, 'spammer', 'westerospatriot@gmail.com', '$2y$10$.hKTqLDk6sqIyW2bjrjPKuy1M3iQFPkNPbZjv1J/V/TU1LLqFB5Dm', '2022-07-29', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 1),
 (132, 52299518413, 'iamnikhilhaswani', 'whonikhilhaswani@gmail.com', '$2y$10$22Me5uF9WrkVmpFjBbodS.muSeeEUYj4j/fytrPvxFgX8kXq9DQye', '2022-08-01', 'images/users/0330362367_getpng.png', 'images/users/032845asasd.JPG', 0, 0),
-(135, 9567113, 'admin', 'appwydrn@gmail.com', '$2y$10$22Me5uF9WrkVmpFjBbodS.muSeeEUYj4j/fytrPvxFgX8kXq9DQye', '2022-08-06', 'images/users/08552481caed87385279ab0607bf1c82510789.png', 'images/users/085551giphy.gif', 0, 0),
+(135, 9567113, 'admin', 'appwydrn@gmail.com', '$2y$10$22Me5uF9WrkVmpFjBbodS.muSeeEUYj4j/fytrPvxFgX8kXq9DQye', '2022-08-06', 'images/users/062820griffith-2-gif', 'images/users/062837sssdsd-jpg', 1, 1),
 (175, 3903035397, 'icameisaw', 'ipraissdsethelord@gmail.com', '$2y$10$wsgD6nxsf6G8JpMf/X/8UutFHyHsQvmGc9xq5UAT0pUf2ICyEKTpO', '2022-08-28', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
 (179, 5552355716351, 'deletemesoon', 'shdjkhasjdkhK@gmail.com', '$2y$10$JmBQqBUE1Q/QUQ6vk7Y86eKdMqraVYqLbXP84mNhLp9P8oS9WV5lW', '2022-08-29', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
 (180, 438964, 'blankacc', 'doomslayer99@gmail.com', '$2y$10$avthwRqPQB1kNyxZSxbCiOcy37/QUMT1qo5k0nhkg44Ftqd7SxDFa', '2022-08-31', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
-(181, 451754014418306, 'deleteinstantly', 'hitherehello@mail.com', '$2y$10$AjSEnSZXkeWdqVHxds2dtOifxa5NwOYGRRV3NdCqYd0SJMKhRX3Tq', '2022-09-03', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 0, 0),
+(181, 451754014418306, 'deleteinstantly', 'hitherehello@mail.com', '$2y$10$AjSEnSZXkeWdqVHxds2dtOifxa5NwOYGRRV3NdCqYd0SJMKhRX3Tq', '2022-09-03', 'images/website/defaultPFP.png', 'images/website/defaultBackground.jpg', 1, 0),
 (183, 9223372036854775807, 'newtrial', 'iasjdkasdasd@gmail.com', '$2y$10$iHTaeL6kuyCPK5I4A4QOZu7QEmZvPzGT6i6YVxEy75fQ9vkX723ii', '2022-09-10', 'images/users/052637twrske0akyf81.png', 'images/users/0526483.png', 0, 0);
 
 --
@@ -5322,13 +5326,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `data`
 --
 ALTER TABLE `data`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12566;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12568;
 
 --
 -- AUTO_INCREMENT for table `social`
 --
 ALTER TABLE `social`
-  MODIFY `social_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `social_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT for table `users`
