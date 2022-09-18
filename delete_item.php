@@ -19,11 +19,21 @@ require "connection.php";
 require "functions.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
+function sendLettersToBack($bkName){
+    if(substr($bkName, 0, 4)=='The '){
+        $bkName = substr($bkName, 4). ', The';
+    }
+    elseif(substr($bkName, 0, 2)=='A '){
+        $bkName = substr($bkName, 2). ', A';
+    }
+    return $bkName;
+}
 
 
 // When user clicks on delete button on media_book.php
 if(isset($_GET['book'])){
     $bookToDelete =  $_GET['book'];
+    $bookToDelete =sendLettersToBack($bookToDelete);
     // echo $bookToDelete;
     //do not delete the entire row as it contians the other media items. Instead update the book field and the author field to nullable string values.
     $sql = "UPDATE `data` SET `book` = '', `author`='' WHERE `username` = '$username' AND `book` = '$bookToDelete'";

@@ -47,19 +47,19 @@
     }
     
     .follow-icon {
-        width: 1.5em;
-        height: 1.5em;
+        width: 1.8em;
+        height: 1.8em;
         display: inline-block;
         margin-left: .8em;
-        margin-bottom: .6em
+        margin-bottom: .8em
     }
     
     .unfollow-icon {
-        width: 1.5em;
-        height: 1.5em;
+        width: 1.8em;
+        height: 1.8em;
         display: inline-block;
         margin-left: .8em;
-        margin-bottom: .6em
+        margin-bottom: .8em
     }
     
     .clear-icon {
