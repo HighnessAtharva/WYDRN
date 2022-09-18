@@ -368,7 +368,7 @@ function getposterpath($name, $author)
             $('.delete-item').click(function() {
                 var bookName = $(this).closest('.card-grid-space').find('.moviename').text();
                 var parent = $(this).parent("div").parent("div");
-                // console.log(bookName);
+                console.log(bookName);
 
                 $.ajax({
                     type: "GET",

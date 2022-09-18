@@ -444,6 +444,11 @@ li.fancyTab.active a {
     font-size: 15px;
 }
 
+.myDesc a {
+    font-family: 'Source Sans Pro';
+    font-size: 15px;
+}
+
 
 /*******************
 END OF FEATURES SECTION
