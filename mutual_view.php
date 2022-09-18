@@ -220,7 +220,7 @@ $total_mutual_media_count = get_mutual_media_count($me, $otheruser)[5];
 
 <body><button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <div class="heading">
-        <h1>Mutual View<span>Media items you<?php echo (" & " . $otheruser) ?> have in common</span></h1>
+        <h1><img src="images/Icons/mutualmedia.png" class='header-icon'> Mutual View<span>Media items you<?php echo (" & " . $otheruser) ?> have in common</span></h1>
     </div>
 
     <!------------------------------------------

@@ -268,10 +268,10 @@ if ($query = mysqli_query($con, $sql2)) {
                         $result = mysqli_num_rows($query);
                         if ($result == 0) {
                             // echo "Follow";
-                            echo "<img src='images/icons/follow.svg' class='follow-icon' title='Follow User'>";
+                            echo "<img src='images/icons/follow.png' class='follow-icon' title='Follow User'>";
                         } else {
                             // echo "Unfollow";
-                            echo "<img src='images/icons/unfollow.svg' class='unfollow-icon' title='Unfollow User'>";
+                            echo "<img src='images/icons/unfollow.png' class='unfollow-icon' title='Unfollow User'>";
                         }
                     }
                     ?>
