@@ -24,8 +24,8 @@ $username = $user_data['user_name'];
 <html lang="en">
 
 <head>
-<meta name="description" content="" />
-  <meta name="keywords" content="" />
+<meta name="description" content="send email to verify account" />
+  <meta name="keywords" content="WYDRN, verify" />
     <title>
         WYDRN - Verification
     </title>

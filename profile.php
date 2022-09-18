@@ -119,8 +119,8 @@ if ($query = mysqli_query($con, $sql2)) {
 
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta name="description" content="profile page of users" />
+    <meta name="keywords" content="WYDRN, profile" />
     <link href="CSS/profile.css" rel="stylesheet">
 
 

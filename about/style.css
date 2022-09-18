@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 * {
     box-sizing: border-box;
 }
@@ -57,7 +59,7 @@ img {
 
 .article h1,
 .article p {
-    font-family: "Lora", serif;
+    font-family: "Poppins", sans-serif;
     font-size: 1rem;
     border-radius: 10px;
     background: rgb(255, 255, 255);
@@ -181,6 +183,7 @@ nav::after {
     text-decoration: none;
     z-index: 1;
     transition: color 150ms;
+    font-family: 'Bungee Spice', cursive;
 }
 
 .nav__link:hover,

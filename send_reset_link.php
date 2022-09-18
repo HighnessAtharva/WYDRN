@@ -30,8 +30,8 @@ require("functions.php");
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
+  <meta name="description" content="sends reset password link to the user's email" />
+  <meta name="keywords" content="WYDRN, send reset link" />
   <title> WYDRN - Password Reset</title>
   
   <link rel="stylesheet" href="css/others/bootstrap-reboot.min.css">

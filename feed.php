@@ -32,8 +32,8 @@ $username = $user_data['user_name'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="" />
-  <meta name="keywords" content="" />
+    <meta name="description" content="Shows activity of followed users" />
+  <meta name="keywords" content="WYDRN, feed" />
     <title>WYDRN - Social Feed</title>
 
     <!--Bootstrap Link-->

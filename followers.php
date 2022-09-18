@@ -30,8 +30,8 @@ $username = $user_data['user_name'];
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="description" content="" />
-  <meta name="keywords" content="" />
+      <meta name="description" content="shows followers of the loggedin user" />
+  <meta name="keywords" content="WYDRN, followers" />
       <title>WYDRN - Followers</title>
 
       <!--ORDER OF PLACING CSS CDN AND SCRIPT IS IMPORTANT. CUSTOM CSS COMES LAST AS WE OVERRIDE BOOTSTRAP CLASSES.-->
