@@ -46,6 +46,9 @@ if (empty($_SESSION)) {
 <body>
 <button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <div class="container">
+        
+        <button class="button-5" onclick="window.location.href='../profile.php'">🔙</button>
+
         <div class="heading">
             <h1><img src="../images/Icons/PageHeadings/importexport.png" class='header-icon'> Import & Export<span>Seamless Backup & Recovery. Instantaneous and Absolute.</span></h1>
         </div>
@@ -145,7 +148,7 @@ if (empty($_SESSION)) {
                 <div class="tab-pane  fade active in" id="tabBody0" role="tabpanel" aria-labelledby="tab0" aria-hidden="false" tabindex="0">
                     <div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 myDesc">
                                 <p><b>Goodreads</b> is a website that allows you to keep a catalogue of your books. You can import your books from Goodreads and add them to WYDRN. </p>
                                 <li>
                                     <b>Step 1:</b> Go to <a href="https://www.goodreads.com/user/sign_in">https://www.goodreads.com/user/sign_in</a> and sign in with your Goodreads account.
@@ -172,7 +175,7 @@ if (empty($_SESSION)) {
                 <!--RYM IMPORT-->
                 <div class="tab-pane  fade" id="tabBody1" role="tabpanel" aria-labelledby="tab1" aria-hidden="true" tabindex="0">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 myDesc">
                             <p><b> Rate Your Music </b> is a website that allows you to keep a catalogue of your albums. You can import your albums from RYM and add them to WYDRN.</p>
                             <li>
                                 <b>Step 1:</b> Go to <a href="https://rateyourmusic.com/">https://rateyourmusic.com/</a> and sign in with your RYM account.
@@ -193,7 +196,7 @@ if (empty($_SESSION)) {
                 <!--IMDB IMPORT-->
                 <div class="tab-pane  fade" id="tabBody2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true" tabindex="0">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 myDesc">
                             <!--IMDB-->
                             <p><b>IMDB</b> is a website that allows you to keep a catalogue of your movies. You can import your movies from IMDB and add them to WYDRN. </p>
                             <li>
@@ -236,7 +239,7 @@ if (empty($_SESSION)) {
                 <!--STEAM IMPORT-->
                 <div class="tab-pane  fade" id="tabBody3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true" tabindex="0">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 myDesc">
                             <p><b>Steam</b> is a website that allows you to keep a catalogue of your videogames. You can import your videogames from Steam and add them to WYDRN. </p>
                             <li>
                                 <b>Step 1:</b> Go to <a href="https://store.steampowered.com/">https://store.steampowered.com/</a> and sign in with your Steam account.
@@ -260,7 +263,7 @@ if (empty($_SESSION)) {
                 <!--TRAKT.TV IMPORT-->
                 <div class="tab-pane  fade" id="tabBody4" role="tabpanel" aria-labelledby="tab4" aria-hidden="true" tabindex="0">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 myDesc">
                             <p><b>Trakt tv</b> is a website that allows you to keep a catalogue of your TV Shows. You can import your TV Shows from Trakt and add them to WYDRN. </p>
                             <li>
                                 <b>Step 1:</b> Go to <a href="https://trakt.tv/">https://trakt.tv/</a> and sign in with your Trakt account.

@@ -583,3 +583,15 @@
         box-shadow: #3c4fe0 0 3px 7px inset;
         transform: translateY(2px);
     }
+    
+    button:disabled,
+    button[disabled] {
+        margin-top: 10px;
+        background-image: radial-gradient(100% 100% at 100% 0, #464646 0, #7b7b7b 100%);
+        padding: 30px;
+    }
+    
+    button:disabled,
+    button[disabled]:hover {
+        box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #000000 0 -3px 0 inset;
+    }

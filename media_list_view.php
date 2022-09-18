@@ -17,6 +17,15 @@ require "connection.php";
 require "functions.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
+function bringLettersToFront($bkName){
+  if(substr($bkName, -5)==', THE'){
+      $bkName = 'The '.substr($bkName, 0, -5);
+  }
+  elseif(substr($bkName, -3)==', A'){
+      $bkName = 'A ' .substr($bkName, 0, -3);
+  }
+  return $bkName;
+}
 
 ?>
 
@@ -75,6 +84,7 @@ if (isset($_GET['book'])) {
       </thead>';
       while ($row = mysqli_fetch_assoc($query)) {
         $book = strtoupper($row['book']);
+        $book= bringLettersToFront($book);
         $author = strtoupper($row['author']);
         $date = $row['date'];
         $date = printable_date($date);
@@ -247,10 +257,11 @@ if (isset($_GET['videogame'])) {
     $totalcount = mysqli_num_rows($query);
     if ($totalcount > 0) {
       ?>
-
+     
       <div class="backToGrid">
             <a href="media_videogame.php"><img src="images/Icons/grid.png" height="30px" width="30px"></a>
       </div>
+     
       
             <?php
 

@@ -19,6 +19,13 @@ include "../../functions.php";
 include "../header.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
+
+$disabled = false;
+if (getTotalAlbumCountUnique($con, $username) < 30) {
+    $disabled = true;
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +73,15 @@ $username = $user_data['user_name'];
 
             <!--GET ALBUM RECOMMENDATIONS-->
             <div>
-                <button class="button-29" role="button"  onclick="window.location.href='../../RecommendationML/index.php?album'">Get Album Recommendations</button>
+                <button <?php if ($disabled == true) echo 'disabled'; ?> class="button-29" role="button"  onclick="window.location.href='../../RecommendationML/index.php?album'">
+                
+                <?php 
+                if ($disabled == true) 
+                    echo 'Log 30 Unique Albums to <br>Unlock Recommendations'; 
+                else 
+                    echo ' Get Album Recommendations';
+                ?>
+                </button>
             </div>
         </div>
         <!--------------------------

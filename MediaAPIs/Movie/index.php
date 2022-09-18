@@ -18,6 +18,12 @@ include "../../functions.php";
 include "../header.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
+
+$disabled = false;
+if (getTotalMoviesCountUnique($con, $username) < 30) {
+    $disabled = true;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +70,15 @@ $username = $user_data['user_name'];
 
             <!--GET MOVIE RECOMMENDATIONS-->
             <div>
-                <button class="button-29" role="button" onclick="window.location.href='../../RecommendationML/index.php?movie'">Get Movie Recommendations</button>
+                <button <?php if ($disabled == true) echo 'disabled'; ?> class="button-29" role="button" onclick="window.location.href='../../RecommendationML/index.php?movie'">
+                <?php 
+                if ($disabled == true) 
+                    echo 'Log 30 Unique Movies to <br>Unlock Recommendations'; 
+                else 
+                    echo ' Get Movie Recommendations';
+                ?>
+    
+               </button>
             </div>
 
         </div>

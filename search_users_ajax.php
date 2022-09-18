@@ -25,7 +25,8 @@ if (isset($_POST['search'])) {
    //filter out logged in users username.
    $query = "SELECT `user_name`, `profile_pic` FROM `users` WHERE `user_name` LIKE '%$name%' and `user_name`!='$username' LIMIT 5";
    $exec = mysqli_query($con, $query);
-   while ($result = mysqli_fetch_assoc($exec)) {
+   if(mysqli_num_rows($exec) > 0){
+       while ($result = mysqli_fetch_assoc($exec)) {
 ?>
 
       <center>
@@ -56,6 +57,8 @@ if (isset($_POST['search'])) {
 
       <!-- Below php code is just for closing parenthesis. Don't be confused. -->
 <?php
+   }}else{
+      echo "<div class='no-res'>No Results Found</div>";
    }
 }
 mysqli_close($con);

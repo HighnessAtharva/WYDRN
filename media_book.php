@@ -18,6 +18,16 @@ require "functions.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 
+function bringLettersToFront($bkName){
+    if(substr($bkName, -5)==', The'){
+        $bkName = 'The '.substr($bkName, 0, -5);
+    }
+    elseif(substr($bkName, -3)==', A'){
+        $bkName = 'A ' .substr($bkName, 0, -3);
+    }
+    return $bkName;
+}
+
 function getposterpath($name, $author)
 {
     $merge = $name . "+" . $author;
@@ -274,7 +284,7 @@ function getposterpath($name, $author)
 
                                 </div>
 
-                                <h1 class='moviename'><?php echo $book_name; ?></h1>
+                                <h1 class='moviename'><?php echo bringLettersToFront($book_name); ?></h1>
                                 <div class='tags'>
                                     <div class='tag'><?php echo $book_author ?></div>
                                 </div>

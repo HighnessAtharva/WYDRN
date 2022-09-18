@@ -19,6 +19,12 @@ include "../../functions.php";
 include "../header.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
+
+$disabled = false;
+if (getTotalVideogameCountUnique($con, $username) < 30) {
+    $disabled = true;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +72,12 @@ $username = $user_data['user_name'];
 
             <!--GET VIDEOGAME RECOMMENDATIONS-->
             <div>
-                <button class="button-29" role="button" onclick="window.location.href='../../RecommendationML/index.php?videogame'">Get Videogame Recommendations</button>
+                <button <?php if ($disabled == true) echo 'disabled';?> class="button-29" role="button" onclick="window.location.href='../../RecommendationML/index.php?videogame'"><?php 
+                if ($disabled == true) 
+                    echo 'Log 30 Unique Videogames to<br>Unlock Recommendations'; 
+                else 
+                    echo ' Get Videogame Recommendations';
+                ?></button>
             </div>
         </div>
         <!--------------------------

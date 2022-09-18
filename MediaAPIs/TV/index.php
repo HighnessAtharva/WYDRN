@@ -19,6 +19,12 @@ include "../../functions.php";
 include "../header.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
+
+$disabled = false;
+if (getTotalTVCountUnique($con, $username) < 30) {
+    $disabled = true;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +73,14 @@ $username = $user_data['user_name'];
 
             <!--GET TV RECOMMENDATIONS-->
             <div>
-                <button class="button-29" role="button" onclick="window.location.href='../../RecommendationML/index.php?tv'">Get TV Recommendations</button>
+                <button <?php if ($disabled == true) echo 'disabled';?> class="button-29" role="button" onclick="window.location.href='../../RecommendationML/index.php?tv'">
+                <?php 
+                if ($disabled == true) 
+                    echo 'Log 30 Unique TV Shows to <br>Unlock Recommendations'; 
+                else 
+                    echo ' Get TV Show Recommendations';
+                ?>
+            </button>
             </div>
         </div>
         <!--------------------------
