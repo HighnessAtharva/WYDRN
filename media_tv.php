@@ -112,10 +112,44 @@ function getposterpath($name)
 
         <!--ALL MEDIA ITEMS THAT WILL APPEAR AFTER PRELOADER-->
         <div id="content">
-            <div class="heading">
-                <h1><img src="images/Icons/PageHeadings/tv.png" class='header-icon'> Your TV Shows<span><?php echo getRandomTvQuote() ?></span></h1>
-            </div>
+            
+        <!--TITLE BANNER ANIMATED-->
+        <div class="my_container">
+                <h1 class="my-title">YOUR <br>TV SHOWS<br><sub class="my-subtitle"><?php echo  getRandomTvQuote(); ?> </sub>
+                </h1>
+                <h1 class="my-title my-title-large">YOUR <br>TV SHOWS</h1>
 
+
+                <div id="img-1" class="img-container">
+                    <img class="img" src="images/website/assets/banners/tv/1.jpg">
+                </div>
+
+                <div class="img-container second-animation">
+                    <img class="img" src="images/website/assets/banners/tv/2.jpg">
+                </div>
+
+                <div class="img-container third-animation">
+                    <img class="img" src="images/website/assets/banners/tv/3.jpg">
+                </div>
+
+                <div class="img-container fourth-animation">
+                    <img class="img nba" src="images/website/assets/banners/tv/4.jpg">
+                </div>
+
+                <div class="img-container fifth-animation">
+                    <img class="img" src="images/website/assets/banners/tv/5.jpg">
+                </div>
+
+                <div id="img-6" class="img-container sixth-animation">
+                    <img class="img" src="images/website/assets/banners/tv/6.jpg">
+                </div>
+
+                <div id="img-7" class="img-container seventh-animation">
+                    <img class="img" src="images/website/assets/banners/tv/7.jpg">
+                </div>
+            </div>
+            <!--END OF TITLE BANNER ANIMATED-->
+ 
             <div class="flex">
                 <!-- Sorting Functionality -->
                 <form method="get" action="" name="sort">

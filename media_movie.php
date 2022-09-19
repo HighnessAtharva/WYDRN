@@ -102,9 +102,44 @@ function getposterpath($name, $year)
 
         <!--ALL MEDIA ITEMS THAT WILL APPEAR AFTER PRELOADER-->
         <div id="content">
-            <div class="heading">
-                <h1><img src="images/Icons/PageHeadings/movie.png" class='header-icon'> Your Movies<span><?php echo getRandomMovieQuote() ?></span></h1>
+              <!--TITLE BANNER ANIMATED-->
+              <div class="my_container">
+                <h1 class="my-title">YOUR MOVIES<br><sub class="my-subtitle"><?php echo  getRandomMovieQuote(); ?> </sub>
+                </h1>
+                <h1 class="my-title my-title-large">YOUR MOVIES</h1>
+
+
+                <div id="img-1" class="img-container">
+                    <img class="img" src="images/website/assets/banners/movies/1.jpg">
+                </div>
+
+                <div class="img-container second-animation">
+                    <img class="img" src="images/website/assets/banners/movies/2.jpg">
+                </div>
+
+                <div class="img-container third-animation">
+                    <img class="img" src="images/website/assets/banners/movies/3.jpg">
+                </div>
+
+                <div class="img-container fourth-animation">
+                    <img class="img nba" src="images/website/assets/banners/movies/4.jpg">
+                </div>
+
+                <div class="img-container fifth-animation">
+                    <img class="img" src="images/website/assets/banners/movies/5.jpg">
+                </div>
+
+                <div id="img-6" class="img-container sixth-animation">
+                    <img class="img" src="images/website/assets/banners/movies/6.jpg">
+                </div>
+
+                <div id="img-7" class="img-container seventh-animation">
+                    <img class="img" src="images/website/assets/banners/movies/7.jpg">
+                </div>
             </div>
+            <!--END OF TITLE BANNER ANIMATED-->
+
+        
 
             <div class="flex">
                 <!-- Sorting Functionality -->

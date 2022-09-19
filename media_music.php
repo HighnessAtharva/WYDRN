@@ -106,9 +106,44 @@ function getposterpath($name, $artist)
 
         <!--ALL MEDIA ITEMS THAT WILL APPEAR AFTER PRELOADER-->
         <div id="content">
-            <div class="heading">
-                <h1><img src="images/Icons/PageHeadings/music.png" class='header-icon'> Your Albums<span><?php echo getRandomAlbumQuote() ?></span></h1>
+            
+         <!--TITLE BANNER ANIMATED-->
+         <div class="my_container">
+                <h1 class="my-title">YOUR <br>ALBUMS<br><sub class="my-subtitle"><?php echo getRandomAlbumQuote(); ?> </sub>
+                </h1>
+                <h1 class="my-title my-title-large">YOUR <br>ALBUMS</h1>
+
+
+                <div id="img-1" class="img-container">
+                    <img class="img" src="images/website/assets/banners/music/1.jpg">
+                </div>
+
+                <div class="img-container second-animation">
+                    <img class="img" src="images/website/assets/banners/music/2.jpg">
+                </div>
+
+                <div class="img-container third-animation">
+                    <img class="img" src="images/website/assets/banners/music/3.jpg">
+                </div>
+
+                <div class="img-container fourth-animation">
+                    <img class="img nba" src="images/website/assets/banners/music/4.jpg">
+                </div>
+
+                <div class="img-container fifth-animation">
+                    <img class="img" src="images/website/assets/banners/music/5.jpg">
+                </div>
+
+                <div id="img-6" class="img-container sixth-animation">
+                    <img class="img" src="images/website/assets/banners/music/6.jpg">
+                </div>
+
+                <div id="img-7" class="img-container seventh-animation">
+                    <img class="img" src="images/website/assets/banners/music/7.jpg">
+                </div>
             </div>
+            <!--END OF TITLE BANNER ANIMATED-->
+       
 
             <div class="flex">
                 <!-- Sorting Functionality -->

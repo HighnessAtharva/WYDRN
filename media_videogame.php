@@ -55,7 +55,7 @@ function getposterpath($name)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="shows videogames added by the user" />
-  <meta name="keywords" content="WYDRN, media videogame" />
+    <meta name="keywords" content="WYDRN, media videogame" />
     <title>WYDRN - Your Video Games</title>
 
     <!--Bootstrap Link-->
@@ -105,11 +105,47 @@ function getposterpath($name)
         </div>
         <!--END OF PRELOADER-->
 
+
+
         <!--ALL MEDIA ITEMS THAT WILL APPEAR AFTER PRELOADER-->
         <div id="content">
-            <div class="heading">
-                <h1><img src="images/Icons/PageHeadings/videogame.png" class='header-icon'> Your Video Games<span><?php echo getRandomVideoGameQuote(); ?> </span></h1>
+
+            <!--TITLE BANNER ANIMATED-->
+            <div class="my_container">
+                <h1 class="my-title"> YOUR VIDEOGAMES<br> <sub class="my-subtitle"><?php echo getRandomVideoGameQuote(); ?> </sub>
+                </h1>
+                <h1 class="my-title my-title-large">YOUR VIDEOGAMES</h1>
+
+
+                <div id="img-1" class="img-container">
+                    <img class="img" src="images/website/assets/banners/games/1.jpg">
+                </div>
+
+                <div class="img-container second-animation">
+                    <img class="img" src="images/website/assets/banners/games/2.jpg">
+                </div>
+
+                <div class="img-container third-animation">
+                    <img class="img" src="images/website/assets/banners/games/3.jpg">
+                </div>
+
+                <div class="img-container fourth-animation">
+                    <img class="img nba" src="images/website/assets/banners/games/4.jpg">
+                </div>
+
+                <div class="img-container fifth-animation">
+                    <img class="img" src="images/website/assets/banners/games/5.jpg">
+                </div>
+
+                <div id="img-6" class="img-container sixth-animation">
+                    <img class="img" src="images/website/assets/banners/games/6.jpg">
+                </div>
+
+                <div id="img-7" class="img-container seventh-animation">
+                    <img class="img" src="images/website/assets/banners/games/7.png">
+                </div>
             </div>
+
 
             <div class="flex">
                 <!-- Sorting Functionality -->
