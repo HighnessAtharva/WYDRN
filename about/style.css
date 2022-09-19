@@ -42,7 +42,7 @@ img {
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 .article {
     margin-top: -550px;
-    width: 45vw;
+    width: 47vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,7 +52,7 @@ img {
     margin-bottom: 5px;
     color: black;
     font-weight: 300;
-    margin-left: -100px;
+    margin-left: -130px;
     height: max-content;
     max-height: fit-content;
 }
@@ -80,11 +80,11 @@ img {
 }
 
 #section_2_article {
-    margin-top: -580px;
+    margin-top: -710px;
 }
 
 #section_3_article {
-    margin-top: -690px;
+    margin-top: -650px;
 }
 
 section {
