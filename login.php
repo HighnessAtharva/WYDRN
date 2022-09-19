@@ -124,7 +124,7 @@ mysqli_close($con);
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="google-signin-client_id" content="518704041766-41bs6d5lc0c0d8e08692m43isb78sv2b.apps.googleusercontent.com">
 	<meta name="description" content="login page for users to login" />
-  <meta name="keywords" content="WYDRN, login" />
+ 	<meta name="keywords" content="WYDRN, login" />
 	<title>WYDRN - Login</title>
 
 	<!--- BOOTSTRAP CDN ---->

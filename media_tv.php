@@ -56,7 +56,7 @@ function getposterpath($name)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="shows tv series added by the user" />
-  <meta name="keywords" content="WYDRN, media tv" />
+    <meta name="keywords" content="WYDRN, media tv" />
     <title>WYDRN - Your TV Shows</title>
 
     <!--Bootstrap Link-->
