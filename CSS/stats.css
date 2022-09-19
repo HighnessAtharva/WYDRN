@@ -2,7 +2,7 @@
     text-align: center;
     font-size: 50px;
     text-transform: uppercase;
-    color: #222;
+    color: rgb(255, 255, 255);
     letter-spacing: 1px;
     font-family: "Playfair Display", serif;
     font-weight: 400;
@@ -20,11 +20,14 @@
 body {
     font-family: "Open Sans", Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
-    background: rgba(71, 147, 227, 1);
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     margin-top: 150px;
+    background-color: #757575;
+    opacity: 1;
+    background-image: radial-gradient(circle at center center, #68faff, #757575), repeating-radial-gradient(circle at center center, #68faff, #68faff, 10px, transparent 20px, transparent 10px);
+    background-blend-mode: multiply;
 }
 
  ::-webkit-scrollbar {
