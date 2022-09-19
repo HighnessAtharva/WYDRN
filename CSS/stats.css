@@ -1,178 +1,178 @@
-.heading {
-    text-align: center;
-    font-size: 50px;
-    text-transform: uppercase;
-    color: rgb(255, 255, 255);
-    letter-spacing: 1px;
-    font-family: "Playfair Display", serif;
-    font-weight: 400;
-    margin: auto;
-    margin-top: 50px;
-    min-width: 1000px
-}
-
-* {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box
-}
-
-body {
-    font-family: "Open Sans", Helvetica, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    margin-top: 150px;
-    background-color: #757575;
-    opacity: 1;
-    background-image: radial-gradient(circle at center center, #68faff, #757575), repeating-radial-gradient(circle at center center, #68faff, #68faff, 10px, transparent 20px, transparent 10px);
-    background-blend-mode: multiply;
-}
-
- ::-webkit-scrollbar {
-    width: 8px
-}
-
- ::-webkit-scrollbar-track {
-    background: #f1f1f1
-}
-
- ::-webkit-scrollbar-thumb {
-    background: #888
-}
-
- ::-webkit-scrollbar-thumb:hover {
-    background: #555
-}
-
-.heading2 {
-    font-size: 30px;
-    text-transform: uppercase;
-    color: #222;
-    letter-spacing: 1px;
-    font-family: "Playfair Display", serif;
-    font-weight: 400;
-    margin-top: 50px;
-    min-width: fit-content;
-    margin-right: auto;
-    border: 1px solid #222
-}
-
-h2 {
-    text-align: center;
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #fff;
-    padding: 30px 0
-}
-
-.table-wrapper {
-    margin: 10px 70px 70px;
-    box-shadow: 0 35px 50px rgba(0, 0, 0, 0.2)
-}
-
-.fl-table {
-    border-radius: 5px;
-    font-size: 15px;
-    font-weight: 400;
-    border: none;
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 100%;
-    white-space: nowrap;
-    background-color: #fff
-}
-
-.fl-table td,
-.fl-table th {
-    text-align: center;
-    padding: 8px
-}
-
-.fl-table td {
-    border-right: 1px solid #f8f8f8;
-    font-size: 15px
-}
-
-.fl-table thead th {
-    color: #fff;
-    background: #4FC3A1
-}
-
-.fl-table thead th:nth-child(odd) {
-    color: rgb(0, 0, 0);
-    background: #ffffff
-}
-
-.fl-table tr:nth-child(even) {
-    background: #F8F8F8
-}
-
-@media (max-width: 767px) {
-    .fl-table {
-        display: block;
-        width: 100%
+    .heading {
+        text-align: center;
+        font-size: 50px;
+        text-transform: uppercase;
+        color: rgb(255, 255, 255);
+        letter-spacing: 1px;
+        font-family: "Playfair Display", serif;
+        font-weight: 400;
+        margin: 50px auto 50px auto;
+        min-width: 1000px
     }
-    .table-wrapper:before {
-        content: "Scroll horizontally >";
-        display: block;
-        text-align: right;
-        font-size: 11px;
+    
+    * {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box
+    }
+    
+    body {
+        font-family: "Open Sans", Helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        margin-top: 150px;
+        background-color: #757575;
+        opacity: 1;
+        background-image: radial-gradient(circle at center center, #68faff, #757575), repeating-radial-gradient(circle at center center, #68faff, #68faff, 10px, transparent 20px, transparent 10px);
+        background-blend-mode: multiply;
+    }
+    
+     ::-webkit-scrollbar {
+        width: 8px
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: #f1f1f1
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #888
+    }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: #555
+    }
+    
+    .heading2 {
+        font-size: 30px;
+        text-transform: uppercase;
+        color: #222;
+        font-weight: 400;
+        margin-top: 50px;
+        min-width: fit-content;
+        margin-right: auto;
+        font-family: 'Reem Kufi Ink';
+        word-spacing: 10px;
+        border: 5px;
+        border-bottom: 2px solid blueviolet;
+        text-transform: uppercase;
+    }
+    
+    h2 {
+        text-align: center;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
         color: #fff;
-        padding: 0 0 10px
+        padding: 30px 0
     }
-    .fl-table thead,
-    .fl-table tbody,
-    .fl-table thead th {
-        display: block
+    
+    .table-wrapper {
+        margin: 10px 70px 70px;
     }
-    .fl-table thead th:last-child {
-        border-bottom: none
+    
+    .fl-table {
+        border-radius: 0px;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-collapse: collapse;
+        width: 50%;
+        background-color: #fff;
+        margin: 0 auto 0 auto;
     }
-    .fl-table thead {
-        float: left
+    
+    tr {
+        height: 50px;
+        box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
     }
-    .fl-table tbody {
-        width: auto;
-        position: relative;
-        overflow-x: auto
-    }
+    
     .fl-table td,
     .fl-table th {
-        padding: 20px .625em .625em;
-        height: 60px;
-        vertical-align: middle;
-        box-sizing: border-box;
-        overflow-x: hidden;
-        overflow-y: auto;
-        width: 120px;
-        font-size: 13px;
-        text-overflow: ellipsis
+        text-align: center;
+        padding: 8px
     }
+    
+    .fl-table td {
+        border-right: 1px solid #f8f8f8;
+        font-size: 15px
+    }
+    
     .fl-table thead th {
-        text-align: left;
-        border-bottom: 1px solid #f7f7f9
+        color: #fff;
+        background: #4FC3A1
     }
-    .fl-table tbody tr {
-        display: table-cell
+    
+    .fl-table thead th:nth-child(odd) {
+        color: rgb(0, 0, 0);
+        background: #ffffff;
     }
-    .fl-table tbody tr:nth-child(odd) {
-        background: none
+    
+    @media (max-width: 767px) {
+        .fl-table {
+            display: block;
+            width: 100%
+        }
+        .table-wrapper:before {
+            content: "Scroll horizontally >";
+            display: block;
+            text-align: right;
+            font-size: 11px;
+            color: #fff;
+            padding: 0 0 10px
+        }
+        .fl-table thead,
+        .fl-table tbody,
+        .fl-table thead th {
+            display: block
+        }
+        .fl-table thead th:last-child {
+            border-bottom: none
+        }
+        .fl-table thead {
+            float: left
+        }
+        .fl-table tbody {
+            width: auto;
+            position: relative;
+            overflow-x: auto
+        }
+        .fl-table td,
+        .fl-table th {
+            padding: 20px .625em .625em;
+            height: 60px;
+            vertical-align: middle;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            overflow-y: auto;
+            width: 120px;
+            font-size: 13px;
+            text-overflow: ellipsis
+        }
+        .fl-table thead th {
+            text-align: left;
+            border-bottom: 1px solid #f7f7f9
+        }
+        .fl-table tbody tr {
+            display: table-cell
+        }
+        .fl-table tbody tr:nth-child(odd) {
+            background: none
+        }
+        .fl-table tr:nth-child(even) {
+            background: transparent
+        }
+        .fl-table tr td:nth-child(odd) {
+            background: #F8F8F8;
+            border-right: 1px solid #E6E4E4
+        }
+        .fl-table tr td:nth-child(even) {
+            border-right: 1px solid #E6E4E4
+        }
+        .fl-table tbody td {
+            display: block;
+            text-align: center
+        }
     }
-    .fl-table tr:nth-child(even) {
-        background: transparent
-    }
-    .fl-table tr td:nth-child(odd) {
-        background: #F8F8F8;
-        border-right: 1px solid #E6E4E4
-    }
-    .fl-table tr td:nth-child(even) {
-        border-right: 1px solid #E6E4E4
-    }
-    .fl-table tbody td {
-        display: block;
-        text-align: center
-    }
-}
