@@ -162,7 +162,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: 0 0 3em -1em black;
-    border: 2px solid white;
     box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px;
     color: white;
 }
