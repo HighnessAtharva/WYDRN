@@ -381,3 +381,16 @@
         margin-top: .2em;
         font-weight: 700
     }
+    
+    .media-item {
+        font-size: 16px;
+        font-family: 'Reem Kufi Ink', sans-serif;
+        word-spacing: 2px;
+    }
+    
+    .media-item>b {
+        background: linear-gradient(to left, #f69ec4, #f9dd94 100%);
+        background-position: 0 100%;
+        background-size: 100% 2px;
+        background-repeat: repeat-x;
+    }
