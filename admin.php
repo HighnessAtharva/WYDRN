@@ -22,8 +22,7 @@ $user_data = check_login($con);
 $username = $user_data['user_name'];
 
 if ($username != 'admin') {
-  echo ("<img src='images/website/imposter.jpg' style='width: 100%; height: 100%;'>");
-  die();
+  header('Location: ErrorPages/403.html');
 }
 
 

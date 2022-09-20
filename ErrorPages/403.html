@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Forbidden Access page" />
+    <meta name="keywords" content="WYDRN, Error 403" />
+    <title>WYDRN - UNAUTHORIZED ACCESS</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, rgba(0, 0, 0, .4), rgba(0, 0, 0, .6)), url("../images/website/403.jpg");
+            background-size: 100% auto;
+        }
+        
+        .message_heading {
+            font-size: 80px;
+            position: fixed;
+            top: 50%;
+            left: 20%;
+            text-transform: uppercase;
+            color: white;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            padding: 40px;
+            background-color: #09090939;
+            border-radius: 5px;
+        }
+        
+        .message_heading>b {
+            color: white;
+            text-shadow: 3px 3px 10px #111827;
+        }
+        
+        .message {
+            font-size: 20px;
+            margin-top: 20px;
+            margin-left: 60px;
+        }
+        
+        .button-38 {
+            background-color: #FFFFFF;
+            border: 0;
+            border-radius: .5rem;
+            box-sizing: border-box;
+            color: #111827;
+            font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: .875rem;
+            font-weight: 600;
+            line-height: 1.25rem;
+            padding: .75rem 1rem;
+            text-align: center;
+            text-decoration: none #D1D5DB solid;
+            text-decoration-thickness: auto;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            margin-left: 40%;
+        }
+        
+        .button-38:hover {
+            background-color: rgb(249, 250, 251);
+        }
+        
+        .button-38:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+        
+        .button-38:focus-visible {
+            box-shadow: none;
+        }
+    </style>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="../images/website/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="../images/website/favicons/apple-touch-icon.png">
+</head>
+
+<body>
+    <div class="message_heading">
+        403 - <b>Access Forbidden</b>
+        <div class="message">Turn back while you can. You need ADMIN credentials to access this page.</div>
+        <button class="button-38" onclick="window.location.href='../login.php?logout=true'">Return to Login</button>
+    </div>
+
+</body>
+
+</html>
