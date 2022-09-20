@@ -312,7 +312,7 @@ function getposterpath($name, $author)
                                     </div>
 
                                     <!---Show Logged Date on Hover-->
-                                    <div class='logged-date'><?php echo $book_logged ?></div>
+                                    <div class='logged-date'><img src="images/Icons/plus.png" class="plus-icon"><?php echo $book_logged ?></div>
 
                                 </div>
 

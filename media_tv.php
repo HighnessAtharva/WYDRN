@@ -290,7 +290,7 @@ function getposterpath($name)
                                         <img class="delete-icon" src="images/icons/delete.png" alt="Delete">
                                     </div>
 
-                                        <div class='logged-date'><?php echo $tv_logged; ?></div>
+                                        <div class='logged-date'><img src="images/Icons/plus.png" class="plus-icon"><?php echo $tv_logged; ?></div>
                                     
                                 </div>
                                 <h1 class='moviename'><?php echo $tvname; ?></h1>

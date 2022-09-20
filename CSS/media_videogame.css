@@ -199,14 +199,15 @@ body {
 }
 
 h1.moviename {
-    font-size: 1em;
+    font-size: 1.3em;
     line-height: 1em;
     max-width: fit-content;
     margin: 0 auto;
     margin-top: 1em;
     font-weight: bolder;
     text-align: center;
-    color: white !important;
+    color: #ebebeb !important;
+    font-family: 'Reem Kufi Ink';
 }
 
 .tags {
@@ -229,9 +230,10 @@ h1.moviename {
     top: 0;
     right: 0;
     font-size: 0.5em;
-    padding: 1em;
+    padding: 0.5em;
     line-height: 1em;
     opacity: .8;
+    border-radius: 5px;
 }
 
 .card-grid-space .num {
@@ -483,4 +485,10 @@ a>span.neonText:hover {
     #img-6 {
         display: none;
     }
+}
+
+.plus-icon {
+    width: 15px;
+    height: 15px;
+    margin: 2px 5px 5px 0px;
 }

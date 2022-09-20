@@ -67,6 +67,7 @@ function getposterpath($name, $year)
     <link href="css/backToTop.css" rel="stylesheet">
 
     <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="js/jquery.hover3d.js"></script>
 
     <!--PRELOADER JS-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -83,11 +84,11 @@ function getposterpath($name, $year)
 
         });
     </script>
-  
+
 </head>
 
 <body class="css-selector">
-<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
+    <button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <div>
         <!--PRELOADER-->
         <header class="entry-header">
@@ -102,8 +103,8 @@ function getposterpath($name, $year)
 
         <!--ALL MEDIA ITEMS THAT WILL APPEAR AFTER PRELOADER-->
         <div id="content">
-              <!--TITLE BANNER ANIMATED-->
-              <div class="my_container">
+            <!--TITLE BANNER ANIMATED-->
+            <div class="my_container">
                 <h1 class="my-title">YOUR MOVIES<br><sub class="my-subtitle"><?php echo  getRandomMovieQuote(); ?> </sub>
                 </h1>
                 <h1 class="my-title my-title-large">YOUR MOVIES</h1>
@@ -139,7 +140,7 @@ function getposterpath($name, $year)
             </div>
             <!--END OF TITLE BANNER ANIMATED-->
 
-        
+
 
             <div class="flex">
                 <!-- Sorting Functionality -->
@@ -161,19 +162,19 @@ function getposterpath($name, $year)
 
             </div>
 
-             <!--Display Active Filters-->
-             <?php if(isset($_GET['sortby'])){  ?>  
-                <span class="active-filter"> 
-                    
-                    <img src="images/Icons/sort.png" alt="filter" height="15px" width="10px" />    
+            <!--Display Active Filters-->
+            <?php if (isset($_GET['sortby'])) {  ?>
+                <span class="active-filter">
+
+                    <img src="images/Icons/sort.png" alt="filter" height="15px" width="10px" />
                     <?php echo $_GET['sortby']; ?>
                 </span>
-                <?php } ?>
+            <?php } ?>
 
-                   
+
             <!-------------------------------------------------------------------------------------
                                 DYNAMICALLY GENERATED PHP PART
-        ------------------------------------------------------------------------------------->   
+        ------------------------------------------------------------------------------------->
             <?php
             //set default sort order
             $sortby = "added-desc";
@@ -239,7 +240,7 @@ function getposterpath($name, $year)
             ?>
             <!-- //only select unique movies logged by the user -->
             <br><br>
-            <section class='cards-wrapper'> 
+            <section class='cards-wrapper'>
                 <!-- // $html_movie stores the html code for the movie cards -->
 
                 <?php
@@ -274,15 +275,15 @@ function getposterpath($name, $year)
                             <div class='card-grid-space'>
                                 <!-- // image tag for the movie -->
                                 <div class='card' style='background-image:url(<?php echo $posterpath; ?>);'>
-                                 <!--Delete item on hover-->
-                                 <div class='delete-item' title="Delete Movie">
+                                    <!--Delete item on hover-->
+                                    <div class='delete-item' title="Delete Movie">
                                         <img class="delete-icon" src="images/icons/delete.png" alt="Delete">
-                                    </div>    
-                                
-                                
-                                        <div class='logged-date'><?php echo $movie_logged; ?></div>
-                                
-                                
+                                    </div>
+
+
+                                    <div class='logged-date'><img src="images/Icons/plus.png" class="plus-icon"><?php echo $movie_logged; ?></div>
+
+
                                 </div>
                                 <h1 class='moviename'><?php echo $movie_name; ?></h1>
                                 <div class='tags'>
@@ -291,13 +292,13 @@ function getposterpath($name, $year)
                             </div>
 
 
-                <?php
+                        <?php
 
                         }
-                    } else {?>
+                    } else { ?>
                         <!-- NO MOVIES LOGGED MESSAGE -->
-                        <div class="zero-media"><img src='images/Icons/Movie.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp;  No Movies added to your account.</div>
-                    <?php
+                        <div class="zero-media"><img src='images/Icons/Movie.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No Movies added to your account.</div>
+                <?php
                     }
                 }
 
@@ -306,45 +307,45 @@ function getposterpath($name, $year)
 
 
 
-                <!-------------------------------------------------------------------------------------
+            <!-------------------------------------------------------------------------------------
                                 PAGINATION
 ------------------------------------------------------------------------------------->
-                <center>
-                    <div class="pagination">
-                        <?php
-                        $query = "SELECT count(DISTINCT `movie`) FROM `data` where movie != '' and username='$username'";
-                        $rs_result = mysqli_query($con, $query);
-                        $row = mysqli_fetch_row($rs_result);
-                        $total_records = $row[0];
+            <center>
+                <div class="pagination">
+                    <?php
+                    $query = "SELECT count(DISTINCT `movie`) FROM `data` where movie != '' and username='$username'";
+                    $rs_result = mysqli_query($con, $query);
+                    $row = mysqli_fetch_row($rs_result);
+                    $total_records = $row[0];
 
-                        echo "</br>";
-                        // CALCULATING THE NUMBER OF PAGES
-                        $total_pages = ceil($total_records / $per_page_record);
-                        $pageLink = "";
+                    echo "</br>";
+                    // CALCULATING THE NUMBER OF PAGES
+                    $total_pages = ceil($total_records / $per_page_record);
+                    $pageLink = "";
 
-                        // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
-                        if ($page >= 2) {
-                            echo "<a href='media_movie.php?sortby=" . $sortby . "&page=" . ($page - 1) . "'><span class='neonText'> ← </span></a>";
+                    // SHOW PREVIOUS BUTTON IF NOT ON PAGE 1
+                    if ($page >= 2) {
+                        echo "<a href='media_movie.php?sortby=" . $sortby . "&page=" . ($page - 1) . "'><span class='neonText'> ← </span></a>";
+                    }
+
+                    // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
+                    for ($i = 1; $i <= $total_pages; $i++) {
+                        if ($i == $page) {
+                            $pageLink .= "<a class = 'active' href='media_movie.php?page="
+                                . $i . "'>" . $i . " </a>";
+                        } else {
+                            $pageLink .= "<a href='media_movie.php?sortby=" . $sortby . "&page=" . $i . "'>" . $i . " </a>";
                         }
+                    }
+                    echo $pageLink;
 
-                        // SHOW THE LINKS TO EACH PAGE IN THE PAGINATION GRID 
-                        for ($i = 1; $i <= $total_pages; $i++) {
-                            if ($i == $page) {
-                                $pageLink .= "<a class = 'active' href='media_movie.php?page="
-                                    . $i . "'>" . $i . " </a>";
-                            } else {
-                                $pageLink .= "<a href='media_movie.php?sortby=" . $sortby . "&page=" . $i . "'>" . $i . " </a>";
-                            }
-                        }
-                        echo $pageLink;
-
-                        // SHOW NEXT BUTTON IF NOT ON LAST PAGE
-                        if ($page < $total_pages) {
-                            echo "<a href='media_movie.php?sortby=" . $sortby . "&page=" . ($page + 1) . "'><span class='neonText'> → </span></a>";
-                        }
-                        ?>
-                    </div>
-                    <!--END OF PAGINATION ROW -->
+                    // SHOW NEXT BUTTON IF NOT ON LAST PAGE
+                    if ($page < $total_pages) {
+                        echo "<a href='media_movie.php?sortby=" . $sortby . "&page=" . ($page + 1) . "'><span class='neonText'> → </span></a>";
+                    }
+                    ?>
+                </div>
+                <!--END OF PAGINATION ROW -->
         </div>
         <!--END OF MEDIA CONTENT -->
 
@@ -356,27 +357,35 @@ function getposterpath($name, $year)
 </body>
 <script src="js/backToTop.js"></script>
 <script>
-            //Delete item on click
-            $('.delete-item').click(function() {
-                var movieName = $(this).closest('.card-grid-space').find('.moviename').text();
-                var parent = $(this).parent("div").parent("div");
-                // console.log(movieName);
+    //Delete item on click
+    $('.delete-item').click(function() {
+        var movieName = $(this).closest('.card-grid-space').find('.moviename').text();
+        var parent = $(this).parent("div").parent("div");
+        // console.log(movieName);
 
-                $.ajax({
-                    type: "GET",
-                    url: "delete_item.php",
-                    data: 'movie=' + movieName,
-                    success: function() {
-                        parent.fadeOut('slow', function() {
-                            $(this).remove();
-                        });
-                    },
-                    error: function() {
-                        alert('This movie could not be deleted!');
-                    }
+        $.ajax({
+            type: "GET",
+            url: "delete_item.php",
+            data: 'movie=' + movieName,
+            success: function() {
+                parent.fadeOut('slow', function() {
+                    $(this).remove();
                 });
-            });
-        </script>
+            },
+            error: function() {
+                alert('This movie could not be deleted!');
+            }
+        });
+    });
+</script>
+
+<script>
+    $(".card-grid-space").hover3d({
+        selector: ".card",
+        shine: true
+    });
+</script>
+
 </html>
 
 <?php mysqli_close($con); ?>

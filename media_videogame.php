@@ -283,7 +283,7 @@ function getposterpath($name)
                                     </div>
 
                                     <!--Show logged date on hover-->
-                                    <div class='logged-date'><?php echo $game_logged; ?></div>
+                                    <div class='logged-date'><img src="images/Icons/plus.png" class="plus-icon"><?php echo $game_logged; ?></div>
 
                                 </div>
                                 <h1 class='moviename'><?php echo $game; ?></h1>
