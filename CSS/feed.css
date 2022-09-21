@@ -466,11 +466,11 @@ a>span.neonText:hover {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     box-shadow: 0 1px 1px #1a0000;
+    font-family: 'Reem Kufi Ink';
 }
 
 .date p {
-    font-family: Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     text-align: center;
     color: #000;
     margin-top: 0;
@@ -488,7 +488,7 @@ a>span.neonText:hover {
     border-radius: 0 0 10px 10px;
     -moz-border-radius: 0 0 10px 10px;
     -webkit-border-radius: 0 0 10px 10px;
-    padding: 8px 0
+    padding: 2px 0;
 }
 
 .pxc-subcard.myrow {
@@ -501,12 +501,12 @@ a>span.neonText:hover {
 }
 
 .mycolumn2 {
-    flex: 10%;
+    flex: 5%;
     justify-content: flex-end
 }
 
 .mycolumn3 {
-    flex: 10%;
+    flex: 7%;
     justify-content: flex-end
 }
 
@@ -515,7 +515,7 @@ a.uname {
     text-decoration: none;
     text-transform: uppercase;
     transition: 0.2s;
-    font-family: monospace;
+    font-family: 'Reem Kufi Ink';
     font-weight: bolder;
 }
 

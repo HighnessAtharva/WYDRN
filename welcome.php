@@ -63,10 +63,10 @@ $user_data = check_login($con);
                         <h2 class="title">&#127911 Add Albums </h2>
 
                         <div class="input-group">
-                            <input type="text" class="input--style-3" name="Album" autofocus="true" placeholder="Cavalcade" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()" autocomplete="off"><br>
+                            <input type="text" class="input--style-3" name="Album" autofocus="true" placeholder="💿 Album Name" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()" autocomplete="off"><br>
                         </div>
                         <div class="input-group">
-                            <input type="text" class="input--style-3" name="Artist" placeholder="Black Midi" id="music-artist" readonly autocomplete="off"><br>
+                            <input type="text" class="input--style-3" name="Artist" placeholder="👩‍🎤 Artist" id="music-artist" readonly autocomplete="off"><br>
                         </div>
                     </div>
                 </div>
@@ -86,10 +86,10 @@ $user_data = check_login($con);
                         <h2 class="title">&#128213 Add Books</h2>
 
                         <div class="input-group">
-                            <input type="text" name="Book" class="input--style-3" placeholder="Royal Assassin" id="book-search-box" onkeyup="findBook()" onclick="findBook()" autocomplete="off"><br>
+                            <input type="text" name="Book" class="input--style-3" placeholder="📖 Book" id="book-search-box" onkeyup="findBook()" onclick="findBook()" autocomplete="off"><br>
                         </div>
                         <div class="input-group">
-                            <input type="text" class="input--style-3" name="Author" placeholder="Robin Hobb" id="book-author" readonly autocomplete="off"><br>
+                            <input type="text" class="input--style-3" name="Author" placeholder="✍🏻 Author" id="book-author" readonly autocomplete="off"><br>
                         </div>
                     </div>
                 </div>
@@ -107,10 +107,10 @@ $user_data = check_login($con);
                         <h2 class="title">&#128253 Add Movies</h2>
 
                         <div class="input-group">
-                            <input type="text" class="input--style-3" name="Movie" placeholder="The Batman" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()" autocomplete="off"><br>
+                            <input type="text" class="input--style-3" name="Movie" placeholder="🍿 Movie Name" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()" autocomplete="off"><br>
                         </div>
                         <div class="input-group">
-                            <input type="text" class="input--style-3" name="MovieRelease" placeholder="2022" id="movie-year" readonly autocomplete="off"><br>
+                            <input type="text" class="input--style-3" name="MovieRelease" placeholder="📅 Release Year" id="movie-year" readonly autocomplete="off"><br>
                         </div>
                     </div>
                 </div>
@@ -129,12 +129,12 @@ $user_data = check_login($con);
                         <h2 class="title">&#128250 Add TV Shows</h2>
 
                         <div class="input-group">
-                            <input type="text" class="input--style-3" name="TV" placeholder="Peaky Blinders" id="tv-search-box" onkeyup="findTV()" onclick="findTV()" autocomplete="off">
+                            <input type="text" class="input--style-3" name="TV" placeholder="🖥️ Show Name" id="tv-search-box" onkeyup="findTV()" onclick="findTV()" autocomplete="off">
                         </div>
 
 
                         <select class="input--style-3" name="StreamPlatform" id="tv-network"><br>
-                            <option value="" selected disabled hidden>--Network--</option>
+                            <option value="" selected disabled hidden>📡 Network</option>
                             <option class="option-text" value="Netflix">Netflix</option>
                             <option class="option-text" value="Hulu">Hulu</option>
                             <option class="option-text" value="Amazon Prime">Amazon Prime</option>
@@ -164,12 +164,12 @@ $user_data = check_login($con);
                         <h2 class="title">&#127918 Add Videogames </h2>
 
                         <div class="input-group">
-                            <input class="input--style-3" type="text" name="Videogame" placeholder="Elden Ring" id="game-search-box" onkeyup="findgame()" onclick="findgame()" autocomplete="off"><br>
+                            <input class="input--style-3" type="text" name="Videogame" placeholder="🎮 Videogame Name" id="game-search-box" onkeyup="findgame()" onclick="findgame()" autocomplete="off"><br>
                         </div>
 
 
                         <select class="input--style-3" name="Platform" id="game-platform">
-                            <option value="" selected disabled hidden>--Platform--</option>
+                            <option value="" selected disabled hidden>🕹️ Platform</option>
                             <option class="option-text" value="PC">PC</option>
                             <option class="option-text" value="Xbox">Xbox</option>
                             <option class="option-text" value="Playstation">Playstation</option>

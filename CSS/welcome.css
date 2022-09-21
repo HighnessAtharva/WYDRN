@@ -288,10 +288,20 @@ input {
    ========================================================================== */
 
 .title {
-    font-size: 24px;
-    color: #fff;
+    font-size: 25px;
+    color: #000;
     font-weight: 400;
-    margin-bottom: 36px;
+    margin-bottom: 50px;
+    margin-top: -58px;
+    font-family: 'Reem Kufi Ink';
+    word-spacing: 5px;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.925);
+    padding: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+    text-shadow: 1px 2px #cdcdcd;
 }
 
 

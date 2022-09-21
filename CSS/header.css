@@ -122,3 +122,14 @@ a.nav-link {
     display: inline-block;
     border-radius: 50%;
 }
+
+.dropdown-item {
+    padding-bottom: 10px !important;
+    transition: 0.1s !important;
+}
+
+.dropdown-item:hover {
+    background-color: rgb(226, 225, 225) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}

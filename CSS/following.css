@@ -101,6 +101,8 @@ body {
     background: #1e1f26;
     margin: 1vw;
     border-radius: 6px;
+    border: 1px solid white;
+    text-align: center;
 }
 
 .follow-a {
@@ -110,8 +112,9 @@ body {
     height: 100%;
     padding: .5em;
     text-decoration: none;
-    color: rgba(255, 255, 255, .5);
+    color: rgb(204, 204, 204);
     transition: all .25s ease 0s;
+    font-family: 'Reem Kufi Ink';
 }
 
 .follow-a:hover {

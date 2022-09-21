@@ -81,7 +81,7 @@ require "header.php";
                 ?>
                         <!--HTML CONTENTS-->
 
-                        <a href=<?php echo "profile.php?user_name=" . $username; ?>>
+                        <a class="no-und" href=<?php echo "profile.php?user_name=" . $username; ?>>
                             <article class="leaderboard__profile">
                                 <img src="images/website/assets/numbers/<?php echo $i; ?>.png" alt="" class="leaderboard__picture">
                                 <span class="leaderboard__name"><?php echo $username; ?></span>
@@ -160,7 +160,7 @@ require "header.php";
 
                 ?>
 
-                        <a href=<?php echo "profile.php?user_name=" . $username; ?>>
+                        <a class="no-und" href=<?php echo "profile.php?user_name=" . $username; ?>>
                             <article class="leaderboard__profile">
                                 <img src="images/website/assets/numbers/<?php echo $i; ?>.png" alt="" class="leaderboard__picture">
                                 <span class="leaderboard__name"><?php echo $username; ?></span>

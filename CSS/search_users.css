@@ -291,12 +291,13 @@ body {
 }
 
 .leaderboard__name {
-    color: #000000;
+    color: #131313;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 15px;
     letter-spacing: 0.64px;
     margin-left: 12px;
     text-decoration: none !important;
+    text-transform: uppercase;
 }
 
 .leaderboard__value {
@@ -382,4 +383,12 @@ body {
 .list-item__info {
     font-size: 0.85em;
     color: #91a1bb;
+}
+
+.no-und {
+    text-decoration: none;
+}
+
+.no-und:hover {
+    text-decoration: underline;
 }
