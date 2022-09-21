@@ -320,10 +320,11 @@ function getposterpath($name, $year)
                                 <!--END OF CARD-->
 
 
-                                <h1 class='moviename'><?php echo $movie_name; ?></h1>
+                                <h1 class='moviename'><?php echo $movie_name; ?>
                                 <div class='tags'>
                                     <div class='tag'><?php echo $movie_year ?></div>
                                 </div>
+                                </h1>
                             </div>
 
 

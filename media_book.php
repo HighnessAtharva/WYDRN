@@ -351,10 +351,11 @@ function getposterpath($name, $author)
                                 </div><!--END OF CARD-->
 
                                 <!--While printing the name of the book, bring A and THE to the front-->
-                                <h1 class='moviename'><?php echo bringLettersToFront($book_name); ?></h1>
+                                <h1 class='moviename'><?php echo bringLettersToFront($book_name); ?>
                                 <div class='tags'>
                                     <div class='tag'><?php echo $book_author ?></div>
-                                </div>
+                                </div></h1>
+                                
 
                             </div>
 

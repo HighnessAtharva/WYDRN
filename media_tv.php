@@ -335,10 +335,11 @@ function getposterpath($name)
                                 <!--END OF CARD-->
 
 
-                                <h1 class='moviename'><?php echo $tvname; ?></h1>
+                                <h1 class='moviename'><?php echo $tvname; ?>
                                 <div class='tags'>
                                     <div class='tag'><?php echo $platform ?></div>
                                 </div>
+                                </h1>
                             </div>
 
                         <?php

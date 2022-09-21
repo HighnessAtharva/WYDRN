@@ -326,10 +326,11 @@ function getposterpath($name)
 
 
 
-                                <h1 class='moviename'><?php echo $game; ?></h1>
+                                <h1 class='moviename'><?php echo $game; ?>
                                 <div class='tags'>
                                     <div class='tag'><?php echo $platform ?></div>
                                 </div>
+                                </h1>
                             </div>
                         <?php
                         }

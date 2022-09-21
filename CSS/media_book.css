@@ -138,7 +138,6 @@ body {
     justify-content: center;
     align-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    row-gap: 5rem;
     padding: 5rem 2rem;
     margin: 0 auto;
     width: 100%;
@@ -539,4 +538,10 @@ a>span.neonText:hover {
 
 .card:hover .mutual-enjoyers {
     display: block;
+}
+
+.card-grid-space {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-bottom: -50px;
 }

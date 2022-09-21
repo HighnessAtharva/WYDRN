@@ -518,3 +518,9 @@ a>span.neonText:hover {
 .card:hover .mutual-enjoyers {
     display: block;
 }
+
+.card-grid-space {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-bottom: -150px;
+}

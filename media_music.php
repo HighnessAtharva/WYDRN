@@ -330,10 +330,11 @@ function getposterpath($name, $artist)
                                 <!--END OF CARD-->
 
 
-                                <h1 class='moviename'><?php echo $album_name; ?></h1>
+                                <h1 class='moviename'><?php echo $album_name; ?>
                                 <div class='tags'>
                                     <div class='tag'><?php echo $album_artist ?></div>
                                 </div>
+                                </h1>
                             </div>
 
                         <?php }
