@@ -15,6 +15,9 @@ if (empty($_SESSION)) {
 require "header.php";
 require "connection.php";
 require "functions.php";
+
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 
@@ -49,7 +52,7 @@ function getposterpath($name)
 
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
 
     <meta charset="UTF-8">
@@ -76,7 +79,7 @@ function getposterpath($name)
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
 
-    
+
     <script src="js/modernizr-2.6.2.min.js"></script>
 
     <!--PRELOADER JS-->
@@ -97,7 +100,7 @@ function getposterpath($name)
 </head>
 
 <body class="css-selector">
-<button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
+    <button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <div>
         <!--PRELOADER-->
         <header class="entry-header">
@@ -112,9 +115,9 @@ function getposterpath($name)
 
         <!--ALL MEDIA ITEMS THAT WILL APPEAR AFTER PRELOADER-->
         <div id="content">
-            
-        <!--TITLE BANNER ANIMATED-->
-        <div class="my_container">
+
+            <!--TITLE BANNER ANIMATED-->
+            <div class="my_container">
                 <h1 class="my-title">YOUR <br>TV SHOWS<br><sub class="my-subtitle"><?php echo  getRandomTvQuote(); ?> </sub>
                 </h1>
                 <h1 class="my-title my-title-large">YOUR <br>TV SHOWS</h1>
@@ -149,7 +152,7 @@ function getposterpath($name)
                 </div>
             </div>
             <!--END OF TITLE BANNER ANIMATED-->
- 
+
             <div class="flex">
                 <!-- Sorting Functionality -->
                 <form method="get" action="" name="sort">
@@ -171,18 +174,18 @@ function getposterpath($name)
 
                 <button class="btn" onclick="window.location.href='media_list_view.php?tv'"><img src="images/Icons/list-view.png"></button>
             </div>
-            
-             <!--Display Active Filters-->
-             <?php if(isset($_GET['sortby'])){  ?>  
-                <span class="active-filter"> 
-                    
-                    <img src="images/Icons/sort.png" alt="filter" height="15px" width="10px" />    
+
+            <!--Display Active Filters-->
+            <?php if (isset($_GET['sortby'])) {  ?>
+                <span class="active-filter">
+
+                    <img src="images/Icons/sort.png" alt="filter" height="15px" width="10px" />
                     <?php echo $_GET['sortby']; ?>
                 </span>
-                <?php } ?>
+            <?php } ?>
 
-                   
-        
+
+
 
             <!-------------------------------------------------------------------------------------
                                     DYNAMICALLY GENERATED PHP PART
@@ -249,65 +252,104 @@ function getposterpath($name)
             $start_from = ($page - 1) * $per_page_record;
 
             ?>
-            <br><br><section class='cards-wrapper'>
-                
-                
+            <br><br>
+            <section class='cards-wrapper'>
+
+
                 <?php
 
-            //only select unique shows logged by the user
-            $sql = "SELECT `tv`, `streaming`, `date` FROM `data` where tv != '' and username='$username' GROUP BY `tv` order by " . $sorting . " " . $order . " LIMIT $start_from, $per_page_record;";
-            if ($query = mysqli_query($con, $sql)) {
-                $totaltvcount = mysqli_num_rows($query);
-                if ($totaltvcount > 0) {
-                    while ($row = mysqli_fetch_assoc($query)) {
-                        $tvname = $row['tv'];
-                        $platform = $row['streaming'];
-                        $tv_logged = date("F jS, Y", strtotime($row['date']));
+                //only select unique shows logged by the user
+                $sql = "SELECT `tv`, `streaming`, `date` FROM `data` where tv != '' and username='$username' GROUP BY `tv` order by " . $sorting . " " . $order . " LIMIT $start_from, $per_page_record;";
+                if ($query = mysqli_query($con, $sql)) {
+                    $totaltvcount = mysqli_num_rows($query);
+                    if ($totaltvcount > 0) {
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            $tvname = $row['tv'];
+                            $platform = $row['streaming'];
+                            $tv_logged = date("F jS, Y", strtotime($row['date']));
 
-                        $stripnametv = $stripped = str_replace(' ', '+', $tvname);
+                            $stripnametv = $stripped = str_replace(' ', '+', $tvname);
 
-                        /**if poster is not downloaded, download the poster in the directory and show the image*/
 
-                        //remove special characters since we are using it as a file name
-                        $filename = preg_replace('/[^A-Za-z0-9\-]/', '', $stripnametv);
-                        $pseudo_poster = 'images/API/tv-' . $filename . '.jpg';
-                        if (file_exists($pseudo_poster)) {
-                            $posterpath = $pseudo_poster;
-                        } else {
-                            $posterpath = getposterpath($stripnametv); // URL to download file from
-                            $img = 'images/API/tv-' . $filename . '.jpg'; // Image path to save downloaded image
-                            // Save image
-                            file_put_contents($img, file_get_contents($posterpath));
-                        }
-?>
-                                  <!-- // one single div tag for each movie -->
-                                  <div class='card-grid-space'>
+                            //TO DISPLAY WHO HAS LOGGED THIS ITEM AMONG PEOPLE YOU ARE FOLLOWING
+                            $followed_username = array();
+                            $profile_pic = array();
+                            try {
+                                //this will throw an error if the name of the media contains an apostrophe.
+                                $sql2 = "SELECT DISTINCT `follower_username`, `followed_username`, `tv`, `profile_pic`  FROM social  
+                             JOIN data ON data.username=social.followed_username 
+                             JOIN users on social.followed_username=users.user_name 
+                             WHERE social.follower_username='$username' and data.tv='$tvname' 
+                             LIMIT 5";
+
+                                $res = mysqli_query($con, $sql2);
+
+                                while ($row = mysqli_fetch_assoc($res)) {
+                                    $followed_username[] = $row['followed_username'];
+                                    $profile_pic[] = $row['profile_pic'];
+                                }
+                            }
+                            // TO CATCH APOSTROPHE ERROR AND CONTINUE
+                            catch (mysqli_sql_exception  $e) {
+                                $error = $e->getMessage();
+                            }
+
+
+                            /**if poster is not downloaded, download the poster in the directory and show the image*/
+
+                            //remove special characters since we are using it as a file name
+                            $filename = preg_replace('/[^A-Za-z0-9\-]/', '', $stripnametv);
+                            $pseudo_poster = 'images/API/tv-' . $filename . '.jpg';
+                            if (file_exists($pseudo_poster)) {
+                                $posterpath = $pseudo_poster;
+                            } else {
+                                $posterpath = getposterpath($stripnametv); // URL to download file from
+                                $img = 'images/API/tv-' . $filename . '.jpg'; // Image path to save downloaded image
+                                // Save image
+                                file_put_contents($img, file_get_contents($posterpath));
+                            }
+                ?>
+                            <!-- // one single div tag for each movie -->
+                            <div class='card-grid-space'>
                                 <!-- // image tag for the movie -->
                                 <div class='card' style='background-image:url(<?php echo $posterpath; ?>);'>
-                                        
-                                        <!--Delete item on hover-->
+
+                                    <!--Delete item on hover-->
                                     <div class='delete-item' title="Delete TV">
                                         <img class="delete-icon" src="images/icons/delete.png" alt="Delete">
                                     </div>
 
-                                        <div class='logged-date'><img src="images/Icons/plus.png" class="plus-icon"><?php echo $tv_logged; ?></div>
-                                    
+                                    <!-- DISPLAY LOGGED DATE ON HOVER -->
+                                    <div class='logged-date'><img src="images/Icons/plus.png" class="plus-icon"><?php echo $tv_logged; ?></div>
+
+                                    <!--Contains Profile Pics of Users followed by logged in user and who have added the same media -->
+                                    <?php if (!empty($profile_pic) && !empty($followed_username)) {
+                                        echo "<div class='mutual-enjoyers'>";
+                                        foreach (array_combine($profile_pic, $followed_username) as $pic => $fname) {
+                                            echo "<img src='$pic' class='mutual-enjoyer-pic' alt='$fname' title='$fname'>";
+                                        }
+                                        echo "</div>";
+                                    } ?>
+
                                 </div>
+                                <!--END OF CARD-->
+
+
                                 <h1 class='moviename'><?php echo $tvname; ?></h1>
                                 <div class='tags'>
                                     <div class='tag'><?php echo $platform ?></div>
                                 </div>
                             </div>
-                  
-                  <?php
-                    }
-                } else {?>
-                    
-                    <!-- NO TV SHOWS LOGGED MESSAGE -->
-                    <div class="zero-media"><img src='images/Icons/TV.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No TV Shows added to your account.</div>
-               <?php }
-            }
-            ?>
+
+                        <?php
+                        }
+                    } else { ?>
+
+                        <!-- NO TV SHOWS LOGGED MESSAGE -->
+                        <div class="zero-media"><img src='images/Icons/TV.svg' width='15' height='15' class='media-icon'>&nbsp;&nbsp; No TV Shows added to your account.</div>
+                <?php }
+                }
+                ?>
 
             </section>
 
@@ -364,26 +406,27 @@ function getposterpath($name)
 <script src="js/backToTop.js"></script>
 
 <script>
-            //Delete item on click
-            $('.delete-item').click(function() {
-                var tvName = $(this).closest('.card-grid-space').find('.moviename').text();
-                var parent = $(this).parent("div").parent("div");
-                // console.log(tvName);
+    //Delete item on click
+    $('.delete-item').click(function() {
+        var tvName = $(this).closest('.card-grid-space').find('.moviename').text();
+        var parent = $(this).parent("div").parent("div");
+        // console.log(tvName);
 
-                $.ajax({
-                    type: "GET",
-                    url: "delete_item.php",
-                    data: 'tv=' + tvName,
-                    success: function() {
-                        parent.fadeOut('slow', function() {
-                            $(this).remove();
-                        });
-                    },
-                    error: function() {
-                        alert('This TV Show could not be deleted!');
-                    }
+        $.ajax({
+            type: "GET",
+            url: "delete_item.php",
+            data: 'tv=' + tvName,
+            success: function() {
+                parent.fadeOut('slow', function() {
+                    $(this).remove();
                 });
-            });
-        </script>
+            },
+            error: function() {
+                alert('This TV Show could not be deleted!');
+            }
+        });
+    });
+</script>
+
 </html>
 <?php mysqli_close($con); ?>

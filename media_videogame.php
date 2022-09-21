@@ -15,6 +15,10 @@ if (empty($_SESSION)) {
 require "header.php";
 require "connection.php";
 require "functions.php";
+
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 
@@ -258,6 +262,30 @@ function getposterpath($name)
                             $game_logged = date("F jS, Y", strtotime($row['date']));
                             $stripgame = str_replace(' ', '+', $game);
 
+                             //TO DISPLAY WHO HAS LOGGED THIS ITEM AMONG PEOPLE YOU ARE FOLLOWING
+                             $followed_username = array();
+                             $profile_pic = array();
+                             try {
+                                 //this will throw an error if the name of the media contains an apostrophe.
+                                 $sql2 = "SELECT DISTINCT `follower_username`, `followed_username`, `videogame`, `profile_pic`  FROM social  
+                                 JOIN data ON data.username=social.followed_username 
+                                 JOIN users on social.followed_username=users.user_name 
+                                 WHERE social.follower_username='$username' and data.videogame='$game' 
+                                 LIMIT 5";
+ 
+                                 $res = mysqli_query($con, $sql2);
+ 
+                                 while ($row = mysqli_fetch_assoc($res)) {
+                                     $followed_username[] = $row['followed_username'];
+                                     $profile_pic[] = $row['profile_pic'];
+                                 }
+                             }
+                             // TO CATCH APOSTROPHE ERROR AND CONTINUE
+                             catch (mysqli_sql_exception  $e) {
+                                 $error = $e->getMessage();
+                             }
+
+
                             /**if poster is not downloaded, download the poster in the directory and show the image*/
 
                             //remove special characters since we are using it as a file name
@@ -285,7 +313,19 @@ function getposterpath($name)
                                     <!--Show logged date on hover-->
                                     <div class='logged-date'><img src="images/Icons/plus.png" class="plus-icon"><?php echo $game_logged; ?></div>
 
-                                </div>
+                                      <!--Contains Profile Pics of Users followed by logged in user and who have added the same media -->
+                                      <?php if (!empty($profile_pic) && !empty($followed_username)) {
+                                        echo "<div class='mutual-enjoyers'>";
+                                        foreach (array_combine($profile_pic, $followed_username) as $pic => $fname) {
+                                            echo "<img src='$pic' class='mutual-enjoyer-pic' alt='$fname' title='$fname'>";
+                                        }
+                                        echo "</div>";
+                                    } ?>
+
+                                </div><!--END OF CARD-->
+
+
+
                                 <h1 class='moviename'><?php echo $game; ?></h1>
                                 <div class='tags'>
                                     <div class='tag'><?php echo $platform ?></div>

@@ -17,13 +17,13 @@ require "connection.php";
 require "functions.php";
 $user_data = check_login($con);
 $username = $user_data['user_name'];
-
-function bringLettersToFront($bkName){
-    if(substr($bkName, -5)==', The'){
-        $bkName = 'The '.substr($bkName, 0, -5);
-    }
-    elseif(substr($bkName, -3)==', A'){
-        $bkName = 'A ' .substr($bkName, 0, -3);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+function bringLettersToFront($bkName)
+{
+    if (substr($bkName, -5) == ', The') {
+        $bkName = 'The ' . substr($bkName, 0, -5);
+    } elseif (substr($bkName, -3) == ', A') {
+        $bkName = 'A ' . substr($bkName, 0, -3);
     }
     return $bkName;
 }
@@ -126,11 +126,11 @@ function getposterpath($name, $author)
         <!--ALL MEDIA ITEMS THAT WILL APPEAR AFTER PRELOADER-->
         <div id="content">
 
-          <!--TITLE BANNER ANIMATED-->
-          <div class="my_container">
-                <h1 class="my-title"> YOUR BOOKS  <br> <sub class="my-subtitle"><?php echo getRandomBookQuote();?></sub></h1>
+            <!--TITLE BANNER ANIMATED-->
+            <div class="my_container">
+                <h1 class="my-title"> YOUR BOOKS <br> <sub class="my-subtitle"><?php echo getRandomBookQuote(); ?></sub></h1>
                 <h1 class="my-title my-title-large">YOUR BOOKS</h1>
-              
+
 
 
                 <div id="img-1" class="img-container">
@@ -280,9 +280,34 @@ function getposterpath($name, $author)
                             $book_name = $row['book'];
                             $book_author = $row['author'];
                             $book_logged = date("F jS, Y", strtotime($row['date']));
-                            
+
                             $stripnamebook = $stripped = str_replace(' ', '+', $book_name);
                             $stripnameauthor = $stripped = str_replace(' ', '+', $book_author);
+
+
+                            //TO DISPLAY WHO HAS LOGGED THIS ITEM AMONG PEOPLE YOU ARE FOLLOWING
+                            $followed_username = array();
+                            $profile_pic = array();
+                            try {
+                                //this will throw an error if the name of the media contains an apostrophe.
+                                $sql2 = "SELECT DISTINCT `follower_username`, `followed_username`, `book`, `profile_pic`  FROM social  
+                                JOIN data ON data.username=social.followed_username 
+                                JOIN users on social.followed_username=users.user_name 
+                                WHERE social.follower_username='$username' and data.book='$book_name' 
+                                LIMIT 5";
+
+                                $res = mysqli_query($con, $sql2);
+
+                                while ($row = mysqli_fetch_assoc($res)) {
+                                    $followed_username[] = $row['followed_username'];
+                                    $profile_pic[] = $row['profile_pic'];
+                                }
+                            }
+                            // TO CATCH APOSTROPHE ERROR AND CONTINUE
+                            catch (mysqli_sql_exception  $e) {
+                                $error = $e->getMessage();
+                            }
+
 
                             /**if poster is not downloaded, download the poster in the directory and show the image*/
 
@@ -314,12 +339,23 @@ function getposterpath($name, $author)
                                     <!---Show Logged Date on Hover-->
                                     <div class='logged-date'><img src="images/Icons/plus.png" class="plus-icon"><?php echo $book_logged ?></div>
 
-                                </div>
+                                    <!--Contains Profile Pics of Users followed by logged in user and who have added the same media -->
+                                    <?php if (!empty($profile_pic) && !empty($followed_username)) {
+                                        echo "<div class='mutual-enjoyers'>";
+                                        foreach (array_combine($profile_pic, $followed_username) as $pic => $fname) {
+                                            echo "<img src='$pic' class='mutual-enjoyer-pic' alt='$fname' title='$fname'>";
+                                        }
+                                        echo "</div>";
+                                    } ?>
+                                
+                                </div><!--END OF CARD-->
 
+                                <!--While printing the name of the book, bring A and THE to the front-->
                                 <h1 class='moviename'><?php echo bringLettersToFront($book_name); ?></h1>
                                 <div class='tags'>
                                     <div class='tag'><?php echo $book_author ?></div>
                                 </div>
+
                             </div>
 
 
@@ -393,30 +429,30 @@ function getposterpath($name, $author)
 
 
 
-                </body>
-        <script src="js/backToTop.js"></script>
-        <script>
-            //Delete item on click
-            $('.delete-item').click(function() {
-                var bookName = $(this).closest('.card-grid-space').find('.moviename').text();
-                var parent = $(this).parent("div").parent("div");
-                console.log(bookName);
+</body>
+<script src="js/backToTop.js"></script>
+<script>
+    //Delete item on click
+    $('.delete-item').click(function() {
+        var bookName = $(this).closest('.card-grid-space').find('.moviename').text();
+        var parent = $(this).parent("div").parent("div");
+        console.log(bookName);
 
-                $.ajax({
-                    type: "GET",
-                    url: "delete_item.php",
-                    data: 'book=' + bookName,
-                    success: function() {
-                        parent.fadeOut('slow', function() {
-                            $(this).remove();
-                        });
-                    },
-                    error: function() {
-                        alert('This book could not be deleted!');
-                    }
+        $.ajax({
+            type: "GET",
+            url: "delete_item.php",
+            data: 'book=' + bookName,
+            success: function() {
+                parent.fadeOut('slow', function() {
+                    $(this).remove();
                 });
-            });
-        </script>
+            },
+            error: function() {
+                alert('This book could not be deleted!');
+            }
+        });
+    });
+</script>
 
 </html>
 
