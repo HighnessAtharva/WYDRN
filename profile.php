@@ -117,6 +117,9 @@ if ($query = mysqli_query($con, $sql2)) {
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+     <!--JQUERY CDN Link-->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
     <meta name="description" content="profile page of users" />
@@ -389,8 +392,71 @@ if ($query = mysqli_query($con, $sql2)) {
 
           
 
+          
+
         </div> <!-- This DIV is the end of the bottom half of the card. White Section-->
     </div> <!-- This DIV is the end of the entire card-->
+
+      <!--Container for Posters-->
+      <div class="MediaPosters">
+                                
+                                <!--GAME CONTENT-->
+                                <?php if ((!empty($videogame)) && (!empty($platform))) { 
+                                    $stripnamegame = str_replace(' ', '+', $videogame);
+                                    $gamePosterPath= GamePosterPath($stripnamegame);
+                                ?>
+                                
+                                <img id="gamePoster" loading="lazy" src="<?php echo $gamePosterPath ?>" alt="Game Poster">
+                                
+                                
+                                <?php } ?>
+
+
+
+                                <!--ALBUM CONTENT-->
+                                <?php if ((!empty($album)) && (!empty($artist))) {
+                                    $stripnamealbum = str_replace(' ', '+', $album);
+                                    $stripartist= str_replace(' ', '+', $artist);
+                                    $musicPosterPath= MusicPosterPath($stripnamealbum, $stripartist);
+                                ?>
+                                
+                                <img id="musicPoster" loading="lazy" src="<?php echo $musicPosterPath ?>" alt="Music Poster">
+                                <?php } ?>
+
+
+
+                                 <!--BOOK CONTENT-->
+                                <?php if ((!empty($book)) && (!empty($author))) { 
+                                    $stripnamebook = str_replace(' ', '+', $book);
+                                    $stripnameauthor= str_replace(' ', '+', $author);
+                                    $bookPosterPath= BookPosterPath($stripnamebook, $stripnameauthor);
+                                ?>
+                                
+                                <img id="bookPoster" loading="lazy" src="<?php echo $bookPosterPath ?>" alt="Book Poster">
+                                
+                                <?php } ?>
+
+
+
+                                 <!--MOVIE CONTENT-->
+                                <?php if ((!empty($movie)) && (!empty($movierelease))) { 
+                                    $stripnamemovie = str_replace(' ', '+', $movie);
+                                    $moviePosterPath= MoviePosterPath($stripnamemovie, $movierelease);
+                                ?>
+                                
+                                <img id="moviePoster" loading="lazy" src="<?php echo $moviePosterPath ?>" alt="Movie Poster">
+                                <?php } ?>
+
+
+                                <!--TV CONTENT-->
+                                <?php if ((!empty($TV)) && (!empty($streamplatform))) { 
+                                    $striptv = str_replace(' ', '+', $TV);
+                                    $tvPosterPath= TvPosterPath($striptv);
+                                ?>
+                                
+                                <img id="tvPoster" loading="lazy" src="<?php echo $tvPosterPath ?>" alt="TV Poster">
+                                    <?php } ?>
+            </div>
 
 
 
@@ -408,6 +474,7 @@ if ($query = mysqli_query($con, $sql2)) {
             window.history.replaceState(null, null, window.location.href);
         }
     </script>
+    <script src="js/profile.js"></script>
 </body>
 
 </html>

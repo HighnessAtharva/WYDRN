@@ -124,19 +124,19 @@ div{
 
             //display the data
             if ((!empty($videogame)) && (!empty($platform)))
-            $playing="<div class='media-item'> &#127918 Playing <b>".$videogame."</b> on ".$platform."</div>";
+            $playing="<div class='media-item' id='media-game'> &#127918 Playing <b>".$videogame."</b> on ".$platform."</div>";
 
             if ((!empty($album)) && (!empty($artist)))
-            $listening="<div class='media-item'> &#127911 Listening to <b>".$album."</b> by  ".$artist."</div>";
+            $listening="<div class='media-item' id='media-music'> &#127911 Listening to <b>".$album."</b> by  ".$artist."</div>";
 
             if ((!empty($book)) && (!empty($author)))
-            $reading="<div class='media-item'> &#128213 Reading <b>".$book."</b> by  ".$author."</div>";
+            $reading="<div class='media-item' id='media-book'> &#128213 Reading <b>".$book."</b> by  ".$author."</div>";
 
             if ((!empty($movie)) && (!empty($movierelease)))
-            $watching="<div class='media-item'> &#128253 Watching <b>".$movie."</b> (".$movierelease.")</div>";
+            $watching="<div class='media-item' id='media-movie'> &#128253 Watching <b>".$movie."</b> (".$movierelease.")</div>";
 
             if ((!empty($TV)) && (!empty($streamplatform)))
-            $binging="<div class='media-item'> &#128250 Binging <b>".$TV."</b> on  ".$streamplatform."</div>";
+            $binging="<div class='media-item' id='media-tv'> &#128250 Binging <b>".$TV."</b> on  ".$streamplatform."</div>";
             }
         }
     }
