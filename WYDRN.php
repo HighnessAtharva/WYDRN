@@ -122,26 +122,38 @@ div{
             $TV=$row['tv']; 
             $streamplatform=$row['streaming'];
 
-            //display the data
+            //display the data [UNCOMMENT THE ELSE AND THE LINE BELOW IT FOR ALL 5 SECTIONS TO HIDE THE NOT PLAYING MESSAGES. EASY FIX.]
             if ((!empty($videogame)) && (!empty($platform)))
-            $playing="<div class='media-item' id='media-game'> &#127918 Playing <b>".$videogame."</b> on ".$platform."</div>";
+            $playing="<div class='media-item' id='media-game'>&#127918 Playing <b>".$videogame."</b> on ".$platform."</div>";
+            else
+            $playing="<div class='media-item'>&#127918 NOT PLAYING ANYTHING ❌</div>";
 
             if ((!empty($album)) && (!empty($artist)))
-            $listening="<div class='media-item' id='media-music'> &#127911 Listening to <b>".$album."</b> by  ".$artist."</div>";
+            $listening="<div class='media-item' id='media-music'>&#127911 Listening to <b>".$album."</b> by  ".$artist."</div>";
+            else
+            $listening="<div class='media-item'>&#127911 NOT LISTENING TO ANYTHING ❌</div>";
 
             if ((!empty($book)) && (!empty($author)))
-            $reading="<div class='media-item' id='media-book'> &#128213 Reading <b>".$book."</b> by  ".$author."</div>";
+            $reading="<div class='media-item' id='media-book'>&#128213 Reading <b>".$book."</b> by  ".$author."</div>";
+            else
+            $reading="<div class='media-item'>&#128213 NOT READING ANYTHING ❌</div>";
 
             if ((!empty($movie)) && (!empty($movierelease)))
-            $watching="<div class='media-item' id='media-movie'> &#128253 Watching <b>".$movie."</b> (".$movierelease.")</div>";
+            $watching="<div class='media-item' id='media-movie'>&#128253 Watching <b>".$movie."</b> (".$movierelease.")</div>";
+            else
+            $watching="<div class='media-item'>&#128253 NOT WATCHING ANYTHING ❌</div>";
 
             if ((!empty($TV)) && (!empty($streamplatform)))
             $binging="<div class='media-item' id='media-tv'> &#128250 Binging <b>".$TV."</b> on  ".$streamplatform."</div>";
+            else
+            $binging="<div class='media-item'>&#128250  NOT BINGING ANYTHING ❌</div>";
             }
         }
     }
 
 
+    if ((empty($playing))&& (empty($listening))&& (empty($reading))&& (empty($watching))&& (empty($binging)))
+    echo "<div> &#128542 Nothing to see here.</div>";
 
    //this is stuff used to display the text on the browser. This will be eventually replaced by SQL queries. 
     if (!empty($playing)) echo $playing."<BR>";
@@ -150,7 +162,5 @@ div{
     if (!empty($watching)) echo $watching."<BR>";
     if (!empty($binging)) echo $binging."<BR>";
 
-    if ((empty($playing))&& (empty($listening))&& (empty($reading))&& (empty($watching))&& (empty($binging)))
-        echo "<div> &#128542 Nothing to see here.</div>";
-    
+ 
     ?>
