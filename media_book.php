@@ -28,29 +28,7 @@ function bringLettersToFront($bkName)
     return $bkName;
 }
 
-function getposterpath($name, $author)
-{
-    $merge = $name . "+" . $author;
-    $url = 'https://www.googleapis.com/books/v1/volumes?q=' . $merge . '&orderBy=relevance';
 
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json',
-    ]);
-
-    $response = curl_exec($curl);
-    $response = json_decode($response, true);
-    curl_close($curl);
-
-    if (empty($response['items'][0]['volumeInfo']['imageLinks']['thumbnail'])) {
-        $response = "images/API/WYDRNbook.png";
-    } else {
-        $response = $response['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
-    }
-    // print_r ($response['items'][0]['volumeInfo']['imageLinks']['thumbnail']);
-    return $response;
-}
 ?>
 
 
@@ -318,7 +296,7 @@ function getposterpath($name, $author)
                             if (file_exists($pseudo_poster)) {
                                 $posterpath = $pseudo_poster;
                             } else {
-                                $posterpath = getposterpath($stripnamebook, $stripnameauthor); // URL to download file from
+                                $posterpath = BookPosterPath($stripnamebook, $stripnameauthor); // URL to download file from
                                 $img = 'images/API/book-' . $filename . '.jpg'; // Image path to save downloaded image
                                 file_put_contents($img, file_get_contents($posterpath)); // Save image
 

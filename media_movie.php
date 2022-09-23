@@ -18,30 +18,6 @@ require "functions.php";
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $user_data = check_login($con);
 $username = $user_data['user_name'];
-
-function getposterpath($name, $year)
-{
-    $api_key = "e446bc89015229cf337e16b0849d506c";
-    $url = 'https://api.themoviedb.org/3/search/movie?api_key=' . $api_key . '&query=' . $name . '&year=' . $year . '&include_adult=false';
-    // echo $url . "<br>";
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json'
-    ]);
-
-    $response = curl_exec($curl);
-    $response = json_decode($response, true);
-    curl_close($curl);
-
-    if (empty($response['results'][0]['poster_path'])) {
-        $response = "images/API/WYDRNmovie.png";
-    } else {
-        $response = "https://image.tmdb.org/t/p/w300" . $response['results'][0]['poster_path'];
-    }
-    return $response;
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -288,7 +264,7 @@ function getposterpath($name, $year)
                             if (file_exists($pseudo_poster)) {
                                 $posterpath = $pseudo_poster;
                             } else {
-                                $posterpath = getposterpath($stripnamemovie, $movie_year); // URL to download file from
+                                $posterpath = MoviePosterPath($stripnamemovie, $movie_year); // URL to download file from
                                 $img = 'images/API/movie-' . $filename . '.jpg'; // Image path to save downloaded image
                                 file_put_contents($img, file_get_contents($posterpath)); // Save image
 

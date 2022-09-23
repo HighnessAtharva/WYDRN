@@ -22,28 +22,6 @@ $user_data = check_login($con);
 $username = $user_data['user_name'];
 
 
-function getposterpath($name)
-{
-    $api_key = "e446bc89015229cf337e16b0849d506c";
-    $url = 'https://api.themoviedb.org/3/search/tv?api_key=' . $api_key . '&query=' . $name . '&include_adult=false';
-
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json',
-    ]);
-
-    $response = curl_exec($curl);
-    $response = json_decode($response, true);
-    curl_close($curl);
-
-    if (empty($response['results'][0]['poster_path'])) {
-        $response = "images/API/WYDRNtv.png";
-    } else {
-        $response = "https://image.tmdb.org/t/p/w300" . $response['results'][0]['poster_path'];
-    }
-    return $response;
-}
 ?>
 
 <!-------------------------------------------------------------------------------------
@@ -303,7 +281,7 @@ function getposterpath($name)
                             if (file_exists($pseudo_poster)) {
                                 $posterpath = $pseudo_poster;
                             } else {
-                                $posterpath = getposterpath($stripnametv); // URL to download file from
+                                $posterpath = TvPosterPath($stripnametv); // URL to download file from
                                 $img = 'images/API/tv-' . $filename . '.jpg'; // Image path to save downloaded image
                                 // Save image
                                 file_put_contents($img, file_get_contents($posterpath));

@@ -847,3 +847,137 @@ function getFavoriteArtist($con, $username)
     $sql = "SELECT artist, count(artist) as favorites FROM `data` where username='$username' and artist!='' GROUP BY artist HAVING count(artist)>1 ORDER BY count(artist) DESC LIMIT 5";
     return executeSQL($con, $sql);
 }
+
+/********************
+GET THE MOVIE POSTER PATH USING AN API REQUEST
+ ******************/
+function MoviePosterPath($name, $year)
+{
+    $api_key = "e446bc89015229cf337e16b0849d506c";
+    $url = 'https://api.themoviedb.org/3/search/movie?api_key=' . $api_key . '&query=' . $name . '&year=' . $year . '&include_adult=false';
+    // echo $url . "<br>";
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json'
+    ]);
+
+    $response = curl_exec($curl);
+    $response = json_decode($response, true);
+    curl_close($curl);
+
+    if (empty($response['results'][0]['poster_path'])) {
+        $response = "images/API/WYDRNmovie.png";
+    } else {
+        $response = "https://image.tmdb.org/t/p/w300" . $response['results'][0]['poster_path'];
+    }
+    return $response;
+}
+
+/********************
+GET THE BOOK POSTER PATH USING AN API REQUEST
+ ******************/
+function BookPosterPath($name, $author)
+{
+    $merge = $name . "+" . $author;
+    $url = 'https://www.googleapis.com/books/v1/volumes?q=' . $merge . '&orderBy=relevance';
+
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+    ]);
+
+    $response = curl_exec($curl);
+    $response = json_decode($response, true);
+    curl_close($curl);
+
+    if (empty($response['items'][0]['volumeInfo']['imageLinks']['thumbnail'])) {
+        $response = "images/API/WYDRNbook.png";
+    } else {
+        $response = $response['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
+    }
+    // print_r ($response['items'][0]['volumeInfo']['imageLinks']['thumbnail']);
+    return $response;
+}
+ /********************
+GET THE TV POSTER PATH USING AN API REQUEST
+ ******************/
+
+function TvPosterPath($name)
+{
+    $api_key = "e446bc89015229cf337e16b0849d506c";
+    $url = 'https://api.themoviedb.org/3/search/tv?api_key=' . $api_key . '&query=' . $name . '&include_adult=false';
+
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+    ]);
+
+    $response = curl_exec($curl);
+    $response = json_decode($response, true);
+    curl_close($curl);
+
+    if (empty($response['results'][0]['poster_path'])) {
+        $response = "images/API/WYDRNtv.png";
+    } else {
+        $response = "https://image.tmdb.org/t/p/w300" . $response['results'][0]['poster_path'];
+    }
+    return $response;
+}
+
+
+
+ /********************
+GET THE MUSIC POSTER PATH USING AN API REQUEST
+ ******************/
+function MusicPosterPath($name, $artist)
+{
+    $api_key = "6a4eb1d0536cfe3583784a65332ee179";
+    $url = 'https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=' . $api_key . '&artist=' . $artist . '&album=' . $name . '&format=json';
+    // echo $url . "<br>";
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json'
+    ]);
+
+    $response = curl_exec($curl);
+    $response = json_decode($response, true);
+    curl_close($curl);
+
+    if (empty($response['album']['image'][5]['#text'])) {
+        $response = "images/API/WYDRNmusic.png";
+    } else {
+        $response = $response['album']['image'][5]['#text'];
+    }
+    return $response;
+}
+
+ /********************
+GET THE VIDEOGAME POSTER PATH USING AN API REQUEST
+ ******************/
+
+function GamePosterPath($name)
+{
+    $api_key = "fe197746ce494b4791441d9a9161c1be";
+    $url = 'https://api.rawg.io/api/games?search=' . $name . '&key=' . $api_key;
+    // echo $url . "<br>";
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+    ]);
+
+    $response = curl_exec($curl);
+    $response = json_decode($response, true);
+    curl_close($curl);
+
+    if (empty($response['results'][0]['background_image'])) {
+        $response = "images/API/WYDRNgame.png";
+    } else {
+        $response = $response['results'][0]['background_image'];
+    }
+    return $response;
+}

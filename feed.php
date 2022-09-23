@@ -61,7 +61,7 @@ $username = $user_data['user_name'];
 ------------------------------------------------------------------------------------->
     <?php
 
-    $per_page_record = 30; // Number of entries to show in a page.
+    $per_page_record = 10; // Number of entries to show in a page.
     // Look for a GET variable page if not found default is 1.
     if (isset($_GET["page"])) {
         $page = $_GET["page"];
@@ -127,25 +127,76 @@ $username = $user_data['user_name'];
                             <div class="mycolumn1">
                                 <div class="pxc-title"><a class="uname" href="<?php echo 'profile.php?user_name=' . $person ?>"><?php echo $person ?></a></div>
 
+                                <!--GAME CONTENT-->
                                 <?php if ((!empty($videogame)) && (!empty($platform))) { ?>
                                     <div class="pxc-sub">&#127918 Playing <b><?php echo strtoupper($videogame) ?></b> on <?php echo $platform ?></div>
+                                    
+                                <?php
+                                    $stripnamegame = str_replace(' ', '+', $videogame);
+                                    $gamePosterPath= GamePosterPath($stripnamegame);
+                                ?>
+                                
+                                <img class="gamePoster" loading="lazy" src="<?php echo $gamePosterPath ?>" alt="Game Poster">
+                                
+                                
                                 <?php } ?>
 
+
+
+                                <!--ALBUM CONTENT-->
                                 <?php if ((!empty($album)) && (!empty($artist))) { ?>
                                     <div class="pxc-sub"> &#127911 Listening to <b><?php echo strtoupper($album) ?></b> by <?php echo $artist ?></div>
+
+                                <?php
+                                    $stripnamealbum = str_replace(' ', '+', $album);
+                                    $stripartist= str_replace(' ', '+', $artist);
+                                    $musicPosterPath= MusicPosterPath($stripnamealbum, $stripartist);
+                                ?>
+                                
+                                <img class="musicPoster" loading="lazy" src="<?php echo $musicPosterPath ?>" alt="Music Poster">
                                 <?php } ?>
 
+
+
+                                 <!--BOOK CONTENT-->
                                 <?php if ((!empty($book)) && (!empty($author))) { ?>
                                     <div class="pxc-sub"> &#128213 Reading <b><?php echo strtoupper($book) ?></b> by <?php echo $author ?> </div>
+                                <?php
+                                    $stripnamebook = str_replace(' ', '+', $book);
+                                    $stripnameauthor= str_replace(' ', '+', $author);
+                                    $bookPosterPath= BookPosterPath($stripnamebook, $stripnameauthor);
+                                ?>
+                                
+                                <img class="bookPoster" loading="lazy" src="<?php echo $bookPosterPath ?>" alt="Book Poster">
+                                
                                 <?php } ?>
 
+
+
+                                 <!--MOVIE CONTENT-->
                                 <?php if ((!empty($movie)) && (!empty($year))) { ?>
                                     <div class="pxc-sub"> &#128253 Watching <b><?php echo strtoupper($movie) ?></b> (<?php echo $year ?>) </div>
+                                
+                                    <?php
+                                    $stripnamemovie = str_replace(' ', '+', $movie);
+                                    $moviePosterPath= MoviePosterPath($stripnamemovie, $movieyear);
+                                ?>
+                                
+                                <img class="moviePoster" loading="lazy" src="<?php echo $moviePosterPath ?>" alt="Movie Poster">
                                 <?php } ?>
 
+
+                                <!--TV CONTENT-->
                                 <?php if ((!empty($tv)) && (!empty($streaming))) { ?>
                                     <div class="pxc-sub"> &#128250 Binging <b><?php echo strtoupper($tv) ?></b> On <?php echo $streaming ?> </div>
-                                <?php } ?>
+                                
+                                    <?php
+                                    $striptv = str_replace(' ', '+', $tv);
+                                    $tvPosterPath= TvPosterPath($striptv);
+                                ?>
+                                
+                                <img class="tvPoster" loading="lazy" src="<?php echo $tvPosterPath ?>" alt="TV Poster">
+                                    <?php } ?>
 
                             </div>
                             <!--COLUMN 2 SHOWS PRINTABLE DATE-->

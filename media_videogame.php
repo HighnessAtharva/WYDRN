@@ -24,28 +24,7 @@ $username = $user_data['user_name'];
 
 // flush();
 // ob_flush();
-function getposterpath($name)
-{
-    $api_key = "fe197746ce494b4791441d9a9161c1be";
-    $url = 'https://api.rawg.io/api/games?search=' . $name . '&key=' . $api_key;
-    // echo $url . "<br>";
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json',
-    ]);
 
-    $response = curl_exec($curl);
-    $response = json_decode($response, true);
-    curl_close($curl);
-
-    if (empty($response['results'][0]['background_image'])) {
-        $response = "images/API/WYDRNgame.png";
-    } else {
-        $response = $response['results'][0]['background_image'];
-    }
-    return $response;
-}
 ?>
 
 <!-------------------------------------------------------------------------------------
@@ -294,7 +273,7 @@ function getposterpath($name)
                             if (file_exists($pseudo_poster)) {
                                 $posterpath = $pseudo_poster;
                             } else {
-                                $posterpath = getposterpath($stripgame); // URL to download file from
+                                $posterpath = GamePosterPath($stripgame); // URL to download file from
                                 $img = 'images/API/game-' . $filename . '.jpg'; // Image path to save downloaded image
                                 // Save image
                                 file_put_contents($img, file_get_contents($posterpath));

@@ -21,28 +21,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $user_data = check_login($con);
 $username = $user_data['user_name'];
 
-function getposterpath($name, $artist)
-{
-    $api_key = "6a4eb1d0536cfe3583784a65332ee179";
-    $url = 'https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=' . $api_key . '&artist=' . $artist . '&album=' . $name . '&format=json';
-    // echo $url . "<br>";
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json'
-    ]);
 
-    $response = curl_exec($curl);
-    $response = json_decode($response, true);
-    curl_close($curl);
-
-    if (empty($response['album']['image'][5]['#text'])) {
-        $response = "images/API/WYDRNmusic.png";
-    } else {
-        $response = $response['album']['image'][5]['#text'];
-    }
-    return $response;
-}
 ?>
 
 
@@ -296,7 +275,7 @@ function getposterpath($name, $artist)
                             if (file_exists($pseudo_poster)) {
                                 $posterpath = $pseudo_poster;
                             } else {
-                                $posterpath = getposterpath($stripalbum, $stripartist); // URL to download file from
+                                $posterpath = MusicPosterPath($stripalbum, $stripartist); // URL to download file from
                                 $img = 'images/API/music-' . $filename . '.jpg'; // Image path to save downloaded image
                                 // Save image 
                                 file_put_contents($img, file_get_contents($posterpath));

@@ -399,10 +399,10 @@ a>span.neonText:hover {
 
 .pxc-sub {
     font-size: 16px;
-    margin-bottom: 20px;
     flex: 1 1 auto;
     -webkit-mask-image: linear-gradient(black 80%, transparent 100%);
     color: rgb(0, 0, 0);
+    width: fit-content;
 }
 
 @media screen and (max-width: 700px) {
@@ -524,4 +524,88 @@ a.uname:hover {
     background-color: #fff;
     padding: 10px;
     text-transform: uppercase
+}
+
+.gamePoster {
+    /* width: 100px; */
+    border-radius: 10px;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.moviePoster {
+    /* width: 100px; */
+    border-radius: 10px;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.tvPoster {
+    /* width: 100px; */
+    border-radius: 10px;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.musicPoster {
+    /* width: 100px; */
+    border-radius: 10px;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.bookPoster {
+    /* width: 100px; */
+    border-radius: 10px;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.pxc-sub:hover {
+    cursor: pointer;
+}
+
+.pxc-sub:hover+.gamePoster {
+    opacity: 1;
+    height: 100px;
+    object-fit: contain;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.pxc-sub:hover+.moviePoster {
+    opacity: 1;
+    height: 100px;
+    object-fit: contain;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.pxc-sub:hover+.tvPoster {
+    opacity: 1;
+    height: 100px;
+    object-fit: contain;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.pxc-sub:hover+.musicPoster {
+    opacity: 1;
+    height: 100px;
+    object-fit: contain;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.pxc-sub:hover+.bookPoster {
+    opacity: 1;
+    height: 100px;
+    object-fit: contain;
+    transition: opacity 0.5s ease-in-out;
 }
