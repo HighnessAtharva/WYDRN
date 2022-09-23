@@ -117,8 +117,8 @@ if ($query = mysqli_query($con, $sql2)) {
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-     <!--JQUERY CDN Link-->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!--JQUERY CDN Link-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
@@ -132,7 +132,7 @@ if ($query = mysqli_query($con, $sql2)) {
 <body>
 
     <div class="shadow overflow" style="position:relative;">
-    <?php require "header4profile.php"; ?>
+        <?php require "header4profile.php"; ?>
 
         <!----------------
 	Background Image
@@ -157,6 +157,12 @@ if ($query = mysqli_query($con, $sql2)) {
                 </div>
 
             </div>
+
+
+
+
+          
+
         </div>
 
         <div id="profile">
@@ -348,27 +354,27 @@ if ($query = mysqli_query($con, $sql2)) {
 			FOLLOWERS COUNT
 			------------------>
                         <li> <a href="followers.php?user_name=<?php
-                                                                    if (isset($_GET['user_name'])) {
-                                                                        echo $_GET['user_name'];
-                                                                    } else {
-                                                                        echo $username;
-                                                                    }
-                                                                    ?>" style="color:black">
-                            <?php echo $total_followers; ?>
-                           <span>Followers</span></a>
+                                                                if (isset($_GET['user_name'])) {
+                                                                    echo $_GET['user_name'];
+                                                                } else {
+                                                                    echo $username;
+                                                                }
+                                                                ?>" style="color:black">
+                                <?php echo $total_followers; ?>
+                                <span>Followers</span></a>
                         </li>
 
                         <!----------------
 			FOLLOWING COUNT
 			------------------>
                         <li>
-                        <a href="following.php?user_name=<?php
-                                                                    if (isset($_GET['user_name'])) {
-                                                                        echo $_GET['user_name'];
-                                                                    } else {
-                                                                        echo $username;
-                                                                    } ?>" style="color:black"><?php echo $total_following; ?>
-                            <span>Following</span></a>
+                            <a href="following.php?user_name=<?php
+                                                                if (isset($_GET['user_name'])) {
+                                                                    echo $_GET['user_name'];
+                                                                } else {
+                                                                    echo $username;
+                                                                } ?>" style="color:black"><?php echo $total_following; ?>
+                                <span>Following</span></a>
                         </li>
 
                     </ul>
@@ -376,11 +382,11 @@ if ($query = mysqli_query($con, $sql2)) {
 
 
 
-                    </div>
-            <!--End of content-->
                 </div>
-                <!--End of data-->
-           
+                <!--End of content-->
+            </div>
+            <!--End of data-->
+
 
 
             <!----------------------------------------------------------------
@@ -390,74 +396,73 @@ if ($query = mysqli_query($con, $sql2)) {
                 <?php require "WYDRN.php"; ?>
             </div>
 
-          
 
-          
+
+
 
         </div> <!-- This DIV is the end of the bottom half of the card. White Section-->
     </div> <!-- This DIV is the end of the entire card-->
 
-      <!--Container for Posters-->
-      <div class="MediaPosters">
-                                
-                                <!--GAME CONTENT-->
-                                <?php if ((!empty($videogame)) && (!empty($platform))) { 
-                                    $stripnamegame = str_replace(' ', '+', $videogame);
-                                    $gamePosterPath= GamePosterPath($stripnamegame);
-                                ?>
-                                
-                                <img id="gamePoster" loading="lazy" src="<?php echo $gamePosterPath ?>" alt="Game Poster">
-                                
-                                
-                                <?php } ?>
+  <!--Container for Posters-->
+  <div class="MediaPosters">
+
+<!--GAME CONTENT-->
+<?php if ((!empty($videogame)) && (!empty($platform))) {
+    $stripnamegame = str_replace(' ', '+', $videogame);
+    $gamePosterPath = GamePosterPath($stripnamegame);
+?>
+
+    <img id="gamePoster" loading="lazy" src="<?php echo $gamePosterPath ?>" alt="Game Poster">
+
+
+<?php } ?>
 
 
 
-                                <!--ALBUM CONTENT-->
-                                <?php if ((!empty($album)) && (!empty($artist))) {
-                                    $stripnamealbum = str_replace(' ', '+', $album);
-                                    $stripartist= str_replace(' ', '+', $artist);
-                                    $musicPosterPath= MusicPosterPath($stripnamealbum, $stripartist);
-                                ?>
-                                
-                                <img id="musicPoster" loading="lazy" src="<?php echo $musicPosterPath ?>" alt="Music Poster">
-                                <?php } ?>
+<!--ALBUM CONTENT-->
+<?php if ((!empty($album)) && (!empty($artist))) {
+    $stripnamealbum = str_replace(' ', '+', $album);
+    $stripartist = str_replace(' ', '+', $artist);
+    $musicPosterPath = MusicPosterPath($stripnamealbum, $stripartist);
+?>
+
+    <img id="musicPoster" loading="lazy" src="<?php echo $musicPosterPath ?>" alt="Music Poster">
+<?php } ?>
 
 
 
-                                 <!--BOOK CONTENT-->
-                                <?php if ((!empty($book)) && (!empty($author))) { 
-                                    $stripnamebook = str_replace(' ', '+', $book);
-                                    $stripnameauthor= str_replace(' ', '+', $author);
-                                    $bookPosterPath= BookPosterPath($stripnamebook, $stripnameauthor);
-                                ?>
-                                
-                                <img id="bookPoster" loading="lazy" src="<?php echo $bookPosterPath ?>" alt="Book Poster">
-                                
-                                <?php } ?>
+<!--BOOK CONTENT-->
+<?php if ((!empty($book)) && (!empty($author))) {
+    $stripnamebook = str_replace(' ', '+', $book);
+    $stripnameauthor = str_replace(' ', '+', $author);
+    $bookPosterPath = BookPosterPath($stripnamebook, $stripnameauthor);
+?>
+
+    <img id="bookPoster" loading="lazy" src="<?php echo $bookPosterPath ?>" alt="Book Poster">
+
+<?php } ?>
 
 
 
-                                 <!--MOVIE CONTENT-->
-                                <?php if ((!empty($movie)) && (!empty($movierelease))) { 
-                                    $stripnamemovie = str_replace(' ', '+', $movie);
-                                    $moviePosterPath= MoviePosterPath($stripnamemovie, $movierelease);
-                                ?>
-                                
-                                <img id="moviePoster" loading="lazy" src="<?php echo $moviePosterPath ?>" alt="Movie Poster">
-                                <?php } ?>
+<!--MOVIE CONTENT-->
+<?php if ((!empty($movie)) && (!empty($movierelease))) {
+    $stripnamemovie = str_replace(' ', '+', $movie);
+    $moviePosterPath = MoviePosterPath($stripnamemovie, $movierelease);
+?>
+
+    <img id="moviePoster" loading="lazy" src="<?php echo $moviePosterPath ?>" alt="Movie Poster">
+<?php } ?>
 
 
-                                <!--TV CONTENT-->
-                                <?php if ((!empty($TV)) && (!empty($streamplatform))) { 
-                                    $striptv = str_replace(' ', '+', $TV);
-                                    $tvPosterPath= TvPosterPath($striptv);
-                                ?>
-                                
-                                <img id="tvPoster" loading="lazy" src="<?php echo $tvPosterPath ?>" alt="TV Poster">
-                                    <?php } ?>
-            </div>
+<!--TV CONTENT-->
+<?php if ((!empty($TV)) && (!empty($streamplatform))) {
+    $striptv = str_replace(' ', '+', $TV);
+    $tvPosterPath = TvPosterPath($striptv);
+?>
 
+    <img id="tvPoster" loading="lazy" src="<?php echo $tvPosterPath ?>" alt="TV Poster">
+<?php } ?>
+</div>
 
 
     <?php mysqli_close($con); ?>

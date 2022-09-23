@@ -58,7 +58,7 @@ $(document).ready(function() {
         $("#header").css("background-color", "black");
     }, function() {
         $("#musicPoster").css("opacity", "0");
-        $("#header").css("opacity", "0.2");
+        $("#header").css("opacity", "1");
         // $("#header").css("background-color", "initial");
     });
 

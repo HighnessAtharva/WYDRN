@@ -188,19 +188,17 @@
     }
     
     #activity {
-        /* margin-right: 30px; */
         word-wrap: break-word;
-        min-height: auto;
-        max-height: 900px;
-        /* max-width: 500px; */
+        /* min-height: auto;
+        max-height: 900px; */
+        height: 250px;
         overflow: auto;
-        /* padding-left: 25px; */
         display: flex;
         align-items: center;
         align-content: space-between;
-        justify-content: space-around;
+        /* justify-content: space-around; */
         flex-direction: column;
-        padding-top: 1em;
+        padding-top: 1.5em;
     }
     
     .follow-button {
@@ -411,6 +409,7 @@
         width: 200px;
         top: 21%;
         right: 42%;
+        z-index: 505;
     }
     
     #moviePoster {
