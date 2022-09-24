@@ -25,7 +25,7 @@ VIDEO GAME DATA
 *****************-->
 <?php
 
-$querygame = "SELECT `videogame`, `platform`, DATE_FORMAT(date, '%D %b %Y') AS `date` FROM `data` where `username`='$username' and `videogame`!='' LIMIT 10";
+$querygame = "SELECT DISTINCT `videogame`, `platform`, DATE_FORMAT(date, '%D %b %Y') AS `date` FROM `data` where `username`='$username' and `videogame`!=''  ORDER BY `date` DESC LIMIT 10";
 
 if (!$result = mysqli_query($con, $querygame)) {
     mysqli_error($con);
@@ -69,7 +69,7 @@ ALBUM DATA
 *****************-->
 <?php
 
-$queryalbum = "SELECT `album`, `artist`, DATE_FORMAT(date, '%D %b %Y') AS `date` FROM `data` where `username`='$username' and `album`!='' LIMIT 10";
+$queryalbum = "SELECT DISTINCT `album`, `artist`, DATE_FORMAT(date, '%D %b %Y') AS `date` FROM `data` where `username`='$username' and `album`!=''  ORDER BY `date` DESC LIMIT 10";
 
 if (!$result = mysqli_query($con, $queryalbum)) {
     mysqli_error($con);
@@ -114,7 +114,7 @@ MOVIE DATA
 *****************-->
 <?php
 
-$querymovie = "SELECT `movie`, `year`, DATE_FORMAT(date, '%D %b %Y') AS `date` FROM `data` where `username`='$username' and `movie`!='' LIMIT 10";
+$querymovie = "SELECT DISTINCT `movie`, `year`, DATE_FORMAT(date, '%D %b %Y') AS `date` FROM `data` where `username`='$username' and `movie`!=''  ORDER BY `date` DESC LIMIT 10";
 
 if (!$result = mysqli_query($con, $querymovie)) {
     mysqli_error($con);
@@ -160,7 +160,7 @@ TV DATA
 *****************-->
 <?php
 
-$querytv = "SELECT `tv`, `streaming`, DATE_FORMAT(date, '%D %b %Y') AS `date` FROM `data` where `username`='$username' and `tv`!='' LIMIT 10";
+$querytv = "SELECT DISTINCT `tv`, `streaming`, DATE_FORMAT(date, '%D %b %Y') AS `date` FROM `data` where `username`='$username' and `tv`!=''  ORDER BY `date` DESC LIMIT 10";
 
 if (!$result = mysqli_query($con, $querytv)) {
     mysqli_error($con);
@@ -203,7 +203,7 @@ BOOK DATA
 *****************-->
 <?php
 
-$querybook = "SELECT `book`, `author`, DATE_FORMAT(date, '%D %b %Y') AS `date` FROM `data` where `username`='$username' and `book`!='' LIMIT 10";
+$querybook = "SELECT DISTINCT `book`, `author`, DATE_FORMAT(date, '%D %b %Y') AS `date` FROM `data` where `username`='$username' and `book`!='' ORDER BY `date` DESC LIMIT 10";
 
 if (!$result = mysqli_query($con, $querybook)) {
     mysqli_error($con);
@@ -278,20 +278,22 @@ if (mysqli_num_rows($result) > 0) {
                      if( (!empty($movie)) || (!empty($tv)) || (!empty($book)) || (!empty($album)) || (!empty($videogame))){
                      ?>
                     
-                    <input type="button" value="Download CSV" onclick="location.href='download_csv.php'">
+                    <button class="button-33" onclick="location.href='download_csv.php'">Download CSV</button>
                     
                     <?php
                         }
                     ?>
 
-
+                        
                 </div>
             </div>
         </center>
         <!--  /Header  -->
 
         <br>
-        <hr><br>
+        <hr>
+        <div class="message"> Displaying Recent Items Logged By You </div>
+        <br>
 
         <center>
             <!--  PRINTING VIDEOGAME DATA   -->

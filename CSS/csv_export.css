@@ -7,7 +7,9 @@
 body {
     font-family: "Open Sans", Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
-    background: rgba( 71, 147, 227, 1);
+    background-color: #e5e5f7;
+    opacity: 1;
+    background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 10px), repeating-linear-gradient( #444cf755, #444cf7);
     /* no selection */
     user-select: none;
     -moz-user-select: none;
@@ -173,4 +175,79 @@ body {
         display: block;
         text-align: center;
     }
+}
+
+.button-33 {
+    margin-top: 20px;
+    background-color: #c2fbd7;
+    border-radius: 100px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+    color: green;
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-33:hover {
+    box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px;
+    transform: scale(1.05);
+}
+
+.message {
+    background-color: #FFFFFF;
+    border: 1px solid rgb(209, 213, 219);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #111827;
+    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: .875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: .75rem 1rem;
+    text-align: center;
+    text-decoration: none #D1D5DB solid;
+    text-decoration-thickness: auto;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.heading {
+    background-color: #FFFFFF;
+    border: 1px solid rgb(209, 213, 219);
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    color: #262626;
+    font-family: 'Open Sans';
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none #D1D5DB solid;
+    text-decoration-thickness: auto;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 0 auto;
+    padding: 25px;
+    word-spacing: 5px;
+    backdrop-filter: saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
 }

@@ -143,13 +143,13 @@ $public_profile_link = "localhost/WYDRN/profile.php?user_name=$username";
                             <br><br>
                             <!--CHANGE PROFILE PIC-->
                             <span class="text">Change Profile Photo</span><br>
-                            <label class="input-button-label"><input type="file" id="pfpinput" name="PFP" accept="image/png, image/gif, image/jpeg" onchange="previewFile(this);" /></label>
+                            <label class="input-button-label"><input type="file" id="pfpinput" name="PFP" accept="image/png, image/gif, image/jpeg" onchange="previewFile(this);" class="inp-file"/></label>
                             <img id="pfp-preview" src="images/website/preview.jpg" alt="" style="width:50px; height:50px; border-radius:50%;">
                             <br><br>
 
                             <!--CHANGE BANNER PHOTO-->
                             <span class="text">Change Banner Photo</span><br>
-                            <label class="input-button-label"><input type="file" id="bginput" name="BgImage" accept="image/png, image/gif, image/jpeg" /></label><br><br>
+                            <label class="input-button-label"><input type="file" id="bginput" name="BgImage" accept="image/png, image/gif, image/jpeg" class="inp-file"/></label><br><br>
                             <input type="submit" value="Update Profile" class="btn btn-success" name="save_profile">
                         </fieldset>
                     </form>

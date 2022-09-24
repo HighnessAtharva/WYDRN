@@ -54,8 +54,8 @@ include("header.php");
     <div class="info">
     CSV headers should be <u>Videogame, Platform, Album, Artist, Book,	Author,	Movie, Year, TV, Streaming,	Datetime, Date</u>. Order of the CSV headers should be the same as the order of the columns mentioned. If Datetime, Date is absent in the CSV, it will be automatically filled with the current date and time. Sample Import File will look like this. Download it and use it as a template if required.
     <br><br>
-    <button onclick="window.location.href='dummy_import_data.csv'">Download Import CSV (Contains DATA)</button>
-    <button onclick="window.location.href='dummy_import_data_blank.csv'">Download Import CSV (BLANK)</button> 
+    <button class="button-33" onclick="window.location.href='dummy_import_data.csv'">Download Import CSV (Contains DATA)</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="button-33" onclick="window.location.href='dummy_import_data_blank.csv'">Download Import CSV (BLANK)</button> 
 </div>
 </center>
 
