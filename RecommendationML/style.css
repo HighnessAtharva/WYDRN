@@ -185,3 +185,8 @@ body {
     text-align: center;
     color: #00021c;
 }
+
+#gameCover {
+    width: 300px;
+    height: 150px;
+}

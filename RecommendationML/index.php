@@ -385,7 +385,7 @@ $mediaType='book';
                         <!--Priting out the image, name and summary for the user.-->
                         <div class="content">
                             <!--BUG: echoing the $gamePoster in image tag breaks the entire page. -->
-                            <img src="<?php echo $gamePoster; ?>" alt="<?php echo  $gamePoster; ?>" />
+                            <img src="<?php echo $gamePoster; ?>" alt="<?php echo  $gamePoster; ?>" id="gameCover" />
                             <span><?php echo $game ?></span>
                         </div>
 
