@@ -314,9 +314,9 @@ $username = $user_data['user_name'];
 
 
                                 <h1 class='moviename'><?php echo $tvname; ?>
-                                <div class='tags'>
-                                    <div class='tag'><?php echo $platform ?></div>
-                                </div>
+                                    <div class='tags'>
+                                        <div class='tag'><?php echo $platform ?></div>
+                                    </div>
                                 </h1>
                             </div>
 
@@ -389,7 +389,10 @@ $username = $user_data['user_name'];
     $('.delete-item').click(function() {
         var tvName = $(this).closest('.card-grid-space').find('.moviename').text();
         var parent = $(this).parent("div").parent("div");
-        // console.log(tvName);
+        
+        //trim the name to remove trailing whitespace and match the name to be the same as the one in the databas
+        tvName = tvName.substring(0, tvName.indexOf('  '));
+        console.log(tvName);
 
         $.ajax({
             type: "GET",

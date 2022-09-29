@@ -33,7 +33,7 @@ function sendLettersToBack($bkName){
 // When user clicks on delete button on media_book.php
 if(isset($_GET['book'])){
     $bookToDelete =  $_GET['book'];
-    $bookToDelete =sendLettersToBack($bookToDelete);
+    // $bookToDelete =sendLettersToBack($bookToDelete);
     // echo $bookToDelete;
     //do not delete the entire row as it contians the other media items. Instead update the book field and the author field to nullable string values.
     $sql = "UPDATE `data` SET `book` = '', `author`='' WHERE `username` = '$username' AND `book` = '$bookToDelete'";

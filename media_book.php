@@ -415,6 +415,11 @@ function bringLettersToFront($bkName)
     $('.delete-item').click(function() {
         var bookName = $(this).closest('.card-grid-space').find('.moviename').text();
         var parent = $(this).parent("div").parent("div");
+        
+        //trim the name to remove trailing whitespace and match the name to be the same as the one in the database
+        bookName=bookName.substring(0, bookName.indexOf('  '));
+        //this is only for the book media
+        bookName=bookName.trim();
         console.log(bookName);
 
         $.ajax({

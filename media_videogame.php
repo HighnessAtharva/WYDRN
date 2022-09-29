@@ -378,7 +378,10 @@ $username = $user_data['user_name'];
             $('.delete-item').click(function() {
                 var gameName = $(this).closest('.card-grid-space').find('.moviename').text();
                 var parent = $(this).parent("div").parent("div");
-                // console.log(gameName);
+                 
+                //trim the name to remove trailing whitespace and match the name to be the same as the one in the database
+                gameName = gameName.substring(0, gameName.indexOf('  '));
+                console.log(gameName);
 
                 $.ajax({
                     type: "GET",

@@ -373,7 +373,10 @@ $username = $user_data['user_name'];
     $('.delete-item').click(function() {
         var movieName = $(this).closest('.card-grid-space').find('.moviename').text();
         var parent = $(this).parent("div").parent("div");
-        // console.log(movieName);
+      
+        //trim the name to remove trailing whitespace and match the name to be the same as the one in the database
+        movieName=movieName.substring(0, movieName.indexOf('  '));
+        console.log(movieName);
 
         $.ajax({
             type: "GET",
@@ -391,12 +394,6 @@ $username = $user_data['user_name'];
     });
 </script>
 
-<script>
-    $(".card-grid-space").hover3d({
-        selector: ".card",
-        shine: true
-    });
-</script>
 
 </html>
 
