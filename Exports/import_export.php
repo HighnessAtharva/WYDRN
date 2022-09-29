@@ -47,7 +47,7 @@ if (empty($_SESSION)) {
 <button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
     <div class="container">
         
-        <button class="button-5" onclick="window.location.href='../profile.php'">🔙</button>
+        <button class="button-5" onclick="window.location.href='../profile.php'">⬅<img src="../images/Icons/profile.png" width="30px" height="30px"></button>
 
         <div class="heading">
             <h1><img src="../images/Icons/PageHeadings/importexport.png" class='header-icon'> Import & Export<span>Seamless Backup & Recovery. Instantaneous and Absolute.</span></h1>

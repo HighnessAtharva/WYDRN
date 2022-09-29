@@ -74,11 +74,11 @@ if (isset($_GET['key']) && isset($_GET['reset'])) {
 
                   <!--INPUT FIELD TO ACCEPT THE NEW PASS FROM THE USER-->
                   <div class="sign__group">
-                    <input type="password" id="pass" name='password' class="sign__input" placeholder="Enter new password" required>
+                    <input type="password" id="pass" name='password' class="sign__input" placeholder="Enter new password" required autocomplete="new-password">
                   </div>
 
                   <!-- SHOW PASSWORD-->
-                  <label style="color:white; cursor:pointer; margin-left:-160px; margin-top: -10px;"><input type="checkbox" onclick="showPass()" value="Show Password" />
+                  <label style="color:white; cursor:pointer; margin-left:-160px; margin-top: -10px;"  id="toggleText" onclick="return showPass()"><input type="checkbox" />
                     Show Password</label>
 
                   <input type="submit" value="Update Password" name="submit_password" class="forgot-mail-submit">
@@ -103,8 +103,10 @@ if (isset($_GET['key']) && isset($_GET['reset'])) {
           var x = document.getElementById("pass");
           if (x.type === "password") {
             x.type = "text";
-          } else {
+            document.getElementById("toggleText").innerHTML = "Hide Password";
+          } else if (x.type === "text") {
             x.type = "password";
+            document.getElementById("toggleText").innerHTML = "Show Password";
           }
         }
 

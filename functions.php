@@ -121,6 +121,42 @@ function send_reset_link($recipient, $link)
     }
 }
 
+
+/*
+Sends an Email notifying the user that their password has been changed.
+ */
+function send_password_reset_notif($recipient, $link)
+{
+
+    require "PHPMailer/Exception.php";
+    require "PHPMailer/PHPMailer.php";
+    require "PHPMailer/SMTP.php";
+
+    $mail = new PHPMailer\PHPMailer\PHPMailer(); // create a new object
+    $mail->IsSMTP(); // enable SMTP
+    $mail->SMTPDebug = 0; // debugging: 0 = messages only, 1 = errors + messages
+    $mail->SMTPAuth = true; // authentication enabled
+    $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+    $mail->Host = "smtp.gmail.com";
+    $mail->Port = 465; // or 587
+    $mail->IsHTML(true);
+    $mail->Username = "westerospatriot@gmail.com";
+    $mail->Password = "snqaqtbdavtchhoh"; //Google Account -> Security -> App Passwords
+    $mail->SetFrom("westerospatriot@gmail.com");
+    $mail->Subject = "WYDRN - Your Password has been reset";
+    $mail->Body = $link;
+    $mail->AddAddress($recipient);
+
+    if (!$mail->Send()) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
+        return 0;
+    } else {
+        // echo "Message has been sent";
+        return 1;
+    }
+}
+
+
 /*
 Returns whether a user account is verified or not (1 - Verified  ||  0 -  Not Verified)
 Used in Edit Profile page to determine

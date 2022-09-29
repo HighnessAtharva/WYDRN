@@ -104,7 +104,8 @@ if (isset($_POST['signup'])) {
 	/*-----------------------------------------------------------------------------------------------------------------
 		 AFTER SUCCESSFUL SIGNUP, REDIRECT TO LOGIN PAGE;
    	-------------------------------------------------------------------------------------------------------------*/ else {
-
+		//send a verification email if signup is successful.
+		mailer_verify_email($email);
 		header("Location: login.php");
 		die;
 	}

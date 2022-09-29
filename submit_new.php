@@ -12,6 +12,7 @@
  */
 
 include("connection.php");
+include("functions.php");
 if(isset($_POST['email']) && $_POST['password'] && $_POST['submit_password']){
     $email=mysqli_real_escape_string($con,$_POST['email']);
     $pass=mysqli_real_escape_string($con,$_POST['password']);
@@ -25,10 +26,19 @@ if(isset($_POST['email']) && $_POST['password'] && $_POST['submit_password']){
     $pass=password_hash($pass, PASSWORD_DEFAULT);
   
     $result=mysqli_query($con, "update users set password='$pass' where email='$email'");
-    // on success display the message, await for 5 seconds and redirect to login page.
+    // on success display the message, await for 3 seconds and redirect to login page.
     if ($result){
-    echo "Password Changed Successfully. Redirecting you to Login Page in 5 seconds";
-    sleep(5);
+    echo "Password Changed Successfully. Redirecting you to Login Page in 3 seconds";
+    
+    
+    //on successful password reset send an email to the user.
+    $link = "<button style='padding:20px;'>";
+    $link .= "<a style='text-decoration: none;' href='localhost/WYDRN/login.php'>Your Password has been successfully reset. Click here to login.</a>";
+    $link .= '</button>';
+    send_password_reset_notif($email, $link);
+    sleep(3);
+    // Password was reset, email was sent now redirecting.
+    
     //set logout=true which will be dealt with on the login page.
     header("Location: login.php?logout=true");
     }else{
