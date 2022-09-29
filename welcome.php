@@ -222,8 +222,94 @@ $user_data = check_login($con);
             let gameInput = document.getElementById("game-search-box").value;
             let gamePlatformInput = document.getElementById("game-platform").value;
 
+          
+            if (musicInput!="") {
+            if (artistInput=="") {
+                swal({
+                    title: "Artist Missing",
+                    text: " Select an album from the dropdown list only.",
+                    icon: "error",
+                    button: "Retry",
+                });
+              return false;
+            }
+          }
+
+            
+            if (bookInput!="") {
+            if (authorInput=="") {
+                swal({
+                    title: "Author Missing",
+                    text: " Select a book from the dropdown list only.",
+                    icon: "error",
+                    button: "Retry",
+                });
+              return false;
+            }
+          }
+
+            if (movieInput!="") {
+            if (movieReleaseInput=="") {
+                swal({
+                    title: "Movie Year Missing",
+                    text: " Select a movie from the dropdown list only.",
+                    icon: "error",
+                    button: "Retry",
+                });
+              return false;
+            }
+          }
+
+          if (tvInput!="") {
+            if (tvNetworkInput=="") {
+                swal({
+                    title: "Select TV Network",
+                    text: "You must choose a TV Show Network!",
+                    icon: "error",
+                    button: "Retry",
+                });
+              return false;
+            }
+          }
+
+          if (tvNetworkInput!="") {
+            if (tvInput=="") {
+                swal({
+                    title: "Select TV Show",
+                    text: "You must choose a TV Show from the dropdown!",
+                    icon: "error",
+                    button: "Retry",
+                });
+              return false;
+            }
+          }
+        
+          if (gameInput!="") {
+            if (gamePlatformInput=="") {
+                swal({
+                    title: "Select Game Platform",
+                    text: "You must choose a Gaming Platform!",
+                    icon: "error",
+                    button: "Retry",
+                });
+              return false;
+            }
+          }
+
+          if (gamePlatformInput!="") {
+            if (gameInput=="") {
+                swal({
+                    title: "Select Game",
+                    text: "You must choose a Video Game from the dropdown!",
+                    icon: "error",
+                    button: "Retry",
+                });
+              return false;
+            }
+          }
+
             //If all of the inputs are empty or some media types are filled partially, then the user will be alerted that they must fill in all the fields.
-            if ((musicInput && artistInput) || (bookInput && authorInput) || (movieInput && movieReleaseInput) || (tvInput && tvNetworkInput) || (gameInput && gamePlatformInput)) {
+            if ((musicInput && artistInput) || (bookInput&& authorInput) || (movieInput && movieReleaseInput!="") || (tvInput && tvNetworkInput) || (gameInput && gamePlatformInput)) {
              //add an alert here as well saying that profile is updated
                 return true;
                 
