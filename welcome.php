@@ -33,7 +33,7 @@ $user_data = check_login($con);
 
     <link rel="icon" type="image/png" href="images/website/favicons/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="images/website/favicons/apple-touch-icon.png">
-    
+
     <link rel="stylesheet" href="CSS/welcome.css">
 
     <link rel="stylesheet" href="SearchBoxAPIs/Videogame/main.css">
@@ -63,8 +63,14 @@ $user_data = check_login($con);
                         <h2 class="title">&#127911 Add Albums </h2>
 
                         <div class="input-group">
-                            <input type="text" class="input--style-3" name="Album" autofocus="true" placeholder="💿 Album Name" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()" autocomplete="off"><br>
+                            <input type="text" class="input--style-3" name="Album" autofocus="true" placeholder="💿 Album Name" id="music-search-box" onkeyup="findAlbum()" onclick="findAlbum()" autocomplete="off">
                         </div>
+
+                        <!--Reset Input Fields-->
+                        <!-- <button type="button" class="resetField"><img src="images/Icons/clear.png" alt="Clear" onclick="clearInput('clear__music')"></button> -->
+                     
+
+
                         <div class="input-group">
                             <input type="text" class="input--style-3" name="Artist" placeholder="👩‍🎤 Artist" id="music-artist" readonly autocomplete="off"><br>
                         </div>
@@ -206,113 +212,133 @@ $user_data = check_login($con);
     <script src="SearchBoxAPIs/Book/script.js"></script>
     <script src="SearchBoxAPIs/Videogame/script.js"></script>
     <script>
-        function Validation() {
-            let musicInput = document.getElementById("music-search-box").value;
-            let artistInput= document.getElementById("music-artist").value;
-
-            let bookInput = document.getElementById("book-search-box").value;
-            let authorInput = document.getElementById("book-author").value;
-
-            let movieInput = document.getElementById("movie-search-box").value;
-            let movieReleaseInput = document.getElementById("movie-year").value;
-
-            let tvInput = document.getElementById("tv-search-box").value;
-            let tvNetworkInput = document.getElementById("tv-network").value;
-            
-            let gameInput = document.getElementById("game-search-box").value;
-            let gamePlatformInput = document.getElementById("game-platform").value;
-
-          
-            if (musicInput!="") {
-            if (artistInput=="") {
-                swal({
-                    title: "Artist Missing",
-                    text: " Select an album from the dropdown list only.",
-                    icon: "error",
-                    button: "Retry",
-                });
-              return false;
-            }
-          }
-
-            
-            if (bookInput!="") {
-            if (authorInput=="") {
-                swal({
-                    title: "Author Missing",
-                    text: " Select a book from the dropdown list only.",
-                    icon: "error",
-                    button: "Retry",
-                });
-              return false;
-            }
-          }
-
-            if (movieInput!="") {
-            if (movieReleaseInput=="") {
-                swal({
-                    title: "Movie Year Missing",
-                    text: " Select a movie from the dropdown list only.",
-                    icon: "error",
-                    button: "Retry",
-                });
-              return false;
-            }
-          }
-
-          if (tvInput!="") {
-            if (tvNetworkInput=="") {
-                swal({
-                    title: "Select TV Network",
-                    text: "You must choose a TV Show Network!",
-                    icon: "error",
-                    button: "Retry",
-                });
-              return false;
-            }
-          }
-
-          if (tvNetworkInput!="") {
-            if (tvInput=="") {
-                swal({
-                    title: "Select TV Show",
-                    text: "You must choose a TV Show from the dropdown!",
-                    icon: "error",
-                    button: "Retry",
-                });
-              return false;
-            }
-          }
         
-          if (gameInput!="") {
-            if (gamePlatformInput=="") {
-                swal({
-                    title: "Select Game Platform",
-                    text: "You must choose a Gaming Platform!",
-                    icon: "error",
-                    button: "Retry",
-                });
-              return false;
-            }
-          }
 
-          if (gamePlatformInput!="") {
-            if (gameInput=="") {
-                swal({
-                    title: "Select Game",
-                    text: "You must choose a Video Game from the dropdown!",
-                    icon: "error",
-                    button: "Retry",
-                });
-              return false;
+        /********************** 
+         * RESET SPECIFIC INPUTS
+         * *******************/
+        // function clearInput(x) {
+        //    console.log('hi'+x);
+        //         if (x == "clear__music") {
+        //             document.getElementById("music-search-box").value = "";
+        //             document.getElementById("music-artist").value = "";
+        //     }
+        // }
+
+        
+        
+        
+        /********************** 
+         * VALIDATIONS
+         * *******************/
+
+        function Validation() {
+
+        let musicInput = document.getElementById("music-search-box").value;
+        let artistInput = document.getElementById("music-artist").value;
+
+        let bookInput = document.getElementById("book-search-box").value;
+        let authorInput = document.getElementById("book-author").value;
+
+        let movieInput = document.getElementById("movie-search-box").value;
+        let movieReleaseInput = document.getElementById("movie-year").value;
+
+        let tvInput = document.getElementById("tv-search-box").value;
+        let tvNetworkInput = document.getElementById("tv-network").value;
+
+        let gameInput = document.getElementById("game-search-box").value;
+        let gamePlatformInput = document.getElementById("game-platform").value;
+
+            if (musicInput != "") {
+                if (artistInput == "") {
+                    swal({
+                        title: "Artist Missing",
+                        text: " Select an album from the dropdown list only.",
+                        icon: "error",
+                        button: "Retry",
+                    });
+                    return false;
+                }
             }
-          }
+
+
+            if (bookInput != "") {
+                if (authorInput == "") {
+                    swal({
+                        title: "Author Missing",
+                        text: " Select a book from the dropdown list only.",
+                        icon: "error",
+                        button: "Retry",
+                    });
+                    return false;
+                }
+            }
+
+            if (movieInput != "") {
+                if (movieReleaseInput == "") {
+                    swal({
+                        title: "Movie Year Missing",
+                        text: " Select a movie from the dropdown list only.",
+                        icon: "error",
+                        button: "Retry",
+                    });
+                    return false;
+                }
+            }
+
+            if (tvInput != "") {
+                if (tvNetworkInput == "") {
+                    swal({
+                        title: "Select TV Network",
+                        text: "You must choose a TV Show Network!",
+                        icon: "error",
+                        button: "Retry",
+                    });
+                    return false;
+                }
+            }
+
+            if (tvNetworkInput != "") {
+                if (tvInput == "") {
+                    swal({
+                        title: "Select TV Show",
+                        text: "You must choose a TV Show from the dropdown!",
+                        icon: "error",
+                        button: "Retry",
+                    });
+                    return false;
+                }
+            }
+
+            if (gameInput != "") {
+                if (gamePlatformInput == "") {
+                    swal({
+                        title: "Select Game Platform",
+                        text: "You must choose a Gaming Platform!",
+                        icon: "error",
+                        button: "Retry",
+                    });
+                    return false;
+                }
+            }
+
+            if (gamePlatformInput != "") {
+                if (gameInput == "") {
+                    swal({
+                        title: "Select Game",
+                        text: "You must choose a Video Game from the dropdown!",
+                        icon: "error",
+                        button: "Retry",
+                    });
+                    return false;
+                }
+            }
 
             //If all of the inputs are empty or some media types are filled partially, then the user will be alerted that they must fill in all the fields.
-            if ((musicInput && artistInput) || (bookInput&& authorInput) || (movieInput && movieReleaseInput!="") || (tvInput && tvNetworkInput) || (gameInput && gamePlatformInput)) {
-             //add an alert here as well saying that profile is updated
+            if ((musicInput && artistInput) || (bookInput && authorInput) || (movieInput && movieReleaseInput != "") || (tvInput && tvNetworkInput) || (gameInput && gamePlatformInput)) {
+                //add an alert here as well saying that profile is updated
                 return true;
-                
+
             } else {
                 //sweet alert plugin to display error message. IT REPLACES the JS alert() function.
                 swal({
@@ -323,12 +349,9 @@ $user_data = check_login($con);
                 });
                 return false;
             }
-
-
         }
-
-
     </script>
+
     <script src="js/backToTop.js"></script>
     <?php mysqli_close($con); ?>
 
