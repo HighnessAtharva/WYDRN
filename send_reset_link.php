@@ -16,6 +16,45 @@
 require("connection.php");
 require("functions.php");
 // DO NOT INCLUDE THE HEADER BECAUSE USER IS NOT LOGGED IN! IT WILL BE INCLUDED IN THE LOGIN PAGE.
+
+
+if (isset($_POST['submit_email']) && $_POST['email']) {
+  
+  $email = mysqli_real_escape_string($con, $_POST['email']);
+  // Check if the email is registered with WYDRN 
+  $select = mysqli_query($con, "SELECT `email`, `password` FROM `users` WHERE `email`='$email'");
+  if (mysqli_num_rows($select) == 1) {
+    // echo mysqli_num_rows($select);
+    while ($row = mysqli_fetch_array($select)) {
+      $email = ($row['email']);
+      $pass = ($row['password']);
+    }
+
+
+    // $link="<img src='images/website/logo.png' alt='WYDRN' width=100' height='100' style='margin-left:75px;'>";
+    // $link.="<br><br><br>";
+    $link = "<button style='padding:20px;'>";
+    $link .= "<a style='text-decoration: none;' href='localhost/WYDRN/reset_pass.php?key=" . $email . "&reset=" . $pass . "'" . ">Click Here To Reset Password</a>";
+    $link .= '</button>';
+
+    // Check if mail was sent successfully from server side
+    if (send_reset_link($email, $link)) {
+      // echo "Reset Link Sent to Your Email";
+    } else {
+      echo "<center><div class='alert alert-danger w-25 text-center' style='position: absolute; top: 20px; left: 570px;z-index:500;' role='alert'>
+      Server encountered an error while sending the reset link. Please try again later.
+    </div></center>";
+    }
+
+
+  } else {
+    echo "<center><div class='alert alert-danger w-25 text-center' style='position: absolute; top: 20px; left: 570px;z-index:500;' role='alert'>
+    Email is not registered!
+  </div></center>";
+  }
+}
+mysqli_close($con);
+
 ?>
 
 
@@ -146,33 +185,5 @@ require("functions.php");
 ------------------------------------------------------------------------------------->
 <?php
 
-if (isset($_POST['submit_email']) && $_POST['email']) {
-  
-  $email = mysqli_real_escape_string($con, $_POST['email']);
-  // Check if the email is registered with WYDRN 
-  $select = mysqli_query($con, "SELECT `email`, `password` FROM `users` WHERE `email`='$email'");
-  if (mysqli_num_rows($select) == 1) {
-    while ($row = mysqli_fetch_array($select)) {
-      $email = ($row['email']);
-      $pass = ($row['password']);
-    }
 
-
-    // $link="<img src='images/website/logo.png' alt='WYDRN' width=100' height='100' style='margin-left:75px;'>";
-    // $link.="<br><br><br>";
-    $link = "<button style='padding:20px;'>";
-    $link .= "<a style='text-decoration: none;' href='localhost/WYDRN/reset_pass.php?key=" . $email . "&reset=" . $pass . "'" . ">Click Here To Reset Password</a>";
-    $link .= '</button>';
-
-    // Check if mail was sent successfully
-    if (send_reset_link($email, $link)) {
-      echo "Reset Link Sent to Your Email";
-    } else {
-      echo "Error in sending Password mail";
-    }
-  } else {
-    echo "Email Not Registered";
-  }
-}
-mysqli_close($con);
 ?>
