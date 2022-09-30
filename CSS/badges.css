@@ -59,22 +59,41 @@ hr.image {
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
-    color: #fff;
-    background-color: #000;
+    color: #170518;
+    background-color: #f1f1f182;
+    font-family: 'Reem Kufi Ink';
     padding: 0.3em;
+    border-bottom-color: aquamarine;
     border-radius: 0.5em;
+    border-bottom: 2px solid #6a6a6a;
+}
+
+.badge-name.bronze {
+    background: #CD7F32;
+    background: linear-gradient(to bottom, #CD7F32 0%, #BE7023 100%);
+}
+
+.badge-name.silver {
+    background: #C0C0C0;
+    background: linear-gradient(to bottom, #C0C0C0 0%, #B1B1B1 100%);
+}
+
+.badge-name.gold {
+    background: #FFD700;
+    background: linear-gradient(to bottom, #FFD700 0%, #E6B800 100%);
 }
 
 .mybadge {
     height: 12rem;
     width: 15rem;
     margin-left: -40px;
+    filter: brightness(1.1);
 }
 
 .article {
     padding: 1em;
     background: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 20px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: rgb(50 50 93 / 25%) 0px 50px 100px -20px, rgb(0 0 0 / 30%) 0px 30px 60px -30px, rgb(10 37 64 / 35%) 0px -2px 6px 0px inset;
     text-align: center;
 }
 
@@ -85,7 +104,7 @@ hr.image {
     font-family: fantasy;
     color: black;
     word-spacing: 20px;
-    font-style: italic;
+    /* font-style: italic; */
 }
 
 .article::after {
@@ -96,7 +115,30 @@ hr.image {
 
 .article:nth-child(2) {
     grid-column: 2/-1;
-    background: rgb(255, 198, 198)
+}
+
+#BookTitle {
+    background: rgb(255, 198, 198);
+}
+
+#MovieTitle {
+    background: rgb(255, 225, 198);
+}
+
+#TvTitle {
+    background: rgb(198, 200, 255);
+}
+
+#GameTitle {
+    background: rgb(198, 255, 205);
+}
+
+#MusicTitle {
+    background: rgb(250, 198, 255);
+}
+
+#CultTitle {
+    background: rgb(255, 255, 198);
 }
 
 [data-title]:hover:after {
@@ -126,4 +168,26 @@ hr.image {
 
 [data-title] {
     position: relative;
+}
+
+.mybadge.locked {
+    filter: grayscale(100%);
+    z-index: -1;
+    opacity: 0.4;
+}
+
+.lock {
+    position: absolute;
+    margin-top: 20%;
+    left: 25%;
+    z-index: 99999;
+}
+
+.cross::after {
+    content: url(../images/Icons/locked.png);
+    position: absolute;
+    margin-top: -65%;
+    left: 33%;
+    width: 10px;
+    height: 10px;
 }

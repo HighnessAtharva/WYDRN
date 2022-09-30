@@ -157,14 +157,14 @@ const VIDEOGAME_GOLD_2 = ["images/badges/gold_2.png", "GOLD - II", 75];
 const VIDEOGAME_GOLD_3 = ["images/badges/gold_3.png", "GOLD - III", 100];
 
 // FOLLOWERS
-const FOLLOWERS_BRONZE = ["images/badges/bronze.png", "MESSIAH - I", 1];
-const FOLLOWERS_SILVER = ["images/badges/silver.png", "MESSIAH - II", 3];
-const FOLLOWERS_GOLD = ["images/badges/gold.png", "MESSIAH - III", 5];
+const FOLLOWERS_BRONZE = ["images/badges/bronze.png", "MESSIAH-I", 1];
+const FOLLOWERS_SILVER = ["images/badges/silver.png", "MESSIAH-II", 3];
+const FOLLOWERS_GOLD = ["images/badges/gold.png", "MESSIAH-III", 5];
 
 // MEMBER SINCE DAYS
-const PATRON_BRONZE = ["images/badges/bronze.png", "PATRON - I", 1];
-const PATRON_SILVER = ["images/badges/silver.png", "PATRON - II", 5];
-const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
+const PATRON_BRONZE = ["images/badges/bronze.png", "PATRON-I", 1];
+const PATRON_SILVER = ["images/badges/silver.png", "PATRON-II", 5];
+const PATRON_GOLD = ["images/badges/gold.png", "PATRON-II", 10];
 
 ?>
 
@@ -203,99 +203,104 @@ const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
       <article class="article">
         <span class="emoji" style='font-size:100px;'>&#128213</span>
       </article>
-      <article class="article heading-text">
+      <article class="article heading-text" id="BookTitle">
         THE BIBLIOPHILE BADGES
       </article>
 
-      <?php if ($total_book_count >= BOOK_BRONZE_1[2]) {
-      ?>
-
-        <article class="article" data-title="<?php echo BOOK_BRONZE_1[2]; ?> book Milestone">
-          
-          <p class="badge-name"> <?php echo BOOK_BRONZE_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo BOOK_BRONZE_1[0]; ?>" alt="<?php echo BOOK_BRONZE_1[1]; ?>">
-
-        </article>
-  
       <?php
-      } ?>
-
-      <?php if ($total_book_count >= BOOK_BRONZE_2[2]) {
+      if ($total_book_count >= BOOK_BRONZE_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article" data-title="<?php echo BOOK_BRONZE_2[2]; ?> book Milestone">
-          <p class="badge-name"> <?php echo BOOK_BRONZE_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo BOOK_BRONZE_2[0]; ?>" alt="<?php echo BOOK_BRONZE_2[1]; ?>">
-        </article>
+      <article class="article" data-title="<?php echo BOOK_BRONZE_1[2]; ?> book Milestone">
+        <p class="badge-name bronze"><?php echo BOOK_BRONZE_1[1]; ?></p>
+        <img class="<?php echo $status ?>" src="<?php echo BOOK_BRONZE_1[0]; ?>" alt="<?php echo BOOK_BRONZE_1[1]; ?>">
+        <span class="<?php echo $lockicon; ?>"><span>
+      </article>
+
+
+
       <?php
-      } ?>
-
-
-
-      <?php if ($total_book_count >= BOOK_BRONZE_3[2]) {
+      if ($total_book_count >= BOOK_BRONZE_2[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article" data-title="<?php echo BOOK_BRONZE_3[2]; ?> book Milestone">
-          <p class="badge-name"> <?php echo BOOK_BRONZE_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo BOOK_BRONZE_3[0]; ?>" alt="<?php echo BOOK_BRONZE_3[1]; ?>">
-        </article>
-      <?php
-      } ?>
+      <article class="article" data-title="<?php echo BOOK_BRONZE_2[2]; ?> book Milestone">
+        <p class="badge-name bronze"> <?php echo BOOK_BRONZE_2[1]; ?></p>
+        <img class="<?php echo $status ?>" src="<?php echo BOOK_BRONZE_2[0]; ?>" alt="<?php echo BOOK_BRONZE_2[1]; ?>">
+        <span class="<?php echo $lockicon; ?>"><span>
+      </article>
 
-      <?php if ($total_book_count >= BOOK_SILVER_1[2]) {
+
+
+      <?php if ($total_book_count >= BOOK_BRONZE_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article" data-title="<?php echo BOOK_SILVER_1[2]; ?> book Milestone">
-          <p class="badge-name"> <?php echo BOOK_SILVER_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo BOOK_SILVER_1[0]; ?>" alt="<?php echo BOOK_SILVER_1[1]; ?>">
-        </article>
-      <?php
-      } ?>
+      <article class="article" data-title="<?php echo BOOK_BRONZE_3[2]; ?> book Milestone">
+        <p class="badge-name bronze"> <?php echo BOOK_BRONZE_3[1]; ?></p>
+        <img class="<?php echo $status ?>" src="<?php echo BOOK_BRONZE_3[0]; ?>" alt="<?php echo BOOK_BRONZE_3[1]; ?>">
+        <span class="<?php echo $lockicon; ?>"><span>
+      </article>
 
-      <?php if ($total_book_count >= BOOK_SILVER_2[2]) {
+
+      <?php if ($total_book_count >= BOOK_SILVER_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article" data-title="<?php echo BOOK_SILVER_2[2]; ?> book Milestone">
-          <p class="badge-name"> <?php echo BOOK_SILVER_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo BOOK_SILVER_2[0]; ?>" alt="<?php echo BOOK_SILVER_2[1]; ?>">
-        </article>
-      <?php
-      } ?>
+      <article class="article" data-title="<?php echo BOOK_SILVER_1[2]; ?> book Milestone">
+        <p class="badge-name silver"> <?php echo BOOK_SILVER_1[1]; ?></p>
+        <img class="<?php echo $status ?>" src="<?php echo BOOK_SILVER_1[0]; ?>" alt="<?php echo BOOK_SILVER_1[1]; ?>">
+        <span class="<?php echo $lockicon; ?>"><span>
+      </article>
 
 
-      <?php if ($total_book_count >= BOOK_SILVER_3[2]) {
+      <?php if ($total_book_count >= BOOK_SILVER_2[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article" data-title="<?php echo BOOK_SILVER_3[2]; ?> book Milestone">
-          <p class="badge-name"> <?php echo BOOK_SILVER_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo BOOK_SILVER_3[0]; ?>" alt="<?php echo BOOK_SILVER_3[1]; ?>">
-        </article>
-      <?php
-      } ?>
+      <article class="article" data-title="<?php echo BOOK_SILVER_2[2]; ?> book Milestone">
+        <p class="badge-name silver"> <?php echo BOOK_SILVER_2[1]; ?></p>
+        <img class="<?php echo $status ?>" src="<?php echo BOOK_SILVER_2[0]; ?>" alt="<?php echo BOOK_SILVER_2[1]; ?>">
+        <span class="<?php echo $lockicon; ?>"><span>
+      </article>
 
-      <?php if ($total_book_count >= BOOK_GOLD_1[2]) {
+
+
+      <?php if ($total_book_count >= BOOK_SILVER_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article" data-title="<?php echo BOOK_GOLD_1[2]; ?> book Milestone">
-          <p class="badge-name"> <?php echo BOOK_GOLD_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo BOOK_GOLD_1[0]; ?>" alt="<?php echo BOOK_GOLD_1[1]; ?>">
-        </article>
-      <?php
-      } ?>
+      <article class="article" data-title="<?php echo BOOK_SILVER_3[2]; ?> book Milestone">
+        <p class="badge-name silver"> <?php echo BOOK_SILVER_3[1]; ?></p>
+        <img class="<?php echo $status ?>" src="<?php echo BOOK_SILVER_3[0]; ?>" alt="<?php echo BOOK_SILVER_3[1]; ?>">
+        <span class="<?php echo $lockicon; ?>"><span>
+      </article>
 
-      <?php if ($total_book_count >= BOOK_GOLD_2[2]) {
+
+      <?php if ($total_book_count >= BOOK_GOLD_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article" data-title="<?php echo BOOK_GOLD_2[2]; ?> book Milestone">
-          <p class="badge-name"> <?php echo BOOK_GOLD_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo BOOK_GOLD_2[0]; ?>" alt="<?php echo BOOK_GOLD_2[1]; ?>">
-        </article>
-      <?php
-      } ?>
+      <article class="article" data-title="<?php echo BOOK_GOLD_1[2]; ?> book Milestone">
+        <p class="badge-name gold"> <?php echo BOOK_GOLD_1[1]; ?></p>
+        <img class="<?php echo $status ?>" src="<?php echo BOOK_GOLD_1[0]; ?>" alt="<?php echo BOOK_GOLD_1[1]; ?>">
+        <span class="<?php echo $lockicon; ?>"><span>
+      </article>
 
-      <?php if ($total_book_count >= BOOK_GOLD_3[2]) {
+
+      <?php if ($total_book_count >= BOOK_GOLD_2[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article" data-title="<?php echo BOOK_GOLD_3[2]; ?> book Milestone">
-          <p class="badge-name"> <?php echo BOOK_GOLD_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo BOOK_GOLD_3[0]; ?>" alt="<?php echo BOOK_GOLD_3[1]; ?>">
+      <article class="article" data-title="<?php echo BOOK_GOLD_2[2]; ?> book Milestone">
+        <p class="badge-name gold"> <?php echo BOOK_GOLD_2[1]; ?></p>
+        <img class="<?php echo $status ?>" src="<?php echo BOOK_GOLD_2[0]; ?>" alt="<?php echo BOOK_GOLD_2[1]; ?>">
+        <span class="<?php echo $lockicon; ?>"><span>
+      </article>
 
 
-        </article>
-      <?php
-      } ?>
+      <?php if ($total_book_count >= BOOK_GOLD_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
+      ?>
+      <article class="article" data-title="<?php echo BOOK_GOLD_3[2]; ?> book Milestone">
+        <p class="badge-name gold"> <?php echo BOOK_GOLD_3[1]; ?></p>
+        <img class="<?php echo $status ?>" src="<?php echo BOOK_GOLD_3[0]; ?>" alt="<?php echo BOOK_GOLD_3[1]; ?>">
+        <span class="<?php echo $lockicon; ?>"><span>
+      </article>
+
 
 
     </div>
@@ -310,107 +315,105 @@ const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
       <article class="article">
         <span class="emoji" style='font-size:100px;'>&#127909</span>
       </article>
-      <article class="article heading-text">THE CINEPHILE BADGES
+      <article class="article heading-text" id="MovieTitle">THE CINEPHILE BADGES
       </article>
 
-      <?php if ($total_movie_count >= MOVIE_BRONZE_1[2]) {
+      <?php if ($total_movie_count >= MOVIE_BRONZE_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MOVIE_BRONZE_1[2]; ?> movie Milestone">
-          <p class="badge-name"> <?php echo MOVIE_BRONZE_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo MOVIE_BRONZE_1[0]; ?>" alt="<?php echo MOVIE_BRONZE_1[1]; ?>">
-
+          <p class="badge-name bronze"> <?php echo MOVIE_BRONZE_1[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MOVIE_BRONZE_1[0]; ?>" alt="<?php echo MOVIE_BRONZE_1[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-
-      <?php if ($total_movie_count >= MOVIE_BRONZE_2[2]) {
+      <?php if ($total_movie_count >= MOVIE_BRONZE_2[2]){$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MOVIE_BRONZE_2[2]; ?> movie Milestone">
-          <p class="badge-name"> <?php echo MOVIE_BRONZE_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo MOVIE_BRONZE_2[0]; ?>" alt="<?php echo MOVIE_BRONZE_2[1]; ?>">
+          <p class="badge-name bronze"> <?php echo MOVIE_BRONZE_2[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MOVIE_BRONZE_2[0]; ?>" alt="<?php echo MOVIE_BRONZE_2[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+    
 
 
-      <?php if ($total_movie_count >= MOVIE_BRONZE_3[2]) {
+      <?php if ($total_movie_count >= MOVIE_BRONZE_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo  MOVIE_BRONZE_3[2]; ?> movie Milestone">
-          <p class="badge-name"> <?php echo MOVIE_BRONZE_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo MOVIE_BRONZE_3[0]; ?>" alt="<?php echo MOVIE_BRONZE_3[1]; ?>">
+          <p class="badge-name bronze"> <?php echo MOVIE_BRONZE_3[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MOVIE_BRONZE_3[0]; ?>" alt="<?php echo MOVIE_BRONZE_3[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+    
 
 
-      <?php if ($total_movie_count >= MOVIE_SILVER_1[2]) {
+      <?php if ($total_movie_count >= MOVIE_SILVER_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MOVIE_SILVER_1[2]; ?> movie Milestone">
-          <p class="badge-name"> <?php echo MOVIE_SILVER_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo MOVIE_SILVER_1[0]; ?>" alt="<?php echo MOVIE_SILVER_1[1]; ?>">
+          <p class="badge-name silver"> <?php echo MOVIE_SILVER_1[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MOVIE_SILVER_1[0]; ?>" alt="<?php echo MOVIE_SILVER_1[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+   
 
 
-      <?php if ($total_movie_count >= MOVIE_SILVER_2[2]) {
+      <?php if ($total_movie_count >= MOVIE_SILVER_2[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MOVIE_SILVER_2[2]; ?> movie Milestone">
-          <p class="badge-name"> <?php echo MOVIE_SILVER_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo MOVIE_SILVER_2[0]; ?>" alt="<?php echo MOVIE_SILVER_2[1]; ?>">
+          <p class="badge-name silver"> <?php echo MOVIE_SILVER_2[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MOVIE_SILVER_2[0]; ?>" alt="<?php echo MOVIE_SILVER_2[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
 
-      <?php if ($total_movie_count >= MOVIE_SILVER_3[2]) {
+      <?php if ($total_movie_count >= MOVIE_SILVER_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MOVIE_SILVER_3[2]; ?> movie Milestone">
-          <p class="badge-name"> <?php echo MOVIE_SILVER_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo MOVIE_SILVER_3[0]; ?>" alt="<?php echo MOVIE_SILVER_3[1]; ?>">
+          <p class="badge-name silver"> <?php echo MOVIE_SILVER_3[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MOVIE_SILVER_3[0]; ?>" alt="<?php echo MOVIE_SILVER_3[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
 
-      <?php if ($total_movie_count >= MOVIE_GOLD_1[2]) {
+      <?php if ($total_movie_count >= MOVIE_GOLD_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MOVIE_GOLD_1[2]; ?> movie Milestone">
-          <p class="badge-name"> <?php echo MOVIE_GOLD_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo MOVIE_GOLD_1[0]; ?>" alt="<?php echo MOVIE_GOLD_1[1]; ?>">
+          <p class="badge-name gold"> <?php echo MOVIE_GOLD_1[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MOVIE_GOLD_1[0]; ?>" alt="<?php echo MOVIE_GOLD_1[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_movie_count >= MOVIE_GOLD_2[2]) {
+      <?php if ($total_movie_count >= MOVIE_GOLD_2[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MOVIE_GOLD_2[2]; ?> movie Milestone">
-          <p class="badge-name"> <?php echo MOVIE_GOLD_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo MOVIE_GOLD_2[0]; ?>" alt="<?php echo MOVIE_GOLD_2[1]; ?>">
+          <p class="badge-name gold"> <?php echo MOVIE_GOLD_2[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MOVIE_GOLD_2[0]; ?>" alt="<?php echo MOVIE_GOLD_2[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
 
 
-      <?php if ($total_movie_count >= MOVIE_GOLD_3[2]) {
+      <?php if ($total_movie_count >= MOVIE_GOLD_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MOVIE_GOLD_3[2]; ?> movie Milestone">
-          <p class="badge-name"> <?php echo MOVIE_GOLD_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo MOVIE_GOLD_3[0]; ?>" alt="<?php echo MOVIE_GOLD_3[1]; ?>">
+          <p class="badge-name gold"> <?php echo MOVIE_GOLD_3[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MOVIE_GOLD_3[0]; ?>" alt="<?php echo MOVIE_GOLD_3[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
     </div>
 
 
@@ -425,105 +428,105 @@ const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
       <article class="article">
         <span class="emoji" style='font-size:100px;'>&#128250</span>
       </article>
-      <article class="article heading-text">THE 'OUCH 'OTATO BADGES
+      <article class="article heading-text" id="TvTitle">THE 'OUCH 'OTATO BADGES
       </article>
 
-      <?php if ($total_tv_count >= TV_BRONZE_1[2]) {
+      <?php if ($total_tv_count >= TV_BRONZE_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo TV_BRONZE_1[2]; ?> TV Milestone">
-          <p class="badge-name"> <?php echo TV_BRONZE_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo TV_BRONZE_1[0]; ?>" alt="<?php echo TV_BRONZE_1[1]; ?>">
+        <article class="article" data-title="<?php echo TV_BRONZE_1[2]; ?> TV Milestone">
+          <p class="badge-name bronze"> <?php echo TV_BRONZE_1[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo TV_BRONZE_1[0]; ?>" alt="<?php echo TV_BRONZE_1[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_tv_count >= TV_BRONZE_2[2]) {
+      <?php if ($total_tv_count >= TV_BRONZE_2[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo TV_BRONZE_2[2]; ?> TV Milestone">
-          <p class="badge-name"> <?php echo TV_BRONZE_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo TV_BRONZE_2[0]; ?>" alt="<?php echo TV_BRONZE_2[1]; ?>">
+        <article class="article" data-title="<?php echo TV_BRONZE_2[2]; ?> TV Milestone">
+          <p class="badge-name bronze"> <?php echo TV_BRONZE_2[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo TV_BRONZE_2[0]; ?>" alt="<?php echo TV_BRONZE_2[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
 
-      <?php if ($total_tv_count >= TV_BRONZE_3[2]) {
+      <?php if ($total_tv_count >= TV_BRONZE_3[2]){$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo TV_BRONZE_3[2]; ?> TV Milestone">
-          <p class="badge-name"> <?php echo TV_BRONZE_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo TV_BRONZE_3[0]; ?>" alt="<?php echo TV_BRONZE_3[1]; ?>">
+        <article class="article" data-title="<?php echo TV_BRONZE_3[2]; ?> TV Milestone">
+          <p class="badge-name bronze"> <?php echo TV_BRONZE_3[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo TV_BRONZE_3[0]; ?>" alt="<?php echo TV_BRONZE_3[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
 
-      <?php if ($total_tv_count >= TV_SILVER_1[2]) {
+      <?php if ($total_tv_count >= TV_SILVER_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo TV_SILVER_1[2]; ?> TV Milestone">
-          <p class="badge-name"> <?php echo  TV_SILVER_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo  TV_SILVER_1[0]; ?>" alt="<?php echo TV_SILVER_1[1]; ?>">
+        <article class="article" data-title="<?php echo TV_SILVER_1[2]; ?> TV Milestone">
+          <p class="badge-name silver"> <?php echo  TV_SILVER_1[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo  TV_SILVER_1[0]; ?>" alt="<?php echo TV_SILVER_1[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_tv_count >= TV_SILVER_2[2]) {
+      <?php if ($total_tv_count >= TV_SILVER_2[2]){$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo TV_SILVER_2[2]; ?> TV Milestone">
-          <p class="badge-name"> <?php echo  TV_SILVER_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo  TV_SILVER_2[0]; ?>" alt="<?php echo TV_SILVER_2[1]; ?>">
+        <article class="article" data-title="<?php echo TV_SILVER_2[2]; ?> TV Milestone">
+          <p class="badge-name silver"> <?php echo  TV_SILVER_2[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo  TV_SILVER_2[0]; ?>" alt="<?php echo TV_SILVER_2[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
+     
+      <?php if ($total_tv_count >= TV_SILVER_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-      <?php if ($total_tv_count >= TV_SILVER_3[2]) {
-      ?>
-        <article class="article"  data-title="<?php echo TV_SILVER_3[2]; ?> TV Milestone">
-          <p class="badge-name"> <?php echo  TV_SILVER_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo  TV_SILVER_3[0]; ?>" alt="<?php echo TV_SILVER_3[1]; ?>">
+        <article class="article" data-title="<?php echo TV_SILVER_3[2]; ?> TV Milestone">
+          <p class="badge-name silver"> <?php echo  TV_SILVER_3[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo  TV_SILVER_3[0]; ?>" alt="<?php echo TV_SILVER_3[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_tv_count >= TV_GOLD_1[2]) {
+      <?php if ($total_tv_count >= TV_GOLD_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo TV_GOLD_1[2]; ?> TV Milestone">
-          <p class="badge-name"> <?php echo  TV_GOLD_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo  TV_GOLD_1[0]; ?>" alt="<?php echo TV_GOLD_1[1]; ?>">
+        <article class="article" data-title="<?php echo TV_GOLD_1[2]; ?> TV Milestone">
+          <p class="badge-name gold"> <?php echo  TV_GOLD_1[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo  TV_GOLD_1[0]; ?>" alt="<?php echo TV_GOLD_1[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_tv_count >= TV_GOLD_2[2]) {
+      <?php if ($total_tv_count >= TV_GOLD_2[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo TV_GOLD_2[2]; ?> TV Milestone">
-          <p class="badge-name"> <?php echo  TV_GOLD_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo  TV_GOLD_2[0]; ?>" alt="<?php echo TV_GOLD_2[1]; ?>">
+          <p class="badge-name gold"> <?php echo  TV_GOLD_2[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo  TV_GOLD_2[0]; ?>" alt="<?php echo TV_GOLD_2[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_tv_count >= TV_GOLD_3[2]) {
+      <?php if ($total_tv_count >= TV_GOLD_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo TV_GOLD_3[2]; ?> TV Milestone">
-          <p class="badge-name"> <?php echo  TV_GOLD_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo  TV_GOLD_3[0]; ?>" alt="<?php echo TV_GOLD_3[1]; ?>">
+          <p class="badge-name gold"> <?php echo  TV_GOLD_3[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo  TV_GOLD_3[0]; ?>" alt="<?php echo TV_GOLD_3[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
     </div>
 
 
 
 
-    
+
     <!---------------
     MUSIC BADGE SECTION
     ------------------->
@@ -531,91 +534,91 @@ const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
       <article class="article">
         <span class="emoji" style='font-size:100px;'>&#127911</span>
       </article>
-      <article class="article heading-text">THE AUDIOPHILE BADGES
+      <article class="article heading-text" id="MusicTitle">THE AUDIOPHILE BADGES
       </article>
 
-      <?php if ($total_album_count >= MUSIC_BRONZE_1[2]) {
+      <?php if ($total_album_count >= MUSIC_BRONZE_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo MUSIC_BRONZE_1[2]; ?> Music Milestone">
-          <p class="badge-name"> <?php echo MUSIC_BRONZE_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo MUSIC_BRONZE_1[0]; ?>" alt="<?php echo MUSIC_BRONZE_1[1]; ?>">
+        <article class="article" data-title="<?php echo MUSIC_BRONZE_1[2]; ?> Music Milestone">
+          <p class="badge-name bronze"> <?php echo MUSIC_BRONZE_1[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MUSIC_BRONZE_1[0]; ?>" alt="<?php echo MUSIC_BRONZE_1[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_album_count >= MUSIC_BRONZE_2[2]) {
+      <?php if ($total_album_count >= MUSIC_BRONZE_2[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo MUSIC_BRONZE_2[2]; ?> Music Milestone">
-          <p class="badge-name"> <?php echo MUSIC_BRONZE_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo MUSIC_BRONZE_2[0]; ?>" alt="<?php echo MUSIC_BRONZE_2[1]; ?>">
+        <article class="article" data-title="<?php echo MUSIC_BRONZE_2[2]; ?> Music Milestone">
+          <p class="badge-name bronze"> <?php echo MUSIC_BRONZE_2[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MUSIC_BRONZE_2[0]; ?>" alt="<?php echo MUSIC_BRONZE_2[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
+     
+      <?php if ($total_album_count >= MUSIC_BRONZE_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-      <?php if ($total_album_count >= MUSIC_BRONZE_3[2]) {
-      ?>
-        <article class="article"  data-title="<?php echo MUSIC_BRONZE_3[2]; ?> Music Milestone">
-          <p class="badge-name"> <?php echo MUSIC_BRONZE_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo MUSIC_BRONZE_3[0]; ?>" alt="<?php echo MUSIC_BRONZE_3[1]; ?>">
+        <article class="article" data-title="<?php echo MUSIC_BRONZE_3[2]; ?> Music Milestone">
+          <p class="badge-name bronze"> <?php echo MUSIC_BRONZE_3[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MUSIC_BRONZE_3[0]; ?>" alt="<?php echo MUSIC_BRONZE_3[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
-      <?php if ($total_album_count >= MUSIC_SILVER_1[2]) {
+     
+      <?php if ($total_album_count >= MUSIC_SILVER_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MUSIC_SILVER_1[2]; ?> Music Milestone">
-          <p class="badge-name"> <?php echo MUSIC_SILVER_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo MUSIC_SILVER_1[0]; ?>" alt="<?php echo MUSIC_SILVER_1[1]; ?>">
+          <p class="badge-name silver"> <?php echo MUSIC_SILVER_1[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MUSIC_SILVER_1[0]; ?>" alt="<?php echo MUSIC_SILVER_1[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
-      <?php if ($total_album_count >= MUSIC_SILVER_2[2]) {
+     
+      <?php if ($total_album_count >= MUSIC_SILVER_2[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MUSIC_SILVER_2[2]; ?> Music Milestone">
-          <p class="badge-name"> <?php echo MUSIC_SILVER_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo MUSIC_SILVER_2[0]; ?>" alt="<?php echo MUSIC_SILVER_2[1]; ?>">
+          <p class="badge-name silver"> <?php echo MUSIC_SILVER_2[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MUSIC_SILVER_2[0]; ?>" alt="<?php echo MUSIC_SILVER_2[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
-      <?php if ($total_album_count >= MUSIC_SILVER_3[2]) {
+     
+      <?php if ($total_album_count >= MUSIC_SILVER_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MUSIC_SILVER_3[2]; ?> Music Milestone">
-          <p class="badge-name"> <?php echo MUSIC_SILVER_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo MUSIC_SILVER_3[0]; ?>" alt="<?php echo MUSIC_SILVER_3[1]; ?>">
+          <p class="badge-name silver"> <?php echo MUSIC_SILVER_3[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MUSIC_SILVER_3[0]; ?>" alt="<?php echo MUSIC_SILVER_3[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
-      <?php if ($total_album_count >= MUSIC_GOLD_1[2]) {
+     
+      <?php if ($total_album_count >= MUSIC_GOLD_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MUSIC_GOLD_1[2]; ?> Music Milestone">
-          <p class="badge-name"> <?php echo MUSIC_GOLD_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo MUSIC_GOLD_1[0]; ?>" alt="<?php echo MUSIC_GOLD_1[1]; ?>">
+          <p class="badge-name gold"> <?php echo MUSIC_GOLD_1[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MUSIC_GOLD_1[0]; ?>" alt="<?php echo MUSIC_GOLD_1[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
-      <?php if ($total_album_count >= MUSIC_GOLD_2[2]) {
+     
+      <?php if ($total_album_count >= MUSIC_GOLD_2[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MUSIC_GOLD_2[2]; ?> Music Milestone">
-          <p class="badge-name"> <?php echo MUSIC_GOLD_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo MUSIC_GOLD_2[0]; ?>" alt="<?php echo MUSIC_GOLD_2[1]; ?>">
+          <p class="badge-name gold"> <?php echo MUSIC_GOLD_2[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MUSIC_GOLD_2[0]; ?>" alt="<?php echo MUSIC_GOLD_2[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
-      <?php if ($total_album_count >= MUSIC_GOLD_3[2]) {
+     
+      <?php if ($total_album_count >= MUSIC_GOLD_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo MUSIC_GOLD_3[2]; ?> Music Milestone">
-          <p class="badge-name"> <?php echo MUSIC_GOLD_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo MUSIC_GOLD_3[0]; ?>" alt="<?php echo MUSIC_GOLD_3[1]; ?>">
+          <p class="badge-name gold"> <?php echo MUSIC_GOLD_3[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo MUSIC_GOLD_3[0]; ?>" alt="<?php echo MUSIC_GOLD_3[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
     </div>
 
@@ -628,103 +631,98 @@ const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
         <img class="image">
 
       </article>
-      <article class="article heading-text">SWEATY PALMS BADGES</article>
+      <article class="article heading-text" id="GameTitle">SWEATY PALMS BADGES</article>
 
-      <?php if ($total_videogame_count >= VIDEOGAME_BRONZE_1[2]) {
+      <?php if ($total_videogame_count >= VIDEOGAME_BRONZE_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo VIDEOGAME_BRONZE_1[2]; ?> Game Milestone">
-          <p class="badge-name"> <?php echo VIDEOGAME_BRONZE_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo VIDEOGAME_BRONZE_1[0]; ?>" alt="<?php echo VIDEOGAME_BRONZE_1[1]; ?>">
+        <article class="article" data-title="<?php echo VIDEOGAME_BRONZE_1[2]; ?> Game Milestone">
+          <p class="badge-name bronze"> <?php echo VIDEOGAME_BRONZE_1[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo VIDEOGAME_BRONZE_1[0]; ?>" alt="<?php echo VIDEOGAME_BRONZE_1[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_videogame_count >= VIDEOGAME_BRONZE_2[2]) {
+      <?php if ($total_videogame_count >= VIDEOGAME_BRONZE_2[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo VIDEOGAME_BRONZE_2[2]; ?> Game Milestone">
-          <p class="badge-name"> <?php echo VIDEOGAME_BRONZE_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo VIDEOGAME_BRONZE_2[0]; ?>" alt="<?php echo VIDEOGAME_BRONZE_2[1]; ?>">
+        <article class="article" data-title="<?php echo VIDEOGAME_BRONZE_2[2]; ?> Game Milestone">
+          <p class="badge-name bronze"> <?php echo VIDEOGAME_BRONZE_2[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo VIDEOGAME_BRONZE_2[0]; ?>" alt="<?php echo VIDEOGAME_BRONZE_2[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_videogame_count >= VIDEOGAME_BRONZE_3[2]) {
+      <?php if ($total_videogame_count >= VIDEOGAME_BRONZE_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo VIDEOGAME_BRONZE_3[2]; ?> Game Milestone">
-          <p class="badge-name"> <?php echo VIDEOGAME_BRONZE_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo VIDEOGAME_BRONZE_3[0]; ?>" alt="<?php echo VIDEOGAME_BRONZE_3[1]; ?>">
+        <article class="article" data-title="<?php echo VIDEOGAME_BRONZE_3[2]; ?> Game Milestone">
+          <p class="badge-name bronze"> <?php echo VIDEOGAME_BRONZE_3[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo VIDEOGAME_BRONZE_3[0]; ?>" alt="<?php echo VIDEOGAME_BRONZE_3[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_videogame_count >= VIDEOGAME_SILVER_1[2]) {
+      <?php if ($total_videogame_count >= VIDEOGAME_SILVER_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo VIDEOGAME_SILVER_1[2]; ?> Game Milestone">
-          <p class="badge-name"> <?php echo VIDEOGAME_SILVER_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo VIDEOGAME_SILVER_1[0]; ?>" alt="<?php echo VIDEOGAME_SILVER_1[1]; ?>">
+        <article class="article" data-title="<?php echo VIDEOGAME_SILVER_1[2]; ?> Game Milestone">
+          <p class="badge-name silver"> <?php echo VIDEOGAME_SILVER_1[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo VIDEOGAME_SILVER_1[0]; ?>" alt="<?php echo VIDEOGAME_SILVER_1[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_videogame_count >= VIDEOGAME_SILVER_2[2]) {
+      <?php if ($total_videogame_count >= VIDEOGAME_SILVER_2[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo VIDEOGAME_SILVER_2[2]; ?> Game Milestone">
-          <p class="badge-name"> <?php echo VIDEOGAME_SILVER_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo VIDEOGAME_SILVER_2[0]; ?>" alt="<?php echo VIDEOGAME_SILVER_2[1]; ?>">
+        <article class="article" data-title="<?php echo VIDEOGAME_SILVER_2[2]; ?> Game Milestone">
+          <p class="badge-name silver"> <?php echo VIDEOGAME_SILVER_2[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo VIDEOGAME_SILVER_2[0]; ?>" alt="<?php echo VIDEOGAME_SILVER_2[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_videogame_count >= VIDEOGAME_SILVER_3[2]) {
+      <?php if ($total_videogame_count >= VIDEOGAME_SILVER_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo VIDEOGAME_SILVER_3[2]; ?> Game Milestone">
-          <p class="badge-name"> <?php echo VIDEOGAME_SILVER_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo VIDEOGAME_SILVER_3[0]; ?>" alt="<?php echo VIDEOGAME_SILVER_3[1]; ?>">
+        <article class="article" data-title="<?php echo VIDEOGAME_SILVER_3[2]; ?> Game Milestone">
+          <p class="badge-name silver"> <?php echo VIDEOGAME_SILVER_3[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo VIDEOGAME_SILVER_3[0]; ?>" alt="<?php echo VIDEOGAME_SILVER_3[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_videogame_count >= VIDEOGAME_GOLD_1[2]) {
+      <?php if ($total_videogame_count >= VIDEOGAME_GOLD_1[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo VIDEOGAME_GOLD_1[2]; ?> Game Milestone">
-          <p class="badge-name"> <?php echo VIDEOGAME_GOLD_1[1]; ?></p>
-          <img class="mybadge" src="<?php echo VIDEOGAME_GOLD_1[0]; ?>" alt="<?php echo VIDEOGAME_GOLD_1[1]; ?>">
+        <article class="article" data-title="<?php echo VIDEOGAME_GOLD_1[2]; ?> Game Milestone">
+          <p class="badge-name gold"> <?php echo VIDEOGAME_GOLD_1[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo VIDEOGAME_GOLD_1[0]; ?>" alt="<?php echo VIDEOGAME_GOLD_1[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_videogame_count >= VIDEOGAME_GOLD_2[2]) {
+      <?php if ($total_videogame_count >= VIDEOGAME_GOLD_2[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo VIDEOGAME_GOLD_2[2]; ?> Game Milestone">
-          <p class="badge-name"> <?php echo VIDEOGAME_GOLD_2[1]; ?></p>
-          <img class="mybadge" src="<?php echo VIDEOGAME_GOLD_2[0]; ?>" alt="<?php echo VIDEOGAME_GOLD_2[1]; ?>">
+        <article class="article" data-title="<?php echo VIDEOGAME_GOLD_2[2]; ?> Game Milestone">
+          <p class="badge-name gold"> <?php echo VIDEOGAME_GOLD_2[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo VIDEOGAME_GOLD_2[0]; ?>" alt="<?php echo VIDEOGAME_GOLD_2[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($total_videogame_count >= VIDEOGAME_GOLD_3[2]) {
+      <?php if ($total_videogame_count >= VIDEOGAME_GOLD_3[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
-        <article class="article"  data-title="<?php echo VIDEOGAME_GOLD_3[2]; ?> Game Milestone">
-          <p class="badge-name"> <?php echo VIDEOGAME_GOLD_3[1]; ?></p>
-          <img class="mybadge" src="<?php echo VIDEOGAME_GOLD_3[0]; ?>" alt="<?php echo VIDEOGAME_GOLD_3[1]; ?>">
+        <article class="article" data-title="<?php echo VIDEOGAME_GOLD_3[2]; ?> Game Milestone">
+          <p class="badge-name gold"> <?php echo VIDEOGAME_GOLD_3[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo VIDEOGAME_GOLD_3[0]; ?>" alt="<?php echo VIDEOGAME_GOLD_3[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
-
+     
     </div>
-
-
-
-
 
 
     <!--MISC DIV-->
@@ -734,72 +732,72 @@ const PATRON_GOLD = ["images/badges/gold.png", "PATRON - II", 10];
         <img class="image">
 
       </article>
-      <article class="article heading-text">CULT LEADER BADGES
+      <article class="article heading-text" id="CultTitle">CULT LEADER BADGES
 
       </article>
 
-      <?php if ($total_followers >= FOLLOWERS_BRONZE[2]) {
+      <?php if ($total_followers >= FOLLOWERS_BRONZE[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo FOLLOWERS_BRONZE[2]; ?> Follower Milestone">
-          <p class="badge-name"> <?php echo FOLLOWERS_BRONZE[1]; ?></p>
-          <img class="mybadge" src="<?php echo FOLLOWERS_BRONZE[0]; ?>" alt="<?php echo FOLLOWERS_BRONZE[1]; ?>">
+          <p class="badge-name bronze"> <?php echo FOLLOWERS_BRONZE[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo FOLLOWERS_BRONZE[0]; ?>" alt="<?php echo FOLLOWERS_BRONZE[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
 
-      <?php if ($total_followers >= FOLLOWERS_SILVER[2]) {
+      <?php if ($total_followers >= FOLLOWERS_SILVER[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo FOLLOWERS_SILVER[2]; ?> Follower Milestone">
-          <p class="badge-name"> <?php echo FOLLOWERS_SILVER[1]; ?></p>
-          <img class="mybadge" src="<?php echo FOLLOWERS_SILVER[0]; ?>" alt="<?php echo FOLLOWERS_SILVER[1]; ?>">
+          <p class="badge-name silver"> <?php echo FOLLOWERS_SILVER[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo FOLLOWERS_SILVER[0]; ?>" alt="<?php echo FOLLOWERS_SILVER[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
 
-      <?php if ($total_followers >= FOLLOWERS_GOLD[2]) {
+      <?php if ($total_followers >= FOLLOWERS_GOLD[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo FOLLOWERS_GOLD[2]; ?> Follower Milestone">
-          <p class="badge-name"> <?php echo FOLLOWERS_GOLD[1]; ?></p>
-          <img class="mybadge" src="<?php echo FOLLOWERS_GOLD[0]; ?>" alt="<?php echo FOLLOWERS_GOLD[1]; ?>">
+          <p class="badge-name gold"> <?php echo FOLLOWERS_GOLD[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo FOLLOWERS_GOLD[0]; ?>" alt="<?php echo FOLLOWERS_GOLD[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($days_since_member >= PATRON_BRONZE[2]) {
+      <?php if ($days_since_member >= PATRON_BRONZE[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo PATRON_BRONZE[2]; ?> Day Milestone">
-          <p class="badge-name"> <?php echo PATRON_BRONZE[1]; ?></p>
-          <img class="mybadge" src="<?php echo PATRON_BRONZE[0]; ?>" alt="<?php echo PATRON_BRONZE[1]; ?>">
+          <p class="badge-name bronze"> <?php echo PATRON_BRONZE[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo PATRON_BRONZE[0]; ?>" alt="<?php echo PATRON_BRONZE[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
-      <?php if ($days_since_member >= PATRON_SILVER[2]) {
+      <?php if ($days_since_member >= PATRON_SILVER[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo PATRON_SILVER[2]; ?> Day Milestone">
-          <p class="badge-name"> <?php echo PATRON_SILVER[1]; ?></p>
-          <img class="mybadge" src="<?php echo PATRON_SILVER[0]; ?>" alt="<?php echo PATRON_SILVER[1]; ?>">
+          <p class="badge-name silver"> <?php echo PATRON_SILVER[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo PATRON_SILVER[0]; ?>" alt="<?php echo PATRON_SILVER[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
 
 
-      <?php if ($days_since_member >= PATRON_GOLD[2]) {
+      <?php if ($days_since_member >= PATRON_GOLD[2]) {$status = "mybadge"; $lockicon="";}
+      else {$status = "mybadge locked"; $lockicon="cross";}
       ?>
         <article class="article" data-title="<?php echo PATRON_GOLD[2]; ?> Day Milestone">
-          <p class="badge-name"> <?php echo PATRON_GOLD[1]; ?></p>
-          <img class="mybadge" src="<?php echo PATRON_GOLD[0]; ?>" alt="<?php echo PATRON_GOLD[1]; ?>">
+          <p class="badge-name gold"> <?php echo PATRON_GOLD[1]; ?></p>
+          <img class="<?php echo $status ?>" src="<?php echo PATRON_GOLD[0]; ?>" alt="<?php echo PATRON_GOLD[1]; ?>">
+          <span class="<?php echo $lockicon; ?>"><span>
         </article>
-      <?php
-      }
-      ?>
+     
     </div>
 
 
