@@ -9,8 +9,10 @@ body {
     color: #fff;
     overflow: hidden;
     margin-top: 100px;
-    background: linear-gradient(150deg, #457aff, #da6aff, #ff90a8);
-    background-size: 100% 300%;
+    /* background: linear-gradient(150deg, #457aff, #da6aff, #ff90a8); */
+    /* background-size: 100% 300%; */
+    background-size: cover;
+    /* background-repeat: no-repeat; */
 }
 
 
@@ -20,7 +22,7 @@ body {
     text-align: center;
     font-size: 50px;
     text-transform: uppercase;
-    color: #000;
+    color: rgb(255, 255, 255);
     letter-spacing: 1px;
     font-family: "Open Sans", serif;
     font-weight: 400;
@@ -32,7 +34,7 @@ body {
 .heading h1 span {
     margin-top: 5px;
     font-size: 15px;
-    color: #000;
+    color: rgb(255, 255, 255);
     word-spacing: 1px;
     letter-spacing: 2px;
     text-transform: uppercase;

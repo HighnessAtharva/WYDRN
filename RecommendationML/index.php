@@ -200,7 +200,7 @@ function getGamePosterPath($name)
              BODY START
 -------------------------------------->
 
-<body>
+<body style="background-image:linear-gradient(to left, rgba(10, 10, 10, 0.5), rgb(21, 21, 21)), url(../<?php echo randomImage(); ?>)">
 
 <?php
 $mediaType='';            

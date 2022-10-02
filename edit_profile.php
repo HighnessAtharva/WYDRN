@@ -280,8 +280,8 @@ if (isset($_POST['save_profile'])) {
         }
 
         //check for file size
-        if ($_FILES['PFP']['size'] > 1024000) {
-            $msg = "Image size should not be greater than 1 MB";
+        if ($_FILES['PFP']['size'] > 2048000) {
+            $msg = "Image size should not be greater than 2 MB";
             $msg_class = "alert-danger";
         }
 
@@ -356,8 +356,8 @@ if (isset($_POST['save_profile'])) {
         }
 
         //check for file size
-        if ($_FILES['BgImage']['size'] > 1024000) {
-            $msg2 = "Image size should not be greater than 1MB";
+        if ($_FILES['BgImage']['size'] > 2048000) {
+            $msg2 = "Image size should not be greater > 2MB";
         }
 
         //check for file destination
