@@ -47,7 +47,7 @@ $username = $user_data['user_name'];
 <button onclick="topFunction()" id="BackToTopBtn" title="Go to top">&#8657;</button>
 
 <h1 class="heading">
-  <img src="images/website/bell.gif" height="50px" width="50px" class="bell">Notifications
+  <img src="images/Icons/notification.png" height="50px" width="50px" class="bell">Notifications
 </h1>
 <hr>
 

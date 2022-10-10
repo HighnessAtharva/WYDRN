@@ -6,9 +6,15 @@ body {
     background: #f0f8ff;
     font-family: "Open Sans", Helvetica, sans-serif;
     margin-top: 50px;
-    background-color: #e5e5f7;
-    background-image: radial-gradient(#45f752 1.1500000000000001px, #e5e5f7 1.1500000000000001px);
-    background-size: 23px 23px;
+    min-height: 100vh;
+    height: 100%;
+    z-index: 1;
+    background-image: linear-gradient(to left, rgba(10, 10, 10, 0.5), rgb(21, 21, 21)), url(../images/backgrounds/5.png);
+    height: 100%;
+    background-color: transparent;
+    z-index: 1;
+    background-size: cover;
+    background-repeat: none;
 }
 
  ::-webkit-scrollbar {
@@ -31,7 +37,7 @@ body {
     text-align: center;
     font-size: 50px;
     text-transform: uppercase;
-    color: #000;
+    color: rgb(255, 255, 255);
     letter-spacing: 1px;
     font-family: "Open Sans", serif;
     font-weight: 400;
@@ -43,7 +49,7 @@ body {
 .heading h1 span {
     margin-top: 5px;
     font-size: 15px;
-    color: #000;
+    color: rgb(255, 255, 255);
     word-spacing: 1px;
     letter-spacing: 2px;
     text-transform: uppercase;

@@ -4,7 +4,15 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     font-family: "Open Sans", Helvetica, sans-serif;
-    background-color: rgb(255, 255, 255);
+    min-height: 100vh;
+    height: 100%;
+    z-index: 1;
+    background-image: linear-gradient(to left, rgba(10, 10, 10, 0.5), rgb(21, 21, 21)), url(../images/backgrounds/29.png);
+    height: 100%;
+    background-color: transparent;
+    z-index: 1;
+    background-size: cover;
+    background-repeat: none;
     margin-top: 150px;
 }
 
@@ -84,7 +92,7 @@ h1.heading {
     text-align: center;
     font-size: 50px;
     text-transform: uppercase;
-    color: rgb(0, 0, 0) !important;
+    color: rgb(255, 255, 255) !important;
     letter-spacing: 1px;
     font-family: "Playfair Display", serif;
     font-weight: 400;

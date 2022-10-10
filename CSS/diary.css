@@ -4,13 +4,19 @@ body {
     -webkit-user-select: none;
     font-family: "Open Sans", Helvetica, sans-serif;
     margin-top: 150px;
-    background-color: #e5e5f7;
-    /* opacity: 0.2; */
-    background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 14px), repeating-linear-gradient( #dd62ff23, #d640ff7f);
-    z-index: -999;
     padding-bottom: 100px;
+    min-height: 100vh;
+    height: 100%;
+    z-index: 1;
+    background-image: linear-gradient(to left, rgba(10, 10, 10, 0.5), rgb(21, 21, 21)), url(../images/backgrounds/18.png);
+    height: 100%;
+    background-color: transparent;
+    z-index: 1;
 }
 
+h1 {
+    color: #ffffff;
+}
 h6 {
     font-weight: bolder;
 }
@@ -186,7 +192,7 @@ a>span.neonText:hover {
     width: 10px;
     height: 100%;
     content: "";
-    background-color: #000000;
+    background-color: #ffffff;
     top: 0;
     right: 30px;
     z-index: 1;
@@ -209,7 +215,7 @@ a>span.neonText:hover {
 
 .single-timeline-area .timeline-date p {
     margin-bottom: 0;
-    color: #020710;
+    color: #fafafa;
     text-transform: uppercase;
     padding-bottom: 50px;
 }
