@@ -6,15 +6,12 @@ body {
     background: #f0f8ff;
     font-family: "Open Sans", Helvetica, sans-serif;
     margin-top: 50px;
-    min-height: 100vh;
-    height: 100%;
-    z-index: 1;
     background-image: linear-gradient(to left, rgba(10, 10, 10, 0.5), rgb(21, 21, 21)), url(../images/backgrounds/5.png);
-    height: 100%;
     background-color: transparent;
-    z-index: 1;
     background-size: cover;
     background-repeat: none;
+    min-height: 100vh;
+    height: 100%;
 }
 
  ::-webkit-scrollbar {

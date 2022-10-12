@@ -49,7 +49,8 @@ $username = $user_data['user_name'];
 <h1 class="heading">
   <img src="images/Icons/notification.png" height="50px" width="50px" class="bell">Notifications
 </h1>
-<hr>
+
+<hr >
 
 <!--Container for actual follower update notifications-->
 <div class="notif-group">
