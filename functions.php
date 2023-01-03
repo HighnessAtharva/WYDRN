@@ -66,9 +66,9 @@ function mailer_verify_email($recipient)
     $mail->Host = "smtp.gmail.com";
     $mail->Port = 465; // or 587
     $mail->IsHTML(true);
-    $mail->Username = "westerospatriot@gmail.com";
+    $mail->Username = "REPLACE_THIS_WITH_YOUR_MAIL";
     $mail->Password = "REPLACE_THIS_WITH_YOUR_PASS"; //Google Account -> Security -> App Passwords
-    $mail->SetFrom("westerospatriot@gmail.com");
+    $mail->SetFrom("REPLACE_THIS_WITH_YOUR_MAIL");
     $mail->Subject = "WYDRN - Verify Your Email";
     //mailer body start
     $mailerbody = "<button style='padding:20px;'>";
@@ -105,9 +105,9 @@ function send_reset_link($recipient, $link)
     $mail->Host = "smtp.gmail.com";
     $mail->Port = 465; // or 587
     $mail->IsHTML(true);
-    $mail->Username = "westerospatriot@gmail.com";
+    $mail->Username = "REPLACE_THIS_WITH_YOUR_MAIL";
     $mail->Password = "REPLACE_THIS_WITH_YOUR_PASS"; //Google Account -> Security -> App Passwords
-    $mail->SetFrom("westerospatriot@gmail.com");
+    $mail->SetFrom("REPLACE_THIS_WITH_YOUR_MAIL");
     $mail->Subject = "WYDRN - Reset Password";
     $mail->Body = $link;
     $mail->AddAddress($recipient);
@@ -139,9 +139,9 @@ function send_password_reset_notif($recipient, $link)
     $mail->Host = "smtp.gmail.com";
     $mail->Port = 465; // or 587
     $mail->IsHTML(true);
-    $mail->Username = "westerospatriot@gmail.com";
+    $mail->Username = "REPLACE_THIS_WITH_YOUR_MAIL";
     $mail->Password = "REPLACE_THIS_WITH_YOUR_PASS"; //Google Account -> Security -> App Passwords
-    $mail->SetFrom("westerospatriot@gmail.com");
+    $mail->SetFrom("REPLACE_THIS_WITH_YOUR_MAIL");
     $mail->Subject = "WYDRN - Your Password has been reset";
     $mail->Body = $link;
     $mail->AddAddress($recipient);
