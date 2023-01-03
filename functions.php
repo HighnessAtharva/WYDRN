@@ -67,7 +67,7 @@ function mailer_verify_email($recipient)
     $mail->Port = 465; // or 587
     $mail->IsHTML(true);
     $mail->Username = "westerospatriot@gmail.com";
-    $mail->Password = "snqaqtbdavtchhoh"; //Google Account -> Security -> App Passwords
+    $mail->Password = "REPLACE_THIS_WITH_YOUR_PASS"; //Google Account -> Security -> App Passwords
     $mail->SetFrom("westerospatriot@gmail.com");
     $mail->Subject = "WYDRN - Verify Your Email";
     //mailer body start
@@ -106,7 +106,7 @@ function send_reset_link($recipient, $link)
     $mail->Port = 465; // or 587
     $mail->IsHTML(true);
     $mail->Username = "westerospatriot@gmail.com";
-    $mail->Password = "snqaqtbdavtchhoh"; //Google Account -> Security -> App Passwords
+    $mail->Password = "REPLACE_THIS_WITH_YOUR_PASS"; //Google Account -> Security -> App Passwords
     $mail->SetFrom("westerospatriot@gmail.com");
     $mail->Subject = "WYDRN - Reset Password";
     $mail->Body = $link;
@@ -120,7 +120,6 @@ function send_reset_link($recipient, $link)
         return 1;
     }
 }
-
 
 /*
 Sends an Email notifying the user that their password has been changed.
@@ -141,7 +140,7 @@ function send_password_reset_notif($recipient, $link)
     $mail->Port = 465; // or 587
     $mail->IsHTML(true);
     $mail->Username = "westerospatriot@gmail.com";
-    $mail->Password = "snqaqtbdavtchhoh"; //Google Account -> Security -> App Passwords
+    $mail->Password = "REPLACE_THIS_WITH_YOUR_PASS"; //Google Account -> Security -> App Passwords
     $mail->SetFrom("westerospatriot@gmail.com");
     $mail->Subject = "WYDRN - Your Password has been reset";
     $mail->Body = $link;
@@ -155,7 +154,6 @@ function send_password_reset_notif($recipient, $link)
         return 1;
     }
 }
-
 
 /*
 Returns whether a user account is verified or not (1 - Verified  ||  0 -  Not Verified)
@@ -897,7 +895,7 @@ function MoviePosterPath($name, $year)
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json'
+        'Content-Type: application/json',
     ]);
 
     $response = curl_exec($curl);
@@ -938,7 +936,7 @@ function BookPosterPath($name, $author)
     // print_r ($response['items'][0]['volumeInfo']['imageLinks']['thumbnail']);
     return $response;
 }
- /********************
+/********************
 GET THE TV POSTER PATH USING AN API REQUEST
  ******************/
 
@@ -965,9 +963,7 @@ function TvPosterPath($name)
     return $response;
 }
 
-
-
- /********************
+/********************
 GET THE MUSIC POSTER PATH USING AN API REQUEST
  ******************/
 function MusicPosterPath($name, $artist)
@@ -978,7 +974,7 @@ function MusicPosterPath($name, $artist)
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json'
+        'Content-Type: application/json',
     ]);
 
     $response = curl_exec($curl);
@@ -993,7 +989,7 @@ function MusicPosterPath($name, $artist)
     return $response;
 }
 
- /********************
+/********************
 GET THE VIDEOGAME POSTER PATH USING AN API REQUEST
  ******************/
 
