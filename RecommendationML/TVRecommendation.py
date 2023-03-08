@@ -28,9 +28,7 @@ def getUserTV(user_name: str) -> list[str]:
         records = cursor.fetchall()
         print("Total number of rows in table: ", cursor.rowcount)
 
-        for row in records:
-            userTV.append(row[0])
-
+        userTV.extend(row[0] for row in records)
         return userTV
 
     except mysql.connector.Error as e:
@@ -83,8 +81,7 @@ def recommend(username):
     randomTV = random.choices(tvList, k=10)
 
     # key = book name, value = weighted score from 1 to 10 randomly
-    weightedDict = dict(
-        zip(randomTV, [random.randint(1, 10) for i in range(10)]))
+    weightedDict = dict(zip(randomTV, [random.randint(1, 10) for _ in range(10)]))
 
     print(json.dumps(weightedDict))
 

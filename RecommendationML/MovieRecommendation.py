@@ -44,10 +44,7 @@ C = movies_df["vote_average"].mean()
 m = movies_df["vote_count"].quantile(0.9)
 
 def get_director(x):
-    for i in x:
-        if i["job"] == "Director":
-            return i["name"]
-    return np.nan
+    return next((i["name"] for i in x if i["job"] == "Director"), np.nan)
 
 
 
